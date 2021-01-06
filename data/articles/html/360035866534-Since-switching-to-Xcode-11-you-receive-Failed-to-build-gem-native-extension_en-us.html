@@ -1,0 +1,11 @@
+<p>Some users may hit the following error while running bundle install after switching from an Xcode 10.x image to the Xcode 11 image on CircleCI.</p>
+<p>The main error message to note is the following: </p>
+<pre class="output"><span class="pre"><span class="white"><span class="red">Gem::Ext::BuildError: ERROR: Failed to build gem native extension.</span></span></span></pre>
+<h3>Why does this happen?</h3>
+<p>Recent versions of Xcode have removed the previously bundled macOS SDK headers package which installed the various Ruby 2.3 (system Ruby) headers required to build Ruby Gems. Without these headers, some Gems will fail during the bundle install phase with the following error message:</p>
+<pre class="output"><span class="pre"><span class="white">mkmf.rb can't find header files for ruby at
+/System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/lib/ruby/include/ruby.h</span></span></pre>
+<h3>Steps to Resolve</h3>
+<p>This can be resolved by switching to one of the Ruby versions, available via chruby, that we ship with the Xcode 11 images. The versions of Ruby we ship can be found in the <a href="https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions" target="_self">Software Manifests</a>.</p>
+<p>Follow the steps in our <a href="https://circleci.com/docs/2.0/testing-ios/#images-using-macos-1015-catalina--xcode-112-and-later" target="_self">Using Custom Ruby Versions</a> guide to switch to either Ruby 2.5 or Ruby 2.6 Once you have updated your config.yml, push a fresh commit to trigger a fresh build.</p>
+<p> </p>

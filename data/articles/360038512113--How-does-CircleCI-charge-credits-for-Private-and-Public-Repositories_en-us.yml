@@ -1,0 +1,29 @@
+id: 360038512113
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360038512113.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360038512113--How-does-CircleCI-charge-credits-for-Private-and-Public-Repositories-
+author_id: 379006459554
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 5
+vote_count: 9
+section_id: 115003332307
+created_at: '2019-11-06T23:49:10Z'
+updated_at: '2020-12-12T02:32:15Z'
+name: ' How does CircleCI charge credits for Private and Public Repositories?'
+title: ' How does CircleCI charge credits for Private and Public Repositories?'
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-27T19:58:27Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - credits
+  - free plan
+  - open source
+body: "<p>Overview</p>\n<p>Depending on your plan type and repository's privacy, you will have a number of allotted credits available.</p>\n<h2>Performance Plan</h2>\n<p>You can build both public and private repositories on the Performance plan. <span style=\"font-weight: 400;\"><a href=\"https://circleci.com/open-source/\" target=\"_self\">Open-source</a></span> projects will consume credits, however, our engineering team is working to make OSS available on the Performance Plan. All private projects consume user seats normally, while all OSS projects do not consume user seats.</p>\n<h2>Container Plan</h2>\n<p><span style=\"font-weight: 400;\">You can build both public and private repositories on the Container plan, the first container is free. For\_<a href=\"https://circleci.com/open-source/\" target=\"_self\">open-source</a> projects,\_<span class=\"c-message__body\" dir=\"auto\" data-qa=\"message-text\">4 containers for Linux are provided at no additional cost as long as repositories remain public.</span></span></p>\n<h2>Free Plan</h2>\n<p><span style=\"font-weight: 400;\">CircleCI provides Organizations 100,000 free credits per week ($2,880 annual value) to use for Linux <a href=\"https://circleci.com/open-source/\" target=\"_self\">open-source</a> projects as long as repositories are public. Private repositories will have 2,500 credits/week available, which replenish every Sunday 12:00 UTC</span></p>\n<h2>Additional Troubleshooting</h2>\n<div id=\"1573082190.353000\" class=\"c-virtual_list__item\" aria-expanded=\"false\">\n<div class=\"c-message c-message--light c-message--hover\" data-qa=\"message_container\" data-qa-placeholder=\"false\">\_<span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">If you are already building on CircleCI and your configuration requires checking out a private repo, please follow these steps:\_</span><a style=\"background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\" href=\"https://circleci.com/docs/2.0/gh-bb-integration/#enable-your-project-to-check-out-additional-private-repositories\" target=\"_self\">Enable your project to checkout additional private repositories</a><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">.</span>\n</div>\n<div class=\"c-message c-message--light c-message--hover\" data-qa=\"message_container\" data-qa-placeholder=\"false\">\_</div>\n<div class=\"c-message c-message--light c-message--hover\" data-qa=\"message_container\" data-qa-placeholder=\"false\">\n<span style=\"font-weight: 400;\">If you encounter any further issues, visit our <a href=\"https://discuss.circleci.com/search?q=private%20repo\" target=\"_self\">Community Forum</a>\_</span><span style=\"font-weight: 400;\">or submit a Support ticket.</span>\n</div>\n</div>"

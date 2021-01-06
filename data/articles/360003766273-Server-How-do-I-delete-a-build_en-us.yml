@@ -1,0 +1,26 @@
+id: 360003766273
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360003766273.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360003766273--Server-How-do-I-delete-a-build-
+author_id: 26863412148
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -16
+vote_count: 26
+section_id: 115003327208
+created_at: '2018-05-01T23:40:50Z'
+updated_at: '2020-12-14T09:36:14Z'
+name: '[Server] How do I delete a build?'
+title: '[Server] How do I delete a build?'
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:40Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<h2>\_</h2>\n<p>When testing new configuration and setting up, there may be unnecessary builds that you do not want to reference. To fully delete builds from your private installation of CircleCI, SSH into the services instance and run the following:\_</p>\n<pre><code>circleci dev-console\n(admin/delete-build \"build_url\")\n</code></pre>"

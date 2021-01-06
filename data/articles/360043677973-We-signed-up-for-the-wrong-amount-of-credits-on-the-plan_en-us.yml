@@ -1,0 +1,30 @@
+id: 360043677973
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360043677973.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360043677973-We-signed-up-for-the-wrong-amount-of-credits-on-the-plan
+author_id: 387113658713
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: 4
+vote_count: 4
+section_id: 115003332307
+created_at: '2020-02-20T22:16:27Z'
+updated_at: '2020-11-13T20:29:22Z'
+name: We signed up for the wrong amount of credits on the plan
+title: We signed up for the wrong amount of credits on the plan
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-27T19:54:06Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - credits
+  - charge
+  - too many charges
+  - small charges
+body: "<p>On the Performance Plan you prepay for a certain amount of credits at the start of the billing period. Throughout the period, if your activity exceeds the amount you purchased, we have a system that will automatically refill 25% of your total credit package when your remaining credits hit 2%. There is a minimum refill of 25,000 credits.</p>\n<p>If you are receiving frequent charges for credit refills, you might need to increase your credit package. You can reduce the amount of refills by aligning your monthly package with typical monthly credit consumption.\_<span style=\"font-weight: 400;\">Estimate this by comparing the number listed for “Credits” on your Plan Overview page with the number in the “Total Credits” box on your Plan Usage page.\_</span>\_</p>\n<p>If you are new to the Performance Plan and do not have historical data to refer to, you can try:</p>\n<p>1) scaling the days of usage you have used to the full month, or</p>\n<p>2) write in to <a href=\"mailto:billing@circleci.com\">billing@circleci.com</a>\_for assistance getting a historical read on your activity.\_</p>\n<p><span style=\"font-weight: 400;\">Go to your billing portal by clicking “View and Configure Plan” on your Plan Overview page, where you can increase your credit packages</span><span style=\"font-weight: 400;\">.</span> <strong>Your refills for the remainder of the month will reflect the updated number, and you will receive the full allocation at the beginning of your next billing cycle.\_</strong></p>\n<p>In the opposite situation, if you have accumulated a large number of credits due to purchasing too many, you can reduce your credit package the same way. All unused credits at the end of a billing period will roll over to be used for up to 12 months from the date of purchase.</p>\n<p>Please note: the monthly subscription cycle requires the minimum credit package (1 package of 25,000 credits) to be renewed on each billing date to keep your plan active.\_</p>"

@@ -1,0 +1,11 @@
+<p>You may want to run a daemon or service in the background during your jobs and find that the service isn't available after you've started it. You may be starting it as a background process which causes the run step to exit immediately after it's been started. Take the example of starting Elasticsearch below:</p>
+<p><code>- run: ~/elasticsearch-2.4.3/bin/elasticsearch -d</code><br> <br> This results in the step only being active for one second.<br> <br> <img src="https://support.circleci.com/hc/article_attachments/360009653533/mceclip1.png" width="665" height="78"><br> <br> Once the process that started Elasticsearch exits successfully, the step is considered finished.</p>
+<p>To keep Elasticsearch running in the background, add the <strong>background: true</strong> attribute to this step as follows: <br> <code>
+        <span class="hljs-attr">- run:</span>
+        <span class="hljs-attr"> <br>    name:</span> Elasticsearch<span class="hljs-attr"><br>    command:~/elasticsearch-2.4.3/bin/elasticsearch<br></span><span class="hljs-attr">    background:</span>
+        true<br>
+        <br>
+    </code> By starting Elasticsearch in the foreground and using the <strong>background: true</strong> attribute of the <strong>run</strong> key our Elasticsearch process will stay active for the duration of the job.</p>
+<p><br> <img src="https://support.circleci.com/hc/article_attachments/360009598254/mceclip2.png" width="728" height="67"></p>
+<p>Further reading:</p>
+<p><a href="https://circleci.com/docs/2.0/configuration-reference/#background-commands">https://circleci.com/docs/2.0/configuration-reference/#background-commands</a></p>

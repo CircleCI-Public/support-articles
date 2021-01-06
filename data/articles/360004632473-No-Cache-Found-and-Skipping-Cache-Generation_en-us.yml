@@ -1,0 +1,32 @@
+id: 360004632473
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360004632473.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360004632473-No-Cache-Found-and-Skipping-Cache-Generation
+author_id: 28200990948
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -3
+vote_count: 9
+section_id: 115003756627
+created_at: '2018-05-21T14:31:09Z'
+updated_at: '2020-10-22T06:59:06Z'
+name: No Cache Found and Skipping Cache Generation
+title: No Cache Found and Skipping Cache Generation
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:06Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - restore cache
+  - gemfile
+  - lock
+  - save cache
+  - no cache is found
+  - skipping cache generation
+body: "<p>If you find yourself in a situation where no cache is being found in your <strong><em>restore cache</em></strong> step, and the <em><strong>saving cache</strong></em> step states the cache already exists, double check the checksum. The cache key is generated using the checksum of the file provided in your configuration, often a \"lock\" file.\_</p>\n<p>If this file is modified in any way between the restore and save steps, you will have mismatching keys, meaning you are attempting to save your cache to one key, and restore from another, which will always fail.</p>\n<p>\_</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360005493234/Capture1.PNG\" alt=\"Capture1.PNG\"></p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360005493254/Capture.PNG\" alt=\"Capture.PNG\"></p>\n<p>\_<span style=\"font-size: 1.5em; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">Why does this happen?</span></p>\n<p>Check to see if there is any reason your lock file is being overwritten at any point during the build process, this may happen during an installation step.</p>\n<p>\_</p>\n<p>If you are using <strong><span class=\"wysiwyg-underline\">Ruby Bundler</span></strong> and have a version mismatch between your local dev environment and the CircleCI environment, the bundle install step will overwrite your <strong><em>Gemfile.lock</em></strong> and cause the issue mentioned above.</p>\n<p>\_</p>\n<p>Always verify parity between your local and remote development environments.</p>"

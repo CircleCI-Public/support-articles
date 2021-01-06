@@ -1,0 +1,10 @@
+<p>If you are uploading several hundred files as <a href="https://circleci.com/docs/2.0/artifacts/" target="_blank" rel="noopener">Artifacts</a> and you are seeing long durations for the <code>store_artifacts</code> step(s), you should consider:</p>
+<ol>
+    <li>Compressing all of the files.</li>
+    <li>Uploading as a single compressed file.</li>
+</ol>
+<div style="background-color: rgba(27,31,35,0.05);">
+    <pre><span>- </span><span>run</span><span>:</span><br><span></span><span>    name</span><span>: </span><span>Compress Artifacts</span><br><span></span><span>    command</span><span>: </span><span>tar -cvzf myartifact.tar path/to/artifacts</span><br><br><span>- </span><span>store_artifacts</span><span>: </span><br><span></span><span>    path</span><span>: </span><span>myartifact.tar</span><br><span></span><span>    destination</span><span>: </span><span>artifact_name</span></pre>
+</div>
+<p> </p>
+<p> </p>

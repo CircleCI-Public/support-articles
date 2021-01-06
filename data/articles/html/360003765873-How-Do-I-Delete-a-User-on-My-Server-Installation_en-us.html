@@ -1,0 +1,4 @@
+<p>Sometimes it is necessary to remove users from your private installation of CircleCI. To do this, SSH into the services instance and run the following:</p>
+<pre><code>circleci dev-console
+(circle.http.api.admin-commands.user/delete-by-login-vcs-type! "github-username-of-user" :github)
+</code></pre>

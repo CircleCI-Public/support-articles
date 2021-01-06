@@ -1,0 +1,26 @@
+id: 360050303671
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360050303671.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360050303671-How-to-rerun-a-workflow
+author_id: 4008831568
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -3
+vote_count: 3
+section_id: 115003580328
+created_at: '2020-09-29T14:21:33Z'
+updated_at: '2020-12-18T20:18:56Z'
+name: How to rerun a workflow
+title: How to rerun a workflow
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:55:51Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>Both successful and failed workflows can be rerun, either:</p>\n<ul>\n<li><a href=\"#h_01EKZ56KR1ZVBTEG0RPBWYMBVA\" target=\"_self\">From the workflow page</a></li>\n<li><a href=\"#h_01EKZ5756AH4ZFZWSB38A02Z2E\" target=\"_self\">From the Pipelines page</a></li>\n</ul>\n<h3 id=\"h_01EKZ56KR1ZVBTEG0RPBWYMBVA\">From the workflow page</h3>\n<p>It is the page you are looking at when you look at a graph of jobs.</p>\n<p>At the top right of the page, there is a \"Rerun\" workflow button. Click this button to reveal a menu, where you can choose to rerun the workflow from start or from the first failed job:</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360070641692/Screen_Shot_2020-09-29_at_10.18.26_AM.png\" alt=\"Screen_Shot_2020-09-29_at_10.18.26_AM.png\"></p>\n<p>\_</p>\n<h3 id=\"h_01EKZ5756AH4ZFZWSB38A02Z2E\">From the Pipelines page</h3>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360071619392/Screenshot_2020-10-06_at_15.40.00.png\" alt=\"Screenshot_2020-10-06_at_15.40.00.png\"></p>"

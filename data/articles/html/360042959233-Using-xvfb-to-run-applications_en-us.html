@@ -1,0 +1,3 @@
+<p>Occasionally, an application being tested or run on CircleCI will require some sort of interaction with a framebuffer. Unfortunately, CircleCI jobs are headless, meaning there is no display or graphical user interface (GUI) -- this is where <code>xvfb</code>comes in. <code>xvfb</code> provides a virtual framebuffer for GUI applications to run in within a headless environment. Using the following will run the app with a virtual framebuffer for rendering GUIs:</p>
+<pre>xvfb &lt;command&gt;</pre>
+<p>Further reading: <a href="http://www.xfree86.org/4.0.1/Xvfb.1.html" target="_blank" rel="noopener">xvfb manpage</a></p>

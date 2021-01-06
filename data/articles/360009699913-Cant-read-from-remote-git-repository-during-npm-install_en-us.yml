@@ -1,0 +1,26 @@
+id: 360009699913
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360009699913.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360009699913-Can-t-read-from-remote-git-repository-during-npm-install
+author_id: 13896089047
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -11
+vote_count: 19
+section_id: 115003756627
+created_at: '2018-09-24T18:56:56Z'
+updated_at: '2020-11-04T14:14:14Z'
+name: Can't read from remote git repository during npm install
+title: Can't read from remote git repository during npm install
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:38Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>You may encounter this error when installing npm.\_</p>\n<pre>npm ERR! git clone ssh://git@github.com/someuser/somerepo.git Cloning into bare repository '/home/ubuntu/.npm/_git-remotes/ssh-git-github-com-creativelive-shared-git-01234abc'...\nnpm ERR! git clone ssh://git@github.com/someuser/somerepo.git\nnpm ERR! git clone ssh://git@github.com/someuser/somerepo.git ERROR: Repository not found.\nnpm ERR! git clone ssh://git@github.com/someuser/somerepo.git fatal: Could not read from remote repository.\nnpm ERR! git clone ssh://git@github.com/someuser/somerepo.git\nnpm ERR! git clone ssh://git@github.com/someuser/somerepo.git Please make sure you have the correct access rights\nnpm ERR! git clone ssh://git@github.com/someuser/somerepo.git and the repository exists.\nnpm ERR! Error: Command failed: ERROR: Repository not found.\nnpm ERR! fatal: Could not read from remote repository.\nnpm ERR!\nnpm ERR! Please make sure you have the correct access rights\nnpm ERR! and the repository exists.\nnpm ERR!\nnpm ERR!     at ChildProcess.exithandler (child_process.js:540:15)\nnpm ERR!     at ChildProcess.EventEmitter.emit (events.js:96:17)\nnpm ERR!     at maybeClose (child_process.js:638:16)\nnpm ERR!     at Process._handle.onexit (child_process.js:680:5)\nnpm ERR! If you need help, you may report this log at:\nnpm ERR!     &lt;http://github.com/isaacs/npm/issues&gt;\nnpm ERR! or email it to:\nnpm ERR!     &lt;npm-@googlegroups.com&gt;</pre>\n<p>This happens when you list a git repository as a dependency in your package.json file.</p>\n<pre>\"somepackage\": \"git://github.com/someorg/somerepo.git\"</pre>\n<p>If the repository is public, swap the URL to an HTTP URL:</p>\n<pre>\"somepackage\": \"https://github.com/someorg/somerepo\"</pre>\n<p>If the repository is private, enable user keys in\_<strong>Project settings &gt; Checkout SSH keys</strong>. See <a href=\"https://circleci.com/docs/2.0/gh-bb-integration/#enable-your-project-to-check-out-additional-private-repositories\">this document</a> for more information.</p>"

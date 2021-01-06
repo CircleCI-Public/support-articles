@@ -1,0 +1,20 @@
+<p>Within your config file, you can opt to upload build artifacts using the <code>store_artifacts</code> <a href="https://circleci.com/docs/2.0/artifacts/#uploading-artifacts" target="_blank" rel="noopener">key and specifying a path to upload.</a></p>
+<p>These artifacts are then able to be downloaded on the artifacts tab or <a href="https://circleci.com/docs/api/#artifacts" target="_blank" rel="noopener">via the API</a>. The download link in both cases is constructed of two parts, the first part of the URL is where we are hosting it:</p>
+<p><code>https://12-3456789-gh.circle-artifacts.com/0</code></p>
+<p>While the second part of the URL is the path you specified in the <code>store_artifacts</code> step:</p>
+<p><code>~/project/app/test/app.txt</code></p>
+<p>So altogether the URL would look something like:</p>
+<p><code>https://12-3456789-gh.circle-artifacts.com/0/~/project/app/test/app.txt</code></p>
+<p>Because of this if you had your <code>store_artifacts</code> step set to:</p>
+<pre>  - store_artifacts:
+  	path: ../project/app/test
+</pre>
+<p>This would still successfully upload the artifacts but they would in turn not be available via the UI or API as <code>..</code> within a URL is interpreted as a null value.</p>
+<p>To both successfully upload the artifacts and make them available for download use a path like this:</p>
+<pre>  - store_artifacts:
+  	path: ~/project/app/test
+</pre>
+<p>Or this:</p>
+<pre>  - store_artifacts:
+  	path: root/project/app/test
+</pre>

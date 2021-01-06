@@ -1,0 +1,17 @@
+<p>If you are currently on a container-based plan for CircleCI your jobs may queue if there are not enough containers in your plan to accommodate the current workload.</p>
+<p>There are no queues for users on our <a href="https://circleci.com/pricing/usage/" target="_self">Performance plan</a>, which is usage-based.</p>
+<h2>Understanding container usage</h2>
+<p>For example, if you have a total of 4 containers available on your account, you could:</p>
+<ul>
+    <li>Run 4 single-container jobs at the same time</li>
+    <li>Run a <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/#specifying-a-jobs-parallelism-level" target="_self">single job with 4x parallelism</a>
+    </li>
+    <li>Run a <a href="https://circleci.com/docs/2.0/workflows/#fan-outfan-in-workflow-example" target="_self">Workflow with 4 parallel jobs</a>
+    </li>
+    <li>Any combination of the above that does not exceed 4 containers at once.</li>
+</ul>
+<p>When working with workflows, it is important to remember that the total max number of containers needed at one time will be required to be available in order to start the workflow.</p>
+<p class="wysiwyg-text-align-left"><br>For example, if in a "fan-out" workflow a single job fans-out into 4 parallel jobs, and fans back to 1 job, the entire workflow will require 4 free containers to begin.<br><br><img src="https://support.circleci.com/hc/article_attachments/360069171574/fan-out-in.png" alt="fan-out-in.png" width="565" height="389"></p>
+<p class="wysiwyg-text-align-left">The workflow in this example can not begin unless there are at least 4 containers available. This means if another single container job was running, even with three containers free the first job of this workflow can not begin. This is done so there are no large delays between jobs of a workflow.</p>
+<p class="wysiwyg-text-align-left"> </p>
+<p class="wysiwyg-text-align-left"> </p>

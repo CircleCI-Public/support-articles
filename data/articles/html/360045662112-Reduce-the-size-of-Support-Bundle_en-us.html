@@ -1,0 +1,32 @@
+<p>After running the CircleCI Server for a while, the size of the Support bundle will gradually increase. This is because Replicated Operator <span style="font-weight: 400;">continually accumulates </span>application logs and those logs are stored in the following path in the support bundle.</p>
+<div class="c-message_kit__gutter">
+    <div class="c-message_kit__gutter__right" data-qa="message_content">
+        <div class="c-message_kit__blocks c-message_kit__blocks--rich_text">
+            <div class="c-message__message_blocks c-message__message_blocks--rich_text">
+                <div class="p-block_kit_renderer" data-qa="block-kit-renderer">
+                    <div class="p-block_kit_renderer__block_wrapper p-block_kit_renderer__block_wrapper--first">
+                        <div class="p-rich_text_block" dir="auto">
+                            <div class="p-rich_text_section">&gt;  /scheduler/node/&lt;node_id&gt;/scheduler/var/lib/replicated-operator/logs/*</div>
+                            <div class="p-rich_text_section">&gt; <a class="c-link" href="https://help.replicated.com/docs/native/packaging-an-application/support-bundle-v1/" target="_blank" rel="noopener noreferrer" data-stringify-link="https://help.replicated.com/docs/native/packaging-an-application/support-bundle-v1/" data-sk="tooltip_parent" aria-describedby="sk-tooltip-143345">https://help.replicated.com/docs/native/packaging-an-application/support-bundle-v1/</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="c-message_actions__container c-message__actions" aria-label="Message shortcuts" data-qa="message-actions"> </div>
+<div class="c-message_actions__container c-message__actions" aria-label="Message shortcuts" data-qa="message-actions">The total size of logs managed by the Replicated Operator can be limited, by default, it's 500MB. So, to reduce the size of the Support bundle, you can follow the steps below. <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Below is an example `/etc/default/replicated-operator` configuration file with Operator set to reduce total log size to 10MB.</span>
+</div>
+<div class="c-message_actions__container c-message__actions" aria-label="Message shortcuts" data-qa="message-actions"> </div>
+<div class="c-message_actions__container c-message__actions" aria-label="Message shortcuts" data-qa="message-actions">1. Add `APP_LOG_SIZE` environment variable into the replicated-operator option.</div>
+<div class="c-message_actions__container c-message__actions" aria-label="Message shortcuts" data-qa="message-actions">
+    <pre><code>
+      $ vim /etc/default/replicated-operator<br>
+  		  REPLICATED_OPERATOR_OPTS="-e TAGS=local -e LOG_LEVEL=info -e NODENAME=a.dev.instance -e PUBLIC_ADDRESS=1.2.3.4"<br><br>↓<br><br>REPLICATED_OPERATOR_OPTS="-e APP_LOG_SIZE=10MB -e TAGS=local -e LOG_LEVEL=info -e NODENAME=a.dev.instance -e PUBLIC_ADDRESS=1.2.3.4"
+	   </code></pre>
+    <p>2. Restart replicated-operator</p>
+    <pre><code>$ sudo service replicated-operator restart</code></pre>
+    <p> </p>
+</div>

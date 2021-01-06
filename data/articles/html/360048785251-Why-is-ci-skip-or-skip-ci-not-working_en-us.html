@@ -1,0 +1,11 @@
+<p>We allow <a href="https://circleci.com/docs/2.0/skip-build/" target="_blank" rel="noopener">skipping a build in CircleCI</a> by passing either <code style="background-color: #f3f3f3;">[ci skip]</code> or <code style="background-color: #f3f3f3;">[skip ci]</code> <span>tag in the first line of the body of the commit or the commit’s title.</span></p>
+<p><span>However, there are a few circumstances where this will not skip the build:</span></p>
+<ol>
+    <li>The build is associated with a forked PR</li>
+    <li>The build is associated with a scheduled build</li>
+    <li>The build is generated from the <a href="https://circleci.com/docs/api/v2/#trigger-a-new-pipeline" target="_blank" rel="noopener">"Trigger a new pipeline"</a> API endpoint</li>
+    <li>The build is triggered via a tag</li>
+    <li>You include it at the end of a commit body that has more than 247 characters</li>
+</ol>
+<p>With the above in mind, to ensure builds are skipped, always try to include the tag in the subject of the commit or the very start of the commit body.</p>
+<p>If you need to skip a build triggered from the API you will want to consider implementing <a href="https://circleci.com/docs/2.0/pipeline-variables/#pipeline-parameters-in-configuration" target="_blank" rel="noopener">pipeline parameters</a> that you can pass when triggering the build that will flag the build not to run (think a boolean that defaults to <code style="background-color: #f3f3f3;">true</code> and if you pass <code style="background-color: #f3f3f3;">false</code> workflows won't run).</p>

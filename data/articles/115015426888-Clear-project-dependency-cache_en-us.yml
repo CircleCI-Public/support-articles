@@ -1,0 +1,26 @@
+id: 115015426888
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/115015426888.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/115015426888-Clear-project-dependency-cache
+author_id: 25261361207
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -59
+vote_count: 107
+section_id: 115003756627
+created_at: '2017-11-20T10:45:53Z'
+updated_at: '2020-12-21T08:59:22Z'
+name: Clear project dependency cache
+title: Clear project dependency cache
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:56:29Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<h1><strong>Cache Clearing</strong></h1>\n<p>Dependency caching with the CircleCI built-in cache system requires setting a cache key using a template formatted string. Such as</p>\n<pre>myapp-<span class=\"o\">{{</span> checksum <span class=\"s2\"><span class=\"hljs-string\">\"package-lock.json\"</span></span> <span class=\"o\">}}</span></pre>\n<p><span class=\"o\"> which would generate a cache key like<br></span></p>\n<pre><span class=\"o\">myapp-+KlBebDceJh_zOWQIAJDLEkdkKoeldAldkaKiallQ </span></pre>\n<p><span class=\"o\">This string means that the cache will automatically know to update if you make any changes to your <strong>package-lock.json</strong> file. </span><span class=\"o\"></span></p>\n<p><span class=\"o\">Sometimes you may want to clear/rebuild your cache manually. A strategy that is helpful is by adding a versioning key to your cache key template.</span></p>\n<p>You can <a href=\"https://circleci.com/docs/2.0/caching/#clearing-cache\">add a versioning prefix</a>\_to the beginning of your keys and increment it when you want to clear out and rebuild the cache.\_UI environment variables are useful here, as you could set a variable like\_<code>CACHE_VERSION=v1</code>\_in your project settings.then add that do your config.</p>\n<p>This is written as:</p>\n<pre>myapp-<strong>{{\_.Environment.CACHE_VERSION }}-{{checksum \"package-lock.json\" }}</strong>\_ </pre>\n<p>which would expand to\_</p>\n<pre><span class=\"o\"><strong>myapp-v1-+KlBebDceJh_zOWQIAJDLEkdkKoeldAldkaKiallQ</strong></span></pre>\n<p><span class=\"o\"> and if you need to manually update the cache all you need to do is update the environment variable in the project settings to <strong>v2\_</strong>which changes the cache key and results in a new cache being generated.</span></p>"

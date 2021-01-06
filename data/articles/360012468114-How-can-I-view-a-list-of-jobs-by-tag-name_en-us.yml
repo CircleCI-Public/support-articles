@@ -1,0 +1,29 @@
+id: 360012468114
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360012468114.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360012468114-How-can-I-view-a-list-of-jobs-by-tag-name-
+author_id: 363669145434
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -7
+vote_count: 9
+section_id: 115003755807
+created_at: '2018-11-26T11:04:24Z'
+updated_at: '2020-12-08T13:53:30Z'
+name: How can I view a list of jobs by tag name?
+title: How can I view a list of jobs by tag name?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:45Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - tags
+  - api
+  - builds
+body: "<p>At the moment, there isn't a straightforward way to get a list of jobs by tag name, from the CircleCI UI. However, you could use our API (<a href=\"https://circleci.com/docs/api/#recent-builds-for-a-single-project\" rel=\"noreferrer\">https://circleci.com/docs/api/#recent-builds-for-a-single-project</a>) to retrieve such information. Here are some examples of how to do that (a CircleCI API token will be necessary - see:\_<a href=\"https://circleci.com/docs/2.0/managing-api-tokens/\">https://circleci.com/docs/2.0/managing-api-tokens/</a>)</p>\n<p><strong>Get jobs matching a tag name</strong></p>\n<p><code>curl -s \"https://circleci.com/api/v1.1/project/&lt;vcs-name&gt;/&lt;org-name&gt;/&lt;project-name&gt;?circle-token=$CIRCLE_TOKEN&amp;limit=100\" | jq -r '.[] | select (.vcs_tag? == \"&lt;tag-name&gt;\") | {build_url, subject}'</code></p>\n<p><strong>Get all jobs that ran for any tag</strong><code></code></p>\n<p><code>curl -s \"https://circleci.com/api/v1.1/project/&lt;vcs-name&gt;/&lt;org-name&gt;/&lt;project-name&gt;?circle-token=$CIRCLE_TOKEN&amp;limit=100\" | jq -r '.[] | select (.vcs_tag? != null) | {build_url, subject}'</code></p>\n<p><code></code><code></code></p>"

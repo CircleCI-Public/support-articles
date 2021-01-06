@@ -1,0 +1,13 @@
+<p>Continue reading if you receive the following error:</p>
+<p><strong>Full error:</strong></p>
+<pre><code>
+CircleCI was unable to start the container because the container entrypoint or command failed to start.
+
+This typically means that the passed entrypoint or command is not found or is not valid.  Try clearing the entrypoint/command values.
+Original error: Error response from daemon: oci runtime error: container_linux.go:247: starting container process caused "process_linux.go:245: running exec setns process for init caused \"exit status 15\""
+</code></pre>
+<p> <strong style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Cause:</strong></p>
+<p>The error states the container you are using does not have a valid entrypoint command in response to one attempting to be ran. `<code>Try clearing the entrypoint/command values</code>`</p>
+<p><strong>Resolution:</strong></p>
+<p>1. If you see the line `<code>command: /sbin/init<code>`</code></code> or similar in your config.yml file, you may try removing it if you recently changed your Docker image.</p>
+<p>2. If using a custom Docker image, double check your entrypoint or command values in your dockerfile. You will also need to add a special LABEL to your dockerfile for CircleCI. <a href="https://circleci.com/docs/2.0/custom-images/#adding-an-entrypoint">https://circleci.com/docs/2.0/custom-images/#adding-an-entrypoint</a></p>

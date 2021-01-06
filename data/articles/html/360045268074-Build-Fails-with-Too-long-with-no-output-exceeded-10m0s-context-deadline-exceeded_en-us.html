@@ -1,0 +1,7 @@
+<p>In CircleCI, a command will be killed if a certain period of time has passed with no output. By default, this is 10 minutes. This is designed to prevent errors in builds from hanging using a large number of credits unintentionally.</p>
+<p>Some test runners and tools make use of what is known as output buffering. This is where the program will wait to output text in batches as opposed to line by line. Sometimes, all output will be buffered until the process exits. If a test or task requires more than 10 minutes and is buffering its output, this can cause CircleCI to kill the step as there has been no output during that time</p>
+<p>In Python, this can be sometimes be disabled via the <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUNBUFFERED" target="_self">PYTHONUNBUFFERED</a> environment variable. This can be set in a job step via export:</p>
+<pre>steps:<br>  - run:<br>      name: Run Tests<br>      command: |<br>        export PYTHONUNBUFFERED=1<br>        python -m unittest</pre>
+<p>If the task does not have a way to generate any output, the default context deadline can be increased</p>
+<pre>steps:<br> - run:<br>     name: Run Tests<br>     no_output_timeout: 30m<br>     command: python -m unittest</pre>
+<p>The job step can also timeout because there is an issue with the tests or task is actually hanging. Some examples of causes of this would be where a process is waiting for user input or a loop is polling a network resource that never comes available.</p>

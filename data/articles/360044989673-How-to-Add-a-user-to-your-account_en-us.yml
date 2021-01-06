@@ -1,0 +1,26 @@
+id: 360044989673
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360044989673.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360044989673-How-to-Add-a-user-to-your-account
+author_id: 387113658713
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -16
+vote_count: 22
+section_id: 115003332307
+created_at: '2020-03-13T19:55:48Z'
+updated_at: '2021-01-04T16:23:09Z'
+name: 'How to: Add a user to your account'
+title: 'How to: Add a user to your account'
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-27T19:45:56Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>When you have a user in your organization who hasn't built on CircleCI before, the first thing they need to do is register on CircleCI. This only involves authenticating their VCS username (GitHub or Bitbucket) on our platform, but this gives CircleCI the permissions to identify the user and associate their builds with them.</p>\n<p>CircleCI recognizes users as whomever triggers a build by committing on GitHub. There is no need to assign a seat to the specific user. In order for the new user to claim the added user seat, all they have to do is trigger a build from GitHub. They should then be included on the active user list on your Plan Usage page under the Users tab: app.circleci.com/settings/plan/[githubORbitbucket]/[orgname]/usage</p>\n<p>\_</p>\n<p>\_</p>"

@@ -1,0 +1,12 @@
+<p>If you receive an error telling you that you do not have permissions to create a directory or to write a file to a directory then this is likely an indication that your script is attempting to write to a directory that the user running the build does not own. </p>
+<p>This is a somewhat common pitfall that many users run into when the move into a CI environment. </p>
+<p>The key thing to remember is that the builds run as the <code>distiller</code> user on MacOS builds and typically <code>ubunutu</code> on Linux builds. These users only have write permissions in their <code>$HOME</code> folders and places like <code>/tmp</code>. This is not unique to CI, this is true by default in almost all Linux/Unix environments.</p>
+<p>To confirm which user your build runs as you can run the <code>whoami</code> command as a part of your build process.<br><br><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 1.5em;">Solution</span></p>
+<ol>
+    <li>Store things inside of a folder that the user running the build has permissions to.</li>
+    <li>Change the ownership of the directory with the <code>chown</code> command before trying to write to it.</li>
+</ol>
+<p>We recommend the first solution. If you decide to go with the second solution then a command like this should work in both MacOS and Linux builds.</p>
+<p><code>chown -R $USER:$USER /path/to/directory</code></p>
+<p><code>$USER</code> is a global environment variable that refers to the current logged in user.</p>
+<p><code>/path/to/directory</code> should be replaced with the path to where you want to write to.</p>

@@ -1,0 +1,31 @@
+id: 115014372807
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/115014372807.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/115014372807-IP-Address-ranges-for-safelisting-Do-you-have-static-IP-addresses-available-
+author_id: 25261361207
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -15
+vote_count: 85
+section_id: 115003756627
+created_at: '2017-11-02T20:05:59Z'
+updated_at: '2021-01-04T20:01:45Z'
+name: IP Address ranges for safelisting/Do you have static IP addresses available?
+title: IP Address ranges for safelisting/Do you have static IP addresses available?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:55:49Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - static ip
+  - whitelist ip
+  - ip range
+  - ip address
+  - safelist ip
+body: "<p>CircleCI builds are currently run mainly from AWS East and West as well as Google Cloud Platform East. For this reason, we can not give a definitive list of IP addresses that our cloud system will use.</p>\n<p>We're currently discussing implementing static IPs for our system. If you're interested in this feature, please vote for it in our ideas portal:\_<a href=\"https://ideas.circleci.com/ideas/CCI-I-35\">https://ideas.circleci.com/ideas/CCI-I-35</a></p>\n<p dir=\"auto\">\_</p>\n<p dir=\"auto\">We have alternative methods many of our customers today are using:</p>\n<ul dir=\"auto\" type=\"disc\">\n<li type=\"disc\">\n<h3><strong>Bastion Host</strong></h3>\n<ul>\n<li type=\"disc\">You can configure SSH tunneling into your private environment via a bastion/jump host. <a href=\"https://github.com/eddiewebb/circleci-dmz-orb/blob/master/README.md\" target=\"_self\">Example Configuration / Orb</a>\n</li>\n<li type=\"disc\">If you require, you could safelist this bastion host for your environment's firewall.</li>\n<li type=\"disc\">In addition to the SSH key, you can further secure your SSH connection by limiting what commands can be run via the jump host. <a href=\"https://research.kudelskisecurity.com/2013/05/14/restrict-ssh-logins-to-a-single-command/\" target=\"_self\">Example<br><br></a>\n</li>\n</ul>\n</li>\n<li type=\"disc\">\n<h3><strong><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">VPN</span></strong></h3>\n<ul>\n<li type=\"disc\"><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">You can configure a VPN connection to your environment on our <a href=\"https://circleci.com/docs/2.0/executor-types/#using-machine\" target=\"_blank\" rel=\"noopener\">machine executor</a>.</span></li>\n<li type=\"disc\"><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">See the article \"<a href=\"https://support.circleci.com/hc/en-us/articles/360049397051\" target=\"_blank\" rel=\"noopener\">How to set up a VPN connection during builds?</a>\"<br><br></span></li>\n</ul>\n</li>\n<li type=\"disc\">\n<h3><strong><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">Dynamic Safelisting</span></strong></h3>\n<ul>\n<li type=\"disc\"><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">You can, using your cloud provider's CLI tool, dynamically fetch the current builder's IP address and add it to a security group which has access to internal resources. At the end of the build, you'd remove that IP to prevent having leftover IPs.</span></li>\n<li type=\"disc\"><a href=\"https://discuss.circleci.com/t/circleci-source-ip/1202/10\" target=\"_self\"><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">AWS-Specific Example</span></a></li>\n<li type=\"disc\">To always run cleanup, use the `when: always` declaration under a run step. <a href=\"https://circleci.com/docs/2.0/configuration-reference/#the-when-attribute\" target=\"_self\">Documentation<br><br></a>\n</li>\n</ul>\n</li>\n<li type=\"disc\">\n<h3><strong><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">Server Product</span></strong></h3>\n<ul>\n<li type=\"disc\">\n<span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">If the above solutions don't work for you, you may consider our Server solution (</span><a style=\"background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\" href=\"https://circleci.com/enterprise/\" rel=\"noreferrer\">https://circleci.com/enterprise/</a><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">) where you can simply run a CircleCI installation in your own VPC and/or specify your own IP ranges.</span>\n</li>\n</ul>\n</li>\n</ul>"

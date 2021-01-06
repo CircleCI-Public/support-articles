@@ -1,0 +1,15 @@
+<p>It is difficult to find out the issue from the above error message alone, as the <a href="https://circleci.com/blog/xcodebuild-exit-code-65-what-it-is-and-how-to-solve-for-ios-and-macos-builds/">exit code 65</a> is used as a general xcodebuild error code. Hence there could be many reasons why the build failed at the archive step. </p>
+<p>You can try the following steps to troubleshoot this problem.  </p>
+<ol>
+    <li>Check your <a href="https://support.circleci.com/hc/en-us/articles/115015983028">Code Signing setting</a>
+    </li>
+    <li>Check your environment variables. (For example: Build Number) If the build succeeds on your local machine but fails in the CI environment, there could be environment variables defined on the local machine, but not made available to builds on CircleCI, causing the build to fail.</li>
+    <li>Check fastlane's log for more information about why the fastlane command failed. The log may contain details about the root cause of the error, for instance missing provisioning profiles. The log path is printed in the output of the fastlane command, for example: /Users/distiller/driver-application/buildlogs/gym/DriverApplication-DriverApplication.log You could either SSH into a rebuild to access the log or upload the file as an <a href="https://circleci.com/docs/2.0/artifacts/#uploading-artifacts">artifact</a>.</li>
+    <li>Check if Xcode SDK version should be defined in the gym configuration in the Fastfile</li>
+</ol>
+<pre><code>    gym(
+      sdk: "iphoneos11.4"
+    )</code></pre>
+<p>(Setting the sdk option results in the -sdk argument being specified in the xcodebuild command that fastlane uses)</p>
+<p> </p>
+<p> </p>

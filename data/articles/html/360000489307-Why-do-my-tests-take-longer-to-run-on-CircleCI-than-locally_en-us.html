@@ -1,0 +1,8 @@
+<p>Your build and tests may run more slowly on CircleCI than on a local developer machine. This article explains why you might see faster performance on your own laptop than in the CI environment and how to speed up tests on CircleCI.</p>
+<p>Developers and programmers typically have powerful home machines with 4 or more powerful CPU cores and solid-state storage. A typical developer computer costs $1,000 - $4,000 and is replaced every few years with newest and greatest hardware.</p>
+<p>To provide the same compute power on-demand for every build on CircleCI would cost a lot of money. To offer a cost effective service all standard builds run with 2 CPU cores and 4GB RAM.</p>
+<h2>How to speed up builds and tests</h2>
+<h3>Parallel jobs</h3>
+<p>You can split your tests to run in parallel in multiple containers. More details here: <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/" target="_blank" rel="noopener">https://circleci.com/docs/2.0/parallelism-faster-jobs/</a></p>
+<h3>Resource Class</h3>
+<p>For customers who require more power, we offer a premium feature that gives you the ability to select a <code>resource_class</code> on CircleCI . Please see our docs for more details:<br><a href="https://circleci.com/docs/2.0/configuration-reference/#resource_class" target="_blank" rel="noopener">https://circleci.com/docs/2.0/configuration-reference/#resource_class</a></p>

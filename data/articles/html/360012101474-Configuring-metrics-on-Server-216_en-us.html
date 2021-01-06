@@ -1,0 +1,27 @@
+<p>To configure AWS Cloudwatch, Datadog and Custom Metrics on the Server 2.16 installation, you will need to add config files for the metric provider.</p>
+<p>You can create a file containing all configs for the output providers named <code>*.conf</code> and place it in <code>/etc/circleconfig/telegraf/</code> like the following:</p>
+<pre class="code-yaml">  - <span class="code-keyword">name: </span>custom_telegraf_config_description
+    <span class="code-keyword">type: </span>label
+    <span class="code-keyword">title: </span>|
+      Files matching `/etc/circleconfig/telegraf/*.conf` on this host will be included with the telegraf configuration.
+      This allows you to specify custom output providers. For more information visit https://circleci.com/docs/<span class="code-object">2</span>.<span class="code-object">0</span>/monitoring/.
+  - <span class="code-keyword">name: </span>custom_telegraf_config_example
+    <span class="code-keyword">title: </span>Example
+    <span class="code-keyword">type: </span>textarea
+    <span class="code-keyword">readonly: </span>true
+    <span class="code-keyword">value: </span>|
+      <span class="code-comment"># SSH into the services host, then add the following to /etc/circleconfig/telegraf/kafka.conf
+</span>      <span class="code-comment"># Afterwards restart the telegraf container with `sudo docker restart telegraf`
+</span>      [[outputs.kafka]]
+        brokers = [<span class="code-quote">"example.com:<span class="code-object">9092</span>"</span>]
+        topic = <span class="code-quote">"circleci"</span></pre>
+<p>Alternatively, you can create provider-specific configurations. In this example, we are collecting Datadog metrics and will name the file <code>datadog.conf</code> and place it in <code>/etc/circleconfig/telegraf/</code>. The file would look like the following:</p>
+<pre class="code-java">[[outputs.datadog]]
+  apikey = REPLACE_WITH_DATA_DOG_API_KEY
+
+[[outputs.cloudwatch]]
+  access_key = ""
+  secret_key = ""
+  region = ""
+  namespace = "" </pre>
+<p>Additional output providers can be found on the <a href="https://github.com/influxdata/telegraf/tree/release-1.8/plugins/outputs">telegraph repo</a>.</p>

@@ -1,0 +1,4 @@
+<p>Setting up and running Docker within the macOS executor is a setup that we do not provide official support for.</p>
+<p>Whilst it may be possible to set this up manually, there are many pitfalls to be aware of. Docker on macOS has to run a Linux VM to create containers so this essentially means that you will be running a containers in a VM, within a VM (nested virtualisation).</p>
+<p>As a result of the nested virtualisation, you may run into hostname/ip conflicts and lack of CPU/Memory resources, causing jobs to fail.</p>
+<p>If you need to run docker commands, we suggest the use of the <a href="https://circleci.com/docs/2.0/building-docker-images/" target="_self">Remote Docker environment</a> from within the Docker executor.</p>

@@ -1,0 +1,15 @@
+<p>Docker builds can fail with the following error:</p>
+<pre>curl: (56) OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 104
+The command '/bin/sh -c curl -v -o /downloads/out.zip https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip' returned a non-zero code: 56
+
+Exited with code exit status 56
+CircleCI received exit code 56
+</pre>
+<p>This can occur on <a href="https://circleci.com/docs/2.0/building-docker-images/" target="_self">Remote Docker (</a><a href="https://circleci.com/docs/2.0/configuration-reference/#setup_remote_docker" target="_self">setup_remote_docker</a>) and <a href="https://circleci.com/docs/2.0/executor-types/#using-machine" target="_self">Linux Machine Executors</a>.</p>
+<p>To resolve this issue on Remote Docker, add the following <strong>run</strong> step after <strong>setup_remote_docker</strong> but before <strong>docker build</strong> or other Docker commands:</p>
+<pre>- run: <span>ssh remote-docker 'sudo iptables -I INPUT -m conntrack --ctstate INVALID -j DROP'</span></pre>
+<p>Remote Docker users can also simply upgrade to 19.03.13</p>
+<pre>- setup_remote_docker:
+    version: 19.03.13</pre>
+<p>To resolve this issue on Linux Machine Executors, add the following <strong>run</strong> step before <strong>docker build</strong> or other Docker commands:</p>
+<pre>- run: <span>sudo iptables -I INPUT -m conntrack --ctstate INVALID -j DROP</span><span></span></pre>

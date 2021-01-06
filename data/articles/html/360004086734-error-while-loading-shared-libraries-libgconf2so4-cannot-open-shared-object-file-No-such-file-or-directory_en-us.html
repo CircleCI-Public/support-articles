@@ -1,0 +1,4 @@
+<p>This error is most likely due to a recent change in a package for Google Chrome - it no longer pulls in <code>libgconf-2-4</code> as a dependency.</p>
+<p>Adding in a step like the following: </p>
+<pre>- run: sudo apt-get install libgconf-2-4</pre>
+<p>should get your builds back to normal.</p>

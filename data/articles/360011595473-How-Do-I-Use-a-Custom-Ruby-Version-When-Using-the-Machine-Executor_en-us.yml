@@ -1,0 +1,59 @@
+id: 360011595473
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360011595473.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360011595473-How-Do-I-Use-a-Custom-Ruby-Version-When-Using-the-Machine-Executor-
+author_id: 397881110914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 8
+section_id: 115003332167
+created_at: '2018-11-01T14:24:35Z'
+updated_at: '2020-10-27T13:42:48Z'
+name: How Do I Use a Custom Ruby Version When Using the Machine Executor?
+title: How Do I Use a Custom Ruby Version When Using the Machine Executor?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-27T13:42:48Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - ruby
+  - executor
+  - machine
+body: >-
+  <p>When using the <code>machine</code> executor, RVM is available for easy
+  installation and use of custom ruby versions.</p>
+
+  <p>To get this going, add a step like the following:</p>
+
+  <pre style="background-color: #f3f3f3;">      steps:<br>        -
+  run:<br>           name: Set ruby version to 2.3.4<br>           command:
+  |<br>                rvm install 2.3.4<br>                echo . $(rvm 2.3.4
+  do rvm env --path) &gt;&gt; $BASH_ENV</pre>
+
+  <p>After this step runs, the new ruby version will be in place.</p>
+
+  <p>Alternatively, you can also use the <a
+  href="https://circleci.com/developer/orbs/orb/circleci/ruby"
+  target="_self">Ruby Orb</a> to install and set the Ruby version. Ensure you
+  are on version <code>1.1.2</code> or later. You can set and invoke the Orb
+  like the following:</p>
+
+  <pre style="background-color: #f3f3f3;">...
+
+  orbs:
+    ruby: circleci/ruby@1.1.2
+
+  jobs:
+    deploy:
+      machine:
+        image: ubuntu-1604:202004-01
+      steps:
+        - ruby/install:
+            version: '2.7'</pre>

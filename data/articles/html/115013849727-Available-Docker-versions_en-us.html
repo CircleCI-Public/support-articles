@@ -1,0 +1,13 @@
+<h2 id="docker">Docker Executor</h2>
+<p>Docker versions can be different depending on your configured build environment. Also, in certain environments, you can manually configure which version of Docker to use.</p>
+<h2> </h2>
+<p>When using the <code>docker</code> executor and <code>setup_remote_docker</code> configuration, you are given access to running docker commands from within your container.</p>
+<p>You can configure <code>setup_remote_docker</code> to use a specific version by <span>setting it as a </span><code class="highlighter-rouge">version</code><span> attribute</span>.</p>
+<p>For example:</p>
+<pre><span class="hljs-attr">    - setup_remote_docker:<br></span><span>       </span><span class="hljs-attr"> version:</span><span> </span><span class="hljs-number">18.06</span><span class="hljs-number">.0</span><span>-ce</span></pre>
+<p>Please see our documentation for the <a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version" target="_blank" rel="noopener">list of available versions</a>.</p>
+<h2>Machine Executor</h2>
+<p>When using the <code>machine</code> executor the available docker versions depend on which image you're using. You can see the available images and their included docker versions <a href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images" target="_blank" rel="noopener">on this page</a>.</p>
+<p> </p>
+<p><em><strong>Note</strong>: If you have any docker version needs outside of what is currently available, please open a feature request on our <a href="https://ideas.circleci.com/" target="_blank" rel="noopener">CircleCI Ideas</a> page.</em></p>
+<p> </p>

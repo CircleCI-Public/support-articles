@@ -1,0 +1,8 @@
+<p>The examples provided in our v2 API docs note the ability to use <code style="background-color: #f3f3f3;">Basic</code> authorization for the API calls:</p>
+<p><a href="https://circleci.com/docs/api/v2/#section/Authentication/basic_auth">https://circleci.com/docs/api/v2/#section/Authentication/basic_auth</a></p>
+<p>With the above in mind, the<span> </span><code style="background-color: #f3f3f3;">Basic</code><span> </span>authorization header requires that you <span>base64 encode your API token before passing it into the call. I.e.:</span></p>
+<pre dir="ltr" style="background-color: #f3f3f3;">echo -n &lt;personal-api-token&gt; | base64</pre>
+<p dir="auto">Then take the output of that base64 encoding and pass it into your curl -- as an example:</p>
+<pre dir="ltr" style="background-color: #f3f3f3;">curl --request GET \
+  --url https://circleci.com/api/v2/workflow/&lt;workflow-id-here&gt;/job \
+  --header 'authorization: Basic &lt;base64-encoded-token-here&gt;'</pre>

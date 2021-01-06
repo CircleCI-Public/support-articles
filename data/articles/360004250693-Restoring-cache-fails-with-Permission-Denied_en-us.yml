@@ -1,0 +1,33 @@
+id: 360004250693
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360004250693.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360004250693-Restoring-cache-fails-with-Permission-Denied-
+author_id: 28200990948
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -13
+vote_count: 23
+section_id: 115003756627
+created_at: '2018-05-14T15:37:46Z'
+updated_at: '2020-12-09T16:49:09Z'
+name: Restoring cache fails with "Permission Denied"
+title: Restoring cache fails with "Permission Denied"
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:40Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - restore cache
+  - permission denied
+  - workspaces
+  - missing files in workspace
+  - error untarring cache
+  - Cannot mkdir
+  - increment cache key
+body: "<p>If you are utilizing <a href=\"https://circleci.com/docs/2.0/workflows/\">Workflows</a> and either saving and <a href=\"https://circleci.com/docs/2.0/caching/#restoring-cache\">restoring cache</a> or <a href=\"https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs\">persisting your Workspaces</a>, keep in mind the users and directories involved. If you are using <a href=\"https://circleci.com/docs/2.0/circleci-images/\">CircleCI convenience images</a>, each Docker container runs under the same user with the same base permissions. If you save your cache in a job that uses one image, and it is restored in another, make sure they have compatible permissions.</p>\n<p>If you receive the error \"<span class=\"pre\"><strong>Permission denied</strong>\" when restoring your cache, check where it had been saved in the previous job. A common instance of this is when using an image as the root user and saving cache, then attempting to restore that cache in a later job with a user who does not have root access.<br><br>The same error will cause files in a persisted workspace to be missing as well if the permissions are not set correctly.<br><br></span></p>\n<p><span class=\"pre\"><img src=\"https://support.circleci.com/hc/article_attachments/360005107713/Untitled.png\" alt=\"Untitled.png\" width=\"700\" height=\"348\"></span></p>\n<p>\_</p>\n<p><span class=\"pre\">You can see here in this `Restoring Cache` step, the cache was originally saved to `<em>/root/</em>tmp` as the original image was running\_as root and had it's working directory set to `<em>~/</em>tmp`. In this part of the Workflow, running under the CircleCI user, we do not have access to the `/root` folder.</span></p>\n<p><span class=\"pre\">If possible, use the same image across multiple jobs. If this is not possible, try setting your\_working directory to a common location between the two images (`/tmp` may work for some). You may need to change or set file permissions before saving your\_cache. </span></p>\n<p><span class=\"pre\">Example: Use `<em>chmod\_-R 777 ./workingDirectory</em>` to give full read/write access to these files.</span></p>\n<p>The best option is to use a common image among your jobs. If the convenience images we provide are missing something essential to your project, consider <a href=\"https://circleci.com/docs/2.0/custom-images/\">customizing one of our images</a>.</p>\n<h2>Architecture Permissions Issues</h2>\n<p>Caches generated in environments can also run into permissions issues when they are restored in environments that use a different architecture. To prevent these issues try adding the\_{arch} variable to your cache key. This will make sure that caches are unique to the environment they're generated in.</p>\n<pre>- restore_cache: <br>    key: '-v1-node-cache-{{ checksum \"yarn.lock\" }}-{{ arch}}' <br>- run: name: Install App command: yarn <br>- save_cache: <br>    key: '-v1-node-cache-{{ checksum \"yarn.lock\" }}-{{ arch }}' <br>    paths: <br>      - node_modules</pre>"

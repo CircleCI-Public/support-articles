@@ -1,0 +1,13 @@
+<p>Using CircleCI config 2.1, it's not possible to trigger a single job via API v1.1. One way to do it for now is to use a <a href="https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/conditional-workflows.md" target="_self">conditional workflow</a> with the <a href="https://circleci.com/docs/api/v2/#trigger-a-new-pipeline" target="_self">new API v2</a>.</p>
+<p>Let's see the example below so that we're going to trigger only the <code>deploy_to_dev</code> job using the API.</p>
+<pre dir="ltr" style="background-color: #f3f3f3;"># config.yml<br><br>version: 2.1<br>executors:<br>  node-executor:<br>    docker:<br>      - image: circleci/node:10.8<br><br># Set parameter here<br>parameters:<br>  deploy_to_dev:<br>    type: boolean<br>    default: false<br><br>jobs:<br>  build:<br>    executor: node-executor<br>    steps:<br>      - checkout<br>      - unless:<br>          condition: &lt;&lt; pipeline.parameters.deploy_to_dev &gt;&gt; # by default this is triggered<br>          steps:<br>            - run: # build<br>  deploy_to_dev:<br>    executor: node-executor<br>    steps:<br>      - checkout<br>      - when:<br>         condition: &lt;&lt; pipeline.parameters.deploy_to_dev &gt;&gt; # this would be triggered when you pass the parameter value via API<br>         steps:<br>           - run: # deploy steps<br>                  # do deploy to dev<br><br>workflows:<br>  version: 2<br>  jobs:<br>    build-deploy:<br>      - build<br>      - deploy_to_dev</pre>
+<p>In this case, by default <code>pipeline.parameters.deploy_to_dev</code> is false since we set the parameter to false by default. So when you trigger the pipeline,  <code>deploy_to_dev</code> won't be triggered. However, triggering it with API 2 makes a magic.</p>
+<pre dir="ltr" style="background-color: #f3f3f3;">curl -u ${CIRCLECI_TOKEN}: -X POST --header "Content-Type: application/json" -d '{<br> "parameters": {<br>   "deploy_to_dev": true<br> }<br>}' https://circleci.com/api/v2/project/${project_slug}/pipeline</pre>
+<p>With the parameter set on body, CircleCI knows that it's time to trigger <code>deploy_to_dev</code> and that would be the only one job triggered.</p>
+<p> </p>
+<p>References:</p>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/configuration-reference/#example-1">https://circleci.com/docs/2.0/configuration-reference/#example-1</a></li>
+    <li><a href="https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/conditional-workflows.md">https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/conditional-workflows.md</a></li>
+    <li><a href="https://circleci.com/docs/api/v2/#trigger-a-new-pipeline">https://circleci.com/docs/api/v2/#trigger-a-new-pipeline</a></li>
+</ul>

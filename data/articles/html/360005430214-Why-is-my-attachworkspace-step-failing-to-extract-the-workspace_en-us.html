@@ -1,0 +1,6 @@
+<p>The attach_workspace step relies on tar and gzip in your environment. If you're having trouble with restoring your workspace you may need to update the current versions of gzip/tar or use a different implementation entirely.</p>
+<p>You may see this error in the build output:</p>
+<p><code>Using busybox tar, if you run into issues, please try installing GNUtar.</code></p>
+<p>Or you may see this error:</p>
+<p><code>Error uploading workspace archive: RequestError: send request failed</code></p>
+<p>It is known that the versions of tar/gzip that come from BusyBox can result in issues, and reinstalling them on alpine images with <strong>apk add --no-cache tar gzip</strong> can help resolve problems.</p>

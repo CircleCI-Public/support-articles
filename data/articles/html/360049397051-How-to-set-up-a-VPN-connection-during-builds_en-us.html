@@ -1,0 +1,75 @@
+<h4>In case you need to connect to a private network during your builds (for example to deploy to an environment behind a VPN), we suggest you configure the VPN connection as follows:</h4>
+<h4><a href="#openvpn" target="_self">OpenVPN</a></h4>
+<h4><a href="#l2tp" target="_self">L2TP</a></h4>
+<h2 id="openvpn"><span>OpenVPN</span></h2>
+<ul>
+    <li><span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a></span></li>
+    <li><span>If the VPN client authentication is credentials-based, you'll also need to add the username and password as environment variables.</span></li>
+    <li>
+        <span><span><span>Use the below sample configuration<br><br></span></span></span><span><span><span></span></span></span>
+    </li>
+</ul>
+<pre style="background-color: #f3f3f3;">version: 2.1
+workflows:
+  btd:
+    jobs:
+      - build
+jobs:
+  build:
+    machine:
+      image: ubuntu-1604:202004-01
+    steps:
+      - run:
+          name: Install OpenVPN
+          command: |
+            sudo apt-get update
+            sudo apt-get install openvpn -y<br>
+      - run:
+          name: Check IP before VPN connection
+          command: |
+            ifconfig
+            route -n
+            sudo netstat -anp
+            cat /etc/resolv.conf
+            curl checkip.amazonaws.com<br>
+      - run:
+          name: VPN Setup
+          background: true
+          command: |
+            phone_home=$(netstat -an | grep ':22 .*ESTABLISHED' | head -n1 | awk '{ split($5, a, ":"); print a[1] }')
+            # phone_home=$(netstat -an | grep '\.2222\s.*ESTABLISHED' | head -n1 | awk '{ split($5, a, "."); print a[1] "." a[2] "." a[3] "." a[4] }') # if you use macOS executor, you can uncomment this line, and comment the above line
+            echo $phone_home
+
+            echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /tmp/config.ovpn
+            printf "user\n$VPN_PASSWORD" &gt; /tmp/vpn.login
+            sudo openvpn --config /tmp/config.ovpn --auth-user-pass /tmp/vpn.login \
+              --route $phone_home 255.255.255.255 net_gateway \
+              --route 169.254.0.0 255.255.0.0 net_gateway<br>
+      - run:
+          name: Wait for the connection to be established
+          command: sleep 30<br>
+      - run:
+          name: Check IP after VPN connection
+          command: |
+            ifconfig
+            route -n
+            sudo netstat -anp
+            cat /etc/resolv.conf
+            curl checkip.amazonaws.com
+
+      - run:
+          name: Run commands in our infrastructure
+          command: |
+            # A command
+            # Another command<br><br>      - run:<br>          name: Disconnect from OpenVPN<br>          command: sudo killall openvpn || true<br>          when: always
+</pre>
+<p> </p>
+<h2 id="l2tp"><span>L2TP</span></h2>
+<p><span><span>To set up an L2TP VPN connection, we recommend referring to <a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients.md#configure-linux-vpn-clients-using-the-command-line" target="_blank" rel="noopener">this guide.</a></span></span><span><span></span></span></p>
+<p><span><span>We suggest storing <code>VPN_SERVER_IP</code>, <code>VPN_IPSEC_PSK</code>, <code>VPN_USER</code> and <code>VPN_PASSWORD</code> as <a href="https://circleci.com/docs/2.0/env-vars/" rel="noreferrer">environment variables</a>. Ideally, you might want to base64-encode <code>VPN_IPSEC_PSK</code> before storing it; you'll need to decode it during the build.</span></span></p>
+<p dir="auto">To retrieve the default gateway IP address during the build, you can use either of the following:</p>
+<ul dir="auto" type="disc">
+    <li type="disc"><code>default_gw_IP=$(netstat -r | grep default | awk '{ print $2 }')</code></li>
+    <li type="disc"><code>default_gw_IP=$(ip route | grep default | awk '{ print $3 }')</code></li>
+</ul>
+<p><strong> Note that you must use the <code>machine</code> or <code>macOS</code> executor.</strong></p>

@@ -1,0 +1,15 @@
+<p>To utilize <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/" target="_blank" rel="noopener">test splitting with CircleCI</a> we require that you pass in a list of tests to run. However, with how you execute tests with Django you are unable to simply <code>glob</code> the tests and pass them in.</p>
+<p>Someone shared the issues they ran into, and a solution, in the following Discuss post:</p>
+<p><a href="https://discuss.circleci.com/t/python-django-tests-not-being-split-correctly/36624">https://discuss.circleci.com/t/python-django-tests-not-being-split-correctly/36624</a></p>
+<p>Using the above, here is a quick example of how to accomplish test splitting:</p>
+<pre style="background-color: #f3f3f3;">- run:
+    command: |
+      # get test files while ignoring __init__ files
+      TESTFILES=$(circleci tests glob "catalog/tests/*.py" | sed 's/\S\+__init__.py//g')
+      echo $TESTFILES | tr ' ' '\n' | sort | uniq &gt; circleci_test_files.txt
+      cat circleci_test_files.txt
+      TESTFILES=$(circleci tests split --split-by=timings circleci_test_files.txt)
+      # massage filepaths into format manage.py test accepts
+      TESTFILES=$(echo $TESTFILES | tr "/" "." | sed 's/.py//g')
+      echo $TESTFILES
+      pipenv run python manage.py test --verbosity=2 $TESTFILES  </pre>

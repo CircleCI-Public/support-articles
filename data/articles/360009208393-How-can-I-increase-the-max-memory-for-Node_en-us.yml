@@ -1,0 +1,28 @@
+id: 360009208393
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360009208393.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360009208393-How-can-I-increase-the-max-memory-for-Node-
+author_id: 25261361207
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -15
+vote_count: 67
+section_id: 115003332147
+created_at: '2018-09-12T11:47:38Z'
+updated_at: '2020-12-23T09:55:53Z'
+name: How can I increase the max memory for Node?
+title: How can I increase the max memory for Node?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:39Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - memory
+  - node
+body: "<p>Node has a default max memory usage of less than 2GB on some 64bit systems. This can cause unexpected memory issues when running on CircleCI. It's possible to adjust the max memory ceiling using a command line flag passed into node:</p>\n<pre>--max-old-space-size=&lt;memory\_in\_MB&gt;</pre>\n<p>\_</p>\n<p>The flag can be difficult to ensure is being used. Especially when node processes are forked. The best way to ensure this setting will be picked up by all node processes within the environment is to apply this setting directly to an environment variable, which can be done using Node. 8 or higher<br><br></p>\n<pre><span class=\"pl-s\">NODE_OPTIONS=--max_old_space_size=4096</span></pre>\n<p>\_</p>\n<p><strong>Further Reading:</strong></p>\n<p><a href=\"https://futurestud.io/tutorials/node-js-increase-the-memory-limit-for-your-process\">https://futurestud.io/tutorials/node-js-increase-the-memory-limit-for-your-process</a></p>\n<p><a href=\"https://stackoverflow.com/questions/48387040/nodejs-recommended-max-old-space-size/48392705\">https://stackoverflow.com/questions/48387040/nodejs-recommended-max-old-space-size/48392705</a></p>"

@@ -1,0 +1,6 @@
+<p> </p>
+<p>In the CircleCI cloud, your job may be running in various kinds of environments. Some of those environments could have lots of resources available but your jobs running in them only have access to a small slice of those available resources. </p>
+<p>For instance, using the docker executor will often have your job running in a VM with thirty-two CPU cores available. This causes problems with testing tools like <strong>jest</strong> which by default will spawn workers based on the number of available CPU cores. It will think it has access to thirty-two cores, but in reality, it only has access to two. This is a recipe for sadness. Be aware of how your tools configure themselves according to their enviroment and be aware of what the environment is reporting to your tools. </p>
+<p>In the case of <strong>jest </strong>you can tell it to <a href="https://facebook.github.io/jest/docs/en/cli.html#maxworkers-num" target="_blank" rel="noopener">limit the number of workers with the --maxWorkers= command line option</a>.</p>
+<p> </p>
+<p><iframe src="//www.youtube-nocookie.com/embed/CKDVkqIMpHM" width="560" height="315" frameborder="0" allowfullscreen=""></iframe></p>

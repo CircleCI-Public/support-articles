@@ -1,0 +1,6 @@
+<p>If you receive the following error message while running a CircleCI 2.0 build:  </p>
+<pre>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. <br>Is the docker daemon running?</pre>
+<p>You may also encounter the following error:</p>
+<pre>Exception message: /home/circleci/.docker/config.json (No such file or directory)</pre>
+<p>This typically indicates that you are running a docker command without using remote docker.</p>
+<p>In order to run any docker command on CircleCI 2.0 you need to add the setup_remote_docker step as described in the <a href="https://circleci.com/docs/2.0/building-docker-images/">following documentation</a>. You can also use the <a href="https://circleci.com/docs/2.0/executor-types/#using-machine" target="_self">machine executor</a>.</p>

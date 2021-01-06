@@ -1,0 +1,28 @@
+id: 115015711148
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/115015711148.json
+html_url: https://support.circleci.com/hc/en-us/articles/115015711148-What-is-a-job-
+author_id: 25261361207
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 2
+vote_count: 2
+section_id: 115003755807
+created_at: '2017-12-05T21:17:56Z'
+updated_at: '2020-10-22T06:58:43Z'
+name: What is a job?
+title: What is a job?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:58:43Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - config
+  - config.yml
+  - job
+body: "<p>A <a href=\"https://circleci.com/docs/2.0/jobs-steps/)\" target=\"_self\">job</a> is what runs your build process on CircleCI 2.0. It is essentially a series of steps that runs in an execution environment. Jobs are defined in your CircleCI 2.0 <code>config.yml</code>.</p>\n<p>At the very minimum, your job needs to <a href=\"https://circleci.com/docs/2.0/executor-types\" target=\"_blank\" rel=\"noopener\">have an executor defined</a>, and at least one step. Typically your job will <a href=\"https://circleci.com/docs/2.0/configuration-reference/#checkout\" target=\"_blank\" rel=\"noopener\">first check out your repository</a>\_using the special\_<strong>checkout</strong>\_step. Then,\_<a href=\"https://circleci.com/docs/2.0/configuration-reference/#run\" target=\"_blank\" rel=\"noopener\">using run steps</a>, you can execute bash commands to perform your building, testing, and deployments.</p>\n<p><a href=\"https://circleci.com/docs/2.0/workflows\" target=\"_blank\" rel=\"noopener\">Using workflows</a>, you can define multiple jobs that run in a <a href=\"https://circleci.com/docs/2.0/workflows/#sequential-job-execution-example\" target=\"_blank\" rel=\"noopener\">specific sequence</a>, in parallel, and <a href=\"https://circleci.com/docs/2.0/workflows/#sequential-job-execution-example\" target=\"_blank\" rel=\"noopener\">various other nifty configurations</a>.\_</p>\n<p>There are a whole bunch of special steps you can use to speed up your jobs or add other functionality to your build process. You can try\_<a href=\"https://circleci.com/docs/2.0/configuration-reference/#save_cache\" target=\"_blank\" rel=\"noopener\">using cached dependencies</a>, saving <a href=\"https://circleci.com/docs/2.0/configuration-reference/#store_artifacts\" target=\"_blank\" rel=\"noopener\">artifacts you've created in your jobs</a>, or even <a href=\"https://circleci.com/docs/2.0/configuration-reference/#store_test_results\" target=\"_blank\" rel=\"noopener\">saving your test reports</a> to see how your tests performed right on the job page UI.</p>\n<p>While you're waiting for your jobs to complete take a scroll through all of the step options\_<a href=\"https://circleci.com/docs/2.0/configuration-reference/#steps\" target=\"_blank\" rel=\"noopener\">here on the docs page</a>.</p>"

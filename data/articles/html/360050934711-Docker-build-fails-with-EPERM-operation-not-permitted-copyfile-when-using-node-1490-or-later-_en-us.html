@@ -1,0 +1,11 @@
+<p>If you are using node version 14.9.0 or later as a base image when trying to build a docker image on CircleCI you may come across the following permissions error: </p>
+<p> </p>
+<pre><span class="hljs-attr">EPERM:</span><span> </span><span class="hljs-string">operation</span><span> </span><span class="hljs-string">not</span><span> </span><span class="hljs-string">permitted,</span><span> </span><span class="hljs-string">copyfile</span></pre>
+<p> </p>
+<p>Node's docker image is officially supported on Docker version 1.9.1. Support for older versions (down to 1.6) is provided on a best-effort basis. You can find more information on <a href="https://github.com/nodejs/docker-node#supported-docker-versions" target="_self">Supported Docker Versions</a> here. </p>
+<p> </p>
+<h3>How to make sure you are using the desired Docker version: </h3>
+<p>When using `<span>setup_remote_docker` key, if a docker engine version is not specified, CircleCI will default to Docker version 17.09.0-ce. To specify the Docker version, you can set it with a <code class="highlighter-rouge">version</code> attribute:</span></p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360072711471/Screen_Shot_2020-10-13_at_11.43.16_AM.png" alt="Screen_Shot_2020-10-13_at_11.43.16_AM.png"></p>
+<p> </p>
+<p>You can find more information on <a href="https://circleci.com/docs/2.0/building-docker-images" target="_self">Building Docker Images on CircleCI </a>in our docs. </p>

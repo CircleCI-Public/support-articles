@@ -1,0 +1,13 @@
+<p>Docker experimental features can be enabled by adding an /etc/docker/daemon.json with {"experimental": true} on the Remote Docker instance and restarting the daemon.</p>
+<pre>  steps:
+    - setup_remote_docker:
+        version: 18.09.3
+    - run: |
+        ssh remote-docker \&lt;&lt;EOF
+          sudo bash -c 'echo "{\"experimental\": true}" &gt; /etc/docker/daemon.json'
+          sudo systemctl restart docker
+        EOF</pre>
+<p>Be sure to set a Docker version that supports the functionality you are looking to make use up. A list of currently support Docker versions for Remote Docker is available here:<br><br>https://circleci.com/docs/2.0/building-docker-images/#docker-version</p>
+<p><br>This can then be used from the Docker cli.</p>
+<pre>  - run: DOCKER_BUILDKIT=1 docker build .
+</pre>

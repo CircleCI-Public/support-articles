@@ -1,0 +1,5 @@
+<p>On CircleCI 2.0 the only supported way to do CodeSigning is to use Fastlane Match as described in the <a href="https://circleci.com/docs/2.0/ios-codesigning/#nav-button" target="_blank" rel="noopener">code signing documentation</a>. </p>
+<p><strong>Note:</strong> For  <code>fastlane match</code>  to work correctly, you <em>must</em> add  <code>setup_circle_ci</code>  to  <code>before_all</code>  in your  <code>Fastfile</code>.  This ensures that a temporary Fastlane keychain is used.</p>
+<p>If you see errors like "Code Signing Error: No profile" or "Provisioning Profile Not Found" it's likely that you don’t have the keychain unlocked.</p>
+<p>You can run <code>security find-identity -v -p codesigning</code> from inside the build to list the current status of your code signing credentials.</p>
+<p> </p>

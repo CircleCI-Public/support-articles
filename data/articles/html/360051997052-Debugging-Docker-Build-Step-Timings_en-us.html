@@ -1,0 +1,11 @@
+<p>When building a Docker image, depending on how large your Dockerfile is, a lot of commands are run sequentially during the build process. If you are running these often, you may have an idea of the average build time and when the build time deviates from this it can be difficult to find where this time is being lost as Docker does not provide timing information in the output.</p>
+<p>This can be solved by piping the docker build output to bash line-by-line and pre-pending the time by using the date command:</p>
+<pre>- run: docker build . | while read line ; do echo "$(date +"%T") &gt; $line" ; done ;</pre>
+<p>This will provide and output along the following lines:</p>
+<pre class="css-1hjuxmj">21:15:46 &gt; Status: Downloaded newer image for cimg/base:2020.11
+21:15:46 &gt; ---&gt; 2b62242a26ae
+21:15:46 &gt; Step 2/14 : LABEL maintainer "CircleCI &lt;circleci@example.com&gt;"
+21:15:47 &gt; ---&gt; Running in b829a27594ae
+21:15:47 &gt; ---&gt; f0d09345055e
+21:15:47 &gt; Removing intermediate container b829a27594ae</pre>
+<p>The format of the timing data is in HH:MM:SS which provides granular information that will help in tracking down steps that are taking longer than expected.</p>

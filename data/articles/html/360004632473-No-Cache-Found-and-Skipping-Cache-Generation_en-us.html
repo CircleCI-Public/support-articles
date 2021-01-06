@@ -1,0 +1,11 @@
+<p>If you find yourself in a situation where no cache is being found in your <strong><em>restore cache</em></strong> step, and the <em><strong>saving cache</strong></em> step states the cache already exists, double check the checksum. The cache key is generated using the checksum of the file provided in your configuration, often a "lock" file. </p>
+<p>If this file is modified in any way between the restore and save steps, you will have mismatching keys, meaning you are attempting to save your cache to one key, and restore from another, which will always fail.</p>
+<p> </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360005493234/Capture1.PNG" alt="Capture1.PNG"></p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360005493254/Capture.PNG" alt="Capture.PNG"></p>
+<p> <span style="font-size: 1.5em; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Why does this happen?</span></p>
+<p>Check to see if there is any reason your lock file is being overwritten at any point during the build process, this may happen during an installation step.</p>
+<p> </p>
+<p>If you are using <strong><span class="wysiwyg-underline">Ruby Bundler</span></strong> and have a version mismatch between your local dev environment and the CircleCI environment, the bundle install step will overwrite your <strong><em>Gemfile.lock</em></strong> and cause the issue mentioned above.</p>
+<p> </p>
+<p>Always verify parity between your local and remote development environments.</p>

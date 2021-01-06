@@ -1,0 +1,28 @@
+id: 360015467253
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360015467253.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360015467253-Adding-SSH-Key-fails
+author_id: 26863412148
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 14
+section_id: 115003755767
+created_at: '2019-01-08T23:34:18Z'
+updated_at: '2020-12-10T09:59:44Z'
+name: Adding SSH Key fails
+title: Adding SSH Key fails
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:58:14Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - ssh key
+  - project settings
+body: "<p>When adding SSH keys under \"<em>Project Settings &gt;\_SSH Keys &gt; Additional SSH Keys\",\_</em>you may encounter the following error:<br><br>\"<em><strong>It looks like this private key is invalid. Please check if you have pasted the right key. If you are sure your key is valid, please contact support for assistance.</strong></em>\"</p>\n<p class=\"wysiwyg-text-align-center\"><img src=\"https://support.circleci.com/hc/article_attachments/360061457712/add_SSH_error.png\" alt=\"add_SSH_error.png\" width=\"352\" height=\"335\"></p>\n<p>This can happen if the key is either:</p>\n<ul>\n<li><strong><span class=\"wysiwyg-underline\">Not</span>\_in\_PEM format.</strong></li>\n</ul>\n<p>If your private key <span class=\"wysiwyg-underline\">does not</span> start with\_<code class=\"highlighter-rouge\">-----BEGIN RSA PRIVATE KEY-----</code>, enforce PEM format by generating the key with\_<code class=\"highlighter-rouge\">ssh-keygen -m PEM -t rsa -C \"your_email@example.com\"</code></p>\n<ul>\n<li><strong>Protected by a passphrase.</strong></li>\n</ul>\n<p>Since CircleCI cannot decrypt SSH keys, <span class=\"wysiwyg-underline\">every new key must have an empty passphrase.</span></p>\n<p>\_</p>\n<p><em>Please see our documentation for more information on</em>\_<a href=\"https://circleci.com/docs/2.0/add-ssh-key/\" target=\"_self\">Adding an SSH Key to CircleCI</a>.</p>\n<p>\_</p>\n<p>\_</p>\n<p>\_</p>"

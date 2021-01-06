@@ -1,0 +1,30 @@
+id: 360043542933
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360043542933.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360043542933--Error-The-brew-link-step-did-not-complete-successfully-When-Installing-Python
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 1
+vote_count: 7
+section_id: 115003327088
+created_at: '2020-02-18T09:43:27Z'
+updated_at: '2020-11-18T09:46:06Z'
+name: >-
+  "Error: The `brew link` step did not complete successfully" When Installing
+  Python
+title: >-
+  "Error: The `brew link` step did not complete successfully" When Installing
+  Python
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T07:00:41Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>When installing a Homebrew package that depends on Python 3, or when installing Python 3 itself, you may run in to the following error:</p>\n<pre class=\"output\"><span class=\"pre\"><span class=\"white\"><span class=\"red\">Error:</span> The `brew link` step did not complete successfully\nThe formula built, but is not symlinked into /usr/local\nCould not symlink Frameworks/Python.framework/Headers\nTarget /usr/local/Frameworks/Python.framework/Headers\nis a symlink belonging to python@2.</span></span></pre>\n<p>This error occurs due to the <a href=\"https://github.com/Homebrew/homebrew-core/pull/49796\" target=\"_self\">removal of Python 2 from Homebrew</a>. Previously, Python 3 would be linked as \"python3\", but now it will be linked as \"python\" which overrides the previous Python 2 version.</p>\n<p>If you receive this error, you will need to add the following step <em>before</em>\_installing any Homebrew packages:</p>\n<pre>- run: brew unlink python@2</pre>\n<p>Note: From the Xcode 11.4 image onwards, we no longer ship Python 2 with the image.</p>"

@@ -1,0 +1,17 @@
+<p>You may sometimes want to run <em>docker</em> commands when SSH-ed into a rebuild for diagnostic purposes.</p>
+<p>However, you may encounter the following error message when running a <em>docker</em> command in the SSH session:</p>
+<pre>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</pre>
+<p>If you are encountering the above error in while attempting connect to the remote Docker daemon which was set up by the <code>setup_remote_docker</code> step, you can try running <em>docker</em> and setting the , following options to ensure that the right Docker daemon is being connected to.</p>
+<ul>
+    <li><strong>--tlsverify</strong></li>
+    <li><strong>-H</strong></li>
+    <li><strong>--tlscacert</strong></li>
+    <li><strong>--tlscert</strong></li>
+    <li><strong>--tlskey</strong></li>
+</ul>
+<p>First, check the output of the <em>"Setup a remote Docker engine"</em> step in your build, to get the host and cert path of the remote Docker engine set up by CircleCI.</p>
+<p>For convenience, you can set the environment variables in your SSH session, for example:</p>
+<pre>DOCKER_CERT_PATH=/tmp/docker-certs970508324<br>DOCKER_HOST=tcp://35.237.187.184:2376</pre>
+<p><br> Then, you can reference the above environment variables when running <em>docker</em> commands with the <strong>--tlsverify</strong>, <strong>-H</strong>, <strong>--tlscacert</strong>, <strong>--tlscert</strong> and <strong>--tlskey</strong> options specified.</p>
+<p>The example below shows how the <em>docker ps</em> command may be successfully run with the options specified.</p>
+<pre>docker --tlsverify -H=$DOCKER_HOST --tlscacert=$DOCKER_CERT_PATH/ca.pem --tlscert=$DOCKER_CERT_PATH/cert.pem --tlskey=$DOCKER_CERT_PATH/key.pem ps </pre>

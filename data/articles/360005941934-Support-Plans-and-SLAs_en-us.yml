@@ -1,0 +1,33 @@
+id: 360005941934
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360005941934.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360005941934-Support-Plans-and-SLAs
+author_id: 26863412148
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -26
+vote_count: 34
+section_id: 360001263193
+created_at: '2018-06-18T13:22:30Z'
+updated_at: '2020-04-08T18:15:55Z'
+name: Support Plans and SLAs
+title: Support Plans and SLAs
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-04-08T18:15:55Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - sla
+  - response
+  - support plan
+  - premium support
+  - feature request
+  - bug
+  - forum
+body: "<p>All accounts have access to the following resources:</p>\n<ul>\n<li>Our\_<a href=\"https://discuss.circleci.com/\" target=\"_blank\" rel=\"noopener\">Community Forum</a>, an excellent place to search and ask (and/or answer!) questions.</li>\n<li>This <a href=\"https://support.circleci.com/hc/en-us/\">Support Center</a> and our\_<a href=\"https://circleci.com/docs\" target=\"_blank\" rel=\"noopener\">Documentation</a>, which provide answers to many questions. A quick search may reveal a quick answer!</li>\n</ul>\n<h2>Free Plans</h2>\n<ul>\n<li>Any free account has access to all of the above resources.</li>\n<li>More information on paid plans and premium support plans can be found on the <a href=\"https://circleci.com/pricing/\" target=\"_self\">pricing page</a>.\_</li>\n</ul>\n<h2>Standard Plans</h2>\n<ul>\n<li>Standard plans are paid CircleCI accounts without a separate Premium Support plan.</li>\n<li>You can contact our Support Engineers by <a href=\"https://support.circleci.com/hc/en-us/requests/new\" target=\"_self\">opening a support ticket</a>.</li>\n<li>There is no service level agreement (SLA) for tickets associated with Standard plans.</li>\n<li>Response times are best effort for Standard plans.</li>\n</ul>\n<h2>Premium Support</h2>\n<p><span style=\"font-weight: 400;\">CircleCI offers premium support packages to provide our customers enhanced levels of assistance during their adoption and expanded use of the CircleCI platform. The goal is to package a set of offerings that scale appropriately to the needs of more complex environments and organizations with proactive services that accelerate time to value.</span></p>\n<ul>\n<li>To get guaranteed SLAs and faster response times, we have a range of Premium Support options to suit your needs. Please <a href=\"https://circleci.com/support/premium-support/\" target=\"_blank\" rel=\"noopener\">see this page</a> to find out more and request details.</li>\n<li>You can contact our Support Engineers by <a href=\"https://support.circleci.com/hc/en-us/requests/new\" target=\"_self\">opening a support ticket</a>.\_</li>\n</ul>\n<h2>Feature Requests</h2>\n<p>Visit our <a href=\"https://circleci.com/ideas/\" target=\"_blank\" rel=\"noopener\">Ideas portal</a> to make feature requests and add your vote to existing requests.\_We prioritize what to build based on customer suggestions and votes there.</p>\n<h2>Bug Reports</h2>\n<p><a href=\"https://discuss.circleci.com/c/bug-reports\" target=\"_blank\" rel=\"noopener\">Bug reports can be submitted on the community forum</a> or via a <a href=\"https://support.circleci.com/hc/en-us/requests/new\">ticket</a>.</p>\n<p>\_</p>"

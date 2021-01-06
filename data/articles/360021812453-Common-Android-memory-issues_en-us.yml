@@ -1,0 +1,34 @@
+id: 360021812453
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360021812453.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360021812453-Common-Android-memory-issues
+author_id: 25261361207
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 6
+vote_count: 14
+section_id: 115003332187
+created_at: '2019-04-17T11:22:47Z'
+updated_at: '2020-12-04T22:29:21Z'
+name: Common Android memory issues
+title: Common Android memory issues
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:57:54Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - '137'
+  - memory usage
+  - memory
+  - android
+  - java
+  - OOM
+  - gradle
+  - kotlin
+body: "<h4>These tips can help reduce the memory footprint during your Android builds.</h4>\n<h3>Emulators</h3>\n<p class=\"wysiwyg-indent4\">They don't work reliably within the cloud environment regardless of memory configuration. We have some workarounds\_<a href=\"https://support.circleci.com/hc/en-us/articles/360000028928-Testing-with-Android-emulator-on-CircleCI-2-0\" target=\"_blank\" rel=\"noopener\">available here</a></p>\n<h3>Java</h3>\n<p>Start with limiting the <a class=\"external-link\" href=\"https://www.yourkit.com/docs/kb/sizes.jsp\" rel=\"nofollow\">Java heap size</a>. There are\_<a class=\"external-link\" href=\"https://stackoverflow.com/questions/28327620/difference-between-java-options-java-tool-options-and-java-opts\" target=\"_self\" rel=\"nofollow\">several envars</a> to do this.</p>\n<ul>\n<li>\n<strong>_JAVA_OPTIONS</strong>\_is for <strong>Oracle JVM</strong> which is most likely the one you're using. If your config doesn't have many services images, give a hefty amount of heap freedom for testing.</li>\n<li>_<strong>JAVA_OPTIONS: -Xmx3g\_</strong>tells Java the heap size cannot grow larger than 3GB which is 75% of the default\_<strong>medium\_resource class</strong>. If there are many other services running in the job, you might want to go with\_<strong>2GB\_</strong>which leaves more room for other services.</li>\n</ul>\n<h3>Gradle</h3>\n<ol>\n<li>Make sure they are running Gradle with\_<strong>--no-daemon</strong>. The\_<a class=\"external-link\" href=\"https://docs.gradle.org/current/userguide/command_line_interface.html#gradle_daemon_options\" rel=\"nofollow\">daemon runs by default\_</a>and is helpful when running locally as it speeds up recompilation.<br>This is not needed in continuous integration since every compilation is fresh. It takes up more memory for no benefit. You can pass\_<strong>--no-daemon</strong>\_directly to the <em>gradlew</em> script or set <strong>org.gradle.daemon=false</strong>\_in your <strong>gradle.properties</strong> file.<br><br>\n</li>\n<li>By default, Gradle will spawn a worker process for every available CPU. CircleCI Cloud will erroneously report within to jobs that they have 32 available. With the default resource class, they actually only have access to 2. Setting\_<strong>--max-workers=2</strong>\_will limit Gradle from spawning too many workers.<br><br>Many options for configuring Gradle can also be applied through the <em>gradle file</em>:<br>\n<pre>testOptions {<br> unitTests.all {<br>\_ maxHeapSize = \"1024m\"<br> }<br>}</pre>\n</li>\n</ol>\n<h3>Kotlin</h3>\n<p class=\"wysiwyg-indent4\">By default, Kotlin will spawn a daemon alongside Gradle. This is similar to the Gradle daemon and\_<a class=\"external-link\" href=\"https://stackoverflow.com/questions/50138863/why-does-my-kotlin-gradle-build-die-with-exit-code-137\" rel=\"nofollow\">isn't necessary for CI</a>.<br>Kotlin can be told to run within the same memory allocation as Gradle by setting\_<strong>GRADLE_OPTS=-Dkotlin.compiler.execution.strategy=in-process</strong></p>\n<p>\_</p>\n<p><em><span class=\"wysiwyg-underline\">Note</span>: If you're still hitting memory issues, consider increasing the <a href=\"https://circleci.com/docs/2.0/configuration-reference/#resource_class\" target=\"_self\">resource class</a>.</em></p>"

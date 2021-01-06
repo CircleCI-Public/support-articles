@@ -1,0 +1,30 @@
+id: 360018651374
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360018651374.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360018651374-Job-completes-after-Spin-up-Environment-for-non-x86-based-Docker-images-
+author_id: 28200990948
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 2
+vote_count: 4
+section_id: 115003756627
+created_at: '2019-02-22T15:28:24Z'
+updated_at: '2020-10-22T06:57:54Z'
+name: Job completes after "Spin up Environment" for non-x86 based Docker images.
+title: Job completes after "Spin up Environment" for non-x86 based Docker images.
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:57:54Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - arm
+  - raspberry pi
+  - x86
+  - Spin up
+body: "<p>Images based on the ARM architecture, such as <span>Raspberry Pi</span> images, can't natively run on an x86-based host which is what CircleCI uses.\_</p>\n<p>The binary files compiled for ARM-based images are not compatible with our hardware. Therefore, and so we will fail to communicate with the image once the Docker container is executed.<br><br>If you are developing for ARM, please tell us about it on <a href=\"https://ideas.circleci.com/ideas/CCI-I-900\" target=\"_blank\" rel=\"noopener\">this CircleCI Ideas page</a>.</p>"

@@ -1,0 +1,30 @@
+id: 360052092532
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360052092532.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360052092532-Conditionally-stop-job-when-only-change-was-to-config-yml-file
+author_id: 405652843914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 1
+vote_count: 1
+section_id: 115003580328
+created_at: '2020-11-13T19:01:41Z'
+updated_at: '2020-12-30T15:14:18Z'
+name: Conditionally stop job when only change was to config.yml file
+title: Conditionally stop job when only change was to config.yml file
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-11-13T19:04:56Z'
+user_segment_id: null
+permission_group_id: 237847
+label_names:
+  - config
+  - config.yml
+  - condintional
+  - skip
+body: "<p>You may encounter a situation where you are overhauling your <code>config.yml</code> file and don't want to run a build on each change.</p>\n<p>While you work on the changes you can add the following to the start (after the <code>- checkout</code> step) in each of the workflow jobs:</p>\n<pre style=\"background-color: #f3f3f3;\">- run: |\n    changes=`git show --name-only ${CIRCLE_SHA1} | tail -n +7`\n\n    if [ \"$changes\" = \".circleci/config.yml\" ]; then \n      echo \"Only found a configuration change. Stopping build\" \n      circleci-agent step halt\n    fi</pre>\n<p>This will check to see which files changed in the commit, and if it's only the configuration file, it will exit the job successfully with the <a href=\"https://circleci.com/docs/2.0/configuration-reference/#ending-a-job-from-within-a-step\" target=\"_blank\" rel=\"noopener\">\"circleci-agent step halt\" command</a>.\_</p>\n<p>Once you are happy with the changes in your configuration file you can remove the above run step and it will start to process your builds as normal.</p>"

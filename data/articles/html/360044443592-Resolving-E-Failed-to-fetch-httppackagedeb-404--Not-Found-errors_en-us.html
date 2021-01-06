@@ -1,0 +1,5 @@
+<p>The CircleCI convenience images (based on Ubuntu) for the Docker executor often come with apt package lists left over form the image build process.</p>
+<p>Over time these package lists become outdated and may contain urls that have since become invalid - in this case you will receive an error message along these lines:</p>
+<pre>E: Failed to fetch http://...../package.deb 404 Not Found<br>E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?</pre>
+<p>To resolve this, the package lists need to be updated by running the following command before installing any packages:</p>
+<pre>sudo apt-get update</pre>

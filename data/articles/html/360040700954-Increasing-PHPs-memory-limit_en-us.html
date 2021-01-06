@@ -1,0 +1,6 @@
+<p>By default, PHP will limit itself to using 128MB, which may be exceeded depending on your tasks. In some cases, it's easy to pass along a new memory limit to one-off commands using the following command, replacing -1 with the new memory limit (e.g 512M, 1G. -1 will remove any memory limit and could result in consuming all the memory):</p>
+<pre>php -d memory_limit=-1 &lt;command&gt;</pre>
+<p>Sometimes, this isn't an ideal solution, and the memory limit should be persisted throughout the job. In this instance, it's easy to set a new memory limit by creating a new memory limit configuration file using the following command, which will ensure PHP runs with the increased memory each time it executes (again, replacing -1 with the actual limit you would like):</p>
+<pre>echo 'memory_limit = -1' &gt;&gt; /usr/local/etc/php/conf.d/docker-php-memlimit.ini</pre>
+<p>Alternatively, if you receive a permission denied error with the above command, the tee command may be necessary to append the configuration:</p>
+<pre>echo 'memory_limit = -1' | sudo tee -a /usr/local/etc/php/conf.d/docker-php-memlimit.ini</pre>

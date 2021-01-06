@@ -1,0 +1,40 @@
+id: 360043160254
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360043160254.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360043160254-How-do-I-cancel-my-GitHub-Marketplace-account-and-switch-to-Performance-
+author_id: 387113658713
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -2
+vote_count: 4
+section_id: 115003332307
+created_at: '2020-02-20T22:22:48Z'
+updated_at: '2020-11-16T17:55:49Z'
+name: How do I cancel my GitHub Marketplace account and switch to Performance?
+title: How do I cancel my GitHub Marketplace account and switch to Performance?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-07-16T17:47:57Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - GitHub
+  - GitHub Marketplace
+body: >-
+  <p><span style="font-weight: 400;">If your <em>Organization Settings</em> page
+  states that your plan is managed by GitHub Marketplace, you must cancel your
+  plan via GitHub.</span></p>
+
+  <p><span style="font-weight: 400;">Because GitHub Marketplace is billed on a
+  monthly basis, you will need to wait for your billing cycle to end before
+  signing up on CircleCI. </span></p>
+
+  <p><span style="font-weight: 400;">If you have any further questions, please
+  contact GitHub Support. You can learn more about CircleCI on GitHub
+  Marketplace <a href="https://github.com/marketplace/circleci" target="_blank"
+  rel="noopener">here</a></span><span style="font-weight: 400;">.</span></p>

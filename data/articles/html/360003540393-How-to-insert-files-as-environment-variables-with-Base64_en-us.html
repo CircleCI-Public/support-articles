@@ -1,0 +1,17 @@
+<p>If you need to insert sensitive text-based documents or even small binary files into your project in secret it is possible to insert them as an environment variable by leveraging base64 encoding.</p>
+<p><a href="https://en.wikipedia.org/wiki/Base64">Base64</a> is an encoding scheme to translate binary data into text strings. These values can be added to <a href="https://circleci.com/docs/2.0/contexts/" target="_self">a context</a> or inserted as <a href="https://circleci.com/docs/2.0/env-vars/" target="_self">an environment variable</a> and decoded at runtime.</p>
+<p>Environment variables can be configured in the UI under "Project Settings":</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360066587992/project-settings-env-var-v2.png" alt="project-settings-env-var-v2.png"></p>
+<p>While contexts can be configured under "Organization Settings":</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360066588212/org-settings-contexts-v2.png" alt="org-settings-contexts-v2.png"></p>
+<p> </p>
+<p>You can encode a file via your command line terminal by feeding it directly to base64.</p>
+<pre>base64 [option] [file]</pre>
+<p><a href="https://linux.die.net/man/1/base64">Here is the MAN documentation for base64</a>.</p>
+<p><em>Note</em> If you are encoding a file (whether it be a large file or a "binary") for use as a CircleCI environment variable, you should pass the <code>-w 0</code> option to the command so newlines aren't present in the resulting base64, which will be converted to spaces when added to CircleCI.</p>
+<p>To then decode the base64 file from within your container you can run the decode option.</p>
+<pre>base64 --decode [file]</pre>
+<p>If your file is stored as an environment variable, you can pipe it directly to the base64 command to be decoded, storing the result in a file</p>
+<pre><span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$ENV_VARIABLE_NAME</span><span class="pl-pds">"</span></span> <span class="pl-k">|</span> base64 --decode <span class="pl-k">&gt;</span> filename.txt</pre>
+<p> </p>
+<p>For more information, you can read about <a href="https://circleci.com/docs/2.0/env-vars/#encoding-multi-line-environment-variables" target="_self">base64 encoding and decoding variables within a config in our docs</a>.</p>

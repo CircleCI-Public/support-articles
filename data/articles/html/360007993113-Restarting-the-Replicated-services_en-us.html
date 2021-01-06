@@ -1,0 +1,7 @@
+<p>Oftentimes, issues around installations refusing to stop/start, or upgrades failing, can be resolved by restarting the Replicated services:</p>
+<ol>
+    <li>SSH into the Services machine</li>
+    <li>run the following</li>
+</ol>
+<pre><code>$ sudo service replicated restart<br>$ sudo service replicated-operator restart<br>$ sudo service replicated-ui restart</code></pre>
+<p>This will cause the Management Console to refresh, but end users' running jobs will not be affected.</p>

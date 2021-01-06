@@ -1,0 +1,12 @@
+<p>There are a variety of mechanisms for staying up-to-date about new CircleCI releases.</p>
+<h2>CircleCI's Server Changelog</h2>
+<p>New releases are posted to <a href="https://circleci.com/server/changelog">https://circleci.com/server/changelog</a>, and operators can subscribe to the included <a href="https://circleci.com/enterprise/changelog.rss">RSS feed</a>.</p>
+<h2>Using the Management Console</h2>
+<p>You can check for updates via the Replicated Management Console, available at <code><strong>$YOUR_CIRCLECI_HOSTNAME:8800/dashboard</strong></code>.</p>
+<h2>Replicated's Integration API</h2>
+<p>Replicated's Integration API includes a <a href="https://help.replicated.com/api/integration-api/version-api/">Version API</a>, via which operators can check for CircleCI updates using the command line.</p>
+<p>A <code><strong>GET</strong></code> request to <code><strong>/version/v1/updates</strong></code> will return a list of all available updates.</p>
+<p>All API calls must begin with the Integration API base endpoint, available by querying the <code><strong>$REPLICATED_INTEGRATIONAPI</strong></code> environment variable that is automatically added to all application containers (in this case, all CircleCI containers running within the Services machine).</p>
+<p>In CircleCI installations, this base endpoint tends to have the form of <code><strong>https://$SERVICES_MACHINE_PRIVATE_IP:9880</strong></code>. Thus, a fully formed API call to check for CircleCI updates might be made as follows:</p>
+<p><code><strong>curl -k https://$SERVICES_MACHINE_PRIVATE_IP:9880/version/v1/updates</strong></code></p>
+<p>Operators can programmatically check for updates by integrating this API endpoint into any existing monitoring systems (for example, <a href="https://nagios.org">Nagios</a>) that may be in use.</p>

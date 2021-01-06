@@ -1,0 +1,11 @@
+<p>You may encounter a situation where you are overhauling your <code>config.yml</code> file and don't want to run a build on each change.</p>
+<p>While you work on the changes you can add the following to the start (after the <code>- checkout</code> step) in each of the workflow jobs:</p>
+<pre style="background-color: #f3f3f3;">- run: |
+    changes=`git show --name-only ${CIRCLE_SHA1} | tail -n +7`
+
+    if [ "$changes" = ".circleci/config.yml" ]; then 
+      echo "Only found a configuration change. Stopping build" 
+      circleci-agent step halt
+    fi</pre>
+<p>This will check to see which files changed in the commit, and if it's only the configuration file, it will exit the job successfully with the <a href="https://circleci.com/docs/2.0/configuration-reference/#ending-a-job-from-within-a-step" target="_blank" rel="noopener">"circleci-agent step halt" command</a>. </p>
+<p>Once you are happy with the changes in your configuration file you can remove the above run step and it will start to process your builds as normal.</p>

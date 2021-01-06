@@ -1,0 +1,26 @@
+id: 360048152911
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360048152911.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360048152911-Java-Builds-Fail-With-Unrecognized-VM-option-UseCGroupMemoryLimitForHeap-
+author_id: 403418857853
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 2
+vote_count: 8
+section_id: 115003756627
+created_at: '2020-08-17T18:14:08Z'
+updated_at: '2020-10-27T08:36:58Z'
+name: Java Builds Fail With `Unrecognized VM option 'UseCGroupMemoryLimitForHeap'`
+title: Java Builds Fail With `Unrecognized VM option 'UseCGroupMemoryLimitForHeap'`
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-08-18T09:00:55Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p><span>Java builds fail with the error:<br></span></p>\n<pre>Unrecognized VM option 'UseCGroupMemoryLimitForHeap'<br>Error: Could not create the Java Virtual Machine.<br>Error: A fatal exception has occurred. Program will exit.</pre>\n<p><span><br>On August 17th, 2020 CircleCI updated the Android convenience image from Java JDK 8 to JDK 11.\_</span><code>UseCGroupMemoryLimitForHeap</code><span>\_has been removed completely in JDK 11 and replaced with\_</span><code>UseContainerSupport</code><span>.<br><br>Customers should modify their Java options to make use of <code>UseContainerSupport</code>\_instead.<br><br>You can read more about our announcement of this change here<br><a href=\"https://discuss.circleci.com/t/android-convenience-image-moving-to-java-v11-on-august-17th/36601\">https://discuss.circleci.com/t/android-convenience-image-moving-to-java-v11-on-august-17th/36601</a><br><br>This documentation from the eclipse organization may be helpful (</span><a href=\"https://www.eclipse.org/openj9/docs/xxusecontainersupport/\" rel=\"noreferrer\">https://www.eclipse.org/openj9/docs/xxusecontainersupport/</a><span>\_for more information on this feature.</span></p>\n<p>An additional, but not directly related issue to the above error, is that you may need to increment your cache keys `restore_cache`, `save_cache` as there may have build data from Java 8 that will also cause build issues from the upgrade.</p>\n<p>As always, please do feel free to reach out to <a href=\"mailto:support@circleci.com\">support@circleci.com</a>\_and we can help you through this process.</p>"

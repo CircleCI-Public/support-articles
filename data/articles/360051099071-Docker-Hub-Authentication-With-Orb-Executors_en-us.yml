@@ -1,0 +1,28 @@
+id: 360051099071
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360051099071.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360051099071-Docker-Hub-Authentication-With-Orb-Executors
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -1
+vote_count: 3
+section_id: 360002440473
+created_at: '2020-10-16T09:22:06Z'
+updated_at: '2020-11-02T15:40:22Z'
+name: Docker Hub Authentication With Orb Executors
+title: Docker Hub Authentication With Orb Executors
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:55:44Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - docker
+  - docker hub
+body: "<p dir=\"auto\">At the moment, unless an Orb has been specifically updated, it is not possible to pass Docker Hub auth parameters to the executors defined by an orb. This is something CircleCI is looking into, as well as evaluating our partnership with Docker regarding rate limiting in general.</p>\n<p dir=\"auto\">The general consensus is that each orb will need to be updated to allow the docker auth parameters to be passed - please feel free to <a href=\"https://support.circleci.com/hc/en-us/articles/360046555954-Reporting-issues-with-Orbs\" target=\"_self\">raise an issue against the GitHub repos</a> to bring this up with the Community team directly.</p>\n<p dir=\"auto\">The best workaround for this right now is to define the executor manually.</p>\n<p dir=\"auto\">\_</p>\n<p dir=\"auto\">Let's take a look at an example by using the cimg/php image:</p>\n<p dir=\"auto\">\_</p>\n<p dir=\"auto\">If we look at the<span>\_</span><a href=\"https://circleci.com/developer/orbs/orb/circleci/php#executors-default\" rel=\"noreferrer\">source for the executor</a><span>\_</span>is it simply:</p>\n<pre dir=\"auto\">description: The official CircleCI CIMG PHP Docker image.<br>docker:<br>  - image: 'cimg/php:&lt;&lt; parameters.tag &gt;&gt;'<br>parameters:<br>  tag:<br>      default: '7.4'<br>      description: The `cimg/php` Docker image version tag.<br>      type: string</pre>\n<p dir=\"auto\">This executor definition in the orb isn't doing much more than spinning up a docker image defined by a parameter. This means you can implement this executor yourself in your config.yml. The below example is based on the example shown in the <a href=\"https://circleci.com/docs/2.0/private-images/\" target=\"_self\">Docker private images guide</a>:</p>\n<pre>version: 2.1<br><br>workflows:<br>  my-workflow:<br>    jobs:<br>      - build:<br>          context:<br>            - build-env-vars<br>            - docker-hub-creds<br><br>jobs:<br>  build:<br>    docker:<br>      - image: cimg/php:7.4<br>        auth:<br>          username: mydockerhub-user # can specify string literal values<br>          password: $DOCKERHUB_PASSWORD # or project environment variable reference</pre>\n<p dir=\"auto\">Or, if you want to retain the parameter functionality instead of hard-coding the version, you can add this as follows:</p>\n<pre>version: 2.1<br><br>workflows:<br>  my-workflow:<br>    jobs:<br>      - build:<br>          phpver: \"7.3.11\"<br>          context:<br>            - build-env-vars<br>            - docker-hub-creds<br><br>jobs:<br>  build:<br>    parameters:<br>      phpver:<br>        type: string<br>        default: \"7.4\"<br>    docker:<br>      - image: cimg/php:&lt;&lt; parameters.phpver&gt;&gt;<br>        auth:<br>          username: mydockerhub-user # can specify string literal values<br>          password: $DOCKERHUB_PASSWORD # or project environment variable reference<br>    steps:<br>       - run: echo \"Hello!\"</pre>\n<p dir=\"auto\">\_</p>"

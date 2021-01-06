@@ -1,0 +1,31 @@
+id: 360050351292
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360050351292.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360050351292-How-to-trigger-a-workflow-via-CircleCI-API-v2-
+author_id: 403103999173
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 1
+vote_count: 3
+section_id: 115003755888
+created_at: '2020-10-09T16:12:25Z'
+updated_at: '2020-12-28T21:22:46Z'
+name: How to trigger a workflow via CircleCI API (v2)
+title: How to trigger a workflow via CircleCI API (v2)
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:55:50Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - workflow
+  - api
+  - workflows
+  - trigger
+  - curl
+body: "<p><span> CircleCI API (v2) doesn't currently provide a dedicated endpoint to specifically trigger a new workflow.</span></p>\n<p><span>However, it is still possible to trigger a specific workflow using the \"<a href=\"https://circleci.com/docs/api/v2/#operation/triggerPipeline\" target=\"_blank\" rel=\"noopener\">Trigger a new pipeline\"</a>\_endpoint. It requires some modification to your\_<code>config.yml</code>, and the use of <a href=\"https://circleci.com/docs/2.0/pipeline-variables/#pipeline-parameters-in-configuration\" target=\"_blank\" rel=\"noopener\">pipeline parameters</a>, as well as, <a href=\"https://circleci.com/docs/2.0/configuration-reference/#using-when-in-workflows\" target=\"_blank\" rel=\"noopener\">conditional workflows</a>.</span></p>\n<p>For example, if you have the following <code>workflows</code> declared in your\_<code>config.yml</code>:</p>\n<pre dir=\"ltr\" style=\"background-color: #f3f3f3;\">workflows:\n  version: 2\n  build:\n    jobs:\n      - job_a\n  test:\n    jobs:\n      - job_b\n  deploy:\n    jobs:\n      - job_c</pre>\n<p>\_</p>\n<p>You will need to declare the following\_<a href=\"https://circleci.com/docs/2.0/pipeline-variables/#pipeline-parameters-in-configuration\" target=\"_blank\" rel=\"noopener noreferrer\">pipeline parameters</a>:</p>\n<pre dir=\"ltr\" style=\"background-color: #f3f3f3;\">version: 2.1<br>parameters:\n  run_workflow_build:\n    default: true\n    type: boolean\n\n  run_workflow_test:\n    default: true\n    type: boolean\n\n  run_workflow_deploy:\n    default: true\n    type: boolean</pre>\n<p><em><strong>Note</strong>: setting the parameters' default value to \"true\" will allow the workflows to run when the pipeline is triggered by pushing commits.<br><br></em></p>\n<p dir=\"auto\">And modify the <code>workflows</code> section as follows:</p>\n<pre dir=\"ltr\" style=\"background-color: #f3f3f3;\">workflows:\n  version: 2\n  build:\n    when: &lt;&lt; pipeline.parameters.run_workflow_build &gt;&gt;\n    jobs:\n      - job_a\n  test:\n    when: &lt;&lt; pipeline.parameters.run_workflow_test &gt;&gt;\n    jobs:\n      - job_b\n  deploy:\n    when: &lt;&lt; pipeline.parameters.run_workflow_deploy &gt;&gt;\n    jobs:\n      - job_c</pre>\n<p><span><br>Using the above example, the cURL request to only run the\_</span><code>test</code><span> workflow would be (i<em>n the following requests your </em><code>vcs-slug</code><em> will be </em><code>bitbucket</code><em> or </em><code>github</code><em> depending on which VCS you use</em>):</span></p>\n<pre dir=\"ltr\" style=\"background-color: #f3f3f3;\">curl --request POST \\\n  --url https://circleci.com/api/v2/project/vcs-slug/org-name/repo-name/pipeline \\\n  --header 'Circle-Token: ***********************************' \\\n  --header 'content-type: application/json' \\\n  --data '{\"parameters\":{\"run_workflow_build\":false, \"run_workflow_deploy\":false}}'</pre>\n<p><em><strong>Note</strong>: keep in mind that you have to use <span>a\_</span><a href=\"https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token\" target=\"_blank\" rel=\"noopener\">personal API token</a>;<span> project tokens are currently not supported on CircleCI API (v2)</span>.</em></p>\n<p><span>For clarity, you could also pass the parameter corresponding to the workflow you wish to run. Doing so would have the exact same outcome as the above request because the pipeline parameters were declared with a default value set to \"true\":</span></p>\n<pre dir=\"ltr\" style=\"background-color: #f3f3f3;\">curl --request POST \\\n  --url https://circleci.com/api/v2/project/vcs-slug/org-name/repo-name/pipeline \\\n  --header 'Circle-Token: ***********************************' \\\n  --header 'content-type: application/json' \\\n  --data '{\"parameters\":{\"run_workflow_build\":false, \"run_workflow_test\":true, \"run_workflow_deploy\":false}}'</pre>\n<p>\_</p>\n<h3>References:</h3>\n<ul>\n<li><a href=\"https://circleci.com/docs/api/v2/#operation/triggerPipeline\" target=\"_blank\" rel=\"noopener\">Trigger a new pipeline: <em><span>CircleCI API (v2)\_</span></em><em>documentation</em></a></li>\n<li><a href=\"https://circleci.com/docs/2.0/pipeline-variables/#pipeline-parameters-in-configuration\" target=\"_blank\" rel=\"noopener\">Pipelines parameters in configuration: <em>CircleCI documentation (Configuration &gt; Advanced Config)</em></a></li>\n<li>\n<a href=\"https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/conditional-workflows.md\" target=\"_blank\" rel=\"noopener\">Conditional Workflows: <em>API preview documentation</em></a><em><br></em>\n</li>\n<li><a href=\"https://circleci.com/docs/2.0/managing-api-tokens/\" target=\"_blank\" rel=\"noopener\">Managing API Tokens: <em>CircleCI documentation (Project &gt; Settings)</em></a></li>\n</ul>"

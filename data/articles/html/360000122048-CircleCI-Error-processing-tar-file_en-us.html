@@ -1,0 +1,3 @@
+<p>You're seeing the following error :</p>
+<pre>&gt; failed to register layer: Error processing tar file(exit status 1): Container ID ... cannot be mapped to a host ID</pre>
+<p>Because that Docker image has one or more files owned by a Linux user with too high a UID/GID. You or the image maintainer will have to rebuild this image and ensure a user with a lower UID/GID owns those files. You can find more information in our docs : <a href="https://circleci.com/docs/2.0/high-uid-error/" target="_self">Debugging Container ID Cannot Be Mapped to Host ID Error</a>. </p>

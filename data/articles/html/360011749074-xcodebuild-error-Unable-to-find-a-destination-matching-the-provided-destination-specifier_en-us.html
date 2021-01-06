@@ -1,0 +1,19 @@
+<p>This message may appear when trying to build an iOS app. Sometimes the simulators are not ready before the build step. In this case, you can <a href="https://circleci.com/docs/2.0/testing-ios/#pre-starting-the-simulator">pre-start the simulators</a>:</p>
+<pre># ...
+steps:
+  - run:
+      name: pre-start simulator
+      command: xcrun instruments -w "iPhone 11 Pro (13.3) [" || true
+</pre>
+<p><strong>Note:</strong> the <code class="highlighter-rouge">[</code> character is necessary to uniquely identify the iPhone 7 simulator, as the phone + watch simulator is also present in the build image:</p>
+<ul>
+    <li>
+        <code class="highlighter-rouge">iPhone 11 Pro (13.3) [&lt;uuid&gt;]</code> for the iPhone simulator.
+    </li>
+    <li>
+        <code class="highlighter-rouge">iPhone 11 Pro (13.3) + Apple Watch Series 5 - 40mm (6.1.1) [&lt;uuid&gt;]</code> for the phone + watch pair.
+    </li>
+</ul>
+<p>You can also add the following run step to check for available simulators:</p>
+<p><code>- run: xcrun simctl list &amp;&gt;/dev/null</code></p>
+<p> </p>

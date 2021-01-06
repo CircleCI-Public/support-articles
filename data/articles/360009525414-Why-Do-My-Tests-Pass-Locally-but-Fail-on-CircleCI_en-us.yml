@@ -1,0 +1,32 @@
+id: 360009525414
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360009525414.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360009525414-Why-Do-My-Tests-Pass-Locally-but-Fail-on-CircleCI-
+author_id: 25261361207
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -47
+vote_count: 57
+section_id: 115003756627
+created_at: '2018-09-21T19:26:10Z'
+updated_at: '2020-12-11T22:43:08Z'
+name: Why Do My Tests Pass Locally but Fail on CircleCI?
+title: Why Do My Tests Pass Locally but Fail on CircleCI?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-09-24T22:17:03Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - test output
+  - memory usage
+  - memory
+  - circleci cli
+  - Local Builds
+  - OOM
+body: "<p>This behavior has several possible explanations:</p>\n<ul>\n<li>\n<strong>Different language versions</strong>. Ensure you are using the same language version on your machine and on CircleCI.</li>\n<li>\n<strong>Different package versions</strong>. Explicitly specify package versions in your configuration file.</li>\n<li>\n<strong>Timezone troubles</strong>. Some testing frameworks may not have timezone-aware modules. If the machine does not have a set timezone, some tests may fail. See <a href=\"https://circleci.com/docs/2.0/faq/#how-can-i-set-the-timezone-in-docker-images\">this question</a> in the FAQ for more details.</li>\n<li>\n<strong>File ordering</strong>. Some filesystems maintain an ordered file structure for each directory. This means that all files are read in the same order during each run. However, the filesystems in our build containers are unordered. If your tests only pass when run in a certain order, they may fail on CircleCI.</li>\n<li>\n<strong>\"Out of Memory\" errors</strong>. If a process in your build container uses too much memory, Linux's OOM killer may end it. If you are interested in recording your memory usage, visit\_<a href=\"https://support.circleci.com/hc/en-us/articles/360043994872\" target=\"_self\">How to record a job's memory usage</a>.</li>\n<li>\n<strong>Differing startup times</strong>. Applications like Elasticsearch and PostgreSQL may take more time to start up on CircleCI. You can fix this by explicitly waiting for a service to be available before running tests.</li>\n<li>\n<strong>Unreliable services</strong>. If your tests rely on a third-party service, check that the service is actually running.</li>\n</ul>\n<p>Please submit a <a href=\"https://support.circleci.com/hc/en-us\" target=\"_blank\" rel=\"noopener\">support ticket</a> if you need additional assistance with your builds.</p>"

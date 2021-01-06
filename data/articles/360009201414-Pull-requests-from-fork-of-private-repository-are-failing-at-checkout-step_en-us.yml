@@ -1,0 +1,27 @@
+id: 360009201414
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360009201414.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360009201414-Pull-requests-from-fork-of-private-repository-are-failing-at-checkout-step
+author_id: 363669145434
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -1
+vote_count: 1
+section_id: 115003756627
+created_at: '2018-09-14T06:56:57Z'
+updated_at: '2020-10-22T06:58:21Z'
+name: Pull requests from fork of private repository are failing at checkout step
+title: Pull requests from fork of private repository are failing at checkout step
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:58:21Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - permissions
+body: "<p>Are pull requests from forks of your private repository project failing at the checkout step with an error message as shown below?</p>\n<pre class=\"output\"><span class=\"pre\"><span class=\"white\">\nERROR: Repository not found.\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\n</span><span class=\"white\">and the repository exists.\n</span></span><span class=\"pre\"><span class=\"white\">Exited with code 128</span></span></pre>\n<p>If that is the case, please check the \"Advanced Settings\" of the parent repository project to see if the\_\"Pass secrets to builds from forked pull requests\" setting is enabled. In order for pull requests from forks of a private repository to build, the checkout key for the parent repository is required to be shared, and hence the \"Pass secrets to builds from forked pull requests\" setting would need to be enabled. For more information, visit this blog post about <a href=\"https://circleci.com/blog/triggering-trusted-ci-jobs-on-untrusted-forks/\" target=\"_self\">triggering trusted CI jobs on untrusted forks</a>.</p>\n<p><strong><span class=\"wysiwyg-color-red\">Warning</span></strong>: There are serious security concerns with the\_\"Pass secrets to builds from forked pull requests\" setting (see\_<a href=\"https://circleci.com/docs/2.0/oss/#pass-secrets-to-builds-from-forked-pull-requests\">the documentation</a>\_for details.)\_If you have SSH keys, sensitive env vars or AWS credentials stored in your project settings and\_untrusted forks can make pull requests against your repo, then this option\_isn't for you!</p>\n<p>\_</p>"

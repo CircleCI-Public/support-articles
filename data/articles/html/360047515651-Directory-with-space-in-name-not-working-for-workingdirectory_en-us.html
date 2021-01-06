@@ -1,0 +1,5 @@
+<p dir="auto">When setting the<span> </span><code>working_directory</code><span> </span>in a build, it sets the<span> </span><code>CIRCLE_WORKING_DIRECTORY</code><span> </span>environment variable to that value, so if the directory has a space like "01 Test" it would set it to:</p>
+<pre dir="ltr">CIRCLE_WORKING_DIRECTORY=01 Test</pre>
+<p dir="auto">So when it goes to create the directory it calls<span> </span><code>mkdir 01 Test</code><span> </span>-- which would result in two directories being created (<code>01</code> and <code>Test</code>). With this in mind, you can protect the space with single quotes like this:</p>
+<pre dir="ltr">working_directory: "01' 'Test"</pre>
+<p dir="auto">That should result in the variable being set to<span> </span><code>CIRCLE_WORKING_DIRECTORY=01' 'Test</code><span> </span>which should properly account for the space.</p>

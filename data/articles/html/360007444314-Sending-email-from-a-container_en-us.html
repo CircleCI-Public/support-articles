@@ -1,0 +1,5 @@
+<p>Sending emails (SMTP) from inside a container on CircleCI directly can prove to be problematic for most users and is not recommended. </p>
+<p>The CircleCI 2.0 fleet currently runs on Amazon's EC2 cloud, <a href="https://aws.amazon.com/premiumsupport/knowledge-center/ec2-port-25-throttle/">where port 25 is throttled by default</a>. As containers are spun up across many hosts at random, there is a much greater chance the IP address you are accessing is going to be rate limited due to the use of the port by other users in the past. Since containers are "highly available" on EC2 there is a high probability that any mail you manage to send will likely end up in the "spam" folder of the recipient.</p>
+<h2>How should I send email?</h2>
+<p>The suggested method for mailing is to connect to an external API-based service such as <a href="https://sendgrid.com/">SendGrid</a> or <a href="https://www.mailgun.com/email-api">Mailgun</a>.</p>
+<p>Connecting to an external transactional email provider is the fastest and most robust option, ensuring your mail will be delivered and avoid ending up in spam.</p>

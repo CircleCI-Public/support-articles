@@ -1,0 +1,5 @@
+<p>The tooling provided by Apple alongside Xcode 12 (the Command Line Tools) has introduced some bugs when building Ruby gems that require native extensions - this is mostly due to changes in the Clang compiler.</p>
+<p>In most cases this can be resolved by using one of the additional Rubies we ship with the images (2.7 is recommended). The system Ruby (2.6.3) is known to be very restrictive and problematic when utilising anything that has not been explicitly shipped with it.</p>
+<p>The Ruby version can be selected by adding the following to your config file at the beginning of the job:</p>
+<pre># ...<br>run:<br> name: Set Ruby Version<br> command: echo 'chruby ruby-2.7' &gt;&gt; ~/.bash_profile</pre>
+<p>For more information on setting the Ruby version, please see <a href="https://circleci.com/docs/2.0/testing-ios/#images-using-macos-1015-xcode-112-and-later" target="_self">our documentation</a>.</p>

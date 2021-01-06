@@ -1,0 +1,26 @@
+id: 360000491508
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360000491508.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360000491508-How-do-I-connect-my-GitHub-and-Bitbucket-accounts-on-CircleCI-
+author_id: 403103999173
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -10
+vote_count: 14
+section_id: 115003327148
+created_at: '2018-02-23T09:57:01Z'
+updated_at: '2020-11-18T17:18:07Z'
+name: How do I connect my GitHub and Bitbucket accounts on CircleCI?
+title: How do I connect my GitHub and Bitbucket accounts on CircleCI?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:55:45Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<h3>To connect your GitHub and Bitbucket accounts on CircleCI:</h3>\n<ol>\n<li>Log in with your primary account (e.g. GitHub)</li>\n<li>Click your avatar icon (bottom-left of the CircleCI UI) <strong>or</strong> go to <a href=\"https://app.circleci.com/settings/user\" target=\"_blank\" rel=\"noopener\">https://app.circleci.com/settings/user\_</a>\n</li>\n</ol>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360072687172/avatar_icon.png\" alt=\"avatar_icon.png\"></p>\n<h3>\n<br>On the next screen, click the \"<strong><em>Connect</em></strong>\" button:</h3>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360072687152/user_settings.png\" alt=\"user_settings.png\" width=\"765\" height=\"339\"></p>\n<p>\_</p>\n<ul>\n<li>If you are <strong>not already logged into</strong> your secondary VCS account, you'll be redirected to the VCS website to authenticate and authorize CircleCI.</li>\n<li>If you <strong>are already logged into</strong> your secondary VCS account, it will be added to your existing CircleCI account.</li>\n</ul>\n<p>Once this is done, the \"<em><strong>organization picker</strong></em>\" will also list the organizations available to the secondary VCS account.</p>\n<p>Next to each organization's name you'll see either a <code>GH</code> or <code>BB</code> badge indicating <span>whether an organization is associated with GitHub or Bitbucket.</span></p>"

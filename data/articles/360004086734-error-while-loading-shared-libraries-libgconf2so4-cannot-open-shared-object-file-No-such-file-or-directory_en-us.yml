@@ -1,0 +1,32 @@
+id: 360004086734
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360004086734.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360004086734-error-while-loading-shared-libraries-libgconf-2-so-4-cannot-open-shared-object-file-No-such-file-or-directory
+author_id: 25261361207
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: 58
+vote_count: 102
+section_id: 115003756627
+created_at: '2018-05-10T09:45:00Z'
+updated_at: '2020-12-16T22:17:50Z'
+name: >-
+  error while loading shared libraries: libgconf-2.so.4: cannot open shared
+  object file: No such file or directory
+title: >-
+  error while loading shared libraries: libgconf-2.so.4: cannot open shared
+  object file: No such file or directory
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:58:42Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - chrome
+  - libgconf
+body: "<p>This error is most likely due to a recent change in a package for Google Chrome - it no longer pulls in <code>libgconf-2-4</code> as a dependency.</p>\n<p>Adding in a step like the following:\_</p>\n<pre>- run: sudo apt-get install libgconf-2-4</pre>\n<p>should\_get your builds back to normal.</p>"

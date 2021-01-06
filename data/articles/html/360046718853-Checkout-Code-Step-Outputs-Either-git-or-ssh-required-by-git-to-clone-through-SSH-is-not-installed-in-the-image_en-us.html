@@ -1,0 +1,7 @@
+<p>A CircleCI build can output the following message during the <em>Checkout code</em> step.</p>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Either git or ssh (required by git to clone through SSH) is not installed in the image. Falling back to CircleCI's native git client but the behavior may be different from official git. If this is an issue, please use an image that has official git and ssh installed.</span></p>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">This is because either the SSH or Git CLI client is not available. These can either be built into the Docker image or installed during the build.<br><br>For example, in a Debian based system(Ubuntu etc) they can be installed via<br></span></p>
+<pre><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">- run: apt-get update &amp;&amp; apt-get install -y openssh-client git</span></pre>
+<p>On Alpine based images, they can be installed via</p>
+<pre><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">apk add --update openssh-client git</span></pre>
+<p><br>CircleCI also provides <a href="https://circleci.com/docs/2.0/circleci-images/" target="_self">Pre-Built CircleCI Docker Images</a> which come with SSH, Git, and several other tools required by the build agent.</p>

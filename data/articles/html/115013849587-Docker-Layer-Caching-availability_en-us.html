@@ -1,0 +1,4 @@
+<p>Docker Layer Caching (DLC) is a great feature to use if building Docker images is a regular part of your CI/CD process. DLC will save image layers created within your jobs, rather than impact the actual container used to run your job.</p>
+<p>There are some limitations to the availability of these cached layers. The DLC volumes are deleted after 3 days of not being used in a job. Additionally, CircleCI will create a maximum of 50 DLC volumes per project, so a maximum of 50 concurrent <code class="highlighter-rouge">machine</code> or Remote Docker jobs per project can have access to DLC. </p>
+<p>In-depth documentation for <code>docker_layer_caching</code> can be found here: <a href="https://circleci.com/docs/2.0/docker-layer-caching/">https://circleci.com/docs/2.0/docker-layer-caching/</a></p>
+<p> </p>

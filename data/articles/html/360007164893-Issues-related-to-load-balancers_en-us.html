@@ -1,0 +1,20 @@
+<p>When running behind load balancers/reverse proxies you may see failed connection errors with CircleCI. This is due to CircleCI never receiving the HTTPS url that is handled by the load balancer. A common pattern for this configuration is:</p>
+<pre><code>(User) --HTTPS--&gt; (Load Balancer ) --HTTP--&gt; (CircleCI)</code><br><br></pre>
+<p>You may see GitHub authentication errors, such as: </p>
+<pre><code>error_description=The+redirect_uri+MUST+match+the+registered+callback+URL+for+this+application.&amp;error_uri=https%3A%2F%2Fdeveloper.github.com%2Fenterprise%2F2.11%2Fv3%2Foauth%2F%23redirect-uri-mismatch</code></pre>
+<p>You can use the system variable CIRCLE_URL to define a HTTPS url:</p>
+<ol>
+    <li>Find the hostname CircleCI is exposed on, must match that defined in :8800/settings</li>
+    <li>Edit customizations file on Services node <code>sudo vi /etc/circle-installation-customizations</code>
+    </li>
+    <li>Add full path to host including HTTPS prefix, i.e <code>export CIRCLE_URL="https://circle.example.com"</code>
+    </li>
+    <li>
+        <a href="https://circleci.com/docs/2.0/admin-faq/#how-do-i-debug-the-management-console-replicated" target="_blank" rel="noopener">Restart services via replicated console</a>.
+    </li>
+</ol>
+<p> </p>
+<p>You may also encounter an error where the front-end does not update automatically:</p>
+<pre><code class="bash">pusher-94f425ff3b262f615972fa7cdfed368b.min.js:72 WebSocket connection to 'wss://circleci.org.net/app/circle?protocol=7&amp;client=js&amp;version=2.2.4&amp;flash=false' failed: Error during WebSocket handshake: Unexpected response code: 404</code></pre>
+<p>To resolve this add an SSL certificate between the ELB and the services box, connecting port 443 to port 443. Usually the ELB is trying to connect to port 80 on the Services client, instead of 443. </p>
+<p> </p>

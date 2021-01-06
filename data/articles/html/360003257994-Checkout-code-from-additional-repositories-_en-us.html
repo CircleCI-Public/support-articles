@@ -1,0 +1,9 @@
+<p><code>
+        ERROR: Repository not found.
+        fatal: Could not read from remote repository.
+        Please make sure you have the correct access rights and the repository exists.
+        Exited with code 128
+    </code></p>
+<p class="wysiwyg-text-align-left"><img style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" src="https://support.circleci.com/hc/article_attachments/360003862573/mceclip0.png" width="459" height="136"></p>
+<p class="wysiwyg-text-align-left">If you receive this error, more than likely you are attempting to access a private repository from within your container without authentication. You will need to create a "User Key" SSH key and add it to your job environment so that it can access additional resources that require additional authentication.</p>
+<p class="wysiwyg-text-align-left">More information on creating a user key can be found <a href="https://circleci.com/docs/2.0/gh-bb-integration/#enable-your-project-to-check-out-additional-private-repositories" target="_self">in our documentation</a>.</p>

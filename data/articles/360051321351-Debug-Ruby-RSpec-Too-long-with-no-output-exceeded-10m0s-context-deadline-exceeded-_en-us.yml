@@ -1,0 +1,30 @@
+id: 360051321351
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360051321351.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360051321351-Debug-Ruby-RSpec-Too-long-with-no-output-exceeded-10m0s-context-deadline-exceeded-
+author_id: 403418857853
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -1
+vote_count: 1
+section_id: 115003756627
+created_at: '2020-10-21T00:18:55Z'
+updated_at: '2020-11-11T10:08:03Z'
+name: >-
+  Debug Ruby RSpec Too long with no output (exceeded 10m0s): context deadline
+  exceeded 
+title: >-
+  Debug Ruby RSpec Too long with no output (exceeded 10m0s): context deadline
+  exceeded 
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:55:40Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>When a test times out in CircleCI with no output, it can be difficult<br>The following method can be used to obtain a stack trace at a defined interval during RSpec tests:<br><br>First, add the code snippet listed as directed in this <a href=\"https://github.com/rspec/rspec-rails/issues/1353#issuecomment-93173691\" target=\"_blank\" rel=\"noopener\">Github Issues comment</a></p>\n<p>Then add this `run` step, just above your rspec tests</p>\n<pre>- run:<br>    background: true<br>    command: |<br>      while true ; do<br>        sleep 15<br>        num=$(ps a | grep rspec | grep -v grep | awk '{print $1}')<br>        echo \"Process num: $num\"<br>        echo \"Sending signal\"<br>        kill -USR1 ${num} || true<br>    done</pre>\n<p>This will send the signal to display the stack trace and allow additional visibility into the test progress<strong>.</strong></p>\n<p><strong>Note:\_</strong>Because this job will send repeated stack traces, if the job hangs it <strong>may not stop after 10 minutes. </strong>If you make use of this technique, please be sure to monitor the build in progress.<br>If you need to run the job multiple times and cannot monitor it, consider making use of a tool such as the <a href=\"https://circleci.com/developer/orbs/orb/fernfernfern/stopthatjob\" target=\"_self\">fernfernfern/stopthatjob</a> Orb to stop the entire job after a specified amount of time. Otherwise, the job could potentially run for 5 hours before stopping</p>"

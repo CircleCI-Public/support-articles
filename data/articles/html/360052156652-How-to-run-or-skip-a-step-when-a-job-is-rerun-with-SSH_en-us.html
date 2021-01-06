@@ -1,0 +1,9 @@
+<p>You may want to run or skip a step if you rerun your job with SSH. You can do this using <code>netstat</code> to see <span>active TCP connections. When a job is rerun with SSH <code>circleci-agent</code> is the <code>PID/Program Name</code>. You can use the code snippets bellow to conditionally skip or run a step when a job is rerun with SSH.  </span></p>
+<h3><span>To skip a step if the job is rerun with SSH: </span></h3>
+<p> </p>
+<pre><span> - run: |<br>     if [[ $(netstat -tnlp | grep -F 'circleci-agent') ]] ; then<br>       exit 0;<br>     fi<br>     echo "commands you want to run when job is NOT rerun with SSH"</span></pre>
+<p>In the above code, <code>echo "commands you want to run when job is NOT rerun with SSH" </code>  is only executed when a job is NOT rerun with SSH. When a job is rerun with SSH the step will silently exit with code 0. This means the step will still be successfully run but will not impact the status of your build. </p>
+<p> </p>
+<h3>Only run a step when a job is rerun with SSH: </h3>
+<pre><span> - run: |<br>     if [[ $(netstat -tnlp | grep -F 'circleci-agent') ]] ; then<br>       echo "commands you want to run ONLY when job is rerun with SSH"    <br>     fi<br>     exit 0;</span></pre>
+<p> </p>

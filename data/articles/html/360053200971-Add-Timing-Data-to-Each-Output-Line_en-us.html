@@ -1,0 +1,10 @@
+<p>Debugging where jobs spend most of their time can be useful to help optimise your pipeline, along with debugging spikes in job completion time.</p>
+<p>Generally, logging timing data is up to the command that is being run at the time, but we can manually add this by using some bash scripting.</p>
+<p>See the below example for how you can achieve this:</p>
+<pre>- run: example_command | while read line ; do echo "$(date +"%T") &gt; $line" ; done ;</pre>
+<p>This will provide and output along the following lines:</p>
+<pre class="css-1hjuxmj">21:15:46 &gt; Some Output Line 1
+21:16:12 &gt; Some Output Line 2
+21:17:41 &gt; Some Output Line 3
+</pre>
+<p>The format of the timing data is in HH:MM:SS which provides granular information that will help in tracking down steps that are taking longer than expected.</p>

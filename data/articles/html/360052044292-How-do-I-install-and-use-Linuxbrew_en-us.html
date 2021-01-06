@@ -1,0 +1,11 @@
+<p>You may encounter a situation where you are using one of our CircleCI convenience images and you need to utilize Homebrew/Linuxbrew and it isn't installed. </p>
+<p>You can add the following run command before trying to install anything with <code>brew</code> and it will ensure its installed and set for the rest of the job.</p>
+<pre style="background-color: #f3f3f3;">- run:
+    name: Install and set Linuxbrew
+    command: |
+      sudo apt-get install build-essential curl file git
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+
+      echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin/:$PATH"' &gt;&gt; $BASH_ENV
+      echo 'export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"' &gt;&gt; $BASH_ENV
+      echo 'export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"' &gt;&gt; $BASH_ENV</pre>

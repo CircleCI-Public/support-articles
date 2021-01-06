@@ -1,0 +1,24 @@
+<p>Viewing webhooks on GitHub can be a useful diagnostic tool when attempting to discover why perhaps a push to your repo has potentially not resulted in a job on CircleCI.</p>
+<h2>
+    <br>What is a webhook?
+</h2>
+<p>A webhook is what allows CircleCI to automatically take action every time you push a commit. GitHub will send us a packet of information about your project when a number of events occur, a <em>"</em><em>push"</em> being the most popular.</p>
+<p><a href="https://docs.github.com/en/developers/webhooks-and-events/about-webhooks" target="_self">GitHub developer docs | Webhooks</a></p>
+<p> </p>
+<h2>How to find your webhooks</h2>
+<ol>
+    <li>Navigate to your repository's settings page.</li>
+    <li>Select "<strong>Webhooks</strong>"<strong> </strong>in the left menu. (Alternatively, you can reach this page directly -&gt; <em>https://github.com/&lt;ORG&gt;/&lt;REPO&gt;/settings/hooks)</em>
+    </li>
+    <li>You should now see a page similar to the following:<br><br><img src="https://support.circleci.com/hc/article_attachments/360061584832/GH_repo_settings.png" alt="GH_repo_settings.png" width="776" height="229"><br><br>
+    </li>
+    <li>From here, click on the CircleCI webhook URL, and scroll down to "<strong>Recent Deliveries</strong>".<br><br><img style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" src="https://support.circleci.com/hc/article_attachments/360031366014/Screen_Shot_2019-04-11_at_5.05.23_PM.png" alt="Screen_Shot_2019-04-11_at_5.05.23_PM.png" width="583" height="313"><br><br>
+    </li>
+    <li><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Click on any entry to view the delivery details. This will show the Headers and Payload of the webhook.<br><br><img src="https://support.circleci.com/hc/article_attachments/360032192553/Screen_Shot_2019-04-11_at_5.06.12_PM.png" alt="Screen_Shot_2019-04-11_at_5.06.12_PM.png" width="531" height="285"></span></li>
+</ol>
+<p> </p>
+<p>The<strong> X-GitHub-Delivery</strong> value (which is the same as the id you clicked on to open this delivery) is useful for tracking your webhook. Support can use this to do further investigation if needed.<br><br></p>
+<p>In the <strong>Payload</strong> section under the <strong>SHA</strong> value, you can find the commit hash to ensure the webhook is referring to the correct commit.</p>
+<p>You can also check the response back from CircleCI when GitHub sent the response. Switch from the "<strong>Request</strong>" tab to the "<strong>Response</strong>" tab. If you see a "200" response, your WebHook was delivered successfully.</p>
+<p> </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360032193953/Screen_Shot_2019-04-11_at_5.31.21_PM.png" alt="Screen_Shot_2019-04-11_at_5.31.21_PM.png" width="244" height="180"></p>

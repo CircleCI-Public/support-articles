@@ -1,0 +1,4 @@
+<p>In order to save an environment variable with newlines, the variable can be base64 encoded before saving and then unencoded during the CircleCI build.</p>
+<pre>cat example.txt | base64 -w 0</pre>
+<p>That value can then be copied and pasted into the CircleCI dashboard and used during a CircleCI build:</p>
+<pre>MY_UNENCODED_VALUE=$(echo $MY_ENCODED_VALUE | base64 -d)</pre>

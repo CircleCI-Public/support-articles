@@ -1,0 +1,26 @@
+id: 360045029591
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360045029591.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360045029591-Can-I-use-Docker-within-the-macOS-executor-
+author_id: 382351624233
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: 1
+vote_count: 3
+section_id: 115003327088
+created_at: '2020-06-16T09:24:46Z'
+updated_at: '2020-10-22T06:59:40Z'
+name: Can I use Docker within the macOS executor?
+title: Can I use Docker within the macOS executor?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:40Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>Setting up and running Docker within the macOS executor is a setup that we do not provide official support for.</p>\n<p>Whilst it may be possible to set this up manually, there are many pitfalls to be aware of.\_Docker on macOS has to run a Linux VM to create containers so this essentially means that you will be running a containers in a VM, within a VM (nested virtualisation).</p>\n<p>As a result of the nested virtualisation, you may run into hostname/ip conflicts and lack of CPU/Memory resources, causing jobs to fail.</p>\n<p>If you need to run docker commands, we suggest the use of the <a href=\"https://circleci.com/docs/2.0/building-docker-images/\" target=\"_self\">Remote Docker environment</a> from within the Docker executor.</p>"

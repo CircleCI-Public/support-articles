@@ -1,0 +1,16 @@
+<p>If you find yourself in a situation where your cache is being restored successfully but you believe that the files you are expecting are missing, take a look at the size of the cache being restored.</p>
+<pre><code>
+Found a cache from build 1 at v1-CACHE_KEY
+Size: 32 B Cached paths: * /home/circleci/...
+Downloading cache archive...
+Validating cache...
+Unarchiving cache...
+</code></pre>
+<p>The 32B file size indicates the size of an empty tarball which was created in the previous <code>save cache</code> step.</p>
+<p><br> You will also often see in the <code>save_cache</code> step that the step has been skipped as the contents have not changed due to them being empty.<br> </p>
+<pre><code>
+Skipping cache generation, cache already exists for key:
+</code></pre>
+<p> </p>
+<p>Take a look at the <code>save cache</code> step and ensure the proper paths are being saved and their contents are not empty.</p>
+<p>You can implement <code>ls</code> commands within your config to help identify what files are going to be saved or connect to your container over <a href="https://circleci.com/docs/2.0/ssh-access-jobs/">SSH to manually inspect</a>.</p>

@@ -1,0 +1,33 @@
+<p dir="auto"> </p>
+<p dir="auto">Users often times would like to customize Slack messages to represent CircleCI and include important build information. Below is a template using markdown to get you started.</p>
+<p dir="auto">You can also change the name of your slack bot user to "CircleCI". You can do this by navigating to<span> </span><a href="https://api.slack.com/apps/" rel="noreferrer">https://api.slack.com/apps/</a><span> </span>&gt; your app &gt; Display Information &gt; App name</p>
+<p dir="auto">You can update you app icon to include a CircleCI logo. You can find CircleCI logos and Icons here: <a href="https://brandfolder.com/circleci">https://brandfolder.com/circleci</a></p>
+<p dir="auto"> </p>
+<p dir="auto">Example Slack Notification with Custom message: </p>
+<pre dir="ltr">
+- slack/notify:
+          event: fail
+          custom: | 
+            {
+                "blocks": [
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": "Failed: $CIRCLE_USERNAME's build of \n&lt;$CIRCLE_BUILD_URL|$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME&gt;\n(&lt;https://app.circleci.com/pipelines/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME?branch=$CIRCLE_BRANCH|$CIRCLE_BRANCH&gt;) \n- &lt;$CIRCLE_BUILD_URL|$CIRCLE_JOB&gt; failed" 
+                        }
+                    }
+                ]
+            }  
+
+</pre>
+<p dir="auto">You might also find it useful to use one of CircleCI's pre-built message templates which you can find <a href="https://github.com/CircleCI-Public/slack-orb/wiki#templates" target="_self">here</a>. Additionally, you can find the source code to these pre-build message templates here: <span> </span><a href="https://github.com/CircleCI-Public/slack-orb/tree/master/src/message_templates" rel="noreferrer">https://github.com/CircleCI-Public/slack-orb/tree/master/src/message_templates</a></p>
+<p dir="auto">You can build your own custom templates using <a href="https://app.slack.com/block-kit-builder/" target="_self">Slack's BlocK Kit Builder .</a></p>
+<p dir="auto"><strong>Note: The above solution is valid for Slack Orb Version 4.1.1</strong></p>
+<div class="css-c40d8m">
+    <div class="css-cssveg" data-testid="orb-version-dropdown">
+        <div class="css-egl6gz">
+            <div class="css-1d79wk7" size="16" color="#000000"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+id: 360021624194
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360021624194.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360021624194-Test-summary-troubleshooting
+author_id: 25261361207
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -5
+vote_count: 17
+section_id: 115003756627
+created_at: '2019-04-17T11:33:19Z'
+updated_at: '2020-12-02T00:44:22Z'
+name: Test summary troubleshooting
+title: Test summary troubleshooting
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:10Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>The test summary in the UI is a place where we display some basic information about tests such as which tests failed, or what the slowest tests were.\_For basic configuration to set upå the test summary you can\_<a href=\"https://circleci.com/docs/2.0/collect-test-data/\">view our docs</a>. This document will outline some caveats, limitations, and common issues people run into when trying to get the test summary working.</p>\n<h2>\_</h2>\n<h2>JUnit is the only supported format</h2>\n<p>The only test reporting format we support is JUnit. JUnit is not exactly a standard format, so each test reporting tool may output their JUnit differently. This can also be the source of some issues. For instance if you want to use test timing based splitting your JUnit files most pass the <strong>file\_</strong>parameter with test cases.\_You can validate your JUnit results on CircleCI using this validator:\_<a href=\"https://github.com/levlaz/circleci-test-results-validator\">https://github.com/levlaz/circleci-test-results-validator</a></p>\n<h2>XML files must be in a subfolder</h2>\n<p>Test data must be inside a subfolder of whatever path is provided to\_<code>store_test_results</code>.\_<br><br><img class=\"confluence-embedded-image confluence-thumbnail\" title=\"Customer Engineering &gt; Troubleshoot test summary configuration &gt; image2019-4-17_11-32-34.png\" src=\"https://circleci.atlassian.net/wiki/download/thumbnails/54198295/image2019-4-17_11-32-34.png?version=1&amp;modificationDate=1555497156735&amp;cacheVersion=1&amp;api=v2&amp;width=300\" width=\"300\" data-linked-resource-default-alias=\"image2019-4-17_11-32-34.png\" data-linked-resource-container-id=\"54198295\" data-linked-resource-container-version=\"2\" data-location=\"Customer Engineering &gt; Troubleshoot test summary configuration &gt; image2019-4-17_11-32-34.png\" data-linked-resource-id=\"54231065\" data-linked-resource-version=\"1\" data-linked-resource-type=\"attachment\" data-unresolved-comment-count=\"0\" data-linked-resource-content-type=\"image/png\" data-media-type=\"file\" data-media-id=\"5d324e28-272f-4b3a-b7b3-1acaa62aef4c\" data-base-url=\"https://circleci.atlassian.net/wiki\" data-image-width=\"530\" data-image-src=\"https://circleci.atlassian.net/wiki/download/attachments/54198295/image2019-4-17_11-32-34.png?version=1&amp;modificationDate=1555497156735&amp;cacheVersion=1&amp;api=v2\" data-image-height=\"190\"><br><br>If their path is set to\_<code>test-results</code> then the test report XML must be in a subfolder of <code>test-results</code>, and not directly within it. for example:\_<code>test-results/somefolder/report.xml</code></p>\n<p>\_</p>\n<h2>Subfolders cannot be hidden folders</h2>\n<p>Test data subfolders cannot be hidden folders.\_<code>test-results/.somefolder/report.xml</code> would be ignored by our system.</p>\n<p>\_</p>\n<h2>Test files cannot be larger than 15MB</h2>\n<p>Test files larger than 15MB will fail to upload, though it will not show this failure in the UI. It fails silently in the background.\_</p>\n<p>\_</p>\n<p>\_</p>"

@@ -1,0 +1,21 @@
+<p>If notification email links hang and do not redirect to the CircleCI workflow, follow the steps below to reset the cache https redirect.</p>
+<p>You can also simply clear your entire browser cache.</p>
+<h1>Google Chrome</h1>
+<ol>
+    <li>Go to this location in your browser:<br><code>chrome://net-internals/#dns</code>
+    </li>
+    <li>Click "Clear host cache"</li>
+    <li>Go to this location<br><code>chrome://net-internals/#hsts</code>
+    </li>
+    <li>At the bottom of the page, you should see "Delete domain security policies"<br>- Enter in "email.circleci.com" and click "Delete"<br>- Enter in "mailgun.org" and click "Delete"</li>
+    <li>Do not reload one of the previous pages if they are in your browser.</li>
+</ol>
+<h1>Firefox</h1>
+<ol>
+    <li>Click the "Show Sidebars" button in the browser toolbox</li>
+    <li>In sidebar select "History" from the context drop down</li>
+    <li>Type "email.circleci" in the search box</li>
+    <li>Right click on the result and click "Forget About This Site"</li>
+</ol>
+<p> </p>
+<p>All links in the email you provided and any new or previous links should now work with your browser if you click on them.</p>

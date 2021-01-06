@@ -1,0 +1,16 @@
+<p>Here is a trick to give yourself a cache that is cleared daily. This is not required or recommended for many use cases but can prove potentially useful for some instances.</p>
+<p>For instance, in building static blog sites that fetch from external API's, you may want to clear your cache periodically to ensure any new information is fetched.</p>
+<p><strong>How:</strong></p>
+<p>Early in your job create a file containing today's date without a timestamp</p>
+<pre><code>- run: date +%F &gt; date</code></pre>
+<p>You can now use this file to test against when choosing when to rebuild cache by utilizing the checksum template.</p>
+<pre><code>
+      - restore_cache:
+          keys:
+            - date-cache-{{ checksum "date" }}
+      - save_cache:
+            key: date-cache-{{ checksum "date" }}
+            paths:
+                - "/docs"
+</code></pre>
+<p> The checksum of the <code>date</code> file will remain static until the next day, at which point a new cache will be created.</p>

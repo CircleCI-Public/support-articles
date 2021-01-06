@@ -1,0 +1,29 @@
+id: 360051749992
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360051749992.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360051749992-Build-fails-on-apt-get-update-command
+author_id: 405652843914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 1
+vote_count: 1
+section_id: 115003756627
+created_at: '2020-11-05T21:13:56Z'
+updated_at: '2020-11-19T14:14:18Z'
+name: Build fails on 'apt-get update' command
+title: Build fails on 'apt-get update' command
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-11-05T21:14:20Z'
+user_segment_id: null
+permission_group_id: 237847
+label_names:
+  - apt-get
+  - debian
+  - backports
+body: "<p>Additional information can be found here: <a href=\"https://discuss.circleci.com/t/some-builds-failing-due-to-apt-get-update/38018\">https://discuss.circleci.com/t/some-builds-failing-due-to-apt-get-update/38018</a></p>\n<p>We’re starting to see reports of CircleCI builds failing due to an error when running<span>\_</span><code>apt-get update</code>. The problem we’re tracking is due to the Debian repository for Debian Stretch (Debian 9) removing the backports component of their repository.</p>\n<p>The error:</p>\n<blockquote>\n<p>Could not open file /var/lib/apt/lists/deb.debian.org_debian_dists_stretch-backports_main_binary-amd64_Packages.diff_Index - open (2: No such file or directory)</p>\n</blockquote>\n<h2>Affected Images</h2>\n<p>We’re seeing images have this issue that are:</p>\n<ol>\n<li>based on Debian 9 (Stretch)</li>\n<li>older images (last built more than 90 days ago)</li>\n</ol>\n<h2>Solutions</h2>\n<p>There are a few solutions you can take for your project depending on which works best for you:</p>\n<ol>\n<li>Use an image tag that updates the primary version of your software. For example, an image we know affected is<span>\_</span><code>circleci/ruby:2.6.5-stretch-node-browsers</code>. This contains Ruby v2.6.5 which is fairly old. Newer patch releases, such as Ruby v2.6.6 are not affected by this issue.</li>\n<li>Use a newer base OS. Using the same affected image as an example,<span>\_</span><code>circleci/ruby:2.6.5-stretch-node-browsers</code>, this image uses Debian 9 (Stretch) as a base, which is 3+ years old. Removing the string<span>\_</span><code>stretch</code><span>\_</span>will use a newer Debian or Ubuntu base, which is unaffected by this issue. For example, you could use<span>\_</span><code>circleci/ruby:2.6.5-node-browsers</code>.</li>\n<li>Use a next-gen Convenience Image. The next-gen Convenience Images aren’t affected by this issue as they’re all Ubuntu 18.04 or Ubuntu 20.04 based.</li>\n<li>You can patch this issue without changing the image by deleting the Apt cache before running<span>\_</span><code>sudo apt-get update</code>. This would look like this:</li>\n</ol>\n<pre style=\"background-color: #f3f3f3;\">- run: |\n    sudo rm -rf /var/lib/apt/lists/*\n    sudo apt-get update</pre>"

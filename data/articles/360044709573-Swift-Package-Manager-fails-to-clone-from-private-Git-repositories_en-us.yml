@@ -1,0 +1,27 @@
+id: 360044709573
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360044709573.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360044709573-Swift-Package-Manager-fails-to-clone-from-private-Git-repositories
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 5
+vote_count: 35
+section_id: 115003327088
+created_at: '2020-03-09T12:11:13Z'
+updated_at: '2020-12-06T23:16:23Z'
+name: Swift Package Manager fails to clone from private Git repositories
+title: Swift Package Manager fails to clone from private Git repositories
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:56:19Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - xcode
+body: "<p dir=\"auto\">If you are using Swift Package Manager as part of the <code>xcodebuild</code> process, you may find that this fails with the following error message:</p>\n<pre class=\"output\"><span class=\"pre\"><span class=\"white\">xcodebuild: error: Could not resolve package dependencies:\n  Authentication failed because the credentials were rejected</span></span></pre>\n<p dir=\"auto\">Or</p>\n<pre class=\"css-9561s5\">xcodebuild: error: Could not resolve package dependencies:\n  The server SSH fingerprint failed to verify.\n</pre>\n<p dir=\"auto\">This issue will only occur when trying to access private git repos when using SSH key authentication.</p>\n<p dir=\"auto\">This is caused by a bug in the way that <code>xcodebuild</code> handles SSH keys and has been a known bug since the debut of Xcode 11, occurring both locally, but more specifically, in a CI environment.</p>\n<p dir=\"auto\"><code>xcodebuild</code>\_does not conform to the system ssh config and does not access the keys CircleCI stores in <code>ssh-agent</code>. We can work around this by requesting Xcode uses the main system version of ssh which will behave as expected.</p>\n<p dir=\"auto\">The workaround for this is to add the following lines to your config file, directly after the\_<code>checkout</code>\_step:</p>\n<pre dir=\"auto\">- run: sudo <span>defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM YES</span><br>- run: rm ~/.ssh/id_rsa || true<br>- run: for ip in $(dig @8.8.8.8 bitbucket.org +short); do ssh-keyscan bitbucket.org,$ip; ssh-keyscan $ip; done 2&gt;/dev/null &gt;&gt; ~/.ssh/known_hosts || true <br>- run: for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2&gt;/dev/null &gt;&gt; ~/.ssh/known_hosts || true</pre>"

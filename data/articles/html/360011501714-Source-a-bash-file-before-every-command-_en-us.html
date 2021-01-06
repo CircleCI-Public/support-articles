@@ -1,0 +1,6 @@
+<p>CircleCI defines an environment variable called BASH_ENV at the start of every build. You can see what this variable is set to at the "Spinning up environment" step.</p>
+<p>This can be overridden in the config file or anywhere else that environment variables can be set (e.g. project settings, contexts, etc.).</p>
+<p> If the file exists, it will be sourced with code like the following before every step is executed.</p>
+<pre>. $BASH_ENV </pre>
+<p>This is useful for all sorts of things. If a piece of code generates environment variables used in later steps, adding those variables to the BASH_ENV file is how to get that done, for instance.</p>
+<p>This is actually documented, but is easy to miss: <a href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-shell-command">https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-shell-command</a></p>

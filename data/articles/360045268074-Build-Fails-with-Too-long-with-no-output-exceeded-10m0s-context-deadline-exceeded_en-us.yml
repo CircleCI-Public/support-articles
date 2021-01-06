@@ -1,0 +1,30 @@
+id: 360045268074
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360045268074.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360045268074-Build-Fails-with-Too-long-with-no-output-exceeded-10m0s-context-deadline-exceeded-
+author_id: 403418857853
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 2
+vote_count: 28
+section_id: 115003756627
+created_at: '2020-03-28T00:26:25Z'
+updated_at: '2021-01-05T01:45:33Z'
+name: >-
+  Build Fails with "Too long with no output (exceeded 10m0s): context deadline
+  exceeded"
+title: >-
+  Build Fails with "Too long with no output (exceeded 10m0s): context deadline
+  exceeded"
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-03-28T00:26:39Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>In CircleCI, a command will be killed if a certain period of time has passed with no output. By default, this is 10 minutes. This is designed to prevent errors in builds from hanging using a large number of credits unintentionally.</p>\n<p>Some test runners and tools make use of what is known as output buffering. This is where the program will wait to output text in batches as opposed to line by line. Sometimes, all output will be buffered until the process exits. If a test or task requires more than 10 minutes and is buffering its output, this can cause CircleCI to kill the step as there has been no output during that time</p>\n<p>In Python, this can be sometimes be disabled via the <a href=\"https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUNBUFFERED\" target=\"_self\">PYTHONUNBUFFERED</a>\_environment variable. This can be set in a job step via export:</p>\n<pre>steps:<br>  - run:<br>      name: Run Tests<br>      command: |<br>        export PYTHONUNBUFFERED=1<br>        python -m unittest</pre>\n<p>If the task does not have a way to generate any output, the default context deadline can be increased</p>\n<pre>steps:<br> - run:<br>     name: Run Tests<br>     no_output_timeout: 30m<br>\_ \_ \_command: python -m unittest</pre>\n<p>The job step can also timeout because there is an issue with the tests or task is actually hanging. Some examples of causes of this would be where a process is waiting for user input or a loop is polling a network resource that never comes available.</p>"

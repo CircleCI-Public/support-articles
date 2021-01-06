@@ -1,0 +1,26 @@
+id: 360048249271
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360048249271.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360048249271-SOC-2-and-FedRAMP-Reports
+author_id: 379006459554
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 360000990713
+created_at: '2020-08-18T23:25:00Z'
+updated_at: '2020-08-18T23:25:21Z'
+name: SOC 2 and FedRAMP Reports
+title: SOC 2 and FedRAMP Reports
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-08-18T23:25:21Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>In 2018, CircleCI was authorized by FedRAMP (the federal government’s program for assessing and authorizing technology vendors), making CircleCI the first CI/CD tool to meet the rigorous security and privacy standards required by government agencies. Now CircleCI is also\_SOC 2 compliant, adding another industry-recognized security accreditation.</p>\n<p>You can read more in our blog posts:</p>\n<p><a href=\"https://circleci.com/blog/modernizing-federal-devops-circleci-becomes-first-continuous-integration-tool-with-fedramp-authorization/\" target=\"_self\">Modernizing federal DevOps: CircleCI becomes first continuous integration tool with FedRAMP authorization</a></p>\n<p><a href=\"https://circleci.com/blog/continuous-integration-that-you-can-trust/\" target=\"_self\">Continuous integration that you can trust: announcing SOC 2 compliance</a></p>\n<p>By filling out <a href=\"https://circleci.com/talk-to-us/?source-button=SOC2\" target=\"_self\">this form</a>, we will email you a copy of both documents for your review.</p>\n<p>If you experience any issues or have questions regarding these documents, please reach out to <a href=\"mailto:security@circleci.com\">security@circleci.com</a>\_</p>"

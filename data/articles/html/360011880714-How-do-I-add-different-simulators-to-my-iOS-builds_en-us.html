@@ -1,0 +1,8 @@
+<p>The Xcode images are preinstalled with recent versions of the simulator runtime. A list of the simulator runtimes, along with simulator devices, can be found in the <a href="https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions" target="_blank" rel="noopener">image manifest</a>. </p>
+<h3>Adding a simulator runtime</h3>
+<p>If a different simulator runtime is required for your tests, you can use the <a href="https://github.com/xcpretty/xcode-install" target="_self">xcode-install</a> gem to download these within your job. For example:</p>
+<pre>-run: gem install xcode-install<br>-run: xcversion simulators --install="13.2" --no-progress</pre>
+<p>Please note that downloading additional simulator runtimes may increase build times.</p>
+<h3>Creating a new simulator</h3>
+<p dir="auto">If you need to create a specific simulator combination that is not provided by default, you can create these with the <code>xcrun simctl create</code> command. An example may look like this:</p>
+<pre dir="ltr">-run: xcrun simctl create 'iPhone 11 (13.2)' com.apple.CoreSimulator.SimDeviceType.iPhone-11 com.apple.CoreSimulator.SimRuntime.iOS-13-2</pre>

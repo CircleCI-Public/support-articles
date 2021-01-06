@@ -1,0 +1,30 @@
+id: 360024275534
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360024275534.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360024275534-Uploading-artifacts-is-slow
+author_id: 377853350854
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 7
+vote_count: 51
+section_id: 115003756627
+created_at: '2019-06-06T17:22:08Z'
+updated_at: '2021-01-05T02:30:51Z'
+name: Uploading artifacts is slow
+title: Uploading artifacts is slow
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:57:53Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - artifacts
+  - builds
+  - optimization
+  - store_artifacts
+body: "<p>If you are uploading several hundred files as\_<a href=\"https://circleci.com/docs/2.0/artifacts/\" target=\"_blank\" rel=\"noopener\">Artifacts</a> and you are seeing long durations for the\_<code>store_artifacts</code>\_step(s), you should consider:</p>\n<ol>\n<li>Compressing all of the files.</li>\n<li>Uploading as a single compressed file.</li>\n</ol>\n<div style=\"background-color: rgba(27,31,35,0.05);\">\n<pre><span>- </span><span>run</span><span>:</span><br><span></span><span>\_ \_ name</span><span>: </span><span>Compress Artifacts</span><br><span></span><span>\_ \_ command</span><span>: </span><span>tar -cvzf myartifact.tar path/to/artifacts</span><br><br><span>- </span><span>store_artifacts</span><span>: </span><br><span></span><span>\_   path</span><span>: </span><span>myartifact.tar</span><br><span></span><span>\_ \_ destination</span><span>: </span><span>artifact_name</span></pre>\n</div>\n<p>\_</p>\n<p>\_</p>"

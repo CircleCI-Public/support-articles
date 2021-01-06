@@ -1,0 +1,31 @@
+id: 360009144794
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360009144794.json
+html_url: https://support.circleci.com/hc/en-us/articles/360009144794-macOS-resources
+author_id: 26863412148
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 2
+section_id: 115003327088
+created_at: '2018-09-13T14:26:37Z'
+updated_at: '2020-10-22T06:58:18Z'
+name: macOS resources
+title: macOS resources
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:58:18Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - xcode
+  - macOS
+  - resource class
+  - macos
+  - executor
+  - disk space
+body: "<p>The macOS executor offers two <code>resource_class</code> levels:</p>\n<p>- Medium: 4\_vCPUs, 8GB RAM</p>\n<p>- Large*: 8 vCPUs, 16GB RAM</p>\n<p>*<em>This resource size requires review by our account team. Feel free to open a support ticket if you would like to request access</em></p>\n<p>Additional details and how to set a <code>resoruce_class</code> can be found in our <a href=\"https://circleci.com/docs/2.0/configuration-reference/#macos-executor\" target=\"_blank\" rel=\"noopener\">configuration documentation.</a></p>\n<p>Disk space is not dependent on the <code>resource_class</code> size and is instead affected by the Xcode version you are using. You can view the available disk space per version within our <a href=\"https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions\" target=\"_blank\" rel=\"noopener\">Xcode version documentation</a>. Click the \"Installed Software\" link on the version you are using to get specifications.\_</p>"

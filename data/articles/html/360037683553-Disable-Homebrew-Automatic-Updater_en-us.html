@@ -1,0 +1,4 @@
+<p>Homebrew, by default, will check for updates at the start of any operation, meaning the step execution can take some extra time to complete.</p>
+<p>It is best practise to leave Homebrew to automatically update, but if build speed, or bugs introduced by new updates, are of a concern, this can be disabled.</p>
+<p>To disable this feature, add the following line to your config.yml before calling Homebrew:</p>
+<pre>- run: echo "HOMEBREW_NO_AUTO_UPDATE=1" &gt;&gt; $BASH_ENV</pre>

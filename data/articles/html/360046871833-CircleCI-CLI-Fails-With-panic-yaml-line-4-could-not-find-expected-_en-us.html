@@ -1,0 +1,6 @@
+<p>Running various CircleCI CLI commands can fail with the error</p>
+<pre>panic: yaml: line 4: could not find expected ':'</pre>
+<p>This can be caused by a corrupted <code>~/.circleci/cli.yml</code> file. To resolve the issue, delete the contents of the <code>~/.circleci</code> folder and re-run setup.</p>
+<pre>rm ~/.circleci/*<br>circleci setup</pre>
+<p>You can then add a previous or newly created <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_self">Personal API Token</a>.</p>
+<p>If a similar error occurs when running <code>circleci validate</code>, but does not occur when running commands like <code>circleci version</code> or <code>circleci setup</code>, then this likely do to an error in the Orb YAML and is not related to a corruption of the <code>~/.circleci/cli.yml</code> file.</p>

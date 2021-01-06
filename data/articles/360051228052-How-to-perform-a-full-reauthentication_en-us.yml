@@ -1,0 +1,32 @@
+id: 360051228052
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360051228052.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360051228052-How-to-perform-a-full-re-authentication
+author_id: 403103999173
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -2
+vote_count: 2
+section_id: 115003332287
+created_at: '2020-10-28T12:22:14Z'
+updated_at: '2020-12-03T10:02:12Z'
+name: How to perform a full re-authentication
+title: How to perform a full re-authentication
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-11-12T21:07:07Z'
+user_segment_id: null
+permission_group_id: 237847
+label_names:
+  - organization
+  - authentication
+  - blocked
+  - unauthorized
+  - token
+  - OAuth
+body: "<p>As a solution to various issues (including <a href=\"https://support.circleci.com/hc/en-us/articles/360050273651-Builds-Unauthorized-due-to-contexts\" target=\"_blank\" rel=\"noopener\">unauthorized</a> or blocked builds, <a href=\"https://support.circleci.com/hc/en-us/articles/115014599088-My-GitHub-organization-is-not-listed\" target=\"_blank\" rel=\"noopener\">organization is not listed</a>, ...etc), and in case <a href=\"https://support.circleci.com/hc/en-us/articles/360048210711-How-to-Refresh-User-Permissions-\" target=\"_blank\" rel=\"noopener\">refreshing permissions</a> didn't solve the issue, CircleCI Support might suggest a full re-authentication.</p>\n<p>Depending on the VCS you're using (<a href=\"#h_01ENQJ8A7ZTV38JV7NHCHKE51D\" target=\"_self\">GitHub</a> or <a href=\"#h_01ENQJ8A7ZTV38JV7NHCHKE51D\" target=\"_self\">Bitbucket</a>), you can perform this operation as outlined below.<br><br></p>\n<h3 id=\"h_01ENQJ8A7ZTV38JV7NHCHKE51D\">GitHub users</h3>\n<ol>\n<li><span class=\"name\" data-wfid=\"0702cd7efbc8\"><span class=\"innerContentContainer\">Sign out of your CircleCI account</span></span></li>\n<li><span class=\"name\" data-wfid=\"b0b356666999\"><span class=\"innerContentContainer\">Revoke CircleCI's access\_in GitHub &gt; <a class=\"contentLink\" href=\"https://github.com/settings/applications\" target=\"_blank\" rel=\"noopener noreferrer\">https://github.com/settings/applications</a></span></span></li>\n<li><span class=\"name\" data-wfid=\"ca04bb988bce\"><span class=\"innerContentContainer\">Clear your browser's cache and cookies</span></span></li>\n<li><span class=\"name\" data-wfid=\"ab17e95c340a\"><span class=\"innerContentContainer\">Sign back into your CircleCI account</span></span></li>\n</ol>\n<h3 id=\"h_01ENQJ8A7ZTV38JV7NHCHKE51D\">\n<br>Bitbucket users</h3>\n<ol>\n<li><span class=\"name\" data-wfid=\"0702cd7efbc8\"><span class=\"innerContentContainer\">Sign out of your CircleCI account</span></span></li>\n<li><span class=\"name\" data-wfid=\"b0b356666999\"><span class=\"innerContentContainer\">Revoke CircleCI's access <span>in Bitbucket &gt;\_</span><a class=\"contentLink\" href=\"https://bitbucket.org/account/settings/app-authorizations/\" target=\"_blank\" rel=\"noopener\">https://bitbucket.org/account/settings/app-authorizations/</a></span></span></li>\n<li><span class=\"name\" data-wfid=\"ca04bb988bce\"><span class=\"innerContentContainer\">Clear your browser's cache and cookies</span></span></li>\n<li><span class=\"name\" data-wfid=\"ab17e95c340a\"><span class=\"innerContentContainer\">Sign back into your CircleCI account</span></span></li>\n</ol>"

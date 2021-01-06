@@ -1,0 +1,52 @@
+id: 360039061974
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360039061974.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360039061974-Can-I-use-rbenv-on-macOS-
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003327088
+created_at: '2019-11-26T16:27:09Z'
+updated_at: '2020-10-22T07:00:42Z'
+name: Can I use rbenv on macOS?
+title: Can I use rbenv on macOS?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T07:00:42Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - macOS
+  - rbenv
+body: >-
+  <p>The only officially supported way to change the Ruby version on CircleCI
+  macOS machines is to use chruby. We ship chruby and various Ruby versions
+  already configured with every Xcode image.</p>
+
+  <p>You can find out how to use chruby to switch Rubies in our <a
+  href="https://circleci.com/docs/2.0/testing-ios/#using-custom-ruby-versions"
+  target="_self">documentation</a>.</p>
+
+  <h2>Common Issues with rbenv</h2>
+
+  <p>We highly suggest switching to chruby, as above, due to its simplicity, but
+  here are a few common rbenv issues and some pointers on how to resolve
+  them.</p>
+
+  <p><em>You installed a gem, such as fastlane, but when you run it the version
+  is older than the version you just installed.</em></p>
+
+  <p>This is a common issue with rbenv due to the way it installs gems using <a
+  href="https://github.com/rbenv/rbenv#understanding-shims"
+  target="_self">shims</a>. If these shims are not updated, then they will
+  continue to point to an older version of the gem. Try running the command
+  <em>rbenv rehash</em> to update these - more information <a
+  href="https://github.com/rbenv/rbenv#rbenv-rehash"
+  target="_self">here</a>.</p>

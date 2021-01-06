@@ -1,0 +1,14 @@
+<p>Sometimes during a build, you may want to end the job early without generating a failure.</p>
+<p>You can end a job gracefully by running the command: <code class="highlighter-rouge">circleci-agent step halt</code></p>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">You can combine this with </span><code class="highlighter-rouge" style="font-size: 15px;">if</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> </span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">statements or </span><code class="highlighter-rouge" style="font-size: 15px;">when</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> steps </span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">to control the lifecycle of the job conditionally.</span></p>
+<h3><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Examples:</span></h3>
+<ul>
+    <li><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"><strong><code class="highlighter-rouge" style="font-size: 15px;">if</code> statement:</strong><br></span></li>
+</ul>
+<pre class="bash-command" title="The full bash command used to run this setup">run: |<br>    if [ "$CIRCLE_BRANCH" = "develop" ]; then<br><strong>        <span>circleci-agent</span> step halt</strong>
+    fi</pre>
+<p> </p>
+<ul>
+    <li><strong><code class="highlighter-rouge" style="font-size: 15px;">when</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> step:</span></strong></li>
+</ul>
+<pre>- when:<br>    condition: false<br>    steps:<br>      - run:<br>          command: <strong>circleci-agent step halt</strong></pre>

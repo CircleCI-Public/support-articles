@@ -1,0 +1,8 @@
+<p>When you first publish your commit to your VCS, the webhook will fire and CircleCI will download your code and run your project. Later when you create the pull request, a new commit ID is generated and you might expect this to run on CircleCi again, but it will not.</p>
+<p>We do not run code twice that hasn't been modified to save you time, resources, and money. If the tests have already passed, there is no reason to test the code again. What will happen is the original job run on your account will be updated to show that it is now a pull request.</p>
+<p>In the original run of the job, before it was a pull request, data such as `$CIRCLE_PULL_REQUEST` will not exist. Then after you create the pull request and the job on CircleCi is updated to reflect that, the data will be present if the job is re-run.</p>
+<p>In the `Advanced Settings` page of your project's settings you can enable `Only build pull requests`</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360008113373/mceclip1.png" width="224" height="165"></p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360008069974/mceclip0.png" width="644" height="88"></p>
+<p>This will only allow commits to `Master` (your default branch), and pull requests to be run. This will resolve the issue above as the first commit will not be run, so when the pull request is created it can run properly.</p>
+<p> </p>

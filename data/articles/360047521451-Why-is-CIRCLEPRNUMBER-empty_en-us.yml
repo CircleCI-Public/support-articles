@@ -1,0 +1,30 @@
+id: 360047521451
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047521451.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360047521451-Why-is-CIRCLE-PR-NUMBER-empty-
+author_id: 405652843914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 1
+vote_count: 1
+section_id: 115003580328
+created_at: '2020-08-07T19:41:09Z'
+updated_at: '2020-10-22T06:57:45Z'
+name: Why is CIRCLE_PR_NUMBER empty?
+title: Why is CIRCLE_PR_NUMBER empty?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:57:45Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - environment variable
+  - pull request
+  - variable
+  - pull request number
+body: "<p dir=\"auto\">The<span>\_</span><code>CIRCLE_PR_NUMBER</code><span>\_variable\_</span>is only available on forked Pull Requests, we note that here:</p>\n<p dir=\"auto\"><a href=\"https://circleci.com/docs/2.0/env-vars/#built-in-environment-variables\" rel=\"noreferrer\">https://circleci.com/docs/2.0/env-vars/#built-in-environment-variables</a></p>\n<p><span>However,\_</span><code>CIRCLE_PULL_REQUEST</code><span>\_should be populated on any build associated with any pull request. You can then use the following to extract out just the PR number:</span></p>\n<pre style=\"background-color: #f3f3f3;\"><span>${CIRCLE_PULL_REQUEST##*/}</span></pre>\n<p>This would take the value which is normally something like:</p>\n<pre style=\"background-color: #f3f3f3;\">https://github.com/org/project/pull/1728</pre>\n<p>And turn it simply to:</p>\n<pre style=\"background-color: #f3f3f3;\">1728</pre>"

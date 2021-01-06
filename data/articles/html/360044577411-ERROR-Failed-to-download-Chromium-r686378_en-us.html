@@ -1,0 +1,14 @@
+<p>When utilizing Puppeteer you may intermittently encounter a build failure with the following error message:</p>
+<pre>ERROR: Failed to download Chromium r686378!</pre>
+<p>Your error may not be exactly the above, <code>r686378</code> is a reference to the version, so it could be another value. However, the general consensus is the following options have resolved the issue.</p>
+<h2>Set download host</h2>
+<p>An existing Puppeteer issue was opened regarding this and the following solution helped a lot of people, which is to set the download host specifically:</p>
+<p><a href="https://github.com/puppeteer/puppeteer/issues/1597#issuecomment-351945645">https://github.com/puppeteer/puppeteer/issues/1597#issuecomment-351945645</a></p>
+<h2>Set unsafe-perm param</h2>
+<p>A similar issue was opened by another Puppeteer user, however the solution was slightly different:</p>
+<p><a href="https://github.com/puppeteer/puppeteer/issues/3107#issuecomment-414313855">https://github.com/puppeteer/puppeteer/issues/3107#issuecomment-414313855</a></p>
+<p>This solution has setting <code>unsafe-perm</code> to true:</p>
+<pre>npm install puppeteer --unsafe-perm=true </pre>
+<h2>Download Chromium Directly</h2>
+<p>To allow for more control over where and how you are downloading Chromium, you can download it directly. You could even implement a <a href="https://stackoverflow.com/questions/42873285/curl-retry-mechanism" target="_blank" rel="noopener">retry functionality into your cURL</a> to ensure you get it downloaded.</p>
+<p>Then you would utilize <a href="https://github.com/puppeteer/puppeteer/blob/master/docs/api.md#environment-variables" target="_blank" rel="noopener">Puppeteers Environment Variables</a> to skip the Chromium download and point it to where you manually downloaded Chromium.</p>

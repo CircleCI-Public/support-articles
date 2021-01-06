@@ -1,0 +1,8 @@
+<p>The $BASH_ENV environment variable holds a string that holds the location of a file in the /tmp directory. This is used to pass values between steps in a CircleCI Job.</p>
+<p>Typically this is appended to and created within the same step</p>
+<pre>- run: echo "export MY_ENV_VAR=example" &gt;&gt; $BASH_ENV</pre>
+<p>If a build tries to access that value before it has been created it will result in a not found error</p>
+<pre>- run: cat $BASH_ENV</pre>
+<pre>cat: /tmp/.bash_env-5f3d6eeXXXXXXXa54XXXX-0-build: No such file or directory</pre>
+<p>The solution can be to either make sure to run at least one step that appends values to the file listed in $BASH_ENV or to simply touch the file</p>
+<pre>- run: touch $BASH_ENV</pre>

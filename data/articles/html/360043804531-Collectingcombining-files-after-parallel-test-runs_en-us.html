@@ -1,0 +1,4 @@
+<p>Some testing processes may require that all test results be in a single file for processing. When working with parallel testing this could mean each container has it's own test results. </p>
+<p>Getting all the files to a single file can be accomplished with a new "collection" job. This would be a job that requires the parallel job and collects all the test reports from the parallel containers <a href="https://circleci.com/docs/2.0/configuration-reference/#persist_to_workspace" target="_self">through workspaces</a>.</p>
+<p>Then you can combine the files within that "collection" job and pass it through via workspaces to your last job/step -- or alternatively you can process them within the "collection" job itself as needed.</p>
+<p> </p>

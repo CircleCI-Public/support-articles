@@ -1,0 +1,24 @@
+<h4>Sometimes you may want to build a Docker image in one job, and use it in a downstream job. For small images, you can achieve that by <a href="https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs" target="_blank" rel="noopener">using workspaces to share the data among jobs</a>.<span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> </span>
+</h4>
+<h3><strong>Build job</strong></h3>
+<ul>
+    <li>Build the Docker image<br><br>
+    </li>
+    <li>Save the image to a <em>tar</em> file<br>
+        <pre><code>docker save -o &lt;file path for generated tar file&gt; &lt;image name&gt;</code></pre>
+    </li>
+    <li>
+        <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Use the </span><code style="font-size: 15px;">persist_to_workspace</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> key to make the file </span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">available to other jobs.</span>
+    </li>
+</ul>
+<p> </p>
+<h3><strong>Downstream job(s)</strong></h3>
+<ul>
+    <li>Use the <code><span>attach_workspace</span></code> key to c<span>onfigure the job(s) to get the previously saved data<br><br></span>
+    </li>
+    <li>Load the Docker image from the workspace<br>
+        <pre><code>docker load -i &lt;path to image tar file&gt;</code></pre>
+    </li>
+</ul>
+<p> </p>
+<p><em><strong><span class="wysiwyg-color-black">Note</span>:</strong> If your images are large (&gt;~1GB) this will probably not be a great solution. You can try to gzip the images as well or consider strategies to reduce your images size.</em></p>

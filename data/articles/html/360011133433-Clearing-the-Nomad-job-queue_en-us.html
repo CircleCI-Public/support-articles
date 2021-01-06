@@ -1,0 +1,7 @@
+<p>When CircleCI jobs are queued or otherwise won't run, it is sometimes necessary to manually clear out the Nomad job queue as part of regular troubleshooting—refer to our <a href="https://circleci.com/docs/2.0/nomad" target="_blank" rel="noopener">Introduction to Nomad Cluster Operation</a> article for a basic overview.</p>
+<p>Running <strong><code>nomad</code> status</strong> while SSH'd into the Services machine will display all currently running Nomad jobs, each of which represents a specific CircleCI job.</p>
+<p>Running <strong><code>nomad stop $ID</code></strong> with a job ID from the ID column of this output will clear an individual job from the queue.</p>
+<p>However, the list of jobs can sometimes be very long, depending on how long queueing has been happening and how frequently developers have been pushing new commits.</p>
+<p>Instead of manually running <strong><code>nomad stop</code></strong> for each job in the queue, you can automate this process using the following series of shell commands:</p>
+<p><code>nomad status | awk 'NR&gt;1{print $1}' | xargs -iID replicated admin nomad stop ID</code></p>
+<p>These shell commands will cancel all queued/running jobs in the Nomad job queue.</p>

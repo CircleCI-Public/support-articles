@@ -1,0 +1,82 @@
+<p>Sometimes it becomes very important to retry a failed step instead of re-running a complete job (<strong>obviously to save time and money</strong>). In this article, we will see how to retry a step when it is failed using the "<strong><a href="https://circleci.com/docs/2.0/configuration-reference/#the-when-attribute" target="_blank" rel="noopener">when</a>"</strong> attribute with the help of a simple example. </p>
+<p> <strong>First of all</strong>, let see what are the different parameters of <code>when</code> attribute.</p>
+<ol>
+    <li>
+        <strong>when: on_success</strong> &gt;  This is the default option and means that the step will run only if all of the previous steps have been successful (returned exit code 0).
+    </li>
+    <li>
+        <strong>when: always</strong> &gt; This means that the step will run regardless of the exit status of previous steps.
+    </li>
+    <li>
+        <strong>when: on_fail</strong> &gt; This means that the step will run only if one of the preceding steps has failed (returns a non-zero exit code)
+    </li>
+</ol>
+<p> </p>
+<h2>Retrying a Failed Step</h2>
+<p>By default, CircleCI will execute job steps one at a time, in the order that they are defined in <code class="highlighter-rouge">config.yml</code>, until a step fails (returns a non-zero exit code). After a command fails, no further job steps will be executed.</p>
+<p>Adding the <code class="highlighter-rouge">when</code> attribute to a job step <span class="wysiwyg-underline">allows you to override this default behaviour,</span> and selectively run or skip steps depending on the status of the job.</p>
+<p> Now, let's understand this through a working example that how you can use <strong>when: on_fail</strong> to retry a failed step. </p>
+<p><strong> Below is the sample config.yml file where the step "<span class="wysiwyg-underline">Run on fail status</span>" will <span class="wysiwyg-underline">trigger</span> as the output of the previous step is a failure (exit 1)</strong>.</p>
+<p> </p>
+<pre>version: 2.1
+
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - build
+
+jobs:
+  build:
+
+    docker:
+      - image: circleci/python:3.7.5
+    steps:
+      - checkout
+      - run:
+          name: Run commands
+          command: |
+              echo "I will exit fail status"
+              exit 1
+      - run:
+          name: Run on fail status
+          command: |
+              echo "I am result of above failed job"
+          when: on_fail</pre>
+<p> </p>
+<p><strong>Note</strong>: You can use the same command in the next step (with when attribute), to retry it or any other command. Users can also use API endpoints to <a href="https://circleci.com/docs/api/#retry-a-build" target="_blank" rel="noopener">retry a build</a>. The above is just an example to show the working of <code>when</code> attribute.</p>
+<p>The below<strong> </strong>screenshot shows the triggering of step containing "<strong>when"</strong> attribute when previous step fails.<strong> </strong></p>
+<center><img src="https://support.circleci.com/hc/article_attachments/360059295453/when_exit1.png" alt="when attribute CircleCI - fail" width="549" height="487"></center>
+<p><strong>Note</strong>: The state of the workflow, in this case, will be <strong>FAILED.</strong></p>
+<p> </p>
+<p><strong> Below is the sample config.yml file where the step "<span class="wysiwyg-underline">Run on fail status</span>" will <span class="wysiwyg-underline">not trigger</span> as the output of the previous step is a success (exit 0)</strong>.</p>
+<pre>version: 2.1
+
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - build
+
+jobs:
+  build:
+
+    docker:
+      - image: circleci/python:3.7.5
+    steps:
+      - checkout
+      - run:
+          name: Run commands
+          command: |
+              echo "I will exit success status"
+              exit 0
+      - run:
+          name: Run on fail status
+          command: |
+              echo "I am result of above failed job"
+          when: on_fail</pre>
+<p>  </p>
+<center><img src="https://support.circleci.com/hc/article_attachments/360058391054/when_exit0.png" alt="when attribute CircleCI - Success" width="526" height="250"></center>
+<p> </p>
+<p>This was a simple demonstration of how you can use <code>when</code> attribute to retry a failed step.</p>
+<p><strong>Happy Building!</strong></p>

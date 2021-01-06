@@ -1,0 +1,27 @@
+id: 360043994872
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360043994872.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360043994872-How-to-record-a-job-s-memory-usage
+author_id: 4008831568
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: 8
+vote_count: 12
+section_id: 115003756627
+created_at: '2020-06-03T14:03:37Z'
+updated_at: '2020-12-29T06:32:26Z'
+name: How to record a job's memory usage
+title: How to record a job's memory usage
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-06-03T14:52:53Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - memory usage
+body: "<p>Machine and Docker users can output the max memory consumed by a job by adding the following step to their config:</p>\n<pre class=\"c-mrkdwn__pre\" data-stringify-type=\"pre\">- run:<br> \_<wbr></wbr> \_<wbr></wbr>command: cat /sys/fs/cgroup/memory/memory.max_usage_in_bytes<br> \_<wbr></wbr> \_<wbr></wbr>when: always</pre>\n<p>This step should be added as the last step in your job, to identify the max usage after all of the steps have completed.<br><br>Memory usage will be reported in bytes. You can convert to GiB using your favorite search engine to check it against the amount of RAM available to your job, according to its assigned <a href=\"https://circleci.com/docs/2.0/configuration-reference/#resource_class\" target=\"_self\">resource class</a>.</p>\n<p>This can help troubleshoot out-of-memory (OOM) errors.\_</p>\n<p>To log memory usage over time, you can also add this step as the first step in your job:</p>\n<pre class=\"c-mrkdwn__pre\" data-stringify-type=\"pre\">- run:<br> \_<wbr></wbr> \_<wbr></wbr>command: |<br> \_<wbr></wbr> \_<wbr></wbr> \_<wbr></wbr>while true; do<br> \_<wbr></wbr> \_<wbr></wbr> \_<wbr></wbr> \_<wbr></wbr>sleep 5<br> \_<wbr></wbr> \_<wbr></wbr> \_<wbr></wbr> \_<wbr></wbr>ps auxwwf<br> \_<wbr></wbr> \_<wbr></wbr> \_<wbr></wbr> \_<wbr></wbr>echo \"======\"<br> \_<wbr></wbr> \_<wbr></wbr> \_<wbr></wbr>done<br> \_<wbr></wbr> \_<wbr></wbr>background: true</pre>"

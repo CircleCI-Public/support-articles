@@ -1,0 +1,7 @@
+<p>Nested teams within GitHub do not automatically inherit a parent team's context permissions. If a parent team is selected as a security group for a context, child teams are <strong>not</strong> automatically granted access.</p>
+<p>In order to grant a GitHub child team access to context, you will need to add the team as a security group for the context. If a child team is not listed as a security group you will get an "Unauthorized" error when triggering a build in CircleCI's UI (example below).</p>
+<p> </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360065231791/Screen_Shot_2020-08-18_at_10_20_11_AM.png" alt="Screen_Shot_2020-08-18_at_10_20_11_AM.png"></p>
+<p> </p>
+<p> </p>
+<p>For more information on contexts please refer to our official documentation:  <a href="https://circleci.com/docs/2.0/contexts/" target="_self">https://circleci.com/docs/2.0/contexts/</a></p>

@@ -1,0 +1,32 @@
+id: 360047082992
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047082992.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360047082992-Send-slack-notification-at-end-of-workflow
+author_id: 405652843914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -6
+vote_count: 16
+section_id: 115004127248
+created_at: '2020-08-07T18:19:57Z'
+updated_at: '2021-01-04T20:29:30Z'
+name: Send slack notification at end of workflow
+title: Send slack notification at end of workflow
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-11-16T21:21:03Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - workflow
+  - orbs
+  - workflows
+  - slack
+  - orb
+  - failed
+body: "<p>For scenarios where you are using the <a href=\"https://circleci.com/orbs/registry/orb/circleci/slack\" target=\"_blank\" rel=\"noopener\">Slack orb</a>\_and want to send a notification if a workflow itself has been successful or failed -- you would need to implement a notification per job.</p>\n<p>For workflows that run sequentially, you can anchor the Slack notification and apply the anchor to each of the jobs in the workflow via <a href=\"https://circleci.com/docs/2.0/configuration-reference/#pre-steps-and-post-steps-requires-version-21\" target=\"_blank\" rel=\"noopener\">post-steps</a>\_-- except the last job that is run. For that job, you would set it to the standard <code>slack/notify</code> to catch both successes and failures. Below is an example of how this may look with Slack orb version below <code>4.0.0</code>:</p>\n<pre style=\"background-color: #f3f3f3;\">version: 2.1\n\nslack-fail-post-step: &amp;slack-fail-post-step\n  post-steps:\n    - slack/status:\n        fail_only: true\n\norbs:\n  slack: circleci/slack@3.4.2\n\njobs:\n  build:\n    docker:\n      - image: cimg/base:stable\n      \n    steps:\n      - run:\n          name: Success\n          command: |\n            exit 0\n  last-job:\n    docker:\n      - image: cimg/base:stable\n      \n    steps:\n      - run:\n          name: Success\n          command: |\n            exit 0\n  \nworkflows:\n  version: 2\n  workflow:\n    jobs:\n      - build: *slack-fail-post-step\n      - last-job:\n          requires:\n            - build\n          post-steps:\n            - slack/status</pre>\n<p>However if your workflow jobs don't run sequentially, you will need to create a new job that contains the slack notification and <code>require</code> that the job has run all the previous jobs.</p>\n<p>Here is a sample of how you could set this up if you use the Slack orb version <code>4.0.0</code> or above:</p>\n<pre style=\"background-color: #f3f3f3;\">version: 2.1\n\nslack-fail-post-step: &amp;slack-fail-post-step\n  post-steps:\n    - slack/notify:\n        custom: |\n          {\n            \"text\": \"\",\n            \"blocks\": [\n              {\n                \"type\": \"section\",\n                \"text\": {\n                  \"type\": \"mrkdwn\",\n                  \"text\": \"❌ *Failure* #${CIRCLE_BUILD_NUM} `${CIRCLE_PROJECT_REPONAME}` on `${CIRCLE_BRANCH}`\"\n                }\n              },\n              {\n                \"type\": \"actions\",\n                \"elements\": [\n                  {\n                    \"type\": \"button\",\n                    \"text\": {\n                      \"type\": \"plain_text\",\n                      \"text\": \"View Job\"\n                    },\n                    \"url\": \"${CIRCLE_BUILD_URL}\"\n                  }\n                ]\n              }\n            ]\n          }\n        event: fail\n\norbs:\n  slack: circleci/slack@4.1.1\n\njobs:\n  build:\n    docker:\n      - image: cimg/base:stable\n      \n    steps:\n      - run:\n          name: Success\n          command: |\n            exit 0\n  last-job:\n    docker:\n      - image: cimg/base:stable\n      \n    steps:\n      - run:\n          name: Success\n          command: |\n            exit 0\nworkflows:\n  version: 2\n  workflow:\n    jobs:\n      - build:\n          context: \n            - slack\n          &lt;&lt;: *slack-fail-post-step\n      - last-job:\n          context: [slack]\n          requires:\n            - build\n          post-steps:\n            - slack/notify:\n                custom: |\n                  {\n                    \"text\": \"\",\n                    \"blocks\": [\n                      {\n                        \"type\": \"section\",\n                        \"text\": {\n                          \"type\": \"mrkdwn\",\n                          \"text\": \"✅ *Success* #${CIRCLE_BUILD_NUM} `${CIRCLE_PROJECT_REPONAME}` on `${CIRCLE_BRANCH}`\"\n                        }\n                      },\n                      {\n                        \"type\": \"actions\",\n                        \"elements\": [\n                          {\n                            \"type\": \"button\",\n                            \"text\": {\n                              \"type\": \"plain_text\",\n                              \"text\": \"View Job\"\n                            },\n                            \"url\": \"${CIRCLE_BUILD_URL}\"\n                          }\n                        ]\n                      }\n                    ]\n                  }\n                event: always</pre>"

@@ -1,0 +1,32 @@
+id: 360035464253
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360035464253.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360035464253-Why-am-I-being-charged-for-remote-Docker-spin-up-time-
+author_id: 26863412148
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -4
+vote_count: 4
+section_id: 115003332307
+created_at: '2019-09-06T19:08:02Z'
+updated_at: '2020-11-19T01:24:48Z'
+name: 'Why am I being charged for remote Docker spin up time? '
+title: 'Why am I being charged for remote Docker spin up time? '
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-04-17T12:34:46Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - billing
+  - spin up time
+  - Spin up
+  - Performance Plan
+  - credits
+  - remote docker
+body: "<p>When CircleCI spins up a remote docker instance, it requires the primary container to be running and spending compute. Thus while you are not charged for the remote docker instance itself, you are charged for the time that the primary container is up.\_</p>"

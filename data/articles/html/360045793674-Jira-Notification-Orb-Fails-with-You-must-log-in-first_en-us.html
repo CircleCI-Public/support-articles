@@ -1,0 +1,9 @@
+<p>The Jira Notification Orb (<a href="https://circleci.com/orbs/registry/orb/circleci/jira" target="_self">circleci/jira</a>) can fail with the message</p>
+<pre class="css-9561s5">401:https://circleci.com/api/v2/me
+Curl failed with code 401. full response below.
+{
+  "message" : "You must log in first."
+}
+</pre>
+<p>Verify that the environment variable <strong>CIRCLE_TOKEN</strong> is set in the project's environment variables section.</p>
+<p>Verify that CIRCLE_TOKEN is set to a <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_self">personal API token</a> as opposed to a project API token.</p>

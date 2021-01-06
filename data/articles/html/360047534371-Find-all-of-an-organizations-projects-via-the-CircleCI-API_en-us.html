@@ -1,0 +1,4 @@
+<p>We do not have a direct endpoint for collecting this information, but you can often derive this from the `me` endpoint:</p>
+<p>https://circleci.com/api/v1.1/me</p>
+<p>This shows data from the currently logged in user or simply the user of the `circle-token` provided. If you use a token, be sure to make use of a [Personal API Token](https://circleci.com/docs/2.0/managing-api-tokens/) as opposed to a Project Token.</p>
+<p>Within that API response, you will find the `projects` property. This will be a list of projects. The JSON object key will be the VCS URL. You can use that to filter to projects specifically within the desired organization.</p>

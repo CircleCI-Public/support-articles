@@ -1,0 +1,21 @@
+<p>You can stop building your project on CircleCI at any time, by navigating to the project settings (https://app.circleci.com/settings/project/&lt;vcs&gt;/&lt;org&gt;/&lt;project&gt;) page and clicking the <em>"Stop Building"</em> button.</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360064038311/mceclip0.png" alt="mceclip0.png"></p>
+<p>If you are for some reason unable to stop building using the above method, you can always do so by removing access to the repository from Bitbucket.<br><br>Some reasons you may potentially need to do this:</p>
+<ul>
+    <li>You have renamed your organization, username, or repository</li>
+    <li>User credentials have become stale </li>
+</ul>
+<p> </p>
+<p>1. Start by accessing your Bitbucket repository settings</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360061485031/bb_repo_settings.png" alt="bb_repo_settings.png"></p>
+<p>2. From the Repository settings page, on the left side in the vertical navigation, we see the two pages we are interested in: "<strong>Webhooks</strong>"and "<strong>Access keys</strong>".</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360061320592/bb_webhooks.png" alt="bb_webhooks.png"></p>
+<p> </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360061320572/bb_access_keys.png" alt="bb_access_keys.png"></p>
+<p> </p>
+<p>3. From the Webhooks page, locate any webhooks that post to CircleCI and delete them. </p>
+<p> <img src="https://support.circleci.com/hc/article_attachments/360039232473/Screen_Shot_2019-06-18_at_1.48.12_PM.png" alt="Screen_Shot_2019-06-18_at_1.48.12_PM.png"></p>
+<p>4. Lastly, navigate to the "Access keys" page and delete the key added by CircleCI</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360038399494/Screen_Shot_2019-06-18_at_1.49.29_PM.png" alt="Screen_Shot_2019-06-18_at_1.49.29_PM.png"></p>
+<p> </p>
+<p>This will stop the project from building on CircleCI in case you need to manually remove access.</p>

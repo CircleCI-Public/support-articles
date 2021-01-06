@@ -1,0 +1,39 @@
+id: 360021666393
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360021666393.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360021666393-How-to-stop-building-by-manually-removing-the-CircleCI-webhook-and-deploy-key-from-your-GitHub-repository
+author_id: 28200990948
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 10
+vote_count: 24
+section_id: 115003580328
+created_at: '2019-04-15T15:16:07Z'
+updated_at: '2020-11-30T11:58:11Z'
+name: >-
+  How to stop building by manually removing the CircleCI webhook and deploy key
+  from your GitHub repository
+title: >-
+  How to stop building by manually removing the CircleCI webhook and deploy key
+  from your GitHub repository
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:57:47Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - github
+  - ssh key
+  - remove
+  - stop building
+  - webhooks
+  - delete
+  - rename
+  - rename org
+  - rename repo
+body: "<p>You can stop building your project on CircleCI at any time by navigating to the project settings page and clicking the \"Stop Building\" button.</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360063893032/blobid0.png\" alt=\"blobid0.png\"></p>\n<p>In the event you are for some reason unable to stop building, you can always manually stop building by removing access to the repository from GitHub.<br><br>Some reasons you may potentially need to do this:</p>\n<ul>\n<li>You have renamed your Organization, Username, or Repository</li>\n<li>User credentials have become stale\_</li>\n</ul>\n<p>\_</p>\n<p>1. Start by accessing your GitHub repository settings. You can visit this directly by navigating to\_<em>https://github.com/Org/Repository\_</em>and clicking the \"settings\" button on the repository page.</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360058626252/Screenshot_2020-06-03_at_19.36.02.png\" alt=\"Screenshot_2020-06-03_at_19.36.02.png\" width=\"410\" height=\"142\"></p>\n<p>\_</p>\n<p>2. From the settings page, on the left side in the vertical navigation, we see the two pages we are interested in, \"Webhooks\" and \"Deploy keys\".</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360058626332/Screenshot_2020-06-03_at_19.39.59.png\" alt=\"Screenshot_2020-06-03_at_19.39.59.png\" width=\"285\" height=\"437\"></p>\n<p>\_</p>\n<p>3. From the Webhooks page, locate any Webhooks that post to CircleCI and delete them. <img src=\"https://support.circleci.com/hc/article_attachments/360032501573/Screen_Shot_2019-04-15_at_10.54.26_AM.png\" alt=\"Screen_Shot_2019-04-15_at_10.54.26_AM.png\" width=\"620\" height=\"156\"></p>\n<p>\_</p>\n<p>4. Lastly, navigate to the \"Deploy keys\" page and delete the key added by CircleCI</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360031680254/Screen_Shot_2019-04-15_at_10.54.54_AM.png\" alt=\"Screen_Shot_2019-04-15_at_10.54.54_AM.png\" width=\"662\" height=\"172\"></p>\n<p>\_</p>\n<p>This will stop the project from building on CircleCI in the event you need to manually remove access.</p>"

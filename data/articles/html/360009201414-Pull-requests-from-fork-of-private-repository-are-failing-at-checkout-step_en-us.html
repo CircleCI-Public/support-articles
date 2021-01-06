@@ -1,0 +1,11 @@
+<p>Are pull requests from forks of your private repository project failing at the checkout step with an error message as shown below?</p>
+<pre class="output"><span class="pre"><span class="white">
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+</span><span class="white">and the repository exists.
+</span></span><span class="pre"><span class="white">Exited with code 128</span></span></pre>
+<p>If that is the case, please check the "Advanced Settings" of the parent repository project to see if the "Pass secrets to builds from forked pull requests" setting is enabled. In order for pull requests from forks of a private repository to build, the checkout key for the parent repository is required to be shared, and hence the "Pass secrets to builds from forked pull requests" setting would need to be enabled. For more information, visit this blog post about <a href="https://circleci.com/blog/triggering-trusted-ci-jobs-on-untrusted-forks/" target="_self">triggering trusted CI jobs on untrusted forks</a>.</p>
+<p><strong><span class="wysiwyg-color-red">Warning</span></strong>: There are serious security concerns with the "Pass secrets to builds from forked pull requests" setting (see <a href="https://circleci.com/docs/2.0/oss/#pass-secrets-to-builds-from-forked-pull-requests">the documentation</a> for details.) If you have SSH keys, sensitive env vars or AWS credentials stored in your project settings and untrusted forks can make pull requests against your repo, then this option isn't for you!</p>
+<p> </p>

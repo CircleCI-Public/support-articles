@@ -1,0 +1,11 @@
+<h2>Overview</h2>
+<p>An "Unregistered User" is how CircleCI tracks users who have triggered builds but have not signed up for CircleCI. These users will count as <a href="https://support.circleci.com/hc/en-us/articles/360034783154" target="_self">"Active Users"</a>, despite being unregistered.</p>
+<h2>How can I see who an unregistered user actually is?</h2>
+<p>Because the "Unregistered User" has not signed up for CircleCI, we do not have permission to view who triggered the build to run. The easiest way to see who an "Unregistered User" is actually referencing is to go by the commit hash. Find a job with a blank profile image - the top right corner of the job will display the name of the committer along with a truncated commit hash, which can be clicked to go straight to the commit on GitHub or Bitbucket. From there you can view the author of the commit.</p>
+<p class="wysiwyg-text-align-center"><img src="https://support.circleci.com/hc/article_attachments/360063892892/mceclip1.png" alt="mceclip1.png"></p>
+<h2 class="wysiwyg-text-align-left">How do my unregistered users become registered users?</h2>
+<p>To make a user known, they can <a href="https://circleci.com/signup/" target="_self">sign up for CircleCI</a> with their GitHub or Bitbucket login. If they are part of your organization, they can <a href="https://circleci.com/docs/2.0/project-build/#add-projects-page" target="_self">follow projects</a> in order to view build history.</p>
+<h2 class="wysiwyg-text-align-left">If an "Unregistered User" signs up for CircleCI, will they appear?</h2>
+<p>A user previously unknown to CircleCI will not replace the "Unregistered User" entity associated with builds or taking up seats since CircleCI retains no information necessary to link the two. If this user is still taking up a user seat, they will be removed upon the next billing cycle when "active users" reset.  </p>
+<h2 class="wysiwyg-text-align-left">What else is counted as an "Unregistered User"?</h2>
+<p>Builds triggered via a <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-project-api-token" target="_self">CircleCI project API token</a> will be counted as an "Unregistered User".</p>

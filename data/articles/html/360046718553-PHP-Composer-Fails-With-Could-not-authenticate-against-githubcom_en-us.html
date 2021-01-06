@@ -1,0 +1,3 @@
+<p>Separate CircleCI builds can share the same IP. This can cause certain services, such as Github, to enable rate-limiting.</p>
+<p>See Composer's documentation for specifically creating tokens on Github:<br><a href="https://getcomposer.org/doc/articles/troubleshooting.md#api-rate-limit-and-oauth-tokens" target="_blank" rel="noopener noreferrer">https://getcomposer.org/doc/articles/troubleshooting.md#api-rate-limit-and-oauth-tokens</a></p>
+<p dir="auto">Then store the token as an environment variable in the CircleCI dashboard under <em>Project Settings &gt; Environment Variables</em> and set it before the <code>composer install</code> run step.</p>

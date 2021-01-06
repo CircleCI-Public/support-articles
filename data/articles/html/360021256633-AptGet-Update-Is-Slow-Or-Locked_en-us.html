@@ -1,0 +1,18 @@
+<p>You may see the error <code>Could not get lock /var/lib/apt/lists/lock</code> on the <em><strong>Machine</strong></em> executor when attempting to run <code>apt-get</code>, if there is a networking issue that is causing the <strong><em>Spin up environment</em> </strong>step to keep the update process alive.<span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> </span></p>
+<p><br> Using the <strong><em>Docker</em></strong> executor if updating with <code>apt-get update</code>, this type of networking can be spotted in your step output, by looking at the download speed of each mirror, and identifying which is potentially causing the problem.</p>
+<p class="wysiwyg-text-align-center"><img src="https://support.circleci.com/hc/article_attachments/360030673154/Screen_Shot_2019-04-05_at_10.46.50_AM.png" alt="Screen_Shot_2019-04-05_at_10.46.50_AM.png" width="340" height="81"></p>
+<p>With <strong><em>Docker</em></strong>, you may not need to run <code>apt-get update</code> if you rebuild your image on a regular basis. <a href="https://circleci.com/docs/2.0/circleci-images/" target="_blank" rel="noopener">Active convenience images maintained by CircleCi</a> are rebuilt on a weekly basis.</p>
+<p> </p>
+<h4>Here are some options for working around slow or broken mirrors.</h4>
+<h3>Wait for network</h3>
+<p>This command will kill any <code>apt-get</code> process that might be running in the background already, and then allow up to an hour to download the package(s) if need be.<br> <br> This may not be ideal if you are on a Usage-based plan as this may significantly increase container time in the event of a networking issue.<br> <br> However, this may be desired for critical applications where waiting on the network is preferred.<br> </p>
+<div>
+    <div style="background-color: #f8f8f8;">
+        <pre><span>- </span><span>run</span><span>:</span><br><span></span><span>    no_output_timeout</span><span>: </span><span>1h</span><br><span></span><span>    command</span><span>: </span><span>|</span><br><span>      set -e</span><br><span>      killall apt-get</span><br><span>       apt-get -q -y update</span><br><span>       apt-get -q -y install any packages here</span></pre>
+    </div>
+</div>
+<p> </p>
+<h3>Change mirrors</h3>
+<p>Sometimes official mirrors go down, are slow, or move to new URLs. If you have a known list of good mirrors, you can manually set them.</p>
+<p>You can modify this example by replacing the sources with known good mirrors for your base distribution.</p>
+<pre style="background-color: #f8f8f8;">- run:<br>    command: |<br>      sudo rm /etc/apt/sources.list<br>      echo "deb http://archive.debian.org/debian/ jessie-backports main" | sudo tee -a /etc/apt/sources.list<br>      echo "deb-src http://archive.debian.org/debian/ jessie-backports main" | sudo tee -a /etc/apt/sources.list<br>      echo "Acquire::Check-Valid-Until false;" | sudo tee -a /etc/apt/apt.conf.d/10-nocheckvalid<br>      echo 'Package: *\nPin: origin "archive.debian.org"\nPin-Priority: 500' | sudo tee -a /etc/apt/preferences.d/10-archive-pin<br>      sudo apt-get update<br><br></pre>

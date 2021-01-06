@@ -1,0 +1,9 @@
+<p>You may change the default branch on your VCS provider, and sometimes that change won't be reflected on CircleCI. This can cause issues with some features that rely on knowing which branch is the default, such as Github status checks and Build Only Pull Requests.<br><br>To view the current default branch, you can use the API endpoint under <strong>default_branch</strong>:<br><a href="https://circleci.com/api/v1.1/project/%7BVCS%7D/%7BORGNAME%7D%7BPROJECT%7D/info" target="_self" rel="undefined">https://circleci.com/api/v1.1/project/{VCS}/{ORGNAME}{PROJECT}/info</a></p>
+<p>Example:<br>https://circleci.com/api/v1.1/project/github/CircleCI-Public/circleci-cli/info  </p>
+<p><br><strong>GitHub</strong></p>
+<p>We will check the default branch and update it for your project on each commit pushed. If you change the default branch it will be updated on the next commit push to CircleCI</p>
+<p><strong>BitBucket</strong></p>
+<p>You can re-establish the correct default branch on CircleCI by removing/re-adding the project with the following steps:</p>
+<p>1. Remove all CircleCI webhooks and services from your GitHub repo settings.<br>2. Tell the project to stop building on CircleCI through "Project settings".<br>3. Add the project back on CircleCI.</p>
+<p>This will update CircleCI with the correct default branch information.</p>
+<p>If you would prefer we refresh your VCS information on our end, please <a href="https://support.circleci.com/hc/en-us/requests/new" target="_self">submit a ticket to Support</a> or write to <a href="mailto:support@circleci.com">support@circleci.com</a>.</p>

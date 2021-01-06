@@ -1,0 +1,13 @@
+<p>When restarting your local or AWS install, you may receive the following error when starting the container from the management console: </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360008655914/API_error__409_.png" alt="API_error__409_.png"></p>
+<p>In this case restarting Replicated can resolve the issue.</p>
+<p>SSH into your services box and run the following commands:</p>
+<pre><code class="bash">sudo service replicated-operator stop
+sudo service replicated-ui stop
+sudo service replicated stop
+sudo service docker stop
+sudo service docker start 
+sudo service replicated start
+sudo service replicated-ui start
+sudo service replicated-operator start</code></pre>
+<p>More on troubleshooting Replicated can be found at <a href="https://circleci.com/docs/2.0/admin-faq/#how-do-i-debug-the-management-console-replicated">https://circleci.com/docs/2.0/admin-faq/#how-do-i-debug-the-management-console-replicated</a></p>

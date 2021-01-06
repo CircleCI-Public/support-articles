@@ -1,0 +1,4 @@
+<p>When needing to utilize the <a href="https://git-scm.com/docs/git-rev-list#_description" target="_blank" rel="noopener">range option</a> for "git rev-list" you will need to use the full SHA-1 for each of the revisions.</p>
+<p>As an example if you wanted to compare your current build you are pushing to CircleCI to master:</p>
+<pre>masterbranchsha=$(git rev-parse origin/master)<br>git rev-list --count $masterbranchsha..$CIRCLE_SHA1</pre>
+<p> </p>

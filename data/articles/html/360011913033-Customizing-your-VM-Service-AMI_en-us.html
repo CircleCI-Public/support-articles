@@ -1,0 +1,20 @@
+<p>On hosted installations of CircleCI, the AMI used for VM Service, which provides access to a dedicated Docker daemon via the <code>machine</code> executor (see <strong><a href="https://circleci.com/docs/2.0/executor-types/#using-machine">Executor Types: Using Machine</a></strong>) and <code>setup_remote_docker</code> (see <strong><a href="https://circleci.com/docs/2.0/building-docker-images/#overview">Running Docker Commands: Overview</a></strong>), is completely customizable.</p>
+<p>By extending our default installed set of packages and dependencies to create your own custom VM Service AMI, you can install custom versions of Docker, as well as pre-bake any common frameworks, security tools, proxy settings, etc., into the AMI itself, simplifying the required setup and configuration steps that might otherwise have to live in the config.yml configuration files for any projects with jobs that require the <code>machine</code> executor or <code>setup_remote_docker</code>.</p>
+<p>The customization process uses CircleCI's open-source <a href="https://github.com/circleci/image-builder">image-builder repository</a>—the following set of steps should help you create your custom VM Service AMI.</p>
+<ol>
+    <li style="font-weight: 400;"><a href="https://www.packer.io/downloads.html"><span style="font-weight: 400;">install Packer</span></a></li>
+    <li style="font-weight: 400;">
+        <span style="font-weight: 400;">clone the <code>picard-vm-image</code> branch of </span><a href="https://github.com/circleci/image-builder/tree/picard-vm-image"><span style="font-weight: 400;">image-builder</span></a>
+    </li>
+    <li style="font-weight: 400;">
+        <span style="font-weight: 400;">fill in required groups in </span><a href="https://github.com/circleci/image-builder/blob/picard-vm-image/aws-vm.json"><span style="font-weight: 400;">aws-vm.json</span></a>
+    </li>
+    <li style="font-weight: 400;">
+        <span style="font-weight: 400;">add customizations (proxy settings, etc.) to the end of </span><a href="https://github.com/circleci/image-builder/blob/picard-vm-image/provision.sh"><span style="font-weight: 400;">provision.sh</span></a>
+    </li>
+    <li style="font-weight: 400;"><span style="font-weight: 400;">run <code>packer build aws-vm.json</code> in the root of the <code>image-builder</code> directory</span></li>
+    <li style="font-weight: 400;"><span style="font-weight: 400;">add your new AMI to the "Custom VM AMI" field in the"VM Provider" section of the Replicated Management Console (see below)</span></li>
+    <li style="font-weight: 400;"><span style="font-weight: 400;">restart CircleCI</span></li>
+    <li style="font-weight: 400;"><span style="font-weight: 400;">fork and run <a href="https://github.com/circleci/realitycheck">realitycheck</a> (see <a href="https://support.circleci.com/hc/en-us/articles/360011235534-Using-realitycheck-to-validate-your-CircleCI-installation"><strong>Using realitycheck</strong></a>) to verify that your new VM service AMI is functional (check the <code>vm_jobs</code> workflow)</span></li>
+</ol>
+<p><span style="font-weight: 400;"><img src="https://support.circleci.com/hc/article_attachments/360017787534/vm-service.jpg" alt="vm-service.jpg"></span></p>

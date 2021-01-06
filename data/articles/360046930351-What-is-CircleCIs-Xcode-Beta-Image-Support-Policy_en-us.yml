@@ -1,0 +1,26 @@
+id: 360046930351
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360046930351.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360046930351-What-is-CircleCI-s-Xcode-Beta-Image-Support-Policy-
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 2
+vote_count: 2
+section_id: 115003327088
+created_at: '2020-07-28T10:42:40Z'
+updated_at: '2020-10-22T07:03:08Z'
+name: What is CircleCI's Xcode Beta Image Support Policy?
+title: What is CircleCI's Xcode Beta Image Support Policy?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:57:50Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>Beta images may include unknown bugs and blocking issues due to the nature of pre-release software, including Xcode and other third party software included in the images..</p>\n<p>We have a limited scope of support for issues directly relating to issues in beta versions of Xcode, please report issues with Xcode directly to Apple, either through the <a href=\"https://feedbackassistant.apple.com\" target=\"_self\">Feedback Assistant</a>, or via the <a href=\"https://developer.apple.com/forums/\" target=\"_self\">Apple Developer Forums</a>. If the issue is related to the macOS image itself, we will be happy to help.</p>\n<p><strong>Please note</strong>: As beta images are released, they are replaced in situ until a GM (stable) image is released, at which point the image is frozen and no longer updated.</p>\n<p>If you are requesting an image using an Xcode version that is currently in beta, please expect it to change when Apple releases a new Xcode beta with minimal notice. This can include breaking changes in Xcode which are beyond our control.</p>\n<p>We always announce image changes on our forum which you can find <a href=\"https://discuss.circleci.com/c/announcements/39\" target=\"_self\">here</a>\_- you can subscribe to this forum for updates by using the bell icon in the top right.</p>"

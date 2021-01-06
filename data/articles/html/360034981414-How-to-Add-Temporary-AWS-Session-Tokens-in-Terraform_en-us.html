@@ -1,0 +1,14 @@
+<p>CircleCI provides a <a href="https://github.com/circleci/enterprise-setup" target="_self">Terraform configuration</a> to allow you to easily orchestrate the CircleCI Server cluster in your AWS environment. By default, our Terraform scripts require two keys for authentication, the <strong><code>access_key</code></strong> and <strong><code>secret_key</code></strong>. If your team's security policies require the use of a temporary AWS session token, it can easily be added by modifying the following terraform files and templates. </p>
+<p> </p>
+<p> <strong>variables.tf</strong></p>
+<p><a href="https://www.terraform.io/docs/configuration/variables.html" target="_self">Input variables</a> are declared in this file. We strongly advise that you only parameterize your <strong><code>aws_session_token</code></strong> variable and that you should never directly hard code your secrets here to further prevent exposing your keys and tokens. </p>
+<pre><strong>variable "aws_session_token" {</strong><br><strong>  <span class="pl-smi">description</span> <span class="pl-k">=</span> <span class="pl-s">"Temporary session token</span> <span class="pl-s">used</span> <span class="pl-s">to</span> <span class="pl-s">create</span> <span class="pl-s">instances</span><span class="pl-s">"</span></strong><br><strong>}</strong></pre>
+<p> </p>
+<p><strong>circle.tf</strong></p>
+<p>You will need to assign the Terraform <strong><code>token</code></strong> argument to the <strong><code>aws_session_token</code></strong> variable within the <a href="https://www.terraform.io/docs/providers/aws/index.html#token" target="_self">AWS provider object</a> in this file. </p>
+<pre>provider "aws" {<br> access_key = var.aws_access_key<br> secret_key = var.aws_secret_key<br> <strong>token = var.aws_session_token</strong><br> region = var.aws_region<br>}</pre>
+<p> </p>
+<p><strong>terraform.tfvars</strong></p>
+<p>Your <strong><code>aws_session_token</code> </strong>must be assigned in this file. This file is safe to add your keys and tokens as it will be <a href="https://github.com/circleci/enterprise-setup/blob/master/.gitignore" target="_self">ignored</a> in the event you accidentally check it into version control. </p>
+<pre>#####################################<br># 1. Required Cloud Configuration<br>#####################################<br><br><strong>aws_session_token = "..."</strong><br>aws_access_key = "..."<br>aws_secret_key = "..."<br>aws_region = "..."<br>aws_vpc_id = "..."<br>aws_subnet_id = "..."<br>aws_ssh_key_name = "..."</pre>
+<p> </p>

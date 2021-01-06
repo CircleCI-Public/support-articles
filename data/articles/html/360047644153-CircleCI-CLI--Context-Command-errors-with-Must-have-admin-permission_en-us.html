@@ -1,0 +1,6 @@
+<p>If you encounter the following error while running a Context command while using the CircleCI CLI:</p>
+<pre>Error: failed to load context list: Non-nullable field was null. Must have admin permission.</pre>
+<p>First, ensure you are an admin in your organization's VCS (GitHub or Bitbucket). The Org Admin restriction is in place as an additional layer of security for utilizing the CLI to manage Contexts. Without this, the only other option would be to manage Contexts via the UI. </p>
+<p>If you are an Org Admin and still encounter the above error, verify you have run <strong>circleci setup</strong> and entered your <a href="https://app.circleci.com/settings/user/tokens" target="_self">Personal API Token.</a></p>
+<p>If the Personal API Token is missing or incorrect, the same error message will occur</p>
+<p>Note: for <a href="https://github.com/CircleCI-Public/circleci-cli/releases/tag/v0.1.6772" target="_self">CLI version 0.1.6772</a> to current</p>

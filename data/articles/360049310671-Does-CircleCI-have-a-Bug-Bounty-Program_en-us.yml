@@ -1,0 +1,29 @@
+id: 360049310671
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360049310671.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360049310671-Does-CircleCI-have-a-Bug-Bounty-Program-
+author_id: 4008831568
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 360001263193
+created_at: '2020-09-08T17:10:17Z'
+updated_at: '2020-11-12T17:49:38Z'
+name: Does CircleCI have a Bug Bounty Program?
+title: Does CircleCI have a Bug Bounty Program?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-11-12T17:49:38Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - server
+  - bug
+  - Cloud
+body: "<p>\_</p>\n<p>No, at this time, CircleCI does not have a Bug Bounty Program.\_</p>\n<p>\_</p>"

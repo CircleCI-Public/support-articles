@@ -1,0 +1,29 @@
+id: 360035524354
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360035524354.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360035524354-CircleCI-CLI-unable-to-connect-to-docker-on-Ubuntu-19-04-
+author_id: 365473206774
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -1
+vote_count: 9
+section_id: 115003756627
+created_at: '2019-09-18T09:06:56Z'
+updated_at: '2020-11-20T11:08:34Z'
+name: CircleCI CLI unable to connect to docker on Ubuntu 19.04.
+title: CircleCI CLI unable to connect to docker on Ubuntu 19.04.
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-05-25T15:36:09Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - cli
+  - ubuntu
+  - snap
+body: "<p dir=\"auto\">\_</p>\n<p dir=\"auto\">Currently, we have an issue that '<strong>circleci local execute</strong>' command is unable to connect to the docker on Ubuntu 19.04. It only happens when you install '<strong>circleci cli</strong>' and '<strong>docker</strong>' by using '<strong>snap</strong>' command.</p>\n<p dir=\"auto\"><strong>Snap</strong> has <a href=\"https://snapcraft.io/docs/snap-confinement\" target=\"_self\">security features</a> and '<strong>circleci cli</strong>' seems to be restricted by this.\_Strict\_confinement uses security features of the Linux kernel, so if you change the permission of the commands or using the root account, it doesn't work. We are currently working on this issue. It will be fixed soon.\_</p>\n<p dir=\"auto\">Meanwhile, could you follow the instructions below?\_\_</p>\n<pre dir=\"ltr\">$ sudo snap remove circleci docker\n$ sudo snap install --devmode circleci docker\n$ circleci local execute --job build --config .circleci/config.yml</pre>"

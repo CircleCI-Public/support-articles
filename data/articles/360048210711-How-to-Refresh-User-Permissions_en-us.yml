@@ -1,0 +1,29 @@
+id: 360048210711
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360048210711.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360048210711-How-to-Refresh-User-Permissions-
+author_id: 397881110914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003332287
+created_at: '2020-08-18T14:57:29Z'
+updated_at: '2020-08-18T15:10:11Z'
+name: How to Refresh User Permissions?
+title: How to Refresh User Permissions?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-08-18T15:09:57Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - permission
+  - UI
+  - user
+body: "<p><span>If you just updated permissions in your VCS and didn't see reflected in the CircleCI platform, you might need to refresh your permissions by visiting the user's settings at\_\_<a href=\"https://app.circleci.com/settings/user\" rel=\"noreferrer\">https://app.circleci.com/settings/user</a>\_and click\_<strong>Refresh Permissions</strong>.</span></p>\n<p>\_</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360064969712/refresh_permission.png\" alt=\"refresh_permission.png\">\_</p>\n<p>\_</p>\n<p>If you still have any issues, please submit a ticket to <a href=\"https://support.circleci.com/hc/en-us\" target=\"_self\">Support</a>\_or write to <a href=\"mailto:support@circleci.com\">support@circleci.com</a>.</p>"

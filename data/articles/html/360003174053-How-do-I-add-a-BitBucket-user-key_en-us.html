@@ -1,0 +1,16 @@
+<h4>BitBucket requires some extra steps to successfully add a user key.</h4>
+<p><em><strong>Note</strong>: the following instructions assume you're using Chrome browser.</em></p>
+<ol>
+    <li>Go to your<span> </span><em>Project Settings</em><span> </span>page, and click the<span> </span><em>SSH Keys</em><span> </span>link.</li>
+    <li>Scroll down to the<span> </span><em>User Key</em><span> </span>section.</li>
+    <li>Right-click the<span> </span><em>Add User Key</em><span> </span>button and select the<span> </span><em>Inspect</em><span> </span>option to open the browser inspector.</li>
+    <li>In the developer console, select the<span> </span><em>Network</em><span> </span>tab.</li>
+    <li><a href="https://developers.google.com/web/tools/chrome-devtools/console/reference" target="_blank" rel="noopener">Clear the Console</a></li>
+    <li>In the<span> </span><a href="https://developers.google.com/web/tools/chrome-devtools/network/reference#filter" target="_blank" rel="noopener">filter box</a>, type in "checkout" (without the quotes). Doing so will make it easier to locate the request.</li>
+    <li>Left-click the<span> </span><em>Add User Key</em><span> </span>button to generate the key</li>
+    <li>In the developer console, click the<span> </span><code>checkout-key</code><span> </span>request with a 201 status. Then select the<span> </span><em>Preview</em><span> </span>tab</li>
+    <li>Copy the public_key value (without the quotes and the line feed character) to your clipboard</li>
+    <li><a href="https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#Step-3.-Add-the-public-key-to-your-Account-settings" target="_blank" rel="noopener">Add the key to Bitbucket</a></li>
+</ol>
+<p>You will then be able to use that SSH key in your builds by <a href="https://circleci.com/docs/2.0/add-ssh-key/#adding-ssh-keys-to-a-job" target="_self">adding the key's fingerprint using the<span> </span><code>add_ssh_keys</code><span> </span>YAML key</a> to your<span> </span><code>config.yml</code></p>
+<p> </p>

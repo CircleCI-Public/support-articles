@@ -1,0 +1,11 @@
+<p>There is no concurrency limit from our side for server customers, you just have to increase the <code>nomad_clients</code> <strong>autoscaling group (AWS)</strong> to the desired value and add <code>parallelism</code> attribute in the config file like below.</p>
+<p> </p>
+<pre>version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/&lt;language&gt;:&lt;version TAG&gt;
+    parallelism: 4
+</pre>
+<p> </p>
+<p><strong>More about Parallelism</strong>: <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/#specifying-a-jobs-parallelism-level" target="_blank" rel="noopener">https://circleci.com/docs/2.0/parallelism-faster-jobs/#specifying-a-jobs-parallelism-level</a></p>

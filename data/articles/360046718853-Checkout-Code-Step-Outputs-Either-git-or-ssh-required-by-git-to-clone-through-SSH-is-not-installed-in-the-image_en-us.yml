@@ -1,0 +1,30 @@
+id: 360046718853
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360046718853.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360046718853-Checkout-Code-Step-Outputs-Either-git-or-ssh-required-by-git-to-clone-through-SSH-is-not-installed-in-the-image-
+author_id: 403418857853
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 1
+vote_count: 3
+section_id: 115003756627
+created_at: '2020-04-13T22:57:45Z'
+updated_at: '2020-10-22T06:55:53Z'
+name: >-
+  Checkout Code Step Outputs "Either git or ssh (required by git to clone
+  through SSH) is not installed in the image"
+title: >-
+  Checkout Code Step Outputs "Either git or ssh (required by git to clone
+  through SSH) is not installed in the image"
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:55:53Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>A CircleCI build can output the following message during the <em>Checkout code</em> step.</p>\n<p><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">Either git or ssh (required by git to clone through SSH) is not installed in the image. Falling back to CircleCI's native git client but the behavior may be different from official git. If this is an issue, please use an image that has official git and ssh installed.</span></p>\n<p><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">This is because either the SSH or Git CLI client is not available. These can either be built into the Docker image or installed during the build.<br><br>For example, in a Debian based system(Ubuntu etc) they can be installed via<br></span></p>\n<pre><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">- run: apt-get update &amp;&amp; apt-get install -y openssh-client git</span></pre>\n<p>On Alpine based images, they can be installed via</p>\n<pre><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;\">apk add --update openssh-client git</span></pre>\n<p><br>CircleCI also provides <a href=\"https://circleci.com/docs/2.0/circleci-images/\" target=\"_self\">Pre-Built CircleCI Docker Images</a>\_which come with SSH, Git, and several other tools required by the build agent.</p>"

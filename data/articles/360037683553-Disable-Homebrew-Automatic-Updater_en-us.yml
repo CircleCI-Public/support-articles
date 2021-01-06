@@ -1,0 +1,40 @@
+id: 360037683553
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360037683553.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360037683553-Disable-Homebrew-Automatic-Updater
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 7
+vote_count: 17
+section_id: 115003327088
+created_at: '2019-10-21T09:27:52Z'
+updated_at: '2021-01-04T17:08:32Z'
+name: Disable Homebrew Automatic Updater
+title: Disable Homebrew Automatic Updater
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T07:00:43Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - xcode
+  - ios
+  - macOS
+body: >-
+  <p>Homebrew, by default, will check for updates at the start of any operation,
+  meaning the step execution can take some extra time to complete.</p>
+
+  <p>It is best practise to leave Homebrew to automatically update, but if build
+  speed, or bugs introduced by new updates, are of a concern, this can be
+  disabled.</p>
+
+  <p>To disable this feature, add the following line to your config.yml before
+  calling Homebrew:</p>
+
+  <pre>- run: echo "HOMEBREW_NO_AUTO_UPDATE=1" &gt;&gt; $BASH_ENV</pre>

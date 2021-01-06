@@ -1,0 +1,8 @@
+<p>If you are utilizing the <a href="https://circleci.com/docs/2.0/configuration-reference/#windows-executor" target="_blank" rel="noopener">windows executor</a> and using chocolatey to download and install items in your jobs, you may encounter situations where the download or install fails. By default chocolatey will generate a log file, but unless you store it as an artifact it will inaccessible.</p>
+<p>To troubleshoot these situations further, add the following step after your chocolatey steps:</p>
+<pre style="background-color: #f3f3f3;">- store_artifacts:
+    path: C:\ProgramData\chocolatey\logs
+    destination: chocolatey_logs</pre>
+<p>This will store the following logs that will contain the verbose output of the download and install commands and can help pinpoint where the issue may be.</p>
+<pre style="background-color: #f3f3f3;">chocolatey_logs/choco.summary.log
+chocolatey_logs/chocolatey.log</pre>

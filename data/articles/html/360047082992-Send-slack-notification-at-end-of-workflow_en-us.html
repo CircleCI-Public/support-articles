@@ -1,0 +1,140 @@
+<p>For scenarios where you are using the <a href="https://circleci.com/orbs/registry/orb/circleci/slack" target="_blank" rel="noopener">Slack orb</a> and want to send a notification if a workflow itself has been successful or failed -- you would need to implement a notification per job.</p>
+<p>For workflows that run sequentially, you can anchor the Slack notification and apply the anchor to each of the jobs in the workflow via <a href="https://circleci.com/docs/2.0/configuration-reference/#pre-steps-and-post-steps-requires-version-21" target="_blank" rel="noopener">post-steps</a> -- except the last job that is run. For that job, you would set it to the standard <code>slack/notify</code> to catch both successes and failures. Below is an example of how this may look with Slack orb version below <code>4.0.0</code>:</p>
+<pre style="background-color: #f3f3f3;">version: 2.1
+
+slack-fail-post-step: &amp;slack-fail-post-step
+  post-steps:
+    - slack/status:
+        fail_only: true
+
+orbs:
+  slack: circleci/slack@3.4.2
+
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable
+      
+    steps:
+      - run:
+          name: Success
+          command: |
+            exit 0
+  last-job:
+    docker:
+      - image: cimg/base:stable
+      
+    steps:
+      - run:
+          name: Success
+          command: |
+            exit 0
+  
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build: *slack-fail-post-step
+      - last-job:
+          requires:
+            - build
+          post-steps:
+            - slack/status</pre>
+<p>However if your workflow jobs don't run sequentially, you will need to create a new job that contains the slack notification and <code>require</code> that the job has run all the previous jobs.</p>
+<p>Here is a sample of how you could set this up if you use the Slack orb version <code>4.0.0</code> or above:</p>
+<pre style="background-color: #f3f3f3;">version: 2.1
+
+slack-fail-post-step: &amp;slack-fail-post-step
+  post-steps:
+    - slack/notify:
+        custom: |
+          {
+            "text": "",
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "❌ *Failure* #${CIRCLE_BUILD_NUM} `${CIRCLE_PROJECT_REPONAME}` on `${CIRCLE_BRANCH}`"
+                }
+              },
+              {
+                "type": "actions",
+                "elements": [
+                  {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "View Job"
+                    },
+                    "url": "${CIRCLE_BUILD_URL}"
+                  }
+                ]
+              }
+            ]
+          }
+        event: fail
+
+orbs:
+  slack: circleci/slack@4.1.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable
+      
+    steps:
+      - run:
+          name: Success
+          command: |
+            exit 0
+  last-job:
+    docker:
+      - image: cimg/base:stable
+      
+    steps:
+      - run:
+          name: Success
+          command: |
+            exit 0
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build:
+          context: 
+            - slack
+          &lt;&lt;: *slack-fail-post-step
+      - last-job:
+          context: [slack]
+          requires:
+            - build
+          post-steps:
+            - slack/notify:
+                custom: |
+                  {
+                    "text": "",
+                    "blocks": [
+                      {
+                        "type": "section",
+                        "text": {
+                          "type": "mrkdwn",
+                          "text": "✅ *Success* #${CIRCLE_BUILD_NUM} `${CIRCLE_PROJECT_REPONAME}` on `${CIRCLE_BRANCH}`"
+                        }
+                      },
+                      {
+                        "type": "actions",
+                        "elements": [
+                          {
+                            "type": "button",
+                            "text": {
+                              "type": "plain_text",
+                              "text": "View Job"
+                            },
+                            "url": "${CIRCLE_BUILD_URL}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                event: always</pre>

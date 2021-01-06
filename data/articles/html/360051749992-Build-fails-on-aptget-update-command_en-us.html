@@ -1,0 +1,23 @@
+<p>Additional information can be found here: <a href="https://discuss.circleci.com/t/some-builds-failing-due-to-apt-get-update/38018">https://discuss.circleci.com/t/some-builds-failing-due-to-apt-get-update/38018</a></p>
+<p>We’re starting to see reports of CircleCI builds failing due to an error when running<span> </span><code>apt-get update</code>. The problem we’re tracking is due to the Debian repository for Debian Stretch (Debian 9) removing the backports component of their repository.</p>
+<p>The error:</p>
+<blockquote>
+    <p>Could not open file /var/lib/apt/lists/deb.debian.org_debian_dists_stretch-backports_main_binary-amd64_Packages.diff_Index - open (2: No such file or directory)</p>
+</blockquote>
+<h2>Affected Images</h2>
+<p>We’re seeing images have this issue that are:</p>
+<ol>
+    <li>based on Debian 9 (Stretch)</li>
+    <li>older images (last built more than 90 days ago)</li>
+</ol>
+<h2>Solutions</h2>
+<p>There are a few solutions you can take for your project depending on which works best for you:</p>
+<ol>
+    <li>Use an image tag that updates the primary version of your software. For example, an image we know affected is<span> </span><code>circleci/ruby:2.6.5-stretch-node-browsers</code>. This contains Ruby v2.6.5 which is fairly old. Newer patch releases, such as Ruby v2.6.6 are not affected by this issue.</li>
+    <li>Use a newer base OS. Using the same affected image as an example,<span> </span><code>circleci/ruby:2.6.5-stretch-node-browsers</code>, this image uses Debian 9 (Stretch) as a base, which is 3+ years old. Removing the string<span> </span><code>stretch</code><span> </span>will use a newer Debian or Ubuntu base, which is unaffected by this issue. For example, you could use<span> </span><code>circleci/ruby:2.6.5-node-browsers</code>.</li>
+    <li>Use a next-gen Convenience Image. The next-gen Convenience Images aren’t affected by this issue as they’re all Ubuntu 18.04 or Ubuntu 20.04 based.</li>
+    <li>You can patch this issue without changing the image by deleting the Apt cache before running<span> </span><code>sudo apt-get update</code>. This would look like this:</li>
+</ol>
+<pre style="background-color: #f3f3f3;">- run: |
+    sudo rm -rf /var/lib/apt/lists/*
+    sudo apt-get update</pre>

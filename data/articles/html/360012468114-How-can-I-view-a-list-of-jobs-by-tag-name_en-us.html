@@ -1,0 +1,6 @@
+<p>At the moment, there isn't a straightforward way to get a list of jobs by tag name, from the CircleCI UI. However, you could use our API (<a href="https://circleci.com/docs/api/#recent-builds-for-a-single-project" rel="noreferrer">https://circleci.com/docs/api/#recent-builds-for-a-single-project</a>) to retrieve such information. Here are some examples of how to do that (a CircleCI API token will be necessary - see: <a href="https://circleci.com/docs/2.0/managing-api-tokens/">https://circleci.com/docs/2.0/managing-api-tokens/</a>)</p>
+<p><strong>Get jobs matching a tag name</strong></p>
+<p><code>curl -s "https://circleci.com/api/v1.1/project/&lt;vcs-name&gt;/&lt;org-name&gt;/&lt;project-name&gt;?circle-token=$CIRCLE_TOKEN&amp;limit=100" | jq -r '.[] | select (.vcs_tag? == "&lt;tag-name&gt;") | {build_url, subject}'</code></p>
+<p><strong>Get all jobs that ran for any tag</strong><code></code></p>
+<p><code>curl -s "https://circleci.com/api/v1.1/project/&lt;vcs-name&gt;/&lt;org-name&gt;/&lt;project-name&gt;?circle-token=$CIRCLE_TOKEN&amp;limit=100" | jq -r '.[] | select (.vcs_tag? != null) | {build_url, subject}'</code></p>
+<p><code></code><code></code></p>

@@ -1,0 +1,26 @@
+id: 360050551692
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360050551692.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360050551692-Notification-Email-Links-Hang-and-Do-Not-Redirect-to-the-CircleCI-Workflow
+author_id: 403418857853
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 2
+vote_count: 2
+section_id: 115003756627
+created_at: '2020-10-15T00:28:47Z'
+updated_at: '2021-01-02T11:18:14Z'
+name: Notification Email Links Hang and Do Not Redirect to the CircleCI Workflow
+title: Notification Email Links Hang and Do Not Redirect to the CircleCI Workflow
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:55:45Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>If notification email links hang and do not redirect to the CircleCI workflow, follow the steps below to reset the cache https redirect.</p>\n<p>You can also simply clear your entire browser cache.</p>\n<h1>Google Chrome</h1>\n<ol>\n<li>Go to this location in your browser:<br><code>chrome://net-internals/#dns</code>\n</li>\n<li>Click \"Clear host cache\"</li>\n<li>Go to this location<br><code>chrome://net-internals/#hsts</code>\n</li>\n<li>At the bottom of the page, you should see \"Delete domain security policies\"<br>- Enter in \"email.circleci.com\" and click \"Delete\"<br>- Enter in \"mailgun.org\" and click \"Delete\"</li>\n<li>Do not reload one of the previous pages if they are in your browser.</li>\n</ol>\n<h1>Firefox</h1>\n<ol>\n<li>Click the \"Show Sidebars\" button in the browser toolbox</li>\n<li>In sidebar select \"History\" from the context drop down</li>\n<li>Type \"email.circleci\" in the search box</li>\n<li>Right click on the result and click \"Forget About This Site\"</li>\n</ol>\n<p>\_</p>\n<p>All links in the email you provided and any new or previous links should now work with your browser if you click on them.</p>"

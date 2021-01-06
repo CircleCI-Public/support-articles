@@ -1,0 +1,47 @@
+<p>With the <a href="https://discuss.circleci.com/t/advanced-logic-in-config/36011" target="_blank" rel="noopener">recent addition of advanced logic in a config file</a>, the option to conditionally trigger steps in a job or to conditionally trigger a workflow is now available.</p>
+<p><a href="https://circleci.com/docs/2.0/configuration-reference/#logic-statements" target="_blank" rel="noopener">Specific logic statements can be used</a> to create multiple nested conditions, that will always at the top level result in <code>true</code> or <code>false</code> -- which in turn determines if the workflow or steps are triggered.</p>
+<h3>Job Step Example</h3>
+<pre>- when:
+    condition:
+      or:
+        - and:
+          - equal: [ master, &lt;&lt; pipeline.git.branch &gt;&gt; ]
+          - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]
+        - or:
+          - equal: [ false, &lt;&lt; pipeline.parameters.param1 &gt;&gt; ]
+    steps:
+      - run: echo "I am on master AND param1 is true OR param2 is true -- OR param1 is false"
+</pre>
+<h3>Workflow Example</h3>
+<pre>workflows:
+  conditional-workflow:
+    when:
+      and: # All must be true to trigger
+        - equal: [ master, &lt;&lt; pipeline.git.branch &gt;&gt; ]
+        - not: &lt;&lt; pipeline.parameters.param1 &gt;&gt;
+        - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]
+
+    jobs:
+      - job-on-condition
+ </pre>
+<p>Conditions can be nested in an arbitrary fashion, according to their argument specifications, and to a maximum depth of 100 levels. This allows for some complex logic, as an example of multiple nested conditions:</p>
+<pre>- when:
+    condition:
+      or:
+        - and:
+          - or:
+              - and:
+                  - equal: [ master, &lt;&lt; pipeline.git.branch &gt;&gt; ]
+                  - equal: [ false, &lt;&lt; pipeline.parameters.param1 &gt;&gt; ]
+              - or:
+                  - not: &lt;&lt; pipeline.parameters.param3 &gt;&gt;
+          - or:
+              - equal: [ false, &lt;&lt; pipeline.parameters.param3 &gt;&gt; ]
+              - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]  
+        - or:
+            - equal: [ true, &lt;&lt; pipeline.parameters.param4 &gt;&gt; ]
+
+    steps:
+      - run: echo "param 4 is true OR the other nested conditions are true"
+</pre>
+<p> </p>

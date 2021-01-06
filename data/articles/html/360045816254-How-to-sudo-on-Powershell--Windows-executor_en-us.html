@@ -1,0 +1,9 @@
+<p>Windows Powershell doesn't have <code>sudo</code> - some commands needs to be run as an administrator  Powershell has no concept of it.</p>
+<p> </p>
+<p>One solution we can use is <code>Start-Process</code> command: <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process">https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process</a> The following line is the example of this command.</p>
+<pre>Start-Process wpr -verb runAs -Args "-start GeneralProfile"</pre>
+<p>This is calling <code>wpr</code> (Windows Performance Recorder) as an administrator and passing necessary arguments with <code>-Args</code> flag.  However in this case, the challenge is that we don't see the output because theoretically, since it starts a new shell somewhere.</p>
+<p> </p>
+<p>The other way you can think is scoop (<a href="https://scoop.sh/">https://scoop.sh/</a>) which enables the commands equivalent to the one in Linux. You can install by following way:</p>
+<pre>iex (new-object net.webclient).downloadstring('https://get.scoop.sh')<br>set-executionpolicy unrestricted -s cu -f<br>scoop install sudo</pre>
+<p>By installing this, you can use <code>sudo</code> just like you're in Linux. However with this, it's basically doing the same thing with the above so it's not possible to see the output anyway. (You can see the script inside here: <a href="https://github.com/lukesampson/psutils/blob/master/sudo.ps1">https://github.com/lukesampson/psutils/blob/master/sudo.ps1</a>) </p>

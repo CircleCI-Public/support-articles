@@ -1,0 +1,26 @@
+id: 360037058873
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360037058873.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360037058873-How-do-I-deactivate-or-remove-my-account-
+author_id: 379006459554
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -2
+vote_count: 46
+section_id: 115003327148
+created_at: '2019-10-09T18:51:12Z'
+updated_at: '2021-01-02T00:01:56Z'
+name: How do I deactivate or remove my account?
+title: How do I deactivate or remove my account?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:55:42Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<h2>Overview</h2>\n<p>CircleCI connects your GitHub or\_Bitbucket account to our system when granting access to the VCS of your choice.</p>\n<p>If you no longer want to build on CircleCI, visit your projects page and unfollow all projects. Your account will no longer be active.</p>\n<p>If you need to cancel your paid plan, please follow the steps here\_<a href=\"https://support.circleci.com/hc/en-us/articles/115015782487\" target=\"_self\">How to cancel or modify your plan</a></p>\n<h2>Delete account</h2>\n<p>If you would like full deletion of your account, please submit a <a href=\"https://support.circleci.com/hc/en-us\" target=\"_self\">support ticket</a> or contact <a href=\"mailto:support@circleci.com\">privacy@circleci.com</a>.</p>\n<p>You will want to confirm the following:</p>\n<ul>\n<li>Unfollow all\_projects and stopped building on CircleCI</li>\n<li>Delete all webhooks from your VCS provider pointing to CircleCI</li>\n<li>Cancel all plans including <a href=\"https://help.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/canceling-a-github-marketplace-app\" target=\"_self\">GitHub Marketplace plans</a>\n</li>\n</ul>"

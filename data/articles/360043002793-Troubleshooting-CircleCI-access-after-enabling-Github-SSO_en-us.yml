@@ -1,0 +1,26 @@
+id: 360043002793
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360043002793.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360043002793-Troubleshooting-CircleCI-access-after-enabling-Github-SSO
+author_id: 25261361207
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -4
+vote_count: 10
+section_id: 115003756627
+created_at: '2020-02-05T11:16:18Z'
+updated_at: '2020-12-07T20:32:14Z'
+name: Troubleshooting CircleCI access after enabling Github SSO
+title: Troubleshooting CircleCI access after enabling Github SSO
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:56:20Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>When you enable SSO old OAuth tokens are not safelisted for use, so you will need to re-create them after enabling SSO with the following steps:</p>\n<ul dir=\"auto\" type=\"disc\">\n<li type=\"disc\">user logs in to the affected org on GitHub using SSO.</li>\n<li type=\"disc\">user goes to OAuth application settings,\_<a href=\"https://github.com/settings/applications\" rel=\"noreferrer\">https://github.com/settings/applications</a>, selects CircleCI token, revokes it</li>\n<li type=\"disc\">user goes to circleci.com, logs out if necessary, logs in again, which should request authorization, makes sure CircleCI is authorized to access the org</li>\n</ul>"

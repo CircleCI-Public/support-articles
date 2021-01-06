@@ -1,0 +1,13 @@
+<p>Each CircleCI Xcode image has a fixed disk size and the amount of free space available can be checked by looking at the "installed software" <a href="https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions" target="_self">manifests</a>. </p>
+<p>Depending on the types of jobs being run, it is possible to hit the following error:</p>
+<pre>No space left on device</pre>
+<p>This indicates that the disk is full and the job will not be able to continue.</p>
+<h2>Freeing Up Space</h2>
+<p dir="auto">If you are not using the iOS simulators for your build, you can safely delete the following directory:</p>
+<pre dir="auto"><code>/Library/Developer/CoreSimulator/Profiles/Runtimes/</code> </pre>
+<p dir="auto">Removing the iOS simulator runtimes will free up an additional 10GB+ of disk space. </p>
+<p dir="auto">You can achieve this by adding the following step to your config.yml near the start of the job:</p>
+<pre dir="ltr"><code>- run:
+    name: Delete Simulators
+    command: sudo rm -rf /Library/Developer/CoreSimulator/Profiles/Runtimes/</code></pre>
+<p> </p>

@@ -1,0 +1,30 @@
+id: 360052058811
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360052058811.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360052058811-Exit-build-early-if-any-test-fails
+author_id: 405652843914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -1
+vote_count: 1
+section_id: 115003580328
+created_at: '2020-11-03T20:28:49Z'
+updated_at: '2020-11-09T07:15:28Z'
+name: Exit build early if any test fails
+title: Exit build early if any test fails
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-11-03T20:28:53Z'
+user_segment_id: null
+permission_group_id: 237847
+label_names:
+  - cancel
+  - workflow
+  - api
+  - fail fast
+body: "<p>You may have specific builds that you want to exit/fail as soon as any test fails, especially if you are splitting the tests across many containers.</p>\n<p>You can accomplish this by adding the following step after your test run step:</p>\n<pre style=\"background-color: #f3f3f3;\">- run:\n    name: Fail Fast\n    when: on_fail\n    command: |\n      echo \"Canceling workflow as a step resulted in failure\"\n      curl -X POST --header \"Content-Type: application/json\" \"https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}/cancel?circle-token=${CIRCLE_TOKEN}\" </pre>\n<p>The above also <span>requires that you generate a\_</span><a href=\"https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token\" target=\"_blank\" rel=\"noopener\">Personal API token</a><span>\_and store it as\_</span><code>CIRCLE_TOKEN</code><span>\_as a\_</span><a href=\"https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project\" target=\"_blank\" rel=\"noopener\">project level environment variable</a><span>.</span></p>\n<p><span>What the above does is when a build moves to a 'failed' state (such as when a test fails), it sends an API call to the workflows endpoint to cancel the entire workflow.</span></p>\n<p dir=\"auto\">Some notes about the above solution:</p>\n<ol dir=\"auto\" type=\"1\">\n<li>It will cancel the workflow instead of moving it to a \"Failed\" state</li>\n<li>This command will run on<span>\_</span><em>any</em><span>\_</span>failure of a job step, not just a test failure</li>\n</ol>"

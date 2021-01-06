@@ -1,0 +1,20 @@
+<p>You can stop building your project on CircleCI at any time by navigating to the project settings page and clicking the "Stop Building" button.</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360063893032/blobid0.png" alt="blobid0.png"></p>
+<p>In the event you are for some reason unable to stop building, you can always manually stop building by removing access to the repository from GitHub.<br><br>Some reasons you may potentially need to do this:</p>
+<ul>
+    <li>You have renamed your Organization, Username, or Repository</li>
+    <li>User credentials have become stale </li>
+</ul>
+<p> </p>
+<p>1. Start by accessing your GitHub repository settings. You can visit this directly by navigating to <em>https://github.com/Org/Repository </em>and clicking the "settings" button on the repository page.</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360058626252/Screenshot_2020-06-03_at_19.36.02.png" alt="Screenshot_2020-06-03_at_19.36.02.png" width="410" height="142"></p>
+<p> </p>
+<p>2. From the settings page, on the left side in the vertical navigation, we see the two pages we are interested in, "Webhooks" and "Deploy keys".</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360058626332/Screenshot_2020-06-03_at_19.39.59.png" alt="Screenshot_2020-06-03_at_19.39.59.png" width="285" height="437"></p>
+<p> </p>
+<p>3. From the Webhooks page, locate any Webhooks that post to CircleCI and delete them. <img src="https://support.circleci.com/hc/article_attachments/360032501573/Screen_Shot_2019-04-15_at_10.54.26_AM.png" alt="Screen_Shot_2019-04-15_at_10.54.26_AM.png" width="620" height="156"></p>
+<p> </p>
+<p>4. Lastly, navigate to the "Deploy keys" page and delete the key added by CircleCI</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360031680254/Screen_Shot_2019-04-15_at_10.54.54_AM.png" alt="Screen_Shot_2019-04-15_at_10.54.54_AM.png" width="662" height="172"></p>
+<p> </p>
+<p>This will stop the project from building on CircleCI in the event you need to manually remove access.</p>

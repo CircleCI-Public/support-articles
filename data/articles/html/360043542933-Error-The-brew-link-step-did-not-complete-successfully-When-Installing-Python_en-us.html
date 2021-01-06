@@ -1,0 +1,10 @@
+<p>When installing a Homebrew package that depends on Python 3, or when installing Python 3 itself, you may run in to the following error:</p>
+<pre class="output"><span class="pre"><span class="white"><span class="red">Error:</span> The `brew link` step did not complete successfully
+The formula built, but is not symlinked into /usr/local
+Could not symlink Frameworks/Python.framework/Headers
+Target /usr/local/Frameworks/Python.framework/Headers
+is a symlink belonging to python@2.</span></span></pre>
+<p>This error occurs due to the <a href="https://github.com/Homebrew/homebrew-core/pull/49796" target="_self">removal of Python 2 from Homebrew</a>. Previously, Python 3 would be linked as "python3", but now it will be linked as "python" which overrides the previous Python 2 version.</p>
+<p>If you receive this error, you will need to add the following step <em>before</em> installing any Homebrew packages:</p>
+<pre>- run: brew unlink python@2</pre>
+<p>Note: From the Xcode 11.4 image onwards, we no longer ship Python 2 with the image.</p>

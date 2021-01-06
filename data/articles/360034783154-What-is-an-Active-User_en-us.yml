@@ -1,0 +1,26 @@
+id: 360034783154
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360034783154.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360034783154-What-is-an-Active-User-
+author_id: 379006459554
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -7
+vote_count: 27
+section_id: 115003332307
+created_at: '2019-09-03T19:25:51Z'
+updated_at: '2020-12-20T20:47:10Z'
+name: What is an Active User?
+title: What is an Active User?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-23T07:00:51Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<h2><strong>Overview</strong></h2>\n<p><span style=\"font-weight: 400;\">An active user is anyone who triggers a build to run on CircleCI. The following count as an individual user:</span></p>\n<ol>\n<li style=\"font-weight: 400;\"><span style=\"font-weight: 400;\">Commits from registered and <a href=\"https://support.circleci.com/hc/en-us/articles/360037744473\" target=\"_self\">unregistered users</a> that trigger builds, including PR merges, and Dependabot.</span></li>\n<li style=\"font-weight: 400;\">\n<span style=\"font-weight: 400;\">Re-running jobs in the CircleCI web application, including </span><a href=\"https://circleci.com/docs/2.0/ssh-access-jobs\"><span style=\"font-weight: 400;\">SSH debug</span></a><span style=\"font-weight: 400;\">.</span>\n</li>\n<li style=\"font-weight: 400;\">\n<span style=\"font-weight: 400;\">Approving </span><a href=\"https://circleci.com/docs/2.0/workflows/#holding-a-workflow-for-a-manual-approval\"><span style=\"font-weight: 400;\">manual jobs</span></a><span style=\"font-weight: 400;\"> (approver will be considered the actor of all downstream jobs).</span>\n</li>\n<li style=\"font-weight: 400;\">\n<a href=\"https://circleci.com/docs/2.0/workflows/#scheduling-a-workflow\"><span style=\"font-weight: 400;\">Scheduling Jobs with Workflows</span></a>\_</li>\n<li style=\"font-weight: 400;\"><a href=\"https://circleci.com/docs/2.0/gh-bb-integration/#controlling-access-via-a-machine-user\"><span style=\"font-weight: 400;\">Machine users</span></a></li>\n</ol>\n<p>If you have read permissions for your organization's repository on GitHub or Bitbucket, you will be able to view builds triggered on CircleCI. Viewing these builds will not count toward a user seat. However, if you trigger a build to run on CircleCI before registering, you will be considered an\_<span style=\"font-weight: 400;\"><a href=\"https://support.circleci.com/hc/en-us/articles/360037744473\" target=\"_self\">unregistered user</a>.</span></p>\n<h2><strong>Viewing Active Users</strong></h2>\n<p><span style=\"font-weight: 400;\">You can view your Active Users per billing period under the </span><span style=\"font-weight: 400;\">Users</span><span style=\"font-weight: 400;\"> tab\_ (<a href=\"https://app.circleci.com/settings/plan/github/ORGNAME/usage\" target=\"_self\">https://app.circleci.com/settings/plan/&lt;vcs&gt;/&lt;org name&gt;/usage</a>)</span><span style=\"font-weight: 400;\">, be sure you are viewing the desired billing cycle at the top right of the page, i.e. </span><span style=\"font-weight: 400;\">Jul 15-Aug 14</span><span style=\"font-weight: 400;\">.</span></p>\n<h2><strong>View Available Seats</strong></h2>\n<p><span style=\"font-weight: 400;\">You can view your available seats here (<a href=\"https://app.circleci.com/settings/plan/github/ORGNAME/overview\" target=\"_self\">https://app.circleci.com/settings/plan/&lt;vcs&gt;/&lt;org name&gt;/overview</a>)</span><span style=\"font-weight: 400;\">.</span></p>\n<h2><strong>Blocked due to No Seats error</strong></h2>\n<p><span style=\"font-weight: 400;\">Visit\_<a href=\"https://support.circleci.com/hc/en-us/articles/360047022414\" target=\"_self\" rel=\"undefined\">\"This job has been blocked because no user seats are available on your plan. Please purchase more user seats to continue building.\"</a>\_</span></p>\n<h2><strong>How can I Remove Users?</strong></h2>\n<p><span style=\"font-weight: 400;\">You cannot remove Active Users from occupied seats in the current billing cycle, but they will drop off of the next month’s billing cycle if they are not active.\_There is no way to manually remove users from seats at this time.\_<br><br>Submitting an <a href=\"https://support.circleci.com/hc/en-us/articles/360037058873-How-do-I-deactivate-or-remove-my-account-\" target=\"_self\">account removal request</a> will not remove the user from the list of Active Users. The seat will remain occupied by an\_<strong>Unknown User</strong>\_until the end of the billing cycle.</span></p>"

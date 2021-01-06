@@ -1,0 +1,18 @@
+<p><span>Viewing webhook deliveries in Bitbucket can be a useful diagnostic tool when attempting to discover why, for example, a push to a specific repository has not triggered a build on CircleCI.<br><br></span></p>
+<p><strong>By default</strong>, the webhook <span>requests history is <strong>not enabled</strong> in Bitbucket. You will first need to configure the webhook to collect request history:<br></span></p>
+<ol>
+    <li>From Bitbucket, open the repository.</li>
+    <li>Click the <strong><em>Repository settings</em></strong> link on the left side, then click the <strong><em>Webhooks </em></strong>link.</li>
+    <li><span>Locate the <strong><em>CircleCI Webhook</em></strong>, and click the <strong><em>View requests </em></strong>link (in the <strong><em>Actions</em></strong> column).</span></li>
+    <li><span>Click the <em><strong>E</strong><strong>nable History</strong></em> button.<br><br></span></li>
+</ol>
+<p><img src="https://support.circleci.com/hc/article_attachments/360068786612/enable_history_webhook.png" alt="enable_history_webhook.png"></p>
+<p><em>Note that Bitbucket will only collect history for 12 hours before automatically switching back to not collecting request history.</em></p>
+<p><span>Once the request history collection is enabled:</span><span></span></p>
+<ol>
+    <li><span>Perform the "problematic" action (commit push, pull-request creation/merge, etc.)</span></li>
+    <li><span>Click the <strong><em>Load new requests</em></strong> button to view the list of recent deliveries.</span></li>
+    <li><span>For the related event, click the <em><strong>View details</strong></em> link to open a detailed log page of the webhook delivery.</span></li>
+</ol>
+<p> </p>
+<p><span>For more information on Bitbucket webhooks, please see the <a href="https://support.atlassian.com/bitbucket-cloud/docs/manage-webhooks/" target="_blank" rel="noopener">Bitbucket documentation</a>.</span></p>

@@ -1,0 +1,8 @@
+<p dir="auto">The<span> </span><code>CIRCLE_PR_NUMBER</code><span> variable </span>is only available on forked Pull Requests, we note that here:</p>
+<p dir="auto"><a href="https://circleci.com/docs/2.0/env-vars/#built-in-environment-variables" rel="noreferrer">https://circleci.com/docs/2.0/env-vars/#built-in-environment-variables</a></p>
+<p><span>However, </span><code>CIRCLE_PULL_REQUEST</code><span> should be populated on any build associated with any pull request. You can then use the following to extract out just the PR number:</span></p>
+<pre style="background-color: #f3f3f3;"><span>${CIRCLE_PULL_REQUEST##*/}</span></pre>
+<p>This would take the value which is normally something like:</p>
+<pre style="background-color: #f3f3f3;">https://github.com/org/project/pull/1728</pre>
+<p>And turn it simply to:</p>
+<pre style="background-color: #f3f3f3;">1728</pre>

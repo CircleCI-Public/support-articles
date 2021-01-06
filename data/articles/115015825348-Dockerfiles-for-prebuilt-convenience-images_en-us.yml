@@ -1,0 +1,30 @@
+id: 115015825348
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/115015825348.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/115015825348-Dockerfiles-for-pre-built-convenience-images
+author_id: 25261361207
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003580328
+created_at: '2017-12-14T16:44:00Z'
+updated_at: '2020-10-22T06:58:39Z'
+name: Dockerfiles for pre-built convenience images
+title: Dockerfiles for pre-built convenience images
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:58:39Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - docker
+  - dockerfile
+  - Dockerfiles
+  - docker file
+body: "<p>If you're interested to see the Dockerfiles for our pre-built convenience images <a href=\"https://hub.docker.com/r/circleci/\" target=\"_blank\" rel=\"noopener\">located on DockerHub,</a>\_you can find them here in this <a href=\"https://github.com/circleci-public/circleci-dockerfiles\" target=\"_blank\" rel=\"noopener\">GitHub repository</a>.</p>\n<p>We have also introduced our <a href=\"https://circleci.com/blog/announcing-our-next-generation-convenience-images-smaller-faster-more-deterministic/\" target=\"_self\">next-generation convenience images</a>, which have been built from the ground up with CI, efficiency, and determinism in mind. Some highlights of next-gen convenience images include faster spin-up times and greater reliability and scalability. You can see the Dockerfiles for these images on <a href=\"https://hub.docker.com/r/cimg/base\" target=\"_self\">DockerHub</a> and in this <a href=\"https://github.com/CircleCI-Public/cimg-base\" target=\"_self\">GitHub repository</a>.</p>\n<p><iframe src=\"//www.youtube-nocookie.com/embed/PgIwBzXBn7M\" width=\"560\" height=\"315\" frameborder=\"0\" allowfullscreen=\"\"></iframe></p>"

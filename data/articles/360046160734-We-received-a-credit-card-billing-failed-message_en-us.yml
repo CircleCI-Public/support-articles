@@ -1,0 +1,26 @@
+id: 360046160734
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360046160734.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360046160734-We-received-a-credit-card-billing-failed-message
+author_id: 25261361207
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: 1
+vote_count: 3
+section_id: 115003332307
+created_at: '2020-04-14T13:13:13Z'
+updated_at: '2020-12-21T18:43:03Z'
+name: We received a credit card billing failed message
+title: We received a credit card billing failed message
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-27T19:47:28Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p><span style=\"font-weight: 400;\">Note: Specific to Performance Plan</span></p>\n<p><span style=\"font-weight: 400;\">A failed credit card transaction could be due to insufficient funds, an expired or canceled card, or the bank declining the charge for some other reason. </span></p>\n<p><span style=\"font-weight: 400;\">If there were insufficient funds, please increase the limit on the card. If it is expired or canceled, update the card in your billing portal by clicking on the “View and Configure Plan” button on your Plan overview page and click “Update Payment Method.” </span></p>\n<p><span style=\"font-weight: 400;\">The charge will automatically retry when you update the card on file. If it was not one of those reasons, we suggest getting in touch with your bank for more details about the nature of the decline.\_</span></p>"

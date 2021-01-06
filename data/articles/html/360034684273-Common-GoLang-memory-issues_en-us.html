@@ -1,0 +1,13 @@
+<p>When building <em><strong>Go</strong></em> projects<strong><em> </em></strong>on CircleCI using the Docker executor, memory issues can occur because:</p>
+<ul>
+    <li>
+        <strong><em> Go</em></strong> will try to optimize according to the number of cores reported on the system.
+    </li>
+    <li>The environment will report the number of cores on the VM rather than the available cores for the container.</li>
+</ul>
+<p>This can cause <em><strong>Go</strong></em> to spawn too many workers and use all the available memory.</p>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">You can control the maximum number of OS threads that are executing code simultaneously, by setting <a href="https://golang.org/pkg/runtime/#GOMAXPROCS" target="_blank" rel="noopener">the <code class="highlighter-rouge" style="font-size: 15px;">GOMAXPROCS</code> variable</a> to the number of cores available to your job. </span></p>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">For example, if you're using the default resource class (medium) for Docker executor jobs (which has 2 cores available):</span></p>
+<pre>jobs:<br>  build:<br>    docker:<br>      - image: circleci/golang:1.12<br>    environment:<br>      GOMAXPROCS: 2<br>    steps:<br>      - run:</pre>
+<p> </p>
+<p>To learn more about how to <span>control the run-time behavior of Go programs, see the <a href="https://golang.org/pkg/runtime" target="_blank" rel="noopener"><em><strong>GoLang</strong></em> documentation</a>.</span></p>

@@ -1,0 +1,30 @@
+<p><span style="font-weight: 400;">If you have unwanted organizations showing in the “Switch Organization” drop-down box in the upper left-hand side of the UI, you can revoke access from CircleCI in the GitHub project’s settings. This article is currently only applied to GitHub.  </span></p>
+<p><span style="font-weight: 400;">User accounts are also considered organizations, and so you may see them stuck in your organization list if you've contributed to a repository before. Follow <a href="https://help.github.jp/enterprise/2.11/user/articles/removing-yourself-from-a-collaborator-s-repository" target="_self">these instructions</a> to remove yourself as a collaborator from other repositories.</span></p>
+<p> </p>
+<p><em><span style="font-weight: 400;">Note: You must be an Administrator of the Organization to make these changes</span></em><span style="font-weight: 400;"> </span></p>
+<p><br><img src="https://support.circleci.com/hc/article_attachments/360055393754/Screen_Shot_2020-01-17_at_12.27.40_PM.png" alt="Screen_Shot_2020-01-17_at_12.27.40_PM.png" width="359" height="372"></p>
+<h1 id="h_a01b17e6-ee02-43c9-8307-85aa99ad8fc4">Revoking Access on GitHub</h1>
+<ol>
+    <li>
+        <h3>Navigate to your organization's Third-party access Settings page:</h3>
+        <p><em>(<a href="https://github.com/organizations/justanothertestorg1/settings/oauth_application_policy">https://github.com/organizations/&lt;organization&gt;/settings/oauth_application_policy)</a></em></p>
+    </li>
+    <li>
+        <h3>Click the "Setup application access restrictions" button</h3>
+        <em>(If you have a different page, applications may already be setup. Skip to <a href="#h_984ce140-86db-4f73-b414-b1d607550dda" target="_self">step 4</a>)</em> <br><img src="https://support.circleci.com/hc/article_attachments/360055410794/first_step_final.png" alt="first_step_final.png">
+    </li>
+    <li>
+        <h3> Click the "Restrict third-party application access" button<img src="https://support.circleci.com/hc/article_attachments/360056277873/restrict_final.png" alt="restrict_final.png">
+        </h3>
+    </li>
+    <li>
+        <h3 id="h_984ce140-86db-4f73-b414-b1d607550dda">Click the pencil icon next to CircleCI<img src="https://support.circleci.com/hc/article_attachments/360055410774/edit_final.png" alt="edit_final.png">
+        </h3>
+    </li>
+    <li>
+        <h3>Click the "Deny Access" button<br><img src="https://support.circleci.com/hc/article_attachments/360056277853/deny_access_final.png" alt="deny_access_final.png">
+        </h3>
+    </li>
+</ol>
+<p>Now your CircleCI will no longer have access to your organization, and will not display it within the CircleCI organization drop-down. You can provide application access to CircleCI again at any time.  </p>
+<p> </p>

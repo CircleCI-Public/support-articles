@@ -1,0 +1,12 @@
+<p dir="auto">If you are using Swift Package Manager as part of the <code>xcodebuild</code> process, you may find that this fails with the following error message:</p>
+<pre class="output"><span class="pre"><span class="white">xcodebuild: error: Could not resolve package dependencies:
+  Authentication failed because the credentials were rejected</span></span></pre>
+<p dir="auto">Or</p>
+<pre class="css-9561s5">xcodebuild: error: Could not resolve package dependencies:
+  The server SSH fingerprint failed to verify.
+</pre>
+<p dir="auto">This issue will only occur when trying to access private git repos when using SSH key authentication.</p>
+<p dir="auto">This is caused by a bug in the way that <code>xcodebuild</code> handles SSH keys and has been a known bug since the debut of Xcode 11, occurring both locally, but more specifically, in a CI environment.</p>
+<p dir="auto"><code>xcodebuild</code> does not conform to the system ssh config and does not access the keys CircleCI stores in <code>ssh-agent</code>. We can work around this by requesting Xcode uses the main system version of ssh which will behave as expected.</p>
+<p dir="auto">The workaround for this is to add the following lines to your config file, directly after the <code>checkout</code> step:</p>
+<pre dir="auto">- run: sudo <span>defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM YES</span><br>- run: rm ~/.ssh/id_rsa || true<br>- run: for ip in $(dig @8.8.8.8 bitbucket.org +short); do ssh-keyscan bitbucket.org,$ip; ssh-keyscan $ip; done 2&gt;/dev/null &gt;&gt; ~/.ssh/known_hosts || true <br>- run: for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2&gt;/dev/null &gt;&gt; ~/.ssh/known_hosts || true</pre>

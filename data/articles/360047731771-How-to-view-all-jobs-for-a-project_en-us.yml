@@ -1,0 +1,31 @@
+id: 360047731771
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047731771.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360047731771-How-to-view-all-jobs-for-a-project
+author_id: 405652843914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 6
+vote_count: 6
+section_id: 115003756627
+created_at: '2020-08-13T17:01:00Z'
+updated_at: '2020-10-23T19:27:28Z'
+name: How to view all jobs for a project
+title: How to view all jobs for a project
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:57:43Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - UI
+  - jobs
+  - legacy jobs
+  - view all jobs
+  - view running jobs
+body: "<p>At the moment in the <a href=\"https://circleci.com/blog/introducing-our-redesigned-UI-built-for-increased-user-productivity/\" target=\"_blank\" rel=\"noopener\">newly redesigned UI</a>\_we provide a list of pipelines that have been run. Within these pipelines you will find the workflows that were run -- and the jobs associated with those workflows.</p>\n<p>Occasionally you may be looking for a specific job run, or all currently running jobs for a project, you can still access this information via the \"Legacy Jobs View\".</p>\n<p>This page can be accessed by tacking on <code style=\"background-color: #f3f3f3;\">/jobs</code> to the end of the URL when viewing the pipelines for a project. As an example:</p>\n<pre style=\"background-color: #f3f3f3;\">https://app.circleci.com/pipelines/(vcs)/(org)/(project)/jobs</pre>\n<p>\_You should find a page like the following:</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360064761391/legacy_jobs.png\" alt=\"legacy_jobs.png\"></p>\n<p>A note on this view though is it's mainly for informational purposes, you won't be able to take action against these running jobs (such as canceling or re-running them). To take those actions you will need to access the pipeline the job is associated with.</p>"

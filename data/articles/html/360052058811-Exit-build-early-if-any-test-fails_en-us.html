@@ -1,0 +1,15 @@
+<p>You may have specific builds that you want to exit/fail as soon as any test fails, especially if you are splitting the tests across many containers.</p>
+<p>You can accomplish this by adding the following step after your test run step:</p>
+<pre style="background-color: #f3f3f3;">- run:
+    name: Fail Fast
+    when: on_fail
+    command: |
+      echo "Canceling workflow as a step resulted in failure"
+      curl -X POST --header "Content-Type: application/json" "https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}/cancel?circle-token=${CIRCLE_TOKEN}" </pre>
+<p>The above also <span>requires that you generate a </span><a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener">Personal API token</a><span> and store it as </span><code>CIRCLE_TOKEN</code><span> as a </span><a href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project" target="_blank" rel="noopener">project level environment variable</a><span>.</span></p>
+<p><span>What the above does is when a build moves to a 'failed' state (such as when a test fails), it sends an API call to the workflows endpoint to cancel the entire workflow.</span></p>
+<p dir="auto">Some notes about the above solution:</p>
+<ol dir="auto" type="1">
+    <li>It will cancel the workflow instead of moving it to a "Failed" state</li>
+    <li>This command will run on<span> </span><em>any</em><span> </span>failure of a job step, not just a test failure</li>
+</ol>

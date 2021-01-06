@@ -1,0 +1,18 @@
+<p>You may have a situation where the installed and set Node version on a CircleCI convenience image is not the one you need. You can install and swap node versions using <a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">Node Version Manager (NVM).</a></p>
+<pre style="background-color: #f3f3f3;">- run:
+    name: Swap node versions
+    command: |
+      set +e
+      wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+      export NVM_DIR="$HOME/.nvm"
+      [ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh"
+      [ -s "$NVM_DIR/bash_completion" ] &amp;&amp; \. "$NVM_DIR/bash_completion"
+      nvm install v12
+      nvm alias default 12.19.0
+
+      echo 'export NVM_DIR="$HOME/.nvm"' &gt;&gt; $BASH_ENV
+      echo '[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh"' &gt;&gt; $BASH_ENV</pre>
+<p>The above is downloading Node v12 and then setting the default to be used for the rest of the job to v12.19.0. The run command should go towards the start of the job run and the only items that need to be modified are:</p>
+<pre style="background-color: #f3f3f3;">nvm install v12
+nvm alias default 12.19.0</pre>
+<p>You will want to swap the install command to install the Node version you need and then the default command to set the specific version to use for the rest of the job.</p>

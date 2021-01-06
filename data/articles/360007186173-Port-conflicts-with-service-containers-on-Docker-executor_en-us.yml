@@ -1,0 +1,26 @@
+id: 360007186173
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360007186173.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360007186173-Port-conflicts-with-service-containers-on-Docker-executor
+author_id: 25261361207
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -2
+vote_count: 2
+section_id: 115003756627
+created_at: '2018-07-17T15:13:25Z'
+updated_at: '2020-10-22T06:59:08Z'
+name: Port conflicts with service containers on Docker executor
+title: Port conflicts with service containers on Docker executor
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:08Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>With many service containers you use on CircleCI it's not possible to change the ports for the container during the job run time. <span style=\"background-color: #f6d5d9;\">We</span>\_bind container ports to <strong>localhost</strong> automatically, and this can be an issue when multiple service containers require the same port. Such as two postgres databases. Consider the example below:\_</p>\n<p>version: 2<br>jobs:<br>\_ build:<br>\_ \_ # The primary container is an instance of the first image listed.<br>\_ \_ docker:<br>\_ \_ \_ - image: circleci/node:4.8.2-jessie<br><strong>\_ \_ \_ - image: postgres</strong><strong>:11-alpine-ram</strong><br><strong>\_ \_ \_ - image: postgres:11-alpine-ram</strong><br><br>Both postgres\_service images will attempt to bind to localhost:5432 and cause an error. You can prevent this by providing a name to your image which will be used as a hostname to bind the image ports to.</p>\n<p>\_ docker:<br>\_ \_ - image: circleci/node:4.8.2-jessie<br>\_ \_ - image: postgres:11-alpine-ram<br><strong>\_ \_ - image: postgres:11-alpine-ram</strong><br><strong>\_ \_ \_ \_ name: postgres2</strong></p>\n<p>Providing the name parameter will allow the second container to be accessed from <strong>postgres2:5432</strong> and the first postgres\_container from <strong>localhost:5432<br><br></strong></p>\n<p>Further reading:<br><a href=\"https://circleci.com/docs/2.0/configuration-reference/#docker\">https://circleci.com/docs/2.0/configuration-reference/#docker</a></p>"

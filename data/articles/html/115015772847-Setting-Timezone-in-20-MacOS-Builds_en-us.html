@@ -1,0 +1,8 @@
+<p>Using the <code>TZ</code> environment key does not work on 2.0 macOS builds. In order to set the timezone, you'll need to add the following command to your configuration: </p>
+<pre><code class="hljs bash">      <span class="hljs-comment"># Set Timezone</span>
+      - run:
+          name: <span class="hljs-built_in">set</span> timezone
+          <span class="hljs-built_in">command</span>: |
+            sudo systemsetup -settimezone <span class="hljs-string">"<span class="hljs-variable">$TIMEZONE</span>"</span>
+</code></pre>
+<p>Replace <code>$TIMEZONE</code> with whatever timezone you want to use. You can get a list of all supported timezones with <code>sudo systemsetup -listtimezones</code>.</p>

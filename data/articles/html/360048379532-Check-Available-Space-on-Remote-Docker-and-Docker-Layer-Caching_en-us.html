@@ -1,0 +1,7 @@
+<p dir="auto">You can run the following command to see how much space has been currently used on the Docker Layer Caching volume with Remote Docker.</p>
+<pre>ssh remote-docker 'sudo df' | grep '/var/lib/docker' | awk '{print $4}'</pre>
+<p dir="auto">You could store that value and use it in additional scripting to perform actions to that Remote Docker instance and volume.</p>
+<pre>DLC_AVAILABLE_SPACE=$(ssh remote-docker 'sudo df' | grep '/var/lib/docker' | awk '{print $4}');</pre>
+<p dir="auto">You could also run:</p>
+<pre>docker system df</pre>
+<p dir="auto">This would produce more human-readable output.</p>

@@ -1,0 +1,16 @@
+<p>To connect to a Remote Desktop (RDP) session in a Windows job, follow the instructions below:</p>
+<ol>
+    <li>Select your Windows job and choose <a href="https://circleci.com/docs/2.0/ssh-access-jobs/" target="_self"><strong>Rerun with SSH</strong></a>
+    </li>
+    <li>Log in to the SSH session and change the user password with the following command: 
+        <pre>passwd</pre>
+        <strong>Note: </strong>Windows requires a complex password and will return "Try Again" if a password is not strong enough. Consider using a <a href="https://passwordsgenerator.net" target="_self">randomly generated secure password</a>.
+    </li>
+    <li>Set up SSH port-forwarding by running the following on your local machine: 
+        <pre><span>ssh -fN -L 3390:localhost:3389 -p 54782 &lt;windows job ip&gt;</span></pre>
+    </li>
+    <li>Open the Remote Desktop app (included with Windows or download from the <a href="https://apps.apple.com/gb/app/microsoft-remote-desktop/id1295203466?mt=12" target="_self">Mac App Store</a>) and connect to: 
+        <pre><span>localhost:3390</span></pre>
+    </li>
+    <li>Log in with the username "circleci" and the password set in step 2</li>
+</ol>

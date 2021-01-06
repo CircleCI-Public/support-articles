@@ -1,0 +1,16 @@
+<p>When using the <code>machine</code> executor, RVM is available for easy installation and use of custom ruby versions.</p>
+<p>To get this going, add a step like the following:</p>
+<pre style="background-color: #f3f3f3;">      steps:<br>        - run:<br>           name: Set ruby version to 2.3.4<br>           command: |<br>                rvm install 2.3.4<br>                echo . $(rvm 2.3.4 do rvm env --path) &gt;&gt; $BASH_ENV</pre>
+<p>After this step runs, the new ruby version will be in place.</p>
+<p>Alternatively, you can also use the <a href="https://circleci.com/developer/orbs/orb/circleci/ruby" target="_self">Ruby Orb</a> to install and set the Ruby version. Ensure you are on version <code>1.1.2</code> or later. You can set and invoke the Orb like the following:</p>
+<pre style="background-color: #f3f3f3;">...
+orbs:
+  ruby: circleci/ruby@1.1.2
+
+jobs:
+  deploy:
+    machine:
+      image: ubuntu-1604:202004-01
+    steps:
+      - ruby/install:
+          version: '2.7'</pre>

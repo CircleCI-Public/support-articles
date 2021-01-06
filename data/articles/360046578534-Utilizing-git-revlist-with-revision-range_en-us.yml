@@ -1,0 +1,29 @@
+id: 360046578534
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360046578534.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360046578534-Utilizing-git-rev-list-with-revision-range
+author_id: 405652843914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 2
+vote_count: 2
+section_id: 115003580328
+created_at: '2020-04-21T19:48:13Z'
+updated_at: '2020-12-18T22:10:06Z'
+name: Utilizing git rev-list with revision range
+title: Utilizing git rev-list with revision range
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:14Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - git
+  - rev-list
+  - git rev-list
+body: "<p>When needing to utilize the <a href=\"https://git-scm.com/docs/git-rev-list#_description\" target=\"_blank\" rel=\"noopener\">range option</a>\_for \"git rev-list\" you will need to use the full SHA-1 for each of the revisions.</p>\n<p>As an example if you wanted to compare your current build you are pushing to CircleCI to master:</p>\n<pre>masterbranchsha=$(git rev-parse origin/master)<br>git rev-list --count $masterbranchsha..$CIRCLE_SHA1</pre>\n<p>\_</p>"

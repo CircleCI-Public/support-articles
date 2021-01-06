@@ -1,0 +1,39 @@
+id: 360037683373
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360037683373.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360037683373-iOS-Simulator-Crash-Reports
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 11
+vote_count: 23
+section_id: 115003327088
+created_at: '2019-10-21T09:13:14Z'
+updated_at: '2020-12-08T15:21:19Z'
+name: iOS Simulator Crash Reports
+title: iOS Simulator Crash Reports
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T07:00:43Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - xcode
+  - ios
+  - macOS
+body: >-
+  <p>If your iOS app crashes in the Simulator during a test run, the crash
+  report can be used for diagnosing the exact cause of the crash.</p>
+
+  <p>By default, the crash reports for the app will be written to the
+  ~/Library/Logs/DiagnosticReports directory.</p>
+
+  <p>The crash reports can be uploaded as artifacts to assist with debugging the
+  app crash on your local machine:</p>
+
+  <pre>- store_artifacts:<br>    path: ~/Library/Logs/DiagnosticReports</pre>

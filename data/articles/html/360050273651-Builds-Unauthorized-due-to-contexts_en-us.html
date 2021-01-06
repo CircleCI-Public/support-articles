@@ -1,0 +1,21 @@
+<p><span style="font-weight: 400;">If your builds are failing as "Unauthorized" and you are utilizing contexts, please try the following troubleshooting steps:</span></p>
+<ol>
+    <li style="font-weight: 400;"><span style="font-weight: 400;"><strong>Restricted Contexts</strong>: If you are using a <a href="https://circleci.com/docs/2.0/contexts/#restricting-a-context" target="_self">Restricted Context</a>, confirm the blocked user is a part of the security group (<a href="https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/github-glossary#team" target="_self">defined by GitHub teams</a>), users that are not a part of the GitHub team will not have access to the context</span></li>
+    <li style="font-weight: 400;"><span style="font-weight: 400;"><strong>Stale Permissions</strong>: If your permission level recently changed you will need to refresh your permissions by visiting <a href="https://app.circleci.com/settings/user">https://app.circleci.com/settings/user</a> and click “Refresh Permissions”. If you still have issues, you may need to log out and log back in</span></li>
+    <li style="font-weight: 400;">
+        <span style="font-weight: 400;"><strong>Nested Teams</strong>: If the context you are attempting to use is part of a nested team, you will need to </span><a href="https://support.circleci.com/hc/en-us/articles/360047769712-Using-and-sharing-context-with-GitHub-Nested-Teams-"><span style="font-weight: 400;">add the nested team as a security group</span></a>
+    </li>
+    <li style="font-weight: 400;"><span style="font-weight: 400;"><strong>Account renames</strong>: If you recently renamed your GitHub username and are suddenly experiencing permission issues please contact Support</span></li>
+    <li style="font-weight: 400;"><span style="font-weight: 400;"><strong>Browser extensions</strong>: Try to disable browser extensions or log in from a different browser and/or device. If you are still blocked, please submit a HAR file to Support</span></li>
+    <li style="font-weight: 400;">
+        <span style="font-weight: 400;"><span><strong>Invalid/Expired OAuth token</strong>: Proceed to a full re-authentication</span></span>
+        <ol>
+            <li style="font-weight: 400;"><span style="font-weight: 400;"><span>Sign out of your CircleCI account</span></span></li>
+            <li style="font-weight: 400;"><span style="font-weight: 400;"><span>Revoke CircleCI's access in <a href="https://bitbucket.org/account/settings/app-authorizations" target="_self">Bitbucket</a> or</span><span> <a href="https://github.com/settings/applications" target="_self">GitHub</a></span></span></li>
+            <li style="font-weight: 400;"><span style="font-weight: 400;"><span>Clear your browser's cache and cookies</span></span></li>
+            <li style="font-weight: 400;"><span style="font-weight: 400;"><span>Sign back into your CircleCI account</span></span></li>
+            <li style="font-weight: 400;"><span style="font-weight: 400;"><span>Refresh permissions at </span><a href="https://app.circleci.com/settings/user" target="_blank" rel="noopener noreferrer">https://app.circleci.com/settings/user</a></span></li>
+        </ol>
+    </li>
+</ol>
+<p><span style="font-weight: 400;">You can reach us by submitting a ticket to <a href="https://support.circleci.com/">https://support.circleci.com/</a> or writing to </span><a href="mailto:support@circleci.com"><span style="font-weight: 400;">support@circleci.com</span></a><span style="font-weight: 400;"> </span></p>

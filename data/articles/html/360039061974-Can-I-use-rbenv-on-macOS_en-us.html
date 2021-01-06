@@ -1,0 +1,6 @@
+<p>The only officially supported way to change the Ruby version on CircleCI macOS machines is to use chruby. We ship chruby and various Ruby versions already configured with every Xcode image.</p>
+<p>You can find out how to use chruby to switch Rubies in our <a href="https://circleci.com/docs/2.0/testing-ios/#using-custom-ruby-versions" target="_self">documentation</a>.</p>
+<h2>Common Issues with rbenv</h2>
+<p>We highly suggest switching to chruby, as above, due to its simplicity, but here are a few common rbenv issues and some pointers on how to resolve them.</p>
+<p><em>You installed a gem, such as fastlane, but when you run it the version is older than the version you just installed.</em></p>
+<p>This is a common issue with rbenv due to the way it installs gems using <a href="https://github.com/rbenv/rbenv#understanding-shims" target="_self">shims</a>. If these shims are not updated, then they will continue to point to an older version of the gem. Try running the command <em>rbenv rehash</em> to update these - more information <a href="https://github.com/rbenv/rbenv#rbenv-rehash" target="_self">here</a>.</p>

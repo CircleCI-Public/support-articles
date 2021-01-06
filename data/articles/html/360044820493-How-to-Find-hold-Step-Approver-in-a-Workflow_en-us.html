@@ -1,0 +1,15 @@
+<p> </p>
+<p>If you are looking for the information such as <strong>name, login ID</strong>, etc. of the user who approved the <a href="https://circleci.com/docs/2.0/workflows/#holding-a-workflow-for-a-manual-approval" target="_blank" rel="noopener">hold step</a> in a workflow, then you can use API endpoints. </p>
+<p>It is a 2 step process and you will have to call 2 different API endpoints for this. </p>
+<p><strong>Follow the below steps</strong>:</p>
+<p><strong>1</strong>. Get the <strong><code>analytics-id</code></strong> of the approver by using <strong><a href="https://circleci.com/docs/api/v2/#get-a-workflow-39-s-jobs" target="_blank" rel="noopener">Get a workflow's jobs</a></strong> API endpoint. Below is an example.</p>
+<pre>curl -X GET https://circleci.com/api/v2/workflow/{id}/job -u $CIRCLECI_TOKEN:</pre>
+<p><strong>Sample output</strong>:</p>
+<pre><br> "name" : "hold",<br> "project_slug" : "gh/&lt;org&gt;/&lt;project&gt;",<br> "approved_by" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",<br> "type" : "approval",<br> "status" : "success",</pre>
+<p>In the above output, <strong><code>approved_by</code></strong> will contain the <strong><code>analytics-id</code></strong> of the user.</p>
+<p><strong>2</strong>. Now see the user information with <strong><code>analytics-id</code></strong> using <strong><a href="https://circleci.com/docs/api/v2/#user-information" target="_blank" rel="noopener">User Information</a></strong> endpoint.</p>
+<pre>curl -X GET https://circleci.com/api/v2/user/{id} -u $CIRCLECI_TOKEN:</pre>
+<p><strong>Sample output</strong>:</p>
+<pre><br> {<br> "name" : "User Name",<br> "login" : "login_info",<br> "id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"<br> }<br> </pre>
+<p><strong>Note</strong>: $CIRCLECI_TOKEN is a variable for a <a href="https://circleci.com/account/api" target="_blank" rel="noopener">personal API token</a>.</p>
+<p><strong>You can use the above API endpoints in your script and get the desired information. Happy building!</strong></p>

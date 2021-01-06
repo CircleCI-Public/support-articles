@@ -1,0 +1,8 @@
+<p> </p>
+<p>If you are using a CircleCI pre-built Docker Image and are getting a `Expired GPG key` error in your build. You can resolve this issue by simply upgrading to a newer version of the image you are using. </p>
+<p>You can identify and validate that there are expired gpg keys in your container by running `sudo apt-key list | grep "expired:" `</p>
+<p>If you are using a custom image you can upgrade your gpg keys with:</p>
+<p>`apt-key adv --keyserver keys.gnupg.net --recv-keys KEY_ID`</p>
+<p>You will need to run this command with the KEY_ID of the expired key(s)</p>
+<p> </p>
+<p> </p>

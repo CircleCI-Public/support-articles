@@ -1,0 +1,38 @@
+id: 360042959233
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360042959233.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360042959233-Using-xvfb-to-run-applications
+author_id: 385569260514
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -7
+vote_count: 9
+section_id: 115003580328
+created_at: '2020-02-04T14:16:24Z'
+updated_at: '2020-11-25T20:51:18Z'
+name: Using xvfb to run applications
+title: Using xvfb to run applications
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T07:00:41Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: >-
+  <p>Occasionally, an application being tested or run on CircleCI will require
+  some sort of interaction with a framebuffer. Unfortunately, CircleCI jobs are
+  headless, meaning there is no display or graphical user interface (GUI) --
+  this is where <code>xvfb</code>comes in. <code>xvfb</code> provides a virtual
+  framebuffer for GUI applications to run in within a headless environment.
+  Using the following will run the app with a virtual framebuffer for rendering
+  GUIs:</p>
+
+  <pre>xvfb &lt;command&gt;</pre>
+
+  <p>Further reading: <a href="http://www.xfree86.org/4.0.1/Xvfb.1.html"
+  target="_blank" rel="noopener">xvfb manpage</a></p>

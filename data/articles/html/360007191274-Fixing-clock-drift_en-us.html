@@ -1,0 +1,12 @@
+<p>Clock drift across your hosted CircleCI installation's instances can cause a wide range of issues, from failed health checks, to failed jobs. You might also notice AWS credential errors like below.</p>
+<pre dir="ltr"><code>2020-08-05T15:42:43.461439671Z Caused by: com.amazonaws.services.ec2.model.AmazonEC2Exception: AWS was not able to validate the provided access credentials (Service: AmazonEC2; Status Code: 401; Error Code: AuthFailure; Request ID</code></pre>
+<p> </p>
+<p>Typically, error messages will indicate something about certificates "not yet being valid," and jobs will display curious runtimes ("finished five minutes from now").</p>
+<p>Here's how to re-sync clocks across your instances:</p>
+<ol>
+    <li>SSH into the Services box</li>
+    <li>Install <a href="http://ntp.org/">ntp</a> if you haven't already: <code>sudo apt-get install ntp</code>
+    </li>
+    <li>Restart ntp. These steps may need to be run as root: <br><code>service ntp stop<br>ntpdate -s time.nist.gov<br>service ntp start</code>
+    </li>
+</ol>

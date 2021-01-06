@@ -1,0 +1,13 @@
+<h1><strong>Cache Clearing</strong></h1>
+<p>Dependency caching with the CircleCI built-in cache system requires setting a cache key using a template formatted string. Such as</p>
+<pre>myapp-<span class="o">{{</span> checksum <span class="s2"><span class="hljs-string">"package-lock.json"</span></span> <span class="o">}}</span></pre>
+<p><span class="o"> which would generate a cache key like<br></span></p>
+<pre><span class="o">myapp-+KlBebDceJh_zOWQIAJDLEkdkKoeldAldkaKiallQ </span></pre>
+<p><span class="o">This string means that the cache will automatically know to update if you make any changes to your <strong>package-lock.json</strong> file. </span><span class="o"></span></p>
+<p><span class="o">Sometimes you may want to clear/rebuild your cache manually. A strategy that is helpful is by adding a versioning key to your cache key template.</span></p>
+<p>You can <a href="https://circleci.com/docs/2.0/caching/#clearing-cache">add a versioning prefix</a> to the beginning of your keys and increment it when you want to clear out and rebuild the cache. UI environment variables are useful here, as you could set a variable like <code>CACHE_VERSION=v1</code> in your project settings.then add that do your config.</p>
+<p>This is written as:</p>
+<pre>myapp-<strong>{{ .Environment.CACHE_VERSION }}-{{checksum "package-lock.json" }}</strong>  </pre>
+<p>which would expand to </p>
+<pre><span class="o"><strong>myapp-v1-+KlBebDceJh_zOWQIAJDLEkdkKoeldAldkaKiallQ</strong></span></pre>
+<p><span class="o"> and if you need to manually update the cache all you need to do is update the environment variable in the project settings to <strong>v2 </strong>which changes the cache key and results in a new cache being generated.</span></p>

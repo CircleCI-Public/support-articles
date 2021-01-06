@@ -1,0 +1,26 @@
+id: 360007406013
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360007406013.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360007406013-How-can-I-remove-my-cached-docker-layers-
+author_id: 25261361207
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -6
+vote_count: 48
+section_id: 115003756627
+created_at: '2018-07-24T13:59:15Z'
+updated_at: '2020-11-24T09:21:37Z'
+name: How can I remove my cached docker layers?
+title: How can I remove my cached docker layers?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:10Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>Running <strong><span class=\"s1\">docker images --no-trunc --format '{{.ID}}' | xargs docker rmi</span></strong><span class=\"s1\"> will delete all of the images and their layers from your build environment. But because of <a href=\"https://circleci.com/docs/2.0/docker-layer-caching/#how-dlc-works\" target=\"_blank\" rel=\"noopener\">how DLC works</a> you'll need to leave this command in your config and run several jobs to remove the DLC layers from all volumes associated with your project.\_</span></p>\n<p><span class=\"s1\">If you're running into issues where stale volume caches are causing problems then consider using our new <a href=\"https://circleci.com/orbs/registry/orb/cci-x/docker-registry-image-cache\" target=\"_blank\" rel=\"noopener\">docker registry image cache orb</a> as a substitute. It's more suitable for projects that have high concurrency throughput, or jobs that use parallelism.<br><br>If you notice errors always happen on the same volume, which you can see by checking the \"spin up environment\" step or \"remote docker\" please <a href=\"https://support.circleci.com/hc/en-us/requests/new?ticket_form_id=855268\" target=\"_self\">contact support\_</a></span></p>"

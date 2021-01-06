@@ -1,0 +1,26 @@
+id: 360052260151
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360052260151.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360052260151-Resolving-Path-Applications-Xcode-X-X-app-doesn-t-exist-errors
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 2
+section_id: 115003327088
+created_at: '2020-11-06T18:19:43Z'
+updated_at: '2020-12-02T09:21:03Z'
+name: Resolving "Path /Applications/Xcode-X.X.app doesn't exist" errors
+title: Resolving "Path /Applications/Xcode-X.X.app doesn't exist" errors
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-11-06T18:20:27Z'
+user_segment_id: null
+permission_group_id: 237847
+label_names: []
+body: "<h2><strong>Why Does this Error Occur?</strong></h2>\n<p>A previously working Xcode build pipeline may start failing</p>\n<p>Our <a href=\"https://circleci.com/docs/2.0/xcode-policy/#xcode-patches\">Xcode patch policy</a>\_states that we <span>retain the latest patch version of each Xcode </span><code class=\"highlighter-rouge\">major.minor</code><span> version we support. Once a new patch version has been released, we will deprecate the previous patch version and redirect all requests to the new patch.</span></p>\n<p>If your Fastlane configuration is relying on a hard-coded Xcode path,\_you may find that when a new patch version is realised that this will start to fail as the Xcode app path contains the version number of Xcode.</p>\n<p><strong>Example:</strong></p>\n<p>You use the Xcode <code class=\"highlighter-rouge\">12.1.0</code>\_image and specify <code class=\"highlighter-rouge\">/Applications/Xcode-12.1.app</code>\_in one of your Fastlane actions.</p>\n<p>We release Xcode <code class=\"highlighter-rouge\">12.1.1</code>\_and redirect requests for <code class=\"highlighter-rouge\">12.1.0</code>\_to this new image. Therefore the new Xcode app path is <code class=\"highlighter-rouge\">/Applications/Xcode-12.1.1.app</code>\_and your job will fail on <code class=\"highlighter-rouge\">Path '/Applications/Xcode-12.1.app' doesn't exist</code></p>\n<h2><strong>Best Practises for Avoiding Hard Coded Paths</strong></h2>\n<p>In each image, we always symlink Xcode to a generic path. For example:</p>\n<p><code class=\"highlighter-rouge\">/Applications/Xcode-12.1.app -&gt; /Applications/Xcode.app</code></p>\n<p>The generic path remains consistent across all images, regardless of the Xcode version, and should be used for CircleCI jobs where possible.</p>\n<p>We can also utilise a variable and CI environment test to avoid the use of a hard-coded path when running on CircleCI specifically. For example:</p>\n<pre># fastlane/Fastfile<br><br>xcodePath = \"/Applications/Xcode-12.1.app\"<br><br>platform :iOS do<br>  before_all do<br>    setup_circle_ci<br>    <span class=\"hljs-keyword\">if</span><span> is_ci</span><br>      xcodePath = \"/Applications/Xcode.app\"<br>    end<br>  end<br>  ...<br>end</pre>\n<p>The above sets a variable, <code class=\"highlighter-rouge\">xcodePath</code>, where we store the required path to Xcode. By using <code class=\"highlighter-rouge\">if is_ci</code>we can check whether the job is running on CircleCI and set the generic Xcode path if this is true. This allows you to continue using a hardcoded path when dealing with a local environment, if required, whilst using the generic symlinked path on CircleCI which helps prevent breaking changes between Xcode version changes.</p>"

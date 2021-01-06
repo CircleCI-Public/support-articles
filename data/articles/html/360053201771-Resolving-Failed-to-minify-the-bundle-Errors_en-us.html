@@ -1,0 +1,11 @@
+<p>The following error message is usually related to running out of memory during a job:</p>
+<pre class="css-1hjuxmj">Failed to minify the bundle. Error: static/js/12.fb78ba11.chunk.js from Terser
+Error: Call retries were exceeded</pre>
+<p>There are a couple of options to resolve this:</p>
+<ul>
+    <li>Increase the <a href="https://circleci.com/docs/2.0/configuration-reference/#docker-executor" target="_self">resource class</a> in use to provide more memory to the job</li>
+    <li>
+        <a href="https://support.circleci.com/hc/en-us/articles/360009208393-How-can-I-increase-the-max-memory-for-Node-" target="_self">Adjust the "max_old_space_size" for NodeJS to a suitable value</a>. For example, if you are using the medium resource class with 4GB of memory, then set this to 3GB.
+    </li>
+</ul>
+<p>For additional visibility on memory usage issues, consider <a href="https://support.circleci.com/hc/en-us/articles/360043994872-How-to-record-a-job-s-memory-usage" target="_self">logging the maximum memory usage</a> for the job.</p>

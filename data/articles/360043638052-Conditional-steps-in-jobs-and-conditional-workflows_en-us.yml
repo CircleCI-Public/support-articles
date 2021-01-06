@@ -1,0 +1,29 @@
+id: 360043638052
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360043638052.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360043638052-Conditional-steps-in-jobs-and-conditional-workflows
+author_id: 405652843914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -6
+vote_count: 36
+section_id: 115003755807
+created_at: '2020-05-26T18:36:57Z'
+updated_at: '2020-12-30T11:40:43Z'
+name: Conditional steps in jobs and conditional workflows
+title: Conditional steps in jobs and conditional workflows
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:47Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - conditional
+  - workflows
+  - advanced logic
+body: "<p>With the <a href=\"https://discuss.circleci.com/t/advanced-logic-in-config/36011\" target=\"_blank\" rel=\"noopener\">recent addition of advanced logic in a config file</a>, the option to conditionally trigger steps in a job or to conditionally trigger a workflow is now available.</p>\n<p><a href=\"https://circleci.com/docs/2.0/configuration-reference/#logic-statements\" target=\"_blank\" rel=\"noopener\">Specific logic statements can be used</a> to create multiple nested conditions, that will always at the top level result in <code>true</code> or <code>false</code> -- which in turn determines if the workflow or steps are triggered.</p>\n<h3>Job Step Example</h3>\n<pre>- when:\n    condition:\n      or:\n        - and:\n          - equal: [ master, &lt;&lt; pipeline.git.branch &gt;&gt; ]\n          - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]\n        - or:\n          - equal: [ false, &lt;&lt; pipeline.parameters.param1 &gt;&gt; ]\n    steps:\n      - run: echo \"I am on master AND param1 is true OR param2 is true -- OR param1 is false\"\n</pre>\n<h3>Workflow Example</h3>\n<pre>workflows:\n  conditional-workflow:\n    when:\n      and: # All must be true to trigger\n        - equal: [ master, &lt;&lt; pipeline.git.branch &gt;&gt; ]\n        - not: &lt;&lt; pipeline.parameters.param1 &gt;&gt;\n        - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]\n\n    jobs:\n      - job-on-condition\n\_</pre>\n<p>Conditions\_can be nested in an arbitrary fashion, according to their argument specifications, and to a maximum depth of 100 levels. This allows for some complex logic, as an example of multiple nested conditions:</p>\n<pre>- when:\n    condition:\n      or:\n        - and:\n          - or:\n              - and:\n                  - equal: [ master, &lt;&lt; pipeline.git.branch &gt;&gt; ]\n                  - equal: [ false, &lt;&lt; pipeline.parameters.param1 &gt;&gt; ]\n              - or:\n                  - not: &lt;&lt; pipeline.parameters.param3 &gt;&gt;\n          - or:\n              - equal: [ false, &lt;&lt; pipeline.parameters.param3 &gt;&gt; ]\n              - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]  \n        - or:\n            - equal: [ true, &lt;&lt; pipeline.parameters.param4 &gt;&gt; ]\n\n    steps:\n      - run: echo \"param 4 is true OR the other nested conditions are true\"\n</pre>\n<p>\_</p>"

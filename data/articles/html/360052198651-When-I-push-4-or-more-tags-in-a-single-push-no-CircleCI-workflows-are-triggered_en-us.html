@@ -1,0 +1,7 @@
+<p dir="auto">This actually stems from the GitHub side of things:</p>
+<p dir="auto"><a href="https://developer.github.com/webhooks/event-payloads/#push" rel="noreferrer">https://developer.github.com/webhooks/event-payloads/#push</a></p>
+<blockquote dir="ltr">
+    <p dir="auto">Note: You will not receive a webhook for this event when you push more than three tags at once.</p>
+</blockquote>
+<p dir="auto">Since we rely on a GitHub webhook to trigger builds, and the above notes that one isn't generated when 3+ tags are involved, that is why you aren't seeing builds in CircleCI.</p>
+<p dir="auto">You will want to ensure you are only pushing up to three tags at a time if you want builds triggered within CircleCI.</p>

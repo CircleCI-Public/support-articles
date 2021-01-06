@@ -1,0 +1,2 @@
+<p>Occasionally, Makefile commands won't behave as expected within a Docker image - for example, creating multiple directories with <code>mkdir -p build/{assets,bin}</code> will produce a directory named <code>{assets,bin}/</code> rather than two directories (<code>assets/</code> and <code>bin/</code>). This is typically because <code>make</code> does not know which shell to use, defaulting to one that does not handle the command parameters as expected. Your Makefile should have the following line added to ensure bash is used:</p>
+<pre>SHELL := /bin/bash</pre>

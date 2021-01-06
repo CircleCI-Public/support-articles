@@ -1,0 +1,6 @@
+<p>One of the several uses of t<span>he <a href="https://circleci.com/docs/2.0/local-cli/" target="_blank" rel="noopener">CircleCI CLI</a> is to run jobs locally. However, it is currently not possible to add SSH keys using the <code class="highlighter-rouge">add_ssh_keys</code> CLI command.</span></p>
+<p>Essentially, in this case, you'll need to pass some form of credentials into the container.</p>
+<h3>Basic authentication</h3>
+<p>You can set your VCS username/password as <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variables</a> and pass them <span>to the CLI with the </span><code class="highlighter-rouge">-e</code><span> flag, for each variable.</span> This would allow you to clone the repository with <em>basic authentication</em>.</p>
+<h3>SSH key</h3>
+<p>Alternatively, you can base64-encode the private key and pass it into the job as an environment variable as well.<br>Then you can decode it into a file within a <code>run</code> command in your custom local config.<br>Once decoded into a file you can use <code>ssh-add -K path/to/key</code>. This would allow you access to the remote repository through <em>SSH key based</em> authentication.</p>

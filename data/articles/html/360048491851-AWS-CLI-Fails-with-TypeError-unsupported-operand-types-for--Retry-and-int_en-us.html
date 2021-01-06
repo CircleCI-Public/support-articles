@@ -1,0 +1,7 @@
+<p>If the AWS CLI fails with the below error, it can be due to that fact that the AWS CLI is installed under python 2.7 as opposed to python 3.x</p>
+<pre>"TypeError: unsupported operand type(s) for -=: 'Retry' and 'int'"</pre>
+<p>The reason this error may not happen on each build is due to the fact that this error only occurs when the AWS CLI retries a network connection. So on most builds this code path will never be reached.</p>
+<p>If on the Docker Executor, you can change your python version to 3.x.</p>
+<p>If on Machine Executor, you can make use of pyenv before installing via pip. Be sure not to call `pip` with `sudo`.</p>
+<pre>pyenv global 3.7.0
+  pip install awscli</pre>

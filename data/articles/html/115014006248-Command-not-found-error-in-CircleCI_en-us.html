@@ -1,0 +1,7 @@
+<p>If you see something like this on CircleCI builds: </p>
+<p><code>/bin/bash: mongo: command not found</code></p>
+<p>This is because all of your commands will run in the first container that is listed (primary container). This is typically <strong>not</strong> the database container, which means that the <code>mongo</code> cli is likely not installed in the primary container. The same can happen for mysql and postgresql.</p>
+<p>In these cases you can install the client using <code>sudo apt install</code> or the relevant package manager for the distro your image is running.</p>
+<p>example:</p>
+<pre>- run: sudo apt-get install mongodb-clients</pre>
+<p>More details on Discuss here: <a href="https://discuss.circleci.com/t/bin-bash-mongo-command-not-found/16218/6?u=tom" target="_blank" rel="noopener">https://discuss.circleci.com/t/bin-bash-mongo-command-not-found/16218/6</a></p>

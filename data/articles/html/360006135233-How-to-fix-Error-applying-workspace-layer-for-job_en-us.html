@@ -1,0 +1,16 @@
+<p>If your project is utilizing <a href="https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs">Workspaces</a>, but you run into trouble when attaching the workspace later on in the workflow, you may have exceeded your memory limit.</p>
+<p>Your error may look similar to below.</p>
+<pre><code class="bash">
+"Error applying workspace layer for job 5cb8xxxx-xxxx-4499-9xxxx-1aaa2943xxxx: 
+Error extracting tarball /tmp/workspace-layer-5cb8xxxx-xxxx-4499-9xxx-1aaa2943xxxxx04313xx: 
+signal: killed"
+</code></pre>
+<p>In this particular error, we can clearly see the process was gracefully killed with the `signal: killed` message. This is a guaranteed message that your container has exceeded its memory resource limits. Your error may or may not contain this message but have failed anyway in a similar way.</p>
+<p> You can follow the instructions in <a href="https://support.circleci.com/hc/en-us/articles/360043994872" target="_self">this article</a> to record the max memory usage of your job.</p>
+<h2>Options to resolve:</h2>
+<ol>
+    <li>Reduce tarball size. The larger the tarball, the more memory will be utilized while decompressing. If your workspace's physical size is near or over your container's memory limit (4gb by default), you can exceed it easily, especially if you have one or more databases also running.</li>
+    <li>
+        <a href="https://circleci.com/support/premium-support/">Contact support</a> to inquire about upgrading your container's resource limits via the `resource_class` key in your config.yml. This option is already available to those on the "Performance plan"<br><a href="https://circleci.com/docs/2.0/configuration-reference/#resource_class" target="_blank" rel="noopener">https://circleci.com/docs/2.0/configuration-reference/#resource_class</a>
+    </li>
+</ol>

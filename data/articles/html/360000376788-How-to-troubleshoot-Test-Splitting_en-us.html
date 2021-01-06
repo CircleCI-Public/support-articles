@@ -1,0 +1,24 @@
+<p>There are a number of reasons why test splitting across parallel containers may be behaving unexpectedly. Our documentation on <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/">running tests in parallel</a> has a wealth of information to help you, too.<br><br></p>
+<h3><strong>Save Artifacts</strong></h3>
+<p>The <code><a href="https://circleci.com/docs/2.0/configuration-reference/#store_test_results">store_test_results</a></code> step will ensure test timings are saved, but it doesn't allow for easy debugging. You may also want to upload your tests via <code><a href="https://circleci.com/docs/2.0/configuration-reference/#store_test_results">store_artifacts</a></code> to visually verify the number of tests being run.<br><br></p>
+<h3><strong>Echo Test Results</strong></h3>
+<p>Similar to saving artifacts, here is an example of how you can implement a clean test split command and also echo out the test data.</p>
+<p><code>
+        TESTFILES=$(circleci tests glob "test/**_test.rb" | circleci tests split --split-by=timings) <br>
+        echo ${TESTFILES}<br>
+        # bundle exec rake knapsack_pro:minitest<br>
+        bundle exec rspec --format progress \<br>
+        --format RspecJunitFormatter \<br>
+        -o test/reports/rspec.xml \<br>
+        -- ${TESTFILES}<br>
+    </code></p>
+<p>You can find a few examples on <a href="https://discuss.circleci.com/search?q=testfiles%3D%20category%3A48" target="_blank" rel="noopener">our community forum<br><br></a></p>
+<h3><strong>Vary Your Parallelism</strong></h3>
+<p>Different amounts of parallelism may have a great effect on your tests, depending on the way they are written. It may also help you identify particular tests that are causing problems repeatedly.<br><br></p>
+<h3><strong>Timing data</strong></h3>
+<p>Timing data will be saved upon a successful "green" build. When builds start, we automatically pick the latest job's test results in the same branch jobs. If there is no data in the same branch, we select the latest job's test results in the same project's jobs. You can see which job's test results we picked in the Spin up environment step.</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360067322751/Screen_Shot_2020-09-01_at_17.32.12.png" alt="Screen_Shot_2020-09-01_at_17.32.12.png"><br><br>You can also view your timing data in <em>$CIRCLE_INTERNAL_TASK_DATA/circle-test-results </em>if you need to.</p>
+<h3><strong><br>Variable Length Tests</strong></h3>
+<p>You may have a test or suite of tests that will vary greatly in their completion time, either on purpose, or for a number of other reasons. This is common with UI or Unit Testing.<br>If your test timing varies with every test, the CircleCI splitting system will never be able to determine valid timing data.<br><br></p>
+<h3><strong>Consider Other Ways to Split Tests</strong></h3>
+<p>Our documentation has more information about splitting tests. You can find it <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/#other-ways-to-split-tests" target="_blank" rel="noopener">here</a></p>

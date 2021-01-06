@@ -1,0 +1,31 @@
+<p>You may run into a situation where your app attempts to access the database before it is ready to accept connections, resulting in a failure. It this case it is necessary to wait for the database to come online fully before continuing.</p>
+<p>We suggest dockerize: <a href="https://github.com/jwilder/dockerize" target="_blank" rel="noopener">https://github.com/jwilder/dockerize</a></p>
+<p>In this example PostgreSQL  is our database. Our first run step downloads the newest Dockerize binary and the next run step `Wait for db` waits on the port for our database until it receives a response, with a 1 minute timeout.</p>
+<pre><code>
+version: 2.0<br>
+jobs:<br>
+  build:<br>
+    docker:<br>
+      - image: your/image_for_primary_container<br>
+      - image: postgres:9.6.2-alpine<br>
+    environment:<br>
+      POSTGRES_USER: your_postgres_user<br>
+      POSTGRES_DB: your_postgres_test<br>
+    workDir: /your/workdir<br>
+    steps:<br>
+      - checkout<br>
+      - run:<br>
+        name: install dockerize<br>
+        command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz &amp;&amp; sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz &amp;&amp; rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz<br>
+        environment:<br>
+          DOCKERIZE_VERSION: v0.3.0<br>
+      - run:<br>
+        name: Wait for db<br>
+        command: dockerize -wait tcp://localhost:5432 -timeout 1m<br>
+</code></pre>
+<p>You can apply the same principle for MySQL:</p>
+<pre><code>dockerize -wait tcp://localhost:3306 -timeout 1m</code></pre>
+<p>Redis:</p>
+<pre><code>dockerize -wait tcp://localhost:6379 -timeout 1m</code></pre>
+<p>and other services such as web servers</p>
+<pre><code>dockerize -wait http://localhost:80 -timeout 1m</code></pre>

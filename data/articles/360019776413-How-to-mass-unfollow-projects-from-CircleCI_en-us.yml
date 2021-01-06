@@ -1,0 +1,30 @@
+id: 360019776413
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360019776413.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360019776413-How-to-mass-unfollow-projects-from-CircleCI
+author_id: 28200990948
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -2
+vote_count: 2
+section_id: 115003755888
+created_at: '2019-03-13T21:21:57Z'
+updated_at: '2020-10-22T06:59:08Z'
+name: How to mass unfollow projects from CircleCI
+title: How to mass unfollow projects from CircleCI
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:08Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - remove
+  - unfollow
+  - stop building
+  - accidentally added
+body: "<p>To stop building any single project you can visit the settings page for that repository and click the <em>\"Stop Building\"</em> button.<br> <br> To unfollow many projects at once, it is best to use our API.\_</p>\n<p>We have created this short `bash` script to help achieve this easily.<br> <br> <strong>Step 1.</strong></p>\n<p><br> Save the following as `script.sh`</p>\n<pre><span style=\"background-color: #bfe6ff; font-family: monospace, monospace; font-size: 1em;\">  TOKEN=\"x\"</span><code><br>  ORG=\"MyOrgName\"\n  URL_SUFFIX=\"/enable?circle-token=\"$TOKEN\n  URL_PREFIX=\"https://circleci.com/api/v1.1/project/github/\"$ORG\"/\"\n  while IFS='' read -r repo || [[ -n \"$repo\" ]]; do\n    sleep 2\n    curl -X \"DELETE\" $URL_PREFIX$repo$URL_SUFFIX\n  done &lt; \"$1\"</code></pre>\n<p>Replace `$TOKEN` with your personal user token and `$ORG`with the organization name.</p>\n<p>\_<strong>Note:</strong> You must use a <a href=\"https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token\" target=\"_self\">Personal API token</a>\_and not a Project API token to access all projects</p>\n<p><strong>Step 2.</strong></p>\n<p>Create a text file with a list of repo names (one per line, no commas) to be removed.</p>\n<pre><span class=\"wysiwyg-color-black\"><font face=\"monospace, monospace\">repo1</font></span><br><span class=\"wysiwyg-color-black\"><font face=\"monospace, monospace\">repo2</font></span><br><span class=\"wysiwyg-color-black\"><font face=\"monospace, monospace\">repo3</font></span></pre>\n<p><br> <strong>Step 3.</strong><br> <br> Run the script as:</p>\n<pre><code>./script.sh repos.txt</code></pre>\n<p>This will easily mass unfollow and remove all listed projects.</p>"

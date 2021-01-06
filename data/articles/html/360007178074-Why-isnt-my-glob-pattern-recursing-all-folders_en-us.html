@@ -1,0 +1,6 @@
+<p> </p>
+<p>This could be caused by various things, but one of the most common reasons that you might not see your globbing pattern recurse all folders is due to a bash configuration option. The relevant option is called <strong>globstar. </strong>Sometimes globstar will be turned off by default and it needs to be turned on. If you'd like the recursive glob pattern ** to recurse subfolders then<strong> globstar should be turned on.</strong></p>
+<p>If you're using bash v4 or higher you can turn it on with <strong><code>shopt -s globstar</code></strong>. Please note that this will have to be set at the start of every step, as each step runs in a separate subshell.</p>
+<p>If you would not like this glob pattern to recurse across folders, turn this option off with <strong><code>shopt -u globstar</code></strong>. </p>
+<p>Further Watching:<br> <iframe src="//www.youtube-nocookie.com/embed/fq-on5AUinE" width="560" height="315" frameborder="0" allowfullscreen=""></iframe></p>
+<p><code></code></p>

@@ -1,0 +1,27 @@
+id: 360047679511
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047679511.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360047679511-Resource-Class-in-CircleCI-Server
+author_id: 397881110914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003327208
+created_at: '2020-08-12T16:54:32Z'
+updated_at: '2020-10-22T06:57:44Z'
+name: Resource Class in CircleCI Server
+title: Resource Class in CircleCI Server
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:57:44Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - server
+body: "<p>CircleCI server customers can use any <a href=\"https://circleci.com/docs/2.0/configuration-reference/#resource_class\" target=\"_blank\" rel=\"noopener\">resource class</a> they want without any restrictions or approval since they are using their infrastructure.\_</p>\n<p>Customers can also customize resource classes for their installation to provide developers with CPU/RAM options for the Jobs they configure. Check <a href=\"https://circleci.com/docs/2.0/customizations/#resource-classes\" target=\"_blank\" rel=\"noopener\">this document</a> to know how to customize the resource class.</p>\n<p><strong>Note</strong>: Container size (resources) cannot be more than that of the underlying nomad clients. In such a situation, that particular job will always just remain queued.\_</p>\n<p>If you are getting an error while using the resource class feature, please submit a ticket to <a href=\"https://support.circleci.com/hc/en-us\" target=\"_self\">Support</a>\_or write to <a href=\"mailto:support@circleci.com\">support@circleci.com</a>.</p>"

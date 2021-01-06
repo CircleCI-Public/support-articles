@@ -1,0 +1,21 @@
+<p>Historically we have installed the latest version of Node on our Xcode images, however as <a href="https://nodejs.org/en/about/releases/" target="_blank" rel="noopener">noted by Node:</a></p>
+<blockquote>
+    <em>LTS</em><span> release status is "long-term support", which typically guarantees that critical bugs will be fixed for a total of 30 months. Production applications should only use </span><em>Active LTS</em><span> or </span><em>Maintenance LTS</em><span> releases.</span>
+</blockquote>
+<p>With the above in mind, if you encounter any Node related issues, you may want to reference the Installed software for the Xcode image you are using to see the version of Node:</p>
+<p><a href="https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions">https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions</a></p>
+<p>As some of the newer images are using non-LTS versions of Node. You may need to manually adjust the node version in your configuration file if you need a specific version. You can install and use a different version of node <a href="https://circleci.com/orbs/registry/orb/circleci/node" target="_blank" rel="noopener">with the Node orb</a>. As an example:</p>
+<pre style="background-color: #f3f3f3;">version: 2.1
+
+orbs:
+  node: circleci/node@4.0.0
+
+jobs:
+  test-and-build:
+    macos:
+      xcode: 11.0.0
+    steps:
+      - node/install:
+          node-version: "13.11.0"
+          ...</pre>
+<p>To adhere to their recommendation though, once the next LTS version is released we plan to pin all new generated Xcode images to the LTS version.</p>

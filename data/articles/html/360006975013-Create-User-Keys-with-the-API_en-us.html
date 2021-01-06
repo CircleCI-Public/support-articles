@@ -1,0 +1,7 @@
+<p>User keys can be configured to <a href="https://circleci.com/docs/2.0/gh-bb-integration/#enable-your-project-to-check-out-additional-private-repositories">checkout additional repositories</a> needed for testing. For repos with a large number of projects, it may be easier to assign User Keys via the API than configuring this on the individual project settings page. </p>
+<p>To do this, CircleCI first needs permissions from GitHub to add SSH keys to your account. You can grant this permission by visiting <strong>Project Settings &gt; Permissions &gt; Checkout SSH keys</strong> and clicking on <strong>Create and Add User Key.</strong></p>
+<p>After you authorize the CircleCI application, you can use <a href="https://circleci.com/docs/api/v1-reference">our API</a> to add a checkout key of type <code>github-user-key</code> for any of your other projects using the <code>curl</code> command:</p>
+<pre>curl -X POST \ 
+--header <span class="hljs-string">"Content-Type: application/json"</span> \ 
+-d <span class="hljs-string">'{"type":"github-user-key"}'</span> \ 
+<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/circleci.com/api</span><span class="hljs-regexp">/v1/project</span><span class="hljs-regexp">/ORG_NAME/PROJECT_NAME</span>/checkout-key?circle-token=<span class="hljs-number">8</span>e9c47...etc</pre>

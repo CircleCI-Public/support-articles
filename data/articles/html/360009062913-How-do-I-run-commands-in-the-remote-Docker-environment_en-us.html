@@ -1,0 +1,14 @@
+<p>Although only Docker commands are <em>automatically</em> executed in the remote Docker environment, you can programmatically execute <em>any</em> set of commands in the remote Docker environment by SSHing into it and chaining any subsequent commands to your shell command.</p>
+<p> </p>
+<p>To SSH into the remote Docker environment, run <code>ssh remote-docker</code> while SSH'd into any CircleCI job that uses <a href="https://circleci.com/docs/2.0/configuration-reference/#setup_remote_docker" target="_self"><code>setup_remote_docker</code></a> or execute it programmatically in a <code>run</code> step. (Make sure the <code>setup_remote_docker</code> step runs first, otherwise, your SSH command will fail!)</p>
+<p>Chaining a command to this SSH command in a headless fashion, i.e., as part of your CircleCI job, could look something like:</p>
+<pre><code>run: |
+  ssh remote-docker \ echo "this echo command will be executed in the remote Docker environment \ <br>  rather than the initial job container itself"
+</code></pre>
+<p>The challenge presented here is that only a singular command can be passed to the SSH shell—for example, if you run <code>ssh remote-docker touch file1 &amp;&amp; touch file2</code>, <code>file1</code> will be created in the remote Docker environment, but <code>file2</code>will be created in your job's local container.</p>
+<p>So, if you want to do run a more complex set of commands in the remote Docker environment, programmatically, then you need to find a way to have them be executed as a single command.</p>
+<p>Some good approaches are outlined here:</p>
+<p><a href="https://stackoverflow.com/questions/4412238/what-is-the-cleanest-way-to-ssh-and-run-multiple-commands-in-bash" rel="nofollow">https://stackoverflow.com/questions/4412238/what-is-the-cleanest-way-to-ssh-and-run-multiple-commands-in-bash</a></p>
+<p>These suggestions include <a href="http://tldp.org/LDP/abs/html/here-docs.html" rel="nofollow">using a "here document"</a> or save your commands to a shell script which you then pipe into your <code>ssh</code> command.</p>
+<p>If you are using remote-docker commands to update your Docker storage driver, please checkout this helpful thread in our forum:</p>
+<p><a href="https://discuss.circleci.com/t/changing-docker-storage-driver/36494/2" rel="noreferrer">https://discuss.circleci.com/t/changing-docker-storage-driver/36494/2</a></p>

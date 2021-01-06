@@ -1,0 +1,9 @@
+<p>CircleCI has a built-in <strong>10 minute</strong> no-output timeout. This means that if it has been 10 minutes since the last output, the build will be canceled and stopped. This can cause users to encounter issues where they intend for a part of their build to continue beyond 10 minutes without giving output, but the system kills it.</p>
+<p>The <code>no_output_timeout</code> parameter for <a href="https://circleci.com/docs/2.0/configuration-reference/#run">run</a> gives users the option to change the no-output timeout from the default 10 minutes to a user-specified timeout.</p>
+<p>For example, if we have a run step as follows:</p>
+<p><code> - run:<br>    command: . ./ourlongscript.sh</code><code><code><code></code></code></code></p>
+<p>If we expect our script will take a while to complete execution, we can extend the no-output timeout as follows:</p>
+<p><code>- run:
+          <br>    command: . ./ourlongscript.sh
+        <br>    no_output_timeout: 30m</code></p>
+<p>The value set for no_output_timeout can be in hours, minutes or seconds - a digit followed by h, m or s respectively. Partial times can also be used, like 1.5h.</p>

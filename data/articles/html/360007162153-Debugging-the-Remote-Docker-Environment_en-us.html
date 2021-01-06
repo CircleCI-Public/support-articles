@@ -1,0 +1,4 @@
+<p>Just as you are able to debug CircleCI jobs by <a href="https://circleci.com/docs/2.0/ssh-access-jobs/">re-running them with SSH</a>, you can also debug within the <a href="https://circleci.com/docs/2.0/building-docker-images/">Remote Docker Environment</a> itself.</p>
+<p>To SSH into the remote Docker environment, run <code>ssh remote-docker</code> while SSH'd into any CircleCI job that uses <code>setup_remote_docker</code></p>
+<p>(Make sure the <code>setup_remote_docker</code> step completes first, otherwise your SSH command will fail!)</p>
+<p>For more information, we have an additional article on how to run commands in your <a href="https://support.circleci.com/hc/en-us/articles/360009062913-How-do-I-run-commands-in-the-remote-Docker-environment-" target="_self">remote Docker environment</a>.</p>

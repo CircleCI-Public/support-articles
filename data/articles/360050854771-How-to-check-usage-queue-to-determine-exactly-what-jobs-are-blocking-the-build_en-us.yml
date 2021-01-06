@@ -1,0 +1,26 @@
+id: 360050854771
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360050854771.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360050854771-How-to-check-usage-queue-to-determine-exactly-what-jobs-are-blocking-the-build
+author_id: 409259336673
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003756627
+created_at: '2020-10-12T02:58:47Z'
+updated_at: '2020-10-22T06:56:16Z'
+name: How to check usage queue to determine exactly what jobs are blocking the build
+title: How to check usage queue to determine exactly what jobs are blocking the build
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:56:16Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p><span class=\"url-scheme\"><span>If jobs in your pipeline are queued in usage queue and want to know which jobs are blocking your build, you can use the following API endpoint.</span></span><span class=\"url-scheme\"></span></p>\n<pre><span class=\"url-scheme\">GET https://</span><span class=\"url-host\">circleci.com</span><span class=\"url-filename\"><span class=\"url-filename\">/api/v1.1/project/{vcs}/{orgname}/{project}/{CIRCLE_BUILD_NUM}/usage-queue</span></span></pre>\n<ul>\n<li>\n<span class=\"url-filename\"><span class=\"url-filename\"><span><code data-ghq-card-content-type=\"CODE_SNIPPET\">vcs</code> is the name of the VCS, either <code>github</code> or <code>bitbucket</code></span></span></span><span></span>\n</li>\n<li>\n<span><code data-ghq-card-content-type=\"CODE_SNIPPET\">orgname</code> is the name of the organization or username</span><span></span>\n</li>\n<li>\n<span><code data-ghq-card-content-type=\"CODE_SNIPPET\">project</code>\_is the name of your repository</span><span></span>\n</li>\n<li><span><code data-ghq-card-content-type=\"CODE_SNIPPET\">CIRCLE_BUILD_NUM</code> the built-in environment variable associated with the specific build in question, which can be found in the UI</span></li>\n</ul>\n<div>\n<p data-ghq-card-content-type=\"paragraph\">You can find the build URL with \"build_url\" key from the response.</p>\n<p data-ghq-card-content-type=\"paragraph\"><span>For those on the Performance Plan getting stuck in the Usage Queue, you can request a concurrency increase by writing to\_<a href=\"mailto:billing@circleci.com\">billing@circleci.com</a>.\_</span></p>\n<p data-ghq-card-content-type=\"paragraph\"><em><strong>Please note that this is an undocumented API endpoint and might removed or modified without prior notice.</strong></em></p>\n</div>"

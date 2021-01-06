@@ -1,0 +1,44 @@
+id: 360004346254
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360004346254.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360004346254-Workflow-status-checks-never-completes-because-of-ci-circleci-Waiting-for-status-to-be-reported
+author_id: 25261361207
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -29
+vote_count: 47
+section_id: 115004127248
+created_at: '2018-05-16T08:25:57Z'
+updated_at: '2020-12-19T21:36:31Z'
+name: >-
+  Workflow status checks never completes because of: ci/circleci — Waiting for
+  status to be reported
+title: >-
+  Workflow status checks never completes because of: ci/circleci — Waiting for
+  status to be reported
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:59:40Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - status
+  - checks
+body: >-
+  <p>When adding branch protections to your workflow jobs you'll need to make
+  sure the ci/circleci check is unchecked, as it will never report back with a
+  status. Review your branch protection settings and make sure it is
+  deselected.</p>
+
+  <p><img
+  src="https://circleci.com/docs/assets/img/docs/github_branches_status.png"
+  alt="Uncheck GitHub Status Keys"></p>
+
+  <p><br>Read in more detail below about why this can cause issues<br><a
+  href="https://circleci.com/docs/2.0/workflows-waiting-status/" target="_blank"
+  rel="noopener">https://circleci.com/docs/2.0/workflows-waiting-status/</a></p>

@@ -1,0 +1,40 @@
+id: 360046555954
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360046555954.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360046555954-Reporting-issues-with-Orbs
+author_id: 385569260514
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 2
+section_id: 360002440473
+created_at: '2020-04-21T13:46:20Z'
+updated_at: '2020-10-22T06:56:25Z'
+name: Reporting issues with Orbs
+title: Reporting issues with Orbs
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:56:25Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - orbs
+  - bug
+body: >-
+  <p>Generally speaking, Orbs will have their source code available on GitHub or
+  another git hosting service, which will be linked from the registry page. Not
+  all Orbs are written and maintained by CircleCI, so getting involved with the
+  Orb's own repository is recommended and encouraged!</p>
+
+  <p>If the source link is not available, feel free to open a ticket so we can
+  either get in touch with the original author or provide a link to the
+  repository.</p>
+
+  <p><img
+  src="https://support.circleci.com/hc/article_attachments/360067830893/orb_source.png"
+  alt="orb_source.png"></p>

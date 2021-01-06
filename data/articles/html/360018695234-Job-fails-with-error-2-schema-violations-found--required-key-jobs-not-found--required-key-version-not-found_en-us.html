@@ -1,0 +1,4 @@
+<p>If your job fails with the following error, even though the keys "jobs" and "version" are present in your config.yml, the cause for this can be YAML syntax validity issues (such as incorrect indentation) with the config.yml contents, leading to the config not being able to be parsed fully. </p>
+<pre>Your config file has errors and may not run correctly:<br><br><br>2 schema violations found<br>  required key [jobs] not found<br>  required key [version] not found</pre>
+<p> </p>
+<p>In this case, we recommend checking the config.yml contents for YAML syntax issues, using the "circleci config validate" command of the CircleCI Local CLI (<a href="https://circleci.com/docs/2.0/local-cli/">https://circleci.com/docs/2.0/local-cli/</a>). There are also many yaml linting tools that can help with detecting YAML syntax issues too, for example: <a href="https://yaml-online-parser.appspot.com/">https://yaml-online-parser.appspot.com/</a> </p>

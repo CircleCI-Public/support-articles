@@ -1,0 +1,17 @@
+<h1 id="symptom">Symptom</h1>
+<h2 id="case-1">Case 1</h2>
+<p>After restarting Replicated with <code>systemctl</code> command, with <code>service</code> command, or with restart of your service machine, Replicated containers disappeared and eventually CircleCI server crashed.</p>
+<h2 id="case-2">Case 2</h2>
+<p>After updating <code>docker-ce</code> on the service machine by <code>apt</code>/<code>apt-get</code> command, Replicated containers disappeared and eventually CircleCI server crashed.</p>
+<h1 id="cause">Cause</h1>
+<p>It happens because 1) Replicated services registered to <code>systemd</code> (i.e. <code>replicated.service</code>, <code>replicated-operator.service</code>, and <code>replicated-ui.service</code>) deletes Docker containers for its own services upon service start-up, and because 2) Docker image names used by Replicated services are not guaranteed to be available anytime.</p>
+<p>During their start-up sequence, which will be initiated explicitly by <code>systemctl</code>/<code>service</code> command, or implicitly by system restart or update of <code>docker-ce</code>, Replicated services do the following tasks:</p>
+<ol style="list-style-type: decimal;">
+    <li>Clean up existing Replicated containers.</li>
+    <li>Start a new container with <code>docker run</code> command using corresponding Docker images tagged as <code>:current</code> (such as <code>quay.io/replicated/replicated:current</code>).</li>
+</ol>
+<p>However, the <code>:current</code> images are locally tagged Docker images, deriving from other Docker images, and the tag is not usable for image pulls. Therefore, if the <code>:current</code> tags are untagged somehow, Replicated services fail to start, as it cannot find Docker images to use.</p>
+<p><strong>Note</strong>: The situation that the <code>:current</code> tags are untagged can be reproduced quite easily by cleaning up Docker image caches with e.g. <code>docker image prune -a</code> command. We confirmed that <code>docker image prune -a</code> untags <code>:current</code> images for Replicated, regardless whether Replicated is running or not. In other words, if you have ever executed <code>docker image prune -a</code> command or any equivalent command on your service machine, you are likely to encounter the same symptom.</p>
+<h1 id="solution">Solution</h1>
+<p>You can fix this issue by reinstalling Replicated with the snippet below.</p>
+<pre><code>export REPLICATED_VERSION="2.38.6"<br>export PRIVATE_IP="$(curl http://169.254.169.254/latest/meta-data/local-ipv4)"<br>sudo curl -sSk -o /tmp/get_replicated.sh "https://get.replicated.com/docker?replicated_tag=$REPLICATED_VERSION&amp;replicated_ui_tag=$REPLICATED_VERSION&amp;replicated_operator_tag=$REPLICATED_VERSION"<br>sudo bash /tmp/get_replicated.sh local-address="$PRIVATE_IP" no-proxy no-docker</code></pre>

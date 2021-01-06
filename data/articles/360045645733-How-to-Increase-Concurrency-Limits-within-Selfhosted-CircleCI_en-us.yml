@@ -1,0 +1,30 @@
+id: 360045645733
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360045645733.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360045645733-How-to-Increase-Concurrency-Limits-within-Self-hosted-CircleCI-
+author_id: 397881110914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -1
+vote_count: 1
+section_id: 115003327208
+created_at: '2020-03-25T15:33:11Z'
+updated_at: '2020-12-11T18:30:59Z'
+name: How to Increase Concurrency Limits within Self-hosted CircleCI?
+title: How to Increase Concurrency Limits within Self-hosted CircleCI?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-03-25T16:56:50Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - server
+  - enterprise
+  - Parallelism
+  - Concurrency
+body: "<p>There is no concurrency limit from our side for server customers, you just have to increase the\_<code>nomad_clients</code>\_<strong>autoscaling group (AWS)</strong> to the desired value and add\_<code>parallelism</code>\_attribute in the config file like below.</p>\n<p>\_</p>\n<pre>version: 2\njobs:\n  test:\n    docker:\n      - image: circleci/&lt;language&gt;:&lt;version TAG&gt;\n    parallelism: 4\n</pre>\n<p>\_</p>\n<p><strong>More about Parallelism</strong>: <a href=\"https://circleci.com/docs/2.0/parallelism-faster-jobs/#specifying-a-jobs-parallelism-level\" target=\"_blank\" rel=\"noopener\">https://circleci.com/docs/2.0/parallelism-faster-jobs/#specifying-a-jobs-parallelism-level</a></p>"

@@ -1,0 +1,14 @@
+<p>When attempting to run a job in CircleCI for the first time, you may encounter the error: <em>"<strong>event cannot have more than 20 hooks</strong>".</em></p>
+<p>Typically, this happens when you have too many webhooks configured on the VCS provider. <a href="https://docs.github.com/en/developers/webhooks-and-events/about-webhooks" target="_self">In GitHub you can create up to 20 webhooks</a> for each event on each installation target (specific organization or specific repository).</p>
+<p>To solve this problem:</p>
+<ol>
+    <li>Sign into your GitHub account.<br><br>
+    </li>
+    <li>Go to the repository settings.<br><img src="https://support.circleci.com/hc/article_attachments/360061858811/GH_repo_settings.png" alt="GH_repo_settings.png" width="352" height="122">
+    </li>
+    <li>Click <strong>Webhooks </strong>to view currently configured webhooks. <span>(Alternatively, you can reach this page directly -&gt; </span><em>https://github.com/&lt;ORG&gt;/&lt;REPO&gt;/settings/hooks).<br><img src="https://support.circleci.com/hc/article_attachments/360061717272/GH_webooks_menu.png" alt="GH_webooks_menu.png" width="278" height="216"><br><br></em>
+    </li>
+    <li>Delete any unused/unnecessary webhooks for the project you're trying to start.<br><br>
+    </li>
+    <li>Run the job again in CircleCI.</li>
+</ol>

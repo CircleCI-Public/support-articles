@@ -1,0 +1,28 @@
+id: 360044058532
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360044058532.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360044058532-Delete-build-logs-from-removed-projects
+author_id: 405001866574
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -1
+vote_count: 1
+section_id: 115003756627
+created_at: '2020-06-04T19:02:31Z'
+updated_at: '2020-10-22T06:56:24Z'
+name: Delete build logs from removed projects
+title: Delete build logs from removed projects
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:56:24Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - build logs
+  - deleted project
+body: "<p>Similar to Audit Logs, CircleCI retains build logs for up to one year based on the repository name. As a result, logging back in and re-setting up a project will retain the logs. In order to keep logs for both projects, we recommend you increment your repository name, i.e. <strong>project</strong> to <strong>project-1</strong> or in a way that best suits your needs.</p>\n<p>If you would like us to fully delete build logs associated with the project, please have an <a href=\"https://support.circleci.com/hc/en-us/articles/360034990033-Am-I-an-Org-Admin-\" target=\"_self\">organization admin</a> contact us at <a href=\"support@circleci.com\" target=\"_self\">support@circleci.com</a>\_to fulfill this request.</p>\n<p>If you would prefer to delete projects on your own rather than reaching out to Support, you can vote and comment and vote on an open feature request to support <a href=\"https://ideas.circleci.com/ideas/CCI-I-204\" target=\"_self\">project deletion in the UI</a>.</p>\n<p><strong>Note</strong>: Full project deletion is permanent and logs are unrecoverable once your request is complete.</p>"

@@ -1,0 +1,73 @@
+<p>CircleCI starts with the <em>config.</em>yml but the base of your build begin with the Dockerfile.</p>
+<p>If you are entirely new to Docker, please check out the official getting started guide:</p>
+<p><a href="https://docs.docker.com/get-started" target="_blank" rel="noopener">https://docs.docker.com/get-started</a>/</p>
+<p> </p>
+<p><iframe src="//www.youtube-nocookie.com/embed/JYVLeguIbe0" width="560" height="315" frameborder="0" allowfullscreen=""></iframe></p>
+<p> </p>
+<h1><strong>What is a Dockerfile?</strong></h1>
+<p>Docker builds images automatically based on the information presented to it in the Dockerfile. This defines the operating system you'll be running, install any software or dependencies required for your project, and execute commands in the shell automatically.</p>
+<p>Because many of our users often need similar environments and tools, we have created a selection of maintained Dockerfiles suited best for projects on CircleCI with different languages available. You can view these "convenience" images here: https://hub.docker.com/r/circleci/</p>
+<h1><strong>Why make a custom Dockerfile?</strong></h1>
+<p>While you can use our images install your own tools on top of them, this may not be the most efficient method for your use case. You may have a large selection of software that needs to be included that would best be served in the base Docker image rather than installed on CircleCI every time you run a build. Or perhaps you have unique OS requirements that we simply do not have a convenience image for at this time. </p>
+<p>On that note, if you think we are missing something, let us know! https://circleci.com/ideas/</p>
+<h1><strong>How to make a Dockerfile</strong></h1>
+<h2>Dockerfile Wizard</h2>
+<p class="wysiwyg-text-align-center"><img src="https://circleci.com/blog/media/Wizard-v2.gif" width="248" height="140"></p>
+<p><a href="https://github.com/CircleCI-Public/dockerfile-wizard">https://github.com/CircleCI-Public/dockerfile-wizard</a></p>
+<p>This tool is an automated script for Linux and MacOS to generate Dockerfiles for use with CircleCI. This script will prompt you for some popular options for operating systems, tools, databases, and more. When the script is complete, it will generate a CircleCI config.yml. Commit your project and follow it from your CircleCI dashboard to begin building.</p>
+<p>The new project will build your newly created Dockerfile and automatically push your image to Dockerhub.<br><br>After the Docker image has been published the `test_image`job will begin, which will pull your newly created Docker image from Dockerhub</p>
+<p>More information here: <a href="https://circleci.com/blog/build-custom-docker-images-faster-and-more-easily-with-our-dockerfile-wizard/">https://circleci.com/blog/build-custom-docker-images-faster-and-more-easily-with-our-dockerfile-wizard/</a></p>
+<h2>Code your own Dockerfile</h2>
+<p>Get more fine control by building your own Dockerfile.</p>
+<p>Official Docs: <a href="https://docs.docker.com/engine/reference/builder">https://docs.docker.com/engine/reference/builder</a></p>
+<p>Start with an empty folder with whatever name you like, and enter it with <strong>cd</strong></p>
+<p><code>mkdir mydockerfile</code></p>
+<p><code>cd mydockerfile</code></p>
+<p>Inside your folder you need your Dockerfile, it's most common to name this as such.</p>
+<p><code>touch Dockerfile</code></p>
+<p>And you can open this file up in your favorite text editor.</p>
+<h3><strong>FROM</strong></h3>
+<p>'FROM' is the first and most important command in your Dockerfile. This specifies the base image for your Docker build. This is most commonly a distro of Linux though other options exist. You can browse through the <a href="https://hub.docker.com/explore/">DockerHub</a> to find a suitable <a href="https://docs.docker.com/engine/userguide/eng-image/baseimages/#create-a-full-image-using-tar">base image</a> for your Dockerfile.</p>
+<p class="wysiwyg-text-align-left">You can see every image shows the <em>pull</em> command which also shows you the image name</p>
+<p class="wysiwyg-text-align-center"><br><img src="https://support.circleci.com/hc/article_attachments/360000341368/mceclip0.png"></p>
+<p class="wysiwyg-text-align-center"> </p>
+<p class="wysiwyg-text-align-left">You can also find the available tags for that base image. Tags are generally different versions or variants of the base image. Without a tag, you will always pull the newest image, if you want to ensure your builds are consistent you should choose a tag as well.</p>
+<p class="wysiwyg-text-align-center"><br><br><img src="https://support.circleci.com/hc/article_attachments/360000337547/mceclip1.png" width="526" height="218"></p>
+<p> </p>
+<p>When you have chosen your image and tag you may insert this into your 'FROM' line like so</p>
+<p><code>FROM alpine/3.5</code></p>
+<h3><strong>WORKDIR</strong></h3>
+<p>Adding 'WORKDIR' will set the working directory inside of the container. This will be the target for any following commands and act somewhat as the 'root' folder.</p>
+<p><code>WORKDIR /app</code></p>
+<p><code></code></p>
+<h3><strong>COPY</strong></h3>
+<p>Now that we have an operating system we can work with, let's feed it a script. This is optional by the way. Let's stay we have a script called <em>install.sh</em> in our root directory with our Dockerfile. What we want to do is copy that script into our running Docker container. So somewhere underneath the 'FROM' command, let's add 'COPY'. COPY takes two parameters, the first being the source and the second being the destination.</p>
+<p><code>COPY install.sh .</code></p>
+<p>If you established the 'WORKDIR' earlier, this should copy <em>install.sh</em> to <em>/app/install.sh</em></p>
+<h3><strong>RUN</strong></h3>
+<p>You now have a base image but, this container doesn't really do much, though it would run. RUN will allow us to execute commands in the shell so we can control the OS the same way we would locally.</p>
+<p><code>RUN install.sh</code></p>
+<p>'RUN' is extremely powerful and can do anything you would be able to do sitting in front of the terminal. This command above will execute <em>/app/install.sh</em></p>
+<h2><strong>Minimize layers and keep your image small</strong></h2>
+<p>Best practices to follow when writing Dockerfiles: https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/<br><br>One of the best reasons to use CirlceCI's convenience images is because of the high probability that we will have layers from your image cached on the host, decreasing your spin-up time. But you may want a smaller image, or have another need not solved by our images.</p>
+<p>It is in your best interest to limit the number of layers in your build and the total build size.</p>
+<p>Each <strong>ADD</strong>, <strong>COPY</strong>, and <strong>RUN</strong> command adds an additional layer to your build. Make sure when possible to chain commands like so.</p>
+<p><code>Run apt-get update &amp;&amp; apt-get upgrade -y \ </code></p>
+<p>    <code>apt-get install -y nodejs npm</code></p>
+<p><em><strong>Or give multi-stage builds a try:</strong></em> https://docs.docker.com/engine/userguide/eng-image/multistage-build/#use-multi-stage-builds</p>
+<h3><strong>Start with a small base image</strong></h3>
+<p>Many base images out there still come with a host of tools that you may not need at all for the purposes of your project.</p>
+<p>The <a href="https://hub.docker.com/r/library/ubuntu/tags/">Ubuntu Trusty</a> image is 43mb compressed (which can be well over 100mb uncompressed), which is nice, but consider you may only need <a href="https://hub.docker.com/r/library/alpine/tags/">Alpine</a> which comes in at 2mb.</p>
+<h1><strong>Build your image</strong></h1>
+<p><a href="https://docs.docker.com/engine/reference/commandline/build/">https://docs.docker.com/engine/reference/commandline/build/</a></p>
+<p>On your local machine, enter the terminal and enter the following command while in your root directory for the project.</p>
+<p><code>docker build -t IMAGENAME/TAG</code></p>
+<p>This command will start the build of your image as well as name it. The <em>TAG</em> is optional.</p>
+<h1><strong>Push to Dockerhub</strong></h1>
+<p>There are many ways to deploy your Docker build to a repo, right now we are only going to discuss pushing your image to Dockerhub.</p>
+<p>Login to Dockerhub.</p>
+<p><code>docker login -u USERNAME -p PASSWORD&lt; /code&gt;</code></p>
+<p>Once you have logged in you are ready to submit your build to Docker.</p>
+<p><code>docker push IMAGENAME/TAG</code> </p>
+<h1><strong>You've Done It!</strong></h1>
+<p><strong>Your docker image will now be available on the Dockerhub on your profile</strong></p>

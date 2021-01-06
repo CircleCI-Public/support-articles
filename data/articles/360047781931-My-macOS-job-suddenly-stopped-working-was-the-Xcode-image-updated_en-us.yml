@@ -1,0 +1,26 @@
+id: 360047781931
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047781931.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360047781931-My-macOS-job-suddenly-stopped-working-was-the-Xcode-image-updated-
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003327088
+created_at: '2020-08-14T14:28:40Z'
+updated_at: '2020-10-22T06:57:43Z'
+name: My macOS job suddenly stopped working, was the Xcode image updated?
+title: My macOS job suddenly stopped working, was the Xcode image updated?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T06:57:43Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>Our stable Xcode image releases remain frozen once they are released and are <em>never</em> updated after the initial release. This means that the software that is bundled with them is also the latest software available at the time the image was released.</p>\n<p>Bearing in mind that the software on older images is likely outdated, such as Homebrew formulae, it may be updated within the job to a newer version that could include bugs or be incompatible with that particular version of Xcode. This is also true of job dependancies, like Ruby Gems or NPM packages.</p>\n<p>If your macOS job suddenly starts to fail, when you have not made any changes to your project, \_compare the last passing job with the first failing job, taking particular note to check the version numbers of any software or dependancies used in the job. If you find one of these has changed, please reach out to the project responsible to see if there are any recent known issues. Otherwise, if the jobs look identical apart from the failure, please feel free to open a support ticket so we can assist further.</p>\n<p><strong>Note:\_</strong>Xcode Beta images\_<em>do change</em> as they are updated in-place. For more information about our beta image policy, please see the\_<a href=\"https://circleci.com/docs/2.0/testing-ios/#beta-image-support\" target=\"_self\">documentation here</a>.</p>"
