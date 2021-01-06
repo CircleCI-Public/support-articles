@@ -1,0 +1,11 @@
+<p><strong>workflows</strong>セクションのジョブに<strong>filters</strong>キーを追加することで、特定のブランチでのみ実行されるジョブを設定することができます。
+</p>
+<pre>workflows:<br>  version: 2<br>    build:<br>      jobs:<br>        - test:<br>            filters:<br>              branches:<br>                only:<br>                  - master
+</pre>
+<p>後続のジョブにこのフィルターを設定することも可能です。</p>
+<div>
+    <pre><span>workflows</span><span>:</span><br><span>  version</span><span>: </span><span>2</span><br><span>  build</span><span>:</span><br><span>    jobs</span><span>:</span><br><span>      - </span><span>test</span><br><span>      - </span><span>deploy</span><span>:</span><br><span>        requires</span><span>:</span><br><span>          - </span><span>test</span><br><span>        filters</span><span>:</span><br><span>          branches</span><span>:</span><br><span>            only</span><span>:</span><br><span>              - </span><span>master</span>
+</pre>
+</div>
+<p><a href="https://circleci.com/docs/2.0/configuration-reference/#filters-1%0A" target="_blank" rel="noopener">ジョブのブランチのフィルタリングに関するドキュメントはこちらになります。
+    </a></p>

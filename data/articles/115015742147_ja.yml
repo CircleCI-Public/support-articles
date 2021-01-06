@@ -1,0 +1,27 @@
+id: 115015742147
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115015742147.json
+html_url: https://support.circleci.com/hc/ja/articles/115015742147
+author_id: 4954232598
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 7
+vote_count: 9
+section_id: 115003756627
+created_at: '2017-12-14T13:09:08Z'
+updated_at: '2020-10-22T06:59:43Z'
+name: CircleCI Docker イメージで発生する変更
+title: CircleCI Docker イメージで発生する変更
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2018-11-13T06:23:04Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - docker
+  - docker image
+  - SHA
+body: "<p>\_</p>\n<p>Docker executor を使用中に、`circleci/ruby:2.4-node` や `node:latest` などのイメージタグを使うと、イメージの内容が変化することがあります。2 つのジョブの間でこれらのイメージが変更されたと考えられる場合、両方のイメージのセキュア ハッシュ アルゴリズム ID (SHA) を比較することで、変更があったかどうかを確認できます。これは、\"スピンアップ環境\" セクションに表示されます。</p>\n<p>\_</p>\n<p>\_</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/115026605588/mceclip0.png\"></p>\n<p>\_</p>\n<p>CircleCI および他のイメージ保守組織は、`2.4-node` や `latest` などのタグが、どの SHA を指すかを変更することがあります。通常、これはバグ修正のため、または git や言語のパッケージマネージャーなど基本的なソフトウェアの新バージョンを導入するために行なわれます。</p>\n<p>\_</p>\n<p>ジョブが特定のイメージ SHA で実行されるようピンどめすると、意図しない場合でもイメージが変更されないことを保証できます。このためには、config.yml を次のように変更します。</p>\n<p>\_</p>\n<pre class=\"line-numbers language-yaml\"><code class=\"config-yml language-yaml\"><span class=\"token key atrule\">docker</span><span class=\"token punctuation\">:</span>\n<span class=\"token punctuation\"> -</span> <span class=\"token key atrule\">image</span><span class=\"token punctuation\">:\_</span></code>circleci/ruby@sha256:4be65b406f7402b5c4fd5df7173d2fd7ea3fdaa74d9c43b6ebd896197a45c448</pre>"

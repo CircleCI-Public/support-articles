@@ -1,0 +1,3 @@
+<p>次のエラーが表示される場合</p>
+<p>&gt; レイヤーの登録に失敗しました: tar ファイルの処理中にエラーが発生しました (exit ステータス 1): コンテナ ID ... ホスト ID にマップできません</p>
+<p>Docker イメージに、UID / GID が大きすぎる Linux ユーザーが所有するファイルが含まれているためです。 ユーザー、またはイメージ保守担当者がこのイメージを再ビルドし、より小さな UID / GID のユーザーがこれらのファイルを所有するように変更する必要があります。 詳細については、[こちらのページ] (<a href="https://circleci.com/docs/2.0/high-uid-error/" target="_blank" rel="noopener">https://circleci.com/docs/2.0/high-uid-error/</a>) を参照してください。</p>

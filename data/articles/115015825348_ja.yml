@@ -1,0 +1,28 @@
+id: 115015825348
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115015825348.json
+html_url: https://support.circleci.com/hc/ja/articles/115015825348
+author_id: 25261361207
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003580328
+created_at: '2017-12-14T16:44:00Z'
+updated_at: '2020-10-22T06:58:39Z'
+name: ビルド済み Docker イメージ用の Dockerfile
+title: ビルド済み Docker イメージ用の Dockerfile
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2018-11-13T06:23:03Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - docker
+  - dockerfile
+  - Dockerfiles
+  - docker file
+body: "<p><a href=\"https://hub.docker.com/r/circleci/\" target=\"_blank\" rel=\"noopener\">DockerHub</a> にある、CircleCI のビルド済み Docker イメージ用の Dockerfiles が必要な場合、こちらの <a href=\"https://github.com/circleci-public/circleci-dockerfiles\" target=\"_blank\" rel=\"noopener\">GitHub リポジトリ</a>から入手できます。</p>\n<p>\_</p>\n<p><iframe src=\"//www.youtube-nocookie.com/embed/PgIwBzXBn7M\" width=\"560\" height=\"315\" frameborder=\"0\" allowfullscreen=\"\"></iframe></p>"

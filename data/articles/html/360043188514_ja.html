@@ -1,0 +1,34 @@
+<p>ジョブを再実行するのではなく、失敗したステップを再試行した方がよい場合があります（<strong>この場合、時間とお金を節約できます</strong>）。 この記事では、例を使用し、「<strong><a href="https://circleci.com/docs/2.0/configuration-reference/#the-when-attribute" target="_blank" rel="noopener">when </a>」</strong>属性を使用して、失敗したステップを再試行する方法を説明します。</p>
+<p> <strong>最初に</strong>、<code>when</code> 属性のさまざまなパラメーターを見ていきましょう。</p>
+<ol>
+    <li>
+        <strong>when: on_success</strong> &gt;  これはデフォルトのオプションであり、前のすべてのステップが成功した（終了コード 0 が返された）場合にのみステップが実行されます。
+    </li>
+    <li>
+        <strong>when: always</strong> &gt; 前のステップの終了ステータスにかかわらず、処理を実行します。
+    </li>
+    <li>
+        <strong>when: on_fail</strong> &gt; 直前のステップが失敗した（ゼロ以外の終了コードを返した）場合にのみ処理が実行されます。
+    </li>
+</ol>
+<p> </p>
+<h2>失敗したステップの再試行</h2>
+<p>デフォルトでは、CircleCI は <code class="highlighter-rouge">config.yml</code> で定義された順序通り、ステップが失敗するまで（ゼロ以外の終了コードを返すまで）ジョブステップを 1 つずつ実行します。 コマンドが失敗すると、それ以降のジョブステップは実行されません。</p>
+<p><code class="highlighter-rouge">when</code> 属性をジョブステップに追加することで、<span class="wysiwyg-underline">この挙動を変えることができます。</span> ジョブのステータスに応じてステップを続行するか、スキップするかを選択することも可能になります。</p>
+<p>それでは、<strong>when: on_fail</strong> を使用して失敗したステップを再試行する例をご紹介していきます。</p>
+<p><strong> 次のサンプルの config.yml ファイルでは、「<span class="wysiwyg-underline">Run on fail status</span>」ステップは、前のステップがエラー（exit 1）のため <span class="wysiwyg-underline">トリガー</span>されます</strong>。</p>
+<p> </p>
+<pre>version: 2.1workflows:  version: 2  build_deploy:    jobs:      - buildjobs:  build:    docker:      - image: circleci/python:3.7.5    steps:      - checkout      - run:          name: Run commands          command: |              echo "I will exit fail status"              exit 1      - run:          name: Run on fail status          command: |              echo "I am result of above failed job"          when: on_fail</pre>
+<p> </p>
+<p><strong>補足</strong>：同じコマンドを次のステップで（when 属性を付けて）再試行したり、他のコマンドを使用したりできます。 ユーザーは API エンドポイントを使用して<a href="https://circleci.com/docs/api/#retry-a-build" target="_blank" rel="noopener">ビルドを再試行</a>することもできます。 上記は <code>when</code> 属性がどのように機能するかを確認する例になります。</p>
+<p>次のスクリーンショットでは、前のステップが失敗したときに、「<strong>when</strong>」属性を含むステップがトリガーされたことが確認できます。</p>
+<center><img src="https://support.circleci.com/hc/article_attachments/360059295453/when_exit1.png%0A" alt="when attribute CircleCI - fail" width="549" height="487"></center>
+<p><strong>補足</strong>：Workflow のステータスは、この場合 <strong>FAILED </strong> になります。</p>
+<p> </p>
+<p><strong> 次のサンプルの config.yml ファイルでは、前のステップの出力が成功（exit 0）であるため、「<span class="wysiwyg-underline">Run on fail status</span>」が <span class="wysiwyg-underline">トリガーされません</span></strong>。</p>
+<pre>version: 2.1workflows:  version: 2  build_deploy:    jobs:      - buildjobs:  build:    docker:      - image: circleci/python:3.7.5    steps:      - checkout      - run:          name: Run commands          command: |              echo "I will exit success status"              exit 0      - run:          name: Run on fail status          command: |              echo "I am result of above failed job"          when: on_fail</pre>
+<p>  </p>
+<center><img src="https://support.circleci.com/hc/article_attachments/360058391054/when_exit0.png%0A" alt="when attribute CircleCI - Success" width="526" height="250"></center>
+<p> </p>
+<p>以上で<code>when</code> 属性を使用して失敗したステップを再試行する方法をご紹介しました。</p>
+<p><strong>ビルドのお役に立てば幸いです。</strong></p>

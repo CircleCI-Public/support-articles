@@ -1,0 +1,13 @@
+<p dir="auto"><code>xcodebuild</code> プロセスの一部として Swift Package Manager を使用している場合、次のエラーメッセージで、コマンドが失敗することがあります。</p>
+<pre class="output"><span class="pre"><span class="white">xcodebuild: error: Could not resolve package dependencies:  Authentication failed because the credentials were rejected
+</span></span></pre>
+<p dir="auto">または</p>
+<pre class="css-9561s5">xcodebuild: error: Could not resolve package dependencies:  The server SSH fingerprint failed to verify.
+</pre>
+<p dir="auto">この問題は、SSH キー認証を使用しプライベート git リポジトリにアクセスする場合にのみ発生します。</p>
+<p dir="auto">これは、<code>xcodebuild</code> が SSH キーを利用する際に起こるバグが原因であり、Xcode 11からの既知の問題で、ローカルと CI 環境の両方で発生します。</p>
+<p dir="auto"><code>xcodebuild</code> はシステムの ssh の設定を利用せず、またCircleCI が <code>ssh-agent</code> に保存しているキーにアクセスできません。 これを回避するためには、Xcode がOS上の ssh を使用するよう設定します。
+</p>
+<p dir="auto">具体的には、コンフィグファイルの <code>checkout</code> ステップの直後に以下の行を追加します。</p>
+<pre dir="auto">- run: sudo <span>defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM YES</span><br>- run: rm ~/.ssh/id_rsa || true<br>- run: for ip in $(dig @8.8.8.8 bitbucket.org +short); do ssh-keyscan bitbucket.org,$ip; ssh-keyscan $ip; done 2&gt;/dev/null &gt;&gt; ~/.ssh/known_hosts || true <br>- run: for ip in $(dig @8.8.8.8 github.com +short); do ssh-keyscan github.com,$ip; ssh-keyscan $ip; done 2&gt;/dev/null &gt;&gt; ~/.ssh/known_hosts || true
+</pre>

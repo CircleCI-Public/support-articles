@@ -1,0 +1,43 @@
+id: 115013854647
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115013854647.json
+html_url: https://support.circleci.com/hc/ja/articles/115013854647
+author_id: 25261361207
+comments_disabled: true
+draft: false
+promoted: false
+position: 1
+vote_sum: -11
+vote_count: 15
+section_id: 115003580328
+created_at: '2017-10-27T15:39:47Z'
+updated_at: '2020-10-29T05:57:54Z'
+name: Docker Executor で docker-compose を使用する方法
+title: Docker Executor で docker-compose を使用する方法
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-29T05:57:54Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: >-
+  <p>CircleCIが提供する、Machine
+  executorや定義済みのDockerイメージ（コンビニエンスイメージ）などの、一部のイメージにdocker-composeをプリインストールしています。
+  利用するDockerイメージに docker-compose
+  がインストールされていない場合は、イメージをビルドするときやジョブ実行中にインストールできます。</p><pre><br>- run: <br>   
+  name: <span class="hljs-keyword">Install</span> Docker Compose <br>   
+  command: | <span class="hljs-keyword">set</span> -x curl -L
+  https://github.com/docker/compose/releases/download/<span
+  class="hljs-number">1.25</span><span
+  class="hljs-number">.3</span>/docker-compose-<span class="hljs-string">`uname
+  -s`</span>-<span class="hljs-string">`uname -m`</span> &gt; /usr/<span
+  class="hljs-keyword">local</span>/<span
+  class="hljs-keyword">bin</span>/docker-compose chmod +x /usr/<span
+  class="hljs-keyword">local</span>/<span
+  class="hljs-keyword">bin</span>/docker-compose</pre><p><strong>-
+  setup_remote_docker</strong>
+  コマンドでリモートDocker環境を用意し、docker-composeを使ってDockerイメージをビルドできます。</p><p><a
+  href="https://circleci.com/docs/2.0/docker-compose/" target="_blank"
+  rel="noopener">こちらのドキュメント</a>には、<code>docker</code> executor で
+  <code>docker-compose</code> を使用する手順と例が記載されています。</p>

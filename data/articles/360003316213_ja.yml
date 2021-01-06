@@ -1,0 +1,34 @@
+id: 360003316213
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360003316213.json
+html_url: https://support.circleci.com/hc/ja/articles/360003316213
+author_id: 25261361207
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -1
+vote_count: 3
+section_id: 115003327088
+created_at: '2018-04-19T13:31:25Z'
+updated_at: '2020-10-22T06:58:26Z'
+name: MacOS でカスタムの Ruby バージョンを設定する方法
+title: MacOS でカスタムの Ruby バージョンを設定する方法
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2018-11-13T06:22:32Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - ruby
+  - macos
+  - ruby version
+  - macos ruby
+body: >-
+  <p>CircleCI のドキュメントに記載されている、これらの手順に従って、macOS プロジェクトに必要なバージョンの Ruby
+  を設定できます。</p>
+
+  <p><a href="https://circleci.com/docs/2.0/testing-ios/#custom-ruby-versions"
+  target="_blank"
+  rel="noopener">https://circleci.com/docs/2.0/testing-ios/#custom-ruby-versions</a></p>

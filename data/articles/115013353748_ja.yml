@@ -1,0 +1,30 @@
+id: 115013353748
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115013353748.json
+html_url: https://support.circleci.com/hc/ja/articles/115013353748
+author_id: 25261361207
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -5
+vote_count: 7
+section_id: 115003580328
+created_at: '2017-10-10T16:39:09Z'
+updated_at: '2020-10-22T06:59:06Z'
+name: すべての push のビルド複製
+title: すべての push のビルド複製
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2018-11-13T06:25:34Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: >-
+  <p>これは通常、GitHub webhook に問題があることを示しています。 正常な動作を回復するための最も簡単な方法は、GitHub
+  組織の管理者が以下の手順を実行することです。</p>
+
+  <p>1. GitHub リポジトリの設定から、すべての CircleCI webhook およびサービスを削除します。<br>2. [PROJECT
+  SETTINGS] で、CircleCI でのビルドを停止するようプロジェクトに指定します。<br>3. CircleCI
+  にプロジェクトを追加して元通りにします。</p>

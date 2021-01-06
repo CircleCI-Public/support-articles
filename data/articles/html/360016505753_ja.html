@@ -1,0 +1,9 @@
+<p><em>「Certificate Signed By Unknown Authority」</em>というエラーは、お使いの Docker コンテナに <a href="https://pkgs.alpinelinux.org/package/v3.3/main/x86/ca-certificates">ca-certificates</a>がないことを示している場合があります。これは、SSL 接続の確認と認証に使用されます。 このパッケージがないと、ワークスペースのダウンロードなど、CircleCI の一部の機能が動作しなくなります。</p>
+<p><a href="https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs">Workspaces</a>を使用した際に発生するエラー:</p>
+<pre><code>Error downloading workspace layer for job xxxxx: RequestError: send request failed caused by: Get https://xxxxxxxx.amazonaws.com/xxxxxxxxxxxxxxxxxx: x509: certificate signed by unknown authority</code></pre>
+<h2>解決策</h2>
+<p>ご利用のLinux ディストリビューション用の <a href="https://pkgs.alpinelinux.org/package/v3.3/main/x86/ca-certificates">ca-certificates</a> パッケージをインストールします。</p>
+<p> </p>
+<p><strong>Alpine へのインストール</strong>：</p>
+<pre><code> apk add ca-certificates</code></pre>
+<p> </p>

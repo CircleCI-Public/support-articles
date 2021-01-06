@@ -1,0 +1,1 @@
+<p><strong><span class="s1">docker images --no-trunc --format '{{.ID}}' | xargs docker rmi</span></strong><span class="s1"> を実行すると、すべてのイメージとそのレイヤーが、ビルド環境から削除されます。 config.yml にこのコマンドを実行手順として一時的に追加し、既存のイメージとレイヤーを削除することもできます。 このコマンドを実行した後で config から削除し、新しいイメージをビルドできます。</span></p>

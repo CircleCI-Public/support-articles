@@ -1,0 +1,32 @@
+id: 360003766273
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360003766273.json
+html_url: https://support.circleci.com/hc/ja/articles/360003766273
+author_id: 26863412148
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -16
+vote_count: 26
+section_id: 115003327208
+created_at: '2018-05-01T23:40:50Z'
+updated_at: '2020-12-14T09:36:14Z'
+name: 古いビルドの削除方法
+title: 古いビルドの削除方法
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2018-11-14T02:13:10Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: >-
+  <p>新しい構成をテストしてセットアップする際に、参照すべきでない不要なビルドが存在することがあります。 CircleCI
+  のプライベートインストールからビルドを完全に削除するには、SSH でサービスインスタンスに接続し、次のコマンドを実行します。</p>
+
+  <pre><code>circleci dev-console
+
+  (admin/delete-build "build_url")
+
+  </code></pre>

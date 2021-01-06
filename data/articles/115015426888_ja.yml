@@ -1,0 +1,35 @@
+id: 115015426888
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115015426888.json
+html_url: https://support.circleci.com/hc/ja/articles/115015426888
+author_id: 25261361207
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -59
+vote_count: 107
+section_id: 115003756627
+created_at: '2017-11-20T10:45:53Z'
+updated_at: '2020-12-21T08:59:22Z'
+name: プロジェクトの依存関係のキャッシュをリセットする
+title: プロジェクトの依存関係のキャッシュをリセットする
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-29T05:57:59Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: >-
+  <h1><strong>キャッシュのクリア</strong></h1><p>CircleCIのキャッシュシステムで依存関係のキャッシュは、フォーマット化された文字列のテンプレートを使用してキャッシュキーを設定する必要があります。
+   次のように設定できます。</p><pre>myapp-<span class="o">{{</span> checksum <span class="s2"><span class="hljs-string">"package-lock.json"</span></span> <span class="o">}}</span></pre><p><span class="o"> 以下のようなキャッシュキーが生成されます<br></span></p><pre><span class="o">myapp-+KlBebDceJh_zOWQIAJDLEkdkKoeldAldkaKiallQ </span></pre><p><span class="o">この例では、<strong>package-lock.json</strong>ファイルに変更があった場合、このキャッシュキーは変更されます。 </span><span class="o"></span></p><p><span class="o">キャッシュを手動でクリアや再作成したい場合があります。 よくある解決策として、キャッシュキーのテンプレートにバージョニングキーを追加します。
+  </span></p><p><a
+  href="https://circleci.com/docs/2.0/caching/#clearing-cache">キーの先頭にバージョンのプレフィクス</a>を追加し、キャッシュを消去し再作成したい場合にインクリメントすることができます。プロジェクトの設定で
+  <code>CACHE_VERSION=v1</code>
+  のような変数を設定し、コンフィグに追加することができます。UIから環境変数を変更できるため便利です。</p><p>次のように設定できます。</p><pre>myapp-<strong>{{
+  .Environment.CACHE_VERSION }}-{{checksum "package-lock.json" }}</strong> 
+  </pre><p>以下のようなキーが生成されます。</p><pre><span
+  class="o"><strong>myapp-v1-+KlBebDceJh_zOWQIAJDLEkdkKoeldAldkaKiallQ</strong></span></pre><p><span
+  class="o"> 手動でキャッシュを更新する必要がある場合は、プロジェクト設定の環境変数を <strong>v2 </strong>
+  に更新するだけで、キャッシュキーを変更して新しいキャッシュが生成されます。</span></p>

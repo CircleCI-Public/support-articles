@@ -1,0 +1,10 @@
+<p>CircleCI と他のサービスとの間で、断続的にインターネット接続が途切れることがあります。 すべてのパッケージマネージャーサーバーには、多少の停止時間があります。それらのサービスに接続できる場合でも、サーバーがリクエストを十分に処理できないことがあります。これには、npm および yarn、bundler、rubygems、pip、maven、composer、cocoapods、Android SDK などがあります。CircleCI は、これらのツールすべてについて、お客様からネットワークとサーバーの問題の報告を受けています。ただし、これらの問題の軽減のため CircleCi でできることは、サービスオーナーに通知する以外ほとんどありません。</p>
+<p>依存関係のセットアップにおいて、非決定的または確実でない障害が発生し始めた場合、可能な限り多くのデータをキャッシュすることをおすすめします。ほとんどの場合、コードをプッシュするときは、ネットワーク接続やサードパーティーのサーバーではなく、自社のチームや作業内容をテストしてください。</p>
+<p>アプリケーションが依存関係のすべてを新しくフェッチできることを明示的にテストする、または依存関係を更新して、それらの依存関係に対してテストスイートを実行する場合があります。この場合、別のブランチまたはジョブタイプ (2.0 のみ) を明示的に作成することをおすすめします。CircleCI 2.0 ユーザーは、この手順を<a href="https://circleci.com/docs/2.0/workflows/#scheduling-a-workflow">スケジュール化された Workflow</a> として実行することもできます。</p>
+<p>詳細については、以下を参照してください。</p>
+<ul>
+    <li>CircleCI 1.0：<a href="https://circleci.com/docs/1.0/how-cache-works/">https://circleci.com/docs/1.0/how-cache-works/</a>
+    </li>
+    <li>CircleCI 2.0：<a href="https://circleci.com/docs/2.0/caching/">https://circleci.com/docs/2.0/caching/</a>
+    </li>
+</ul>

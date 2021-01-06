@@ -1,0 +1,31 @@
+id: 360004250693
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360004250693.json
+html_url: https://support.circleci.com/hc/ja/articles/360004250693
+author_id: 28200990948
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -13
+vote_count: 23
+section_id: 115003756627
+created_at: '2018-05-14T15:37:46Z'
+updated_at: '2020-12-09T16:49:09Z'
+name: キャッシュの復元が "Permission Denied" で失敗する
+title: キャッシュの復元が "Permission Denied" で失敗する
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2018-11-14T01:27:16Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - restore cache
+  - permission denied
+  - workspaces
+  - missing files in workspace
+  - error untarring cache
+  - Cannot mkdir
+  - increment cache key
+body: "<p><a href=\"https://circleci.com/docs/2.0/workflows/\">Workflow</a> を使用し、キャッシュの保存と<a href=\"https://circleci.com/docs/2.0/caching/#restoring-cache\">復元</a>や<a href=\"https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs\"> Workspace の恒久化</a>を行なう場合、ユーザーとディレクトリが関係することに留意してください。 <a href=\"https://circleci.com/docs/2.0/circleci-images/\">CircleCI のビルド済み Docker イメージ</a>を使用する場合、各 Docker コンテナは同じユーザーで、同じベースアクセス許可を使用して実行されます。 1 つのイメージを使用するジョブにキャッシュを保存し、別のジョブに復元する場合、アクセス許可が互換であることを確認してください。</p>\n<p>\_</p>\n<p>キャッシュの復元時に \"<span class=\"pre\"><strong>Permission Denied</strong>\" というエラーが表示される場合、以前のジョブで保存した場所を確認します。 この一般的な状況は、イメージをルートユーザーとして使用し、キャッシュを保存してから、ルートアクセス許可のないユーザーが、以後のジョブにそのキャッシュの復元を試みたときです。<br><br>また、同じエラーによって、恒久化された Workspace のファイルも、アクセス許可が正しく設定されていなければ消失します。<br><br></span></p>\n<p><span class=\"pre\"><img src=\"https://support.circleci.com/hc/article_attachments/360005107713/Untitled.png\" alt=\"Untitled.png\" width=\"700\" height=\"348\"></span></p>\n<p>\_</p>\n<p><span class=\"pre\">この `キャッシュ復元` のステップでは、元のイメージはルートとして実行されており、作業ディレクトリが `<em>~/</em>tmp` に設定されていたため、キャッシュが元は `<em>/root/</em>tmp` に保存されたことが分かります。 Workflow のこの部分は、CircleCI ユーザー下で実行され、`/root` フォルダーにアクセスできません。</span></p>\n<p>\_</p>\n<p><span class=\"pre\">可能なら、複数のジョブ間で同じイメージを使用してください。 それが難しい場合は、2 つのイメージ間で共通の場所に作業ディレクトリを設定してください (`/tmp` が使用できることがあります)。 また、キャッシュを保存する前に、ファイルのアクセス許可を変更または設定する必要があります。 </span></p>\n<p><span class=\"pre\">例：`<em>chmod -R 777 ./workingDirectory</em>` を使用して、これらのファイルに対する完全な読み取り/書き込みアクセス権を付与します。<br></span></p>\n<p>\_</p>\n<p>ベストな方法は、ジョブ間で共通のイメージを使用することです。 CircleCI で提供しているビルド済み Docker イメージに、プロジェクトに必要な要素が欠けている場合、<a href=\"https://circleci.com/docs/2.0/custom-images/\">CircleCI 製イメージの 1 つをカスタマイズする</a>ことを検討してください。</p>\n<p>\_</p>"

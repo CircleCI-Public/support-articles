@@ -1,0 +1,15 @@
+id: 115003327068
+url: https://circleci.zendesk.com/api/v2/help_center/ja/sections/115003327068.json
+html_url: https://support.circleci.com/hc/ja/sections/115003327068-Python
+category_id: 115001913988
+position: 0
+sorting: manual
+created_at: '2017-09-06T14:56:55Z'
+updated_at: '2020-11-20T18:28:25Z'
+name: Python
+description: ''
+locale: ja
+source_locale: en-us
+outdated: false
+parent_section_id: null
+theme_template: section_page

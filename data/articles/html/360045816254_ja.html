@@ -1,0 +1,9 @@
+<p>Windows の Powershell には <code>sudo</code> がありません。いくつかのコマンドは管理者として実行する必要がありますが、Powershell にはその概念がありません。</p>
+<p> </p>
+<p>解決策の 1 つは、<code>Start-Process</code> コマンドを使用することです（<a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process">https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process</a>）。このコマンドの例は以下になります。</p>
+<pre>Start-Process wpr -verb runAs -Args "-start GeneralProfile"</pre>
+<p>これは、管理者として<code>wpr</code>（パフォーマンスレコーダー）を呼び出し、<code>-Args</code> フラグで必要な引数を渡しています。 しかし、この場合、どこか別の場所で新しいシェルを起動するので、出力を表示できないことです。</p>
+<p> </p>
+<p>もう 1 つの解決策として、scoop（<a href="https://scoop.sh/">https://scoop.sh/</a>）を使用することです。scoop を利用し、Linux と同じ `sudo` のコマンドを利用することができます。 以下のように scoop をインストールできます。</p>
+<pre>iex (new-object net.webclient).downloadstring('https://get.scoop.sh')<br>set-executionpolicy unrestricted -s cu -f<br>scoop install sudo</pre>
+<p>このようにして、Linux のように <code>sudo</code> を使用できます。 しかし、この方法でも基本的には解決策１と同じことをしているため、出力を表示することはできません。 （スクリプトはこちらから確認できます：<a href="https://github.com/lukesampson/psutils/blob/master/sudo.ps1">https://github.com/lukesampson/psutils/blob/master/sudo.ps1</a>）</p>

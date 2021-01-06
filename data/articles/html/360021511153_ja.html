@@ -1,0 +1,24 @@
+<p>リポジトリへプッシュしても CircleCI でパイプラインが実行されない場合、GitHub で Webhook を確認することをおすすめしています。</p>
+<h2>
+    <br>Webhook とは？
+</h2>
+<p>コミットをプッシュするたびWebhook が CircleCI に送信され、CircleCIがそのWebhookのもとにアクションを実行しています。 GitHubは、多くのイベント（最も一般的なのは「プッシュ」）が発生したときにプロジェクトに関する情報をCircleCIに送信しています。</p>
+<p><a href="https://docs.github.com/en/developers/webhooks-and-events/about-webhooks" target="_self">GitHub 開発者向けドキュメント | Webhook</a></p>
+<p> </p>
+<h2>Webhook の確認方法</h2>
+<ol>
+    <li>リポジトリの設定ページに移動します。</li>
+    <li>左のメニューで<strong> [Webhooks]</strong><strong> </strong>を選択します（<em>https://github.com/&lt;ORG&gt;/&lt;REPO&gt;/settings/hooks ページに直接移動することもできます）。</em>
+    </li>
+    <li>次のようなページが表示されます。<br><br><img src="https://support.circleci.com/hc/article_attachments/360061584832/GH_repo_settings.png" alt="GH_repo_settings.png" width="776" height="229"><br><br>
+    </li>
+    <li>ここで、CircleCI の Webhook URL をクリックして、ページの下部にある<strong>[Recent Deliveries]</strong> を確認します。<br><br><img style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" src="https://support.circleci.com/hc/article_attachments/360031366014/Screen_Shot_2019-04-11_at_5.05.23_PM.png" alt="Screen_Shot_2019-04-11_at_5.05.23_PM.png" width="583" height="313"><br><br>
+    </li>
+    <li><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Webhookのエントリをクリックして、デリバリーの詳細を表示します。 例えば、Webhook の [Headers] と [Payload] などが表示されます。<br><br><img src="https://support.circleci.com/hc/article_attachments/360032192553/Screen_Shot_2019-04-11_at_5.06.12_PM.png" alt="Screen_Shot_2019-04-11_at_5.06.12_PM.png" width="531" height="285"></span></li>
+</ol>
+<p> </p>
+<p><strong>X-GitHub-Delivery</strong> のヘッダー（このデリバリーを開くためにクリックした ID と同じ値）は、Webhook を追跡する場合に便利です。 サポートは、この値があれば、必要なに応じてさらに詳しく調査することができます。<br><br></p>
+<p><strong>[Payload]</strong> セクションでは、Webhook が正しいコミットハッシュを参照しているかを確認できます。</p>
+<p>GitHub Webhookに対するCircleCI からのレスポンスも確認することもできます。 <strong>[Request]</strong> タブから <strong>[Response]</strong>" タブに切り替えます。 「200」レスポンスが表示されている場合、WebHook は正しくデリバーされていることを意味します。</p>
+<p> </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360032193953/Screen_Shot_2019-04-11_at_5.31.21_PM.png" alt="Screen_Shot_2019-04-11_at_5.31.21_PM.png" width="244" height="180"></p>

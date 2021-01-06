@@ -1,0 +1,40 @@
+id: 115015982988
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115015982988.json
+html_url: https://support.circleci.com/hc/ja/articles/115015982988
+author_id: 1816780488
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 2
+section_id: 115003327148
+created_at: '2017-12-31T15:08:58Z'
+updated_at: '2020-10-22T07:00:42Z'
+name: CircleCI は 2 要素認証をサポートしていますか？
+title: CircleCI は 2 要素認証をサポートしていますか？
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2019-05-30T05:41:33Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - login
+  - security
+  - 2FA
+body: >-
+  <p>CircleCI には現在のところ、独自のユーザーモデルはありません。 ユーザーは、自分の GitHub、Bitbucket、Google
+  アカウントを使用してログインできます。 2 要素認証 (2FA) を有効にするには、CircleCI
+  へのサインインに使用するアカウント内から操作を行います。</p><p>各種のプラットフォームでの手順を以下に示します。</p><ul>
+
+  <li><a
+  href="https://help.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/">GitHub</a></li>
+
+  <li><a
+  href="https://confluence.atlassian.com/bitbucket/two-step-verification-777023203.html">Bitbucket</a></li>
+
+  <li><a href="https://www.google.com/landing/2step/">Google</a></li>
+
+  </ul>

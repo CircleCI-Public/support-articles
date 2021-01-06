@@ -1,0 +1,13 @@
+<p><strong><a href="https://circleci.com/docs/2.0/docker-layer-caching/">Docker レイヤーキャッシュ</a></strong> (DLC) は、CircleCI で Docker イメージの<strong>ビルド</strong>を高速化する機能です。</p>
+<h2>Docker executor のビルドイメージキャッシュは、'Docker レイヤーキャッシュ' ではありません。</h2>
+<p><a href="https://circleci.com/docs/2.0/executor-types/#using-docker">Docker executor</a> を使用してビルドをローンチする場合、CircleCI はユーザーの <code>.circleci/config.yml</code> に指定された Docker イメージを、Docker Hub からプルします。</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360002472834/mceclip3.png" width="645"></p>
+<p>ジョブで使用されるホスト上に、そのイメージのレイヤーがキャッシュされていれば、そのキャッシュが使用されます。 このため、一般に使用され、CircleCI のホストにキャッシュされている可能性が高い、<a href="https://hub.docker.com/r/circleci/">CircleCI のビルド済み Docker イメージ</a>の使用をおすすめします。</p>
+<p>イメージのいくつかのレイヤーがホストにキャッシュされている場合の 'Spin Up Environment' ステップは以下のようになります。</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360002481033/mceclip2.png" width="645" height="242"></p>
+<p>現在のところ、ユーザーの executor イメージを強制的にキャッシュする方法はありません。</p>
+<p>プロジェクトで Docker レイヤーキャッシュを有効にしている際に、 'Spin Up Environment' ステップで'image cache not found on this host' と表示された場合、これは正しい結果で、Docker レイヤーキャッシュはビルドのこの部分に影響しないからです。</p>
+<h2>Docker イメージのビルド時に Docker レイヤーキャッシュを使用する</h2>
+<p>プロジェクトで Docker レイヤーキャッシュ (DLC) を有効にすると、以前のジョブ実行でビルドされたレイヤーをキャッシュし、Docker イメージの<strong>ビルド</strong>で役立ちます。 この機能を使用するための config は次のようになります。</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360002481413/mceclip4.png" width="645" height="197"></p>
+<p><strong><a href="https://circleci.com/docs/2.0/docker-layer-caching/">Docker レイヤーキャッシュ</a></strong> (DLC) についてのドキュメント</p>

@@ -1,0 +1,9 @@
+<p>一部の 64 ビットシステムでは、Node が使用できる最大メモリ容量は、デフォルトで 2GB 未満です。 このため、CircleCI を実行するときに、予期しないメモリの問題が発生することがあります。 次のように、コマンドラインフラグを Node に渡して、最大メモリ容量を調整できます。</p>
+<pre>--max-old-space-size=&lt;memory in MB&gt;</pre>
+<p> </p>
+<p>このフラグは使用されているか確認することが難しい場合があります。 特に Node プロセスがフォークされている場合、確認が困難になります。 すべての Node プロセスでこの設定がピックアップされるようにする最善の方法は、環境変数にこの設定を適用することです。これは、Node 8 以降のバージョンで適用できます。 <br><br></p>
+<pre><span class="pl-s">NODE_OPTIONS=--max_old_space_size=4096</span></pre>
+<p> </p>
+<p><strong>関連情報</strong></p>
+<p><a href="https://futurestud.io/tutorials/node-js-increase-the-memory-limit-for-your-process">https://futurestud.io/tutorials/node-js-increase-the-memory-limit-for-your-process</a></p>
+<p><a href="https://stackoverflow.com/questions/48387040/nodejs-recommended-max-old-space-size/48392705">https://stackoverflow.com/questions/48387040/nodejs-recommended-max-old-space-size/48392705</a></p>

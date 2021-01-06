@@ -1,0 +1,53 @@
+id: 360006833994
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360006833994.json
+html_url: https://support.circleci.com/hc/ja/articles/360006833994
+author_id: 26863412148
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -2
+vote_count: 2
+section_id: 360000059327
+created_at: '2018-07-11T16:57:14Z'
+updated_at: '2020-11-30T21:38:35Z'
+name: 管理コンソールでの API エラー (409)
+title: 管理コンソールでの API エラー (409)
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2018-11-13T06:15:30Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - replicated
+  - server
+body: >-
+  <p>ローカルまたは AWS インストールを再起動する場合、管理コンソールからコンテナを開始するときに次のエラーが表示されることがあります。</p>
+
+  <p><img
+  src="https://support.circleci.com/hc/article_attachments/360008655914/API_error__409_.png"
+  alt="API_error__409_.png"></p>
+
+  <p>この場合、Replicated を再起動することで問題を解決できます。 SSH で接続し、次のコマンドを実行します。</p>
+
+  <pre><code class="bash">sudo service replicated-operator stop
+
+  sudo service replicated-ui stop
+
+  sudo service replicated stop
+
+  sudo service docker stop
+
+  sudo service docker start 
+
+  sudo service replicated start
+
+  sudo service replicated-ui start
+
+  sudo service replicated-operator start</code></pre>
+
+  <p>Replicated のトラブルシューティングの詳細については、<a
+  href="https://circleci.com/docs/2.0/admin-faq/#how-do-i-debug-the-management-console-replicated">https://circleci.com/docs/2.0/admin-faq/#how-do-i-debug-the-management-console-replicated</a>
+  を参照してください。</p>

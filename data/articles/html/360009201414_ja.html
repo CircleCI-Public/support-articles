@@ -1,0 +1,11 @@
+<p>非公開リポジトリプロジェクトのフォークからのプルリクエストがチェックアウト時に失敗する場合、次に示すエラーメッセージが表示されますか？</p>
+<pre class="output"><span class="pre"><span class="white">
+ERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+</span><span class="white">and the repository exists.
+</span></span><span class="pre"><span class="white">Exited with code 128</span></span></pre>
+<p>この場合、親リポジトリプロジェクトの [Advanced Settings] にアクセスし、[Pass secrets to builds from forked pull requests] の設定が有効なことを確認します。 非公開リポジトリのフォークから、プルリクエストをビルドへ渡すには、親リポジトリのチェックアウトキーを共有する必要があります。そのためには、[Pass secrets to builds from forked pull requests] の設定を有効にする必要があります。</p>
+<p><strong><span class="wysiwyg-color-red">重要</span></strong>： [Pass secrets to builds from forked pull requests] 設定 (詳細については、<a href="https://circleci.com/docs/2.0/oss/#pass-secrets-to-builds-from-forked-pull-requests">ドキュメント</a>を参照) には、重大なセキュリティ上の懸念事項があります。PROJECT SETTINGS には、SSH キー、機密性のある env vars、AWS 資格情報が保存されているので、信頼できないフォークによりリポジトリへのプルリクエストが行われる可能性がある場合、このオプションを使用しないでください。</p>
+<p> </p>

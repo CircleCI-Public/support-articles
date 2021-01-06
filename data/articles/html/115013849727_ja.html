@@ -1,0 +1,11 @@
+<p>Docker のバージョンは、構成されているビルド環境によって異なる可能性があります。 また、一部の環境では、使用する Docker のバージョンを手動で構成できます。</p>
+<p>CircleCI のイメージの保守および更新ポリシーの詳細については、<a href="https://circleci.com/blog/official-image-maintenance/" target="_blank" rel="noopener">こちらのブログ</a>を参照してください。 以下に示す以外の Docker バージョンが必要な場合は、<a href="https://discuss.circleci.com/c/feature-requests" target="_blank" rel="noopener">公式コミュニティ</a>から機能追加をリクエストしてください。</p>
+<h2>CircleCI 2.0</h2>
+<p><code>docker</code> executor と <code>setup_remote_docker</code> 構成を使用すると、実行中のコンテナから Docker コマンドを使うことができます。 <code>setup_remote_docker</code> が別のバージョンを使用するよう設定できます。 <a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version" target="_blank" rel="noopener">使用可能なバージョンについては、こちらからドキュメントページを確認してください</a>。</p>
+<p><code>machine</code> executor を使用する場合は、使用可能な Docker バージョンは、どのイメージを使用するかによって変わります。 使用可能なイメージと、それらに含まれている Docker のバージョンについては、<a href="https://circleci.com/docs/2.0/configuration-reference/#machine" target="_blank" rel="noopener">こちらのドキュメントページ</a>を参照してください。</p>
+<h2>CircleCI 1.0</h2>
+<p><strong>注：</strong>CircleCI 1.0 での Docker のサポートは限定されています。 ビルドに Docker を使用する場合は、CircleCI 2.0 の使用をおすすめします。</p>
+<p><a href="https://circleci.com/docs/1.0/build-image-trusty/#docker" target="_blank" rel="noopener">Ubuntu 14.04 (Trusty) 用の Docker のバージョン</a></p>
+<p><a href="https://circleci.com/docs/1.0/build-image-precise/#docker" target="_blank" rel="noopener">Ubuntu 12.04 (Precise) 用の Docker のバージョン</a></p>
+<p> </p>
+<p> </p>

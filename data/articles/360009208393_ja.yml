@@ -1,0 +1,26 @@
+id: 360009208393
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360009208393.json
+html_url: https://support.circleci.com/hc/ja/articles/360009208393
+author_id: 25261361207
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -15
+vote_count: 67
+section_id: 115003332147
+created_at: '2018-09-12T11:47:38Z'
+updated_at: '2020-12-23T09:55:53Z'
+name: Node の最大メモリを増やす方法
+title: Node の最大メモリを増やす方法
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T07:01:52Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - memory
+  - node
+body: "<p>一部の 64 ビットシステムでは、Node が使用できる最大メモリ容量は、デフォルトで 2GB 未満です。 このため、CircleCI を実行するときに、予期しないメモリの問題が発生することがあります。 次のように、コマンドラインフラグを Node に渡して、最大メモリ容量を調整できます。</p><pre>--max-old-space-size=&lt;memory\_in\_MB&gt;</pre><p> </p><p>このフラグは使用されているか確認することが難しい場合があります。 特に Node プロセスがフォークされている場合、確認が困難になります。 すべての Node プロセスでこの設定がピックアップされるようにする最善の方法は、環境変数にこの設定を適用することです。これは、Node 8 以降のバージョンで適用できます。   <br><br></p><pre><span class=\"pl-s\">NODE_OPTIONS=--max_old_space_size=4096</span></pre><p> </p><p><strong>関連情報</strong></p><p><a href=\"https://futurestud.io/tutorials/node-js-increase-the-memory-limit-for-your-process\">https://futurestud.io/tutorials/node-js-increase-the-memory-limit-for-your-process</a></p><p><a href=\"https://stackoverflow.com/questions/48387040/nodejs-recommended-max-old-space-size/48392705\">https://stackoverflow.com/questions/48387040/nodejs-recommended-max-old-space-size/48392705</a></p>"

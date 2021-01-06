@@ -1,0 +1,15 @@
+id: 115003332367
+url: https://circleci.zendesk.com/api/v2/help_center/ja/sections/115003332367.json
+html_url: https://support.circleci.com/hc/ja/sections/115003332367
+category_id: 115001914048
+position: 1
+sorting: manual
+created_at: '2017-09-06T15:28:52Z'
+updated_at: '2020-12-01T00:17:35Z'
+name: CircleCIのインストール
+description: ''
+locale: ja
+source_locale: en-us
+outdated: false
+parent_section_id: null
+theme_template: section_page
