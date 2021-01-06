@@ -1,0 +1,39 @@
+id: 115015983008
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115015983008.json
+html_url: https://support.circleci.com/hc/ja/articles/115015983008
+author_id: 405001866574
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: 4
+vote_count: 16
+section_id: 115003580328
+created_at: '2017-12-31T15:12:56Z'
+updated_at: '2020-12-30T15:31:22Z'
+name: 夜間ビルドのスケジューリング
+title: 夜間ビルドのスケジューリング
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2018-11-13T06:22:54Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - nightly
+  - schedule
+body: >-
+  <p>Workflows を搭載した CircleCI 2.0 では、<a
+  href="https://circleci.com/docs/2.0/workflows/#scheduling-a-workflow">夜間ビルドをスケジュール</a>
+  できます。</p>
+
+  <p>CircleCI 1.0、または Worksflows なしの CircleCI 2.0 を使用している場合、<a
+  href="https://circleci.com/docs/1.0/nightly-builds/#nav-button">CircleCI の API
+  を使用して夜間ビルドをトリガー</a>できます。</p>
+
+  <h2>どちらを使用すべきかの選択</h2>
+
+  <p>Workflows を搭載した CircleCI 2.0 を使用すると、CircleCI がお客様の代わりにビルドをスケジュールし、トリガーできます。
+  CircleCI の API を使用する場合、夜間のビルドをトリガーするため、お使いのサーバーの 1 つに cron
+  をセットアップする必要があります。</p>

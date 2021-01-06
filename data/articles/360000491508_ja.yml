@@ -1,0 +1,24 @@
+id: 360000491508
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360000491508.json
+html_url: https://support.circleci.com/hc/ja/articles/360000491508
+author_id: 403103999173
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -10
+vote_count: 14
+section_id: 115003327148
+created_at: '2018-02-23T09:57:01Z'
+updated_at: '2020-11-18T17:18:07Z'
+name: CircleCI と GitHub または Bitbucket アカウントを接続する方法
+title: CircleCI と GitHub または Bitbucket アカウントを接続する方法
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2018-11-13T06:22:39Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>自分の\_GitHub および\_Bitbucket アカウントを\_CircleCI に接続するには、最初に自分のプライマリアカウント (例：GitHub) でログインしてから、自分のアバター (右上) をクリックし、[User settings] を選択します。</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360000830187/mceclip1.png\"></p>\n<p>次の画面で、自分のアカウントを接続できます。</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360000820188/mceclip2.png\" width=\"604\" height=\"365\"></p>\n<p>この操作の完了後に、'組織選択' (左上) を使用して、アカウントを切り替えることができます。</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360000830207/mceclip3.png\" width=\"353\" height=\"343\"></p>\n<p>右側のアイコンは、アカウントが GitHub や\_Bitbucket と関連付けされているかどうかを示しています。</p>"

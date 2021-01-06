@@ -1,0 +1,12 @@
+<p>CircleCI に関する最新情報は様々な方法で確認できます。</p>
+<h2>CircleCI のサーバー変更履歴</h2>
+<p>最新リリースは <a href="https://circleci.com/server/changelog">https://circleci.com/server/changelog</a> に投稿されます。また、オペレーターは付属の <a href="https://circleci.com/enterprise/changelog.rss">RSS フィード</a>を購読できます。</p>
+<h2>管理コンソールの使用法</h2>
+<p>Replicated 管理コンソール (<code><strong>$YOUR_CIRCLECI_HOSTNAME:8800/dashboard</strong></code>) にアクセスすると、更新を確認できます。</p>
+<h2>Replicated の統合 API</h2>
+<p>Replicated の統合 API には<a href="https://help.replicated.com/api/integration-api/version-api/">バージョン API</a> が含まれています。オペレーターはこの API によって、コマンドラインから CircleCI の更新を確認できます。</p>
+<p><code><strong>/version/v1/updates</strong></code> に対して <code><strong>GET</strong></code> リクエストを発行すると、利用可能な更新すべてのリストが返されます。</p>
+<p>すべての API 呼び出しの先頭には、統合 API のベースエンドポイントが必要です。これは、すべてのアプリケーションコンテナ (この場合は、Services マシンで実行されているすべての CircleCI コンテナ) に自動的に追加される <code><strong>$REPLICATED_INTEGRATIONAPI</strong></code> 環境変数を照会して取得できます。</p>
+<p>CircleCI のインストールでは、このベースエンドポイントは通常に <code><strong>https://$SERVICES_MACHINE_PRIVATE_IP:9880</strong></code> の形式で表示されます。 このため、CircleCI の更新をチェックするための完全な形式の API 呼び出しは次のようになります。</p>
+<p><code><strong>curl -k https://$SERVICES_MACHINE_PRIVATE_IP:9880/version/v1/updates</strong></code></p>
+<p>オペレーターが監視システムを使用している場合、その既存の監視システム (例：<a href="https://nagios.org">Nagios</a>) に API エンドポイントを組み入れることで、プログラムで更新を確認できます。</p>

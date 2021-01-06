@@ -1,0 +1,8 @@
+<p>Xcodeイメージは、シミュレーターランタイムの最新バージョンと一緒にプレインストールされています。 シミュレーターランタイムとシミュレーターデバイスのリストは、<a href="https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions" target="_blank" rel="noopener">イメージマニフェスト</a>で確認できます。</p>
+<h3>シミュレーターランタイムの追加</h3>
+<p>テストに別のシミュレーターランタイムが必要な場合は、<a href="https://github.com/xcpretty/xcode-install" target="_self">xcode-install </a> gem を使用してジョブ内でダウンロードできます。 たとえば、以下のコマンドを使用します。</p>
+<pre>-run: gem install xcode-install<br>-run: xcversion simulators --install="13.2" --no-progress</pre>
+<p>別のシミュレーターランタイムをダウンロードすると、ビルド時間が長くなる可能性がありますので、注意してください。</p>
+<h3>新しいシミュレーターの作成</h3>
+<p dir="auto">デフォルトでは提供されない特定のシミュレーターの組み合わせを作成する必要がある場合は、<code> xcrun simctl create </code>コマンドを使用して作成できます。 たとえば、次のようなコマンドを使用します。</p>
+<pre dir="ltr">-run: xcrun simctl create 'iPhone 11 (13.2)' com.apple.CoreSimulator.SimDeviceType.iPhone-11 com.apple.CoreSimulator.SimRuntime.iOS-13-2</pre>

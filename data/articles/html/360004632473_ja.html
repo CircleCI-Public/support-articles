@@ -1,0 +1,15 @@
+<p><strong><em>キャッシュ復元</em></strong>の手順でキャッシュが見つからず、<em><strong>キャッシュ保存</strong></em>の手順ではキャッシュが既に存在していると報告される場合、チェックサムを再度確認します。 キャッシュキーは、構成に含まれているファイル、多くの場合は "lock" ファイルのチェックサムを使用して生成されます。</p>
+<p>復元手順と保存手順の間で、このファイルがいずれかの方法で変更された場合、キーの不一致が発生し、1 つのキーでキャッシュを保存し、別のキーで復元することになるため、この操作は常に失敗します。</p>
+<p> </p>
+<p><span class="wysiwyg-font-size-small">Errors</span></p>
+<p><span class="wysiwyg-font-size-small">'No cache is found for key:`</span></p>
+<p><span class="wysiwyg-font-size-small">'Skipping cache generation, cache already exists for key:`</span></p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360005493234/Capture1.PNG" alt="Capture1.PNG"></p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360005493254/Capture.PNG" alt="Capture.PNG"></p>
+<p> </p>
+<h2>この問題が発生する理由</h2>
+<p>ビルド処理のいずれかの時点で、ロックファイルが上書きされる理由がないかを確認します。この処理は、インストール手順で発生する可能性があります。</p>
+<p> </p>
+<p><strong><span class="wysiwyg-underline">Ruby Bundler</span></strong> を使用しており、ローカル開発環境と CircleCI 環境との間でバージョンが一致していない場合、バンドルのインストール手順が <strong><em>Gemfile.lock</em></strong> を上書きし、上述の問題を引き起こします。</p>
+<p> </p>
+<p>ローカルとリモートの開発環境の間で、常にパリティを確認してください。</p>

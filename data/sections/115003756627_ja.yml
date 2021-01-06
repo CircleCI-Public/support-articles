@@ -1,0 +1,15 @@
+id: 115003756627
+url: https://circleci.zendesk.com/api/v2/help_center/ja/sections/115003756627.json
+html_url: https://support.circleci.com/hc/ja/sections/115003756627
+category_id: 115001866207
+position: 0
+sorting: manual
+created_at: '2017-10-27T13:28:27Z'
+updated_at: '2021-01-06T10:40:51Z'
+name: トラブルシューティングと既知の問題
+description: ''
+locale: ja
+source_locale: en-us
+outdated: false
+parent_section_id: null
+theme_template: section_page

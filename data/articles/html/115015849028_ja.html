@@ -1,0 +1,7 @@
+<p>CircleCI 2.0 ビルドの実行時に次のエラーメッセージが表示された場合</p>
+<pre>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. <br>Is the docker daemon running?</pre>
+<p>もしくは以下のエラーが表示された場合、</p>
+<pre>Exception message: /home/circleci/.docker/config.json (No such file or directory)</pre>
+<p>これは一般に、リモート Docker (setup_remote_docker) なしで Docker コマンドを実行しています。</p>
+<p>CircleCI 2.0 で Docker コマンドを実行するには、<a href="https://circleci.com/docs/2.0/building-docker-images/">次のドキュメント</a>で説明しているように、setup_remote_docker ステップを追加する必要があります。 もしくは <a href="https://circleci.com/docs/2.0/executor-types/#using-machine" target="_self">machine executor</a>を利用することも可能です。
+</p>

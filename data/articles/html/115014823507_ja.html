@@ -1,0 +1,59 @@
+<p>コンテナで、ネットワーク接続されたリソース、例えばサービスコンテナとして接続されているデータベースイメージに接続するような場合、問題が発生することがあります。 コンテナで使用できる接続を検出する簡単な方法は、nmap を使用することです。 具体的には、<code>nmap -v -A localhost</code> コマンドを使用します。</p>
+<p>このコマンドを実行すると、使用可能なポートをスキャンし、どのポートが開いているかを確認できます。また場合によっては、ポートの背後にあるサービスに関する有益な情報も確認できます。 次の例では、nmap により、ポート 3306 で実行中の MySQL インスタンスが検出され、インスタンスに関する情報も表示しています。 また、ポート 5432 で実行中のサービスも検出され、Postgres のインスタンスが実行中であると正しく表示されています。</p>
+<p>このコマンドはデフォルトではインストールされていないため、config から実行する前にインストールする必要があります。</p>
+<p> </p>
+<p><strong>config.yml</strong></p>
+<pre class="line-numbers language-yaml"><code class="config-yml language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> sudo apt install nmap <span class="token punctuation">-</span>y<br></code></pre>
+<pre class="line-numbers language-yaml"><code class="config-yml language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> nmap -v -A localhost</code></pre>
+<p class="line-numbers language-yaml"> </p>
+<p class="line-numbers language-yaml"><strong>出力</strong></p>
+<pre class="bash-command" title="The full bash command used to run this setup">#!/bin/bash -eo pipefail
+nmap -v -A localhost</pre>
+<pre class="output"><span class="pre"><span class="white">
+Starting Nmap 6.47 ( http://nmap.org ) at 2017-10-04 18:19 UTC
+NSE: Loaded 118 scripts for scanning.
+NSE: Script Pre-scanning.
+Initiating Ping Scan at 18:19
+Scanning localhost (127.0.0.1) [2 ports]
+Stats: 0:00:00 elapsed; 0 hosts completed (0 up), 1 undergoing Ping Scan
+Ping Scan Timing: About 100.00% done; ETC: 18:19 (0:00:00 remaining)
+Completed Ping Scan at 18:19, 0.00s elapsed (1 total hosts)
+Initiating Connect Scan at 18:19
+Scanning localhost (127.0.0.1) [1000 ports]
+Discovered open port 3306/tcp on 127.0.0.1
+Discovered open port 5432/tcp on 127.0.0.1
+Completed Connect Scan at 18:19, 0.02s elapsed (1000 total ports)
+Initiating Service scan at 18:19
+Scanning 2 services on localhost (127.0.0.1)
+Completed Service scan at 18:19, 6.02s elapsed (2 services on 1 host)
+NSE: Script scanning 127.0.0.1.
+Initiating NSE at 18:19
+Completed NSE at 18:19, 0.01s elapsed
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00034s latency).
+Other addresses for localhost (not scanned): 127.0.0.1
+Not shown: 998 closed ports
+PORT STATE SERVICE VERSION
+3306/tcp open mysql MySQL 5.7.18
+| mysql-info: 
+| Protocol: 53
+| Version: .7.18
+| Thread ID: 5
+| Capabilities flags: 65535
+| Some Capabilities: SupportsLoadDataLocal, IgnoreSpaceBeforeParenthesis, Speaks41ProtocolNew, SupportsCompression, Support41Auth, SwitchToSSLAfterHandshake, FoundRows, LongPassword, LongColumnFlag, IgnoreSigpipes, SupportsTransactions, InteractiveClient, DontAllowDatabaseTableColumn, Speaks41ProtocolOld, ODBCClient, ConnectWithDatabase
+| Status: Autocommit
+|_ Salt: W\x1Ff&amp;}Wzg/\x02BrhX\x1E\x1Cm+\x1F!
+5432/tcp open postgresql?
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
+SF-Port5432-TCP:V=6.47%I=7%D=10/4%Time=59D5261D%P=x86_64-pc-linux-gnu%r(SM
+SF:BProgNeg,8C,"E\0\0\0\x8bSFATAL\0VFATAL\0C0A000\0Munsupported\x20fronten
+SF:d\x20protocol\x2065363\.19778:\x20server\x20supports\x201\.0\x20to\x203
+SF:\.0\0Fpostmaster\.c\0L2031\0RProcessStartupPacket\0\0")%r(Kerberos,8C,"
+SF:E\0\0\0\x8bSFATAL\0VFATAL\0C0A000\0Munsupported\x20frontend\x20protocol
+SF:\x2027265\.28208:\x20server\x20supports\x201\.0\x20to\x203\.0\0Fpostmas
+SF:ter\.c\0L2031\0RProcessStartupPacket\0\0");
+
+NSE: Script Post-scanning.
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+</span><span class="white">Nmap done: 1 IP address (1 host up) scanned in 6.28 seconds</span></span></pre>

@@ -1,0 +1,5 @@
+<p>CircleCI では、いくつものサービスコンテナを利用できるので、ジョブの実行時にコンテナのポートを変更することはできません。 <span style="background-color: #f6d5d9;">CircleCI</span> は、コンテナのポートを自動的に <strong>localhost</strong> へバインドします。そのため、複数のサービスコンテナが同じポートを必要とする場合に問題が発生します。 例えば、postgres データベースが 2 つある場合などです。 次の例について考えてみます。</p>
+<p>version: 2<br>jobs:<br> build:<br> # プライマリコンテナは、リストされている最初のイメージのインスタンスです。<br> docker:<br> - image: circleci/node:4.8.2-jessie<br><strong> - image: postgres</strong><strong>:11-alpine-ram</strong><br><strong> - image: postgres:11-alpine-ram</strong><br><br>両方の postgres サービスイメージが、localhost:5432 へのバインドを試み、エラーを引き起こします。 これを防止するには、イメージポートのバインド先のホスト名として使用する名前を、イメージに指定します。</p>
+<p>  docker:<br>    - image: circleci/node:4.8.2-jessie<br>    - image: postgres:11-alpine-ram<br><strong>    - image: postgres:11-alpine-ram</strong><br><strong>        name: postgres2</strong></p>
+<p>name パラメーターを指定することで、2 番目のコンテナは <strong>postgres2:5432</strong> から、最初の postgres コンテナは <strong>localhost:5432<br><br></strong> からアクセスできるようになります。</p>
+<p>関連情報<br><a href="https://circleci.com/docs/2.0/configuration-reference/#docker">https://circleci.com/docs/2.0/configuration-reference/#docker</a></p>

@@ -1,0 +1,17 @@
+<p>機密性の高いテキストベースのドキュメントや、バイナリファイル (小さなものでも) をプロジェクトにシークレットとして挿入する必要がある場合は、base64 エンコードを利用し、環境変数として挿入できます。</p>
+<p><a href="https://en.wikipedia.org/wiki/Base64">Base64</a> は、バイナリデータをテキスト文字列に変換するためのエンコード方式です。 その値を<a href="https://circleci.com/docs/2.0/contexts/" target="_self">コンテキスト</a> または <a href="https://circleci.com/docs/2.0/env-vars/" target="_self">環境変数</a> として挿入し、ビルド中に復号化して使うことができます。</p>
+<p>環境変数は"Project Settings"ページで設定することができます：</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360066587992/project-settings-env-var-v2.png" alt="project-settings-env-var-v2.png"></p>
+<p>コンテキストは"Organization Settings"ページで設定することができます：</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360066588212/org-settings-contexts-v2.png" alt="org-settings-contexts-v2.png"></p>
+<p> </p>
+<p>ファイルパスをbase64コマンドに直接渡すことで暗号化できます。</p>
+<pre>base64 [option] [file]</pre>
+<p><a href="https://linux.die.net/man/1/base64">base64のマニュアルはこちら</a>.</p>
+<p><em>補足</em> CircleCI で環境変数として使用するためにファイルを暗号化している場合（大きなファイルでも「バイナリ」でも）、コマンドに <code>-w 0</code> オプションを渡す必要があります。これは、CircleCI で環境変数に入っている改行はスペース文字に変換されるため、生成される base64 ファイルに改行が入らないようにするためです。</p>
+<p>ビルド中に base64 を復号化するには、--decodeオプションで実行します。</p>
+<pre>base64 --decode [file]</pre>
+<p>ビルドにファイルを環境変数として渡した場合、以下のコマンドで復号化しファイルに直接書き出すことが可能です。</p>
+<pre><span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$ENV_VARIABLE_NAME</span><span class="pl-pds">"</span></span> <span class="pl-k">|</span> base64 --decode <span class="pl-k">&gt;</span> filename.txt</pre>
+<p> </p>
+<p>詳しくは、 <a href="https://circleci.com/docs/2.0/env-vars/#encoding-multi-line-environment-variables" target="_self">https://circleci.com/docs/2.0/env-vars/#encoding-multi-line-environment-variables</a>を参照ください.</p>

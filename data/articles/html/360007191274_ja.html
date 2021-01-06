@@ -1,0 +1,10 @@
+<p>ユーザーがホストしている CircleCI インストールのインスタンスでクロックのずれが発生すると、健全性チェックの失敗からジョブの失敗まで、広範な問題を引き起こす可能性があります。</p>
+<p>一般に、エラーメッセージは証明書が "有効化されていない" ことに関する内容を表示します。またジョブの場合は、異常なログが表示されることがあります。例: "finished five minutes from now"</p>
+<p>インスタンス間でクロックを再同期する方法を以下に示します。</p>
+<ol>
+    <li>Services ボックスに SSH で接続します</li>
+    <li>インストールを完了していない場合は、<a href="http://ntp.org/">ntp</a> をインストールします：<code>sudo apt-get install ntp</code>
+    </li>
+    <li>ntp を再起動します (root として実行することが必要な場合があります)：<code>service ntp stop; ntpdate -s time.nist.gov; service ntp start</code>
+    </li>
+</ol>

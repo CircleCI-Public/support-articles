@@ -1,0 +1,7 @@
+<p>ビルドの一部としてコードの署名を実行する必要がある場合、こちらのドキュメントを参照してください。</p>
+<ul>
+    <li><a href="https://circleci.com/docs/1.0/ios-code-signing/#nav-button">CircleCL 1.0 でのコード署名</a></li>
+    <li><a href="https://circleci.com/docs/2.0/ios-codesigning/#nav-button">CircleCL 2.0 でのコード署名</a></li>
+</ul>
+<p><strong>注：</strong> 上記のドキュメントに記載されているように、CircleCI 2.0 でコード署名を行なうには Fastlane Match を使用する必要があります。</p>
+<p>"Code Signing Error: No profile" または "Provisioning Profile Not Found" というエラーが表示される場合、キーチェーンのロックが解除されていないことが考えられます。 ビルドの内部から <code>security find-identity -v -p codesigning</code> を実行すると、コード署名資格情報の現在のステータスが一覧表示されます。 Fastlane Match を使用するには、このドキュメントに従ってください：<a href="https://circleci.com/docs/2.0/ios-codesigning/" target="_blank" rel="noopener">https://circleci.com/docs/2.0/ios-codesigning/</a></p>

@@ -1,0 +1,29 @@
+id: 360050623311
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360050623311.json
+html_url: https://support.circleci.com/hc/ja/articles/360050623311
+author_id: 405652843914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 2
+vote_count: 4
+section_id: 115003756627
+created_at: '2020-10-06T16:44:34Z'
+updated_at: '2020-12-14T15:19:30Z'
+name: Docker Hubのレート制限に関するFAQ
+title: Docker Hubのレート制限に関するFAQ
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-22T07:03:13Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - docker
+  - dockerhub
+  - docker hub
+  - rate limiting
+  - rate limit
+body: "<p>2020年11月1日から Docker Hub では送信元のIPに基づいたレート制限（アクセス回数による制限）が導入されます。 CirlceCI では共有 IP プールからジョブを実行しているので、このレート制限による問題発生を回避するために、Docker Hub で認証済みの Docker プルを使用することを強くお勧めします。</p><p>最新の情報は <a href=\"https://discuss.circleci.com/t/authenticate-with-docker-to-avoid-impact-of-nov-1st-rate-limits/37567\" target=\"_blank\" rel=\"noopener\">「Authenticate with Docker to avoid impact of Nov. 1st rate limits\"」</a> のDiscussの記事を参照ください。</p><p>どんなケースでこの問題が影響するか、よくある質問をご紹介します。</p><h2>どうやって Docker Hubで認証しますか？</h2><p><code> auth</code> キーにユーザー名とパスワードをセットし、Docker イメージへ渡す必要があります。 詳細はこちらを参照ください。<a href=\"https://circleci.com/docs/2.0/private-images/\"> https://circleci.com/docs/2.0/private-images/</a>\n</p><h2>どうやって認証が成功したか確認できますか？</h2><p><code> auth</code>キーを利用し、\"Spin up environment\" ステップで Docker プルが成功した場合は認証が成功したことになります。 現時点では認証が成功したかどうかはUI上では表示しておりません。</p><p>しかし、もし誤ったキーを利用し認証が失敗した場合は\_<a href=\"https://support.circleci.com/hc/en-us/articles/360050931691-Docker-Error-response-from-daemon-unauthorized-incorrect-username-or-password\" target=\"_blank\" rel=\"noopener\">エラーが表示されビルドは失敗します。\_</a></p><p>補足: <code>auth</code>が使用されていない場合、spin up environmentステップには以下のような<strong>警告メッセージ</strong>が表示されます。</p><p>&gt;Warning: No authentication provided, this pull may be subject to rate limits.</p><p><img src=\"https://support.circleci.com/hc/article_attachments/360073105812/mceclip0.png%0A\" alt=\"mceclip0.png\n\"></p><h2>ビルドでDocker executorを利用している場合は影響を受けますか？</h2><p>はい。<a href=\"https://circleci.com/docs/2.0/configuration-reference/#docker-executor\" target=\"_blank\" rel=\"noopener\"> Docker executor</a>を利用している場合は、Docker Hubの変更の影響があります。</p><h2>ビルドでMachine executorを利用している場合は影響を受けますか？</h2><p>Docker imageをpullする操作を<a href=\"https://circleci.com/docs/2.0/configuration-reference/#machine-executor-linux\" target=\"_blank\" rel=\"noopener\"> Machine executor</a>で利用する場合、Docker Hubの変更の影響があります。</p><p><code> docker pull</code>、<code> docker run</code>や<code> docker  build</code>などのDocker imageをプルする操作を行う前に、<code> docker login -u username -p password </code> を利用しDocker Hubにログインする必要があります。</p><h2>CircleCIのコンビニエンスイメージを利用している場合、影響はありますか？</h2><p>はい。しかし、現在Docker社とパートナーシップを結びこの影響を最小限にしようとしています。</p><h2>カスタムDockerイメージを使用する場合、影響はありますか？</h2><p>はい。同じく認証情報を追加する必要があります。</p><h2>2020年11月1日までに何を準備すればいいですか？</h2><p>Docker Hubに認証を行う操作をプロジェクトに追加してください。詳細は <a href=\"https://support.circleci.com/hc/en-us/articles/360049758552-My-build-fails-to-pull-Docker-image-with-Too-Many-Requests-Rate-Limiting-by-Docker-Hub\" target=\"_blank\" rel=\"noopener\">\"My build fails to pull Docker image with \"Too Many Requests\" - Rate Limiting by Docker Hub\"</a> の記事でも確認できます。</p><h2>すべてのプロジェクトに対してDocker 認証を一度に追加することはできますか？</h2><p>いいえ、現時点ではそれぞれのプロジェクトに対して更新を行う必要があります。</p><h2>Docker Hubの変更後ビルドがブロックされた場合、何をすればいいですか？</h2><p>はじめに、認証を設定していない場合、上記を確認し認証の設定を追加してください。</p><p>認証を設定しているにも関わらず制限に達した場合は、ビルド頻度を下げる、もしくは無制限にDocker imageをプルできるDocker Hubのプランを検討してください。</p><p>\_</p>"

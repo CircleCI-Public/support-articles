@@ -1,0 +1,31 @@
+<p>データベースで接続を受け付ける準備が整う前に、アプリがデータベースへのアクセスを試みると、エラーが発生することがあります。 この場合、動作を継続する前に、データベースが完全にオンラインになるまで待機する必要があります。</p>
+<p>dockerize：<a href="https://github.com/jwilder/dockerize" target="_blank" rel="noopener">https://github.com/jwilder/dockerize</a> をおすすめします。</p>
+<p>この例で使用しているデータベースは、PostgreSQL です。 実行の最初の手順として、最新の Dockerize バイナリをダウンロードします。次の手順 `Wait for db` では、応答が受信されるまでポートでデータベースを待機します。タイムアウトは 1 分間に設定します。</p>
+<pre><code>
+version: 2.0
+jobs:
+ build:
+ docker:
+ - image: your/image_for_primary_container
+ - image: postgres:9.6.2-alpine
+ environment:
+ POSTGRES_USER: your_postgres_user
+ POSTGRES_DB: your_postgres_test
+ workDir: /your/workdir
+ steps:
+ - checkout
+ - run:
+ name: install dockerize
+ command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz &amp;&amp; sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz &amp;&amp; rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+ environment:
+ DOCKERIZE_VERSION: v0.3.0
+ - run:
+ name: Wait for db
+ command: dockerize -wait tcp://localhost:5432 -timeout 1m
+</code></pre>
+<p>MySQL でも同じ原則を適用できます。</p>
+<pre><code>dockerize -wait tcp://localhost:3306 -timeout 1m</code></pre>
+<p>Redis でも同様です。</p>
+<pre><code>dockerize -wait tcp://localhost:6379 -timeout 1m</code></pre>
+<p>Web サーバーなど、他のサービスでも同様です。</p>
+<pre><code>dockerize -wait http://localhost:80 -timeout 1m</code></pre>

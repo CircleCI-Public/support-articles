@@ -1,0 +1,8 @@
+<p>CircleCI では、一定時間出力がない状態が続くとコマンドが強制終了されます。 デフォルトではこれは 10 分に設定されています。 これはビルドがフリーズし、意図せず大量のクレジットを使用されるのを防ぐための制限になります。</p>
+<p>いくつかのテストランナーやツールの中には、出力のバッファリング機能を利用しているものがあります。 これは、プログラムがテキストを 1 行ごとに出力するのではなく、１回でまとめて出力するものです。 そのため、プロセスが終了するまですべての出力がバッファリングされる場合があります。 テストやタスクが完了するまでに 10 分以上必要で出力をバッファリングしている場合は、その間に出力がなかったために、CircleCI がステップを強制終了することがあります。</p>
+<p>Pythonでは、環境変数 <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUNBUFFERED" target="_self">PYTHONUNBUFFERED</a> でこの制限を無効にできます。 以下のように export コマンドで設定できます。</p>
+<pre>steps:<br>  - run:<br>      name: Run Tests<br>      command: |<br>        export PYTHONUNBUFFERED=1<br>        python -m unittest</pre>
+<p>タスクにアウトプットを出力をする設定ない場合、デフォルトの制限時間を以下のように増やすことができます。</p>
+<pre>steps:<br> - run:<br>     name: Run Tests<br>     no_output_timeout: 30m<br>     command: python -m unittest</pre>
+<p>テストやタスクがフリーズしている場合にステップがタイムアウトすることがあります。 いくつかの例としては、プロセスがユーザーの入力を待機している場合や、ループで利用可能でないネットワーク上のリソースをポーリングし続ける場合があります。
+</p>

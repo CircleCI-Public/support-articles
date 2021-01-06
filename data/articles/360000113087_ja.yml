@@ -1,0 +1,25 @@
+id: 360000113087
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360000113087.json
+html_url: https://support.circleci.com/hc/ja/articles/360000113087
+author_id: 5640970677
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003756627
+created_at: '2018-01-24T16:48:13Z'
+updated_at: '2020-10-22T06:58:48Z'
+name: リモート Docker のキャッシュエラー - 最初の数個のテストしか実行されない
+title: リモート Docker のキャッシュエラー - 最初の数個のテストしか実行されない
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2018-11-13T06:22:46Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - docker
+body: "<p>テストスイートで、Docker ブートストラップレース状況に陥ることがあります。 テストスイートは、必要なすべてのサービスがブートストラップを完全に終了するまで開始しません。 これには通常、コンテナの単純なスタートアップよりも実行のほうが多く含まれることに注意してください。 一部の DB イメージは、コンテナの開始時にデフォルトのデータベースとテーブルを作成します。 Selenium コンテナでは、ブラウザーを起動するために多少の時間を要することがあります。</p>\n<p>コンテナのブートストラップ処理を管理するツールとして、dockerize: <a href=\"https://github.com/jwilder/dockerize\" target=\"_blank\" rel=\"noopener\">https://github.com/jwilder/dockerize</a> をおすすめします。 `-wait` サブコマンドは、スリープループでコマンドを実行し、ブートストラップが完了しているかテストします。 それぞれのコンテナのブースストラップが完了したことをテストするため、適切なコマンドが何かを判定する必要があります。</p>\n<p>例:\_https://discuss.circleci.com/t/prevent-race-conditions-by-waiting-for-services-with-dockerize/11215</p>\n<p>\_</p>\n<p>他にも Wait Port というユーティリティが便利です：<a href=\"https://github.com/dwmkerr/wait-port\" target=\"_blank\" rel=\"noopener\">https://github.com/dwmkerr/wait-port</a></p>"

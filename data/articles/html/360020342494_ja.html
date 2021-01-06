@@ -1,0 +1,3 @@
+<p>タグ付けされたコミットをプッシュしているのに、定義済み環境変数 <a href="https://circleci.com/docs/2.0/env-vars/#built-in-environment-variables" target="_self">CIRCLE_TAG</a> が設定されない場合、コミットをプッシュするときに使用しているコマンドが原因である可能性があります。</p>
+<p>CIRCLE_TAGが設定されない原因として、GitHub / Bitbucket から CircleCI に送信される最初の Webhook に、CIRCLE_TAG を設定するために必要なタグ情報が含まれていなかったことが考えられます。 送信される Webhook の順序は、コミットをプッシュするために使用されるコマンドによります。</p>
+<p>処理される GitHub からの最初のフックにタグ情報が入っている状態にするには、たとえば、最初にタグを<code>git push origin &lt;tag-name&gt;</code> でプッシュし、それからコミットをプッシュしてみてください。</p>

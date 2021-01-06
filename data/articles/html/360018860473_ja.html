@@ -1,0 +1,19 @@
+<p> </p>
+<p>新しいコミットを作成し、CircleCI ジョブ上で同じリポジトリにプッシュする必要があるケースを想定しています。</p>
+<h2>設定手順</h2>
+<p>上記のユースケースを行うための CircleCI プロジェクトの設定を紹介します。</p>
+<p>1) CircleCI 上でユーザー キーを作成、もしくは手動で作成した 読み取り/書き込み 権限のあるデプロイキーをプロジェクトに設定します</p>
+<p>1a) ユーザー キーを使用する場合は、<a href="https://circleci.com/:vcs-type/:org-name/:project-name/edit#checkout">https://circleci.com/:vcs-type/:org-name/:project-name/edit#checkout </a> にアクセスし、[Authorize with GitHub] ボタンをクリックします。</p>
+<p>1b) 読み取り/書き込み 権限のあるデプロイキーを使用する場合は、次のリンクに従ってキーを作成し、そのキーをプロジェクトに設定します。 <a href="https://circleci.com/docs/2.0/gh-bb-integration/#creating-a-github-user-key">https://circleci.com/docs/2.0/gh-bb-integration/#creating-a-github-user-key</a> または <a href="https://circleci.com/docs/2.0/gh-bb-integration/#creating-a-bitbucket-user-key">https://circleci.com/docs/2.0/gh-bb-integration/#creating-a-bitbucket-user-key</a>（Bitbucket ユーザーの場合）</p>
+<p> </p>
+<h2>一般的な問題：</h2>
+<p>1) "*** Please tell me who you are." というエラーメッセージが "git commit" を実行する際に表示される</p>
+<p>CircleCI のコンフィグファイル（config.yml）で、`git commit` を実行する前に、次のように ` git config` を使用してメールアドレスとユーザー名を設定するする必要があります。</p>
+<pre>git config user.email "username@mydomain.com"<br>git config user.name "My Name"</pre>
+<p><br>2) git push を実行すると "ERROR: The key you are authenticating with has been marked as read only." が発生する</p>
+<p>CircleCI にプロジェクトを追加すると、そのプロジェクトに設定されるデプロイキーには、デフォルトで読み取り権限のみが付与されます。そのため、上記のエラーメッセージを回避するには、書き込み権限のあるキーを設定する必要があります。 ユーザー キーまたは 読み取り/書き込み 権限のある デプロイキー がプロジェクトで設定されていることを確認してください。</p>
+<p>読み取り/ 書き込みデプロイキーを使用している場合は、設定に <a href="https://circleci.com/docs/2.0/configuration-reference/#add_ssh_keys">add_ssh_keys</a> ステップを追加してください。 フィンガープリントの値は、<a href="https://circleci.com/:vcs-type/:org-name/:project-name/edit#checkout">https://circleci.com/:vcs-type/:org-name/:project-name/edit#ssh</a> に表示されている値と一致する必要があります。</p>
+<p> </p>
+<p>3) 生成したコミットから新しいビルドがトリガーされないようにする方法</p>
+<p>コミットによって新しいビルドがトリガーされないようにするには、"[skip ci]" をコミットメッセージに追加します。 詳細については、<a href="https://circleci.com/docs/2.0/skip-build/#skipping-a-build">https://circleci.com/docs/2.0/skip-build/#skipping-a-build</a> を参照してください。</p>
+<p> </p>

@@ -1,0 +1,28 @@
+id: 115012795327
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115012795327.json
+html_url: https://support.circleci.com/hc/ja/articles/115012795327
+author_id: 405001866574
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: 5
+vote_count: 17
+section_id: 115003327068
+created_at: '2017-09-27T14:26:02Z'
+updated_at: '2020-11-20T18:28:25Z'
+name: CircleCI 2.0 で Django を使用する方法
+title: CircleCI 2.0 で Django を使用する方法
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2018-11-13T06:25:37Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: >-
+  <p>CircleCI 2.0 で Django をセットアップするために役立つ、デモプロジェクトを用意しています。詳細については、<a
+  href="https://circleci.com/docs/2.0/language-python/" target="_blank"
+  rel="noopener">https://circleci.com/docs/2.0/language-python/</a>
+  を参照してください。</p>

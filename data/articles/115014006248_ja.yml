@@ -1,0 +1,29 @@
+id: 115014006248
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115014006248.json
+html_url: https://support.circleci.com/hc/ja/articles/115014006248
+author_id: 5640970677
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -9
+vote_count: 9
+section_id: 115003756627
+created_at: '2017-10-27T13:37:32Z'
+updated_at: '2020-12-30T14:52:36Z'
+name: CircleCI での "Command not found" エラー
+title: CircleCI での "Command not found" エラー
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-29T05:58:31Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - postgres
+  - psql
+  - mysql
+  - mariadb
+  - mongo
+body: "<p>CircleCI ビルドで、次のようなエラーが出た場合:\_</p><p><code>/bin/bash: mongo: command not found</code></p><p>これは、リストの最初にあるコンテナ (プライマリコンテナ) ですべてのコマンドが実行されるからです。 これは通常、データベースコンテナ<strong>ではない</strong>ため、プライマリコンテナには多くの場合、<code>mongo</code>\_cli がインストールされていません。 mysql および postgresql でも同じ現象が発生することがあります。</p><p>このような場合、<code>sudo apt install</code>、またはイメージが実行されているディストリビューションに対応するパッケージマネージャーを使用して、クライアントをインストールできます。</p><p>例えば：</p><pre>- run: sudo apt-get install mongodb-clients</pre><p>詳しくは、こちらのDiscussポスト<a href=\"https://discuss.circleci.com/t/bin-bash-mongo-command-not-found/16218/6?u=tom\" target=\"_blank\" rel=\"noopener\">https://discuss.circleci.com/t/bin-bash-mongo-command-not-found/16218/6</a> を参照してください。</p>"

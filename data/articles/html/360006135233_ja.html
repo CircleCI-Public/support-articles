@@ -1,0 +1,16 @@
+<p>プロジェクトで <a href="https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs">Workspaces</a> を利用しており、後で Workspace を Workflow に接続するとき問題が発生した場合、メモリ制限を超過している可能性があります。</p>
+<p>この場合のエラーは次のようなものになります。</p>
+<pre><code class="bash">
+"Error applying workspace layer for job 5cb8xxxx-xxxx-4499-9xxxx-1aaa2943xxxx: 
+Error extracting tarball /tmp/workspace-layer-5cb8xxxx-xxxx-4499-9xxx-1aaa2943xxxxx04313xx: 
+signal: killed"
+</code></pre>
+<p>この `signal: killed` メッセージが表示されるエラーの場合、プロセスが安全に停止されたことを意味します。 これは、コンテナがメモリリソースの制限を超過したことを示すメッセージです。 エラーにこのメッセージが含まれていない場合でも、失敗の理由はほぼ同じです。</p>
+<p> </p>
+<h2>解決方法</h2>
+<ol>
+    <li>tarball のサイズを減らします。 tarball が大きいほど、解凍に必要なメモリが多くなります。 Workspace の物理サイズがコンテナのメモリ制限 (デフォルトでは 4GB) に近い、または超えている場合、特に 1 つ以上のデータベースを同時に実行していると、この制限を超過する可能性が高くなります。</li>
+    <li>
+        <a href="https://circleci.com/support/premium-support/">サポートに連絡し、</a> config.yml の `resource_class` キーを使用してコンテナのリソース制限を増やす方法について問い合わせてください。 "PERFORMANCE プラン"<br><a href="https://circleci.com/docs/2.0/configuration-reference/#resource_class" target="_blank" rel="noopener">https://circleci.com/docs/2.0/configuration-reference/#resource_class</a> を使用している場合は、このオプションを利用できます。
+    </li>
+</ol>

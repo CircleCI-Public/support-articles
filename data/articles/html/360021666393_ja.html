@@ -1,0 +1,20 @@
+<p>プロジェクトの設定ページに移動し、[Stop Building] ボタンをクリックすると、CircleCI でプロジェクトのビルドをいつでも停止できます。</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360063893032/blobid0.png" alt="blobid0.png"></p>
+<p>何らかの理由でビルドを停止できない場合は、GitHub からリポジトリへのアクセス権を削除することで、いつでも手動でビルドを停止できます。<br><br>この操作を行わなければならない場合があるのは以下の場合です。</p>
+<ul>
+    <li>組織、ユーザー名、またはリポジトリの名前を変更した。</li>
+    <li>ユーザーの認証情報が古くなり無効になっている。</li>
+</ul>
+<p> </p>
+<p>1. 最初に GitHub のリポジトリ設定にアクセスします。 <em>https://github.com/Org/Repository </em>に移動するか、リポジトリページで [Settings] ボタンをクリックしてアクセスできます。</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360058626252/Screenshot_2020-06-03_at_19.36.02.png" alt="Screenshot_2020-06-03_at_19.36.02.png" width="410" height="142"></p>
+<p> </p>
+<p>2. 設定ページの左側にある縦のナビゲーションの [Webhooks] と [Deploy keys] の 2 つのページを使用します。</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360058626332/Screenshot_2020-06-03_at_19.39.59.png" alt="Screenshot_2020-06-03_at_19.39.59.png" width="285" height="437"></p>
+<p> </p>
+<p>3. [Webhooks] ページで、CircleCI にポストするすべての Webhook を削除します。 <img src="https://support.circleci.com/hc/article_attachments/360032501573/Screen_Shot_2019-04-15_at_10.54.26_AM.png" alt="Screen_Shot_2019-04-15_at_10.54.26_AM.png" width="620" height="156"></p>
+<p> </p>
+<p>4. 最後に、[Deploy keys] ページに移動し、CircleCI が追加したキーを削除します。</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360031680254/Screen_Shot_2019-04-15_at_10.54.54_AM.png" alt="Screen_Shot_2019-04-15_at_10.54.54_AM.png" width="662" height="172"></p>
+<p> </p>
+<p>アクセス権を手動で削除することで　プロジェクトは CircleCI でビルドされなくなります。</p>

@@ -1,0 +1,40 @@
+<p>現在、CircleCI のビルドは主に、AWS East と West、Google Cloud Platform East で運用されています。
+    このため、クラウド システムで使用される IP アドレスの範囲を提供することはできません。
+</p>
+<p>CircleCI では現在、システムに静的 IP を実装することを検討しています。 この機能にご興味をお持ちの方は、アイデア ポータル (<a href="https://ideas.circleci.com/ideas/CCI-I-35">https://ideas.circleci.com/ideas/CCI-I-35</a>) で投票をお願いいたします。
+</p>
+<p dir="auto"> </p>
+<p dir="auto">現時点では、多くのお客様が以下のワークアラウンドを利用しています。
+</p>
+<ul dir="auto" type="disc">
+    <li type="disc">
+        <h3><strong>踏み台ホスト</strong></h3>
+        <ul>
+            <li type="disc">踏み台 (ジャンプ) ホスト経由でプライベート環境への SSH トンネルを構成できます。 サンプルの設定ファイル、Orb は<a href="https://github.com/eddiewebb/circleci-dmz-orb/blob/master/README.md" target="_self">こちら</a>で確認できます。</li>
+            <li type="disc">必要に応じて、お客様の環境のファイアウォールのセーフリストにこの踏み台ホストを追加してください。</li>
+            <li type="disc">SSH キーに加えて、踏み台ホスト経由で実行できるコマンドを制限することにより、SSH 接続をさらに保護できます。 <a href="https://research.kudelskisecurity.com/2013/05/14/restrict-ssh-logins-to-a-single-command/" target="_self">こちら</a>で例を参照できます。</li>
+        </ul>
+    </li>
+    <li type="disc">
+        <h3><strong><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">VPN</span></strong></h3>
+        <ul>
+            <li type="disc"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"><a href="https://circleci.com/docs/2.0/executor-types/#using-machine" target="_blank" rel="noopener">machine Executor</a> では、お客様の環境への VPN 接続を構成できます。</span></li>
+            <li type="disc"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"><a href="https://support.circleci.com/hc/en-us/articles/360049397051" target="_blank" rel="noopener">How to set up a VPN connection during builds? (ビルド中に VPN 接続を設定する方法)</a>についての記事をご覧ください。<br><br></span></li>
+        </ul>
+    </li>
+    <li type="disc">
+        <h3><strong><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">動的セーフリスト</span></strong></h3>
+        <ul>
+            <li type="disc"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">クラウド プロバイダーの CLI ツールを使用して、現在のビルダーの IP アドレスを動的に取得し、内部リソースにアクセス権を持つセキュリティ グループに追加できます。 ビルドの最後に、その IP を削除して、IP が残らないようにします。</span></li>
+            <li type="disc"><a href="https://discuss.circleci.com/t/circleci-source-ip/1202/10" target="_self"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">AWS の場合の例をこちらで参照できます。</span></a></li>
+            <li type="disc">クリーンアップを常に実行するには、run ステップの下で「when: always」宣言を使用します。 <a href="https://circleci.com/docs/2.0/configuration-reference/#the-when-attribute" target="_self">こちらのドキュメント</a>をご確認ください。</li>
+        </ul>
+    </li>
+    <li type="disc">
+        <h3><strong><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">サーバー製品</span></strong></h3>
+        <ul>
+            <li type="disc">上記で対処できない場合は、CircleCI Server (<a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" href="https://circleci.com/enterprise/" rel="noreferrer">https://circleci.com/ja/enterprise/</a>) をご検討ください。お客様独自の VPC で CircleCI を運用し、独自の IP 範囲を指定することが可能です。
+            </li>
+        </ul>
+    </li>
+</ul>

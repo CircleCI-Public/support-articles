@@ -1,0 +1,7 @@
+<p>CircleCI には、<strong>10 分間</strong>でタイムアウトする機能が組み込まれています。 そのため、最後の出力から 10 分が経過すると、ビルドは取り消され、停止します。 10 分間以上のアウトプットがないビルドでは、ビルドが取り消されるという問題が起こります。</p>
+<p><a href="https://circleci.com/docs/2.0/configuration-reference/#run">run</a> の <code>no_output_timeout</code> パラメーターを使用すると、無出力のタイムアウトをデフォルトの 10 分間から、指定した値に変更できます。</p>
+<p>例えば、次のような run ステップがあるとします。</p>
+<p><code> - run:<br>    command: . ./ourlongscript.sh</code><code><code><code></code></code></code></p>
+<p>このスクリプトが実行に時間を要する場合、無出力タイムアウトを次のように延長します。</p>
+<p><code>- run:  <br>    command: . ./ourlongscript.sh<br>    no_output_timeout: 30m</code></p>
+<p>no_output_timeout には時間、分、秒単位の値を設定できます。それぞれ、数値の後に h、m、s の文字を続けます。 1.5h など、時間の端数も使用できます。</p>

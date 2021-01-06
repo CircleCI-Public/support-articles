@@ -1,0 +1,15 @@
+<p>「Spin up Environment」もしくは Docker イメージをプルするステップにて、次のようなエラーが発生することがあります。</p>
+<pre class="output"><span class="pre"><span class="white">Step 1/26 : FROM &lt;IMAGE&gt;latest: Pulling from library/&lt;IMAGE&gt;</span><span class="white">no matching manifest for linux/amd64 in the manifest list entries</span></span><span class="pre"><span class="white">Exited with code 1<br></span></span>
+</pre>
+<p>このエラーには、3 つの原因が考えられます。</p>
+<ol>
+    <li>
+        <strong>「latest」タグを使用するときにエラーが発生する</strong><br>Dockerub でイメージを再ビルドしている間は、「latest」タグが一時的に利用できなくなることがあります。 この問題はDocker imageが再ビルドされ次第、解決します。もしくはバージョン付きタグを選択することでも解決できます。
+    </li>
+    <li>
+        <strong>タグが利用できない</strong><br>これまで利用可能であったタグがリストから削除される、もしくはその命名規則が変更される場合があります。 例えば、これまで "Version8.0" だったタグが、"Version8.0.0" に変更された可能性があります。
+    </li>
+    <li>
+        <strong>イメージが ARM 向けなど x86 用に設計されていない</strong><br>ビルドしようとしているイメージがARM ベースの CPU など異なるアーキテクチャで実行されるよう設計されている場合があります。
+    </li>
+</ol>

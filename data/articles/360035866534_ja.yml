@@ -1,0 +1,26 @@
+id: 360035866534
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360035866534.json
+html_url: https://support.circleci.com/hc/ja/articles/360035866534
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: -11
+vote_count: 27
+section_id: 115003327088
+created_at: '2019-09-25T11:45:03Z'
+updated_at: '2021-01-05T12:32:57Z'
+name: Xcode 11に切り替え後「Failed to build gem native extension」エラーが発生する
+title: Xcode 11に切り替え後「Failed to build gem native extension」エラーが発生する
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-29T06:00:14Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - ruby
+  - macOS
+body: "<p>一部のユーザーでは、CircleCI で Xcode 10.x イメージから Xcode 11 イメージに切り替え後に bundle install   を実行する際に、以下のエラーが発生する場合があります。</p><p>重要なエラーは以下になります。</p><pre class=\"output\"><span class=\"pre\"><span class=\"white\"><span class=\"red\">Gem::Ext::BuildError: ERROR: Failed to build gem native extension.</span></span></span></pre><h3>このエラーが発生する理由</h3><p>Xcode の最近のバージョンでは、過去に同梱されていた macOS SDK ヘッダーパッケージが削除されました。このパッケージには Ruby Gems のビルドに必要なさまざまな Ruby 2.3（Ruby システム）のヘッダーがインストールされていました。 これらのヘッダーがないと、一部の Gems が bundle install で失敗し、次のエラーメッセージが表示されます。</p><pre class=\"output\"><span class=\"pre\"><span class=\"white\">mkmf.rb can't find header files for ruby at/System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/lib/ruby/include/ruby.h</span></span></pre><h3>解決方法</h3><p>これは、Xcode 11 イメージに付属する chruby で利用可能な Ruby バージョンのいずれかに切り替えることで解決できます。 利用可能なRubyのバージョン は、<a href=\"https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions\" target=\"_self\"> Software Manifests</a>で確認できます。</p><p><a href=\"https://circleci.com/docs/2.0/testing-ios/#images-using-macos-1015-catalina--xcode-112-and-later\" target=\"_self\"> Using Custom Ruby Versions </a>のステップに従い、Ruby 2.5 または Ruby 2.6 に切り替えます。その後 config.yml を更新、新しいコミットをプッシュし、新しいビルドをトリガーします。</p><p>\_</p>"

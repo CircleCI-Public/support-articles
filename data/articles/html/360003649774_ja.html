@@ -1,0 +1,15 @@
+<p>ディレクトリを作成するアクセス許可、またはディレクトリにファイルを書き込むアクセス許可がないというエラーが表示されることがあります。この場合は、ビルドを実行しているユーザーが所有していないディレクトリに、スクリプトが書き込みを試みていることが考えられます。</p>
+<p>これは、多くのユーザーが CI 環境に移行するときのよくある問題です。</p>
+<p>確認しておきたい大切なポイントは、MacOS ビルドの場合は <code>distiller</code> ユーザーとして、Linux ビルドの場合は一般的に <code>ubuntu</code> として、ビルドが実行されるということです。 これらのユーザーは、自分の <code>$HOME</code> フォルダーと、<code>/tmp</code> などの場所にのみ書き込みアクセス許可があります。 これは CI に固有の問題ではなく、ほとんどの Linux/Unix 環境のデフォルト設定です。</p>
+<p> <code>whoami</code> コマンドを実行して、ビルドを実行しているユーザーを確認できます。
+    <br><br><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 1.5em;">ソリューション</span>
+</p>
+<ol>
+    <li>必要なファイルをビルド実行ユーザーがアクセス許可を持つフォルダーに保存します。</li>
+    <li>書き込みを試みる前に、<code>chown</code> コマンドを使用して、ディレクトリの所有権を変更します。</li>
+</ol>
+<p>CircleCI では 1 番目のソリューションをおすすめします。 2 つ目のソリューションを使用する場合、MacOS と Linux の両方のビルドで、次のコマンドを使用できます。</p>
+<p><code>chown -R $USER:$USER /path/to/directory
+    </code></p>
+<p><code>$USER</code> は、現在ログインしているユーザーを示すグローバル環境変数です。</p>
+<p><code>/path/to/directory</code> は、書き込み先のパスに置き換えます。</p>

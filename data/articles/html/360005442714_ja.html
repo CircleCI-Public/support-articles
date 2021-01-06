@@ -1,0 +1,6 @@
+<p> </p>
+<p>お客様のジョブは、CircleCI クラウド内の各種環境で実行される可能性があります。 これらの環境の中には多くのリソースがありますが、その環境で実行されるジョブは、利用可能なリソースのわずかな一部分にしかアクセスできません。</p>
+<p>例えば、Docker executor を使用すると、多くの場合はジョブが VM で実行され、32 個の CPU コアが利用可能です。 これにより、<strong>jest</strong> などのテストツールで問題が発生する可能性があります。このツールはデフォルトで、利用可能な CPU コアの数をもとにワーカーを生成するためです。 このツールは使用可能なコアが 32 個だと解釈しますが、実際に使用できるコアは 2 つだけです。 この誤解釈が問題を引き起こします。 お使いのツールが環境に応じてどのように設定を行うか、環境からツールに対してどのような情報が通知されるかに注意してください。</p>
+<p><strong>jest</strong> の場合、<a href="https://facebook.github.io/jest/docs/en/cli.html#maxworkers-num" target="_blank" rel="noopener">--maxWorkers= コマンドラインオプションを使用してワーカーの数を制限</a>できます。</p>
+<p> </p>
+<p><iframe src="//www.youtube-nocookie.com/embed/CKDVkqIMpHM" width="560" height="315" frameborder="0" allowfullscreen=""></iframe></p>

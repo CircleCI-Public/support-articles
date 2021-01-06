@@ -1,0 +1,7 @@
+<p>Docker 内の PHP イメージを使用する場合、PHP の特定の “Core” 拡張機能を使用するため、いくつかの追加手順が必要です。</p>
+<p>'PDO_MySQL' に関するエラーが表示される場合、Docker 拡張機能が欠けている可能性があります。<br>拡張機能の詳細については、<a href="http://php.net/manual/ja/extensions.membership.php">PHP：所属 - マニュアル</a> を参照してください。<br>PDO_MySQL のページは <a href="http://php.net/manual/ja/ref.pdo-mysql.php">PHP：MySQL (PDO) - マニュアル</a>を参照してください。</p>
+<p>Dockerhub の PHP ページでは、これらの拡張機能のインストール例が確認できます。<br><a href="https://hub.docker.com/_/php/">https://hub.docker.com/_/php/</a><br>PHP Core Extensions の拡張機能のインストール例は、ページを下にスクロールしていくと確認できます。</p>
+<p><code>RUN docker-php-ext-install -j$(nproc) iconv mcrypt</code></p>
+<p>この機能は <code>docker-php-ext-enable pdo_mysql</code> で有効にしてください。</p>
+<p> </p>
+<p>例：<code><br>steps:<br>- run:<br>name: Install PHP extensions<br>command: |<br>sudo docker-php-ext-install pdo_mysql<br>sudo docker-php-ext-enable pdo_mysql<br></code></p>

@@ -1,0 +1,8 @@
+<p>ステップはステップの中で実行されたコマンドのexitコードとシェルをどのように設定したかによって失敗または成功します。 ステップの出力でCircleCIがシェルをどのように設定しているかを見ることができます。</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360066774093/mceclip0.png" alt="mceclip0.png"></p>
+<p>CircleCIでは、bash を <strong>-eo pipefail</strong> オプションで実行しています。 <strong>-e</strong> はエラーがあったらすぐに終了し、失敗させるためのオプションです。 複数のコマンドを「｜」で繋げて実行している場合は、通常、最後のコマンドのエラーだけが適用されます。 <strong>-o pipefail </strong>オプションは「｜」で繋いでいる複数のコマンドのどこかにエラーが起きたらそれを適用させるためのものです。</p>
+<p>スクリプトの中でコマンドをを実行すると新しいシェルを立ち上げるため、これらの設定が上書きされます。 もしくは、間違ったエラーコードを返し、失敗するはずだったにも関わらず成功するプログラムもあります。 テストをマルチラインコマンドで実行し、それぞれのコマンドが違うシェルで実行されるときこちらの問題がよく起きます。 シェルの設定をスクリプトの上に明示的に宣言するか、config.ymlに直接追加することができます。 よって、ジョブ結果の信頼性を高めることができます。</p>
+<p>例：</p>
+<pre>- run:<br>    name: run tests<br>    command: |<br>      source venv/bin/activate<br>      python manage.py test</pre>
+<p>この場合、コマンドの一番上に <strong>set -e</strong>を追加します。 そうすることで、ビルドが失敗すべきときは、エラーが抑制されることなくビルドが失敗します。</p>
+<pre>- run:<br> name: run tests<br> command: |<br>   set -e<br>   source venv/bin/activate<br>   python manage.py test </pre>

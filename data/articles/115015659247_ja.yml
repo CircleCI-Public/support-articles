@@ -1,0 +1,25 @@
+id: 115015659247
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115015659247.json
+html_url: https://support.circleci.com/hc/ja/articles/115015659247
+author_id: 25261361207
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: -35
+vote_count: 51
+section_id: 115003580328
+created_at: '2017-12-07T15:20:14Z'
+updated_at: '2020-12-17T08:52:38Z'
+name: チェックアウトステップの変更方法
+title: チェックアウトステップの変更方法
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2020-10-29T05:57:46Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - checkout
+body: "<p><strong>checkout </strong>ステップは定義済みのコンビニエンスステップであり、変更することはできません.</p><p>チェックアウトステップでレポジトリを取得する方法を変えたい場合 <a href=\"https://circleci.com/docs/2.0/configuration-reference/#run\" target=\"_blank\" rel=\"noopener\">run ステップ</a>でGitコマンドを実行する必要がありま。 そこで、目的に応じたカスタムチェックアウトプロセスを設定できます。 <strong>run</strong> でカスタムチェックアウトを行う際、既存の定義済み<strong>checkout </strong> ステップを削除してください。</p><p>\_</p><p>\_</p>"

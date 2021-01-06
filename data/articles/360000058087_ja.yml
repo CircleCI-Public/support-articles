@@ -1,0 +1,32 @@
+id: 360000058087
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360000058087.json
+html_url: https://support.circleci.com/hc/ja/articles/360000058087
+author_id: 25261361207
+comments_disabled: false
+draft: false
+promoted: false
+position: 0
+vote_sum: 2
+vote_count: 4
+section_id: 115003580328
+created_at: '2018-01-19T20:16:46Z'
+updated_at: '2020-11-30T17:38:29Z'
+name: 外部からビルドにアクセスするためのポートを開く
+title: 外部からビルドにアクセスするためのポートを開く
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2018-11-13T06:22:50Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - ports
+  - external access
+body: >-
+  <p>セキュリティ上の理由から、SSH 以外で外部からビルドにアクセスすることは許可されていないため、アクセス用のポートは変更できません。 それでも、<a
+  href="https://ngrok.com/" target="_blank" rel="noopener">ngrok
+  などの</a>サードパーティーの有料サービスを使用するか、<a
+  href="https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding"
+  target="_blank" rel="noopener">SSH ポートの転送</a>を使用して、ビルドへの SSH
+  アクセス権のあるマシンでポートを利用可能にすることで、外部からのアクセスは可能です。</p>
