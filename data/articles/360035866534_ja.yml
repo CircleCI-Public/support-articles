@@ -6,11 +6,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -11
-vote_count: 27
+vote_sum: -12
+vote_count: 28
 section_id: 115003327088
 created_at: '2019-09-25T11:45:03Z'
-updated_at: '2021-01-05T12:32:57Z'
+updated_at: '2021-01-08T13:22:54Z'
 name: Xcode 11に切り替え後「Failed to build gem native extension」エラーが発生する
 title: Xcode 11に切り替え後「Failed to build gem native extension」エラーが発生する
 source_locale: en-us
