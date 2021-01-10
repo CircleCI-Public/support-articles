@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: 15
-vote_count: 17
+vote_sum: 13
+vote_count: 19
 section_id: 115003332147
 created_at: '2019-10-31T10:25:36Z'
-updated_at: '2021-01-08T15:51:37Z'
+updated_at: '2021-01-09T20:54:44Z'
 name: NodeJS Builds or Test Suites Fail With ENOMEM or a Timeout
 title: NodeJS Builds or Test Suites Fail With ENOMEM or a Timeout
 source_locale: en-us
