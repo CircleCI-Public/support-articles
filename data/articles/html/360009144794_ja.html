@@ -1,1 +1,6 @@
-<p>さまざまな理由から、CircleCI のドキュメントでは macOS 用のすべてのリソースについて公開していません。 macOS マシンには 8GB の RAM が搭載され、使用するイメージに応じた空きディスク容量が必要です。 仕様に関する詳細は <a href="https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions">iOS アプリケーションのテスト</a>ページを参照してください。</p>
+<p>macOS Executor は、次の 2 つの <code>resource_class</code> レベルを提供します。</p>
+<p>- ミディアム：4 個の vCPU、8GB RAM</p>
+<p>- ラージ*：8 個の vCPU、16GB RAM</p>
+<p>*<em> このリソースサイズは、CircleCI のサポートチームによる確認が必要となります。 アクセスをリクエストされる場合は、お気軽にサポートチケットを開いてください。</em></p>
+<p>詳細情報と <code>resoruce_class</code> の設定方法は、<a href="https://circleci.com/docs/2.0/configuration-reference/#macos-executor" target="_blank" rel="noopener">構成ドキュメント</a>を参照してください。</p>
+<p>ディスク容量は <code>resource_class</code> のサイズに依存せず、代わりに使用しているXcode のバージョンに影響されます。 <a href="https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions" target="_blank" rel="noopener">Xcode バージョンのドキュメント</a>で、各バージョンで利用可能なディスク容量を確認できます。 使用しているバージョンの [Installed Software] リンクをクリックして、仕様を確認してください。</p>

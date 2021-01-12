@@ -10,14 +10,14 @@ vote_sum: -3
 vote_count: 3
 section_id: 115003580328
 created_at: '2018-02-12T20:13:12Z'
-updated_at: '2020-10-22T07:00:39Z'
+updated_at: '2021-01-12T01:43:25Z'
 name: コミットが誤ったユーザーとして表示される
 title: コミットが誤ったユーザーとして表示される
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:22:42Z'
+edited_at: '2021-01-12T01:43:25Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
@@ -27,8 +27,7 @@ label_names:
   - user
 body: >-
   <p><a
-  href="https://help.github.com/articles/why-are-my-commits-linked-to-the-wrong-user/">https://help.github.com/articles/why-are-my-commits-linked-to-the-wrong-user/</a><br><br></p>
-
-  <blockquote>GitHub は、コミットヘッダーの電子メールアドレスを使用して、コミットを GitHub ユーザーにリンクします。
+  href="https://help.github.com/articles/why-are-my-commits-linked-to-the-wrong-user/">https://help.github.com/articles/why-are-my-commits-linked-to-the-wrong-user/</a><br><br></p><blockquote>GitHub
+  は、コミットヘッダーの電子メールアドレスを使用して、コミットを GitHub ユーザーにリンクします。
   コミットが他のユーザーにリンクされている、またはどのユーザーにもリンクされていない場合、ローカル Git
   構成設定を変更する、自分のアカウントの電子メール設定に電子メールアドレスを追加する、またはこの両方を行なう必要があります。</blockquote>

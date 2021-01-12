@@ -10,15 +10,15 @@ vote_sum: -2
 vote_count: 2
 section_id: 115003580328
 created_at: '2017-12-05T20:23:08Z'
-updated_at: '2020-10-22T06:59:07Z'
-name: Executor タイプとは
-title: Executor タイプとは
+updated_at: '2021-01-12T01:42:09Z'
+name: Executor タイプとは？
+title: Executor タイプとは？
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:24:39Z'
+edited_at: '2021-01-12T01:42:09Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names: []
-body: "<p>CircleCI 2.0 config の主要な部分は、executor のタイプ選択です。 これは、ジョブが実行される環境です。 現在のところ、executor には<strong>d</strong><strong>ocker</strong>、<strong>m</strong><strong>achine</strong>、<strong>macos</strong> の 3 タイプがあります。</p>\n<p>各 executor には、それぞれの利点と欠点があります。 ほとんどのプロジェクトでは、<strong>docker</strong> または <strong>machine</strong> executor を選択します。 これらの executor 間の相違の概要については、<a href=\"https://circleci.com/docs/2.0/executor-types/#overview\" target=\"_blank\" rel=\"noopener\">こちらのドキュメント</a>を参照してください。</p>\n<p><strong>docker</strong> を使用すると、Docker コンテナ内でジョブが実行されます。 詳細については、<a href=\"https://circleci.com/docs/2.0/executor-types/#using-docker\" target=\"_blank\" rel=\"noopener\">こちらから Docker executor に関する</a>ドキュメントを参照してください。 <strong>Docker</strong> executor を使用すると、ジョブごとに複数の Docker イメージを使用でき、さまざまな利点があります。詳細については、<a href=\"https://circleci.com/docs/2.0/executor-types/#using-multiple-docker-images\" target=\"_blank\" rel=\"noopener\">こちらを参照してください</a>。</p>\n<p><strong>machine</strong> を使用すると、専用の一時的な仮想マシン (VM) 内でジョブが実行されます。 詳細については、<a href=\"https://circleci.com/docs/2.0/executor-types/#using-machine\" target=\"_blank\" rel=\"noopener\">こちらから machine executor に関する</a>ドキュメントを参照してください。</p>\n<p><strong>macos</strong>\_を使用すると、macOS VM 内で、構成可能なバージョンの Xcode によりジョブが実行されます。 詳細については、<a href=\"https://circleci.com/docs/2.0/executor-types/#using-macos\" target=\"_blank\" rel=\"noopener\">こちらから macos executor に関する</a>ドキュメントを参照してください。</p>"
+body: "<p>A key part of creating your CircleCI jobs is selecting the executor type. これは、ジョブが実行される環境です。 There are a few executor types such as\_<strong>d</strong><strong>ocker</strong>, <strong>m</strong><strong>achine</strong>,\_<strong>macos, </strong> and\_<strong>windows</strong>. To learn more about each executor type <a href=\"https://circleci.com/docs/2.0/executor-types/\" target=\"_self\">check out our in depth docs</a>\_for more information on choosing the right one for you.</p><p>\_</p>"

@@ -10,40 +10,17 @@ vote_sum: -9
 vote_count: 17
 section_id: 115003327088
 created_at: '2017-12-31T15:15:32Z'
-updated_at: '2020-12-24T20:44:56Z'
+updated_at: '2021-01-12T01:51:32Z'
 name: CircleCI での iOS macOS コードの署名
 title: CircleCI での iOS macOS コードの署名
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-14T01:49:42Z'
+edited_at: '2021-01-12T01:51:32Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
   - fastlane
   - ios
-body: >-
-  <p>ビルドの一部としてコードの署名を実行する必要がある場合、こちらのドキュメントを参照してください。</p>
-
-  <ul>
-
-  <li><a
-  href="https://circleci.com/docs/1.0/ios-code-signing/#nav-button">CircleCL 1.0
-  でのコード署名</a></li>
-
-  <li><a
-  href="https://circleci.com/docs/2.0/ios-codesigning/#nav-button">CircleCL 2.0
-  でのコード署名</a></li>
-
-  </ul>
-
-  <p><strong>注：</strong> 上記のドキュメントに記載されているように、CircleCI 2.0 でコード署名を行なうには Fastlane
-  Match を使用する必要があります。</p>
-
-  <p>"Code Signing Error: No profile" または "Provisioning Profile Not Found"
-  というエラーが表示される場合、キーチェーンのロックが解除されていないことが考えられます。 ビルドの内部から <code>security
-  find-identity -v -p codesigning</code> を実行すると、コード署名資格情報の現在のステータスが一覧表示されます。
-  Fastlane Match を使用するには、このドキュメントに従ってください：<a
-  href="https://circleci.com/docs/2.0/ios-codesigning/" target="_blank"
-  rel="noopener">https://circleci.com/docs/2.0/ios-codesigning/</a></p>
+body: "<p>CircleCI 2.0 では、<a href=\"https://circleci.com/docs/2.0/ios-codesigning/#nav-button\" target=\"_blank\" rel=\"noopener\">コードの署名のドキュメント</a>で説明しているように、コード署名でサポートされている唯一の方法は、Fastlane Match を使用することです。</p><p><strong>メモ：</strong><code>fastlane match</code> を正しく動作させるには、<code>Fastfile</code> で <code>setup_circle_ci</code> を <code>before_all</code> に追加する<em>必要があります</em>。これにより、一時的な Fastlane キーチェーンが確実に使用されます。</p><p>「コード署名エラー：プロファイルが存在しません」 または 「プロビジョニングプロファイルが見つかりません」 というエラーが表示される場合、キーチェーンのロックが解除されていないことが考えられます。</p><p>ビルドの内部から <code>security find-identity -v -p codesigning</code> を実行すると、コード署名の認証情報の現在のステータスが表示されます。</p><p>\_</p>"

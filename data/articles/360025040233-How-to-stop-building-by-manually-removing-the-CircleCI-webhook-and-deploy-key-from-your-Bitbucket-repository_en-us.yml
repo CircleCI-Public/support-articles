@@ -12,7 +12,7 @@ vote_sum: 0
 vote_count: 2
 section_id: 115003580328
 created_at: '2019-06-18T17:52:50Z'
-updated_at: '2020-08-05T19:43:52Z'
+updated_at: '2021-01-12T01:42:48Z'
 name: >-
   How to stop building by manually removing the CircleCI webhook and deploy key
   from your Bitbucket repository

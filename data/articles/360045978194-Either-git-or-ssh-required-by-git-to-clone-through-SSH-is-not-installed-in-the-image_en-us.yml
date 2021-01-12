@@ -12,7 +12,7 @@ vote_sum: 0
 vote_count: 2
 section_id: 115003756627
 created_at: '2020-04-09T22:09:28Z'
-updated_at: '2020-11-15T12:49:13Z'
+updated_at: '2021-01-12T01:43:59Z'
 name: >-
   Either git or ssh (required by git to clone through SSH) is not installed in
   the image.

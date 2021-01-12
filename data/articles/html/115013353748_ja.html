@@ -1,2 +1,3 @@
-<p>これは通常、GitHub webhook に問題があることを示しています。 正常な動作を回復するための最も簡単な方法は、GitHub 組織の管理者が以下の手順を実行することです。</p>
-<p>1. GitHub リポジトリの設定から、すべての CircleCI webhook およびサービスを削除します。<br>2. [PROJECT SETTINGS] で、CircleCI でのビルドを停止するようプロジェクトに指定します。<br>3. CircleCI にプロジェクトを追加して元通りにします。</p>
+<p>This usually indicates that there's a problem with the GitHub webhook, sometimes due to multiple being added to the project. The easiest way to get this working again is to have an admin of the Github Organization follow these steps in order: </p>
+<p>1. Remove all CircleCI webhooks and services from your GitHub repo settings.<br>2. Tell the project to stop building on CircleCI through "Project settings".<br>3. Add the project back on CircleCI.</p>
+<p>A full walkthrough for removing a project from CircleCI <a href="https://support.circleci.com/hc/en-us/articles/360021666393-How-to-manually-stop-building-by-removing-your-deploy-key-and-webhook-from-GitHub" target="_self">can be found here</a>, including screenshots.</p>

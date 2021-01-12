@@ -10,18 +10,18 @@ vote_sum: 2
 vote_count: 2
 section_id: 115003755807
 created_at: '2017-12-05T21:17:56Z'
-updated_at: '2020-10-22T06:58:43Z'
-name: ジョブとは
-title: ジョブとは
+updated_at: '2021-01-12T01:46:31Z'
+name: ジョブとは？
+title: ジョブとは？
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:24:38Z'
+edited_at: '2021-01-12T01:46:31Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
   - config
   - config.yml
   - job
-body: "<p>CircleCI 2.0 のビルドプロセスは、ジョブにより実行されます。ジョブは、CircleCI 2.0 の <code>config.yml</code> で定義されます。 ビルドを実行するための、シンプルな <code>config.yml</code>\_[最低 1 つのジョブが必要] (https://circleci.com/docs/2.0/jobs-steps/)。 <a href=\"https://circleci.com/docs/2.0/workflows\" target=\"_blank\" rel=\"noopener\">Workflows を使用</a>して、複数のジョブが<a href=\"https://circleci.com/docs/2.0/workflows/#sequential-job-execution-example\" target=\"_blank\" rel=\"noopener\">特定の順序</a>または並列に実行されるよう定義でき、<a href=\"https://circleci.com/docs/2.0/workflows/#sequential-job-execution-example\" target=\"_blank\" rel=\"noopener\">他の各種の便利な構成</a>も使用できます。</p>\n<p>ジョブには最低でも <a href=\"https://circleci.com/docs/2.0/executor-types\" target=\"_blank\" rel=\"noopener\">executor の定義</a>と、1 つのステップが必要です。 通常、ジョブは特別な\_<strong>チェックアウト</strong>ステップを使用して、<a href=\"https://circleci.com/docs/2.0/configuration-reference/#checkout\" target=\"_blank\" rel=\"noopener\">最初にリポジトリをチェックアウト</a>\_します。 その後 、<a href=\"https://circleci.com/docs/2.0/configuration-reference/#run\" target=\"_blank\" rel=\"noopener\">run ステップを使用</a>して bash コマンドを実行し、ビルド、テスト、およびデプロイを行なえます。</p>\n<p>ジョブを高速化するため、またはビルドプロセスに他の機能を追加するため、多くの特別なステップを使用できます。 <a href=\"https://circleci.com/docs/2.0/configuration-reference/#save_cache\" target=\"_blank\" rel=\"noopener\">依存関係のキャッシュの使用</a>や、<a href=\"https://circleci.com/docs/2.0/configuration-reference/#store_artifacts\" target=\"_blank\" rel=\"noopener\">ジョブで作成したアーティファクト</a>の保存を行なえるほか、<a href=\"https://circleci.com/docs/2.0/configuration-reference/#store_test_results\" target=\"_blank\" rel=\"noopener\">テストレポートを保存</a>して、テストの実行結果をジョブページの UI で直接確認できます。 ジョブの完了待ちの間に、<a href=\"https://circleci.com/docs/2.0/configuration-reference/#steps\" target=\"_blank\" rel=\"noopener\">ドキュメントページのここ</a> で、すべてのステップオプションをスクロール表示できます。</p>"
+body: "<p>A <a href=\"https://circleci.com/docs/2.0/jobs-steps/)\" target=\"_self\">job</a> is what runs your build process on CircleCI 2.0. It is essentially a series of steps that runs in an execution environment. Jobs are defined in your CircleCI 2.0 <code>config.yml</code>.</p><p>ジョブには最低でも <a href=\"https://circleci.com/docs/2.0/executor-types\" target=\"_blank\" rel=\"noopener\">executor の定義</a>と、1 つのステップが必要です。 通常、ジョブは特別な\_<strong>チェックアウト</strong>ステップを使用して、<a href=\"https://circleci.com/docs/2.0/configuration-reference/#checkout\" target=\"_blank\" rel=\"noopener\">最初にリポジトリをチェックアウト</a>\_します。 その後 、<a href=\"https://circleci.com/docs/2.0/configuration-reference/#run\" target=\"_blank\" rel=\"noopener\">run ステップを使用</a>して bash コマンドを実行し、ビルド、テスト、およびデプロイを行なえます。</p><p><a href=\"https://circleci.com/docs/2.0/workflows\" target=\"_blank\" rel=\"noopener\">Using workflows</a>, you can define multiple jobs that run in a <a href=\"https://circleci.com/docs/2.0/workflows/#sequential-job-execution-example\" target=\"_blank\" rel=\"noopener\">specific sequence</a>, in parallel, and <a href=\"https://circleci.com/docs/2.0/workflows/#sequential-job-execution-example\" target=\"_blank\" rel=\"noopener\">various other nifty configurations</a>.\_</p><p>There are a whole bunch of special steps you can use to speed up your jobs or add other functionality to your build process. You can try\_<a href=\"https://circleci.com/docs/2.0/configuration-reference/#save_cache\" target=\"_blank\" rel=\"noopener\">using cached dependencies</a>, saving <a href=\"https://circleci.com/docs/2.0/configuration-reference/#store_artifacts\" target=\"_blank\" rel=\"noopener\">artifacts you've created in your jobs</a>, or even <a href=\"https://circleci.com/docs/2.0/configuration-reference/#store_test_results\" target=\"_blank\" rel=\"noopener\">saving your test reports</a> to see how your tests performed right on the job page UI.</p><p>While you're waiting for your jobs to complete take a scroll through all of the step options\_<a href=\"https://circleci.com/docs/2.0/configuration-reference/#steps\" target=\"_blank\" rel=\"noopener\">here on the docs page</a>.</p>"

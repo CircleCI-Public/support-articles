@@ -1,6 +1,7 @@
 id: 115013849587
 url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115013849587.json
-html_url: https://support.circleci.com/hc/ja/articles/115013849587
+html_url: >-
+  https://support.circleci.com/hc/ja/articles/115013849587-Docker-Layer-Caching-availability
 author_id: 4008831568
 comments_disabled: true
 draft: false
@@ -10,31 +11,17 @@ vote_sum: -1
 vote_count: 1
 section_id: 115003580328
 created_at: '2017-10-27T11:44:05Z'
-updated_at: '2020-10-22T06:58:19Z'
-name: 再利用可能な Docker エンジンについて
-title: 再利用可能な Docker エンジンについて
+updated_at: '2021-01-12T01:43:04Z'
+name: Docker Layer Caching availability
+title: Docker Layer Caching availability
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:25:41Z'
+edited_at: '2021-01-12T01:43:04Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
   - docker layer caching
   - DLC
-body: >-
-  <p><code>docker_layer_caching</code> に関するドキュメントは、こちら <a
-  href="https://circleci.com/docs/2.0/docker-layer-caching/#docker-layer-caching-in-remote-docker"
-  target="_blank"
-  rel="noopener">https://circleci.com/docs/2.0/docker-layer-caching/#docker-layer-caching-in-remote-docker</a>
-  です。</p>
-
-  <p>再利用可能なエンジンの今後の利用に関して CircleCI は永久サポートをお約束していません。 しかし、CircleCI が (Docker
-  の致命的なセキュリティの問題への対策などで) エンジンソフトウェアを変更するまでは、お客様が使用料をお支払いいただくことで利用いただけます。
-  CircleCI ユーザーの一部は、ディスク容量不足の問題に直面し、数ヶ月経過した Docker イメージのパージを余儀なくされています。</p>
-
-  <p>ジョブに再利用可能なエンジンが存在するにもかかわらず、古い Docker レイヤーを使用できない場合もあります。 例えば、最大 4
-  つのジョブを並列に実行できるプランで、これまでジョブを 3 つまでしか並列に実行したことがなく、その後で 4 つのジョブを同時に実行した場合、4
-  つ目のジョブには再利用エンジンが使用されますが、そのエンジンには以前のジョブの状態が保持されていません。 この問題が発生する別の条件は、エンジン 2、3、4
-  でジョブを実行していた際に、これらのエンジンが最後に使用された後で依存関係レイヤーを変更した場合です。</p>
+body: "<p>Docker Layer Caching (DLC) is a great feature to use if building Docker images is a regular part of your CI/CD process. DLC will save image layers created within your jobs, rather than impact the actual container used to run your job.</p><p>There are some limitations to the availability of these cached layers. The DLC volumes are deleted after 3 days of not being used in a job. Additionally, CircleCI will create a maximum of 50 DLC volumes per project, so a maximum of 50 concurrent\_<code class=\"highlighter-rouge\">machine</code>\_or Remote Docker jobs per project can have access to DLC.\_</p><p>In-depth documentation for <code>docker_layer_caching</code>\_can be found here:\_<a href=\"https://circleci.com/docs/2.0/docker-layer-caching/\">https://circleci.com/docs/2.0/docker-layer-caching/</a></p><p>\_</p>"

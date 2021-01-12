@@ -1,8 +1,5 @@
 <p>CircleCI のコンテナ内から直接電子メール (SMTP) を送信するのは、ほとんどのユーザーにとって問題が多いことが判明しているため、おすすめしません。</p>
-<p> </p>
-<p>CircleCI 2.0 fleet は現在 Amazon の EC2 クラウド上で実行されており、<a href="https://aws.amazon.com/premiumsupport/knowledge-center/ec2-port-25-throttle/">デフォルトでポート 25 を利用します</a>。 コンテナが多数のホスト間でランダムに分散しているため、過去に他のユーザーが使用したポートの関係で、アクセス先の IP アドレスの転送速度が制限される可能性が高くなります。 EC2 のコンテナは "高可用性" なので、送信したメールは受信者の "spam" フォルダーに送られてしまう可能性が高くなります。</p>
-<p> </p>
+<p>The CircleCI 2.0 fleet currently runs on Amazon's EC2 cloud, <a href="https://aws.amazon.com/premiumsupport/knowledge-center/ec2-port-25-throttle/">where port 25 is throttled by default</a>. As containers are spun up across many hosts at random, there is a much greater chance the IP address you are accessing is going to be rate limited due to the use of the port by other users in the past. Since containers are "highly available" on EC2 there is a high probability that any mail you manage to send will likely end up in the "spam" folder of the recipient.</p>
 <h2>電子メールの送信方法</h2>
-<p>電子メールを送信するには、<a href="https://sendgrid.com/">SendGrid</a> や <a href="https://www.mailgun.com/email-api">Mailgun</a> など外部の API ベースのサービスに接続する方法をおすすめします。</p>
-<p> </p>
-<p>外部のトランザクション式電子メールプロバイダに接続する方法は最も速く堅牢です。また、電子メールを確実に配信でき、スパムメールとして処理されることを避けられます。</p>
+<p>The suggested method for mailing is to connect to an external API-based service such as <a href="https://sendgrid.com/">SendGrid</a> or <a href="https://www.mailgun.com/email-api">Mailgun</a>.</p>
+<p>Connecting to an external transactional email provider is the fastest and most robust option, ensuring your mail will be delivered and avoid ending up in spam.</p>

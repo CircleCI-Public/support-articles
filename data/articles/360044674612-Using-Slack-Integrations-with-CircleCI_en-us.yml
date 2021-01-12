@@ -12,7 +12,7 @@ vote_sum: -5
 vote_count: 13
 section_id: 115004127248
 created_at: '2020-06-17T16:18:34Z'
-updated_at: '2020-11-26T04:32:41Z'
+updated_at: '2021-01-12T01:42:42Z'
 name: Using Slack Integrations with CircleCI
 title: Using Slack Integrations with CircleCI
 source_locale: en-us

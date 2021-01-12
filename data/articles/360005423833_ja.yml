@@ -10,17 +10,27 @@ vote_sum: 3
 vote_count: 3
 section_id: 115003327208
 created_at: '2018-06-05T18:50:31Z'
-updated_at: '2020-10-22T06:59:43Z'
+updated_at: '2021-01-12T01:52:34Z'
 name: 管理コンソールのパスワード変更
 title: 管理コンソールのパスワード変更
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:15:42Z'
+edited_at: '2021-01-12T01:52:34Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
   - replicated
   - server
-body: "<p>ポート 8800 の CircleCI 管理コンソールのパスワードを変更するには</p>\n<ul>\n<li>Services ボックスに SSH で接続します</li>\n<li>\n<code>sudo replicated auth reset</code>\_を実行します\n</li>\n</ul>"
+body: >-
+  <p>ポート 8800 の CircleCI 管理コンソールのパスワードを変更するには</p><ul>
+
+  <li>Services ボックスに SSH で接続します</li>
+
+  <li>
+
+  <code>sudo replicated auth reset</code> を実行します</li>
+
+  </ul><p>Replicated の古いバージョンで、次のコマンドを実行する必要がある場合があります。<br> <code>sudo
+  replicated auth reset</code></p>

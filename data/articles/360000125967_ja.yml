@@ -10,14 +10,14 @@ vote_sum: -1
 vote_count: 5
 section_id: 115003332367
 created_at: '2018-01-25T16:55:27Z'
-updated_at: '2020-10-21T08:23:35Z'
-name: 自社でホスティングしている CircleCI Server で、Bitbucket を使用できますか？
-title: 自社でホスティングしている CircleCI Server で、Bitbucket を使用できますか？
+updated_at: '2021-01-12T01:52:57Z'
+name: 自己ホストされている CircleCI Server で、Bitbucket を使用できますか？
+title: 自己ホストされている CircleCI Server で、Bitbucket を使用できますか？
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-14T02:06:53Z'
+edited_at: '2021-01-12T01:52:57Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
@@ -26,8 +26,6 @@ label_names:
   - BitBucket
   - self hosted
 body: >-
-  <p>現在のところ、GitHub および GitHub Enterprise アカウントのみが、CircleCI Server
-  でサポートされています。</p>
-
-  <p>Bitbucket を使用する場合は、CircleCI のSaaSソリューション (<a
-  href="https://circleci.com">circleci.com</a>) をお使いください。</p>
+  <p>現在のところ、GitHub および GitHub Enterprise アカウントのみが、自社でホスティングされる CircleCI
+  のインストール環境をサポートしています。</p><p>Bitbucket アカウントは <a
+  href="https://circleci.com">circleci.com</a> でクラウドホスティングソリューションでサポートされます。</p>

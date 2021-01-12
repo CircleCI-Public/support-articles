@@ -10,17 +10,17 @@ vote_sum: -3
 vote_count: 3
 section_id: 360000990713
 created_at: '2018-05-21T07:33:37Z'
-updated_at: '2020-12-08T18:32:49Z'
+updated_at: '2021-01-12T01:53:42Z'
 name: CircleCI は GDPR 準拠ですか？
 title: CircleCI は GDPR 準拠ですか？
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:15:47Z'
+edited_at: '2021-01-12T01:53:42Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
   - gdpr
   - privacy
-body: "<p>はい、CircleCI は GDPR に準拠しています。 CircleCI のプライバシーポリシーは、GDPR ポリシーへの準拠を反映して更新されました。 詳細については、プライバシーおよび GDPR ページでご覧になれます。<br><br><a href=\"https://circleci.com/privacy/\">https://circleci.com/privacy/<br></a><a href=\"https://circleci.com/privacy/\">https://circleci.com</a><a href=\"https://circleci.com/privacy/\">/gdpr</a></p>\n<p>CircleCI は <a href=\"https://support.circleci.com/hc/en-us/articles/360005018974-Is-CircleCI-Privacy-Shield-certified-\" target=\"_blank\" rel=\"noopener\">Privacy Shield の認定も受けています</a>。</p>\n<p>\_</p>"
+body: "<p>はい、CircleCI は GDPR に準拠しています。 CircleCI のプライバシーポリシーは、GDPR ポリシーへの準拠を反映して更新されました。 詳細については、<a href=\"https://circleci.com/privacy/\" target=\"_blank\" rel=\"noopener\">プライバシー</a>および <a href=\"https://circleci.com/gdpr/\" target=\"_blank\" rel=\"noopener\"> GDPR</a> ページでご覧になれます。</p><p>CircleCI は <a href=\"https://support.circleci.com/hc/en-us/articles/360005018974-Is-CircleCI-Privacy-Shield-certified-\" target=\"_blank\" rel=\"noopener\">Privacy Shield の認定も受けています</a>。</p><p>\_</p>"

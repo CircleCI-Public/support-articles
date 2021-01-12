@@ -1,6 +1,7 @@
 id: 360003108933
 url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360003108933.json
-html_url: https://support.circleci.com/hc/ja/articles/360003108933
+html_url: >-
+  https://support.circleci.com/hc/ja/articles/360003108933-ANSI-color-codes-appearing-in-test-results
 author_id: 28200990948
 comments_disabled: false
 draft: false
@@ -10,14 +11,14 @@ vote_sum: -4
 vote_count: 6
 section_id: 115003756627
 created_at: '2018-04-13T16:48:48Z'
-updated_at: '2020-11-04T13:31:05Z'
-name: テスト結果に出現する ANSI カラーコード
-title: テスト結果に出現する ANSI カラーコード
+updated_at: '2021-01-12T01:45:10Z'
+name: ANSI color codes appearing in test results
+title: ANSI color codes appearing in test results
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:22:34Z'
+edited_at: '2021-01-12T01:45:10Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
@@ -28,4 +29,4 @@ label_names:
   - test output
   - output error
   - rspec
-body: "<p>\_</p>\n<p>次のイメージのように、余計な文字があるためテスト結果が読み取りにくい場合、XML reporter にシェル用の <a href=\"https://misc.flogisoft.com/bash/tip_colors_and_formatting\">ASCII カラーコード</a>情報が含まれている可能性があります。</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360003598714/mceclip0.png\"></p>\n<p>\_</p>\n<p>テストは、監視を目的としていない CI 環境で実行されるため、優先のテスト実行プログラムで、すべてのカラー情報を無効にしても問題ありません。<br><br><a href=\"https://relishapp.com/rspec/rspec-core/v/2-14/docs/formatters/configurable-colors\">Rspec のカラー出力を無効にする方法</a></p>"
+body: "<p>\_</p><p>If you discover your\_test results are difficult to read due to extraneous\_characters such as the image below, your XML reporter may be including<a href=\"https://misc.flogisoft.com/bash/tip_colors_and_formatting\"> ASCII color code</a> information that is intended for use by the shell.\_</p><p><img src=\"https://support.circleci.com/hc/article_attachments/360003598714/mceclip0.png\"></p><p>\_</p><p>Because your tests are run in a CI environment that is not intended to be monitored, you can safely disable all color information from your preferred test runner.\_<br><br><a href=\"https://relishapp.com/rspec/rspec-core/v/2-14/docs/formatters/configurable-colors\">How to disable color output for Rspec</a></p>"

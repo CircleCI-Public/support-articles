@@ -12,7 +12,7 @@ vote_sum: 0
 vote_count: 4
 section_id: 115003756627
 created_at: '2018-06-20T16:00:05Z'
-updated_at: '2020-10-29T03:35:50Z'
+updated_at: '2021-01-12T01:49:28Z'
 name: Unable to download data from rubygems.org and SSL_connect errors
 title: Unable to download data from rubygems.org and SSL_connect errors
 source_locale: en-us

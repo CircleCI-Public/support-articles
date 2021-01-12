@@ -1,7 +1,7 @@
 id: 360006139753
 url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360006139753.json
 html_url: >-
-  https://support.circleci.com/hc/ja/articles/360006139753-Rubygems-org-error-OpenSSL-SSL-SSLError-SSL-connect-returned-1-errno-0-state-SSLv3-read-server-certificate-B-certificate-verify-failed
+  https://support.circleci.com/hc/ja/articles/360006139753-Unable-to-download-data-from-rubygems-org-and-SSL-connect-errors
 author_id: 25261361207
 comments_disabled: false
 draft: false
@@ -11,18 +11,14 @@ vote_sum: 0
 vote_count: 4
 section_id: 115003756627
 created_at: '2018-06-20T16:00:05Z'
-updated_at: '2020-10-29T03:35:50Z'
-name: >-
-  Rubygems.org error OpenSSL::SSL::SSLError: SSL_connect returned=1 errno=0
-  state=SSLv3 read server certificate B: certificate verify failed
-title: >-
-  Rubygems.org error OpenSSL::SSL::SSLError: SSL_connect returned=1 errno=0
-  state=SSLv3 read server certificate B: certificate verify failed
+updated_at: '2021-01-12T01:49:28Z'
+name: Unable to download data from rubygems.org and SSL_connect errors
+title: Unable to download data from rubygems.org and SSL_connect errors
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:15:37Z'
+edited_at: '2021-01-12T01:49:28Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
@@ -30,4 +26,4 @@ label_names:
   - ssl
   - gems
   - rubygems
-body: "<p>Ruby gem をインストールするとき、次のエラーが発生することがあります。</p>\n<pre><code class=\"bash\">\nOpenSSL::SSL::SSLError: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed\n</code></pre>\n<p>これは、rubygems.org のインフラが更新された結果です。 このエラーの詳細と解決策については、<a href=\"https://guides.rubygems.org/ssl-certificate-update/#installing-using-update-packages\">RubyGems のドキュメントページ</a>を参照してください。</p>\n<p>\_</p>"
+body: "<p>You may encounter the following error when trying to install a Ruby gem:</p><pre><code class=\"bash\">Unable to download data from\_<a href=\"https://rubygems.org/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">https://rubygems.org/</a>\_- SSL_connect returned=1 errno=0 state=</code></pre><p>This is a result of infrastructure updates at rubygems.org. You can find more details and solutions to this error <a href=\"https://guides.rubygems.org/ssl-certificate-update/#installing-using-update-packages\">here on their docs page</a>. \_</p>"

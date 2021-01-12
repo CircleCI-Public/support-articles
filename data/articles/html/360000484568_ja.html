@@ -1,7 +1,1 @@
-<p>Heroku の Github 統合を CircleCI でのデプロイに使用する場合、Workflows で問題が発生することがあります。</p>
-<p><img src="https://support.circleci.com/hc/article_attachments/360000806388/mceclip0.png" width="531" height="454"></p>
-<p>Workflow の各ジョブは、独自のジョブステータスを受け取り、各ジョブの開始および終了時に別々に報告を返します。 Heroku が Github のステータス API を監視する方法の影響で、Workflow の最初のジョブが完了すると同時にデプロイがトリガーされます。</p>
-<p> </p>
-<p>この問題を回避するには、Workflow 内にデプロイステップを作成し、CircleCI から直接デプロイします。 Heroku CLI を使用してデプロイステップを作成できます。また、各種の言語についていくつもの例があります。<br><a href="https://devcenter.heroku.com/articles/deploying-nodejs">https://devcenter.heroku.com/articles/deploying-nodejs</a></p>
-<p> </p>
-<p>Workflow の作成については、次の記事で詳しく解説しています：<a href="https://medium.com/opendoor-labs/continuous-deployment-with-rails-circleci-and-heroku-314635d800c6">https://medium.com/opendoor-labs/continuous-deployment-with-rails-circleci-and-heroku-314635d800c6</a></p>
+<p>You can find code examples on our Orb registry for the  <a href="https://circleci.com/orbs/registry/orb/circleci/heroku" target="_self">CircleCI Heroku Orb </a>to deploy to Heroku with git</p>

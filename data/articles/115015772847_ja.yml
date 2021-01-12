@@ -10,14 +10,14 @@ vote_sum: 0
 vote_count: 0
 section_id: 115003327088
 created_at: '2017-12-17T21:21:34Z'
-updated_at: '2020-11-19T19:39:34Z'
+updated_at: '2021-01-12T01:52:06Z'
 name: 2.0 macOS ビルドでのタイムゾーン設定
 title: 2.0 macOS ビルドでのタイムゾーン設定
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:22:59Z'
+edited_at: '2021-01-12T01:52:06Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
@@ -25,15 +25,11 @@ label_names:
   - timezone
 body: >-
   <p><code>TZ</code> 環境キーを使っても 2.0 macOS ビルドでは機能しません。
-  タイムゾーンを設定するには、構成に次のコマンドを追加する必要があります。</p>
-
-  <pre><code class="hljs bash"> <span class="hljs-comment"># Set Timezone</span>
-   - run:
-   name: <span class="hljs-built_in">set</span> timezone
-   <span class="hljs-built_in">command</span>: |
-   sudo systemsetup -settimezone <span class="hljs-string">"<span class="hljs-variable">$TIMEZONE</span>"</span>
-  </code></pre>
-
-  <p><code>$TIMEZONE</code> を使用するタイムゾーンに置き換えます。
-  サポートされているすべてのタイムゾーンのリストは、<code>sudo systemsetup -listtimezones</code>
-  で確認できます。</p>
+  タイムゾーンを設定するには、構成に次のコマンドを追加する必要があります。</p><pre><code class="hljs bash">     
+  <span class="hljs-comment"># Set Timezone</span>      - run:          name:
+  <span class="hljs-built_in">set</span> timezone          <span
+  class="hljs-built_in">command</span>: |            sudo systemsetup
+  -settimezone <span class="hljs-string">"<span
+  class="hljs-variable">$TIMEZONE</span>"</span></code></pre><p><code>$TIMEZONE</code>
+  を使用するタイムゾーンに置き換えます。 サポートされているすべてのタイムゾーンのリストは、<code>sudo systemsetup
+  -listtimezones</code> で確認できます。</p>

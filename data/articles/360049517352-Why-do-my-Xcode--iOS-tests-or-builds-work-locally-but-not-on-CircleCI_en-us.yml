@@ -12,7 +12,7 @@ vote_sum: 0
 vote_count: 0
 section_id: 115003327088
 created_at: '2020-09-22T03:04:58Z'
-updated_at: '2020-10-22T06:56:21Z'
+updated_at: '2021-01-12T01:51:19Z'
 name: Why do my Xcode / iOS tests or builds work locally, but not on CircleCI?
 title: Why do my Xcode / iOS tests or builds work locally, but not on CircleCI?
 source_locale: en-us

@@ -12,7 +12,7 @@ vote_sum: -6
 vote_count: 22
 section_id: 115003755807
 created_at: '2019-03-04T08:31:23Z'
-updated_at: '2020-12-22T02:18:27Z'
+updated_at: '2021-01-12T01:49:45Z'
 name: Build a Docker image in one job and use it in another job
 title: Build a Docker image in one job and use it in another job
 source_locale: en-us

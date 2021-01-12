@@ -12,7 +12,7 @@ vote_sum: 3
 vote_count: 5
 section_id: 115003327188
 created_at: '2020-03-25T00:44:43Z'
-updated_at: '2020-09-25T06:48:33Z'
+updated_at: '2021-01-12T01:50:03Z'
 name: 'Deploy to Heroku via circleci/heroku Orb fails with "fatal: protocol error"'
 title: 'Deploy to Heroku via circleci/heroku Orb fails with "fatal: protocol error"'
 source_locale: en-us

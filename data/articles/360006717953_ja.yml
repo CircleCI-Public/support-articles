@@ -1,6 +1,7 @@
 id: 360006717953
 url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360006717953.json
-html_url: https://support.circleci.com/hc/ja/articles/360006717953
+html_url: >-
+  https://support.circleci.com/hc/ja/articles/360006717953-Storing-Secret-Files-certs-etc-
 author_id: 25261361207
 comments_disabled: true
 draft: false
@@ -10,14 +11,14 @@ vote_sum: 16
 vote_count: 54
 section_id: 115003580328
 created_at: '2018-07-06T19:32:24Z'
-updated_at: '2021-01-05T20:22:12Z'
-name: シークレットファイル (certs など) の保存
-title: シークレットファイル (certs など) の保存
+updated_at: '2021-01-12T01:42:50Z'
+name: Storing Secret Files (certs, etc.)
+title: Storing Secret Files (certs, etc.)
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:15:33Z'
+edited_at: '2021-01-12T01:42:50Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
@@ -26,9 +27,7 @@ label_names:
   - variable
   - Contexts
 body: >-
-  <p>現時点で、CircleCI がサポートしているシークレット保存オプションはほとんどありません。</p>
-
-  <ul>
+  <p>現時点で、CircleCI がサポートしているシークレット保存オプションはほとんどありません。</p><ul>
 
   <li>
 
@@ -44,4 +43,5 @@ body: >-
   rel="nofollow">HashiCorp の Vault</a> など) を使用できます。また、CircleCI ジョブで使用できる、ヘッドレス
   CLI アクセス可能なオプション (Vault で使用) を選択できるソリューションも使用できます。</li>
 
-  </ul>
+  </ul><p>特定のユースケースに関するその他の質問や提案については、<a
+  href="mailto:support@circleci.com">support@circleci.com</a> までお問い合わせください</p>

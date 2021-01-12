@@ -1,3 +1,3 @@
-<p>次のエラーが表示される場合</p>
-<p>&gt; レイヤーの登録に失敗しました: tar ファイルの処理中にエラーが発生しました (exit ステータス 1): コンテナ ID ... ホスト ID にマップできません</p>
-<p>Docker イメージに、UID / GID が大きすぎる Linux ユーザーが所有するファイルが含まれているためです。 ユーザー、またはイメージ保守担当者がこのイメージを再ビルドし、より小さな UID / GID のユーザーがこれらのファイルを所有するように変更する必要があります。 詳細については、[こちらのページ] (<a href="https://circleci.com/docs/2.0/high-uid-error/" target="_blank" rel="noopener">https://circleci.com/docs/2.0/high-uid-error/</a>) を参照してください。</p>
+<p>You're seeing the error:</p>
+<p>&gt; failed to register layer: Error processing tar file(exit status 1): Container ID ... cannot be mapped to a host ID</p>
+<p>Because that Docker image has one or more files owned by a Linux user with too high a UID/GID. You or the image maintainer will have to rebuild this image and ensure a user with a lower UID/GID owns those files. You can find more information [on this page in our docs](<a href="https://circleci.com/docs/2.0/high-uid-error/" target="_blank" rel="noopener">https://circleci.com/docs/2.0/high-uid-error/</a>)</p>

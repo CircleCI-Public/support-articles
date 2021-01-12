@@ -10,40 +10,16 @@ vote_sum: 2
 vote_count: 4
 section_id: 360000059327
 created_at: '2018-07-19T18:13:49Z'
-updated_at: '2020-10-22T06:57:46Z'
-name: クロックのずれの修正
-title: クロックのずれの修正
+updated_at: '2021-01-12T01:52:25Z'
+name: クロックの変動の修正
+title: クロックの変動の修正
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-14T02:00:35Z'
+edited_at: '2021-01-12T01:52:25Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
   - server
-body: >-
-  <p>ユーザーがホストしている CircleCI
-  インストールのインスタンスでクロックのずれが発生すると、健全性チェックの失敗からジョブの失敗まで、広範な問題を引き起こす可能性があります。</p>
-
-  <p>一般に、エラーメッセージは証明書が "有効化されていない"
-  ことに関する内容を表示します。またジョブの場合は、異常なログが表示されることがあります。例: "finished five minutes from
-  now"</p>
-
-  <p>インスタンス間でクロックを再同期する方法を以下に示します。</p>
-
-  <ol>
-
-  <li>Services ボックスに SSH で接続します</li>
-
-  <li>インストールを完了していない場合は、<a href="http://ntp.org/">ntp</a> をインストールします：<code>sudo
-  apt-get install ntp</code>
-
-  </li>
-
-  <li>ntp を再起動します (root として実行することが必要な場合があります)：<code>service ntp stop; ntpdate -s
-  time.nist.gov; service ntp start</code>
-
-  </li>
-
-  </ol>
+body: "<p>ユーザーがホストしている CircleCI インストールのインスタンスでクロックの変動が発生すると、ヘルスチェックの失敗からジョブの失敗まで、広範な問題を引き起こす可能性があります。 次のような AWS の認証情報エラーが発生する場合もあります。</p><pre dir=\"ltr\"><code>2020-08-05T15:42:43.461439671Z Caused by: com.amazonaws.services.ec2.model.AmazonEC2Exception: AWS was not able to validate the provided access credentials (Service: AmazonEC2; Status Code: 401; Error Code: AuthFailure; Request ID</code></pre><p>\_</p><p>一般に、エラーメッセージは証明書が \"有効化されていない\" ことに関する内容を表示します。またジョブの場合は、異常な実行時に表示されます ( \"今から 5 分後に完了します\" )。</p><p>インスタンス間でクロックを再同期する方法を以下に示します。</p><ol>\n<li>Services ボックスに SSH で接続します</li>\n<li>インストールを完了していない場合は、<a href=\"http://ntp.org/\">ntp</a> をインストールします：<code>sudo apt-get install ntp</code>\n</li>\n<li>ntp を再起動します。 root として実行することが必要な場合があります。<br><code>service ntp stop<br>ntpdate -s time.nist.gov<br>service ntp start</code>\n</li>\n</ol>"

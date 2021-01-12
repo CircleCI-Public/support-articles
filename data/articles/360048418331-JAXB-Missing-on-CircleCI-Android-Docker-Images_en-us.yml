@@ -12,7 +12,7 @@ vote_sum: -1
 vote_count: 1
 section_id: 115003756627
 created_at: '2020-08-20T01:50:37Z'
-updated_at: '2020-11-25T08:05:43Z'
+updated_at: '2021-01-12T01:48:38Z'
 name: JAXB Missing on CircleCI Android Docker Images
 title: JAXB Missing on CircleCI Android Docker Images
 source_locale: en-us

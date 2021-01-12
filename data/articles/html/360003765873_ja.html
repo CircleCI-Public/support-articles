@@ -1,4 +1,2 @@
-<p>CircleCI のプライベートインストールからユーザーの削除が必要な場合があります。 この操作を行なうには、サービスインスタンスに SSH で接続し、次のコマンドを実行します。</p>
-<pre><code>circleci dev-console
-(circle.http.api.admin-commands.user/delete-by-login-vcs-type! "github-username-of-user" :github)
-</code></pre>
+<p>CircleCI の非公開インストールからユーザーの削除が必要な場合があります。 この操作を行なうには、サービスインスタンスに SSH で接続し、次のコマンドを実行します。</p>
+<pre><code>circleci dev-console(circle.http.api.admin-commands.user/delete-by-login-vcs-type! "github-username-of-user" :github)</code></pre>

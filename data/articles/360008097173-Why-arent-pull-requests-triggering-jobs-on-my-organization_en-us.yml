@@ -12,7 +12,7 @@ vote_sum: -6
 vote_count: 30
 section_id: 115003756627
 created_at: '2018-08-14T15:31:50Z'
-updated_at: '2020-11-18T14:09:33Z'
+updated_at: '2021-01-12T01:47:10Z'
 name: Why aren't pull requests triggering jobs on my organization?
 title: Why aren't pull requests triggering jobs on my organization?
 source_locale: en-us

@@ -1,33 +1,16 @@
-<p>並列コンテナ間にテストを分割すると、予期しない動作が発生する場合があります。これには多くの理由が存在します。 <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/">テストの並列実行</a>の内容を十分に確認してください。</p>
-<p> </p>
-<p><strong>アーティファクトの保存</strong></p>
-<p><em><a href="https://circleci.com/docs/2.0/configuration-reference/#store_test_results">store_test_results</a></em> ステップは、テストのタイミングが保存されたことを保証するものですが、これでデバッグが簡単になるわけではありません。 <em><a href="https://circleci.com/docs/2.0/configuration-reference/#store_test_results">store_artifacts</a></em> を使用してテストをアップロードし、実行されるテストの数を視覚的に確認できます。</p>
-<p> </p>
-<p><strong>テスト結果のエコー</strong></p>
-<p>アーティファクトの保存と同様に、クリーンなテスト分割コマンドを実装し、テストデータをエコー出力する方法の例を、以下に示します。</p>
-<p><code>
-        TESTFILES=$(circleci tests glob "test/**_test.rb" | circleci tests split --split-by=timings) <br>
-        echo ${TESTFILES}<br>
-        # bundle exec rake knapsack_pro:minitest<br>
-        bundle exec rspec --format progress \<br>
-        --format RspecJunitFormatter \<br>
-        -o test/reports/rspec.xml \<br>
-        -- ${TESTFILES}<br>
-    </code></p>
-<p><a href="https://discuss.circleci.com/search?q=testfiles%3D%20category%3A48"><span class="wysiwyg-font-size-small">Discuss の例: https://discuss.circleci.com/search?q=testfiles%3D%20category%3A48</span></a></p>
-<p> </p>
-<p><strong>最も速度の遅いテストの検出</strong></p>
-<p>RSpec など一部のテストライブラリは、"最も速度の遅いテスト" を報告します。</p>
-<p><img src="https://support.circleci.com/hc/article_attachments/360000581627/mceclip0.png" width="216" height="103"></p>
-<p>これらのテストを精査し、他のテストファイルと比較して長い時間を要するかどうかを確認することで、テストをより小さく、またはより効率的に行なえるようになります。</p>
-<p> </p>
-<p><strong>並列処理の変更</strong></p>
-<p>テストの作成方法によっては、並列処理の量を変更することでテストに大きな影響を与えることがあります。 また、繰り返し問題を引き起こしているテストはどれかを識別するためにも役立つことがあります。</p>
-<p><br><br><strong>タイミングの再同期</strong></p>
-<p>タイミングデータは、"グリーン" ビルドが成功したときに保存されます。 これらの結果はその後で、以前の数ビルドにわたって分析され、将来の分割のため使用されます。 これらの結果が偏っている、または他の理由で不正確な場合、問題を修正した後でも、ビルドのタイミングに影響を及ぼします。 問題が解決すると、以後の数ビルドにわたってタイミングデータが正規化され、予測される結果が得られるようになります。 この点を考慮し、数回のコミットをプッシュしてシステムをフラッシュします。 必要な場合、<em>$CIRCLE_INTERNAL_TASK_DATA/circle-test-results</em> でタイミングデータを確認できます。</p>
-<p> </p>
-<p><strong>可変長のテスト</strong></p>
-<p>テストが 1 つの場合もスイートの場合もあるので、完了時間は目的や他の多くの理由から大幅に異なります。 これは、UI または単体テストにおいて一般的です。 テストごとにタイミングが異なる場合、CircleCI の分割システムは有効なタイミングデータを判定できません。</p>
-<p> </p>
-<h2><strong>分散ライブラリの検討</strong></h2>
-<p>https://circleci.com/docs/2.0/parallelism-faster-jobs/#balancing-libraries</p>
+<p>There are a number of reasons why test splitting across parallel containers may be behaving unexpectedly. Our documentation on <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/">running tests in parallel</a> has a wealth of information to help you, too.<br><br></p>
+<h3><strong>Save Artifacts</strong></h3>
+<p>The <code><a href="https://circleci.com/docs/2.0/configuration-reference/#store_test_results">store_test_results</a></code> step will ensure test timings are saved, but it doesn't allow for easy debugging. You may also want to upload your tests via <code><a href="https://circleci.com/docs/2.0/configuration-reference/#store_test_results">store_artifacts</a></code> to visually verify the number of tests being run.<br><br></p>
+<h3><strong>Echo Test Results</strong></h3>
+<p>Similar to saving artifacts, here is an example of how you can implement a clean test split command and also echo out the test data.</p>
+<p><code>TESTFILES=$(circleci tests glob "test/**_test.rb" | circleci tests split --split-by=timings) <br>echo ${TESTFILES}<br># bundle exec rake knapsack_pro:minitest<br>bundle exec rspec --format progress \<br> --format RspecJunitFormatter \<br> -o test/reports/rspec.xml \<br> -- ${TESTFILES}<br></code></p>
+<p>You can find a few examples on <a href="https://discuss.circleci.com/search?q=testfiles%3D%20category%3A48" target="_blank" rel="noopener">our community forum<br><br></a></p>
+<h3><strong>Vary Your Parallelism</strong></h3>
+<p>Different amounts of parallelism may have a great effect on your tests, depending on the way they are written. It may also help you identify particular tests that are causing problems repeatedly.<br><br></p>
+<h3><strong>Timing data</strong></h3>
+<p>Timing data will be saved upon a successful "green" build. When builds start, we automatically pick the latest job's test results in the same branch jobs. If there is no data in the same branch, we select the latest job's test results in the same project's jobs. You can see which job's test results we picked in the Spin up environment step.</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360067322751/Screen_Shot_2020-09-01_at_17.32.12.png" alt="Screen_Shot_2020-09-01_at_17.32.12.png"><br><br>You can also view your timing data in <em>$CIRCLE_INTERNAL_TASK_DATA/circle-test-results </em>if you need to.</p>
+<h3><strong><br>Variable Length Tests</strong></h3>
+<p>You may have a test or suite of tests that will vary greatly in their completion time, either on purpose, or for a number of other reasons. This is common with UI or Unit Testing.<br>If your test timing varies with every test, the CircleCI splitting system will never be able to determine valid timing data.<br><br></p>
+<h3><strong>Consider Other Ways to Split Tests</strong></h3>
+<p>Our documentation has more information about splitting tests. You can find it <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/#other-ways-to-split-tests" target="_blank" rel="noopener">here</a></p>

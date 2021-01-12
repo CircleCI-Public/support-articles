@@ -12,7 +12,7 @@ vote_sum: -1
 vote_count: 1
 section_id: 115003755888
 created_at: '2020-09-17T15:43:21Z'
-updated_at: '2020-10-20T18:17:08Z'
+updated_at: '2021-01-12T01:46:16Z'
 name: Trigger pipelines on forked pull requests with the API
 title: Trigger pipelines on forked pull requests with the API
 source_locale: en-us

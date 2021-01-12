@@ -10,22 +10,16 @@ vote_sum: -6
 vote_count: 30
 section_id: 115003756627
 created_at: '2018-08-14T15:31:50Z'
-updated_at: '2020-11-18T14:09:33Z'
+updated_at: '2021-01-12T01:47:10Z'
 name: プルリクエストによりジョブが組織アカウントでトリガーされない理由
 title: プルリクエストによりジョブが組織アカウントでトリガーされない理由
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:15:16Z'
+edited_at: '2021-01-12T01:47:10Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
   - pull request
-body: >-
-  <p>場合によってはフォークからリポジトリへプルリクエストを発行した際に、リポジトリのアカウントでジョブが実行されないことがあります。
-  これが発生するのは、ユーザーが CircleCI のプロジェクトではなく、自分の個人用アカウントのプロジェクトフォークをフォローしている場合です。
-  これによりジョブはそのユーザーの個人用アカウントでトリガーされます。</p>
-
-  <p>このような場合、そのユーザーに個人用フォークからフォローを解除してもらい、代わりにソースプロジェクトをフォローしてもらいます。
-  これにより、プルリクエストを発行した際に、組織アカウントでジョブの実行がトリガーされるようになります。</p>
+body: "<p>Sometimes you'll have a user who submits a pull request to your repository from a fork, but no pipeline will be triggered with the pull request. This can happen when the user is following the project fork on their personal account rather than the project itself on CircleCI.</p><p>This will cause the jobs to trigger under the user's personal account. If the user is following a fork of the repository on CircleCI, we will only build on that fork and not the parent, so the parent’s PR will not get status updates.\_</p><p>In these cases have the user unfollow their fork of the project on CircleCI and follow the source project instead. This will trigger their jobs to run under the organization when they submit pull requests.</p><p>Note: This feature is not currently supported for BitBucket users.</p>"

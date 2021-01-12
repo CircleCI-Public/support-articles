@@ -10,21 +10,25 @@ vote_sum: -29
 vote_count: 47
 section_id: 115004127248
 created_at: '2018-05-16T08:25:57Z'
-updated_at: '2020-12-19T21:36:31Z'
-name: Workflow のステータスチェックが、ci/circleci — Waiting for status to be reported のまま終了しない
-title: Workflow のステータスチェックが、ci/circleci — Waiting for status to be reported のまま終了しない
+updated_at: '2021-01-12T01:47:20Z'
+name: ワークフローのステータスチェックが、"ci/circleci — Waiting for status to be reported" のまま終了しない
+title: ワークフローのステータスチェックが、"ci/circleci — Waiting for status to be reported" のまま終了しない
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:15:47Z'
+edited_at: '2021-01-12T01:47:20Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
   - status
   - checks
 body: >-
-  <p>ステータスチェックが完了しない問題を解決するには、こちらの公式ドキュメント<br><br><a
+  <p>Githubでブランチプロテクションを設定する際、「ci/circleci」ステータスチェックをアンチェックしてください。こちらのステータスチェックはステータスを更新しません。
+  ブランチプロテクション設定ページで以下のように設定できます。</p><p><img
+  src="https://circleci.com/docs/assets/img/docs/github_branches_status.png"
+  alt="Uncheck GitHub Status
+  Keys"></p><p><br>ステータスチェックが完了しない問題を解決するには、こちらの公式ドキュメント<br><a
   href="https://circleci.com/docs/2.0/workflows-waiting-status/" target="_blank"
-  rel="noopener">https://circleci.com/docs/2.0/workflows-waiting-status/</a>
-  の内容を試してください。</p>
+  rel="noopener"></a>https://circleci.com/docs/2.0/workflows-waiting-status/
+  を参照してください</p>

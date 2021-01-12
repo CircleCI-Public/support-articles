@@ -12,7 +12,7 @@ vote_sum: 2
 vote_count: 8
 section_id: 115003756627
 created_at: '2020-08-17T18:14:08Z'
-updated_at: '2020-10-27T08:36:58Z'
+updated_at: '2021-01-12T01:47:04Z'
 name: Java Builds Fail With `Unrecognized VM option 'UseCGroupMemoryLimitForHeap'`
 title: Java Builds Fail With `Unrecognized VM option 'UseCGroupMemoryLimitForHeap'`
 source_locale: en-us

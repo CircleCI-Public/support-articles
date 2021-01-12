@@ -12,7 +12,7 @@ vote_sum: -5
 vote_count: 5
 section_id: 115003327088
 created_at: '2020-08-07T08:52:36Z'
-updated_at: '2020-12-09T10:26:19Z'
+updated_at: '2021-01-12T01:51:09Z'
 name: >-
   "Gem::Ext::BuildError: ERROR: Failed to build gem native extension" on Xcode
   12 images
