@@ -12,7 +12,7 @@ vote_sum: -1
 vote_count: 1
 section_id: 115003756627
 created_at: '2020-10-21T00:18:55Z'
-updated_at: '2020-11-11T10:08:03Z'
+updated_at: '2021-01-12T01:44:46Z'
 name: >-
   Debug Ruby RSpec Too long with no output (exceeded 10m0s): context deadline
   exceeded 

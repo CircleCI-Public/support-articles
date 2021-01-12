@@ -1,12 +1,11 @@
 <p><a href="https://circleci.com/docs/2.0/workflows/">Workflow</a> を使用し、キャッシュの保存と<a href="https://circleci.com/docs/2.0/caching/#restoring-cache">復元</a>や<a href="https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs"> Workspace の恒久化</a>を行なう場合、ユーザーとディレクトリが関係することに留意してください。 <a href="https://circleci.com/docs/2.0/circleci-images/">CircleCI のビルド済み Docker イメージ</a>を使用する場合、各 Docker コンテナは同じユーザーで、同じベースアクセス許可を使用して実行されます。 1 つのイメージを使用するジョブにキャッシュを保存し、別のジョブに復元する場合、アクセス許可が互換であることを確認してください。</p>
-<p> </p>
-<p>キャッシュの復元時に "<span class="pre"><strong>Permission Denied</strong>" というエラーが表示される場合、以前のジョブで保存した場所を確認します。 この一般的な状況は、イメージをルートユーザーとして使用し、キャッシュを保存してから、ルートアクセス許可のないユーザーが、以後のジョブにそのキャッシュの復元を試みたときです。<br><br>また、同じエラーによって、恒久化された Workspace のファイルも、アクセス許可が正しく設定されていなければ消失します。<br><br></span></p>
+<p>キャッシュの復元時に "<span class="pre"><strong>Permission denied</strong>" というエラーが表示される場合、以前のジョブで保存した場所を確認します。 よくあるのは、イメージをrootユーザーとして使用し、キャッシュを保存してから、rootアクセス許可のないユーザーが、以後のジョブにそのキャッシュの復元を試みたときです。<br><br>また、アクセス許可が正しく設定されていなければ、同じエラーによって Workspace のファイルも恒久化されない場合があります。<br><br></span></p>
 <p><span class="pre"><img src="https://support.circleci.com/hc/article_attachments/360005107713/Untitled.png" alt="Untitled.png" width="700" height="348"></span></p>
 <p> </p>
-<p><span class="pre">この `キャッシュ復元` のステップでは、元のイメージはルートとして実行されており、作業ディレクトリが `<em>~/</em>tmp` に設定されていたため、キャッシュが元は `<em>/root/</em>tmp` に保存されたことが分かります。 Workflow のこの部分は、CircleCI ユーザー下で実行され、`/root` フォルダーにアクセスできません。</span></p>
-<p> </p>
+<p><span class="pre">この `キャッシュ復元` のステップでは、元のイメージはrootとして実行されており、作業ディレクトリが `<em>~/</em>tmp` に設定されていたため、キャッシュが元は `<em>/root/</em>tmp` に保存されたことが分かります。 Workflow のこの部分は、CircleCI ユーザー下で実行され、`/root` フォルダーにアクセスできません。</span></p>
 <p><span class="pre">可能なら、複数のジョブ間で同じイメージを使用してください。 それが難しい場合は、2 つのイメージ間で共通の場所に作業ディレクトリを設定してください (`/tmp` が使用できることがあります)。 また、キャッシュを保存する前に、ファイルのアクセス許可を変更または設定する必要があります。 </span></p>
-<p><span class="pre">例：`<em>chmod -R 777 ./workingDirectory</em>` を使用して、これらのファイルに対する完全な読み取り/書き込みアクセス権を付与します。<br></span></p>
-<p> </p>
+<p><span class="pre">例：`<em>chmod -R 777 ./workingDirectory</em>` を使用して、これらのファイルに対する完全な読み取り/書き込みアクセス権を付与します。</span></p>
 <p>ベストな方法は、ジョブ間で共通のイメージを使用することです。 CircleCI で提供しているビルド済み Docker イメージに、プロジェクトに必要な要素が欠けている場合、<a href="https://circleci.com/docs/2.0/custom-images/">CircleCI 製イメージの 1 つをカスタマイズする</a>ことを検討してください。</p>
-<p> </p>
+<h2>OSアーキテクチャによるアクセス権限問題</h2>
+<p>ある環境で生成されたキャッシュは異なるアーキテクチャの環境で復元された場合、アクセスできなくなる問題があります。 キャッシュキーに {arch} を追加することで、この問題を回避することができます。 アーキテクチャによって違うキャッシュを使用するようにします。</p>
+<pre>- restore_cache: <br>    key: '-v1-node-cache-{{ checksum "yarn.lock" }}-{{ arch}}' <br>- run: name: Install App command: yarn <br>- save_cache: <br>    key: '-v1-node-cache-{{ checksum "yarn.lock" }}-{{ arch }}' <br>    paths: <br>      - node_modules</pre>

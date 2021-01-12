@@ -1,4 +1,4 @@
-<p>ビルドにより、スクリーンショット、カバー率レポート、コアファイル、デプロイ用 tarballs などの永続的なアーティファクトが生成される場合、CircleCI はそれらのアーティファクトを自動的に保存し、リンクできます。 これらは、[Artifacts] タブに表示されます。</p>
+<p>ビルドにより、スクリーンショット、カバー率レポート、コアファイル、デプロイ用 tarballs などの永続的なアーティファクトが生成される場合、それらのアーティファクトをダウンロードするリンクを利用できます。 これらは、[Artifacts] タブに表示されます。</p>
 <p><img src="https://support.circleci.com/hc/article_attachments/115024993348/mceclip0.png"></p>
 <p>アーティファクトの使用法についてのドキュメントは、<a href="https://circleci.com/docs/2.0/artifacts/" target="_blank" rel="noopener">https://circleci.com/docs/2.0/artifacts/</a> にあります。</p>
-<p>アーティファクトの使用に関して CircleCI は保存期間のお約束していません。 ドキュメントや永続的なコンテンツのソースとして、これらのアーティファクトが必要な場合、専用の出力ターゲットに出力をデプロイすることをおすすめします。 GitHub ページや Netlify (<a href="https://www.netlify.com/" rel="noreferrer">https://www.netlify.com/</a>) などを使用して静的なサイトをホストすると、CircleCI の S3 ストアからアーティファクトをグラブしなくても、信頼性を高めることができます。</p>
+<p>アーティファクトは 30 日間利用可能です。 ドキュメント/永続的なコンテンツのソースとしてアーティファクトを利用している場合、静的な Web サイトの場合は <a href="https://pages.github.com/" target="_self">GitHub Pages</a> または <a href="https://www.netlify.com/" target="_self">Netlify</a> などの専用の出力先にアーティファクトをデプロイすることをお勧めします。</p>

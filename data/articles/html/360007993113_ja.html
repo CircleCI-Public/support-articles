@@ -1,8 +1,7 @@
-<p>インストールしたインスタンスで 停止 / 起動しない、アップグレードが失敗するなどの問題の多くは、Replicated サービスを再起動することで解決できます。</p>
+<p>インストールに関する、停止 / 起動しない、アップグレードが失敗するなどの問題の多くは、Replicated サービスを再起動することで解決できます。</p>
 <ol>
     <li>Services マシンに SSH で接続します。</li>
-    <li>次のコマンドを実行します。</li>
+    <li>以下を実行します。</li>
 </ol>
 <pre><code>$ sudo service replicated restart<br>$ sudo service replicated-operator restart<br>$ sudo service replicated-ui restart</code></pre>
-<p> </p>
 <p>これによって管理コンソールが更新されますが、エンドユーザーが実行中のジョブは影響を受けません。</p>

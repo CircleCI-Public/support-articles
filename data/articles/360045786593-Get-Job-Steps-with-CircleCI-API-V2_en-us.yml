@@ -12,7 +12,7 @@ vote_sum: -1
 vote_count: 1
 section_id: 115003755888
 created_at: '2020-03-27T18:42:40Z'
-updated_at: '2020-09-03T22:05:24Z'
+updated_at: '2021-01-12T01:42:38Z'
 name: Get Job Steps with CircleCI API V2
 title: Get Job Steps with CircleCI API V2
 source_locale: en-us

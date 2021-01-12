@@ -12,7 +12,7 @@ vote_sum: 0
 vote_count: 6
 section_id: 115003756627
 created_at: '2020-06-12T10:43:07Z'
-updated_at: '2020-12-10T23:34:18Z'
+updated_at: '2021-01-12T01:49:48Z'
 name: 'Resolving "E: Failed to fetch http://...../package.deb 404  Not Found" errors'
 title: 'Resolving "E: Failed to fetch http://...../package.deb 404  Not Found" errors'
 source_locale: en-us

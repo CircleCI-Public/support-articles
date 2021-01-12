@@ -1,7 +1,7 @@
 id: 115015754228
 url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115015754228.json
 html_url: >-
-  https://support.circleci.com/hc/ja/articles/115015754228-Java-%E3%83%A1%E3%83%A2%E3%83%AA%E3%81%AE%E5%95%8F%E9%A1%8C-Gradle-Maven-Kotlin-Lein-Elasticsearch-
+  https://support.circleci.com/hc/ja/articles/115015754228-Java-memory-issues-Gradle-Maven-Kotlin-Lein-Elasticsearch-
 author_id: 25261361207
 comments_disabled: true
 draft: false
@@ -11,14 +11,14 @@ vote_sum: -2
 vote_count: 2
 section_id: 115003332187
 created_at: '2017-12-08T13:29:53Z'
-updated_at: '2020-11-09T17:56:19Z'
-name: Java メモリの問題 (Gradle、Maven、Kotlin、Lein、Elasticsearch)
-title: Java メモリの問題 (Gradle、Maven、Kotlin、Lein、Elasticsearch)
+updated_at: '2021-01-12T01:51:46Z'
+name: Java memory issues (Gradle, Maven, Kotlin, Lein, Elasticsearch)
+title: Java memory issues (Gradle, Maven, Kotlin, Lein, Elasticsearch)
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:23:05Z'
+edited_at: '2021-01-12T01:51:46Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
@@ -28,4 +28,4 @@ label_names:
   - java
   - OOM
   - gradle
-body: "<p>Java は、多くのメモリを使用する傾向があります。 このために、リソースが限られているジョブの中でメモリ不足 (oom) の問題が発生することがあります。 次のブログ投稿は、Gradle、Maven、Kotlin、Lein のどれを使用している場合でも、ジョブ内での Java のメモリ使用を管理するためのガイドとして役立ちます。</p>\n<p><a href=\"https://circleci.com/blog/how-to-handle-java-oom-errors/\" target=\"_blank\" rel=\"noopener\">https://circleci.com/blog/how-to-handle-java-oom-errors/</a></p>\n<p>\_</p>\n<p>また、CI 内で Andriod ビルドを行なうとき、<a href=\"https://www.littlerobots.nl/blog/disable-android-pre-dexing-on-ci-builds/\">pre-dexing を無効にする</a>ことも検討してください。</p>"
+body: "<p>Java tends to use a lot of memory. This can cause out-of-memory (OOM) issues inside your jobs with limited resources. We recommend specifying a maximum memory allocation to avoid this error. You can also consider configuring your <a href=\"https://circleci.com/product/features/resource-classes/?utm_medium=SEM&amp;utm_source=gnb&amp;utm_campaign=SEM-gb-DSA-Eng-ni&amp;utm_content=&amp;utm_term=dynamicSearch-&amp;gclid=EAIaIQobChMItdzttOLF6QIVF47ICh0LSgGtEAAYASAAEgLow_D_BwE\" target=\"_self\">memory-intensive jobs to run in a larger resource class</a>.</p><p>There are a variety of different environment variables you can set to manage memory usage,\_whether\_you're using Gradle, Maven, Kotlin, or Lein.</p><p>The blog post below can be helpful to guide you in controlling the memory usage of java, depending on the framework that you are using:</p><p><a href=\"https://circleci.com/blog/how-to-handle-java-oom-errors/\" target=\"_blank\" rel=\"noopener\">https://circleci.com/blog/how-to-handle-java-oom-errors/</a></p><p>Also, consider <a href=\"https://www.littlerobots.nl/blog/disable-android-pre-dexing-on-ci-builds/\">disabling pre-dexing</a>\_for your Android builds while in CI</p>"

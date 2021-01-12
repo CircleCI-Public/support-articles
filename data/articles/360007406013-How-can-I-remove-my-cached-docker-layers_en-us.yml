@@ -12,7 +12,7 @@ vote_sum: -6
 vote_count: 48
 section_id: 115003756627
 created_at: '2018-07-24T13:59:15Z'
-updated_at: '2020-11-24T09:21:37Z'
+updated_at: '2021-01-12T01:45:13Z'
 name: How can I remove my cached docker layers?
 title: How can I remove my cached docker layers?
 source_locale: en-us

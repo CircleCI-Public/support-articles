@@ -12,7 +12,7 @@ vote_sum: -6
 vote_count: 12
 section_id: 115003580328
 created_at: '2019-08-16T20:35:44Z'
-updated_at: '2020-11-19T12:21:42Z'
+updated_at: '2021-01-12T01:49:25Z'
 name: Pull requests not building due to "Only build pull requests" setting
 title: Pull requests not building due to "Only build pull requests" setting
 source_locale: en-us

@@ -1,6 +1,7 @@
 id: 360007178074
 url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360007178074.json
-html_url: https://support.circleci.com/hc/ja/articles/360007178074
+html_url: >-
+  https://support.circleci.com/hc/ja/articles/360007178074-Why-isn-t-my-glob-pattern-recursing-all-folders-
 author_id: 25261361207
 comments_disabled: false
 draft: false
@@ -10,16 +11,16 @@ vote_sum: 2
 vote_count: 6
 section_id: 115003756627
 created_at: '2018-07-19T10:54:05Z'
-updated_at: '2021-01-02T05:18:27Z'
-name: glob パターンがすべてのフォルダーに再帰されない理由
-title: glob パターンがすべてのフォルダーに再帰されない理由
+updated_at: '2021-01-12T01:45:17Z'
+name: Why isn't my glob pattern recursing all folders?
+title: Why isn't my glob pattern recursing all folders?
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-14T01:14:18Z'
+edited_at: '2021-01-12T01:45:17Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
   - bash
-body: "<p>\_</p>\n<p>これは多くの理由から発生する可能性がありますが、最も一般的な理由の1つは、bash 構成オプションの関係で globbing パターンがすべてのフォルダーに再帰していることを見逃した場合です。 このオプションは <strong>globstar</strong> と呼ばれます。bash v4 またはそれ以降を使用している場合、<strong><code>shopt -s</code><code> globstar</code></strong><code></code> でオプションをオンに、<strong>shopt -u globstar</strong> でオフにできます。 再帰的 glob パターン <strong>**</strong> を使用してサブフォルダーへの再帰を行うには、<strong>globstar がオンになっている必要があります。</strong></p>\n<p><code>場合によっては globstar がデフォルトでオフになっているので、オンにする必要があります。</code></p>\n<p><code>関連情報<br><iframe src=\"//www.youtube-nocookie.com/embed/fq-on5AUinE\" width=\"560\" height=\"315\" frameborder=\"0\" allowfullscreen=\"\"></iframe></code></p>\n<p><code></code></p>"
+body: "<p>\_</p><p>This could be caused by various things, but one of the most common reasons that you might not see your globbing pattern recurse all folders is due to a bash configuration option. The relevant option is called <strong>globstar.\_</strong>Sometimes globstar will be turned off by default and it needs to be turned on.\_If you'd like the recursive glob pattern ** to recurse subfolders then<strong> globstar should be turned on.</strong></p><p>If you're using bash v4 or higher you can turn it on with\_<strong><code>shopt -s globstar</code></strong>. Please note that this will have to be set at the start of every step, as each step runs in a separate subshell.</p><p>If you would not like this glob pattern to recurse across folders, turn this option off with <strong><code>shopt -u globstar</code></strong>.\_</p><p>Further Watching:<br> <iframe src=\"//www.youtube-nocookie.com/embed/fq-on5AUinE\" width=\"560\" height=\"315\" frameborder=\"0\" allowfullscreen=\"\"></iframe></p><p><code></code></p>"

@@ -1,11 +1,13 @@
-<p>Docker のバージョンは、構成されているビルド環境によって異なる可能性があります。 また、一部の環境では、使用する Docker のバージョンを手動で構成できます。</p>
-<p>CircleCI のイメージの保守および更新ポリシーの詳細については、<a href="https://circleci.com/blog/official-image-maintenance/" target="_blank" rel="noopener">こちらのブログ</a>を参照してください。 以下に示す以外の Docker バージョンが必要な場合は、<a href="https://discuss.circleci.com/c/feature-requests" target="_blank" rel="noopener">公式コミュニティ</a>から機能追加をリクエストしてください。</p>
-<h2>CircleCI 2.0</h2>
-<p><code>docker</code> executor と <code>setup_remote_docker</code> 構成を使用すると、実行中のコンテナから Docker コマンドを使うことができます。 <code>setup_remote_docker</code> が別のバージョンを使用するよう設定できます。 <a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version" target="_blank" rel="noopener">使用可能なバージョンについては、こちらからドキュメントページを確認してください</a>。</p>
-<p><code>machine</code> executor を使用する場合は、使用可能な Docker バージョンは、どのイメージを使用するかによって変わります。 使用可能なイメージと、それらに含まれている Docker のバージョンについては、<a href="https://circleci.com/docs/2.0/configuration-reference/#machine" target="_blank" rel="noopener">こちらのドキュメントページ</a>を参照してください。</p>
-<h2>CircleCI 1.0</h2>
-<p><strong>注：</strong>CircleCI 1.0 での Docker のサポートは限定されています。 ビルドに Docker を使用する場合は、CircleCI 2.0 の使用をおすすめします。</p>
-<p><a href="https://circleci.com/docs/1.0/build-image-trusty/#docker" target="_blank" rel="noopener">Ubuntu 14.04 (Trusty) 用の Docker のバージョン</a></p>
-<p><a href="https://circleci.com/docs/1.0/build-image-precise/#docker" target="_blank" rel="noopener">Ubuntu 12.04 (Precise) 用の Docker のバージョン</a></p>
+<h2 id="docker">Docker Executor</h2>
+<p>Docker versions can be different depending on your configured build environment. Also, in certain environments, you can manually configure which version of Docker to use.</p>
+<h2> </h2>
+<p>When using the <code>docker</code> executor and <code>setup_remote_docker</code> configuration, you are given access to running docker commands from within your container.</p>
+<p>You can configure <code>setup_remote_docker</code> to use a specific version by <span>setting it as a </span><code class="highlighter-rouge">version</code><span> attribute</span>.</p>
+<p>For example:</p>
+<pre><span class="hljs-attr">    - setup_remote_docker:<br></span><span>       </span><span class="hljs-attr"> version:</span><span> </span><span class="hljs-number">18.06</span><span class="hljs-number">.0</span><span>-ce</span></pre>
+<p>Please see our documentation for the <a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version" target="_blank" rel="noopener">list of available versions</a>.</p>
+<h2>Machine Executor</h2>
+<p>When using the <code>machine</code> executor the available docker versions depend on which image you're using. You can see the available images and their included docker versions <a href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images" target="_blank" rel="noopener">on this page</a>.</p>
 <p> </p>
+<p><em><strong>Note</strong>: If you have any docker version needs outside of what is currently available, please open a feature request on our <a href="https://ideas.circleci.com/" target="_blank" rel="noopener">CircleCI Ideas</a> page.</em></p>
 <p> </p>

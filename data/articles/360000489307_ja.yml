@@ -10,14 +10,14 @@ vote_sum: 1
 vote_count: 11
 section_id: 115003580328
 created_at: '2018-02-23T13:16:57Z'
-updated_at: '2020-11-25T01:52:49Z'
+updated_at: '2021-01-12T01:48:20Z'
 name: CircleCI でのテストの実行に、ローカルより長い時間がかかる理由
 title: CircleCI でのテストの実行に、ローカルより長い時間がかかる理由
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-11-13T06:22:38Z'
+edited_at: '2021-01-12T01:48:20Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
@@ -28,27 +28,20 @@ label_names:
   - faster locally
 body: >-
   <p>ビルドとテストを CircleCI で実行する場合、ローカルの開発者マシンより低速になることがあります。 この記事では、CI
-  環境よりも自分のラップトップで高速に実行される理由と、CircleCI でテストを高速化する方法について説明します。</p>
-
-  <p>開発者やプログラマは通常、4 つ以上の強力な CPU コアと、ソリッドステートストレージを持つ、強力な個人用マシンを使用しています。
-  開発者向けコンピューターの一般的なコストは $1,000 ～ $4,000 で、数年ごとに最新の高性能ハードウェアに置き換えられます。</p>
-
-  <p>同じ計算能力を CircleCI 上のすべてのビルドに提供するのは、多くのコストが必要です。
-  コスト効果の高いサービスを提供するため、すべての標準ビルドは 2 つの CPU コアと 4GB の RAM で実行されます。</p>
-
-  <h2>ビルドとテストを高速化する方法</h2>
-
-  <h3>ジョブの並列実行</h3>
-
-  <p>テストを分割し、複数のコンテナで並列実行できます。 詳細については、<a
-  href="https://circleci.com/docs/2.0/parallelism-faster-jobs/" target="_blank"
+  環境よりも自分のラップトップで高速に実行される理由と、CircleCI
+  でテストを高速化する方法について説明します。</p><p>開発者やプログラマは通常、4 つ以上の強力な CPU
+  コアと、ソリッドステートストレージを持つ、強力な個人用マシンを使用しています。 開発者向けコンピューターの一般的なコストは $1,000 ～ $4,000
+  で、数年ごとに最新の高性能ハードウェアに置き換えられます。</p><p>同じ計算能力を CircleCI
+  上のすべてのビルドに提供するのは、多くのコストが必要です。 コスト効果の高いサービスを提供するため、すべての標準ビルドは 2 つの CPU コアと 4GB
+  の RAM
+  で実行されます。</p><h2>ビルドとテストを高速化する方法</h2><h3>ジョブの並列実行</h3><p>テストを分割し、複数のコンテナで並列実行できます。
+  詳細については、<a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/"
+  target="_blank"
   rel="noopener">https://circleci.com/docs/2.0/parallelism-faster-jobs/</a>
-  を参照してください。</p>
-
-  <h3>リソースクラス</h3>
-
-  <p>より高い性能を要求するお客様のため、CircleCI はプレミアム機能を提供しています。この機能では、CircleCI 2.0 上の
-  <code>resource_class</code> を選択できます。詳細については、次のドキュメントを参照してください。<br><a
+  を参照してください。</p><h3>リソースクラス</h3><p>For customers who require more power, we
+  offer a premium feature that gives you the ability to select a
+  <code>resource_class</code> on CircleCI . Please see our docs for more
+  details:<br><a
   href="https://circleci.com/docs/2.0/configuration-reference/#resource_class"
   target="_blank"
   rel="noopener">https://circleci.com/docs/2.0/configuration-reference/#resource_class</a></p>

@@ -1,4 +1,5 @@
-<p>Java は、多くのメモリを使用する傾向があります。 このために、リソースが限られているジョブの中でメモリ不足 (oom) の問題が発生することがあります。 次のブログ投稿は、Gradle、Maven、Kotlin、Lein のどれを使用している場合でも、ジョブ内での Java のメモリ使用を管理するためのガイドとして役立ちます。</p>
+<p>Java tends to use a lot of memory. This can cause out-of-memory (OOM) issues inside your jobs with limited resources. We recommend specifying a maximum memory allocation to avoid this error. You can also consider configuring your <a href="https://circleci.com/product/features/resource-classes/?utm_medium=SEM&amp;utm_source=gnb&amp;utm_campaign=SEM-gb-DSA-Eng-ni&amp;utm_content=&amp;utm_term=dynamicSearch-&amp;gclid=EAIaIQobChMItdzttOLF6QIVF47ICh0LSgGtEAAYASAAEgLow_D_BwE" target="_self">memory-intensive jobs to run in a larger resource class</a>.</p>
+<p>There are a variety of different environment variables you can set to manage memory usage, whether you're using Gradle, Maven, Kotlin, or Lein.</p>
+<p>The blog post below can be helpful to guide you in controlling the memory usage of java, depending on the framework that you are using:</p>
 <p><a href="https://circleci.com/blog/how-to-handle-java-oom-errors/" target="_blank" rel="noopener">https://circleci.com/blog/how-to-handle-java-oom-errors/</a></p>
-<p> </p>
-<p>また、CI 内で Andriod ビルドを行なうとき、<a href="https://www.littlerobots.nl/blog/disable-android-pre-dexing-on-ci-builds/">pre-dexing を無効にする</a>ことも検討してください。</p>
+<p>Also, consider <a href="https://www.littlerobots.nl/blog/disable-android-pre-dexing-on-ci-builds/">disabling pre-dexing</a> for your Android builds while in CI</p>

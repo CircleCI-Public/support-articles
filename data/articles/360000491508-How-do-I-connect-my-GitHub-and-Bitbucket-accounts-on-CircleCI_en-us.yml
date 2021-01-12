@@ -12,7 +12,7 @@ vote_sum: -10
 vote_count: 14
 section_id: 115003327148
 created_at: '2018-02-23T09:57:01Z'
-updated_at: '2020-11-18T17:18:07Z'
+updated_at: '2021-01-12T01:40:36Z'
 name: How do I connect my GitHub and Bitbucket accounts on CircleCI?
 title: How do I connect my GitHub and Bitbucket accounts on CircleCI?
 source_locale: en-us

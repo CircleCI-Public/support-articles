@@ -12,7 +12,7 @@ vote_sum: 0
 vote_count: 0
 section_id: 115003756627
 created_at: '2020-07-23T16:04:04Z'
-updated_at: '2020-10-22T06:57:50Z'
+updated_at: '2021-01-12T01:45:04Z'
 name: Can I use WSL2 on the Windows Executor?
 title: Can I use WSL2 on the Windows Executor?
 source_locale: en-us

@@ -12,7 +12,7 @@ vote_sum: -6
 vote_count: 12
 section_id: 115003756627
 created_at: '2019-02-25T03:34:20Z'
-updated_at: '2020-12-13T04:06:42Z'
+updated_at: '2021-01-12T01:47:22Z'
 name: >-
   Job fails with error "2 schema violations found  required key [jobs] not
   found  required key [version] not found"

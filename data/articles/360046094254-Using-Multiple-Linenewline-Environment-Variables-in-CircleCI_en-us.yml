@@ -12,7 +12,7 @@ vote_sum: 2
 vote_count: 6
 section_id: 115003580328
 created_at: '2020-04-13T22:29:27Z'
-updated_at: '2020-10-12T22:07:19Z'
+updated_at: '2021-01-12T01:49:37Z'
 name: Using Multiple Line(newline) Environment Variables in CircleCI
 title: Using Multiple Line(newline) Environment Variables in CircleCI
 source_locale: en-us

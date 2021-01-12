@@ -10,14 +10,14 @@ vote_sum: 2
 vote_count: 4
 section_id: 360000059327
 created_at: '2018-08-10T17:50:42Z'
-updated_at: '2020-10-22T07:01:01Z'
+updated_at: '2021-01-12T01:52:53Z'
 name: Replicated サービスの再起動方法
 title: Replicated サービスの再起動方法
 source_locale: en-us
 locale: ja
 outdated: false
 outdated_locales: []
-edited_at: '2018-12-13T04:49:24Z'
+edited_at: '2021-01-12T01:52:53Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
@@ -25,4 +25,14 @@ label_names:
   - ssh
   - server
   - restarting
-body: "<p>インストールしたインスタンスで 停止 / 起動しない、アップグレードが失敗するなどの問題の多くは、Replicated サービスを再起動することで解決できます。</p>\n<ol>\n<li>Services マシンに SSH で接続します。</li>\n<li>次のコマンドを実行します。</li>\n</ol>\n<pre><code>$ sudo service replicated restart<br>$ sudo service replicated-operator restart<br>$ sudo service replicated-ui restart</code></pre>\n<p>\_</p>\n<p>これによって管理コンソールが更新されますが、エンドユーザーが実行中のジョブは影響を受けません。</p>"
+body: >-
+  <p>インストールに関する、停止 / 起動しない、アップグレードが失敗するなどの問題の多くは、Replicated
+  サービスを再起動することで解決できます。</p><ol>
+
+  <li>Services マシンに SSH で接続します。</li>
+
+  <li>以下を実行します。</li>
+
+  </ol><pre><code>$ sudo service replicated restart<br>$ sudo service
+  replicated-operator restart<br>$ sudo service replicated-ui
+  restart</code></pre><p>これによって管理コンソールが更新されますが、エンドユーザーが実行中のジョブは影響を受けません。</p>
