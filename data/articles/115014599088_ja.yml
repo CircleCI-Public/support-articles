@@ -6,11 +6,11 @@ comments_disabled: false
 draft: false
 promoted: false
 position: 0
-vote_sum: 3
-vote_count: 319
+vote_sum: 4
+vote_count: 320
 section_id: 115003756627
 created_at: '2017-11-03T18:24:38Z'
-updated_at: '2021-01-08T00:42:45Z'
+updated_at: '2021-01-11T09:05:50Z'
 name: 自分の GitHub 組織が一覧に表示されない
 title: 自分の GitHub 組織が一覧に表示されない
 source_locale: en-us

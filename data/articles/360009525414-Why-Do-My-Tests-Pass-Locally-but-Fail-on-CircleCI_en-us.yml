@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -47
-vote_count: 57
+vote_sum: -48
+vote_count: 58
 section_id: 115003756627
 created_at: '2018-09-21T19:26:10Z'
-updated_at: '2020-12-11T22:43:08Z'
+updated_at: '2021-01-12T00:19:53Z'
 name: Why Do My Tests Pass Locally but Fail on CircleCI?
 title: Why Do My Tests Pass Locally but Fail on CircleCI?
 source_locale: en-us

@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -15
-vote_count: 67
+vote_sum: -16
+vote_count: 68
 section_id: 115003332147
 created_at: '2018-09-12T11:47:38Z'
-updated_at: '2020-12-23T09:55:53Z'
+updated_at: '2021-01-11T14:28:32Z'
 name: How can I increase the max memory for Node?
 title: How can I increase the max memory for Node?
 source_locale: en-us
