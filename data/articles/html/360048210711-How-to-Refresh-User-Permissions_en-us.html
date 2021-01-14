@@ -1,5 +1,11 @@
-<p><span>If you just updated permissions in your VCS and didn't see reflected in the CircleCI platform, you might need to refresh your permissions by visiting the user's settings at  <a href="https://app.circleci.com/settings/user" rel="noreferrer">https://app.circleci.com/settings/user</a> and click <strong>Refresh Permissions</strong>.</span></p>
-<p> </p>
-<p><img src="https://support.circleci.com/hc/article_attachments/360064969712/refresh_permission.png" alt="refresh_permission.png"> </p>
-<p> </p>
+<p><span>If you are experiencing permissions issues or recently updated permissions via your VCS provider, you might need to refresh your user permissions. The following guide will share several troubleshooting methods to refresh your permissions.</span><span></span></p>
+<p><span>Revoke and re-create your Oauth Token - Please be sure to complete <strong>all</strong> of the following steps:</span></p>
+<ol>
+    <li><span>Sign out of your CircleCI account</span></li>
+    <li><span>Revoke CircleCI's access in <a href="https://bitbucket.org/account/settings/app-authorizations" target="_self">Bitbucket</a> or <a href="https://github.com/settings/applications" target="_self">GitHub</a></span></li>
+    <li><span>Clear your browser's cache and cookies</span></li>
+    <li><span>Sign back into your CircleCI account</span></li>
+    <li><span>Refresh permissions at <a href="https://app.circleci.com/settings/user" target="_blank" rel="noopener noreferrer">https://app.circleci.com/settings/user</a></span></li>
+</ol>
+<p><img src="https://support.circleci.com/hc/article_attachments/360064969712/refresh_permission.png" alt="refresh_permission.png"></p>
 <p>If you still have any issues, please submit a ticket to <a href="https://support.circleci.com/hc/en-us" target="_self">Support</a> or write to <a href="mailto:support@circleci.com">support@circleci.com</a>.</p>
