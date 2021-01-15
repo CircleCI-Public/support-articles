@@ -6,11 +6,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: 5
-vote_count: 35
+vote_sum: 6
+vote_count: 36
 section_id: 115003327088
 created_at: '2020-03-09T12:11:13Z'
-updated_at: '2020-12-06T23:16:23Z'
+updated_at: '2021-01-14T16:43:47Z'
 name: Swift Package Manager がプライベート Git リポジトリのクローンに失敗する
 title: Swift Package Manager がプライベート Git リポジトリのクローンに失敗する
 source_locale: en-us

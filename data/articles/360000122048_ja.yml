@@ -11,7 +11,7 @@ vote_sum: -2
 vote_count: 2
 section_id: 115003756627
 created_at: '2018-01-24T16:44:25Z'
-updated_at: '2021-01-12T01:47:30Z'
+updated_at: '2021-01-14T19:37:31Z'
 name: CircleCI Error processing tar file
 title: CircleCI Error processing tar file
 source_locale: en-us
@@ -21,7 +21,9 @@ outdated_locales: []
 edited_at: '2021-01-12T01:47:30Z'
 user_segment_id: null
 permission_group_id: 237867
-label_names: []
+label_names:
+  - docker
+  - docker image
 body: >-
   <p>You're seeing the error:</p><p>&gt; failed to register layer: Error
   processing tar file(exit status 1): Container ID ... cannot be mapped to a

@@ -12,17 +12,26 @@ vote_sum: 3
 vote_count: 17
 section_id: 115003580328
 created_at: '2017-12-31T15:12:56Z'
-updated_at: '2021-01-12T01:47:08Z'
+updated_at: '2021-01-14T20:05:51Z'
 name: Scheduling a Nightly Build
 title: Scheduling a Nightly Build
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-11-19T19:37:34Z'
+edited_at: '2021-01-14T20:05:51Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
   - nightly
   - schedule
-body: "<p>You can use the scheduled workflows trigger to run nightly workflows. Check out docs for a full example\_<a href=\"https://circleci.com/docs/2.0/workflows/#scheduling-a-workflow\">scheduling a nightly workflow</a></p>"
+body: >-
+  <p>CircleCI makes it seamless to schedule a nightly build using Cron. You can
+  find an <a href="https://circleci.com/docs/2.0/workflows/#nightly-example"
+  target="_self">example config</a> and <a
+  href="https://circleci.com/docs/2.0/workflows/#scheduling-a-workflow"
+  target="_self" rel="undefined">more details on Scheduling a workflow</a> in
+  our docs.</p>
+
+  <p>Additionally, you can use the <a href="https://crontab.guru/"
+  target="_self">crontab guru</a> to generate cron schedule expressions.</p>
