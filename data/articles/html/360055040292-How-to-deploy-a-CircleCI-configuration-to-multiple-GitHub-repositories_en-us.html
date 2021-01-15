@@ -1,0 +1,43 @@
+<p><span>The approach we suggest is to have a dedicated CircleCI build that pushes the configuration to a list of repositories by leveraging the GitHub API.</span></p>
+<p>The repository this CircleCI project is built on would contain:</p>
+<ul>
+    <li>The separate configuration file to be pushed to the other repositories (<span> </span><code>global-ci.yml</code><span> </span>in this example)</li>
+    <li>A<span> </span><code>config.yml</code><span> </span>that defines the build to push the above configuration file</li>
+    <li>A file containing the list of repositories in the form “user/repository” or “org/repository” (<code>satellites.txt</code><span> </span>in this example)</li>
+</ul>
+<p>You would also need to add an environment variable containing a <a href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token" target="_blank" rel="noopener">GitHub API token</a> with appropriate permissions/scopes.</p>
+<p><span>The </span><code>config.yml</code><span> would be:</span></p>
+<pre style="background-color: #f3f3f3;">version: 2.1
+
+jobs:
+  deploy-config:
+    docker:
+      - image: circleci/python
+    steps:
+      - checkout
+      - run:
+          name: Test
+          command: |
+            echo GLOBAL_64=$(base64 -w 0 global-ci.yml) &gt;&gt; $BASH_ENV
+            while IFS= read -r repo
+              do
+                echo BLOB_SHA=$(curl --location --request GET "https://api.github.com/repos/$repo/contents/.circleci/config.yml" --header "Authorization: token ${GH_TOKEN}" --header "Accept: application/vnd.github.v3+json"|jq -r .sha) &gt;&gt; $BASH_ENV
+                source $BASH_ENV
+                curl --location --request PUT "https://api.github.com/repos/$repo/contents/.circleci/config.yml" --header "Authorization: token ${GH_TOKEN}" --header "Accept: application/vnd.github.v3+json" --data-raw "{\"message\":\"Global config update\", \"content\":\"$GLOBAL_64\", \"sha\":\"${BLOB_SHA}\"}"
+              done &lt; "satellites.txt"
+          
+workflows:
+  main:
+    jobs:
+      - deploy-config
+</pre>
+<p> </p>
+<h4>GitHub API references:</h4>
+<ul>
+    <li>
+        <p><a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-repository-content">Get repository content</a></p>
+    </li>
+    <li>
+        <p><a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#create-or-update-file-contents">Create or update file contents<span> </span><span class="badge badge-notification clicks" title="1 click">1</span></a></p>
+    </li>
+</ul>

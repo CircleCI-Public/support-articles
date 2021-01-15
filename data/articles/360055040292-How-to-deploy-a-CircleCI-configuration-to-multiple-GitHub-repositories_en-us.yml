@@ -1,0 +1,32 @@
+id: 360055040292
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360055040292.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360055040292-How-to-deploy-a-CircleCI-configuration-to-multiple-GitHub-repositories
+author_id: 403103999173
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003327188
+created_at: '2021-01-14T15:58:13Z'
+updated_at: '2021-01-14T16:02:03Z'
+name: How to deploy a CircleCI configuration to multiple GitHub repositories
+title: How to deploy a CircleCI configuration to multiple GitHub repositories
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2021-01-14T15:59:47Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - deploy
+  - config
+  - config.yml
+  - GitHub
+  - api
+  - centralize
+body: "<p><span>The approach we suggest is to have a dedicated CircleCI build that pushes the configuration to a list of repositories by leveraging the GitHub API.</span></p>\n<p>The repository this CircleCI project is built on would contain:</p>\n<ul>\n<li>The separate configuration file to be pushed to the other repositories (<span>\_</span><code>global-ci.yml</code><span>\_</span>in this example)</li>\n<li>A<span>\_</span><code>config.yml</code><span>\_</span>that defines the build to push the above configuration file</li>\n<li>A file containing the list of repositories in the form “user/repository” or “org/repository” (<code>satellites.txt</code><span>\_</span>in this example)</li>\n</ul>\n<p>You would also need to add an environment variable containing a <a href=\"https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token\" target=\"_blank\" rel=\"noopener\">GitHub API token</a> with appropriate permissions/scopes.</p>\n<p><span>The\_</span><code>config.yml</code><span>\_would be:</span></p>\n<pre style=\"background-color: #f3f3f3;\">version: 2.1\n\njobs:\n  deploy-config:\n    docker:\n      - image: circleci/python\n    steps:\n      - checkout\n      - run:\n          name: Test\n          command: |\n            echo GLOBAL_64=$(base64 -w 0 global-ci.yml) &gt;&gt; $BASH_ENV\n            while IFS= read -r repo\n              do\n                echo BLOB_SHA=$(curl --location --request GET \"https://api.github.com/repos/$repo/contents/.circleci/config.yml\" --header \"Authorization: token ${GH_TOKEN}\" --header \"Accept: application/vnd.github.v3+json\"|jq -r .sha) &gt;&gt; $BASH_ENV\n                source $BASH_ENV\n                curl --location --request PUT \"https://api.github.com/repos/$repo/contents/.circleci/config.yml\" --header \"Authorization: token ${GH_TOKEN}\" --header \"Accept: application/vnd.github.v3+json\" --data-raw \"{\\\"message\\\":\\\"Global config update\\\", \\\"content\\\":\\\"$GLOBAL_64\\\", \\\"sha\\\":\\\"${BLOB_SHA}\\\"}\"\n              done &lt; \"satellites.txt\"\n          \nworkflows:\n  main:\n    jobs:\n      - deploy-config\n</pre>\n<p>\_</p>\n<h4>GitHub API references:</h4>\n<ul>\n<li>\n<p><a href=\"https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-repository-content\">Get repository content</a></p>\n</li>\n<li>\n<p><a href=\"https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#create-or-update-file-contents\">Create or update file contents<span>\_</span><span class=\"badge badge-notification clicks\" title=\"1 click\">1</span></a></p>\n</li>\n</ul>"

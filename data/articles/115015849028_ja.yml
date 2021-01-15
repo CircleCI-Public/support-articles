@@ -10,7 +10,7 @@ vote_sum: 7
 vote_count: 25
 section_id: 115003756627
 created_at: '2017-12-16T21:54:34Z'
-updated_at: '2020-11-20T18:36:05Z'
+updated_at: '2021-01-14T20:08:22Z'
 name: Docker デーモンが利用できない
 title: Docker デーモンが利用できない
 source_locale: en-us
@@ -22,6 +22,7 @@ user_segment_id: null
 permission_group_id: 237867
 label_names:
   - docker
+  - remote docker
 body: >-
   <p>CircleCI 2.0 ビルドの実行時に次のエラーメッセージが表示された場合</p><pre>Cannot connect to the
   Docker daemon at unix:///var/run/docker.sock. <br>Is the docker daemon
