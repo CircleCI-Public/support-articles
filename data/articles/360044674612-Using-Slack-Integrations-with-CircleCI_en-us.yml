@@ -8,11 +8,11 @@ comments_disabled: false
 draft: false
 promoted: false
 position: 0
-vote_sum: -6
-vote_count: 14
+vote_sum: -7
+vote_count: 15
 section_id: 115004127248
 created_at: '2020-06-17T16:18:34Z'
-updated_at: '2021-01-13T21:07:24Z'
+updated_at: '2021-01-15T15:31:52Z'
 name: Using Slack Integrations with CircleCI
 title: Using Slack Integrations with CircleCI
 source_locale: en-us
