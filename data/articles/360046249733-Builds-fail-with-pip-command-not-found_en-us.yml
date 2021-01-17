@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -7
-vote_count: 13
+vote_sum: -8
+vote_count: 14
 section_id: 115003327088
 created_at: '2020-04-03T10:49:03Z'
-updated_at: '2021-01-12T01:51:03Z'
+updated_at: '2021-01-16T18:51:48Z'
 name: 'Builds fail with "pip: command not found"'
 title: 'Builds fail with "pip: command not found"'
 source_locale: en-us
