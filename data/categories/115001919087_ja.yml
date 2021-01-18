@@ -4,7 +4,7 @@ url: >-
 html_url: https://support.circleci.com/hc/ja/categories/115001919087
 position: 2
 created_at: '2017-09-06T15:16:54Z'
-updated_at: '2021-01-14T19:34:50Z'
+updated_at: '2021-01-17T22:38:06Z'
 name: アプリケーションのデプロイメント
 description: "ホスティング環境への継続デプロイメント (Heroku, Azure, GCP, AWS etc)\r\n\r\n"
 locale: ja
