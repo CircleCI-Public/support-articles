@@ -6,11 +6,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -17
-vote_count: 69
+vote_sum: -18
+vote_count: 70
 section_id: 115003332147
 created_at: '2018-09-12T11:47:38Z'
-updated_at: '2021-01-13T03:01:45Z'
+updated_at: '2021-01-18T15:34:22Z'
 name: Node の最大メモリを増やす方法
 title: Node の最大メモリを増やす方法
 source_locale: en-us

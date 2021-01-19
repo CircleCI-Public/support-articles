@@ -7,11 +7,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: 17
-vote_count: 55
+vote_sum: 16
+vote_count: 56
 section_id: 115003580328
 created_at: '2018-07-06T19:32:24Z'
-updated_at: '2021-01-12T15:13:19Z'
+updated_at: '2021-01-18T20:20:01Z'
 name: Storing Secret Files (certs, etc.)
 title: Storing Secret Files (certs, etc.)
 source_locale: en-us
