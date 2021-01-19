@@ -1,0 +1,9 @@
+<p>When <a href="https://circleci.com/docs/2.0/ssh-access-jobs/" target="_self">debugging with SSH</a> the `$PATH` environment will often be different than what may be set in a Dockerfile. For example:</p>
+<pre># Update PATH for Java tools<br>ENV PATH="/opt/sbt/bin:/opt/apache-maven/bin:/opt/apache-ant/bin:/opt/gradle/bin:$PATH"</pre>
+<p>When SSH'ing into the build, customers may find that `$PATH` is no longer set to that value:</p>
+<pre>$ echo $PATH<br>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</pre>
+<p>This can be due to the fact that the SSH login with run the bash profile script located at `/etc/profile`.<br>In order to preserve the `$PATH` environment variable, either modify the `/etc/profile` file within the image or create a new `~/.bash_profile` file in the home directory for the login user. For CircleCI convenience images this would be located at `/home/circleci/.bash_profile`</p>
+<pre>#!/bin/bash<br><br>export PATH="/home/circleci/.local/bin:/home/circleci/bin:/opt/sbt/bin:/opt/apache-maven/bin:/opt/apache-ant/bin:/opt/gradle/bin:/usr/local/openjdk-14/bin:${PATH}"</pre>
+<p>This can be added to the Dockerfile with the following:</p>
+<pre>RUN echo "#!/bin/bash\nexport PATH=/home/circleci/.local/bin:/home/circleci/bin:/opt/sbt/bin:/opt/apache-maven/bin:/opt/apache-ant/bin:/opt/gradle/bin:/usr/local/openjdk-14/bin:${PATH}" &gt; /home/circleci/.bash_profile<br><br>RUN chmod a+x /home/circleci/.bash_profile</pre>
+<p> </p>

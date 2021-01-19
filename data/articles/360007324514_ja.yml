@@ -6,11 +6,11 @@ comments_disabled: false
 draft: false
 promoted: false
 position: 0
-vote_sum: -14
-vote_count: 66
+vote_sum: -13
+vote_count: 67
 section_id: 115003580328
 created_at: '2018-07-24T19:15:05Z'
-updated_at: '2020-11-23T16:11:26Z'
+updated_at: '2021-01-19T02:00:59Z'
 name: CircleCI で Docker ボリュームマウントを使用する方法
 title: CircleCI で Docker ボリュームマウントを使用する方法
 source_locale: en-us
