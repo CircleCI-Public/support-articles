@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: 20
-vote_count: 46
+vote_sum: 21
+vote_count: 47
 section_id: 115003332287
 created_at: '2020-02-20T22:55:07Z'
-updated_at: '2021-01-16T12:26:15Z'
+updated_at: '2021-01-21T16:41:11Z'
 name: 'CircleCI Terms of Service Violation: Sanctioned Country'
 title: 'CircleCI Terms of Service Violation: Sanctioned Country'
 source_locale: en-us
