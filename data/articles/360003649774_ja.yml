@@ -6,11 +6,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -135
-vote_count: 277
+vote_sum: -136
+vote_count: 278
 section_id: 115003756627
 created_at: '2018-04-29T21:58:26Z'
-updated_at: '2021-01-10T20:54:02Z'
+updated_at: '2021-01-21T16:32:30Z'
 name: ディレクトリの作成またはファイルへの書き込み時にアクセスが拒否される
 title: ディレクトリの作成またはファイルへの書き込み時にアクセスが拒否される
 source_locale: en-us
