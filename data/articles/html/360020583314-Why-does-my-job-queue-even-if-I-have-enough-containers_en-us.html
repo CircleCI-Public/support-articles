@@ -1,7 +1,8 @@
 <p>If you are currently on a container-based plan for CircleCI your jobs may queue if there are not enough containers in your plan to accommodate the current workload.</p>
+<p>Job queueing can also occur on Performance, Scale, and Custom plans if there are enough builds triggered at the same time that require containers beyond the limit of containers alotted to your respective plan. </p>
 <p><span>For Performance, Scale, and Custom plans please check out our Pricing page[1] for the details of concurrency limits that apply to your account.</span><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>[1]: </span><a class="c-link" href="https://circleci.com/pricing/" target="_blank" rel="noopener noreferrer" data-stringify-link="https://circleci.com/pricing/" data-sk="tooltip_parent">https://circleci.com/pricing/</a></p>
 <h2>Understanding container usage</h2>
-<p>For example, if you have a total of 4 containers available on your account, you could:</p>
+<p>As a simple example, if you have a total of 4 containers available on your account plan, you could:</p>
 <ul>
     <li>Run 4 single-container jobs at the same time</li>
     <li>Run a <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/#specifying-a-jobs-parallelism-level" target="_self">single job with 4x parallelism</a>

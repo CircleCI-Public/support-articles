@@ -6,11 +6,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -2
-vote_count: 14
+vote_sum: -3
+vote_count: 15
 section_id: 115003327088
 created_at: '2018-11-09T21:47:20Z'
-updated_at: '2021-01-13T15:29:08Z'
+updated_at: '2021-01-22T22:41:52Z'
 name: iOS ビルドに異なるシミュレーターを追加する方法
 title: iOS ビルドに異なるシミュレーターを追加する方法
 source_locale: en-us
