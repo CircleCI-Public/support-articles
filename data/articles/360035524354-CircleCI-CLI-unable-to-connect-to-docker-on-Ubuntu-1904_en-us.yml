@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -1
-vote_count: 9
+vote_sum: -2
+vote_count: 10
 section_id: 115003756627
 created_at: '2019-09-18T09:06:56Z'
-updated_at: '2021-01-12T01:47:33Z'
+updated_at: '2021-01-26T01:52:26Z'
 name: CircleCI CLI unable to connect to docker on Ubuntu 19.04.
 title: CircleCI CLI unable to connect to docker on Ubuntu 19.04.
 source_locale: en-us
