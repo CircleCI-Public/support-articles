@@ -12,16 +12,16 @@ vote_sum: 0
 vote_count: 0
 section_id: 115003756627
 created_at: '2020-12-02T18:17:27Z'
-updated_at: '2020-12-02T18:17:27Z'
+updated_at: '2021-01-27T08:50:59Z'
 name: Add Timing Data to Each Output Line
 title: Add Timing Data to Each Output Line
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-12-02T18:17:27Z'
+edited_at: '2021-01-27T02:21:53Z'
 user_segment_id: null
-permission_group_id: 237847
+permission_group_id: 237867
 label_names: []
 body: >-
   <p>Debugging where jobs spend most of their time can be useful to help

@@ -1,0 +1,26 @@
+id: 360056168311
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360056168311.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360056168311--Server-Simulate-when-Attribute-in-a-CircleCI-Server-Configuration
+author_id: 403418857853
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003755807
+created_at: '2021-01-28T00:42:13Z'
+updated_at: '2021-01-28T00:42:13Z'
+name: '[Server] Simulate "when" Attribute in a CircleCI Server Configuration'
+title: '[Server] Simulate "when" Attribute in a CircleCI Server Configuration'
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2021-01-28T00:42:13Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: "<p>While CircleCI Server does not currently support the <a href=\"https://circleci.com/docs/2.0/configuration-reference/#the-when-attribute\" target=\"_self\">when attribute</a> for a run step, the following will allow a build to execute a different series of commands when a command fails:</p>\n<pre>- run: |\n\_ \_ # Disable fail on error\n\_ \_ set +eo pipefail\n\_ \_ echo \"Run commands here\"\n\_ \_ if [ $? -ne 0 ]; then\n\_ \_ \_ echo \"Steps for error\"\n\_ \_ \_ # Return either exit 1 or exit 0\n\_ \_ \_ # depending on if you want the step\n\_ \_ \_ # to be success or failure\n\_ \_ exit 0\n\_ \_ fi\n\_ \_ # Re-enable fail on error\n\_ \_ set -eo pipefail\n\_ \_ echo \"Other steps if does not fail\"\n</pre>\n<p>Be sure to set <code>-eo pipeline</code> after the <code>if</code> statement. If we do not re-enable it after the if statement, any additional errors will still produce a success(green) build.</p>\n<p>If we want the failed command to still have a failed(red) status, we would return <code>exit 1</code> instead of <code>exit 0</code>.</p>"

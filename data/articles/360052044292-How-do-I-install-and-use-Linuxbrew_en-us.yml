@@ -12,16 +12,16 @@ vote_sum: 1
 vote_count: 1
 section_id: 115003580328
 created_at: '2020-11-12T19:58:10Z'
-updated_at: '2020-11-20T13:07:39Z'
+updated_at: '2021-01-27T02:21:57Z'
 name: How do I install and use Linuxbrew?
 title: How do I install and use Linuxbrew?
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-11-12T19:59:05Z'
+edited_at: '2021-01-27T02:21:57Z'
 user_segment_id: null
-permission_group_id: 237847
+permission_group_id: 237867
 label_names:
   - linuxbrew
   - homebrew

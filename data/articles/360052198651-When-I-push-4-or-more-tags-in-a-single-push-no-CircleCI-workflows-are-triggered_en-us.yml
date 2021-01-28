@@ -12,7 +12,7 @@ vote_sum: 1
 vote_count: 1
 section_id: 115003756627
 created_at: '2020-11-05T18:42:35Z'
-updated_at: '2020-11-13T09:03:49Z'
+updated_at: '2021-01-27T02:22:02Z'
 name: >-
   When I push 4 or more tags in a single push, no CircleCI workflows are
   triggered
@@ -23,9 +23,9 @@ source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-11-05T18:43:31Z'
+edited_at: '2021-01-27T02:22:02Z'
 user_segment_id: null
-permission_group_id: 237847
+permission_group_id: 237867
 label_names:
   - tags
   - GitHub

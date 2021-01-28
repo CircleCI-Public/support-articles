@@ -12,16 +12,16 @@ vote_sum: 1
 vote_count: 1
 section_id: 115003756627
 created_at: '2020-11-05T21:13:56Z'
-updated_at: '2020-11-19T14:14:18Z'
+updated_at: '2021-01-27T02:22:02Z'
 name: Build fails on 'apt-get update' command
 title: Build fails on 'apt-get update' command
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-11-05T21:14:20Z'
+edited_at: '2021-01-27T02:22:02Z'
 user_segment_id: null
-permission_group_id: 237847
+permission_group_id: 237867
 label_names:
   - apt-get
   - debian

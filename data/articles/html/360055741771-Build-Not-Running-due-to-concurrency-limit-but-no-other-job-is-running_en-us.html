@@ -1,0 +1,14 @@
+<h3>Why is this happening?</h3>
+<p>If a job is not starting and showing a status "<strong>Not Running</strong>" after you triggered a pipeline, it means that you have reached the <strong>concurrency limit</strong> of your plan.</p>
+<p>This is most likely to happen to customers on our <a href="https://circleci.com/pricing/" target="_blank" rel="noopener">Free Plan</a>, as they have access to use a single container at any one time (1x concurrency), therefore jobs will queue if that container is already in use.</p>
+<p>However, customers on plans with a higher concurrency limit can also encounter this situation.</p>
+<p>The delayed start of your job, and the fact it remains in a "Not Running" state before eventually starting, is due to the fact that other jobs are still running when the new job is triggered.</p>
+<p> </p>
+<h3>Check for running SSH jobs</h3>
+<p>We found that this situation frequently arises due to running SSH jobs; once you navigate away from a running SSH job it won't appear in the pipelines view, <span>so one can assume</span> that no jobs are running at the time.</p>
+<p>SSH jobs, along with all jobs in a given project are listed in the "<strong>legacy jobs view</strong>":</p>
+<p><code style="background-color: #f3f3f3;">https://app.circleci.com/pipelines/{vcs}/{org}/{project}/jobs</code></p>
+<p>An SSH job will remain available for an SSH connection for <strong>10 minutes after the job finishes</strong> - if SSH has not been accessed, then the job will <strong>automatically end after 10 minutes</strong>.</p>
+<p>After you SSH into the job, the SSH connection will remain open for <strong>up to two hours</strong>. That's why we advise to always manually cancel SSH jobs after you have finished with them to make sure your build queue is as free as possible.</p>
+<p>To do so, please follow instructions outlined in the Support article "<a href="https://support.circleci.com/hc/en-us/articles/360047125652-How-to-see-running-SSH-jobs" target="_blank" rel="noopener">How to see running SSH jobs</a>".</p>
+<p> </p>

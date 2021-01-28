@@ -12,16 +12,16 @@ vote_sum: -2
 vote_count: 2
 section_id: 115003332287
 created_at: '2020-10-28T12:22:14Z'
-updated_at: '2020-12-03T10:02:12Z'
+updated_at: '2021-01-27T02:21:56Z'
 name: How to perform a full re-authentication
 title: How to perform a full re-authentication
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-11-12T21:07:07Z'
+edited_at: '2021-01-27T02:21:56Z'
 user_segment_id: null
-permission_group_id: 237847
+permission_group_id: 237867
 label_names:
   - organization
   - authentication

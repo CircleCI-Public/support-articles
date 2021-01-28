@@ -12,15 +12,15 @@ vote_sum: 0
 vote_count: 0
 section_id: 115003756627
 created_at: '2021-01-12T17:15:43Z'
-updated_at: '2021-01-12T17:36:32Z'
+updated_at: '2021-01-27T02:53:51Z'
 name: Speed up steps using a RAM disk
 title: Speed up steps using a RAM disk
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2021-01-12T17:36:32Z'
+edited_at: '2021-01-27T02:21:52Z'
 user_segment_id: null
-permission_group_id: 237847
+permission_group_id: 237867
 label_names: []
 body: "<p>Tasks which are heavily dependent on disk IO can be sped up by performing those operations in memory, and avoiding the disk. This is especially true if you're using the Docker executor on CircleCI, and we have an in depth <a href=\"https://circleci.com/blog/the-issue-of-speed-and-determinism-in-ci/\" target=\"_blank\" rel=\"noopener\">blog post here</a> about the issue.</p>\n<h3>Docker Executor</h3>\n<p>On the docker executor we have enabled an available RAM disk by default which you can use to dramatically increase step speeds. This is highly encouraged for steps like cache/workspace restores. You can read about configuring it <a href=\"https://circleci.com/docs/2.0/executor-types/#ram-disks\" target=\"_self\">in our docs here</a>.</p>\n<p>The short version is that you have access to a special directory,\_ <strong>/mnt/ramdisk</strong>, which acts as any other directory. Files stored here will use the machines assigned resource class memory. For instance, you can set your entire working directory to be stored in memory with <strong><span class=\"na\"><span class=\"hljs-attr\">working_directory</span></span><span class=\"pi\"><span class=\"hljs-attr\">: </span></span><span class=\"s\">/mnt/ramdisk</span></strong><span class=\"s\"> in your job configuration.</span></p>\n<h3>Other executors<br><span></span>\n</h3>\n<p>The RAM disk is not configured by default on other executors. It's less likely that you'll need it because they operate as isolated VMs, and avoid the issues outlined in the blog post mentioned above. You may still find that a RAM disk offer performance benefits over utilizing the hard disk. In other executors (Machine,\_ MacOS, etc) you have far more control over the environment, so it's possible to configure a RAM disk yourself. Using instructions such as <a href=\"https://unix.stackexchange.com/questions/66329/creating-a-ram-disk-on-linux\" target=\"_self\">this stack exchange answer</a> for Linux based systems</p>"

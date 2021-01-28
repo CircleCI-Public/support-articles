@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -5
-vote_count: 103
+vote_sum: -6
+vote_count: 104
 section_id: 115003756627
 created_at: '2017-11-01T15:57:43Z'
-updated_at: '2020-12-14T03:56:38Z'
+updated_at: '2021-01-27T17:12:30Z'
 name: Exit code 137 - Out of memory
 title: Exit code 137 - Out of memory
 source_locale: en-us

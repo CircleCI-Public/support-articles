@@ -12,16 +12,16 @@ vote_sum: -1
 vote_count: 1
 section_id: 115003755888
 created_at: '2020-11-10T21:47:58Z'
-updated_at: '2020-11-23T14:51:11Z'
+updated_at: '2021-01-27T02:22:00Z'
 name: Utilizing 'Basic' authorization in CircleCI API calls
 title: Utilizing 'Basic' authorization in CircleCI API calls
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-11-10T21:49:19Z'
+edited_at: '2021-01-27T02:22:00Z'
 user_segment_id: null
-permission_group_id: 237847
+permission_group_id: 237867
 label_names:
   - base64
   - api

@@ -1,0 +1,16 @@
+<p>通常、ジョブの実行中にメモリ不足が発生すると、以下のエラー メッセージが表示されます。</p>
+<pre class="css-1hjuxmj"><code style="white-space: pre !important;">Failed to minify the bundle. Error: static/js/12.fb78ba11.chunk.js from TerserError: Call retries were exceeded</code></pre>
+<p>Webpack4ではデフォルで<code>terser-webpack-plugin</code>を利用しJavaScriptを圧縮するようになりました。 <code>terser-webpack-plugin</code>のデフォルトのparallelオプションはCPU数<code>(os.cpus().length - 1)</code>がセットされます。 それは実際のVMのCPU数が参照され、Docker executorが持つCPU数より大きいCPU数が設定されます。 そのためWebpackはvCPUよりも多くの数のワーカーを作成し、それが原因でこのエラーが発生します。</p>
+<p dir="auto"><br>これを回避するには、parallelオプションにvCPU数と同じ数を指定する必要があります。 以下は例になります。</p>
+<pre><code class="hljs javascript" style="white-space: pre !important;">const TerserPlugin = require('terser-webpack-plugin');module.exports = {  optimization: {    minimizer: [      new TerserPlugin({        parallel: 2,      }),    ],  }};</code></pre>
+<p dir="auto">設定の詳細は以下のリンクを参照ください。</p>
+<p dir="auto"><a href="https://webpack.js.org/configuration/optimization/#optimizationminimizer" rel="noreferrer">https://webpack.js.org/configuration/optimization/#optimizationminimizer</a><br><a href="https://webpack.js.org/plugins/terser-webpack-plugin/#parallel" rel="noreferrer">https://webpack.js.org/plugins/terser-webpack-plugin/#parallel</a></p>
+<p dir="auto"> </p>
+<p>上記で問題が解決しない場合、以下の方法をお試しください。</p>
+<ul>
+    <li>使用中の<a href="https://circleci.com/docs/ja/2.0/configuration-reference/#docker-executor" target="_self">リソース クラス</a>を引き上げて、ジョブが使用できるメモリを増やす。</li>
+    <li>
+        <a href="https://support.circleci.com/hc/ja/articles/360009208393-Node-%E3%81%AE%E6%9C%80%E5%A4%A7%E3%83%A1%E3%83%A2%E3%83%AA%E3%82%92%E5%A2%97%E3%82%84%E3%81%99%E6%96%B9%E6%B3%95" target="_self">NodeJS の "max_old_space_size" を適切な値に調節する</a>。 たとえば、4GB のメモリを備えた Medium リソース クラスを使用している場合は、この値を 3GB に設定します。
+    </li>
+</ul>
+<p>メモリの使用量に関する問題を詳細に把握するには、ジョブの<a href="https://support.circleci.com/hc/en-us/articles/360043994872-How-to-record-a-job-s-memory-usage" target="_self">メモリの最大使用量をログに記録する</a>ことを検討してください。</p>

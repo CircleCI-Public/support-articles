@@ -12,16 +12,16 @@ vote_sum: 1
 vote_count: 1
 section_id: 115003756627
 created_at: '2020-11-11T21:19:46Z'
-updated_at: '2020-12-10T23:34:26Z'
+updated_at: '2021-01-27T02:21:59Z'
 name: Debugging Docker Build Step Timings
 title: Debugging Docker Build Step Timings
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-11-11T21:19:50Z'
+edited_at: '2021-01-27T02:21:59Z'
 user_segment_id: null
-permission_group_id: 237847
+permission_group_id: 237867
 label_names: []
 body: >-
   <p>When building a Docker image, depending on how large your Dockerfile is, a

@@ -1,7 +1,24 @@
 <p>The following error message is usually related to running out of memory during a job:</p>
-<pre class="css-1hjuxmj">Failed to minify the bundle. Error: static/js/12.fb78ba11.chunk.js from Terser
-Error: Call retries were exceeded</pre>
-<p>There are a couple of options to resolve this:</p>
+<pre class="css-1hjuxmj"><code style="white-space: pre !important;">Failed to minify the bundle. Error: static/js/12.fb78ba11.chunk.js from Terser
+Error: Call retries were exceeded</code></pre>
+<p>Webpack4 starts using<span> </span><code>terser-webpack-plugin</code> to minify your JavaScript as default. The default parallel option in<span> </span><code>terser-webpack-plugin</code><span> </span>is set to the number of CPUs<span> </span><code>(os.cpus().length - 1)</code>. It means the function references the actual VM's CPU count, and it's a bigger number of CPUs than the docker executor has. Therefore, Webpack will make more workers than the vCPU counts, and it causes this error.</p>
+<p dir="auto"><br>To work around this, you will need to specify the parallel option to set to the same number as the vCPUs. For example:</p>
+<pre><code class="hljs javascript" style="white-space: pre !important;">const TerserPlugin = require('terser-webpack-plugin');
+
+module.exports = {
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        parallel: 2,
+      }),
+    ],
+  }
+};
+</code></pre>
+<p dir="auto">More information about this can be found at the links below:</p>
+<p dir="auto"><a href="https://webpack.js.org/configuration/optimization/#optimizationminimizer" rel="noreferrer">https://webpack.js.org/configuration/optimization/#optimizationminimizer</a><br><a href="https://webpack.js.org/plugins/terser-webpack-plugin/#parallel" rel="noreferrer">https://webpack.js.org/plugins/terser-webpack-plugin/#parallel</a></p>
+<p dir="auto"> </p>
+<p>If it doesn't solve the problem, there are a couple of options you can try:</p>
 <ul>
     <li>Increase the <a href="https://circleci.com/docs/2.0/configuration-reference/#docker-executor" target="_self">resource class</a> in use to provide more memory to the job</li>
     <li>

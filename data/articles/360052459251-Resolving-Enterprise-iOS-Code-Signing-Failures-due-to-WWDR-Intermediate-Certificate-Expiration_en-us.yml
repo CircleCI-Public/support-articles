@@ -12,7 +12,7 @@ vote_sum: 1
 vote_count: 1
 section_id: 115003327088
 created_at: '2020-11-11T21:43:48Z'
-updated_at: '2021-01-07T14:55:35Z'
+updated_at: '2021-01-27T02:21:58Z'
 name: >-
   Resolving Enterprise iOS Code Signing Failures due to WWDR Intermediate
   Certificate Expiration
@@ -23,9 +23,9 @@ source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-11-11T21:43:48Z'
+edited_at: '2021-01-27T02:21:58Z'
 user_segment_id: null
-permission_group_id: 237847
+permission_group_id: 237867
 label_names: []
 body: >-
   <p>Enterprise signing for iOS apps may start failing from 2 September 2020 due
