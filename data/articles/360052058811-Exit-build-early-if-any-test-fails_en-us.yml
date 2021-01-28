@@ -12,16 +12,16 @@ vote_sum: -1
 vote_count: 1
 section_id: 115003580328
 created_at: '2020-11-03T20:28:49Z'
-updated_at: '2020-11-09T07:15:28Z'
+updated_at: '2021-01-27T02:22:03Z'
 name: Exit build early if any test fails
 title: Exit build early if any test fails
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-11-03T20:28:53Z'
+edited_at: '2021-01-27T02:22:03Z'
 user_segment_id: null
-permission_group_id: 237847
+permission_group_id: 237867
 label_names:
   - cancel
   - workflow

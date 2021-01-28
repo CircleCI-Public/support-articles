@@ -1,0 +1,18 @@
+<p>While CircleCI Server does not currently support the <a href="https://circleci.com/docs/2.0/configuration-reference/#the-when-attribute" target="_self">when attribute</a> for a run step, the following will allow a build to execute a different series of commands when a command fails:</p>
+<pre>- run: |
+    # Disable fail on error
+    set +eo pipefail
+    echo "Run commands here"
+    if [ $? -ne 0 ]; then
+      echo "Steps for error"
+      # Return either exit 1 or exit 0
+      # depending on if you want the step
+      # to be success or failure
+    exit 0
+    fi
+    # Re-enable fail on error
+    set -eo pipefail
+    echo "Other steps if does not fail"
+</pre>
+<p>Be sure to set <code>-eo pipeline</code> after the <code>if</code> statement. If we do not re-enable it after the if statement, any additional errors will still produce a success(green) build.</p>
+<p>If we want the failed command to still have a failed(red) status, we would return <code>exit 1</code> instead of <code>exit 0</code>.</p>

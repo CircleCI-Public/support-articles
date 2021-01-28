@@ -12,16 +12,16 @@ vote_sum: -1
 vote_count: 1
 section_id: 115003756627
 created_at: '2020-11-02T21:03:20Z'
-updated_at: '2020-12-10T09:54:38Z'
+updated_at: '2021-01-27T02:22:04Z'
 name: Build failing with AssetNotPrecompiled
 title: Build failing with AssetNotPrecompiled
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-11-02T21:03:49Z'
+edited_at: '2021-01-27T02:22:04Z'
 user_segment_id: null
-permission_group_id: 237847
+permission_group_id: 237867
 label_names:
   - rspec
   - precompile

@@ -1,0 +1,25 @@
+id: 360054109631
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360054109631.json
+html_url: https://support.circleci.com/hc/ja/articles/360054109631
+author_id: 397881110914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003327208
+created_at: '2020-12-14T16:13:36Z'
+updated_at: '2021-01-27T05:15:59Z'
+name: '[Server] CircleCI Server を更新する方法'
+title: '[Server] CircleCI Server を更新する方法'
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2021-01-27T05:15:59Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - server
+body: "<p><a href=\"https://circleci.com/ja/enterprise/\" target=\"_blank\" rel=\"noopener\">CircleCI Enterprise または CircleCI Server</a> を更新するには、以下の手順を実行します。 このプロセスは、15 ～ 20 分程度で終わるシンプルなものです。</p><p>\_</p><p><strong>1.</strong> 管理コンソールのダッシュボードで、<strong>[View Update (更新の表示)]</strong> をクリックします。</p><p>\_</p><p><img src=\"https://support.circleci.com/hc/article_attachments/360079630251/server_update_1.png\" alt=\"server_update_1.png\"></p><p><br><strong>2.</strong> <strong>[Install Update (更新のインストール)]</strong> をクリックします。 CircleCI Server の更新が開始されます。</p><p>\_</p><p><img src=\"https://support.circleci.com/hc/article_attachments/360079630271/server_update_2.png\" alt=\"server_update_2.png\"></p><p>\_</p><p><strong>注</strong>:<br><strong>1.</strong> 更新の前に、<a href=\"https://circleci.com/ja/server/changelog/\" target=\"_blank\" rel=\"noopener\">https://circleci.com/ja/server/changelog/</a> で Server の更新履歴を確認してください。<br><strong>2.</strong> 更新前に、現在の環境をバックアップしてください。 手順については、<a href=\"https://circleci.com/docs/ja/2.0/backup/#backing-up-circleci-data\" target=\"_blank\" rel=\"noopener\">https://circleci.com/docs/ja/2.0/backup/#backing-up-circleci-data</a> をご覧ください。<br><strong>3.</strong> 実行中のジョブがないことを確認してください。</p><p>\_</p><p>不明な点がありましたら、<a href=\"https://support.circleci.com/hc/ja-jp\" target=\"_self\">サポート</a>にチケットを送信するか、<a href=\"mailto:support@circleci.com\">support@circleci.com</a> までメールにてお問い合わせください。</p>"

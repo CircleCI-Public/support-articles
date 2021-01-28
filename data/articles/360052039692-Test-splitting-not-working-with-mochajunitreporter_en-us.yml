@@ -12,16 +12,16 @@ vote_sum: 1
 vote_count: 1
 section_id: 115003756627
 created_at: '2020-11-12T19:23:05Z'
-updated_at: '2020-11-15T17:53:10Z'
+updated_at: '2021-01-27T02:21:58Z'
 name: Test splitting not working with mocha-junit-reporter
 title: Test splitting not working with mocha-junit-reporter
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-11-12T19:24:10Z'
+edited_at: '2021-01-27T02:21:58Z'
 user_segment_id: null
-permission_group_id: 237847
+permission_group_id: 237867
 label_names:
   - test split
   - test splitting

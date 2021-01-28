@@ -12,16 +12,16 @@ vote_sum: 0
 vote_count: 0
 section_id: 115003755828
 created_at: '2020-11-20T21:10:41Z'
-updated_at: '2020-11-20T21:10:57Z'
+updated_at: '2021-01-27T08:52:10Z'
 name: Store chocolatey logs for further troubleshooting
 title: Store chocolatey logs for further troubleshooting
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-11-20T21:10:57Z'
+edited_at: '2021-01-27T02:21:54Z'
 user_segment_id: null
-permission_group_id: 237847
+permission_group_id: 237867
 label_names:
   - windows
   - chocolatey

@@ -12,14 +12,14 @@ vote_sum: -9
 vote_count: 9
 section_id: 115003756627
 created_at: '2017-10-27T13:37:32Z'
-updated_at: '2020-12-30T14:52:36Z'
+updated_at: '2021-01-27T23:03:47Z'
 name: Command not found error in CircleCI
 title: Command not found error in CircleCI
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-10-22T06:59:48Z'
+edited_at: '2021-01-27T23:03:47Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
@@ -28,4 +28,4 @@ label_names:
   - mysql
   - mariadb
   - mongo
-body: "<p>If you see something like this on CircleCI builds:\_</p>\n<p><code>/bin/bash: mongo: command not found</code></p>\n<p>This is because all of your commands will run in the first container that is listed (primary container). This is typically <strong>not</strong> the database container, which means that the\_<code>mongo</code>\_cli is likely not installed in the primary container. The same can happen for mysql and postgresql.</p>\n<p>In these cases you can install the client using <code>sudo apt install</code> or the relevant package manager for the distro your image is running.</p>\n<p>example:</p>\n<pre>- run: sudo apt-get install mongodb-clients</pre>\n<p>More details on Discuss here: <a href=\"https://discuss.circleci.com/t/bin-bash-mongo-command-not-found/16218/6?u=tom\" target=\"_blank\" rel=\"noopener\">https://discuss.circleci.com/t/bin-bash-mongo-command-not-found/16218/6</a></p>"
+body: "<p>If you see something like this on CircleCI builds when using two docker images:</p>\n<p><code>/bin/bash: mongo: command not found</code></p>\n<p>Example `config.yml` :\_</p>\n<p>```</p>\n<pre><span class=\"hljs-attr\">docker:</span><span> <br></span><span class=\"hljs-bullet\">-</span><span> </span><span class=\"hljs-attr\">image:</span><span> </span><span class=\"hljs-string\">circleci/python:3.6.1</span><span> <br></span><span class=\"hljs-bullet\">-</span><span> </span><span class=\"hljs-attr\">image:</span><span> </span><span class=\"hljs-string\">circleci/mongo:3.5.6</span><span> <br></span><span class=\"hljs-attr\">steps:</span><span> </span><span class=\"hljs-bullet\">-</span><span> </span><span class=\"hljs-string\">checkout</span><span> </span><span class=\"hljs-bullet\">-</span><span> </span><span class=\"hljs-attr\">run:</span><span> </span><span class=\"hljs-string\">echo</span><span> </span><span class=\"hljs-string\">\"Hello World\"</span><span> </span><span class=\"hljs-bullet\">-</span><span> </span><span class=\"hljs-attr\">run:</span><span> </span><span class=\"hljs-string\">mongo</span><span> </span><span class=\"hljs-string\">--version</span></pre>\n<p>\_</p>\n<p>\_</p>\n<p>This is because all of your commands will run in the first container that is listed (primary container). This is typically <strong>not</strong> the database container, which means that the\_<code>mongo</code>\_cli is likely not installed in the primary container. The same can happen for mysql and postgresql.</p>\n<p>In these cases you can install the client using <code>sudo apt install</code> or the relevant package manager for the distro your image is running.</p>\n<p>example:</p>\n<pre>- run: sudo apt-get install mongodb-clients</pre>\n<p>More details on Discuss here: <a href=\"https://discuss.circleci.com/t/bin-bash-mongo-command-not-found/16218/6?u=tom\" target=\"_blank\" rel=\"noopener\">https://discuss.circleci.com/t/bin-bash-mongo-command-not-found/16218/6</a></p>"

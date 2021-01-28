@@ -1,5 +1,10 @@
-<p>If you see something like this on CircleCI builds: </p>
+<p>If you see something like this on CircleCI builds when using two docker images:</p>
 <p><code>/bin/bash: mongo: command not found</code></p>
+<p>Example `config.yml` : </p>
+<p>```</p>
+<pre><span class="hljs-attr">docker:</span><span> <br></span><span class="hljs-bullet">-</span><span> </span><span class="hljs-attr">image:</span><span> </span><span class="hljs-string">circleci/python:3.6.1</span><span> <br></span><span class="hljs-bullet">-</span><span> </span><span class="hljs-attr">image:</span><span> </span><span class="hljs-string">circleci/mongo:3.5.6</span><span> <br></span><span class="hljs-attr">steps:</span><span> </span><span class="hljs-bullet">-</span><span> </span><span class="hljs-string">checkout</span><span> </span><span class="hljs-bullet">-</span><span> </span><span class="hljs-attr">run:</span><span> </span><span class="hljs-string">echo</span><span> </span><span class="hljs-string">"Hello World"</span><span> </span><span class="hljs-bullet">-</span><span> </span><span class="hljs-attr">run:</span><span> </span><span class="hljs-string">mongo</span><span> </span><span class="hljs-string">--version</span></pre>
+<p> </p>
+<p> </p>
 <p>This is because all of your commands will run in the first container that is listed (primary container). This is typically <strong>not</strong> the database container, which means that the <code>mongo</code> cli is likely not installed in the primary container. The same can happen for mysql and postgresql.</p>
 <p>In these cases you can install the client using <code>sudo apt install</code> or the relevant package manager for the distro your image is running.</p>
 <p>example:</p>

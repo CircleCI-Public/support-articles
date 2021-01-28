@@ -1,0 +1,27 @@
+id: 360054121871
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360054121871.json
+html_url: https://support.circleci.com/hc/ja/articles/360054121871
+author_id: 397881110914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003327208
+created_at: '2020-12-14T20:09:35Z'
+updated_at: '2021-01-27T05:14:14Z'
+name: '[Server] パーソナル API トークンを作成する方法'
+title: '[Server] パーソナル API トークンを作成する方法'
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2021-01-27T05:14:14Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - server
+  - api
+  - token
+body: "<p>CircleCI Server でパーソナル API トークンを作成するには、<strong>[User settings (ユーザー設定)]</strong>、<strong>[Personal API Tokens (パーソナル API トークン)]</strong> の順にクリックします。</p><p>\_</p><p>次に、<strong>[Create New Token (新しいトークンを作成する)]</strong> をクリックして、トークンに名前を付けます。 画面に表示された API トークンをコピーします。</p><p>\_</p><p><img src=\"https://support.circleci.com/hc/article_attachments/360079504192/server_ap_token.png\" alt=\"server_ap_token.png\"></p><p>\_</p><p>不明な点がありましたら、<a href=\"https://support.circleci.com/hc/ja-jp\" target=\"_self\">サポート</a>にチケットを送信するか、<a href=\"mailto:support@circleci.com\">support@circleci.com</a> までメールにてお問い合わせください。</p><p>\_</p>"
