@@ -12,7 +12,7 @@ vote_sum: 0
 vote_count: 0
 section_id: 360002440473
 created_at: '2020-11-18T20:22:34Z'
-updated_at: '2021-01-28T00:24:16Z'
+updated_at: '2021-01-29T00:07:15Z'
 name: How to customize your Slack messages when using CircleCI's Slack Orb
 title: How to customize your Slack messages when using CircleCI's Slack Orb
 source_locale: en-us
