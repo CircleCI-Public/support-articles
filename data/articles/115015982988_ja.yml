@@ -1,7 +1,7 @@
 id: 115015982988
 url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115015982988.json
 html_url: https://support.circleci.com/hc/ja/articles/115015982988
-author_id: 1816780488
+author_id: 405001866574
 comments_disabled: true
 draft: false
 promoted: false
@@ -10,7 +10,7 @@ vote_sum: 0
 vote_count: 2
 section_id: 115003327148
 created_at: '2017-12-31T15:08:58Z'
-updated_at: '2021-01-12T01:40:27Z'
+updated_at: '2021-01-29T20:32:23Z'
 name: CircleCI は 2 要素認証をサポートしていますか？
 title: CircleCI は 2 要素認証をサポートしていますか？
 source_locale: en-us

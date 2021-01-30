@@ -7,11 +7,11 @@ comments_disabled: false
 draft: false
 promoted: false
 position: 0
-vote_sum: 62
-vote_count: 106
+vote_sum: 63
+vote_count: 107
 section_id: 115003756627
 created_at: '2018-05-10T09:45:00Z'
-updated_at: '2021-01-24T21:55:30Z'
+updated_at: '2021-01-29T21:58:14Z'
 name: >-
   error while loading shared libraries: libgconf-2.so.4: cannot open shared
   object file: No such file or directory

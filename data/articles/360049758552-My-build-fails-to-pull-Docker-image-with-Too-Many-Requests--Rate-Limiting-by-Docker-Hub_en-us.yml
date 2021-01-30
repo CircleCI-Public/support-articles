@@ -12,7 +12,7 @@ vote_sum: 2
 vote_count: 2
 section_id: 360001263193
 created_at: '2020-09-27T16:12:45Z'
-updated_at: '2021-01-12T01:53:47Z'
+updated_at: '2021-01-29T16:16:11Z'
 name: >-
   My build fails to pull Docker image with "Too Many Requests" - Rate Limiting
   by Docker Hub
@@ -23,7 +23,7 @@ source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-10-22T06:55:51Z'
+edited_at: '2021-01-29T16:16:11Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
@@ -75,7 +75,7 @@ body: >-
   here.](https://circleci.com/docs/2.0/private-images) 
 
 
-  Further below is an example of a build failure due to encountering the Docker
+  Below is an example of a build failure due to encountering the Docker
 
   rate limit.
 
