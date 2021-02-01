@@ -1,0 +1,13 @@
+<p dir="auto">The two main operations in the<span> </span><code>restore_cache</code><span> </span>step are: "<strong><em>download</em></strong>" and "<strong><em>unarchive</em></strong>".</p>
+<p dir="auto">In the case of Node related cache, we found that the "<strong><em>unarchive</em></strong>" operation can sometimes take a significant amount of time, and that the duration can be inconsistent across builds.</p>
+<p dir="auto"> </p>
+<h3 dir="auto">Disk I/O contention</h3>
+<p dir="auto">The issue described above is mostly due to disk I/O contention occurring, and being aggravated by the structure of Node dependencies.</p>
+<p dir="auto">Often "<em>node_modules</em>" folders will contain a huge number of small files, and restoring all these files can cause the aforementioned resource contention, and can lead to a high deviation in the<span> </span><code>restore_cache</code><span> </span>duration.</p>
+<p dir="auto"> </p>
+<h3 dir="auto">RAM disk</h3>
+<p dir="auto">To improve consistency of the<span> </span><code>restore_cache</code><span> step's </span>duration, we suggest using the<strong> <a href="https://circleci.com/docs/2.0/executor-types/#ram-disks" rel="noreferrer">RAM disk</a></strong><span> </span>available for each container.</p>
+<p dir="auto"><em>Note that depending on the jobs' memory usage, you might need to use/specify a larger <a href="https://circleci.com/docs/2.0/configuration-reference/#resource_class" rel="noreferrer">resource class</a> to ensure there is enough memory to leverage the RAM disk feature.</em></p>
+<p dir="auto"> </p>
+<h3 dir="auto">Additional information</h3>
+<p dir="auto">If you'd like to learn more about this topic, consider reading<span> </span><a href="https://circleci.com/blog/the-issue-of-speed-and-determinism-in-ci/" rel="noreferrer">this blog post</a><span> </span>in which we provide a detailed analysis of this behaviour.</p>

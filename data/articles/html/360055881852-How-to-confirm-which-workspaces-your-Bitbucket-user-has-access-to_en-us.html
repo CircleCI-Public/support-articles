@@ -1,0 +1,12 @@
+<p>Bitbucket workspaces translate into CircleCI organizations.</p>
+<p>If you want to confirm which organizations you <em>should be able to</em> see in the CircleCI UI, as well as, the level of permissions your Bitbucket user <em>should </em>have on these organizations, you can query the Bitbucket API:</p>
+<ol>
+    <li>Log into your Bitbucket account.</li>
+    <li>Create an app password &gt;<span> </span><a href="https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/" rel="noreferrer">https://support.atlassian.com/bitbucket-cloud/docs/app-passwords</a>
+    </li>
+    <li>Run the following cURL request:<span><br></span>
+        <pre><code>curl -u"your_Bitbucket_username:your_app_password" --request GET 'https://api.bitbucket.org/2.0/user/permissions/workspaces'|jq -rs '.[].values[]|{permission: .permission, workspace: .workspace.slug}'</code></pre>
+    </li>
+</ol>
+<p><em><span class="wysiwyg-underline"><strong>Note</strong></span>: you can download <code>jq</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> </span><a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" href="https://stedolan.github.io/jq/" target="_blank" rel="noopener">here</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">.</span></em></p>
+<p dir="auto">The request will return the list of Bitbucket workspaces your Bitbucket<span> </span>user has access to, as well as, the level of permissions for each workspace.</p>
