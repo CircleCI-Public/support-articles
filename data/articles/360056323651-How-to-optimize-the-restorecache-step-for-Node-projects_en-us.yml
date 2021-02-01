@@ -1,0 +1,32 @@
+id: 360056323651
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360056323651.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360056323651-How-to-optimize-the-restore-cache-step-for-Node-projects
+author_id: 403103999173
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003756627
+created_at: '2021-02-01T00:09:36Z'
+updated_at: '2021-02-01T00:10:50Z'
+name: How to optimize the restore_cache step for Node projects
+title: How to optimize the restore_cache step for Node projects
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2021-02-01T00:10:50Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names:
+  - cache
+  - restore cache
+  - npm
+  - nodejs
+  - optimization
+  - yarn
+body: "<p dir=\"auto\">The two main operations in the<span>\_</span><code>restore_cache</code><span>\_</span>step are: \"<strong><em>download</em></strong>\" and \"<strong><em>unarchive</em></strong>\".</p>\n<p dir=\"auto\">In the case of Node related cache, we found that the \"<strong><em>unarchive</em></strong>\" operation can sometimes take a significant amount of time, and that the duration can be inconsistent across builds.</p>\n<p dir=\"auto\">\_</p>\n<h3 dir=\"auto\">Disk I/O contention</h3>\n<p dir=\"auto\">The issue described above is mostly due to disk I/O contention occurring, and being aggravated by the structure of Node dependencies.</p>\n<p dir=\"auto\">Often \"<em>node_modules</em>\" folders will contain a huge number of small files, and restoring all these files can cause the aforementioned resource contention, and can lead to a high deviation in the<span>\_</span><code>restore_cache</code><span>\_</span>duration.</p>\n<p dir=\"auto\">\_</p>\n<h3 dir=\"auto\">RAM disk</h3>\n<p dir=\"auto\">To improve consistency of the<span>\_</span><code>restore_cache</code><span> step's </span>duration, we suggest using the<strong>\_<a href=\"https://circleci.com/docs/2.0/executor-types/#ram-disks\" rel=\"noreferrer\">RAM disk</a></strong><span>\_</span>available for each container.</p>\n<p dir=\"auto\"><em>Note that depending on the jobs' memory usage, you might need to use/specify a larger\_<a href=\"https://circleci.com/docs/2.0/configuration-reference/#resource_class\" rel=\"noreferrer\">resource class</a>\_to ensure there is enough memory to leverage the RAM disk feature.</em></p>\n<p dir=\"auto\">\_</p>\n<h3 dir=\"auto\">Additional information</h3>\n<p dir=\"auto\">If you'd like to learn more about this topic, consider reading<span>\_</span><a href=\"https://circleci.com/blog/the-issue-of-speed-and-determinism-in-ci/\" rel=\"noreferrer\">this blog post</a><span>\_</span>in which we provide a detailed analysis of this behaviour.</p>"
