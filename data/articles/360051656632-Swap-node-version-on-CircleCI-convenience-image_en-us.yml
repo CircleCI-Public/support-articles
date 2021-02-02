@@ -12,7 +12,7 @@ vote_sum: -1
 vote_count: 1
 section_id: 115003580328
 created_at: '2020-11-04T19:43:13Z'
-updated_at: '2021-01-27T02:22:03Z'
+updated_at: '2021-02-02T00:06:05Z'
 name: Swap node version on CircleCI convenience image
 title: Swap node version on CircleCI convenience image
 source_locale: en-us
