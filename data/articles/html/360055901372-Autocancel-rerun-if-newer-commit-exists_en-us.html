@@ -1,0 +1,14 @@
+<p>There are situations where re-running a build would cause issues, such as deploying a stale version of your application. To work around this the following run step will exit a build if a newer commit exists on the branch it is running on:</p>
+<pre style="background-color: #f3f3f3;">- run:
+    name: Check last commit to this commit
+    command: |
+      LATEST_COMMIT=$(git ls-remote $CIRCLE_REPOSITORY_URL | grep $CIRCLE_BRANCH | cut -f 1)
+      LAST_COMMIT_DATETIME=$(git show --format="%ct" $LATEST_COMMIT | head -n 1)
+      BUILD_COMMIT_DATETIME=$(git show --format="%ct" $CIRCLE_SHA1 | head -n 1)
+      if [ "$LAST_COMMIT_DATETIME" -gt "$BUILD_COMMIT_DATETIME" ]; then
+        echo "more recent commit to branch, exiting"
+        exit 1
+      fi</pre>
+<p>Example of this in action:</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360084358852/testing_cancel.png" alt="testing_cancel.png"></p>
+<p>Build 714 runs successfully, I then make a change and push that commit up, and build 715 runs successfully. Then I re-run build 714 which fails since it found a newer commit on the branch.</p>
