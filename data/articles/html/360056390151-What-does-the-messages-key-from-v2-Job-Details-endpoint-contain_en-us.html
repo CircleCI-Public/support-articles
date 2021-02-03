@@ -1,0 +1,13 @@
+<p>The <a href="https://circleci.com/docs/api/v2/#operation/getJobDetails" target="_self">Get Job Details endpoint</a> contains a <code>messages</code> key and you may wonder what sort of information should be present there.</p>
+<p>This key will provide error messages related to the build not running. It will return an empty array on both passing builds and builds that failed while running.</p>
+<p>As an example, take this build that didn't run:</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360084559911/Screen_Shot_2021-01-22_at_9.06.57_AM.png" alt="Screen_Shot_2021-01-22_at_9.06.57_AM.png"></p>
+<p>This is what would be returned from the API:</p>
+<pre style="background-color: #f3f3f3;">"messages" : [ {
+    "type" : "warning",
+    "reason" : "no-followers",
+    "message" : "Your build was not run - reason code (no-followers)."
+  }, {
+    "type" : "error",
+    "message" : "We did not test this push because nobody is following the project"
+  } ],</pre>
