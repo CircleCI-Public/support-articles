@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -12
-vote_count: 28
+vote_sum: -13
+vote_count: 29
 section_id: 115003327088
 created_at: '2019-09-25T11:45:03Z'
-updated_at: '2021-01-08T13:22:54Z'
+updated_at: '2021-02-02T23:40:46Z'
 name: Since switching to Xcode 11 you receive "Failed to build gem native extension"
 title: Since switching to Xcode 11 you receive "Failed to build gem native extension"
 source_locale: en-us
