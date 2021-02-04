@@ -12,17 +12,17 @@ vote_sum: 5
 vote_count: 45
 section_id: 115003332187
 created_at: '2018-01-17T13:14:28Z'
-updated_at: '2021-02-02T06:17:19Z'
+updated_at: '2021-02-03T17:40:07Z'
 name: Testing with the Android emulator on CircleCI
 title: Testing with the Android emulator on CircleCI
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2021-02-02T06:17:19Z'
+edited_at: '2021-02-03T17:40:07Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
   - docker
   - android
-body: "<p>Running the Android emulator is not currently supported on CircleCI, since it's not supported by the type of virtualization CircleCI uses on Linux. Some users have reported success with Android emulators on the <a href=\"https://circleci.com/docs/2.0/executor-types/#using-macos\" target=\"_self\">macOS executor</a>, but there are many caveats and success with route depends on your application. Therefor we cannot provide support assistance for users attempting this route, and we recommend using an external service such as <a href=\"https://firebase.google.com/docs/test-lab/\" target=\"_blank\" rel=\"noopener\">Firebase Test Lab</a> to run your emulator tests from your\_CircleCI job.</p>\n<p>The gcloud tools are preinstalled on the\_CircleCI Docker images for Android - see the <a href=\"https://github.com/CircleCI-Public/circleci-dockerfiles/tree/master/android/images\" target=\"_blank\" rel=\"noopener\">Dockerfiles here</a> and <a href=\"https://hub.docker.com/r/circleci/android/tags/\" target=\"_blank\" rel=\"noopener\">Docker Hub links here</a>.</p>\n<p><strong>UPDATE</strong>: W<span>e now have an Android machine image available in preview that supports x86 emulators. Documentation on how to access it is available here: </span><a class=\"\" href=\"https://github.com/CircleCI-Public/android-image-preview-docs\" target=\"_blank\" rel=\"nofollow noopener\">https://github.com/CircleCI-Public/android-image-preview-docs</a></p>"
+body: "<p><strong>UPDATE</strong>: <em>We now have an Android machine image available in preview that supports x86 Android emulators and nested virtualization. Documentation on how to access it is available here: </em><a class=\"\" href=\"https://github.com/CircleCI-Public/android-image-preview-docs\" target=\"_blank\" rel=\"nofollow noopener\"><em>https://github.com/CircleCI-Public/android-image-preview-docs</em></a></p>\n<p>\_</p>\n<p>Running the Android emulator is not currently supported on CircleCI, since it's not supported by the type of virtualization CircleCI uses on Linux. Some users have reported success with Android emulators on the <a href=\"https://circleci.com/docs/2.0/executor-types/#using-macos\" target=\"_self\">macOS executor</a>, but there are many caveats and success with route depends on your application. Therefor we cannot provide support assistance for users attempting this route, and we recommend using an external service such as <a href=\"https://firebase.google.com/docs/test-lab/\" target=\"_blank\" rel=\"noopener\">Firebase Test Lab</a> to run your emulator tests from your\_CircleCI job.</p>\n<p>The gcloud tools are preinstalled on the\_CircleCI Docker images for Android - see the <a href=\"https://github.com/CircleCI-Public/circleci-dockerfiles/tree/master/android/images\" target=\"_blank\" rel=\"noopener\">Dockerfiles here</a> and <a href=\"https://hub.docker.com/r/circleci/android/tags/\" target=\"_blank\" rel=\"noopener\">Docker Hub links here</a>.</p>\n<p>\_</p>"

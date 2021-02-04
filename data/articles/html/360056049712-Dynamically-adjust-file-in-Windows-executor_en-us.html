@@ -1,0 +1,24 @@
+<p>You may have a situation where you need to dynamically change or update a file within the Windows executor. Usually, this would to update a config file. If the file is in XML, the following is an example of how such an update would be made:</p>
+<pre style="background-color: #f3f3f3;">jobs:
+  build:
+    machine:
+      image: windows-server-2019-vs2019:stable
+    shell: powershell.exe
+    environment:
+      NEW_URL: "https://newurl.org"
+    steps:
+      - checkout
+      - run:
+          name: Update config file
+          command: |
+            Write-Host("Displaying Original Config");
+            type C:\Users\circleci\project\test.config
+            [xml]$XmlDocument = Get-Content -Path C:\Users\circleci\project\test.config
+            $url = $XmlDocument.SelectSingleNode("configuration/Test/add[@value='https://something.com/']");
+            $url.value = "$env:NEW_URL";
+            $XmlDocument.Save("C:\Users\circleci\project\test.config")
+            Write-Host("Displaying Updated Config");
+            type C:\Users\circleci\project\test.config</pre>
+<p>The above run command is adjusting the URL present in the following <code>test.config</code> file:</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360084687952/Screen_Shot_2021-02-03_at_2.27.02_PM.png" alt="Screen_Shot_2021-02-03_at_2.27.02_PM.png"></p>
+<p>The <code>Write-Host</code> commands are present just to verify the change and can be removed as needed.</p>

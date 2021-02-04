@@ -8,11 +8,11 @@ comments_disabled: false
 draft: false
 promoted: false
 position: 0
-vote_sum: -5
-vote_count: 19
+vote_sum: -4
+vote_count: 20
 section_id: 115003580328
 created_at: '2018-02-14T14:17:31Z'
-updated_at: '2021-01-30T09:20:39Z'
+updated_at: '2021-02-03T18:52:13Z'
 name: No matching manifest for linux/amd64 in the manifest list entries
 title: No matching manifest for linux/amd64 in the manifest list entries
 source_locale: en-us

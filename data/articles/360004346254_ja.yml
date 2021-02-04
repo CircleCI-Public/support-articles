@@ -6,11 +6,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -33
-vote_count: 51
+vote_sum: -34
+vote_count: 52
 section_id: 115004127248
 created_at: '2018-05-16T08:25:57Z'
-updated_at: '2021-02-01T10:06:10Z'
+updated_at: '2021-02-03T16:39:22Z'
 name: ワークフローのステータスチェックが、"ci/circleci — Waiting for status to be reported" のまま終了しない
 title: ワークフローのステータスチェックが、"ci/circleci — Waiting for status to be reported" のまま終了しない
 source_locale: en-us
