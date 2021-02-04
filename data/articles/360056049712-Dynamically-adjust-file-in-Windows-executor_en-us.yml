@@ -1,0 +1,62 @@
+id: 360056049712
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360056049712.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360056049712-Dynamically-adjust-file-in-Windows-executor
+author_id: 405652843914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003580328
+created_at: '2021-02-03T20:32:17Z'
+updated_at: '2021-02-03T20:33:19Z'
+name: Dynamically adjust file in Windows executor
+title: Dynamically adjust file in Windows executor
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2021-02-03T20:33:19Z'
+user_segment_id: null
+permission_group_id: 237847
+label_names:
+  - windows
+  - update file
+body: >-
+  <p>You may have a situation where you need to dynamically change or update a
+  file within the Windows executor. Usually, this would to update a config file.
+  If the file is in XML, the following is an example of how such an update would
+  be made:</p>
+
+  <pre style="background-color: #f3f3f3;">jobs:
+    build:
+      machine:
+        image: windows-server-2019-vs2019:stable
+      shell: powershell.exe
+      environment:
+        NEW_URL: "https://newurl.org"
+      steps:
+        - checkout
+        - run:
+            name: Update config file
+            command: |
+              Write-Host("Displaying Original Config");
+              type C:\Users\circleci\project\test.config
+              [xml]$XmlDocument = Get-Content -Path C:\Users\circleci\project\test.config
+              $url = $XmlDocument.SelectSingleNode("configuration/Test/add[@value='https://something.com/']");
+              $url.value = "$env:NEW_URL";
+              $XmlDocument.Save("C:\Users\circleci\project\test.config")
+              Write-Host("Displaying Updated Config");
+              type C:\Users\circleci\project\test.config</pre>
+  <p>The above run command is adjusting the URL present in the following
+  <code>test.config</code> file:</p>
+
+  <p><img
+  src="https://support.circleci.com/hc/article_attachments/360084687952/Screen_Shot_2021-02-03_at_2.27.02_PM.png"
+  alt="Screen_Shot_2021-02-03_at_2.27.02_PM.png"></p>
+
+  <p>The <code>Write-Host</code> commands are present just to verify the change
+  and can be removed as needed.</p>
