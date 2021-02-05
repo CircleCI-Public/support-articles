@@ -2,7 +2,7 @@ id: 115013353748
 url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115013353748.json
 html_url: >-
   https://support.circleci.com/hc/ja/articles/115013353748-Duplicate-builds-every-push
-author_id: 25261361207
+author_id: 4008831568
 comments_disabled: true
 draft: false
 promoted: false
@@ -11,7 +11,7 @@ vote_sum: -5
 vote_count: 7
 section_id: 115003580328
 created_at: '2017-10-10T16:39:09Z'
-updated_at: '2021-01-12T01:47:41Z'
+updated_at: '2021-02-04T18:57:17Z'
 name: Duplicate builds every push
 title: Duplicate builds every push
 source_locale: en-us
@@ -21,5 +21,9 @@ outdated_locales: []
 edited_at: '2021-01-12T01:47:41Z'
 user_segment_id: null
 permission_group_id: 237867
-label_names: []
+label_names:
+  - webhooks
+  - GitHub
+  - builds
+  - trigger
 body: "<p>This usually indicates that there's a problem with the GitHub webhook, sometimes due to multiple being added to the project. The easiest way to get this working again is to have an admin of the Github Organization follow these steps in order:\_</p><p>1. Remove all CircleCI webhooks and services from your GitHub repo settings.<br>2. Tell the project to stop building on CircleCI through \"Project settings\".<br>3. Add the project back on CircleCI.</p><p>A full walkthrough for removing a project from CircleCI <a href=\"https://support.circleci.com/hc/en-us/articles/360021666393-How-to-manually-stop-building-by-removing-your-deploy-key-and-webhook-from-GitHub\" target=\"_self\">can be found here</a>, including screenshots.</p>"

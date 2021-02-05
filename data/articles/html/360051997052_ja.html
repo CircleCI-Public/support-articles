@@ -1,0 +1,6 @@
+<p>Docker イメージをビルドする際、Dockerfile のサイズの大きさによっては、ビルド プロセス中に大量のコマンドが順次実行されることがあります。 こうしたビルドに慣れている方であれば、ビルドにかかる平均時間を見積もることはできます。しかし、Docker ではタイミング情報が出力されないため、ビルド時間が平均を超過した場合、どこで時間がかかったのかを把握することが困難な場合があります。</p>
+<p>この問題は、Docker のビルド出力の各行を bash とパイプし、date コマンドを使用して時刻を先頭に配置することで解決できます。</p>
+<pre>- run: docker build .  | while read line ; do echo "$(date +"%T") &gt; $line" ; done ;</pre>
+<p>これで、以下のような行が出力されるようになります。</p>
+<pre class="css-1hjuxmj">21:15:46 &gt; Status: Downloaded newer image for cimg/base:2020.1121:15:46 &gt; ---&gt; 2b62242a26ae21:15:46 &gt; Step 2/14 : LABEL maintainer "CircleCI &lt;circleci@example.com&gt;"21:15:47 &gt; ---&gt; Running in b829a27594ae21:15:47 &gt; ---&gt; f0d09345055e21:15:47 &gt; Removing intermediate container b829a27594ae</pre>
+<p>タイミング データ形式を HH:MM:SS で記録すると情報を細かく把握でき、想定よりも時間のかかったステップの追跡に役立ちます。</p>

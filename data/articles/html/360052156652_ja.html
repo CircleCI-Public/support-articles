@@ -1,0 +1,9 @@
+<p>SSH でジョブが再実行されるときに、特定のステップだけを実行またはスキップしたいことがあります。 <code>netstat</code> を使用して<span>アクティブな TCP 接続を確認することで、こうしたステップを指定できます。 SSH でジョブが再実行されているときは、<code>circleci-agent</code> が <code>PID/Program Name</code> になります。 以下のコード スニペットを使用することで、SSH でジョブが再実行されるときに特定のステップを条件付きで実行またはスキップすることができます。 </span></p>
+<h3><span>SSH でジョブが再実行されるときにステップをスキップする方法: </span></h3>
+<p> </p>
+<pre><span> - run: |<br>     if [[ $(netstat -tnlp | grep -F 'circleci-agent') ]] ; then<br>       exit 0;<br>     fi<br>     echo "commands you want to run when job is NOT rerun with SSH"</span></pre>
+<p>上記のコードの <code>echo "commands you want to run when job is NOT rerun with SSH"</code> は、ジョブが SSH で再実行 "されない" ときにのみ実行されます。 ジョブが SSH で再実行される場合、このステップはコード 0 で終了し、通知はされません。 これは、ステップの実行の成否がビルドのステータスに影響しないということを意味します。</p>
+<p> </p>
+<h3>SSH でジョブが再実行されるときにのみステップを実行する方法: </h3>
+<pre><span> - run: |<br>     if [[ $(netstat -tnlp | grep -F 'circleci-agent') ]] ; then<br>       echo "commands you want to run ONLY when job is rerun with SSH"    <br>     fi<br>     exit 0;</span></pre>
+<p> </p>

@@ -12,7 +12,7 @@ vote_sum: 1
 vote_count: 1
 section_id: 115003756627
 created_at: '2020-11-05T21:13:56Z'
-updated_at: '2021-02-02T00:06:07Z'
+updated_at: '2021-02-04T07:05:48Z'
 name: Build fails on 'apt-get update' command
 title: Build fails on 'apt-get update' command
 source_locale: en-us

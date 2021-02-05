@@ -1,0 +1,23 @@
+<p>このトピックに関する詳細な解説については、<a href="https://discuss.circleci.com/t/some-builds-failing-due-to-apt-get-update/38018">こちら</a>をご覧ください。</p>
+<p>現在、<code>apt-get update</code><span> </span>の実行時にエラーが発生し、CircleCI のビルドが失敗するケースが発生しています。 こちらの問題は CircleCI でも追跡中ですが、Debian stretch (Debian 9) で Debian リポジトリからバックポート コンポーネントが削除されたことが原因です。</p>
+<p>次のエラー メッセージが表示されます。</p>
+<blockquote>
+    <p>Could not open file /var/lib/apt/lists/deb.debian.org_debian_dists_stretch-backports_main_binary-amd64_Packages.diff_Index - open (2: No such file or directory)</p>
+</blockquote>
+<h2>影響を受けるイメージ</h2>
+<p>現時点では、次のイメージでこの問題が発生することを確認しています。</p>
+<ol>
+    <li>Debian 9 (stretch) ベースのイメージ</li>
+    <li>古いイメージ (ビルド後 91 日以上が経過)</li>
+</ol>
+<h2>解決策</h2>
+<p>ご使用のプロジェクトに対して実施できる解決策は複数あります。状況に最適なものをお選びください。</p>
+<ol>
+    <li>ソフトウェアのプライマリ バージョンが更新されているイメージ タグを使用する。 たとえば、影響を受けることが確認されているイメージに、<span> </span><code>circleci/ruby:2.6.5-stretch-node-browsers</code> があります。 これには、バージョンの古い Ruby v2.6.5 が含まれています。 Ruby v2.6.6 などの新しいパッチ リリースであれば、この問題の影響を受けません。</li>
+    <li>ベース OS に最近のバージョンのものを使用する。 上記の例と同じ<span> </span><code>circleci/ruby:2.6.5-stretch-node-browsers</code> の場合、ベース OS には Debian 9 (stretch) が使用されていますが、これは 3 年以上前のものです。 文字列<span> </span><code>stretch</code><span> </span>を削除すると、この問題の影響を受けない最近のバージョンの Debian または Ubuntu ベースの OS が使用されます。 具体的には、<code>circleci/ruby:2.6.5-node-browsers</code><span> </span>のようにすることで、この問題に対処できます。</li>
+    <li>次世代コンビニエンス イメージを使用する。 次世代コンビニエンス イメージは、Ubuntu 18.04 または Ubuntu 20.04 をベースにしているため、この問題の影響を受けません。</li>
+    <li>
+        <code>sudo apt-get update</code><span> </span>を実行する前に APT キャッシュを削除する。この方法では、イメージに変更を加えずにこの問題を解決できます。 具体的には、次のようになります。
+    </li>
+</ol>
+<pre style="background-color: #f3f3f3;">- run: |    sudo rm -rf /var/lib/apt/lists/*    sudo apt-get update</pre>

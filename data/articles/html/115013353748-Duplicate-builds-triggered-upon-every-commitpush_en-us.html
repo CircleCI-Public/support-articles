@@ -1,0 +1,16 @@
+<p>This usually indicates that there's a problem with the webhook in GitHub. Typically this means there are multiple webhooks added to the repository/project in GitHub for CircleCI.</p>
+<p>The easiest way to get this working again is to have an admin of the Github Organization follow these steps in order: </p>
+<p>1. In GitHub, navigate to the impacted repository settings. <em>https://github.com/OrgName/Repository</em></p>
+<p><em><img src="https://support.circleci.com/hc/article_attachments/360058626252/Screenshot_2020-06-03_at_19.36.02.png" alt="Screenshot_2020-06-03_at_19.36.02.png" width="429" height="149"></em></p>
+<p>2. Select Webhooks.</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360084903891/Screenshot_2020-06-03_at_19.39.59.png" alt="Screenshot_2020-06-03_at_19.39.59.png" width="292" height="225"></p>
+<p> </p>
+<p>3. If you see multiple webhooks present here, remove all duplicate webhooks for CircleCI. </p>
+<p> </p>
+<p>If this does not resolve the duplicate triggered builds issue, then your Organization Admin can entirely remove all webhooks for the repository, stop building, and then add the project back on CircleCI.</p>
+<p> </p>
+<p>1. Navigate to the repository settings/Webhooks as described above.</p>
+<p>2. This time, remove all webhooks for CircleCI.<br>3. In CircleCI, stop building the project through "Project settings". <span class="wysiwyg-color-black"><em>https://app.circleci.com/settings/project/github/ORGNAME/PROJECTNAME</em></span></p>
+<p><br>4. Then, add the project back on CircleCI.</p>
+<p> </p>
+<p>A full walkthrough for removing a project/repository from CircleCI <a href="https://support.circleci.com/hc/en-us/articles/360021666393-How-to-manually-stop-building-by-removing-your-deploy-key-and-webhook-from-GitHub" target="_self">can be found here</a>, including screenshots.</p>
