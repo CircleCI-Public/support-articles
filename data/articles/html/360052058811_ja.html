@@ -1,0 +1,11 @@
+<p>特定のビルドがテストで失敗したら、すぐにビルドを強制終了したい場合があります。たとえば、複数のコンテナにテストを分割しているときなどに、これが必要になります。</p>
+<p>テスト実行ステップの後に以下を追加することで、対応できます。</p>
+<pre style="background-color: #f3f3f3;">- run:    name: Fail Fast    when: on_fail    command: |      echo "Canceling workflow as a step resulted in failure"      curl -X POST --header "Content-Type: application/json" "https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}/cancel?circle-token=${CIRCLE_TOKEN}" </pre>
+<p>上記の<span>コマンドの前提条件として、</span><a href="https://circleci.com/docs/ja/2.0/managing-api-tokens/#%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB-api-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E4%BD%9C%E6%88%90" target="_blank" rel="noopener">パーソナル API トークン</a><span>を生成し、それを</span><a href="https://circleci.com/docs/ja/2.0/env-vars/#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A" target="_blank" rel="noopener">プロジェクト レベルの環境変数</a><span> </span><code>CIRCLE_TOKEN</code><span> に格納しておく必要があります。</span></p>
+<p><span>上記のコマンドを実行すると、ビルドが "失敗" 状態になったとき (例えばテストが失敗した場合など) に、API を呼び出し、ワークフロー全体をキャンセルします。</span></p>
+<p dir="auto">この解決策に関しては、いくつか注意点があります。</p>
+<ol dir="auto" type="1">
+    <li>ワークフローは "失敗" 状態になることなくキャンセルされます。</li>
+    <li>このコマンドは、テストの失敗時だけではなく、ジョブ ステップの<em>あらゆる</em>失敗時に対して実行されます。<span> </span><span> </span>
+    </li>
+</ol>

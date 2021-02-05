@@ -1,0 +1,37 @@
+id: 360052431751
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360052431751.json
+html_url: https://support.circleci.com/hc/ja/articles/360052431751
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003327088
+created_at: '2020-11-11T14:42:48Z'
+updated_at: '2021-02-04T06:29:53Z'
+name: macOS Executor で、スピンアップ時間が変わることがあるのはなぜですか？
+title: macOS Executor で、スピンアップ時間が変わることがあるのはなぜですか？
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2021-02-04T06:29:53Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: >-
+  <p dir="auto">macOS Executor
+  を使用する場合、事前スケーリングのしくみが異なるため、スピンアップ時間が若干長くなることがあります。 CircleCI では、イメージとリソース
+  クラスの組み合わせに応じて一定数の macOS VM を自動的にスピンアップします。この数はその時点の需要によって変わります。
+  事前スケーリングは常にその時点の需要と利用可能な容量に基づいて調整されますが、需要の急増をいつも予測できるとは限りません。</p><p
+  dir="auto">既に起動していて使用可能な VM でジョブ リクエストを処理できる場合は、スピンアップ時間が短くなり、通常は 30
+  秒未満で完了します。</p><p dir="auto">一方、リクエストの時点で使用できる VM がまだない場合は、新たに VM
+  をスピンアップする必要があり、これには数分かかることがあります。 このようなケースは通常、あまり一般的でないイメージとリソース
+  クラスの組み合わせを使用している場合に発生する可能性が高くなります。これは、利用度の低い組み合わせほど、CircleCI で事前起動される VM
+  が少なくなるためです。</p><p dir="auto">スピンアップ時間が若干長くなるのは通常の挙動ですが、CircleCI
+  ではこの現象を常に注意して監視しています。 すべてのジョブに対して十分な数の VM
+  が事前起動されていることは保証できませんが、可能な限り実現できるよう尽力し、カスタマー エクスペリエンスのさらなる向上に努めてまいります。</p><p
+  dir="auto">ジョブでスピンアップ時間が過度に長く (5 分以上) かかる状況が続く場合は、詳細を調査いたしますので、サポート
+  チケットを作成してご連絡ください。</p>

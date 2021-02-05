@@ -12,7 +12,7 @@ vote_sum: 1
 vote_count: 1
 section_id: 115003580328
 created_at: '2020-11-13T19:01:41Z'
-updated_at: '2021-02-02T00:06:18Z'
+updated_at: '2021-02-04T06:02:16Z'
 name: Conditionally stop job when only change was to config.yml file
 title: Conditionally stop job when only change was to config.yml file
 source_locale: en-us

@@ -1,0 +1,3 @@
+<p>CircleCI のコンビニエンス イメージの使用時に、Homebrew または Linuxbrew をインストールして使用する必要がある場合があります。</p>
+<p>以下の run コマンドを <code>brew</code> によるインストールの前に追加すれば、brew がインストールされ、ジョブの以降の部分で使えるように設定されます。</p>
+<pre style="background-color: #f3f3f3;">- run:    name: Linuxbrew のインストールと設定    command: |      sudo apt-get install build-essential curl file git      sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"      echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin/:$PATH"' &gt;&gt; $BASH_ENV      echo 'export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"' &gt;&gt; $BASH_ENV      echo 'export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"' &gt;&gt; $BASH_ENV</pre>

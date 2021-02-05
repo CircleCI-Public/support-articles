@@ -1,0 +1,54 @@
+id: 360052269651
+url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360052269651.json
+html_url: https://support.circleci.com/hc/ja/articles/360052269651
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 360001263193
+created_at: '2020-11-06T21:04:03Z'
+updated_at: '2021-02-04T06:45:53Z'
+name: Docker Executor での "環境のスピンアップ" ステップにおけるキャッシュの働き
+title: Docker Executor での "環境のスピンアップ" ステップにおけるキャッシュの働き
+source_locale: en-us
+locale: ja
+outdated: false
+outdated_locales: []
+edited_at: '2021-02-04T06:45:53Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: >-
+  <p dir="auto"><span class="wysiwyg-font-size-large"><strong>注:
+  この記事では、ジョブに含まれる、メイン コンテナ用の "環境のスピンアップ" ステップの観点から Docker Executor
+  のキャッシュの働きについて説明します。 本記事の内容は、<a
+  href="https://circleci.com/docs/ja/2.0/building-docker-images/"
+  target="_self">リモート Docker 環境</a>の機能である <a
+  href="https://circleci.com/docs/ja/2.0/docker-layer-caching/"
+  target="_self">Docker レイヤー キャッシュ</a>には<em>適用できません</em>。</strong></span></p><p
+  dir="auto">Docker
+  コンテナのスピンアップからジョブの実行までに要する時間は、複数の要因により変わることがあります。要因としては、イメージのサイズのほか、レイヤーの一部または全部が基盤となる
+  Docker ホスト マシンに既にキャッシュされているかどうかも影響します。</p><p dir="auto">一般的に、<a
+  href="https://circleci.com/docs/ja/2.0/circleci-images/"
+  target="_self">CircleCI コンビニエンス
+  イメージ</a>のような広く利用されているイメージほど、多くのレイヤーがキャッシュでヒットする可能性が高くなります。 よく利用される CircleCI
+  イメージの大部分では同じベース
+  イメージが使用されているので、<em>基本レイヤー</em>のほとんどもイメージ間で違いがないために、キャッシュがヒットする<em>確率</em>が高くなっているわけです。</p><p
+  dir="auto">環境のスピンアップは新しいジョブごとに必要です。新規ジョブが同じワークフロー内にある場合でも、ジョブの再実行や 2
+  回目以降の実行の場合でも、セキュリティ上の理由から、コンテナを再利用することはありません。 ジョブが終了すると、コンテナは破棄されます。
+  同じワークフロー内にある場合であっても、ジョブが同じ Docker ホスト マシンで実行されることは保証できません。また、異なる Docker ホスト
+  マシンで実行される可能性があるため、キャッシュの状態も変わる場合があります。</p><p
+  dir="auto">いかなる場合でも、キャッシュのヒットは保証されるものではなく、ヒットすればラッキーな景品のようなものと言えるでしょう。
+  そのため、すべてのジョブでキャッシュがまったくヒットしないケースも想定しておいてください。</p><p dir="auto"><span>Docker
+  レイヤー キャッシュのメリットは、リモート Docker 環境を使用して </span><em>CircleCI</em><span>
+  でイメージを</span><em>ビルド</em><span>する場合にのみ得られます。ジョブの</span><em>実行</em><span>に使用される実際の
+  Docker コンテナのスピンアップ時間には影響しません。 Docker レイヤー キャッシュの詳細については、</span><a
+  href="https://circleci.com/docs/ja/2.0/docker-layer-caching/"
+  rel="noreferrer">こちら</a><span>を参照してください。</span></p><p
+  dir="auto">要約すると、キャッシュのヒット率は設定や構成で制御することはできません。<a
+  href="https://circleci.com/docs/ja/2.0/circleci-images/"
+  target="_self">CircleCI コンビニエンス イメージ</a>など、広く利用されているイメージを選択すれば、"環境のスピンアップ"
+  ステップでレイヤーがキャッシュでヒットする可能性が高まるでしょう。</p>
