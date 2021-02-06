@@ -1,0 +1,13 @@
+<p>There may be instances where you only want builds to run for specific users. While we don't have a setting to list specific users as being able to run builds, we do have some features that can help limit builds.</p>
+<h2>Utilize restricted contexts</h2>
+<p>If a context is used on a workflow, and the user running the build doesn't have access to the context, we will fail the build with an "Unauthorized" error. Information on setting up restricted contexts here:</p>
+<p><a href="https://circleci.com/docs/2.0/contexts/#restricting-a-context">https://circleci.com/docs/2.0/contexts/#restricting-a-context</a></p>
+<p>The above feature should allow you to only let builds run for specific users. You would create a team in GitHub of who can run builds and then set the context to that team. Anyone outside the team who pushes a commit will not have their build run.</p>
+<h2>Use branch or tag filters</h2>
+<p>You can filter workflows to only run on a specific branch or tag, more information here:</p>
+<p><a href="https://circleci.com/docs/2.0/configuration-reference/#filters-1">https://circleci.com/docs/2.0/configuration-reference/#filters-1</a></p>
+<p>This can help limit runs as you can lock down which users can build on specific branches or tags.</p>
+<h2>Only Build Pull Request feature</h2>
+<p>This feature can be set per project and will limit builds to just the default branch and when a pull request is open. Details on enabling here:</p>
+<p><a href="https://circleci.com/docs/2.0/oss/#only-build-pull-requests">https://circleci.com/docs/2.0/oss/#only-build-pull-requests</a></p>
+<p>While this doesn't limit to specific users directly, it does allow some control as if only specific users can commit to your default branch that limits runs.</p>

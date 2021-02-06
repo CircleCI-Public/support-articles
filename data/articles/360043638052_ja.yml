@@ -6,11 +6,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -10
-vote_count: 42
+vote_sum: -11
+vote_count: 43
 section_id: 115003755807
 created_at: '2020-05-26T18:36:57Z'
-updated_at: '2021-02-04T15:59:43Z'
+updated_at: '2021-02-05T14:12:58Z'
 name: ジョブの条件付きステップと条件付きワークフロー
 title: ジョブの条件付きステップと条件付きワークフロー
 source_locale: en-us
