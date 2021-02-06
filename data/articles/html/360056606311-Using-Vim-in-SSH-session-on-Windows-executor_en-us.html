@@ -1,0 +1,3 @@
+<p>If you need to debug an issue within a SSH session on the Windows executor, and need access to Vim, you will want to pass the <code>-t</code> flag when logging into the session, i.e.:</p>
+<pre style="background-color: #f3f3f3;">ssh -p 54782 35.123.111.145 -t -- powershell.exe</pre>
+<p>This will ensure the standard commands/shortcuts work with Vim. However, the backspace button will not remove text -- instead, use the <code>ctrl+h</code> command to remove text.</p>
