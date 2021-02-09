@@ -6,11 +6,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: 4
-vote_count: 30
+vote_sum: 3
+vote_count: 31
 section_id: 115003756627
 created_at: '2020-03-28T00:26:25Z'
-updated_at: '2021-01-29T09:25:53Z'
+updated_at: '2021-02-08T20:11:58Z'
 name: >-
   "Too long with no output (exceeded 10m0s): context deadline
   exceeded"のエラーでビルド失敗した場合
