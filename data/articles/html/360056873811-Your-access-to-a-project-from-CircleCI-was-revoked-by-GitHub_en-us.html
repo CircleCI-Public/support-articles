@@ -1,0 +1,15 @@
+<h3>Overview</h3>
+<p>If you've received an email stating your access to a project on CircleCI has been revoked by GitHub, it is likely due to missing or changed permissions. <span>This<span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> can result in the unfollowing of projects on CircleCI. You may need to re-follow projects if you would like to view build logs in the UI. Additionally, if you are the only follower on a project, this may stop building a project, halting builds from triggering on CircleCI. <br><br></span></span>Below are some ways to troubleshoot this message:</p>
+<p> </p>
+<h3>Rule out third-party app restrictions</h3>
+<p>Check to make sure CircleCI is enabled in your GitHub organization third-party app restrictions in your Organization Settings. You can read more about these restrictions in <a href="https://help.github.com/articles/about-oauth-app-access-restrictions/" target="_self">GitHub's Documentation</a>. </p>
+<h3 dir="auto">Refresh CircleCI Permissions</h3>
+<p>See: <a href="https://support.circleci.com/hc/en-us/articles/360048210711-How-to-Refresh-User-Permissions-" target="_self">How to Refresh User Permissions</a></p>
+<ol>
+    <li><span>Sign out of your CircleCI account</span></li>
+    <li><span>Revoke CircleCI's access in <a href="https://bitbucket.org/account/settings/app-authorizations" target="_self">Bitbucket</a> or <a href="https://github.com/settings/applications" target="_self">GitHub</a></span></li>
+    <li><span>Clear your browser's cache and cookies</span></li>
+    <li><span>Sign back into your CircleCI account</span></li>
+    <li><span>Refresh permissions at <a href="https://app.circleci.com/settings/user" target="_blank" rel="noopener noreferrer">https://app.circleci.com/settings/user</a></span></li>
+</ol>
+<p>If you are still experiencing issues, please reach out to our Support team by <a href="https://support.circleci.com/" target="_self">submitting a ticket</a> or writing to <a href="mailto:support@circleci.com">support@circleci.com</a> </p>
