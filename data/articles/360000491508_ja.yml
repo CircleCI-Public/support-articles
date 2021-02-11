@@ -6,11 +6,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -10
-vote_count: 14
+vote_sum: -11
+vote_count: 15
 section_id: 115003327148
 created_at: '2018-02-23T09:57:01Z'
-updated_at: '2021-01-12T01:40:36Z'
+updated_at: '2021-02-10T10:53:42Z'
 name: CircleCI と GitHub または Bitbucket アカウントを接続する方法
 title: CircleCI と GitHub または Bitbucket アカウントを接続する方法
 source_locale: en-us

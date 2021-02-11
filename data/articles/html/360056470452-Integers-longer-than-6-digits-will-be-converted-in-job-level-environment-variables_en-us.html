@@ -1,0 +1,22 @@
+<p>When setting a <a href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-job" target="_blank" rel="noopener">job level environment variable</a>, if the value is an integer and greater than 6 digits, we will convert it to an exponential number. As an example:</p>
+<pre style="background-color: #f3f3f3;">version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: buildpack-deps:trusty
+    environment:
+      NUMBER: 7777777</pre>
+<p>The above would become instead <code>7.777777e+06</code> in the job. The reason for this conversion is how yaml interprets the value being passed. However, this can be avoided in a few different ways.</p>
+<h2>Store value as a string</h2>
+<p>Instead of setting the value as an integer instead set it as a string. So instead of <code>7777777</code> set it to <code>"7777777"</code> like this:</p>
+<pre style="background-color: #f3f3f3;">version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: buildpack-deps:trusty
+    environment:
+      NUMBER: "7777777"</pre>
+<h2>Set the variable at the project level</h2>
+<p>Instead of setting the variable in your <code>config.yml</code> directly, you can instead <a href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project" target="_blank" rel="noopener">set the variable at the project level</a> to utilize in jobs. This will ensure the value is protected and not automatically converted.</p>

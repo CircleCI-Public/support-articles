@@ -1,0 +1,61 @@
+id: 360056920051
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360056920051.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360056920051--Error-untarring-cache-when-running-a-macOS-job
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003327088
+created_at: '2021-02-10T11:14:16Z'
+updated_at: '2021-02-10T11:14:16Z'
+name: '"Error untarring cache" when running a macOS job'
+title: '"Error untarring cache" when running a macOS job'
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2021-02-10T11:14:16Z'
+user_segment_id: null
+permission_group_id: 237847
+label_names: []
+body: >-
+  <p>When restoring a cache on a macOS job, you may run into the following
+  error:</p>
+
+  <pre class="css-dm1rdx">Downloading cache archive...
+
+  Validating cache...
+
+
+  Unarchiving cache...
+
+
+  Failed to unarchive cache
+
+
+  Error untarring cache: Error extracting tarball /var/... :
+  home/circleci/project/...: Cannot extract through symlink</pre>
+
+  <p>This error is commonly caused by trying to extract a cache that has been
+  created on a Docker or Machine job. It is not advisable to share caches
+  between different executor types as features such as symlinks or permissions
+  metadata can differ and cause issues.</p>
+
+  <p>To work around this, use a cache key that includes the platform you are
+  running the job on. For example:</p>
+
+  <pre>node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}</pre>
+
+  <p>Can become:</p>
+
+  <pre>node-v1-<span>{{ arch }}</span>-{{ .Branch }}-{{ checksum
+  "package-lock.json" }}</pre>
+
+  <p>This "arch" key includes the OS and CPU architecture information which will
+  ensure the cache is unique to that particular combination in use on the
+  executor.</p>

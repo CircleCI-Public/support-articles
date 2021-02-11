@@ -1,0 +1,42 @@
+id: 360056920751
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360056920751.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360056920751-Why-are-large-build-logs-not-colour-coded-
+author_id: 382351624233
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003756627
+created_at: '2021-02-10T12:21:57Z'
+updated_at: '2021-02-10T12:21:57Z'
+name: Why are large build logs not colour coded?
+title: Why are large build logs not colour coded?
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2021-02-10T12:21:57Z'
+user_segment_id: null
+permission_group_id: 237847
+label_names: []
+body: >-
+  <p dir="auto">You may find that when your build output for a step reaches a
+  certain size that the colour output is disabled for the whole build
+  output.</p>
+
+  <p dir="auto">This is an intentional feature which disables colours once the
+  output reaches ~1000 lines for performance reasons.</p>
+
+  <p dir="auto">Beyond this number of lines, the performance of the UI/build
+  output can start degrading beyond an acceptable point which negatively affects
+  the user experience.</p>
+
+  <p dir="auto">This is the same reason why we do not display over a certain
+  number of lines in the UI if the build output becomes too large.</p>
+
+  <p dir="auto">It is not possible to override this default behaviour at this
+  time.</p>
