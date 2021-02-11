@@ -1,0 +1,10 @@
+<p>To run browser tests in Safari, the Apple-provided safaridriver needs to be enabled before interaction with Safari can take place. Without enabling this, you may run into the following type of errors:</p>
+<pre class="css-wji0jr">SessionNotCreatedError: Could not create a session: You must enable the 'Allow Remote Automation' option in Safari's Develop menu to control Safari via WebDriver.
+    at Object.throwDecodedError (node_modules/selenium-webdriver/lib/error.js:517:15)
+    at parseHttpResponse (node_modules/selenium-webdriver/lib/http.js:655:13)
+    at Executor.execute (node_modules/selenium-webdriver/lib/http.js:581:28)
+    at processTicksAndRejections (node:internal/process/task_queues:94:5)</pre>
+<p>To resolve this, simply run the following near the start of your job:</p>
+<pre><span>- run: defaults write com.apple.Safari AllowRemoteAutomation 1</span></pre>
+<p>If this alone does not resolve the issue, try adding the following additional command directly afterwards:</p>
+<pre>- run: sudo safaridriver --enable</pre>

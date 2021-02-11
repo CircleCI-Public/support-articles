@@ -1,0 +1,75 @@
+id: 360056470452
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360056470452.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360056470452-Integers-longer-than-6-digits-will-be-converted-in-job-level-environment-variables
+author_id: 405652843914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003756627
+created_at: '2021-02-10T15:48:58Z'
+updated_at: '2021-02-10T15:49:15Z'
+name: >-
+  Integers longer than 6 digits will be converted in job level environment
+  variables
+title: >-
+  Integers longer than 6 digits will be converted in job level environment
+  variables
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2021-02-10T15:49:15Z'
+user_segment_id: null
+permission_group_id: 237847
+label_names:
+  - environment variable
+  - integers
+  - exponential number
+body: >-
+  <p>When setting a <a
+  href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-job"
+  target="_blank" rel="noopener">job level environment variable</a>, if the
+  value is an integer and greater than 6 digits, we will convert it to an
+  exponential number. As an example:</p>
+
+  <pre style="background-color: #f3f3f3;">version: 2.1
+
+
+  jobs:
+    build:
+      docker:
+        - image: buildpack-deps:trusty
+      environment:
+        NUMBER: 7777777</pre>
+  <p>The above would become instead <code>7.777777e+06</code> in the job. The
+  reason for this conversion is how yaml interprets the value being passed.
+  However, this can be avoided in a few different ways.</p>
+
+  <h2>Store value as a string</h2>
+
+  <p>Instead of setting the value as an integer instead set it as a string. So
+  instead of <code>7777777</code> set it to <code>"7777777"</code> like
+  this:</p>
+
+  <pre style="background-color: #f3f3f3;">version: 2.1
+
+
+  jobs:
+    build:
+      docker:
+        - image: buildpack-deps:trusty
+      environment:
+        NUMBER: "7777777"</pre>
+  <h2>Set the variable at the project level</h2>
+
+  <p>Instead of setting the variable in your <code>config.yml</code> directly,
+  you can instead <a
+  href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project"
+  target="_blank" rel="noopener">set the variable at the project level</a> to
+  utilize in jobs. This will ensure the value is protected and not automatically
+  converted.</p>

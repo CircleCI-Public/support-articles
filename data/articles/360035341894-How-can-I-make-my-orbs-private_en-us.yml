@@ -12,16 +12,16 @@ vote_sum: -13
 vote_count: 23
 section_id: 360002440473
 created_at: '2019-09-13T08:28:29Z'
-updated_at: '2021-01-12T01:42:31Z'
+updated_at: '2021-02-10T16:30:36Z'
 name: How can I make my orbs private?
 title: How can I make my orbs private?
 source_locale: en-us
 locale: en-us
 outdated: false
 outdated_locales: []
-edited_at: '2020-04-15T12:05:22Z'
+edited_at: '2021-02-10T16:30:36Z'
 user_segment_id: null
 permission_group_id: 237867
 label_names:
   - orbs
-body: "<p>Currently, published orbs are world-readable as long as they are referenced by the correct name. We do not support private orbs at this moment but you are most welcome to provide your feedback on this on our <a href=\"https://ideas.circleci.com/ideas/CCI-I-606\" target=\"_self\">Ideas Portal.</a></p>\n<p>While private orbs are not supported at this time, orb publishers can unlist their orbs from\_<a href=\"https://circleci.com/orbs/registry/\" target=\"_self\">Orb Registry</a>\_search results by using our CLI (See the documentation of the relevant command here:\_<a href=\"https://circleci-public.github.io/circleci-cli/circleci_orb_unlist.html\">https://circleci-public.github.io/circleci-cli/circleci_orb_unlist.html</a>). Unlisted orbs can be listed in the orb registry again with the same CLI command. Only org admins can unlist/list orbs. Note that unlisting an orb does not affect its ability to be referenced by name in builds or for its source to be viewed.\_</p>"
+body: "<p><span>Private orbs are available for preview exclusively to developers on our Scale Plan. Administrators can create, publish, and maintain their private orbs. For more details on how to start privately sharing configuration across multiple projects within your organization, please refer to our orbs documentation:\_</span></p>\n<p><a href=\"https://circleci.com/docs/2.0/orb-intro/#private-orbs\" target=\"_self\">Orb Intro: Private Orbs</a></p>\n<p><a href=\"https://circleci.com/docs/2.0/orbs-faq/\" target=\"_self\"><span>Orbs FAQ</span></a></p>\n<p>While private orbs are not supported for all users at this time, orb publishers can unlist their orbs from <a href=\"https://circleci.com/orbs/registry/\" target=\"_self\">Orb Registry</a>\_search results by using our CLI (See the documentation of the relevant command here:\_<a href=\"https://circleci-public.github.io/circleci-cli/circleci_orb_unlist.html\">https://circleci-public.github.io/circleci-cli/circleci_orb_unlist.html</a>). Unlisted orbs can be listed in the orb registry again with the same CLI command. Only org admins can unlist/list orbs. Note that unlisting an orb does not affect its ability to be referenced by name in builds or for its source to be viewed.\_</p>"
