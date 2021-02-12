@@ -1,0 +1,80 @@
+id: 360056546792
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360056546792.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360056546792-Conditionally-utilize-different-Xcode-provisioning-profiles
+author_id: 405652843914
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003327088
+created_at: '2021-02-11T16:27:36Z'
+updated_at: '2021-02-11T16:28:27Z'
+name: Conditionally utilize different Xcode provisioning profiles
+title: Conditionally utilize different Xcode provisioning profiles
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2021-02-11T16:28:27Z'
+user_segment_id: null
+permission_group_id: 237847
+label_names:
+  - fastlane
+  - macos
+  - app store
+  - ad-hoc
+body: >-
+  <p>You may have a situation where you want a build on a specific branch to
+  deploy to the App Store, while all other branches deploy as ad-hoc. This can
+  be accomplished with Fastlane and setting specific profiles in Xcode.</p>
+
+  <h2>Xcode setup</h2>
+
+  <p>You will want to set the provisioning profile for "Release" to your
+  AppStore provisioning profile. Then you will want to set the "Debug" to your
+  AdHoc provisioning profile -- like this:</p>
+
+  <p><img
+  src="https://support.circleci.com/hc/article_attachments/360085910051/Screen_Shot_2021-02-11_at_10.13.58_AM.png"
+  alt="Screen_Shot_2021-02-11_at_10.13.58_AM.png"></p>
+
+  <h2>Fastlane setup</h2>
+
+  <p>Then you can adjust your Fastfile to have an if/else conditional like the
+  following:</p>
+
+  <pre style="background-color: #f3f3f3;"># fastlane/Fastfile
+
+  default_platform(:ios)
+
+
+  platform :ios do
+    before_all do
+      setup_circle_ci
+    end
+
+    desc "Runs tests and build the app"
+    lane :testandbuild do |options|
+      if(options[:branch] == "main")
+        match(type: "appstore", readonly: "false")
+        build_app(configuration: "Release")
+      else
+         match(type: "adhoc")
+         gym(export_method: "ad-hoc", configuration: "Debug")
+      end       
+    end
+  end</pre>
+
+  <p>The key pieces of this are setting the <code>configuration</code> to
+  <code>Debug</code> or <code>Release</code> depending on if the condition is
+  met or not.</p>
+
+  <p>Once the above is done it is just a matter of passing in the branch as an
+  option to your Fastlane run command. Like the following:</p>
+
+  <pre style="background-color: #f3f3f3;">- run: bundle exec fastlane ios
+  testandbuild branch:${CIRCLE_BRANCH}</pre>
