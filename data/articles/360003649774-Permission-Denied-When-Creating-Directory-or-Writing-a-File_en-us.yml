@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -140
-vote_count: 290
+vote_sum: -141
+vote_count: 291
 section_id: 115003756627
 created_at: '2018-04-29T21:58:26Z'
-updated_at: '2021-02-11T07:30:07Z'
+updated_at: '2021-02-14T02:30:22Z'
 name: Permission Denied When Creating Directory or Writing a File
 title: Permission Denied When Creating Directory or Writing a File
 source_locale: en-us
