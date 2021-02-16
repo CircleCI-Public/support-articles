@@ -1,0 +1,51 @@
+id: 360057144631
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360057144631.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360057144631-CircleCI-Runner-fails-with-We-cannot-run-this-job-using-the-selected-resource-class-even-though-resource-class-is-correct-
+author_id: 403418857853
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003756627
+created_at: '2021-02-16T01:43:22Z'
+updated_at: '2021-02-16T01:43:22Z'
+name: >-
+  CircleCI Runner fails with "We cannot run this job using the selected resource
+  class." even though resource class is correct.
+title: >-
+  CircleCI Runner fails with "We cannot run this job using the selected resource
+  class." even though resource class is correct.
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2021-02-16T01:43:22Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: >-
+  <p>Customers may receive the following error when installing the CircleCI
+  Runner</p>
+
+  <pre>"We cannot run this job using the selected resource class. Please check
+  your configuration and try again."</pre>
+
+  <p>If you have verified that the namespace and resource class have been
+  created correctly, the issue may be that the CircleCI Runner is not enabled
+  for your plan.</p>
+
+  <p>You can verify that the namespace and resource class have been created
+  correctly with the following command in the CircleCI CLI. Replace
+  "namespace-name" with the name of your namespace. You should see your resource
+  class listed in the response.</p>
+
+  <pre>circleci runner resource-class list namespace-name</pre>
+
+  <p>CircleCI runner is currently only available if you are on the <a
+  href="https://circleci.com/pricing" target="_self">Scale Plan</a>. Please
+  reach out to your sales representative for information on how to sign up for
+  the Scale Plan.</p>

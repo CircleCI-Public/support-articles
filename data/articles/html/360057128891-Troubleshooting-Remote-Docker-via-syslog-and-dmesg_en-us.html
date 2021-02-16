@@ -1,0 +1,2 @@
+<p>The following can be added to assist in troubleshooting networking and other issues with Remote Docker. This should be added as the next steps immediately after <a href="https://circleci.com/docs/2.0/configuration-reference/#setup_remote_docker" target="_self">setup_remote_docker</a></p>
+<pre>- run:<br>    background: true<br>    command: ssh remote-docker "sudo tail -f /var/log/dmesg"<br>- run:<br>    background: true<br>    command: ssh remote-docker "sudo tail -f /var/log/syslog"</pre>

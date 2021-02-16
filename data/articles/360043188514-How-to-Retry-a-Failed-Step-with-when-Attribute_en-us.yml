@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: 0
-vote_count: 14
+vote_sum: -1
+vote_count: 15
 section_id: 115003580328
 created_at: '2020-02-21T16:01:28Z'
-updated_at: '2020-12-21T18:10:44Z'
+updated_at: '2021-02-15T18:05:22Z'
 name: How to Retry a Failed Step with "when" Attribute?
 title: How to Retry a Failed Step with "when" Attribute?
 source_locale: en-us

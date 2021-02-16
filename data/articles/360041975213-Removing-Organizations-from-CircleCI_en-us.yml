@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -6
-vote_count: 8
+vote_sum: -5
+vote_count: 9
 section_id: 360001263193
 created_at: '2020-01-17T20:10:38Z'
-updated_at: '2021-01-12T01:53:38Z'
+updated_at: '2021-02-15T09:52:34Z'
 name: Removing Organizations from CircleCI
 title: Removing Organizations from CircleCI
 source_locale: en-us
