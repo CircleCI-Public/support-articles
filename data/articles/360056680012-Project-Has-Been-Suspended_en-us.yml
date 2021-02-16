@@ -1,0 +1,40 @@
+id: 360056680012
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360056680012.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360056680012-Project-Has-Been-Suspended
+author_id: 403418857853
+comments_disabled: true
+draft: false
+promoted: false
+position: 0
+vote_sum: 0
+vote_count: 0
+section_id: 115003756627
+created_at: '2021-02-15T18:08:33Z'
+updated_at: '2021-02-15T18:18:30Z'
+name: Project Has Been Suspended
+title: Project Has Been Suspended
+source_locale: en-us
+locale: en-us
+outdated: false
+outdated_locales: []
+edited_at: '2021-02-15T18:18:30Z'
+user_segment_id: null
+permission_group_id: 237867
+label_names: []
+body: >-
+  <p>Customers may receive the following messages when attempting to run a
+  workflow on a project:<br><br><span>&gt; We have detected an anomaly that
+  violates the <a href="https://circleci.com/terms-of-service/"
+  target="_self">CircleCI Terms of Service</a>.</span></p>
+
+  <p><span>&gt; </span>We did not test this push because the project has been
+  suspended. Please <a href="https://support.circleci.com/hc/en-us"
+  target="_self">contact us</a> if you think this is a mistake.</p>
+
+  <p><span><br>If you believe this may have been an error, you may reach out to
+  us by opening a <a href="https://support.circleci.com/hc/en-us/requests/new"
+  target="_self">Support Ticket</a> or writing to <a
+  href="mailto:support@circleci.com"
+  target="_self">support@circleci.com</a><br></span></p>

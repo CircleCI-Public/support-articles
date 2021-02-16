@@ -6,11 +6,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 1
-vote_sum: -11
-vote_count: 15
+vote_sum: -12
+vote_count: 16
 section_id: 115003580328
 created_at: '2017-10-27T15:39:47Z'
-updated_at: '2020-10-29T05:57:54Z'
+updated_at: '2021-02-15T09:43:21Z'
 name: Docker Executor で docker-compose を使用する方法
 title: Docker Executor で docker-compose を使用する方法
 source_locale: en-us

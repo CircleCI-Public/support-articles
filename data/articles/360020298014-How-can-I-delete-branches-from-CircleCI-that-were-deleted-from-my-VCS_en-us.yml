@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: 1
-vote_count: 19
+vote_sum: 0
+vote_count: 20
 section_id: 115003756627
 created_at: '2019-03-25T08:06:35Z'
-updated_at: '2021-01-12T01:43:44Z'
+updated_at: '2021-02-15T16:39:46Z'
 name: How can I delete branches from CircleCI that were deleted from my VCS?
 title: How can I delete branches from CircleCI that were deleted from my VCS?
 source_locale: en-us
