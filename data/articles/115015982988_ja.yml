@@ -6,11 +6,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: 0
-vote_count: 2
+vote_sum: -1
+vote_count: 3
 section_id: 115003327148
 created_at: '2017-12-31T15:08:58Z'
-updated_at: '2021-01-29T20:32:23Z'
+updated_at: '2021-02-16T23:05:00Z'
 name: CircleCI は 2 要素認証をサポートしていますか？
 title: CircleCI は 2 要素認証をサポートしていますか？
 source_locale: en-us
