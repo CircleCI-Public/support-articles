@@ -6,11 +6,11 @@ comments_disabled: false
 draft: false
 promoted: false
 position: 0
-vote_sum: -59
-vote_count: 113
+vote_sum: -61
+vote_count: 115
 section_id: 115003756627
 created_at: '2017-11-20T10:45:53Z'
-updated_at: '2021-02-16T14:24:09Z'
+updated_at: '2021-02-18T01:29:04Z'
 name: プロジェクトの依存関係のキャッシュをリセットする
 title: プロジェクトの依存関係のキャッシュをリセットする
 source_locale: en-us

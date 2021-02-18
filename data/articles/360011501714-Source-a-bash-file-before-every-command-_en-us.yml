@@ -8,11 +8,11 @@ comments_disabled: false
 draft: false
 promoted: false
 position: 0
-vote_sum: 1
-vote_count: 1
+vote_sum: 0
+vote_count: 2
 section_id: 115003580328
 created_at: '2018-11-01T14:34:07Z'
-updated_at: '2021-01-12T01:44:39Z'
+updated_at: '2021-02-17T09:51:34Z'
 name: 'Source a bash file before every command '
 title: 'Source a bash file before every command '
 source_locale: en-us

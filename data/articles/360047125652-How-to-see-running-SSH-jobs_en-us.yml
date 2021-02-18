@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: 5
-vote_count: 9
+vote_sum: 6
+vote_count: 10
 section_id: 115003756627
 created_at: '2020-08-10T16:01:19Z'
-updated_at: '2021-01-12T01:44:08Z'
+updated_at: '2021-02-17T21:21:55Z'
 name: How to see running SSH jobs
 title: How to see running SSH jobs
 source_locale: en-us
