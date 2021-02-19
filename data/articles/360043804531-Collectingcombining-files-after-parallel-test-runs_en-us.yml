@@ -8,11 +8,11 @@ comments_disabled: false
 draft: false
 promoted: false
 position: 0
-vote_sum: -9
-vote_count: 9
+vote_sum: -10
+vote_count: 10
 section_id: 115003755807
 created_at: '2020-05-18T18:15:32Z'
-updated_at: '2021-01-29T09:49:04Z'
+updated_at: '2021-02-18T17:49:46Z'
 name: Collecting/combining files after parallel test runs
 title: Collecting/combining files after parallel test runs
 source_locale: en-us
