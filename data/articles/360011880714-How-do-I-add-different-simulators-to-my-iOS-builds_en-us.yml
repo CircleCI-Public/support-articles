@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -3
-vote_count: 17
+vote_sum: -4
+vote_count: 18
 section_id: 115003327088
 created_at: '2018-11-09T21:47:20Z'
-updated_at: '2021-02-10T08:06:15Z'
+updated_at: '2021-02-18T17:03:45Z'
 name: How do I add different simulators to my iOS builds?
 title: How do I add different simulators to my iOS builds?
 source_locale: en-us
