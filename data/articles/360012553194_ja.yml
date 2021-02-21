@@ -6,11 +6,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -5
-vote_count: 5
+vote_sum: -6
+vote_count: 6
 section_id: 115003327088
 created_at: '2018-11-27T02:51:37Z'
-updated_at: '2021-01-13T09:12:40Z'
+updated_at: '2021-02-20T08:49:51Z'
 name: '** ARCHIVE FAILED ** というエラーメッセージ（exit コード 65）が表示され、fastlane gym が失敗する'
 title: '** ARCHIVE FAILED ** というエラーメッセージ（exit コード 65）が表示され、fastlane gym が失敗する'
 source_locale: en-us
