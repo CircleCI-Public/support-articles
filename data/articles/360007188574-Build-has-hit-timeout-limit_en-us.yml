@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: 74
-vote_count: 102
+vote_sum: 75
+vote_count: 103
 section_id: 115003580328
 created_at: '2018-07-19T16:41:05Z'
-updated_at: '2021-02-02T15:11:59Z'
+updated_at: '2021-02-21T23:58:12Z'
 name: Build has hit timeout limit
 title: Build has hit timeout limit
 source_locale: en-us
