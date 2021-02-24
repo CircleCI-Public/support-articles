@@ -6,11 +6,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -23
-vote_count: 77
+vote_sum: -24
+vote_count: 78
 section_id: 360001263193
 created_at: '2019-01-30T19:39:39Z'
-updated_at: '2021-02-18T11:53:59Z'
+updated_at: '2021-02-23T08:50:20Z'
 name: Alpine イメージの「Certificate Signed By Unknown Authority」エラーの解決
 title: Alpine イメージの「Certificate Signed By Unknown Authority」エラーの解決
 source_locale: en-us
