@@ -1,0 +1,8 @@
+<p>The Azure CLI by default will always install the most recent version, without the option to specify a specific version to install.</p>
+<p>This can be worked around by first installing the most recent version of the CLI and then downloading and setting a specific version.</p>
+<p>This article assumes you are utilizing our "Azure CLI" Orb: </p>
+<p><a href="https://circleci.com/developer/orbs/orb/circleci/azure-cli">https://circleci.com/developer/orbs/orb/circleci/azure-cli</a></p>
+<p>The following commands first install the CLI and then install and set the version <code>2.18.0</code> to be used.</p>
+<pre style="background-color: #f3f3f3;">- azure-cli/install
+- run: apt-cache policy azure-cli | sudo apt-get install --allow-downgrades azure-cli=2.18.0-1~stretch</pre>
+<p>The only adjustment that needs to be made to the above is adjusting <code>2.18.0-1~stretch</code> to point to the version you want to utilize. </p>

@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -1
-vote_count: 3
+vote_sum: -2
+vote_count: 4
 section_id: 115003755828
 created_at: '2020-07-06T14:14:24Z'
-updated_at: '2021-01-29T10:47:51Z'
+updated_at: '2021-02-25T01:24:25Z'
 name: Access uploaded artifact URL in job
 title: Access uploaded artifact URL in job
 source_locale: en-us

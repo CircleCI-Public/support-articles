@@ -1,0 +1,5 @@
+<p>By default, permissions are required to be granted to allow AppleScript to execute and interact with other apps. Normally, on a local system, this would be done by clicking on the UI popups, but this method does not work on a headless CI job.</p>
+<p>The solution is to manually modify the permissions database to inject these permissions are needed. This sounds complicated, but can be easily achieved by using the circleci/macos orb - <a href="https://circleci.com/developer/orbs/orb/circleci/macos">CircleCI Developer Hub - circleci/macos</a></p>
+<p>Example:</p>
+<pre><span>-</span><span> </span><span>macos/add-permission:<br>    bundle-id: com.apple.Terminal<br>    permission-type: kTCCServiceAppleEvents</span></pre>
+<p>The key items to note are that kTCCServiceAppleEvents is the permission type to grant AppleScript the correct privilege. Additionally, the Bundle ID must be the Bundle ID of the app you are calling the AppScript from - in most cases this may be Terminal, but if you are calling it from within your own app then the appropriate Bundle ID needs to be used. </p>
