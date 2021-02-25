@@ -1,7 +1,4 @@
-<p>You may have a situation where you want a build on a specific branch to deploy to the App Store, while all other branches deploy as ad-hoc. This can be accomplished with Fastlane and setting specific profiles in Xcode.</p>
-<h2>Xcode setup</h2>
-<p>You will want to set the provisioning profile for "Release" to your AppStore provisioning profile. Then you will want to set the "Debug" to your AdHoc provisioning profile -- like this:</p>
-<p><img src="https://support.circleci.com/hc/article_attachments/360085910051/Screen_Shot_2021-02-11_at_10.13.58_AM.png" alt="Screen_Shot_2021-02-11_at_10.13.58_AM.png"></p>
+<p>You may have a situation where you want a build on a specific branch to deploy to the App Store, while all other branches deploy as ad-hoc. This can be accomplished with Fastlane and setting specific profiles using <code>PROVISIONING_PROFILE_SPECIFIER</code>.</p>
 <h2>Fastlane setup</h2>
 <p>Then you can adjust your Fastfile to have an if/else conditional like the following:</p>
 <pre style="background-color: #f3f3f3;"># fastlane/Fastfile
@@ -16,13 +13,14 @@ platform :ios do
   lane :testandbuild do |options|
     if(options[:branch] == "main")
       match(type: "appstore", readonly: "false")
-      build_app(configuration: "Release")
+      build_app
     else
        match(type: "adhoc")
-       gym(export_method: "ad-hoc", configuration: "Debug")
+       gym(export_method: "ad-hoc")
     end       
   end
 end</pre>
-<p>The key pieces of this are setting the <code>configuration</code> to <code>Debug</code> or <code>Release</code> depending on if the condition is met or not.</p>
+<p>Beyond the above you will also need to specify the <code>PROVISIONING_PROFILE_SPECIFIER</code>, information on that here:</p>
+<p><a href="https://docs.fastlane.tools/codesigning/xcode-project/#build-settings">https://docs.fastlane.tools/codesigning/xcode-project/#build-settings</a></p>
 <p>Once the above is done it is just a matter of passing in the branch as an option to your Fastlane run command. Like the following:</p>
 <pre style="background-color: #f3f3f3;">- run: bundle exec fastlane ios testandbuild branch:${CIRCLE_BRANCH}</pre>

@@ -8,11 +8,11 @@ comments_disabled: true
 draft: false
 promoted: false
 position: 0
-vote_sum: -14
-vote_count: 14
+vote_sum: -15
+vote_count: 15
 section_id: 115003580328
 created_at: '2019-09-24T15:29:47Z'
-updated_at: '2021-02-02T16:08:07Z'
+updated_at: '2021-02-24T17:50:48Z'
 name: '[Cloud] Can I delete a build?'
 title: '[Cloud] Can I delete a build?'
 source_locale: en-us
