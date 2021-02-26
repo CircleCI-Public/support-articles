@@ -6,11 +6,11 @@ comments_disabled: false
 draft: false
 promoted: false
 position: 0
-vote_sum: -13
-vote_count: 23
+vote_sum: -14
+vote_count: 24
 section_id: 115003756627
 created_at: '2018-05-14T15:37:46Z'
-updated_at: '2021-01-12T01:48:14Z'
+updated_at: '2021-02-25T13:29:38Z'
 name: キャッシュの復元が "Permission Denied" で失敗する
 title: キャッシュの復元が "Permission Denied" で失敗する
 source_locale: en-us
