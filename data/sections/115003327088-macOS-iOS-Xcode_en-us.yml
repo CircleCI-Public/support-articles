@@ -3,14 +3,9 @@ url: >-
   https://circleci.zendesk.com/api/v2/help_center/en-us/sections/115003327088.json
 html_url: https://support.circleci.com/hc/en-us/sections/115003327088-macOS-iOS-Xcode
 category_id: 115001914008
-position: 0
-sorting: manual
 created_at: '2017-09-06T14:59:56Z'
-updated_at: '2021-02-24T18:18:18Z'
 name: macOS iOS Xcode
 description: ''
 locale: en-us
-source_locale: en-us
 outdated: false
 parent_section_id: null
-theme_template: section_page

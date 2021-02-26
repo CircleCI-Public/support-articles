@@ -1,27 +1,11 @@
 id: 360049841151
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360049841151.json
+title: Trigger pipelines on forked pull requests with the API
+author_id: 4008831568
+created_at: '2020-09-17T15:43:21Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003755888
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360049841151-Trigger-pipelines-on-forked-pull-requests-with-the-API
-author_id: 4008831568
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -2
-vote_count: 2
-section_id: 115003755888
-created_at: '2020-09-17T15:43:21Z'
-updated_at: '2021-01-18T19:25:50Z'
-name: Trigger pipelines on forked pull requests with the API
-title: Trigger pipelines on forked pull requests with the API
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-09-17T15:44:13Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - api
-body: "<p>By default, CircleCI will not build a pull request (PR) from a forked repository on your project. However, your team can enable this by visiting <strong>Project Settings&gt;Advanced</strong><span>\_on your project and set the\_</span><strong>Build forked pull requests</strong><span>\_option to\_</span><em>On</em><span>.</span></p>\n<p>Forked PRs built on CircleCI will appear to automatically have the branch name <strong>pull/x</strong>, where x is the PR number.</p>\n<p>However, if you would like to <a href=\"https://circleci.com/docs/api/v2/#operation/triggerPipeline\" target=\"_self\">trigger a pipeline on this branch with the API,</a> you will have to use a slightly different branch name: <strong>pull/x/head</strong>.</p>\n<p>So for example, you can trigger a pipeline with a POST request to our API as follows:</p>\n<pre dir=\"ltr\">curl \\<br> -u ${YOUR_CIRCLE_TOKEN}: \\<br> -X POST --header \"Content-Type: application/json\" \\<br> -d '{ \"branch\": \"pull/${PR_BRANCH_NUM}/head\" }' \\<br>  https://circleci.com/api/v2/project/{VCS}/{ORG}/{PROJECT}/pipeline</pre>\n<p>Replacing the following with the appropriate values:</p>\n<p>YOUR_CIRCLE_TOKEN = Your <a href=\"https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token\" target=\"_self\">CircleCI API token</a></p>\n<p>PR_BRANCH_NUM = The pull request number, seen as the number in the branch as `pull/x`</p>\n<p>VCS = gh or bb</p>\n<p>ORG = VCS organization</p>\n<p>PROJECT = VCS repository name</p>"

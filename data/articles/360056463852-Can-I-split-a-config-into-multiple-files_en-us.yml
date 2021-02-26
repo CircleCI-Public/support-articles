@@ -1,26 +1,11 @@
 id: 360056463852
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360056463852.json
+title: Can I split a config into multiple files?
+author_id: 382351624233
+created_at: '2021-02-10T13:19:58Z'
+locale: en-us
+permission_group_id: 237847
+section_id: 115003580328
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360056463852-Can-I-split-a-config-into-multiple-files-
-author_id: 382351624233
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 1
-section_id: 115003580328
-created_at: '2021-02-10T13:19:58Z'
-updated_at: '2021-02-11T13:20:04Z'
-name: Can I split a config into multiple files?
-title: Can I split a config into multiple files?
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-02-10T13:19:58Z'
-user_segment_id: null
-permission_group_id: 237847
-label_names: []
-body: "<p><span>It is not possible to have a config split across multiple files as CircleCI requires a single config file in\_</span><code>.circleci/config.yml</code><span>\_to start running.</span></p>\n<p><span>While there are examples of split configs in some open source project, such as our Orbs, this is generally just to make them more human-readable. Before these can be used the config must be <a href=\"https://circleci.com/docs/2.0/local-cli/#packing-a-config\" target=\"_self\">packed with the CLI</a> - this creates a single config.yml file which can be used with CircleCI.</span></p>\n<p>This packing procedure cannot be run as a \"pre\" step on CircleCI itself as it<span> is not possible to run arbitrary commands before a workflow. Additionally, the workflow itself will not be generated if a valid \"whole\" config is not found. Config packing must be run locally, with the resulting file checked in to your repo.</span></p>"

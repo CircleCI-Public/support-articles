@@ -1,29 +1,13 @@
 id: 360005442714
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360005442714.json
-html_url: >-
-  https://support.circleci.com/hc/ja/articles/360005442714-Your-test-tools-are-smart-and-that-s-a-problem-Learn-about-when-optimization-goes-wrong-
-author_id: 25261361207
-comments_disabled: false
-draft: false
-promoted: false
-position: 0
-vote_sum: -2
-vote_count: 4
-section_id: 115003756627
-created_at: '2018-06-07T18:35:39Z'
-updated_at: '2021-01-12T01:41:59Z'
-name: >-
-  Your test tools are smart and that’s a problem. Learn about when optimization
-  goes wrong.
 title: >-
   Your test tools are smart and that’s a problem. Learn about when optimization
   goes wrong.
-source_locale: en-us
+author_id: 25261361207
+created_at: '2018-06-07T18:35:39Z'
 locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-12T01:41:59Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names: []
-body: "<p>\_</p><p>In the CircleCI cloud, your job may be running in various kinds of environments. Some of those environments\_could have lots of resources available but your jobs running in them only have access to a small slice of those available resources.\_</p><p>For instance, using the docker executor will often have your job running in a VM with thirty-two CPU cores available. This causes problems with testing tools like <strong>jest</strong>\_which by default will spawn workers based on the number of available CPU cores. It will think it has access to thirty-two cores, but in\_reality, it only has access to two. This is a recipe for sadness. Be aware of how your tools configure themselves according to their enviroment and be\_aware of what the environment is reporting to your tools.\_</p><p>In the case of\_<strong>jest\_</strong>you can tell it to <a href=\"https://facebook.github.io/jest/docs/en/cli.html#maxworkers-num\" target=\"_blank\" rel=\"noopener\">limit the number of workers with the --maxWorkers= command line option</a>.</p><p>\_</p><p><iframe src=\"//www.youtube-nocookie.com/embed/CKDVkqIMpHM\" width=\"560\" height=\"315\" frameborder=\"0\" allowfullscreen=\"\"></iframe></p>"
+section_id: 115003756627
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/ja/articles/360005442714-Your-test-tools-are-smart-and-that-s-a-problem-Learn-about-when-optimization-goes-wrong-
+draft: false

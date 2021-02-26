@@ -1,28 +1,11 @@
 id: 360047769712
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047769712.json
+title: 'Using and sharing context with GitHub Nested Teams '
+author_id: 405001866574
+created_at: '2020-08-18T21:53:52Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003332287
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360047769712-Using-and-sharing-context-with-GitHub-Nested-Teams-
-author_id: 405001866574
-comments_disabled: true
 draft: false
-promoted: true
-position: 0
-vote_sum: -2
-vote_count: 4
-section_id: 115003332287
-created_at: '2020-08-18T21:53:52Z'
-updated_at: '2021-02-18T10:43:29Z'
-name: 'Using and sharing context with GitHub Nested Teams '
-title: 'Using and sharing context with GitHub Nested Teams '
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-08-20T16:47:44Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - permissions
-  - Contexts
-body: "<p>Nested teams within GitHub do not automatically inherit a parent team's context permissions. If a parent team is selected as a security group for a context, child teams are <strong>not</strong> automatically granted access.</p>\n<p>In order to grant a GitHub child team access to context, you will need to add the team as a security group for the context. If a child team is not listed as a security group you will get an \"Unauthorized\" error when triggering a build in CircleCI's UI (example below).</p>\n<p>\_</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360065231791/Screen_Shot_2020-08-18_at_10_20_11_AM.png\" alt=\"Screen_Shot_2020-08-18_at_10_20_11_AM.png\"></p>\n<p>\_</p>\n<p>\_</p>\n<p>For more information on contexts please refer to our official documentation:\_\_<a href=\"https://circleci.com/docs/2.0/contexts/\" target=\"_self\">https://circleci.com/docs/2.0/contexts/</a></p>"

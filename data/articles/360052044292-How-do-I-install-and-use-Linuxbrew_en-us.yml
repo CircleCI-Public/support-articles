@@ -1,29 +1,11 @@
 id: 360052044292
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360052044292.json
+title: How do I install and use Linuxbrew?
+author_id: 405652843914
+created_at: '2020-11-12T19:58:10Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003580328
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360052044292-How-do-I-install-and-use-Linuxbrew-
-author_id: 405652843914
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 1
-section_id: 115003580328
-created_at: '2020-11-12T19:58:10Z'
-updated_at: '2021-02-04T06:09:23Z'
-name: How do I install and use Linuxbrew?
-title: How do I install and use Linuxbrew?
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-27T02:21:57Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - linuxbrew
-  - homebrew
-  - brew
-body: "<p>You may encounter a situation where you are using one of our CircleCI convenience images and you need to utilize Homebrew/Linuxbrew and it isn't installed.\_</p>\n<p>You can add the following run command before trying to install anything with <code>brew</code> and it will ensure its installed and set for the rest of the job.</p>\n<pre style=\"background-color: #f3f3f3;\">- run:\n    name: Install and set Linuxbrew\n    command: |\n      sudo apt-get install build-essential curl file git\n      sh -c \"$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)\"\n\n      echo 'export PATH=\"/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin/:$PATH\"' &gt;&gt; $BASH_ENV\n      echo 'export MANPATH=\"/home/linuxbrew/.linuxbrew/share/man:$MANPATH\"' &gt;&gt; $BASH_ENV\n      echo 'export INFOPATH=\"/home/linuxbrew/.linuxbrew/share/info:$INFOPATH\"' &gt;&gt; $BASH_ENV</pre>"

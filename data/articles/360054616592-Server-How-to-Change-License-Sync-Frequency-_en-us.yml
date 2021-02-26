@@ -1,28 +1,11 @@
 id: 360054616592
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360054616592.json
+title: '[Server] How to Change License Sync Frequency? '
+author_id: 397881110914
+created_at: '2021-01-06T13:51:55Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003327208
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360054616592--Server-How-to-Change-License-Sync-Frequency-
-author_id: 397881110914
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 0
-section_id: 115003327208
-created_at: '2021-01-06T13:51:55Z'
-updated_at: '2021-01-27T03:08:42Z'
-name: '[Server] How to Change License Sync Frequency? '
-title: '[Server] How to Change License Sync Frequency? '
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-06T13:52:02Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - server
-  - License
-body: "<p>If you would like to change the frequency of license sync, you can do it through the management console on CircleCI Enterprise or Server.</p>\n<p>\_</p>\n<p>Go to Console setting and change the frequency. You can also <strong>disable license synching</strong>.</p>\n<p>\_</p>\n<p><a href=\"https://&lt;circleci-server-fqdn&gt;:8800/console/settings#license-syncing\">https://&lt;circleci-server-fqdn&gt;:8800/console/settings#license-syncing</a></p>\n<p>\_</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360081013651/License_sync.png\" alt=\"License_sync.png\"></p>"

@@ -1,28 +1,11 @@
 id: 360049675271
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360049675271.json
+title: How to view your Bitbucket webhook deliveries
+author_id: 403103999173
+created_at: '2020-09-15T15:23:09Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360049675271-How-to-view-your-Bitbucket-webhook-deliveries
-author_id: 403103999173
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 0
-section_id: 115003756627
-created_at: '2020-09-15T15:23:09Z'
-updated_at: '2021-01-12T01:49:11Z'
-name: How to view your Bitbucket webhook deliveries
-title: How to view your Bitbucket webhook deliveries
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-11-02T08:07:05Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - bitbucket
-  - webhooks
-body: "<p><span>Viewing webhook deliveries in Bitbucket can be a useful diagnostic tool when attempting to discover why, for example, a push to a specific repository has not triggered a build on CircleCI.<br><br></span></p>\n<p><strong>By default</strong>, the webhook <span>requests history is <strong>not enabled</strong> in Bitbucket. You will first need to configure the webhook to collect request history:<br></span></p>\n<ol>\n<li>From Bitbucket, open the repository.</li>\n<li>Click the <strong><em>Repository settings</em></strong> link on the left side, then click the\_<strong><em>Webhooks </em></strong>link.</li>\n<li><span>Locate the <strong><em>CircleCI Webhook</em></strong>, and click the\_<strong><em>View requests\_</em></strong>link (in the\_<strong><em>Actions</em></strong> column).</span></li>\n<li><span>Click the <em><strong>E</strong><strong>nable History</strong></em> button.<br><br></span></li>\n</ol>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360068786612/enable_history_webhook.png\" alt=\"enable_history_webhook.png\"></p>\n<p><em>Note that Bitbucket will only collect history for 12 hours before automatically switching back to not collecting request history.</em></p>\n<p><span>Once the request history collection is enabled:</span><span></span></p>\n<ol>\n<li><span>Perform the \"problematic\" action (commit push, pull-request creation/merge, etc.)</span></li>\n<li><span>Click the <strong><em>Load new requests</em></strong> button to view the list of recent deliveries.</span></li>\n<li><span>For the related event, click the <em><strong>View details</strong></em> link to open a detailed log page of the webhook delivery.</span></li>\n</ol>\n<p>\_</p>\n<p><span>For more information on Bitbucket webhooks, please see the <a href=\"https://support.atlassian.com/bitbucket-cloud/docs/manage-webhooks/\" target=\"_blank\" rel=\"noopener\">Bitbucket documentation</a>.</span></p>"

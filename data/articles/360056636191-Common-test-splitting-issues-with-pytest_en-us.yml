@@ -1,30 +1,11 @@
 id: 360056636191
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360056636191.json
+title: Common test splitting issues with pytest
+author_id: 405652843914
+created_at: '2021-02-05T21:48:46Z'
+locale: en-us
+permission_group_id: 237847
+section_id: 115003580328
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360056636191-Common-test-splitting-issues-with-pytest
-author_id: 405652843914
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 0
-section_id: 115003580328
-created_at: '2021-02-05T21:48:46Z'
-updated_at: '2021-02-05T21:49:20Z'
-name: Common test splitting issues with pytest
-title: Common test splitting issues with pytest
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-02-05T21:49:20Z'
-user_segment_id: null
-permission_group_id: 237847
-label_names:
-  - test split
-  - test splitting
-  - python
-  - pytest
-body: "<p>If you are <a href=\"https://circleci.com/docs/2.0/parallelism-faster-jobs/#splitting-test-files\" target=\"_blank\" rel=\"noopener\">attempting to split your tests across containers</a> with pytest and encountering issues, such as:</p>\n<pre style=\"background-color: #f3f3f3;\"><span>No timing found for \"tests/commands/__init__.py\"</span><br><span>No timing found for \"tests/commands/test_1.py\"</span><br><span>No timing found for \"tests/commands/test_2.py\"<br></span></pre>\n<p>There may be a few adjustments you need to make.</p>\n<h2>Are you setting a custom working_directory?</h2>\n<p>If so, you may need to adjust the file paths that are saving to your test metadata XML file. Alternatively, if you are able to, try working out of the standard working directory we set for a container to see if that helps (you can do this by removing any instances of <code>working_directory</code> in your test run job).</p>\n<h2>Where does your pytest.ini live?</h2>\n<p>To get test splitting to work correctly it needs to be in the root directory of where you are running the tests from. If it's not, you may need to run the following command before you test run command:</p>\n<pre style=\"background-color: #f3f3f3;\">cp -f .circleci/resources/pytest_build_config.ini pytest.ini</pre>\n<p>The <code>.circleci/resources/pytest_build_config.ini</code> path may need to be replaced to point to where it's located in your project.</p>\n<h2>Example project that correctly splits by timings</h2>\n<p>The following is a fork of our <a href=\"https://github.com/CircleCI-Public/sample-python-cfd\" target=\"_blank\" rel=\"noopener\">sample-python-cfd</a> project that implements splitting:</p>\n<p><a href=\"https://github.com/nbialostosky/sample-python-cfd/blob/split-test/.circleci/config.yml\">https://github.com/nbialostosky/sample-python-cfd/blob/split-test/.circleci/config.yml</a></p>\n<p>Example build showing proper test splitting:</p>\n<p><a href=\"https://app.circleci.com/pipelines/github/nbialostosky/sample-python-cfd/18/workflows/8b37bd45-ed19-42e1-8cc4-44401697f3fc/jobs/20\">https://app.circleci.com/pipelines/github/nbialostosky/sample-python-cfd/18/workflows/8b37bd45-ed19-42e1-8cc4-44401697f3fc/jobs/20</a></p>\n<p>\_</p>"

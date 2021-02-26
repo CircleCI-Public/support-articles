@@ -1,30 +1,11 @@
 id: 360034981414
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360034981414.json
+title: How to Add Temporary AWS Session Tokens in Terraform
+author_id: 405001866574
+created_at: '2019-09-06T21:54:47Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003332367
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360034981414-How-to-Add-Temporary-AWS-Session-Tokens-in-Terraform
-author_id: 405001866574
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 8
-section_id: 115003332367
-created_at: '2019-09-06T21:54:47Z'
-updated_at: '2021-02-17T21:22:42Z'
-name: How to Add Temporary AWS Session Tokens in Terraform
-title: How to Add Temporary AWS Session Tokens in Terraform
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-27T21:55:03Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - aws
-  - security
-  - Terraform
-  - Session Token
-body: "<p>CircleCI provides a <a href=\"https://github.com/circleci/enterprise-setup\" target=\"_self\">Terraform configuration</a>\_to allow you to easily orchestrate the CircleCI Server cluster in your AWS environment. By default, our Terraform scripts require two keys for authentication, the\_<strong><code>access_key</code></strong>\_and\_<strong><code>secret_key</code></strong>. If your team's security policies require the use of a temporary AWS session token, it can easily be added by modifying the following terraform files and templates.\_</p>\n<p>\_</p>\n<p>\_<strong>variables.tf</strong></p>\n<p><a href=\"https://www.terraform.io/docs/configuration/variables.html\" target=\"_self\">Input variables</a>\_are declared in this file. We strongly advise that you only parameterize your\_<strong><code>aws_session_token</code></strong>\_variable and that you should never directly hard code your secrets here to further prevent exposing your keys and tokens.\_</p>\n<pre><strong>variable \"aws_session_token\" {</strong><br><strong>  <span class=\"pl-smi\">description</span> <span class=\"pl-k\">=</span> <span class=\"pl-s\">\"Temporary session token</span> <span class=\"pl-s\">used</span> <span class=\"pl-s\">to</span> <span class=\"pl-s\">create</span> <span class=\"pl-s\">instances</span><span class=\"pl-s\">\"</span></strong><br><strong>}</strong></pre>\n<p>\_</p>\n<p><strong>circle.tf</strong></p>\n<p>You will need to assign the\_Terraform <strong><code>token</code></strong> argument\_to the\_<strong><code>aws_session_token</code></strong> variable within the <a href=\"https://www.terraform.io/docs/providers/aws/index.html#token\" target=\"_self\">AWS provider object</a> in this file.\_</p>\n<pre>provider \"aws\" {<br> access_key = var.aws_access_key<br> secret_key = var.aws_secret_key<br> <strong>token = var.aws_session_token</strong><br> region = var.aws_region<br>}</pre>\n<p>\_</p>\n<p><strong>terraform.tfvars</strong></p>\n<p>Your\_<strong><code>aws_session_token</code>\_</strong>must be assigned in this file. This file is safe to add your keys and tokens as it will be <a href=\"https://github.com/circleci/enterprise-setup/blob/master/.gitignore\" target=\"_self\">ignored</a> in the event you accidentally check it into version control.\_</p>\n<pre>#####################################<br># 1. Required Cloud Configuration<br>#####################################<br><br><strong>aws_session_token = \"...\"</strong><br>aws_access_key = \"...\"<br>aws_secret_key = \"...\"<br>aws_region = \"...\"<br>aws_vpc_id = \"...\"<br>aws_subnet_id = \"...\"<br>aws_ssh_key_name = \"...\"</pre>\n<p>\_</p>"

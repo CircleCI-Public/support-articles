@@ -1,28 +1,11 @@
 id: 360052728991
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360052728991.json
+title: How to customize your Slack messages when using CircleCI's Slack Orb
+author_id: 405001866574
+created_at: '2020-11-18T20:22:34Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 360002440473
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360052728991-How-to-customize-your-Slack-messages-when-using-CircleCI-s-Slack-Orb
-author_id: 405001866574
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 0
-section_id: 360002440473
-created_at: '2020-11-18T20:22:34Z'
-updated_at: '2021-01-29T00:07:15Z'
-name: How to customize your Slack messages when using CircleCI's Slack Orb
-title: How to customize your Slack messages when using CircleCI's Slack Orb
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-27T02:21:54Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - slack
-  - orb
-body: "<p dir=\"auto\">\_</p>\n<p dir=\"auto\">Users often times would like to customize Slack messages to represent CircleCI and include important build information. Below is a template using markdown to get you started.</p>\n<p dir=\"auto\">You can also change the name of your slack bot user to \"CircleCI\". You can do this by navigating to<span>\_</span><a href=\"https://api.slack.com/apps/\" rel=\"noreferrer\">https://api.slack.com/apps/</a><span>\_</span>&gt; your app &gt; Display Information &gt; App name</p>\n<p dir=\"auto\">You can update you app icon to include a CircleCI logo. You can find CircleCI logos and Icons here: <a href=\"https://brandfolder.com/circleci\">https://brandfolder.com/circleci</a></p>\n<p dir=\"auto\">\_</p>\n<p dir=\"auto\">Example Slack Notification with Custom message:\_</p>\n<pre dir=\"ltr\">     \n- slack/notify:\n          event: fail\n          custom: | \n            {\n                \"blocks\": [\n                    {\n                        \"type\": \"section\",\n                        \"text\": {\n                            \"type\": \"mrkdwn\",\n                            \"text\": \"Failed: $CIRCLE_USERNAME's build of \\n&lt;$CIRCLE_BUILD_URL|$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME&gt;\\n(&lt;https://app.circleci.com/pipelines/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME?branch=$CIRCLE_BRANCH|$CIRCLE_BRANCH&gt;) \\n- &lt;$CIRCLE_BUILD_URL|$CIRCLE_JOB&gt; failed\" \n                        }\n                    }\n                ]\n            }  \n\n</pre>\n<p dir=\"auto\">You might also find it useful to use one of CircleCI's pre-built message templates which you can find <a href=\"https://github.com/CircleCI-Public/slack-orb/wiki#templates\" target=\"_self\">here</a>. Additionally, you can find the source code to these pre-build message templates here:\_<span>\_</span><a href=\"https://github.com/CircleCI-Public/slack-orb/tree/master/src/message_templates\" rel=\"noreferrer\">https://github.com/CircleCI-Public/slack-orb/tree/master/src/message_templates</a></p>\n<p dir=\"auto\">You can build your own custom templates using <a href=\"https://app.slack.com/block-kit-builder/\" target=\"_self\">Slack's BlocK Kit Builder .</a></p>\n<p dir=\"auto\"><strong>Note: The above solution is valid for Slack Orb Version 4.1.1</strong></p>\n<div class=\"css-c40d8m\">\n<div class=\"css-cssveg\" data-testid=\"orb-version-dropdown\">\n<div class=\"css-egl6gz\">\n<div class=\"css-1d79wk7\" size=\"16\" color=\"#000000\"></div>\n</div>\n</div>\n</div>"

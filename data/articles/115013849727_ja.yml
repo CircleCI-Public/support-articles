@@ -1,28 +1,11 @@
 id: 115013849727
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115013849727.json
+title: Available Docker versions
+author_id: 25261361207
+created_at: '2017-10-27T12:04:19Z'
+locale: ja
+permission_group_id: 237867
+section_id: 115003580328
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/ja/articles/115013849727-Available-Docker-versions
-author_id: 25261361207
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 5
-section_id: 115003580328
-created_at: '2017-10-27T12:04:19Z'
-updated_at: '2021-01-12T01:45:27Z'
-name: Available Docker versions
-title: Available Docker versions
-source_locale: en-us
-locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-12T01:45:27Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - docker
-  - remote docker
-  - machine
-body: "<h2 id=\"docker\">Docker Executor</h2><p>Docker versions can be different depending on your configured build environment. Also, in certain environments, you can manually configure which version of Docker to use.</p><h2>\_</h2><p>When using the <code>docker</code> executor and <code>setup_remote_docker</code> configuration, you are given access to running docker commands from within your container.</p><p>You can configure <code>setup_remote_docker</code> to use a specific version by\_<span>setting it as a\_</span><code class=\"highlighter-rouge\">version</code><span>\_attribute</span>.</p><p>For example:</p><pre><span class=\"hljs-attr\">    - setup_remote_docker:<br></span><span>       </span><span class=\"hljs-attr\"> version:</span><span> </span><span class=\"hljs-number\">18.06</span><span class=\"hljs-number\">.0</span><span>-ce</span></pre><p>Please see our documentation for the <a href=\"https://circleci.com/docs/2.0/building-docker-images/#docker-version\" target=\"_blank\" rel=\"noopener\">list of available versions</a>.</p><h2>Machine Executor</h2><p>When using the <code>machine</code> executor the available docker versions depend on which image you're using. You can see the available images and their included docker versions <a href=\"https://circleci.com/docs/2.0/configuration-reference/#available-machine-images\" target=\"_blank\" rel=\"noopener\">on this page</a>.</p><p>\_</p><p><em><strong>Note</strong>:\_If you have any docker version needs outside of what is currently available, please open a feature request\_on our <a href=\"https://ideas.circleci.com/\" target=\"_blank\" rel=\"noopener\">CircleCI Ideas</a> page.</em></p><p>\_</p>"

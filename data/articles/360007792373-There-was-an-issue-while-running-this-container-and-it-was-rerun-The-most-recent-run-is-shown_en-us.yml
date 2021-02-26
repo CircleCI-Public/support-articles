@@ -1,47 +1,13 @@
 id: 360007792373
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360007792373.json
-html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360007792373-There-was-an-issue-while-running-this-container-and-it-was-rerun-The-most-recent-run-is-shown-
-author_id: 25261361207
-comments_disabled: false
-draft: false
-promoted: false
-position: 0
-vote_sum: 2
-vote_count: 10
-section_id: 115003756627
-created_at: '2018-08-06T09:23:18Z'
-updated_at: '2021-01-12T01:46:35Z'
-name: >-
-  There was an issue while running this container and it was rerun. The most
-  recent run is shown.
 title: >-
   There was an issue while running this container and it was rerun. The most
   recent run is shown.
-source_locale: en-us
+author_id: 25261361207
+created_at: '2018-08-06T09:23:18Z'
 locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:58:20Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - infrastructure fail
-body: >-
-  <p>Sometimes you'll see a blue banner on your build page indicating that there
-  was an issue and the job was re-run automatically.</p>
-
-  <p><img
-  src="https://support.circleci.com/hc/article_attachments/360010079213/mceclip0.png"
-  width="745" height="81"></p>
-
-  <p>These issues are not related to your project. Sometimes CircleCI will
-  experience infrastructure failures, and in these instances, we will try to
-  automatically start the job again. If you would like to rerun the job manually
-  as well, you can always <a
-  href="https://circleci.com/docs/2.0/workflows/#rerunning-a-workflows-failed-jobs"
-  target="_self">rerun jobs from the UI.</a></p>
-
-  <p>If you notice this happening for an extended period on your project please
-  submit a support ticket.</p>
+section_id: 115003756627
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360007792373-There-was-an-issue-while-running-this-container-and-it-was-rerun-The-most-recent-run-is-shown-
+draft: false

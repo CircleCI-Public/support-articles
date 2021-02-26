@@ -1,28 +1,11 @@
 id: 360012618473
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360012618473.json
+title: Creating a "daily" cache
+author_id: 28200990948
+created_at: '2018-11-26T16:22:48Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003580328
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360012618473-Creating-a-daily-cache
-author_id: 28200990948
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: 14
-vote_count: 14
-section_id: 115003580328
-created_at: '2018-11-26T16:22:48Z'
-updated_at: '2021-02-01T21:25:38Z'
-name: Creating a "daily" cache
-title: Creating a "daily" cache
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:44Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - cache
-  - daily cache
-body: "<p>Here is a trick to give yourself a cache that is cleared daily. This is not required or recommended for many use cases but can prove potentially useful for some instances.</p>\n<p>For instance, in building static blog sites that fetch from external API's, you may want to clear your cache periodically to ensure any new information is fetched.</p>\n<p><strong>How:</strong></p>\n<p>Early in your job create a file containing today's date without a timestamp</p>\n<pre><code>- run: date +%F &gt; date</code></pre>\n<p>You can now use this file to test against when choosing when to rebuild cache by utilizing the checksum template.</p>\n<pre><code>\n      - restore_cache:\n          keys:\n            - date-cache-{{ checksum \"date\" }}\n      - save_cache:\n            key: date-cache-{{ checksum \"date\" }}\n            paths:\n                - \"/docs\"\n</code></pre>\n<p>\_The checksum of the <code>date</code> file will remain static until the next day, at which point a new cache will be created.</p>"

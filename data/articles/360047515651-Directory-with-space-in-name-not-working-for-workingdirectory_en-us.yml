@@ -1,28 +1,11 @@
 id: 360047515651
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047515651.json
+title: Directory with space in name not working for 'working_directory'
+author_id: 405652843914
+created_at: '2020-08-07T18:05:26Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003580328
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360047515651-Directory-with-space-in-name-not-working-for-working-directory-
-author_id: 405652843914
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 1
-section_id: 115003580328
-created_at: '2020-08-07T18:05:26Z'
-updated_at: '2021-01-12T01:48:23Z'
-name: Directory with space in name not working for 'working_directory'
-title: Directory with space in name not working for 'working_directory'
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:57:45Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - config
-  - working_directory
-body: "<p dir=\"auto\">When setting the<span>\_</span><code>working_directory</code><span>\_</span>in a build, it sets the<span>\_</span><code>CIRCLE_WORKING_DIRECTORY</code><span>\_</span>environment variable to that value, so if the directory has a space like \"01 Test\" it would set it to:</p>\n<pre dir=\"ltr\">CIRCLE_WORKING_DIRECTORY=01 Test</pre>\n<p dir=\"auto\">So when it goes to create the directory it calls<span>\_</span><code>mkdir 01 Test</code><span>\_</span>-- which would result in two directories being created (<code>01</code> and <code>Test</code>). With this in mind, you can protect the space with single quotes like this:</p>\n<pre dir=\"ltr\">working_directory: \"01' 'Test\"</pre>\n<p dir=\"auto\">That should result in the variable being set to<span>\_</span><code>CIRCLE_WORKING_DIRECTORY=01' 'Test</code><span>\_</span>which should properly account for the space.</p>"

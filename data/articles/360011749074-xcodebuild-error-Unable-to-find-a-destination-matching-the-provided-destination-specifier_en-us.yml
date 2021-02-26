@@ -1,33 +1,13 @@
 id: 360011749074
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360011749074.json
-html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360011749074-xcodebuild-error-Unable-to-find-a-destination-matching-the-provided-destination-specifier-
-author_id: 26863412148
-comments_disabled: true
-draft: false
-promoted: false
-position: 0
-vote_sum: -5
-vote_count: 9
-section_id: 115003327088
-created_at: '2018-11-07T17:13:02Z'
-updated_at: '2021-02-18T16:11:53Z'
-name: >-
-  xcodebuild: error: Unable to find a destination matching the provided
-  destination specifier:
 title: >-
   xcodebuild: error: Unable to find a destination matching the provided
   destination specifier:
-source_locale: en-us
+author_id: 26863412148
+created_at: '2018-11-07T17:13:02Z'
 locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:03Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - xcode
-  - ios
-  - simulator
-body: "<p>This message may appear when trying to build an iOS app. Sometimes the simulators are not ready before the build step. In this case, you can <a href=\"https://circleci.com/docs/2.0/testing-ios/#pre-starting-the-simulator\">pre-start the simulators</a>:</p>\n<pre># ...\nsteps:\n  - run:\n      name: pre-start simulator\n      command: xcrun instruments -w \"iPhone 11 Pro (13.3) [\" || true\n</pre>\n<p><strong>Note:</strong>\_the\_<code class=\"highlighter-rouge\">[</code>\_character is necessary to uniquely identify the iPhone 7 simulator, as the phone + watch simulator is also present in the build image:</p>\n<ul>\n<li>\n<code class=\"highlighter-rouge\">iPhone 11 Pro (13.3) [&lt;uuid&gt;]</code>\_for the iPhone simulator.</li>\n<li>\n<code class=\"highlighter-rouge\">iPhone 11 Pro (13.3) + Apple Watch Series 5 - 40mm (6.1.1) [&lt;uuid&gt;]</code>\_for the phone + watch pair.</li>\n</ul>\n<p>You can also add the following run step to check for available simulators:</p>\n<p><code>- run:\_xcrun simctl list &amp;&gt;/dev/null</code></p>\n<p>\_</p>"
+section_id: 115003327088
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360011749074-xcodebuild-error-Unable-to-find-a-destination-matching-the-provided-destination-specifier-
+draft: false

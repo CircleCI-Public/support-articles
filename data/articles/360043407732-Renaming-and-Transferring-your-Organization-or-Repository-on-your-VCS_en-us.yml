@@ -1,28 +1,11 @@
 id: 360043407732
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360043407732.json
+title: Renaming and Transferring your Organization or Repository on your VCS
+author_id: 405001866574
+created_at: '2020-05-19T17:21:11Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003755767
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360043407732-Renaming-and-Transferring-your-Organization-or-Repository-on-your-VCS
-author_id: 405001866574
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 1
-section_id: 115003755767
-created_at: '2020-05-19T17:21:11Z'
-updated_at: '2021-02-24T16:45:46Z'
-name: Renaming and Transferring your Organization or Repository on your VCS
-title: Renaming and Transferring your Organization or Repository on your VCS
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-09-05T00:04:11Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - rename org
-  - organization rename
-body: "<p><span class=\"wysiwyg-color-red\"><strong>Warning : in rare cases, renaming and/or transferring your organization or a repository in your VCS may lead to lost contexts, project build history, and settings in CircleCI..\_</strong></span></p>\n<p>Please be sure to keep this in mind. You may want to backup any valuable data.</p>\n<p>Data loss can occur due to difficult edge cases in the way CircleCI syncs organization and repository data from your VCS. This is especially true in cases where the previous name is immediately recreated as a different organization or repository.</p>\n<p>With this in mind, when renaming and or/transferring your organization/repository in your VCS it is best practice to do the following:\_</p>\n<ul>\n<li>Login to your VCS and rename and/or transfer your organization/repository (Please try and avoid renaming your organization multiple times)</li>\n<li>Login to <a href=\"www.circleci.com\" target=\"_self\">CircleCI</a>\_using your new organization's name and confirm that your projects, contexts, settings and billing are all up to date. If you have only changed the name of your repository or transferred one project, this should be reflected in CircleCI automatically once you login to your account.\_</li>\n<li>After confirming the above, you can create a new organization or repository under the old name in your VCS, if desired.</li>\n</ul>\n<p>Note: You can login to CircleCI's UI using your new organization by navigating through CircleCI's homepage and selecting your new organization or by using this URL directly: <strong>https://app.circleci.com/projects/project-dashboard/:VCS/:NEW_ORG_NAME</strong></p>\n<p>If you come across any issues when renaming your Organization or Repository please reach out to <a href=\"mailto:Support@circleci.com\">support@circleci.com</a></p>\n<p>\_</p>"

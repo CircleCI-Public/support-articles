@@ -1,38 +1,13 @@
 id: 360045978194
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360045978194.json
-html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360045978194-Either-git-or-ssh-required-by-git-to-clone-through-SSH-is-not-installed-in-the-image-
-author_id: 377853350854
-comments_disabled: false
-draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 3
-section_id: 115003756627
-created_at: '2020-04-09T22:09:28Z'
-updated_at: '2021-02-03T03:26:04Z'
-name: >-
-  Either git or ssh (required by git to clone through SSH) is not installed in
-  the image.
 title: >-
   Either git or ssh (required by git to clone through SSH) is not installed in
   the image.
-source_locale: en-us
+author_id: 377853350854
+created_at: '2020-04-09T22:09:28Z'
 locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:46Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names: []
-body: >-
-  <p>If you receive this error message while building with a custom image on
-  CircleCI, it is because Git and SSH are required for CircleCI to work
-  properly. If SSH and Git are missing from the container, the build agent will
-  fall back to the native Git client, which may cause some issues. To resolve
-  this error, install Git and SSH to the Docker image.</p>
-
-  <p>If you receive this error on a CircleCI convenience image, please contact
-  Support for assistance.</p>
+section_id: 115003756627
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360045978194-Either-git-or-ssh-required-by-git-to-clone-through-SSH-is-not-installed-in-the-image-
+draft: false

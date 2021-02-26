@@ -1,66 +1,10 @@
 id: 360053562911
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360053562911.json
-html_url: https://support.circleci.com/hc/ja/articles/360053562911
-author_id: 400780589273
-comments_disabled: false
-draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 0
-section_id: 360000059327
-created_at: '2020-12-10T01:22:12Z'
-updated_at: '2021-01-27T06:13:15Z'
-name: サービスの再起動後に Replicated が消失した
 title: サービスの再起動後に Replicated が消失した
-source_locale: en-us
+author_id: 400780589273
+created_at: '2020-12-10T01:22:12Z'
 locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-27T06:13:15Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - docker
-  - replicated
-  - server
-body: >-
-  <h1 id="symptom">現象</h1><h2 id="case-1">ケース 1</h2><p><code>systemctl</code>
-  コマンドまたは <code>service</code> コマンドを使用、またはサービス マシンを再起動することで Replicated
-  を再起動すると、Replicated コンテナが消失し、最終的に CircleCI Server がクラッシュしてしまった。</p><h2
-  id="case-2">ケース 2</h2><p>サービス マシンで <code>apt</code> または <code>apt-get</code>
-  コマンドを使用して <code>docker-ce</code> を更新すると、Replicated コンテナが消失し、最終的に CircleCI
-  Server がクラッシュしてしまった。</p><h1 id="cause">原因</h1><p>ケース 1
-  の原因は、<code>systemd</code> に登録された Replicated サービス
-  (<code>replicated.service</code>、<code>replicated-operator.service</code>、<code>replicated-ui.service</code>
-  など) により、サービスの起動時に Docker コンテナが削除されたことです。ケース 2 の原因は、Replicated サービスで使用される
-  Docker イメージ名を利用できないタイミングが生じたことが原因です。</p><p><code>systemctl</code> または
-  <code>service</code> コマンドで起動シーケンスを明示的に開始するか、システムの再起動または <code>docker-ce</code>
-  の更新によりこのシーケンスが暗黙的に開始されると、その最中に Replicated サービスは以下のタスクを実行します。</p><ol
-  style="list-style-type: decimal;">
-
-  <li>既存の Replicated コンテナを削除する。</li>
-
-  <li>
-
-  <code>:current</code> とタグ付けされた対応する Docker イメージを使用して
-  (<code>quay.io/replicated/replicated:current</code> など)、<code>docker
-  run</code> コマンドで新しいコンテナを起動する。</li>
-
-  </ol><p>しかし、<code>:current</code> イメージは、他の Docker イメージから派生してローカルでタグ付けされる
-  Docker イメージであり、このタグはイメージのプルに使用することはできません。 そのため、何らかの原因で <code>:current</code>
-  タグが解除された場合、Replicated サービスは使用する Docker
-  イメージを見つけることができず、起動に失敗します。</p><p><strong>注</strong>: <code>:current</code>
-  タグが解除される現象は、<code>docker image prune -a</code> コマンドなどを使用して Docker イメージ
-  キャッシュをクリーンアップすることで容易に再現できます。 Replicated が実行中であるかどうかにかかわらず、<code>docker image
-  prune -a</code> を実行すると Replicated の <code>:current</code> イメージ
-  タグが解除されることが確認されています。 つまり、お使いのサービス マシンで <code>docker image prune -a</code>
-  コマンドまたは同等のコマンドを今までに実行したことが 1 度でもあれば、同様の現象が発生する可能性があります。</p><h1
-  id="solution">解決策</h1><p>この問題は、以下のスニペットを使用して Replicated
-  を再インストールすることで解決できます。</p><pre><code>export
-  REPLICATED_VERSION="2.38.6"<br>export PRIVATE_IP="$(curl
-  http://169.254.169.254/latest/meta-data/local-ipv4)"<br>sudo curl -sSk -o
-  /tmp/get_replicated.sh
-  "https://get.replicated.com/docker?replicated_tag=$REPLICATED_VERSION&amp;replicated_ui_tag=$REPLICATED_VERSION&amp;replicated_operator_tag=$REPLICATED_VERSION"<br>sudo
-  bash /tmp/get_replicated.sh local-address="$PRIVATE_IP" no-proxy
-  no-docker</code></pre>
+section_id: 360000059327
+user_segment_id: null
+html_url: https://support.circleci.com/hc/ja/articles/360053562911
+draft: false

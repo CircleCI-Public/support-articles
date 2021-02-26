@@ -1,27 +1,10 @@
 id: 115014005188
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115014005188.json
-html_url: https://support.circleci.com/hc/ja/articles/115014005188
-author_id: 405001866574
-comments_disabled: true
-draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 1
-section_id: 115003755807
-created_at: '2017-10-27T12:13:43Z'
-updated_at: '2021-01-27T22:55:53Z'
-name: ジョブで no job called 'build' on Workflows エラーが発生する理由
 title: ジョブで no job called 'build' on Workflows エラーが発生する理由
-source_locale: en-us
+author_id: 405001866574
+created_at: '2017-10-27T12:13:43Z'
 locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-12T01:49:26Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - workflow
-  - job
-  - workflows
-body: "<p>このエラーが発生する原因はいくつか考えられます。</p><p>1. お使いのコンフィグファイルに、<code>build</code> ジョブが 1 つもない。</p><p>2. API からワークフローを実行しようとしているが、<code>build</code> ジョブがコンフィグファイルにない。 API を使用して Workflow をトリガーする方法の詳細については、<a href=\"https://circleci.com/docs/api/#trigger-a-new-build-by-project-preview\">ここを</a>参照してください。</p><p>\_</p>"
+section_id: 115003755807
+user_segment_id: null
+html_url: https://support.circleci.com/hc/ja/articles/115014005188
+draft: false

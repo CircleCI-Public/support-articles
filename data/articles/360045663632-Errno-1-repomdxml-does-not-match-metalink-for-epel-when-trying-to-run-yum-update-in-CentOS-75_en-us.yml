@@ -1,30 +1,13 @@
 id: 360045663632
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360045663632.json
-html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360045663632--Errno-1-repomd-xml-does-not-match-metalink-for-epel-when-trying-to-run-yum-update-in-CentOS-7-5
-author_id: 365473206774
-comments_disabled: false
-draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 3
-section_id: 115003327208
-created_at: '2020-07-10T07:38:53Z'
-updated_at: '2021-01-25T11:36:09Z'
-name: >-
-  “[Errno -1] repomd.xml does not match metalink for epel” when trying to run
-  yum update in CentOS 7.5
 title: >-
   “[Errno -1] repomd.xml does not match metalink for epel” when trying to run
   yum update in CentOS 7.5
-source_locale: en-us
+author_id: 365473206774
+created_at: '2020-07-10T07:38:53Z'
 locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:58:15Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names: []
-body: "<p dir=\"auto\">When yum installs packages, it references different EPEL\_mirror repositories depending on where the builder is. If only a few jobs fail in `yum update` or `yum install` with the following error messages when you run parallel jobs, it means a mirror repository is lagging behind the primary and it causes inconsistent versioning.</p>\n<pre dir=\"auto\"><code><a href=\"https://dl.fedoraproject.org/pub/epel/7/x86_64/repodata/repomd.xml:\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">https://dl.fedoraproject.org/pub/epel/7/x86_64/repodata/repomd.xml:</a><span>\_[Errno -1] repomd.xml does not match metalink for epel</span><br><span>Trying other mirror.</span><br><a href=\"https://iad.mirror.rackspace.com/epel/7/x86_64/repodata/repomd.xml:\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">https://iad.mirror.rackspace.com/epel/7/x86_64/repodata/repomd.xml:</a><span>\_[Errno -1] repomd.xml does not match metalink for epel</span><br><span>Trying other mirror.</span><br><a href=\"https://mirror.umd.edu/fedora/epel/7/x86_64/repodata/repomd.xml:\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">https://mirror.umd.edu/fedora/epel/7/x86_64/repodata/repomd.xml:</a><span>\_[Errno -1] repomd.xml does not match metalink for epel</span><br><span>Trying other mirror.</span><br><a href=\"https://mirror.vcu.edu/pub/gnu%2Blinux/epel/7/x86_64/repodata/repomd.xml:\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">https://mirror.vcu.edu/pub/gnu%2Blinux/epel/7/x86_64/repodata/repomd.xml:</a><span>\_[Errno -1] repomd.xml does not match metalink for epel</span><br><span>Trying other mirror.</span></code></pre>\n<p dir=\"auto\">The solution is to\_disable the use of the EPEL mirror. You can disable it by\_<span>uncommenting the\_</span><code>baseurl</code><span>\_lines and commenting out the\_</span><code>mirrorlist</code><span>\_lines in<code>/etc/yum.repos.d/epel.repo</code>.</span></p>\n<pre dir=\"ltr\"><code>$ sed -i -e 's/^#baseurl=/baseurl=/' -e 's/^metalink=/#metalink=/' /etc/yum.repos.d/epel.repo\n</code></pre>\n<p dir=\"auto\">\_</p>"
+section_id: 115003327208
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360045663632--Errno-1-repomd-xml-does-not-match-metalink-for-epel-when-trying-to-run-yum-update-in-CentOS-7-5
+draft: false

@@ -2,11 +2,9 @@ id: 115001914008
 url: >-
   https://circleci.zendesk.com/api/v2/help_center/ja/categories/115001914008.json
 html_url: https://support.circleci.com/hc/ja/categories/115001914008
-position: 4
 created_at: '2017-09-06T14:55:41Z'
 updated_at: '2021-02-25T05:46:49Z'
 name: モバイルアプリ
 description: "iOSとAndroidのテストとデプロイメント\r\n\r\n"
 locale: ja
-source_locale: en-us
 outdated: false

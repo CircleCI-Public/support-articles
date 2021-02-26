@@ -1,33 +1,10 @@
 id: 360051992231
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360051992231.json
-html_url: https://support.circleci.com/hc/ja/articles/360051992231
-author_id: 405652843914
-comments_disabled: true
-draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 1
-section_id: 115003756627
-created_at: '2020-11-02T21:03:20Z'
-updated_at: '2021-02-04T08:49:02Z'
-name: AssetNotPrecompiled エラーが発生してビルドが失敗する
 title: AssetNotPrecompiled エラーが発生してビルドが失敗する
-source_locale: en-us
+author_id: 405652843914
+created_at: '2020-11-02T21:03:20Z'
 locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2021-02-04T08:49:02Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - rspec
-  - precompile
-  - rails
-body: >-
-  <p>Rails または Rspec のテストを実行すると、次のエラーが発生することがあります。</p><pre
-  style="background-color: #f3f3f3;"><span>#
-  Sprockets::Rails::Helper::AssetNotPrecompiled:</span><br><span>#
-  application.css</span></pre><p>この問題は、設定ファイルでテスト実行の前に次の run
-  ステップを追加することで解決できます。</p><pre style="background-color: #f3f3f3;">- run:    name:
-  アセットのプリコンパイル    command: bundle exec rake assets:precompile</pre>
+section_id: 115003756627
+user_segment_id: null
+html_url: https://support.circleci.com/hc/ja/articles/360051992231
+draft: false

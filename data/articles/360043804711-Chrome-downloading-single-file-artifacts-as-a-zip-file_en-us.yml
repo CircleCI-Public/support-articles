@@ -1,29 +1,11 @@
 id: 360043804711
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360043804711.json
+title: Chrome downloading single file artifacts as a zip file
+author_id: 405652843914
+created_at: '2020-05-18T18:21:07Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003755828
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360043804711-Chrome-downloading-single-file-artifacts-as-a-zip-file
-author_id: 405652843914
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: 2
-vote_count: 2
-section_id: 115003755828
-created_at: '2020-05-18T18:21:07Z'
-updated_at: '2021-02-04T02:35:45Z'
-name: Chrome downloading single file artifacts as a zip file
-title: Chrome downloading single file artifacts as a zip file
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:02Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - artifacts
-  - chrome
-  - zip file
-body: "<p dir=\"auto\">\_</p>\n<p dir=\"auto\">For security purposes we have found that Chrome will sometimes download a single file as a zipped file, usually when the file format is a mobile app -- i.e.\_<code>.ipa</code>\_or\_<code>.aab</code>.</p>\n<p dir=\"auto\">You have a few options to get around this and get the file itself:</p>\n<ol dir=\"auto\" type=\"1\">\n<li>You can utilize another browser besides Chrome, like Safari or Firefox.</li>\n<li>You can simply rename the file once downloaded from Chrome to have a\_<code>.ipa</code>\_or\_<code>.aab</code>\_file extension.</li>\n<li>You can right-click, then choose \"Save link as\", then when it prompts you -- change the format from \"Zip\" to \"All files\" and edit the filename to have the proper extension.</li>\n<li>A bit more involved, but you could specifically set the MIME type of the file within your job steps:\_<a href=\"https://help.ubuntu.com/community/AddingMimeTypes\" rel=\"noreferrer\">https://help.ubuntu.com/community/AddingMimeTypes</a>\_-- this should ensure the browser respects the type of file it is.</li>\n</ol>"

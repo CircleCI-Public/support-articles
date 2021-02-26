@@ -1,27 +1,10 @@
 id: 360012553194
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360012553194.json
-html_url: https://support.circleci.com/hc/ja/articles/360012553194
-author_id: 365473206774
-comments_disabled: true
-draft: false
-promoted: false
-position: 0
-vote_sum: -6
-vote_count: 6
-section_id: 115003327088
-created_at: '2018-11-27T02:51:37Z'
-updated_at: '2021-02-20T08:49:51Z'
-name: '** ARCHIVE FAILED ** というエラーメッセージ（exit コード 65）が表示され、fastlane gym が失敗する'
 title: '** ARCHIVE FAILED ** というエラーメッセージ（exit コード 65）が表示され、fastlane gym が失敗する'
-source_locale: en-us
+author_id: 365473206774
+created_at: '2018-11-27T02:51:37Z'
 locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T07:03:07Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - fastlane
-  - ios
-  - gym
-body: "<p><a href=\"https://circleci.com/blog/xcodebuild-exit-code-65-what-it-is-and-how-to-solve-for-ios-and-macos-builds/\">exit コード 65</a> は xcodebuild の汎用エラーコードとして使用されているため、上記のエラーメッセージのみでは問題が何かを特定することは困難です。 したがって、アーカイブステップでビルドが失敗した場合、さまざまな理由が考えられます。</p><p>この問題をトラブルシューティングするには、次のステップを試してください。</p><ol>\n<li>\n<a href=\"https://support.circleci.com/hc/en-us/articles/115015983028\">Code Signing setting</a>を確認</li>\n<li>環境変数を確認。 ビルドがローカルマシンで成功するが、CI 環境では失敗する場合、ローカルマシンで定義されている環境変数がCircleCI で定義されていないから、ビルドが失敗する場合があります</li>\n<li>fastlane のログでfastlane コマンドが失敗した原因を確認。 Provisioning profileが存在しないなど、エラーの根本原因に関する情報がログに含まれている場合があります。 たとえば、/Users/distiller/driver-application/buildlogs/gym/DriverApplication-DriverApplication.log のようなログのパスは、fastlane コマンドで出力されています。ビルドに SSH で接続して、このログにアクセスするか、<a href=\"https://circleci.com/docs/2.0/artifacts/#uploading-artifacts\">アーチファクト</a>としてファイルをアップロードできます</li>\n<li>Xcode の SDK バージョンを Fastfile の gym コンフィグで定義する必要があるかどうかを確認</li>\n</ol><pre><code>    gym(      sdk: \"iphoneos11.4\"    )</code></pre><p>（sdk オプションを設定すると、fastlane が使用する xcodebuild コマンドで -sdk 引数が指定されます）</p><p>\_</p><p>\_</p>"
+section_id: 115003327088
+user_segment_id: null
+html_url: https://support.circleci.com/hc/ja/articles/360012553194
+draft: false

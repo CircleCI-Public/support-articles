@@ -1,30 +1,11 @@
 id: 360006975013
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360006975013.json
+title: Create User Keys with the API
+author_id: 26863412148
+created_at: '2018-07-12T17:02:45Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003755888
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360006975013-Create-User-Keys-with-the-API
-author_id: 26863412148
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -3
-vote_count: 3
-section_id: 115003755888
-created_at: '2018-07-12T17:02:45Z'
-updated_at: '2021-01-12T01:45:19Z'
-name: Create User Keys with the API
-title: Create User Keys with the API
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:58:42Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - checkout repo
-  - ssh
-  - ssh key
-  - api
-body: "<p>User keys can be configured to <a href=\"https://circleci.com/docs/2.0/gh-bb-integration/#enable-your-project-to-check-out-additional-private-repositories\">checkout additional repositories</a> needed for testing. For repos with a large number of projects, it may be easier to assign User Keys via the API than configuring this on the individual project settings page.\_</p>\n<p>To do this, CircleCI first needs permissions from GitHub to add SSH keys to your account. You can grant this permission by visiting\_<strong>Project Settings &gt; Permissions &gt; Checkout SSH keys</strong>\_and clicking on\_<strong>Create and Add User Key.</strong></p>\n<p>After you authorize the CircleCI application, you can use <a href=\"https://circleci.com/docs/api/v1-reference\">our API</a> to add a checkout key of type\_<code>github-user-key</code>\_for any of your other projects using the\_<code>curl</code>\_command:</p>\n<pre>curl -X POST \\ \n--header <span class=\"hljs-string\">\"Content-Type: application/json\"</span> \\ \n-d <span class=\"hljs-string\">'{\"type\":\"github-user-key\"}'</span> \\ \n<span class=\"hljs-symbol\">https:</span>/<span class=\"hljs-regexp\">/circleci.com/api</span><span class=\"hljs-regexp\">/v1/project</span><span class=\"hljs-regexp\">/ORG_NAME/PROJECT_NAME</span>/checkout-key?circle-token=<span class=\"hljs-number\">8</span>e9c47...etc</pre>"

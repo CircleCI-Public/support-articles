@@ -1,28 +1,11 @@
 id: 360048310252
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360048310252.json
+title: '[Server] How to See License Details?'
+author_id: 397881110914
+created_at: '2020-08-26T18:38:57Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003327208
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360048310252--Server-How-to-See-License-Details-
-author_id: 397881110914
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 0
-section_id: 115003327208
-created_at: '2020-08-26T18:38:57Z'
-updated_at: '2021-01-12T01:53:11Z'
-name: '[Server] How to See License Details?'
-title: '[Server] How to See License Details?'
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-08-27T17:26:09Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - server
-  - License
-body: "<p>If you want to see the license details of your server installation, you can leverage the below API endpoint.\_</p>\n<pre><span>&lt;circleci_url&gt;</span>/api/v1/admin/licensing</pre>\n<p>\_</p>\n<p><strong>Note</strong>:\_You should be an admin to run this endpoint.</p>\n<p>\_</p>\n<p>You will see information such as <strong>license expiration, licensed seats, active seats, suspended seats, inactive seats</strong>, etc.</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360066351252/Server_license.png\" alt=\"Server_license.png\" width=\"617\" height=\"331\">\_</p>\n<p>If you have any more questions, please submit a ticket to <a href=\"https://support.circleci.com/hc/en-us\" target=\"_self\">Support</a>\_or write to <a href=\"mailto:support@circleci.com\">support@circleci.com</a>.</p>"

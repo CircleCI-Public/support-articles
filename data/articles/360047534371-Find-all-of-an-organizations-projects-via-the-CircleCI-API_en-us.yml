@@ -1,39 +1,11 @@
 id: 360047534371
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047534371.json
+title: Find all of an organization's projects via the CircleCI API
+author_id: 403418857853
+created_at: '2020-08-08T00:24:30Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003755888
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360047534371-Find-all-of-an-organization-s-projects-via-the-CircleCI-API
-author_id: 403418857853
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 1
-section_id: 115003755888
-created_at: '2020-08-08T00:24:30Z'
-updated_at: '2021-01-12T01:45:48Z'
-name: Find all of an organization's projects via the CircleCI API
-title: Find all of an organization's projects via the CircleCI API
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-08-08T00:25:01Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: >-
-  <p>We do not have a direct endpoint for collecting this information, but you
-  can often derive this from the `me` endpoint:</p>
-
-  <p>https://circleci.com/api/v1.1/me</p>
-
-  <p>This shows data from the currently logged in user or simply the user of the
-  `circle-token` provided. If you use a token, be sure to make use of a
-  [Personal API Token](https://circleci.com/docs/2.0/managing-api-tokens/) as
-  opposed to a Project Token.</p>
-
-  <p>Within that API response, you will find the `projects` property. This will
-  be a list of projects. The JSON object key will be the VCS URL. You can use
-  that to filter to projects specifically within the desired organization.</p>

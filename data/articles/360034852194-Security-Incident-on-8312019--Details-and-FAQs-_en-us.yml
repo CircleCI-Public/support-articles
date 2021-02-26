@@ -1,28 +1,11 @@
 id: 360034852194
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360034852194.json
+title: 'Security Incident on 8/31/2019 - Details and FAQs '
+author_id: 26863412148
+created_at: '2019-09-04T22:21:04Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 360000990713
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360034852194-Security-Incident-on-8-31-2019-Details-and-FAQs-
-author_id: 26863412148
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 147
-vote_count: 201
-section_id: 360000990713
-created_at: '2019-09-04T22:21:04Z'
-updated_at: '2021-01-12T01:53:26Z'
-name: 'Security Incident on 8/31/2019 - Details and FAQs '
-title: 'Security Incident on 8/31/2019 - Details and FAQs '
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T07:00:44Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - security
-  - incident
-body: "<p><em><span style=\"font-weight: 400;\">Last updated on Sept 4, 2019</span></em></p>\n<p><span style=\"font-weight: 400;\">On August 31st, we became aware of a security incident involving CircleCI and a third-party analytics vendor. An attacker was able to improperly access some user data in our vendor account, including usernames and email addresses associated with GitHub and Bitbucket, along with user IP addresses and user agent strings. The engineering and security teams at CircleCI immediately revoked the access of the compromised user and quickly launched an investigation. We are continuing to look into the incident and will update this page as we learn more.</span></p>\n<p>\_</p>\n<p><strong>When did the incident occur?</strong></p>\n<p><span style=\"font-weight: 400;\">On August 31st at 2:32 p.m. UTC, a CircleCI team member saw an email notification from one of our third-party analytics vendors and suspected that unusual activity was taking place in this particular vendor account. The employee immediately forwarded the email to our security and engineering teams, at which point a comprehensive investigation was launched and steps were taken to ensure the situation was contained. Our security teams began disabling the improperly accessed account at 2:43 p.m. UTC, and completed the process by 3:00 p.m. UTC.</span></p>\n<p>\_</p>\n<p><strong>What type of user data was affected?</strong></p>\n<p><span style=\"font-weight: 400;\">Based on what we have learned, some user data was exposed, including usernames and email addresses associated with GitHub and Bitbucket, along with user IP addresses and user agent strings. Additional information that was exposed in the incident may include organization name, repository URLs and names, branch names, and repository owners. No CircleCI user secrets, build artifacts, build logs, source code, or any other production data was accessed or exfiltrated during this incident. No data used for authentication with CircleCI, such as auth tokens and password hashes, was accessed, nor was any credit card or financial information. CircleCI does not collect social security numbers or credit card information; therefore, it is highly unlikely that this incident would result in identity theft.</span></p>\n<p>\_</p>\n<p><strong>How will this impact my team?</strong></p>\n<p><span style=\"font-weight: 400;\">Your team’s builds, source code, and build artifacts are not at risk from this incident. Because the attacker was not able to access any production data or any data related to authentication on CircleCI, your team should be able to continue to access and use our platform as usual.\_ Affected users do </span><strong>not</strong><span style=\"font-weight: 400;\"> need to update passwords or invalidate auth tokens due to this incident as these were not compromised. We will update the FAQs page with more information as we investigate further.</span></p>\n<p>\_</p>\n<p><strong>How did CircleCI fix the problem? Is it resolved?</strong></p>\n<p><span style=\"font-weight: 400;\">On August 31st, upon detecting the unusual activity in our vendor account, our engineering team confirmed that the added database was not a CircleCI resource and immediately removed the malicious database and the compromised user from the tool. The team then reached out to the third-party vendor to collaborate further on an investigation. Our security team is taking steps to further enhance our security practices to protect our customers, and we are looking into engaging a third-party digital forensics firm to assist us in the investigation and further remediation efforts. While the investigation is ongoing, we believe the attacker poses no further risk at this time.\_\_</span></p>\n<p>\_</p>\n<p><strong>How do I know if I was affected?\_</strong></p>\n<p><span style=\"font-weight: 400;\">At this time, we believe this incident affects customers who accessed our platform between June 30, 2019, and August 31, 2019. In the interest of transparency, we are notifying affected CircleCI users of the incident via email and will provide relevant updates on the FAQ page as they become available.\_\_</span></p>\n<p>\_</p>\n<p><strong>What is CircleCI doing to make sure this doesn’t happen again?</strong></p>\n<p><span style=\"font-weight: 400;\">We’re continuing to collaborate with the third-party vendor to identify the exact vulnerability that caused the incident. In the meantime, we will review our policies for enforcing 2FA on third-party accounts to the extent possible, and continue our transition to single sign-on (SSO) for all of our integrations.\_ Security is taken very seriously here at CircleCI. This year alone we have doubled the size of our security team, and we plan to continue to grow our security capabilities.</span></p>\n<p>\_</p>\n<p><span style=\"font-weight: 400;\">However, this is no excuse for failing to adequately protect user data, and we would like to apologize to the affected users. We hope that our remediations and internal audits are able to prevent incidents like this and minimize exposures in the future. We know that perfect security is an impossible goal, and while we can’t promise that, we can promise to do better.</span></p>\n<p>\_</p>\n<p><strong>What are the steps that my team should take to ensure that our data is secure?</strong></p>\n<p><span style=\"font-weight: 400;\">Because there was no compromise of CircleCI systems, no action needs to be taken to secure core platform data such as authentication tokens, build artifacts, or build secrets. The data did, however, include repo and branch names which we advise your team to review for sensitive business information. The exfiltrated data also includes email address and related metadata that could be used for targeted phishing campaigns, and sending out a reminder on how to identify malicious emails might also be prudent.</span><span style=\"font-weight: 400;\"><br></span></p>\n<p>\_</p>\n<p><strong>Who can I contact if I have additional questions?</strong></p>\n<p><span style=\"font-weight: 400;\">Please reach out to support@circleci.com</span></p>"

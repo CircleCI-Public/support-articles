@@ -1,78 +1,11 @@
 id: 360000372428
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360000372428.json
+title: Why isn't Docker Layer Caching speeding up my "spin up" time?
+author_id: 28200990948
+created_at: '2018-02-15T17:08:57Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360000372428-Why-isn-t-Docker-Layer-Caching-speeding-up-my-spin-up-time-
-author_id: 28200990948
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 19
-section_id: 115003756627
-created_at: '2018-02-15T17:08:57Z'
-updated_at: '2021-02-09T18:18:18Z'
-name: Why isn't Docker Layer Caching speeding up my "spin up" time?
-title: Why isn't Docker Layer Caching speeding up my "spin up" time?
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T07:00:39Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - dlc
-  - docker layer caching
-  - spin up time
-  - convenience image
-body: >-
-  <p><strong><a
-  href="https://circleci.com/docs/2.0/docker-layer-caching/">Docker Layer
-  Caching</a></strong> (DLC) is a feature the speeds up
-  <strong>building</strong> Docker images on CircleCI.</p>
-
-  <h2>Docker executor build image caching is not 'Docker Layer Caching'</h2>
-
-  <p>When you launch a build using the <a
-  href="https://circleci.com/docs/2.0/executor-types/#using-docker">Docker
-  executor</a>, CircleCI pulls the Docker image you specify in your
-  <code>.circleci/config.yml</code> from Docker Hub.</p>
-
-  <p><img
-  src="https://support.circleci.com/hc/article_attachments/360002472834/mceclip3.png"
-  width="645"></p>
-
-  <p>If we find cached layers for that image on the host being used for your job
-  we will use them. For this reason, we recommend using our <a
-  href="https://hub.docker.com/r/circleci/">CircleCI convenience</a> images
-  since they are popular and have a good chance of being fully cached on our
-  hosts.</p>
-
-  <p>Here's a 'Spin Up Environment' step for an image that has some layers
-  cached on the builder:</p>
-
-  <p><img
-  src="https://support.circleci.com/hc/article_attachments/360002481033/mceclip2.png"
-  width="645" height="242"></p>
-
-  <p>There is currently no way to force us to "cache" your executor image.</p>
-
-  <p>If you've enabled Docker Layer Caching for your project and you see 'image
-  cache not found on this host', that's the correct output because Docker Layer
-  Caching does not affect this part of the build.</p>
-
-  <h2>Use Docker Layer Caching when BUILDING a Docker image</h2>
-
-  <p>If you've enabled Docker Layer Caching (DLC) for your project it helps with
-  <strong>building</strong> Docker images and caches layers that have been built
-  in previous job runs. Here's how the config for using this feature looks:</p>
-
-  <p><img
-  src="https://support.circleci.com/hc/article_attachments/360002481413/mceclip4.png"
-  width="645" height="197"></p>
-
-  <p>Documentation on <strong><a
-  href="https://circleci.com/docs/2.0/docker-layer-caching/">Docker Layer
-  Caching</a></strong> (DLC)</p>

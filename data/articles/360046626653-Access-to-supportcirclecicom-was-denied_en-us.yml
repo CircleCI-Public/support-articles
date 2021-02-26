@@ -1,26 +1,11 @@
 id: 360046626653
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360046626653.json
+title: Access to support.circleci.com was denied
+author_id: 4008831568
+created_at: '2020-04-10T22:29:31Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 360001263193
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360046626653-Access-to-support-circleci-com-was-denied
-author_id: 4008831568
-comments_disabled: true
 draft: false
-promoted: true
-position: 0
-vote_sum: 0
-vote_count: 0
-section_id: 360001263193
-created_at: '2020-04-10T22:29:31Z'
-updated_at: '2021-01-12T01:53:55Z'
-name: Access to support.circleci.com was denied
-title: Access to support.circleci.com was denied
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:45Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: "<h2>\"Access to support.circleci.com was denied\"</h2>\n<p>This error can occur if you were previously logging into the Support Center and your cookies or cache becomes stale. If you encounter this error while attempting to login to the CircleCI Support Center (<a href=\"https://support.circleci.com/hc/en-us\">https://support.circleci.com/hc/en-us</a>) you will need to clear your cache and cookies in your browser.\_</p>\n<p>\_</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360066193693/potloc.png\" alt=\"potloc.png\"></p>\n<h4>To fix this:</h4>\n<ol>\n<li>Enable third-party cookies. For more information and instructions about enabling on most common browsers, see\_<a href=\"https://www.google.com/search?q=enable%20cookies\" target=\"_blank\" rel=\"noopener\">here</a>.</li>\n<li>Clear your browser's cache and cookies. For instructions, see\_<a href=\"https://support.google.com/accounts/answer/32050?hl=en\" target=\"_blank\" rel=\"noopener\">Clear cache and cookies</a>.</li>\n<li>Retry the request.</li>\n</ol>\n<p>After enabling third-party cookies and clearing your cache, the login request should succeed.</p>\n<h4>\_</h4>\n<h4>Related:</h4>\n<p>If you have a privacy browser extension enabled and encounter \"<strong>circleci.zendesk.com refused to connect</strong>\" - See this article:\_<a href=\"https://support.circleci.com/hc/en-us/articles/360046627433-Support-Center-Login-Fails-circleci-zendesk-com-refused-to-connect\">https://support.circleci.com/hc/en-us/articles/360046627433-Support-Center-Login-Fails-circleci-zendesk-com-refused-to-connect</a></p>"

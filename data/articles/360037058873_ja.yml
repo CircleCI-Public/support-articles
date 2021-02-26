@@ -1,47 +1,10 @@
 id: 360037058873
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360037058873.json
-html_url: https://support.circleci.com/hc/ja/articles/360037058873
-author_id: 379006459554
-comments_disabled: true
-draft: false
-promoted: false
-position: 0
-vote_sum: -5
-vote_count: 49
-section_id: 115003327148
-created_at: '2019-10-09T18:51:12Z'
-updated_at: '2021-02-11T05:26:13Z'
-name: アカウントを無効または削除する方法
 title: アカウントを無効または削除する方法
-source_locale: en-us
+author_id: 379006459554
+created_at: '2019-10-09T18:51:12Z'
 locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T07:03:12Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names: []
-body: >-
-  <h2>概要</h2><p>CircleCI は、選択した VCS へのアクセスを許可すると、GitHub または Bitbucket
-  アカウントに接続します。</p><p>CircleCIですべてのビルドを停止したい場合は[Projects]
-  ページからすべてのプロジェクトをUnfollowしてください。
-  そうすることでアカウントが無効になります。</p><p>有料プランをキャンセルする必要がある場合には、<a
-  href="https://support.circleci.com/hc/en-us/articles/115015782487"
-  target="_self">「How to cancel or modify your
-  plan」</a>に記載されている手順に従ってキャンセルしてください。</p><h2>アカウントの削除</h2><p>アカウントを完全に削除する場合、<a
-  href="https://support.circleci.com/hc/en-us"
-  target="_self">サポートチケット</a>を提出いただくか、<a
-  href="mailto:support@circleci.com">support@circleci.com</a>
-  にお問い合わせください。</p><p>予め以下の項目を実施することでアカウント削除がよりスムーズになります。</p><ul>
-
-  <li>CircleCI で、すべてのプロジェクトのアンフォローし、全てのビルドを停止</li>
-
-  <li>VCS プロバイダーで、CircleCI を指定しているすべての webhook が削除</li>
-
-  <li>
-
-  <a
-  href="https://help.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/canceling-a-github-marketplace-app"
-  target="_self">GitHub Marketplace プラン</a>を含め、すべてのプランをキャンセル</li>
-
-  </ul>
+section_id: 115003327148
+user_segment_id: null
+html_url: https://support.circleci.com/hc/ja/articles/360037058873
+draft: false

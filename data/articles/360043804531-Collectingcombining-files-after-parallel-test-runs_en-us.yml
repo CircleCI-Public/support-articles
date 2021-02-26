@@ -1,28 +1,11 @@
 id: 360043804531
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360043804531.json
+title: Collecting/combining files after parallel test runs
+author_id: 405652843914
+created_at: '2020-05-18T18:15:32Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003755807
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360043804531-Collecting-combining-files-after-parallel-test-runs
-author_id: 405652843914
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -10
-vote_count: 10
-section_id: 115003755807
-created_at: '2020-05-18T18:15:32Z'
-updated_at: '2021-02-18T17:49:46Z'
-name: Collecting/combining files after parallel test runs
-title: Collecting/combining files after parallel test runs
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:02Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - test output
-  - Parallelism
-body: "<p>Some testing processes may require that all test results be in a single file for processing. When working with parallel testing this could mean each container has it's own test results.\_</p>\n<p>Getting all the files to a single file can be accomplished with a new \"collection\" job. This would be a job that requires the parallel job and collects all the test reports from the parallel containers <a href=\"https://circleci.com/docs/2.0/configuration-reference/#persist_to_workspace\" target=\"_self\">through workspaces</a>.</p>\n<p>Then you can combine the files within that \"collection\" job and pass it through via workspaces to your last job/step -- or alternatively you can process them within the \"collection\" job itself as needed.</p>\n<p>\_</p>"

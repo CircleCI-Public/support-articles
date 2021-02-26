@@ -1,26 +1,11 @@
 id: 360038227513
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360038227513.json
+title: CircleCI Account Troubleshooting & FAQ’s
+author_id: 379006459554
+created_at: '2019-10-31T23:44:54Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003332307
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360038227513-CircleCI-Account-Troubleshooting-FAQ-s
-author_id: 379006459554
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -4
-vote_count: 6
-section_id: 115003332307
-created_at: '2019-10-31T23:44:54Z'
-updated_at: '2021-01-24T13:40:07Z'
-name: CircleCI Account Troubleshooting & FAQ’s
-title: CircleCI Account Troubleshooting & FAQ’s
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-27T20:01:31Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: "<h3><strong>What is my current plan?</strong></h3>\n<p><span style=\"font-weight: 400;\">An admin on the account can view your current plan by visiting\_<a href=\"https://app.circleci.com/settings/plan/github/ORGNAME/overview\" target=\"_self\">https://app.circleci.com/settings/plan/github/ORGNAME/overview</a></span></p>\n<p><span style=\"font-weight: 400;\">Performance Plan customers have the ability to view their Premium Support package.</span></p>\n<p>For Container Plan customers, Premium Support plans are not currently available.</p>\n<h3><strong>I’m having trouble logging in to my account</strong></h3>\n<p><span style=\"font-weight: 400;\">CircleCI uses Oauth login via your VCS provider (GitHub or Bitbucket). If you mistakenly logged in with a different account, contact <a href=\"mailto:support@circleci.com\">support@circleci.com</a>\_so they can manually unlink your accounts. If you meant to merge accounts, you can read more here:\_<a href=\"https://support.circleci.com/hc/en-us/articles/360008766354\" target=\"_self\">How to merge your CircleCI accounts</a>.</span></p>\n<h3><strong>How do I create an account for my organization then add developers to it</strong></h3>\n<p><span style=\"font-weight: 400;\">CircleCI connects your org, team and account information directly from your VCS (GitHub or Bitbucket) provider.\_</span></p>\n<h3><strong>I cannot view settings for my organization</strong></h3>\n<p><span style=\"font-weight: 400;\">Organization admins have access to view the org settings page. To confirm you are an org admin, follow these steps:\_<a href=\"https://support.circleci.com/hc/en-us/articles/360034990033\" target=\"_self\">Am I an Org Admin?</a>\_If you are an org admin and are experiencing issues viewing your settings, please submit a screenshot to <a href=\"mailto:support@circleci.com\">support@circleci.com</a>.</span></p>\n<h3><strong>I need to cancel our plan, but the billing contact is no longer with the company</strong></h3>\n<p><span style=\"font-weight: 400;\">Whether you're an org admin and having issues accessing the billing portal or your billing contact is no longer with the company, open a support ticket to </span><a href=\"mailto:billing@circle.com\"><span style=\"font-weight: 400;\">billing@circle.com</span></a><span style=\"font-weight: 400;\">. Provide your case-sensitive org name and any important information to know about the plan. They will be able to cancel the plan on your behalf.\_</span></p>\n<p><br><br><br></p>"

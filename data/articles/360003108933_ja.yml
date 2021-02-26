@@ -1,32 +1,11 @@
 id: 360003108933
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360003108933.json
+title: ANSI color codes appearing in test results
+author_id: 28200990948
+created_at: '2018-04-13T16:48:48Z'
+locale: ja
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/ja/articles/360003108933-ANSI-color-codes-appearing-in-test-results
-author_id: 28200990948
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -5
-vote_count: 7
-section_id: 115003756627
-created_at: '2018-04-13T16:48:48Z'
-updated_at: '2021-01-26T05:52:25Z'
-name: ANSI color codes appearing in test results
-title: ANSI color codes appearing in test results
-source_locale: en-us
-locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-12T01:45:10Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - \e[0m
-  - \e[32m
-  - \e[31m
-  - stange charachters
-  - test output
-  - output error
-  - rspec
-body: "<p>\_</p><p>If you discover your\_test results are difficult to read due to extraneous\_characters such as the image below, your XML reporter may be including<a href=\"https://misc.flogisoft.com/bash/tip_colors_and_formatting\"> ASCII color code</a> information that is intended for use by the shell.\_</p><p><img src=\"https://support.circleci.com/hc/article_attachments/360003598714/mceclip0.png\"></p><p>\_</p><p>Because your tests are run in a CI environment that is not intended to be monitored, you can safely disable all color information from your preferred test runner.\_<br><br><a href=\"https://relishapp.com/rspec/rspec-core/v/2-14/docs/formatters/configurable-colors\">How to disable color output for Rspec</a></p>"

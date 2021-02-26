@@ -1,26 +1,11 @@
 id: 360006458833
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360006458833.json
+title: Using AWS CodeDeploy with CircleCI 2.0 or CircleCI 2.1
+author_id: 405001866574
+created_at: '2018-06-29T16:13:46Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003327188
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360006458833-Using-AWS-CodeDeploy-with-CircleCI-2-0-or-CircleCI-2-1
-author_id: 405001866574
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -8
-vote_count: 24
-section_id: 115003327188
-created_at: '2018-06-29T16:13:46Z'
-updated_at: '2021-01-14T19:34:50Z'
-name: Using AWS CodeDeploy with CircleCI 2.0 or CircleCI 2.1
-title: Using AWS CodeDeploy with CircleCI 2.0 or CircleCI 2.1
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-14T19:34:50Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: "<p>If you're deploying your application to AWS CodeDeploy on CircleCI 2.0 or CircleCI 2.1, we recommend using the CircleCI AWS CodeDeploy orb: <a href=\"https://circleci.com/orbs/registry/orb/circleci/aws-code-deploy\">https://circleci.com/orbs/registry/orb/circleci/aws-code-deploy</a></p>\n<p>Alternatively, you can use this helpful script: <a href=\"https://github.com/techpivot/aws-code-deploy\" target=\"_blank\" rel=\"noopener\">https://github.com/techpivot/aws-code-deploy</a></p>\n<p>\_\_</p>"

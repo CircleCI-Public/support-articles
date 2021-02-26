@@ -1,29 +1,11 @@
 id: 360049928971
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360049928971.json
+title: 'Are free credits available for macOS open source projects? '
+author_id: 4008831568
+created_at: '2020-09-20T19:39:22Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003332307
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360049928971-Are-free-credits-available-for-macOS-open-source-projects-
-author_id: 4008831568
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 2
-section_id: 115003332307
-created_at: '2020-09-20T19:39:22Z'
-updated_at: '2021-01-29T16:45:41Z'
-name: 'Are free credits available for macOS open source projects? '
-title: 'Are free credits available for macOS open source projects? '
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-09-20T19:41:01Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - macOS
-  - free plan
-  - open source
-body: "<p>If you build on macOS, we also offer organizations on our free plan 25,000 free credits per month to use on macOS open source builds.</p>\n<p>Note: your macOS open source project must be in a publicly accessible repository.\_</p>\n<p>For access to this, contact our team at <a href=\"mailto:billing@circleci.com\">billing@circleci.com</a>.</p>\n<p>\_</p>"

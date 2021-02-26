@@ -1,27 +1,11 @@
 id: 360000113087
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360000113087.json
+title: Remote Docker caching errors - only first few tests run
+author_id: 5640970677
+created_at: '2018-01-24T16:48:13Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360000113087-Remote-Docker-caching-errors-only-first-few-tests-run
-author_id: 5640970677
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 0
-section_id: 115003756627
-created_at: '2018-01-24T16:48:13Z'
-updated_at: '2021-01-12T01:45:55Z'
-name: Remote Docker caching errors - only first few tests run
-title: Remote Docker caching errors - only first few tests run
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:58:48Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - docker
-body: "<p>You may be running into a Docker bootstrap race condition in your test suite. The test suite should not start until all necessary services are fully bootstrapped. Note that this typically includes more execution than simply starting up the containers. Some DB images create default databases and tables on container start. Selenium containers may require some time to start up the browser.</p>\n<p>We suggest dockerize: <a href=\"https://github.com/jwilder/dockerize\" target=\"_blank\" rel=\"noopener\">https://github.com/jwilder/dockerize</a> as a tool for managing container bootstrapping. The `-wait` subcommand will run commands on a sleep loop to test for bootstrap completion. You'll need to determine the appropriate commands to test that each container has fully bootstrapped.</p>\n<p>You can see examples of how to use dockerize on our forum:\_<a href=\"https://discuss.circleci.com/t/prevent-race-conditions-by-waiting-for-services-with-dockerize/11215\" target=\"_self\">https://discuss.circleci.com/t/prevent-race-conditions-by-waiting-for-services-with-dockerize/11215</a></p>\n<p>\_</p>\n<p>Another utility that might be useful is 'Wait Port':\_<a href=\"https://github.com/dwmkerr/wait-port\" target=\"_blank\" rel=\"noopener\">https://github.com/dwmkerr/wait-port</a></p>"

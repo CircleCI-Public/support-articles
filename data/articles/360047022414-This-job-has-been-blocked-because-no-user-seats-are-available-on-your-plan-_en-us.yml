@@ -1,31 +1,11 @@
 id: 360047022414
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047022414.json
+title: '"This job has been blocked because no user seats are available on your plan." '
+author_id: 397404364833
+created_at: '2020-04-30T18:22:37Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003327148
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360047022414--This-job-has-been-blocked-because-no-user-seats-are-available-on-your-plan-
-author_id: 397404364833
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -3
-vote_count: 11
-section_id: 115003327148
-created_at: '2020-04-30T18:22:37Z'
-updated_at: '2020-12-15T06:55:24Z'
-name: '"This job has been blocked because no user seats are available on your plan." '
-title: '"This job has been blocked because no user seats are available on your plan." '
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-08-14T23:21:21Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - private repo
-  - user seat
-  - blocked
-  - opensource
-  - oss
-body: "<h2><strong>Overview</strong></h2>\n<p>If you see the error message\_`Blocked due to plan-no-user-seats-available`, that means you are pushing a build to run on CircleCI by a user who is not listed as an Active User for the current billing cycle.</p>\n<p>To view your Active Users visit:</p>\n<p><strong>https://app.circleci.com/settings/plan/&lt;vcs&gt;/&lt;org-name&gt;/usage</strong>: under the\_<strong>`Users</strong>` tab.</p>\n<p>To learn more about Active Users, visit\_<a href=\"https://support.circleci.com/hc/en-us/articles/360034783154\" target=\"_self\">What is an Active User?</a>\_</p>\n<h2><strong>How to unblock builds</strong></h2>\n<p>To begin running builds, you will need to purchase additional seats to match the number of Active Users for that given billing cycle then re-run the job.</p>\n<p><strong>If you still encounter issues, please submit a Support ticket or write to\_<a href=\"mailto:support@circleci.com\">support@circleci.com</a>.\_</strong></p>\n<h2><strong>Learn More</strong></h2>\n<p><a href=\"https://support.circleci.com/hc/en-us/articles/360037744473\" target=\"_self\">What is an \"Unregistered User\"?</a></p>\n<h2><strong>Public vs. Private Repos\_</strong></h2>\n<p>Any user who is pushing only to public repos will not effect your user seat count. Only users who push to private repos will be counted on the active user list. If a user is added to a new private repo on a plan any user who pushes to that repo will be counted on the list of active users.</p>\n<p>\_</p>\n<p>\_</p>"

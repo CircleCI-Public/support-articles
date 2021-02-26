@@ -1,31 +1,11 @@
 id: 360008766354
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360008766354.json
+title: How to merge your CircleCI accounts
+author_id: 28200990948
+created_at: '2018-09-04T16:55:46Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003327148
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360008766354-How-to-merge-your-CircleCI-accounts
-author_id: 28200990948
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 9
-section_id: 115003327148
-created_at: '2018-09-04T16:55:46Z'
-updated_at: '2021-01-12T01:40:07Z'
-name: How to merge your CircleCI accounts
-title: How to merge your CircleCI accounts
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:58:21Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - account
-  - gmail
-  - google
-  - login
-  - sign in
-body: "<p>When you sign in to CircleCI, you do so via OAuth with one selected VCS provider (example: Github). From there, you can add additional\_account integrations (example: BitBucket) on your account's page here:\_<a href=\"https://circleci.com/account\">https://circleci.com/account</a><br><br>If you run into a situation where you have linked an account previously and are trying to connect it to another account you will see this error:</p>\n<p><em>We encountered a problem adding your identity to CircleCI... The identity provided by your VCS service is already associated with a different account. Please try logging in using that account or contact us for further help.</em></p>\n<p>If you receive this error, contact Support at the link below and we can help you unlink the accounts, so they may be rejoined as you wish.<br><br><a href=\"https://support.circleci.com/hc/en-us/requests/new\">https://support.circleci.com/hc/en-us/requests/new</a></p>"

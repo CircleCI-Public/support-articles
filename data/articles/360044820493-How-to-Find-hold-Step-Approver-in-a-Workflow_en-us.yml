@@ -1,26 +1,11 @@
 id: 360044820493
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360044820493.json
+title: How to Find "hold" Step Approver in a Workflow?
+author_id: 397881110914
+created_at: '2020-03-11T14:47:57Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 360001263193
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360044820493-How-to-Find-hold-Step-Approver-in-a-Workflow-
-author_id: 397881110914
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 1
-section_id: 360001263193
-created_at: '2020-03-11T14:47:57Z'
-updated_at: '2021-01-12T01:53:59Z'
-name: How to Find "hold" Step Approver in a Workflow?
-title: How to Find "hold" Step Approver in a Workflow?
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-03-12T12:43:38Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: "<p>\_</p>\n<p>If you are looking for the information such as <strong>name, login ID</strong>, etc. of the user who approved the <a href=\"https://circleci.com/docs/2.0/workflows/#holding-a-workflow-for-a-manual-approval\" target=\"_blank\" rel=\"noopener\">hold step</a> in a workflow, then you can use API endpoints.\_</p>\n<p>It is a 2 step process and you will have to call 2 different API endpoints for this.\_</p>\n<p><strong>Follow the below steps</strong>:</p>\n<p><strong>1</strong>. Get the <strong><code>analytics-id</code></strong> of the approver by using <strong><a href=\"https://circleci.com/docs/api/v2/#get-a-workflow-39-s-jobs\" target=\"_blank\" rel=\"noopener\">Get a workflow's jobs</a></strong> API endpoint. Below is an example.</p>\n<pre>curl -X GET https://circleci.com/api/v2/workflow/{id}/job -u $CIRCLECI_TOKEN:</pre>\n<p><strong>Sample output</strong>:</p>\n<pre><br> \"name\" : \"hold\",<br> \"project_slug\" : \"gh/&lt;org&gt;/&lt;project&gt;\",<br> \"approved_by\" : \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx\",<br> \"type\" : \"approval\",<br> \"status\" : \"success\",</pre>\n<p>In the above output, <strong><code>approved_by</code></strong> will contain the <strong><code>analytics-id</code></strong> of the user.</p>\n<p><strong>2</strong>. Now see the user information with <strong><code>analytics-id</code></strong> using <strong><a href=\"https://circleci.com/docs/api/v2/#user-information\" target=\"_blank\" rel=\"noopener\">User Information</a></strong> endpoint.</p>\n<pre>curl -X GET https://circleci.com/api/v2/user/{id} -u $CIRCLECI_TOKEN:</pre>\n<p><strong>Sample output</strong>:</p>\n<pre><br> {<br> \"name\" : \"User Name\",<br> \"login\" : \"login_info\",<br> \"id\" : \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx\"<br> }<br> </pre>\n<p><strong>Note</strong>: $CIRCLECI_TOKEN is a variable for a <a href=\"https://circleci.com/account/api\" target=\"_blank\" rel=\"noopener\">personal API token</a>.</p>\n<p><strong>You can use the above API endpoints in your script and get the desired information. Happy building!</strong></p>"

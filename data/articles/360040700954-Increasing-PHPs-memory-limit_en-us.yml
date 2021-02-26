@@ -1,28 +1,11 @@
 id: 360040700954
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360040700954.json
+title: Increasing PHP's memory limit
+author_id: 385569260514
+created_at: '2019-12-20T16:13:41Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 360000066787
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360040700954-Increasing-PHP-s-memory-limit
-author_id: 385569260514
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 4
-vote_count: 14
-section_id: 360000066787
-created_at: '2019-12-20T16:13:41Z'
-updated_at: '2021-01-12T01:50:36Z'
-name: Increasing PHP's memory limit
-title: Increasing PHP's memory limit
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:37Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - php
-  - memory
-body: "<p>By default, PHP will limit itself to using 128MB, which may be exceeded depending on your tasks. In some cases, it's easy to pass along a new memory limit to one-off commands using the following command, replacing -1 with the new memory limit (e.g 512M, 1G. -1 will remove any memory limit and could result in consuming all the memory):</p>\n<pre>php -d memory_limit=-1\_&lt;command&gt;</pre>\n<p>Sometimes, this isn't an ideal solution, and the memory limit should be persisted throughout the job. In this instance, it's easy to set a new memory limit by creating a new memory limit configuration file using the following command, which will ensure PHP runs with the increased memory each time it executes (again, replacing -1 with the actual limit you would like):</p>\n<pre>echo 'memory_limit = -1' &gt;&gt; /usr/local/etc/php/conf.d/docker-php-memlimit.ini</pre>\n<p>Alternatively, if you receive a permission denied error with the above command, the tee command may be necessary to append the configuration:</p>\n<pre>echo 'memory_limit = -1' | sudo tee -a /usr/local/etc/php/conf.d/docker-php-memlimit.ini</pre>"

@@ -1,26 +1,11 @@
 id: 360057033612
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360057033612.json
+title: Enabling AppleScript Support on macOS
+author_id: 382351624233
+created_at: '2021-02-24T14:11:22Z'
+locale: en-us
+permission_group_id: 237847
+section_id: 115003327088
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360057033612-Enabling-AppleScript-Support-on-macOS
-author_id: 382351624233
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 0
-section_id: 115003327088
-created_at: '2021-02-24T14:11:22Z'
-updated_at: '2021-02-24T14:11:22Z'
-name: Enabling AppleScript Support on macOS
-title: Enabling AppleScript Support on macOS
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-02-24T14:11:22Z'
-user_segment_id: null
-permission_group_id: 237847
-label_names: []
-body: "<p>By default, permissions are required to be granted to allow AppleScript to execute and interact with other apps. Normally, on a local system, this would be done by clicking on the UI popups, but this method does not work on a headless CI job.</p>\n<p>The solution is to manually modify the permissions database to inject these permissions are needed. This sounds complicated, but can be easily achieved by using the circleci/macos orb - <a href=\"https://circleci.com/developer/orbs/orb/circleci/macos\">CircleCI Developer Hub - circleci/macos</a></p>\n<p>Example:</p>\n<pre><span>-</span><span> </span><span>macos/add-permission:<br>    bundle-id: com.apple.Terminal<br>    permission-type: kTCCServiceAppleEvents</span></pre>\n<p>The key items to note are that kTCCServiceAppleEvents is the permission type to grant AppleScript the correct privilege. Additionally, the Bundle ID must be the Bundle ID of the app you are calling the AppScript from - in most cases this may be Terminal, but if you are calling it from within your own app then the appropriate Bundle ID needs to be used.\_</p>"

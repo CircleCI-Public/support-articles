@@ -1,44 +1,11 @@
 id: 360046104511
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360046104511.json
+title: '「Upgrade your plan to unblock build」 '
+author_id: 397404364833
+created_at: '2020-07-10T17:25:18Z'
+locale: ja
+permission_group_id: 237867
+section_id: 115003332307
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/ja/articles/360046104511--Upgrade-your-plan-to-unblock-build-
-author_id: 397404364833
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -7
-vote_count: 11
-section_id: 115003332307
-created_at: '2020-07-10T17:25:18Z'
-updated_at: '2021-02-20T02:13:21Z'
-name: '「Upgrade your plan to unblock build」 '
-title: '「Upgrade your plan to unblock build」 '
-source_locale: en-us
-locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2020-09-12T00:06:35Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - upgrade
-  - commit
-  - workflow
-  - Performance Plan
-  - upgrade plan
-  - error message
-  - broken
-  - free plan
-  - rerun
-  - ux
-  - blocked
-body: >-
-  <p><img
-  src="https://support.circleci.com/hc/article_attachments/360061763031/Screen_Shot_2020-07-10_at_10.09.41_AM.png"
-  alt="Screen_Shot_2020-07-10_at_10.09.41_AM.png"></p><p>このエラーメッセージは、最近
-  Performance プランにアップグレードされたお客様に表示されます。 以前に無料プランで実行したビルドが Performance
-  プランで再実行される場合に、このエラーが表示されます。 <code class="c-mrkdwn__code"
-  data-stringify-type="code">rerun</code><span> を実行すると、コミットした元のユーザーの権限/ID
-  を使用して、ジョブが正確に再実行されることに注意してください。</span>
-  古いワークフローを再実行するのではなく、新しいコミットをプッシュすることをお勧めします。</p>

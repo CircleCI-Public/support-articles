@@ -1,28 +1,11 @@
 id: 360012178154
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360012178154.json
+title: Restoring cache appears empty with a size of 32 bytes
+author_id: 28200990948
+created_at: '2018-11-16T14:33:26Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360012178154-Restoring-cache-appears-empty-with-a-size-of-32-bytes
-author_id: 28200990948
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 3
-section_id: 115003756627
-created_at: '2018-11-16T14:33:26Z'
-updated_at: '2021-01-12T01:46:53Z'
-name: Restoring cache appears empty with a size of 32 bytes
-title: Restoring cache appears empty with a size of 32 bytes
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:58:41Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - cache
-  - skipping cache generation
-body: "<p>If you find yourself in a situation where your cache is being restored successfully but you believe that the files you are expecting are missing, take a look at the size of the cache being restored.</p>\n<pre><code>\nFound a cache from build 1 at v1-CACHE_KEY\nSize: 32 B Cached paths: * /home/circleci/...\nDownloading cache archive...\nValidating cache...\nUnarchiving cache...\n</code></pre>\n<p>The 32B file size indicates the size of an empty tarball which was created in the previous <code>save cache</code> step.</p>\n<p><br> You will also often see in the <code>save_cache</code> step that the step has been skipped as the contents have not changed due to them being empty.<br> </p>\n<pre><code>\nSkipping cache generation, cache already exists for key:\n</code></pre>\n<p>\_</p>\n<p>Take a look at the <code>save cache</code> step and ensure the proper paths are being saved and their contents are not empty.</p>\n<p>You can implement <code>ls</code> commands within your config to help identify what files are going to be saved or connect to your container over <a href=\"https://circleci.com/docs/2.0/ssh-access-jobs/\">SSH to manually inspect</a>.</p>"

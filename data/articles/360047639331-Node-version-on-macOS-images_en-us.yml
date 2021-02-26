@@ -1,32 +1,11 @@
 id: 360047639331
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047639331.json
+title: Node version on macOS images
+author_id: 405652843914
+created_at: '2020-08-11T20:24:00Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003327088
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360047639331-Node-version-on-macOS-images
-author_id: 405652843914
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 1
-section_id: 115003327088
-created_at: '2020-08-11T20:24:00Z'
-updated_at: '2021-01-12T01:51:12Z'
-name: Node version on macOS images
-title: Node version on macOS images
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:57:44Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - xcode
-  - macOS
-  - nodejs
-  - macos
-  - node
-  - lts
-body: "<p>Historically we have installed the latest version of Node on our Xcode images, however as <a href=\"https://nodejs.org/en/about/releases/\" target=\"_blank\" rel=\"noopener\">noted by Node:</a></p>\n<blockquote>\n<em>LTS</em><span>\_release status is \"long-term support\", which typically guarantees that critical bugs will be fixed for a total of 30 months. Production applications should only use\_</span><em>Active LTS</em><span>\_or\_</span><em>Maintenance LTS</em><span>\_releases.</span>\n</blockquote>\n<p>With the above in mind, if you encounter any Node related issues, you may want to reference the\_Installed software for the Xcode image you are using to see the version of Node:</p>\n<p><a href=\"https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions\">https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions</a></p>\n<p>As some of the newer images are using non-LTS versions of Node. You may need to manually adjust the node version in your configuration file if you need a specific version. You can install and use a different version of node <a href=\"https://circleci.com/orbs/registry/orb/circleci/node\" target=\"_blank\" rel=\"noopener\">with the Node orb</a>. As an example:</p>\n<pre style=\"background-color: #f3f3f3;\">version: 2.1\n\norbs:\n  node: circleci/node@4.0.0\n\njobs:\n  test-and-build:\n    macos:\n      xcode: 11.0.0\n    steps:\n      - node/install:\n          node-version: \"13.11.0\"\n          ...</pre>\n<p>To adhere to their recommendation though, once the next LTS version is released we plan to pin all new generated Xcode images to the LTS version.</p>"

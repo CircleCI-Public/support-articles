@@ -1,30 +1,11 @@
 id: 360046953994
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360046953994.json
+title: Store artifacts is successful but files not present in artifacts tab
+author_id: 405652843914
+created_at: '2020-04-29T14:03:46Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003755828
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360046953994-Store-artifacts-is-successful-but-files-not-present-in-artifacts-tab
-author_id: 405652843914
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 2
-section_id: 115003755828
-created_at: '2020-04-29T14:03:46Z'
-updated_at: '2021-02-25T16:50:16Z'
-name: Store artifacts is successful but files not present in artifacts tab
-title: Store artifacts is successful but files not present in artifacts tab
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:13Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - artifacts
-  - store_artifacts
-  - download
-  - files not available
-body: "<p>Within your config file, you can opt to upload build artifacts using the <code>store_artifacts</code>\_<a href=\"https://circleci.com/docs/2.0/artifacts/#uploading-artifacts\" target=\"_blank\" rel=\"noopener\">key and specifying a path to upload.</a></p>\n<p>These artifacts are then able to be downloaded on the artifacts tab or <a href=\"https://circleci.com/docs/api/#artifacts\" target=\"_blank\" rel=\"noopener\">via the API</a>. The download link in both cases is constructed of two parts, the first part of the URL is where we are hosting it:</p>\n<p><code>https://12-3456789-gh.circle-artifacts.com/0</code></p>\n<p>While the second part of the URL is the path you specified in the <code>store_artifacts</code> step:</p>\n<p><code>~/project/app/test/app.txt</code></p>\n<p>So altogether the URL would look something like:</p>\n<p><code>https://12-3456789-gh.circle-artifacts.com/0/~/project/app/test/app.txt</code></p>\n<p>Because of this if you had your <code>store_artifacts</code> step set to:</p>\n<pre>  - store_artifacts:\n  \tpath: ../project/app/test\n</pre>\n<p>This would still successfully upload the artifacts but they would in turn not be available via the UI or API as <code>..</code> within a URL is interpreted as a null value.</p>\n<p>To both successfully upload the artifacts and make them available for download use a path like this:</p>\n<pre>  - store_artifacts:\n  \tpath: ~/project/app/test\n</pre>\n<p>Or this:</p>\n<pre>  - store_artifacts:\n  \tpath: root/project/app/test\n</pre>"

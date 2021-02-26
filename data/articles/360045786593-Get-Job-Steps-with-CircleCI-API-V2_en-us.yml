@@ -1,32 +1,11 @@
 id: 360045786593
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360045786593.json
+title: Get Job Steps with CircleCI API V2
+author_id: 403418857853
+created_at: '2020-03-27T18:42:40Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003755888
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360045786593-Get-Job-Steps-with-CircleCI-API-V2
-author_id: 403418857853
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 1
-section_id: 115003755888
-created_at: '2020-03-27T18:42:40Z'
-updated_at: '2021-01-12T01:42:38Z'
-name: Get Job Steps with CircleCI API V2
-title: Get Job Steps with CircleCI API V2
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-03-27T18:44:29Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: >-
-  <p>The CircleCI API V2 does not currently support viewing the individual steps
-  of a job.</p>
-
-  <p>Instead, make use of the v1.1 API for a <a
-  href="https://circleci.com/docs/api/#single-job" target="_self">single
-  job</a>.</p>

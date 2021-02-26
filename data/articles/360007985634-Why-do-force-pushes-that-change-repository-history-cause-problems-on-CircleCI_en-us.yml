@@ -1,28 +1,11 @@
 id: 360007985634
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360007985634.json
+title: Why do force pushes that change repository history cause problems on CircleCI?
+author_id: 25261361207
+created_at: '2018-08-14T16:08:01Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360007985634-Why-do-force-pushes-that-change-repository-history-cause-problems-on-CircleCI-
-author_id: 25261361207
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -7
-vote_count: 13
-section_id: 115003756627
-created_at: '2018-08-14T16:08:01Z'
-updated_at: '2021-01-12T01:44:04Z'
-name: Why do force pushes that change repository history cause problems on CircleCI?
-title: Why do force pushes that change repository history cause problems on CircleCI?
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:58:22Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - webhooks
-  - GitHub
-body: "<p>Sometimes you may need to revise the history of your of your git repository and force push these changes to your VCS provider (be it GitHub or BitBucket). While sometimes it's required, making force pushes a common part of your workflow can potentially cause issues when running jobs on CircleCI. If you run many jobs on CircleCI, while also changing the repository history often, you will notice jobs may fail due to unknown\_object references being requested during the checkout phase.</p>\n<p>This is because VCS providers handle these types of updates differently and the changes are not always reflected across all services immediately. For instance, the force push can trigger a job, but the webhook we receive might be for an old commit hash rather than the new one that was part of the force push. By the time your job runs, it pulls the most recent code and fails because it cannot find the old commit hash in the new repo history.\_</p>\n<p>Also, consider the case for a team that runs many jobs and large workflows. Someone on your team may push a commit that triggers a workflow with many jobs. Some of the jobs in the workflow may not start for hours yet still rely on data from the webhook hours ago. If someone forces a push that changes the repository history it will cause later jobs that run a checkout to have the wrong commit reference than what triggered the original workflow. The becomes especially problematic when you have any jobs queued and someone forces an update.</p>\n<p>These issues can be avoided by limiting force pushes as much as possible and making sure jobs/workflows aren't being triggered during these types of push events.</p>\n<p>To help troubleshoot these issues, you can follow the instructions <a href=\"https://support.circleci.com/hc/en-us/articles/360021511153-How-to-view-your-GitHub-WebHook-deliveries\" target=\"_self\">in this article</a> to check the webhook delivery associated with that commit.\_</p>"

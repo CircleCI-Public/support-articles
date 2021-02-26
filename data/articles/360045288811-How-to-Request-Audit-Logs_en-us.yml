@@ -1,29 +1,11 @@
 id: 360045288811
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360045288811.json
+title: How to Request Audit Logs?
+author_id: 397881110914
+created_at: '2020-06-22T15:54:41Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 360001263193
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360045288811-How-to-Request-Audit-Logs-
-author_id: 397881110914
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 2
-section_id: 360001263193
-created_at: '2020-06-22T15:54:41Z'
-updated_at: '2021-01-12T01:53:51Z'
-name: How to Request Audit Logs?
-title: How to Request Audit Logs?
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-08-31T13:15:05Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - security
-  - Cloud
-  - Audit Logs
-body: "<h2>Overview</h2>\n<p>CircleCI Cloud Customers can request audit logs for <strong>free</strong> by submitting a <a href=\"https://support.circleci.com/hc/en-us\" target=\"_blank\" rel=\"noopener\">support ticket</a>. There are several requirements that must be met for the request to be processed. For an example of the audit logs events captured, please see our documentation located here: <a href=\"https://circleci.com/docs/2.0/security/#audit-logs\" target=\"_self\">Audit Logs</a></p>\n<p>\_</p>\n<p><strong>Note</strong>:\_CircleCI Server customers can access the <a href=\"https://support.circleci.com/hc/en-us/articles/360048467812--Server-How-to-Get-Audit-Logs-\" target=\"_blank\" rel=\"noopener\">audit log feature from the UI</a>.</p>\n<p>\_</p>\n<h3><span class=\"wysiwyg-underline\"><span class=\"wysiwyg-font-size-large\">Requirements</span></span></h3>\n<p>The requester should be the organization admin or should have an org admin's approval. This is very important as we provide audit logs for the entire organization. Project-level audit logs are not possible.</p>\n<p>\_</p>\n<h3><span class=\"wysiwyg-underline\">Submitting Audit Log Request:</span></h3>\n<p>Submit the following in a support ticket.</p>\n<ul>\n<li>Your VCS Organization Name</li>\n<li>Date Range</li>\n</ul>\n<p>To provide the logs without any delay, we need a <strong>date range</strong> in the format <strong>year-month-date</strong>. For example, if you want audit logs from May 1st, 2020 to May 31st, 2020, just let us know the start\_ &amp; end date like below:</p>\n<pre>Start date: 2020-05-01<br>End date: 2020-05-31</pre>\n<h3>\_</h3>\n<h3><span class=\"wysiwyg-underline\"><span class=\"wysiwyg-font-size-large\">Delivery</span></span></h3>\n<p>Audit logs will be supplied securely to the ticket submitter/Org Admin via SendSafely.</p>\n<h3>\_</h3>\n<h3><span class=\"wysiwyg-underline\"><span class=\"wysiwyg-font-size-large\">Unsupported</span></span></h3>\n<p><span style=\"font-weight: 400;\">- Recurring audit logs</span></p>\n<p><span style=\"font-weight: 400;\">- Project level audit logs</span></p>\n<p>\_</p>\n<p>\_</p>\n<p>\_</p>"

@@ -1,52 +1,11 @@
 id: 360055901372
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360055901372.json
+title: Auto-cancel re-run if newer commit exists
+author_id: 405652843914
+created_at: '2021-02-01T15:17:51Z'
+locale: en-us
+permission_group_id: 237847
+section_id: 115003580328
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360055901372-Auto-cancel-re-run-if-newer-commit-exists
-author_id: 405652843914
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 0
-section_id: 115003580328
-created_at: '2021-02-01T15:17:51Z'
-updated_at: '2021-02-01T15:20:26Z'
-name: Auto-cancel re-run if newer commit exists
-title: Auto-cancel re-run if newer commit exists
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-02-01T15:20:26Z'
-user_segment_id: null
-permission_group_id: 237847
-label_names:
-  - re-run
-  - auto-cancel
-body: >-
-  <p>There are situations where re-running a build would cause issues, such as
-  deploying a stale version of your application. To work around this the
-  following run step will exit a build if a newer commit exists on the branch it
-  is running on:</p>
-
-  <pre style="background-color: #f3f3f3;">- run:
-      name: Check last commit to this commit
-      command: |
-        LATEST_COMMIT=$(git ls-remote $CIRCLE_REPOSITORY_URL | grep $CIRCLE_BRANCH | cut -f 1)
-        LAST_COMMIT_DATETIME=$(git show --format="%ct" $LATEST_COMMIT | head -n 1)
-        BUILD_COMMIT_DATETIME=$(git show --format="%ct" $CIRCLE_SHA1 | head -n 1)
-        if [ "$LAST_COMMIT_DATETIME" -gt "$BUILD_COMMIT_DATETIME" ]; then
-          echo "more recent commit to branch, exiting"
-          exit 1
-        fi</pre>
-  <p>Example of this in action:</p>
-
-  <p><img
-  src="https://support.circleci.com/hc/article_attachments/360084358852/testing_cancel.png"
-  alt="testing_cancel.png"></p>
-
-  <p>Build 714 runs successfully, I then make a change and push that commit up,
-  and build 715 runs successfully. Then I re-run build 714 which fails since it
-  found a newer commit on the branch.</p>
