@@ -1,28 +1,11 @@
 id: 360049928771
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360049928771.json
+title: Do free credits roll over to the next week?
+author_id: 4008831568
+created_at: '2020-09-20T19:02:26Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003332307
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360049928771-Do-free-credits-roll-over-to-the-next-week-
-author_id: 4008831568
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 1
-section_id: 115003332307
-created_at: '2020-09-20T19:02:26Z'
-updated_at: '2021-01-12T01:40:17Z'
-name: Do free credits roll over to the next week?
-title: Do free credits roll over to the next week?
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-09-20T19:03:04Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - credits
-  - free plan
-body: "<p>For CircleCI users on a Free Plan, Credits do <strong>not</strong> roll over to the next week.\_</p>\n<p>Additional Documentation on Free Users credit consumption can be found here: https://circleci.com/docs/2.0/credits/#free-plan</p>\n<p>Related: <a href=\"https://support.circleci.com/hc/en-us/articles/360049861131\" target=\"_self\">When will free or open source credits renew?</a></p>"

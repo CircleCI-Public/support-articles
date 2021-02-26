@@ -1,26 +1,11 @@
 id: 360047125652
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047125652.json
+title: How to see running SSH jobs
+author_id: 4008831568
+created_at: '2020-08-10T16:01:19Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360047125652-How-to-see-running-SSH-jobs
-author_id: 4008831568
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 7
-vote_count: 11
-section_id: 115003756627
-created_at: '2020-08-10T16:01:19Z'
-updated_at: '2021-02-25T03:25:36Z'
-name: How to see running SSH jobs
-title: How to see running SSH jobs
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-12-04T15:57:05Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: "<p>Once you navigate away from a running SSH job in the <a href=\"https://circleci.com/blog/introducing-our-redesigned-UI-built-for-increased-user-productivity/\" target=\"_self\">newly redesigned UI</a>, this job will not appear in the pipelines view.</p>\n<p>You can regain access to the SSH job page (and if needed cancel the job), using either of the following methods:</p>\n<ul>\n<li><a href=\"#h_01EN5RMW1FXAC6SWD8XXV2VCFP\" target=\"_self\">From the UI</a></li>\n<li><a href=\"#h_01EN5RQKGC7RGDFHG17V8TX4ZY\" target=\"_self\">Using the CircleCI API</a></li>\n</ul>\n<h3 id=\"h_01EN5RMW1FXAC6SWD8XXV2VCFP\">From the UI</h3>\n<p>Visit the legacy jobs page:</p>\n<p>https://app.circleci.com/pipelines/{vcs}/{org}/{project}/jobs</p>\n<p>inserting <code style=\"background-color: #f3f3f3;\">vcs</code> (<code style=\"background-color: #f3f3f3;\">gh</code> or <code style=\"background-color: #f3f3f3;\">bb</code>), <code style=\"background-color: #f3f3f3;\">org</code>, and <code style=\"background-color: #f3f3f3;\">project</code> where appropriate. This page displays jobs rather than pipelines.</p>\n<p>For example, if I wanted to see all of the currently running jobs for our CircleCI CLI repository, I would visit:\_</p>\n<p><a href=\"https://app.circleci.com/pipelines/github/CircleCI-Public/circleci-cli/jobs\">https://app.circleci.com/pipelines/<strong>github</strong>/<strong>CircleCI-Public</strong>/<strong>circleci-cli</strong>/jobs</a></p>\n<p>This will show a jobs view:</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360064382171/Screen_Shot_2020-08-10_at_11.59.56_AM.png\" alt=\"Screen_Shot_2020-08-10_at_11.59.56_AM.png\"></p>\n<p>\_</p>\n<p>You will then be able to see and access running SSH jobs from this view.\_</p>\n<p><strong>Note:</strong> This jobs view is on a per-project basis. That means you can only see all of the jobs for a given project, but you will not be able to see all jobs across all projects.\_</p>\n<p>To cancel the currently running SSH job, click the job on the list and it will take you to the workflows page. From this page, you will be able to cancel the job from the <code style=\"background-color: #f3f3f3;\">Rerun</code> menu as follows:</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360064523292/Screen_Shot_2020-08-12_at_2.33.01_PM.png\" alt=\"Screen_Shot_2020-08-12_at_2.33.01_PM.png\"></p>\n<p>\_</p>\n<h3 id=\"h_01EN5RQKGC7RGDFHG17V8TX4ZY\">Using the CircleCI API</h3>\n<p><strong>Note</strong>: You'll need to use a <a href=\"https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token\" target=\"_blank\" rel=\"noopener\">personal API token</a><em><br></em></p>\n<p>This method relies on the <a href=\"https://circleci.com/docs/api/v1/#recent-builds-across-all-projects\" target=\"_blank\" rel=\"noopener\">\"Recent Builds Across All Projects\" API endpoint</a>.</p>\n<ul>\n<li>Open a terminal and run the following cURL request:</li>\n</ul>\n<pre class=\"highlight sh tab-shell\" style=\"background-color: #f3f3f3;\">curl -G \"https://circleci.com/api/v1.1/recent-builds?shallow=true\" \\<br>-H \"Circle-Token: &lt;your_API_Token&gt;\"| jq '.[] | select(.why == \"ssh\") | select(.status == \"running\")|{build_url, build_num}'\n</pre>\n<p>The above request will return the URL (build_url) and the ID (build_num) of all your <strong>currently running</strong> SSH jobs.</p>\n<ul>\n<li>You can then copy and paste the URL into your browser's address, which will take you to the job's page where you'll be able to view the job's details, and if you wish to do so, cancel it.<br><br>\n</li>\n<li>You can also use the ID to cancel the job using the <a href=\"https://circleci.com/docs/api/v1/#cancel-a-build\" target=\"_blank\" rel=\"noopener\">\"Cancel a Build\" API endpoint</a>.</li>\n</ul>\n<pre class=\"highlight sh tab-shell\" style=\"background-color: #f3f3f3;\"><code>curl -X POST https://circleci.com/api/v1.1/project/:vcs-type/:username/:project/:build_num/cancel \\<br>-H <span class=\"s2\">\"Circle-Token: &lt;circle-token&gt;\"</span></code></pre>"

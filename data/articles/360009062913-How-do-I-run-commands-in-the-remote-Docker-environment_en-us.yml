@@ -1,27 +1,11 @@
 id: 360009062913
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360009062913.json
+title: How do I run commands in the remote Docker environment?
+author_id: 25261361207
+created_at: '2018-09-07T11:14:14Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003580328
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360009062913-How-do-I-run-commands-in-the-remote-Docker-environment-
-author_id: 25261361207
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 1
-section_id: 115003580328
-created_at: '2018-09-07T11:14:14Z'
-updated_at: '2020-10-22T07:01:43Z'
-name: How do I run commands in the remote Docker environment?
-title: How do I run commands in the remote Docker environment?
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:58:17Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - remote docker
-body: "<p>Although only Docker commands are\_<em>automatically</em>\_executed in the remote Docker environment, you can programmatically execute\_<em>any</em>\_set of commands in the remote Docker environment by SSHing into it and chaining any subsequent commands to your shell command.</p>\n<p>\_</p>\n<p>To SSH into the remote Docker environment, run\_<code>ssh remote-docker</code> while SSH'd into any CircleCI job that uses\_<a href=\"https://circleci.com/docs/2.0/configuration-reference/#setup_remote_docker\" target=\"_self\"><code>setup_remote_docker</code></a> or execute it programmatically in a\_<code>run</code>\_step. (Make sure the\_<code>setup_remote_docker</code>\_step runs first, otherwise, your SSH command will fail!)</p>\n<p>Chaining a command to this SSH command in a headless fashion, i.e., as part of your CircleCI job, could look something like:</p>\n<pre><code>run: |\n  ssh remote-docker \\ echo \"this echo command will be executed in the remote Docker environment \\ <br>  rather than the initial job container itself\"\n</code></pre>\n<p>The challenge presented here is that only a singular command can be passed to the SSH shell—for example, if you run\_<code>ssh remote-docker touch file1 &amp;&amp; touch file2</code>,\_<code>file1</code>\_will be created in the remote Docker environment, but\_<code>file2</code>will be created in your job's local container.</p>\n<p>So, if you want to do run a more complex set of commands in the remote Docker environment, programmatically, then you need to find a way to have them be executed as a single command.</p>\n<p>Some good approaches are outlined here:</p>\n<p><a href=\"https://stackoverflow.com/questions/4412238/what-is-the-cleanest-way-to-ssh-and-run-multiple-commands-in-bash\" rel=\"nofollow\">https://stackoverflow.com/questions/4412238/what-is-the-cleanest-way-to-ssh-and-run-multiple-commands-in-bash</a></p>\n<p>These suggestions include\_<a href=\"http://tldp.org/LDP/abs/html/here-docs.html\" rel=\"nofollow\">using a \"here document\"</a>\_or save your commands to a shell script which you then pipe into your\_<code>ssh</code>\_command.</p>\n<p>If you are using remote-docker commands to update your Docker storage driver, please checkout this helpful thread in our forum:</p>\n<p><a href=\"https://discuss.circleci.com/t/changing-docker-storage-driver/36494/2\" rel=\"noreferrer\">https://discuss.circleci.com/t/changing-docker-storage-driver/36494/2</a></p>"

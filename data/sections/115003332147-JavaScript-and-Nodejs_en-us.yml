@@ -4,14 +4,9 @@ url: >-
 html_url: >-
   https://support.circleci.com/hc/en-us/sections/115003332147-JavaScript-and-Node-js
 category_id: 115001913988
-position: 2
-sorting: manual
 created_at: '2017-09-06T14:56:28Z'
-updated_at: '2021-02-19T16:39:17Z'
 name: JavaScript and Node.js
 description: ''
 locale: en-us
-source_locale: en-us
 outdated: false
 parent_section_id: null
-theme_template: section_page

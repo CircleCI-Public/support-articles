@@ -1,27 +1,11 @@
 id: 115013849587
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115013849587.json
+title: Docker Layer Caching availability
+author_id: 4008831568
+created_at: '2017-10-27T11:44:05Z'
+locale: ja
+permission_group_id: 237867
+section_id: 115003580328
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/ja/articles/115013849587-Docker-Layer-Caching-availability
-author_id: 4008831568
-comments_disabled: true
 draft: false
-promoted: false
-position: 6
-vote_sum: -1
-vote_count: 1
-section_id: 115003580328
-created_at: '2017-10-27T11:44:05Z'
-updated_at: '2021-01-12T01:43:04Z'
-name: Docker Layer Caching availability
-title: Docker Layer Caching availability
-source_locale: en-us
-locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-12T01:43:04Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - docker layer caching
-  - DLC
-body: "<p>Docker Layer Caching (DLC) is a great feature to use if building Docker images is a regular part of your CI/CD process. DLC will save image layers created within your jobs, rather than impact the actual container used to run your job.</p><p>There are some limitations to the availability of these cached layers. The DLC volumes are deleted after 3 days of not being used in a job. Additionally, CircleCI will create a maximum of 50 DLC volumes per project, so a maximum of 50 concurrent\_<code class=\"highlighter-rouge\">machine</code>\_or Remote Docker jobs per project can have access to DLC.\_</p><p>In-depth documentation for <code>docker_layer_caching</code>\_can be found here:\_<a href=\"https://circleci.com/docs/2.0/docker-layer-caching/\">https://circleci.com/docs/2.0/docker-layer-caching/</a></p><p>\_</p>"

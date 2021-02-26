@@ -1,59 +1,10 @@
 id: 360052260151
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360052260151.json
-html_url: https://support.circleci.com/hc/ja/articles/360052260151
-author_id: 382351624233
-comments_disabled: true
-draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 2
-section_id: 115003327088
-created_at: '2020-11-06T18:19:43Z'
-updated_at: '2021-02-04T06:58:33Z'
-name: エラー「Path /Applications/Xcode-X.X.app doesn't exist」の解決方法
 title: エラー「Path /Applications/Xcode-X.X.app doesn't exist」の解決方法
-source_locale: en-us
+author_id: 382351624233
+created_at: '2020-11-06T18:19:43Z'
 locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2021-02-04T06:58:33Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names: []
-body: >-
-  <h2><strong>このエラーが発生する理由</strong></h2><p>以前は正常に動作していた Xcode ビルド
-  パイプラインで、エラーが発生するようになる場合があります。</p><p>CircleCI の <a
-  href="https://circleci.com/docs/ja/2.0/xcode-policy/#xcode-%E3%81%AE%E3%83%91%E3%83%83%E3%83%81">Xcode
-  パッチ ポリシー</a>では、サポート対象の Xcode の各 <code
-  class="highlighter-rouge">major.minor</code><span> </span><span> バージョンに対して
-  CircleCI では最新のパッチ バージョンを保持すると規定しています。 新しいパッチ バージョンがリリースされた場合、過去のパッチ
-  バージョンのサポートを終了し、すべてのリクエストを新しいパッチにリダイレクトします。</span></p><p>ハードコーディングされた Xcode パスが
-  fastlane の設定ファイルで使用されている場合、Xcode アプリのパスに Xcode のバージョン番号が含まれているために、新しいパッチ
-  バージョンがリリースされるとエラーが発生するようになります。</p><p><strong>例:</strong></p><p>Xcode <code
-  class="highlighter-rouge">12.1.0</code> イメージを使用し、fastlane アクションの 1 つで <code
-  class="highlighter-rouge">/Applications/Xcode-12.1.app</code>
-  を指定しているとします。</p><p>Xcode <code class="highlighter-rouge">12.1.1</code>
-  がリリースされた場合、<code class="highlighter-rouge">12.1.0</code>
-  のリクエストはこの新しいイメージへリダイレクトされるようになります。 これに伴い、新しい Xcode アプリ パスは <code
-  class="highlighter-rouge">/Applications/Xcode-12.1.1.app</code>
-  となるため、既存のジョブは失敗して <code class="highlighter-rouge">Path
-  '/Applications/Xcode-12.1.app' doesn't exist</code>
-  と表示されるようになります。</p><h2><strong>パスのハードコーディングを使わないベスト
-  プラクティス</strong></h2><p>CircleCI では、すべてのイメージで、汎用パスに Xcode のシンボリック リンクを設定しています。
-  たとえば、次のとおりです。</p><p><code
-  class="highlighter-rouge">/Applications/Xcode-12.1.app -&gt;
-  /Applications/Xcode.app</code></p><p>汎用パスを使用すれば、Xcode
-  のバージョンにかかわらず、すべてのイメージで一貫性が保たれますので、CircleCI
-  ジョブでは可能な限り汎用パスを使用するようにしてください。</p><p>また、変数と CI 環境のテストを使用することで、CircleCI
-  上で実行するジョブにハードコードしたパスを含めないようにすることができます。 具体的な例は、次のようになります。</p><pre>#
-  fastlane/Fastfile<br><br>xcodePath =
-  "/Applications/Xcode-12.1.app"<br><br>platform :iOS do<br>  before_all
-  do<br>    setup_circle_ci<br>    <span class="hljs-keyword">if</span><span>
-  is_ci</span><br>      xcodePath = "/Applications/Xcode.app"<br>    end<br> 
-  end<br>  ...<br>end</pre><p>上記では、変数 <code
-  class="highlighter-rouge">xcodePath</code> を設定し、この変数に Xcode への必須のパスを格納しています。
-  また、<code class="highlighter-rouge">if is_ci</code> を使用することで、ジョブが CircleCI
-  上で実行されているかどうかをチェックしています。実行されている場合は、汎用の Xcode パスを設定します。
-  これによって、ローカル環境での実行時には、必要であればハードコーディングされたパスを使用しながら、CircleCI 環境では汎用のシンボリック リンク
-  パスを使用できます。これにより、Xcode のバージョンが変更された場合でも、ジョブが停止されないようになります。</p>
+section_id: 115003327088
+user_segment_id: null
+html_url: https://support.circleci.com/hc/ja/articles/360052260151
+draft: false

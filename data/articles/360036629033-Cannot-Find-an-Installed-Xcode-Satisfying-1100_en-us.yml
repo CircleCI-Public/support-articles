@@ -1,28 +1,11 @@
 id: 360036629033
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360036629033.json
+title: Cannot Find an Installed Xcode Satisfying '11.0.0'
+author_id: 382351624233
+created_at: '2019-10-01T15:44:18Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003327088
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360036629033-Cannot-Find-an-Installed-Xcode-Satisfying-11-0-0-
-author_id: 382351624233
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 7
-section_id: 115003327088
-created_at: '2019-10-01T15:44:18Z'
-updated_at: '2021-01-12T01:51:26Z'
-name: Cannot Find an Installed Xcode Satisfying '11.0.0'
-title: Cannot Find an Installed Xcode Satisfying '11.0.0'
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:42Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - fastlane
-  - xcode
-body: "<p>If your Fastfile implements the\_xcversion action to find and select a specific version of Xcode, in this case Xcode 11, you may find the following error occuring:</p>\n<pre class=\"output\"><span class=\"pre\"><span class=\"white\"><span class=\"red\">[!] Cannot find an installed Xcode satisfying '11.0.0'</span></span></span></pre>\n<h3>Why does this happen?</h3>\n<p>The xcversion action in Fastlane uses the xcode-install gem behind the scenes and, currently as of Fastlane 2.131.0, the minimum version required by Fastlane is outdated.</p>\n<h3>Steps to Resolve</h3>\n<p>In your Gemfile, specify a newer version of xcode-install. At the time of writing, the latest version is 2.6.1:</p>\n<pre>gem 'xcode-install', '~&gt; 2.6', '&gt;= 2.6.1'</pre>\n<p>\_</p>"

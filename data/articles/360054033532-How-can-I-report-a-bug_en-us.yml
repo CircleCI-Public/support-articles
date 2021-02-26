@@ -1,26 +1,11 @@
 id: 360054033532
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360054033532.json
+title: How can I report a bug?
+author_id: 25261361207
+created_at: '2020-12-18T16:43:27Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 360001263193
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360054033532-How-can-I-report-a-bug-
-author_id: 25261361207
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 1
-section_id: 360001263193
-created_at: '2020-12-18T16:43:27Z'
-updated_at: '2021-01-27T03:10:06Z'
-name: How can I report a bug?
-title: How can I report a bug?
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-27T02:21:52Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: "<p>If you notice any issues with CircleCI you can <a href=\"https://support.circleci.com/hc/en-us/requests/new\" target=\"_blank\" rel=\"noopener\">submit a support ticket</a>. With the support ticket try to include any additional information that would help us triage the bug. Screenshots, steps to reproduce (if possible), and <a href=\"https://support.zendesk.com/hc/en-us/articles/204410413-Generating-a-HAR-file-for-troubleshooting\" target=\"_blank\" rel=\"noopener\">producing HAR files</a> can help speed up identification and resolution of bugs. We currently <a href=\"https://support.circleci.com/hc/en-us/articles/360049310671-Does-CircleCI-have-a-Bug-Bounty-Program-\" target=\"_blank\" rel=\"noopener\">do not have a bug bounty program</a>.</p>\n<p>\_</p>\n<p>If you feel that a feature should work differently than it does now, or have suggestions for new features you can <a href=\"https://ideas.circleci.com/\" target=\"_blank\" rel=\"noopener\">add them to our ideas page</a>. Our product teams regularly review the feedback and change requests.</p>"

@@ -1,29 +1,11 @@
 id: 360049397051
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360049397051.json
+title: How to set up a VPN connection during builds?
+author_id: 403103999173
+created_at: '2020-09-09T16:09:23Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003580328
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360049397051-How-to-set-up-a-VPN-connection-during-builds-
-author_id: 403103999173
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 5
-vote_count: 7
-section_id: 115003580328
-created_at: '2020-09-09T16:09:23Z'
-updated_at: '2021-02-25T16:43:04Z'
-name: How to set up a VPN connection during builds?
-title: How to set up a VPN connection during builds?
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-12-14T06:56:06Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - vpn
-  - open vpn
-  - l2tp
-body: "<h4>In case you need to connect to a private network during your builds (for example to deploy to an environment behind a VPN), we suggest you configure the VPN connection as follows:</h4>\n<h4><a href=\"#openvpn\" target=\"_self\">OpenVPN</a></h4>\n<h4><a href=\"#l2tp\" target=\"_self\">L2TP</a></h4>\n<h2 id=\"openvpn\"><span>OpenVPN</span></h2>\n<ul>\n<li><span>Base64-encode the OpenVPN client configuration file, and store it as an <a href=\"https://circleci.com/docs/2.0/env-vars/\" target=\"_blank\" rel=\"noopener\">environment\_variable</a></span></li>\n<li><span>If the VPN client authentication is credentials-based, you'll also need to add the username and password as\_environment\_variables.</span></li>\n<li>\n<span><span><span>Use the below sample configuration<br><br></span></span></span><span><span><span></span></span></span>\n</li>\n</ul>\n<pre style=\"background-color: #f3f3f3;\">version: 2.1\nworkflows:\n  btd:\n    jobs:\n      - build\njobs:\n  build:\n    machine:\n      image: ubuntu-1604:202004-01\n    steps:\n      - run:\n          name: Install OpenVPN\n          command: |\n            sudo apt-get update\n            sudo apt-get install openvpn -y<br>\n      - run:\n          name: Check IP before VPN connection\n          command: |\n            ifconfig\n            route -n\n            sudo netstat -anp\n            cat /etc/resolv.conf\n            curl checkip.amazonaws.com<br>\n      - run:\n          name: VPN Setup\n          background: true\n          command: |\n            phone_home=$(netstat -an | grep ':22 .*ESTABLISHED' | head -n1 | awk '{ split($5, a, \":\"); print a[1] }')\n            # phone_home=$(netstat -an | grep '\\.2222\\s.*ESTABLISHED' | head -n1 | awk '{ split($5, a, \".\"); print a[1] \".\" a[2] \".\" a[3] \".\" a[4] }') # if you use macOS executor, you can uncomment this line, and comment the above line\n            echo $phone_home\n\n            echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /tmp/config.ovpn\n            printf \"user\\n$VPN_PASSWORD\" &gt; /tmp/vpn.login\n            sudo openvpn --config /tmp/config.ovpn --auth-user-pass /tmp/vpn.login \\\n              --route $phone_home 255.255.255.255 net_gateway \\\n              --route 169.254.0.0 255.255.0.0 net_gateway<br>\n      - run:\n          name: Wait for the connection to be established\n          command: sleep 30<br>\n      - run:\n          name: Check IP after VPN connection\n          command: |\n            ifconfig\n            route -n\n            sudo netstat -anp\n            cat /etc/resolv.conf\n            curl checkip.amazonaws.com\n\n      - run:\n          name: Run commands in our infrastructure\n          command: |\n            # A command\n            # Another command<br><br>\_     - run:<br>          name: Disconnect from OpenVPN<br>          command: sudo killall openvpn || true<br>          when: always\n</pre>\n<p>\_</p>\n<h2 id=\"l2tp\"><span>L2TP</span></h2>\n<p><span><span>To set up an L2TP VPN connection, we recommend referring to <a href=\"https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients.md#configure-linux-vpn-clients-using-the-command-line\" target=\"_blank\" rel=\"noopener\">this guide.</a></span></span><span><span></span></span></p>\n<p><span><span>We suggest storing\_<code>VPN_SERVER_IP</code>,\_<code>VPN_IPSEC_PSK</code>,\_<code>VPN_USER</code>\_and\_<code>VPN_PASSWORD</code>\_as\_<a href=\"https://circleci.com/docs/2.0/env-vars/\" rel=\"noreferrer\">environment variables</a>. Ideally,\_you might want to base64-encode\_<code>VPN_IPSEC_PSK</code> before storing it; you'll need to decode it during the build.</span></span></p>\n<p dir=\"auto\">To retrieve the default gateway IP address during the build, you can use either of the following:</p>\n<ul dir=\"auto\" type=\"disc\">\n<li type=\"disc\"><code>default_gw_IP=$(netstat -r | grep default | awk '{ print $2 }')</code></li>\n<li type=\"disc\"><code>default_gw_IP=$(ip route | grep default | awk '{ print $3 }')</code></li>\n</ul>\n<p><strong>\_Note that you must use the <code>machine</code> or <code>macOS</code> executor.</strong></p>"

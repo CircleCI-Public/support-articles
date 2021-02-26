@@ -1,37 +1,10 @@
 id: 360008766354
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360008766354.json
-html_url: https://support.circleci.com/hc/ja/articles/360008766354
-author_id: 28200990948
-comments_disabled: false
-draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 9
-section_id: 115003327148
-created_at: '2018-09-04T16:55:46Z'
-updated_at: '2021-01-12T01:40:07Z'
-name: CircleCI アカウントの接続方法
 title: CircleCI アカウントの接続方法
-source_locale: en-us
+author_id: 28200990948
+created_at: '2018-09-04T16:55:46Z'
 locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-12T01:40:07Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - account
-  - gmail
-  - google
-  - login
-  - sign in
-body: >-
-  <p>CircleCI にサインインするには、許可された VCS プロバイダ (例： Github) を使用し、OAuth により行います。 <a
-  href="https://circleci.com/account">https://circleci.com/account</a>
-  で、自分のアカウントのページに他のアカウント (例：BitBucket)
-  を接続できます。<br><br>接続済みのアカウントで別のアカウントに接続しようとすると、次のエラーが表示されます。</p><p><em>CircleCI
-  にアカウント情報を追加するとき問題が発生しました。 VCS サービスから提供されたアカウント情報は既に他のアカウントと接続しています。
-  そのアカウントを使用してログインしてください。また、サポートが必要な場合は CircleCI
-  までお問い合わせください。</em></p><p>このエラーが発生した場合、下のリンクからサポートにお問い合わせください。アカウントの接続を解除し、自由に再接続できるようにします。<br><br><a
-  href="https://support.circleci.com/hc/en-us/requests/new">https://support.circleci.com/hc/en-us/requests/new</a></p>
+section_id: 115003327148
+user_segment_id: null
+html_url: https://support.circleci.com/hc/ja/articles/360008766354
+draft: false

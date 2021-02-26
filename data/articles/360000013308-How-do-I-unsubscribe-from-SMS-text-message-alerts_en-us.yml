@@ -1,28 +1,11 @@
 id: 360000013308
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360000013308.json
+title: How do I unsubscribe from SMS text message alerts?
+author_id: 4008831568
+created_at: '2018-01-16T08:11:24Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 360000003527
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360000013308-How-do-I-unsubscribe-from-SMS-text-message-alerts-
-author_id: 4008831568
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 5
-section_id: 360000003527
-created_at: '2018-01-16T08:11:24Z'
-updated_at: '2021-02-22T17:31:34Z'
-name: How do I unsubscribe from SMS text message alerts?
-title: How do I unsubscribe from SMS text message alerts?
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:56:29Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - sms
-  - status
-body: "<p>If you subscribed to SMS text message alerts on our status page (<a href=\"https://status.circleci.com/\" target=\"_blank\" rel=\"noopener\">https://status.circleci.com/</a>), you can unsubscribe from them by replying \"STOP\".\_</p>\n<p>From <a href=\"https://help.statuspage.io/knowledge_base/topics/email-and-sms-notifications\" target=\"_blank\" rel=\"noopener\">StatusPage help</a>:</p>\n<blockquote>End-users can unsubscribe from SMS notifications by replying STOP. (Note: some international carriers don't play nice with sending \"STOP\" messages, which may require those numbers to be unsubscribed through the UI by a Statuspage admin/team member).</blockquote>\n<p>If the \"STOP\" command does not work, please contact us by opening a <a href=\"https://support.circleci.com/hc/en-us/requests/new\" target=\"_self\">support ticket</a>.</p>"

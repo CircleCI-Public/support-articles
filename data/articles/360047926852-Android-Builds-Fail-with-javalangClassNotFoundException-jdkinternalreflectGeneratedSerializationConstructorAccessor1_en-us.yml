@@ -1,42 +1,13 @@
 id: 360047926852
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047926852.json
-html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360047926852-Android-Builds-Fail-with-java-lang-ClassNotFoundException-jdk-internal-reflect-GeneratedSerializationConstructorAccessor1-
-author_id: 403418857853
-comments_disabled: true
-draft: false
-promoted: false
-position: 0
-vote_sum: 2
-vote_count: 10
-section_id: 115003332187
-created_at: '2020-08-20T01:45:29Z'
-updated_at: '2021-02-25T05:46:49Z'
-name: >-
-  Android Builds Fail with "java.lang.ClassNotFoundException:
-  jdk.internal.reflect.GeneratedSerializationConstructorAccessor1"
 title: >-
   Android Builds Fail with "java.lang.ClassNotFoundException:
   jdk.internal.reflect.GeneratedSerializationConstructorAccessor1"
-source_locale: en-us
+author_id: 403418857853
+created_at: '2020-08-20T01:45:29Z'
 locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-09-05T00:05:24Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - android
-  - java
-body: >-
-  <p>The CircleCI Android images were upgraded from Java 8 to Java 11. If you
-  suddenly notice the error<br> </p>
-
-  <pre>java.lang.ClassNotFoundException:
-  jdk.internal.reflect.GeneratedSerializationConstructorAccessor1</pre>
-
-  <p>This can be due to an issue with JoCoCo. If JoCoCo is in use, you can try
-  adding the following to your JoCoCo config</p>
-
-  <pre>excludes = ['jdk.internal.*']</pre>
+section_id: 115003332187
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360047926852-Android-Builds-Fail-with-java-lang-ClassNotFoundException-jdk-internal-reflect-GeneratedSerializationConstructorAccessor1-
+draft: false

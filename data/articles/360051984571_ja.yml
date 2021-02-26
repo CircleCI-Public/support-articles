@@ -1,37 +1,10 @@
 id: 360051984571
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360051984571.json
-html_url: https://support.circleci.com/hc/ja/articles/360051984571
-author_id: 379006459554
-comments_disabled: false
-draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 1
-section_id: 115003756627
-created_at: '2020-11-02T19:31:28Z'
-updated_at: '2021-02-04T08:50:11Z'
-name: 'ステータス バッジに "no builds (ビルドなし)" と表示される '
 title: 'ステータス バッジに "no builds (ビルドなし)" と表示される '
-source_locale: en-us
+author_id: 379006459554
+created_at: '2020-11-02T19:31:28Z'
 locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2021-02-04T08:50:11Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names: []
-body: >-
-  <p><span style="font-weight: 400;">最近 "成功" または "失敗" したビルドがあるにもかかわらず、ステータス バッジに
-  "no builds (ビルドなし)" と表示される場合、原因として古い Web フックがあることが考えられます。 </span></p><p><img
-  src="https://support.circleci.com/hc/article_attachments/360074929712/Screen_Shot_2020-11-02_at_11.30.12_AM.png"
-  alt="Screen_Shot_2020-11-02_at_11.30.12_AM.png"></p><p><span
-  style="font-weight: 400;">この問題は、デフォルト ブランチを変更したり、ブランチや古い Web
-  フックの名前を変更したりするなど、VCS 側で何らかの変更を加えた場合に発生します。<br><br></span></p><p><span
-  style="font-weight: 400;">トラブルシューティングの最初の手順として、<a
-  href="https://support.circleci.com/hc/ja/articles/360021666393-How-to-stop-building-by-manually-removing-the-CircleCI-webhook-and-deploy-key-from-your-GitHub-repository"
-  target="_self">手動で Web フックをリセットする</a>ことをお勧めします。 </span><span
-  style="font-weight: 400;">問題が解消されない場合は、サポート チケットを提出するか、</span><a
-  href="mailto:support@circleci.com"><span style="font-weight:
-  400;">support@circleci.com</span></a><span style="font-weight: 400;">
-  までご連絡ください。</span></p><p><br><br><br></p>
+section_id: 115003756627
+user_segment_id: null
+html_url: https://support.circleci.com/hc/ja/articles/360051984571
+draft: false

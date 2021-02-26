@@ -1,38 +1,13 @@
 id: 360025040233
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360025040233.json
-html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360025040233-How-to-stop-building-by-manually-removing-the-CircleCI-webhook-and-deploy-key-from-your-Bitbucket-repository
-author_id: 377853350854
-comments_disabled: true
-draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 2
-section_id: 115003580328
-created_at: '2019-06-18T17:52:50Z'
-updated_at: '2021-01-12T01:42:48Z'
-name: >-
-  How to stop building by manually removing the CircleCI webhook and deploy key
-  from your Bitbucket repository
 title: >-
   How to stop building by manually removing the CircleCI webhook and deploy key
   from your Bitbucket repository
-source_locale: en-us
+author_id: 377853350854
+created_at: '2019-06-18T17:52:50Z'
 locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-08-05T19:43:52Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - ssh key
-  - remove
-  - stop building
-  - webhooks
-  - delete
-  - rename
-  - rename org
-  - rename repo
-body: "<p>You can stop building your project on CircleCI at any time, by navigating to the project settings (https://app.circleci.com/settings/project/&lt;vcs&gt;/&lt;org&gt;/&lt;project&gt;) page and clicking the <em>\"Stop Building\"</em> button.</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360064038311/mceclip0.png\" alt=\"mceclip0.png\"></p>\n<p>If you are for some reason unable to stop building using the above method, you can always do so by removing access to the repository from Bitbucket.<br><br>Some reasons you may potentially need to do this:</p>\n<ul>\n<li>You have renamed your organization, username, or repository</li>\n<li>User credentials have become stale\_</li>\n</ul>\n<p>\_</p>\n<p>1. Start by accessing your Bitbucket repository settings</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360061485031/bb_repo_settings.png\" alt=\"bb_repo_settings.png\"></p>\n<p>2. From the Repository settings page, on the left side in the vertical navigation, we see the two pages we are interested in: \"<strong>Webhooks</strong>\"and \"<strong>Access keys</strong>\".</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360061320592/bb_webhooks.png\" alt=\"bb_webhooks.png\"></p>\n<p>\_</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360061320572/bb_access_keys.png\" alt=\"bb_access_keys.png\"></p>\n<p>\_</p>\n<p>3. From the Webhooks page, locate any webhooks that post to CircleCI and delete them.\_</p>\n<p>\_<img src=\"https://support.circleci.com/hc/article_attachments/360039232473/Screen_Shot_2019-06-18_at_1.48.12_PM.png\" alt=\"Screen_Shot_2019-06-18_at_1.48.12_PM.png\"></p>\n<p>4. Lastly, navigate to the \"Access keys\" page and delete the key added by CircleCI</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360038399494/Screen_Shot_2019-06-18_at_1.49.29_PM.png\" alt=\"Screen_Shot_2019-06-18_at_1.49.29_PM.png\"></p>\n<p>\_</p>\n<p>This will stop the project from building on CircleCI in case you need to manually remove access.</p>"
+section_id: 115003580328
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360025040233-How-to-stop-building-by-manually-removing-the-CircleCI-webhook-and-deploy-key-from-your-Bitbucket-repository
+draft: false

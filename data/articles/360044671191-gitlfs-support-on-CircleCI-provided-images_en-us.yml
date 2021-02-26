@@ -1,30 +1,11 @@
 id: 360044671191
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360044671191.json
+title: git-lfs support on CircleCI provided images
+author_id: 405652843914
+created_at: '2020-06-08T16:28:30Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360044671191-git-lfs-support-on-CircleCI-provided-images
-author_id: 405652843914
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 3
-section_id: 115003756627
-created_at: '2020-06-08T16:28:30Z'
-updated_at: '2021-01-12T01:42:13Z'
-name: git-lfs support on CircleCI provided images
-title: git-lfs support on CircleCI provided images
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:42Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - docker
-  - git-lfs
-  - LFS
-  - GIT LFS
-body: "<p>At the moment, by default,\_<code>git-lfs</code> is not installed on the Docker images provided by CircleCI. If you need to utilize it, you have a few options:</p>\n<p>1) Manually install it in a\_<a href=\"https://circleci.com/docs/2.0/custom-images/\" target=\"_blank\" rel=\"noopener noreferrer\">custom Docker image</a>\_and then use that image in your builds<br> 2) Add a step within your config to manually install it, usually early on in the job. You can find steps on how to install LFS here:\_<a href=\"https://github.com/git-lfs/git-lfs/wiki/Installation\" rel=\"noreferrer\">https://github.com/git-lfs/git-lfs/wiki/Installation</a></p>"

@@ -1,33 +1,13 @@
 id: 360010223434
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360010223434.json
-html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360010223434-How-to-run-docker-commands-when-SSH-ing-into-a-rebuild-that-uses-a-remote-Docker-engine
-author_id: 363669145434
-comments_disabled: true
-draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 9
-section_id: 115003756627
-created_at: '2018-10-09T12:41:49Z'
-updated_at: '2021-02-25T21:57:25Z'
-name: >-
-  How to run docker commands when SSH-ing into a rebuild that uses a remote
-  Docker engine
 title: >-
   How to run docker commands when SSH-ing into a rebuild that uses a remote
   Docker engine
-source_locale: en-us
+author_id: 363669145434
+created_at: '2018-10-09T12:41:49Z'
 locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:57:52Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - docker
-  - ssh
-  - remote docker
-body: "<p>You may sometimes want to run <em>docker</em> commands when SSH-ed into a rebuild for diagnostic purposes.</p>\n<p>However, you may encounter the following error message when running a <em>docker</em>\_command in the SSH session:</p>\n<pre>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</pre>\n<p>If you are encountering the above error in while attempting connect to the remote Docker daemon which was set up by the <code>setup_remote_docker</code> step, you can try running <em>docker</em> and setting\_the , following options to ensure that the right Docker daemon is being connected to.</p>\n<ul>\n<li><strong>--tlsverify</strong></li>\n<li><strong>-H</strong></li>\n<li><strong>--tlscacert</strong></li>\n<li><strong>--tlscert</strong></li>\n<li><strong>--tlskey</strong></li>\n</ul>\n<p>First, check the output of the <em>\"Setup a remote Docker engine\"</em> step in your build, to get the host and cert path of the remote Docker engine set up by CircleCI.</p>\n<p>For convenience, you can set the environment variables in your SSH session, for example:</p>\n<pre>DOCKER_CERT_PATH=/tmp/docker-certs970508324<br>DOCKER_HOST=tcp://35.237.187.184:2376</pre>\n<p><br> Then, you can reference the above environment variables when running <em>docker</em> commands with the <strong>--tlsverify</strong>, <strong>-H</strong>, <strong>--tlscacert</strong>, <strong>--tlscert</strong> and <strong>--tlskey</strong> options specified.</p>\n<p>The example below shows how the <em>docker ps</em> command may be successfully run with the options specified.</p>\n<pre>docker --tlsverify -H=$DOCKER_HOST --tlscacert=$DOCKER_CERT_PATH/ca.pem --tlscert=$DOCKER_CERT_PATH/cert.pem --tlskey=$DOCKER_CERT_PATH/key.pem ps\_</pre>"
+section_id: 115003756627
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360010223434-How-to-run-docker-commands-when-SSH-ing-into-a-rebuild-that-uses-a-remote-Docker-engine
+draft: false

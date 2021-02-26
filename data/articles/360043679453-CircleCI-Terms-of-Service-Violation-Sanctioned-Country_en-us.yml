@@ -1,35 +1,11 @@
 id: 360043679453
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360043679453.json
+title: 'CircleCI Terms of Service Violation: Sanctioned Country'
+author_id: 379006459554
+created_at: '2020-02-20T22:55:07Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003332287
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360043679453-CircleCI-Terms-of-Service-Violation-Sanctioned-Country
-author_id: 379006459554
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 20
-vote_count: 66
-section_id: 115003332287
-created_at: '2020-02-20T22:55:07Z'
-updated_at: '2021-02-25T09:04:36Z'
-name: 'CircleCI Terms of Service Violation: Sanctioned Country'
-title: 'CircleCI Terms of Service Violation: Sanctioned Country'
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-30T15:23:45Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - blocked
-  - sanctioned
-  - terms of service
-  - ToS
-  - violation
-  - sanctioned country
-  - builds blocked
-  - build blocked
-  - build not run
-body: "<p><img src=\"https://support.circleci.com/hc/article_attachments/360058341454/blocked.png\" alt=\"blocked.png\"></p>\n<p><span style=\"font-weight: 400;\">If you come across the following error, preventing your builds from running on CircleCI, your account may have recently been restricted as part of our compliance with U.S. export control laws and sanctions.</span></p>\n<p><span style=\"font-weight: 400;\">Our recent actions to restrict certain user accounts were taken to comply with U.S. trade control laws imposed by the U.S. Treasury Department’s Office of Foreign Assets Controls (OFAC), which restrict what CircleCI services can be made available to users in certain countries and territories.\_ These include the Crimea Region of Ukraine, Cuba, Iran, North Korea, and Syria.\_\_</span></p>\n<p><span style=\"font-weight: 400;\">In the rare instance that an account was mistakenly impacted and/or you believe that your account was erroneously flagged, we have an appeals process where you can submit additional information to verify that your account is not affiliated with a U.S.-sanctioned jurisdiction or otherwise restricted by U.S. economic sanctions.</span></p>\n<p><span style=\"font-weight: 400;\">If you would like to appeal this decision, please submit a response to our\_<a href=\"https://docs.google.com/forms/d/e/1FAIpQLSeaVwzPnt2xREoZxe_ysnmNEJQUfBWrTI1TzkE7bq1h06eHqA/viewform\" target=\"_self\">Appeal Form</a>. Our legal team will review your submission and determine whether you are able to continue building on CircleCI. <strong>Once your submission has been reviewed, we will reach out to let you know if your appeal has been approved or denied.</strong></span></p>\n<p>For any additional questions, you may reach out to us by opening a <a href=\"https://support.circleci.com/hc/en-us/requests/new\" target=\"_self\">Support Ticket</a> or writing to <a href=\"mailto:support@circleci.com\">support@circleci.com</a>\_</p>"

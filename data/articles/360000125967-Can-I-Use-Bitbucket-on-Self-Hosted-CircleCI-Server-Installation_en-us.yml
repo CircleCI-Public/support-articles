@@ -1,30 +1,11 @@
 id: 360000125967
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360000125967.json
+title: Can I Use Bitbucket on Self Hosted CircleCI Server Installation?
+author_id: 26863412148
+created_at: '2018-01-25T16:55:27Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003332367
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360000125967-Can-I-Use-Bitbucket-on-Self-Hosted-CircleCI-Server-Installation-
-author_id: 26863412148
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 5
-section_id: 115003332367
-created_at: '2018-01-25T16:55:27Z'
-updated_at: '2021-01-12T01:52:57Z'
-name: Can I Use Bitbucket on Self Hosted CircleCI Server Installation?
-title: Can I Use Bitbucket on Self Hosted CircleCI Server Installation?
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-05-25T15:14:19Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - server
-  - bitbucket
-  - BitBucket
-  - self hosted
-body: "<p>Only GitHub and GitHub Enterprise accounts are currently supported with the self-hosted install of CircleCI.</p>\n<p>Bitbucket accounts are supported on the cloud hosted solution at\_<a href=\"https://circleci.com\">circleci.com</a></p>"

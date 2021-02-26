@@ -1,31 +1,11 @@
 id: 360043567833
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360043567833.json
+title: Update Billing Contact
+author_id: 379006459554
+created_at: '2020-02-18T21:51:32Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003332307
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360043567833-Update-Billing-Contact
-author_id: 379006459554
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -5
-vote_count: 7
-section_id: 115003332307
-created_at: '2020-02-18T21:51:32Z'
-updated_at: '2021-02-25T04:57:30Z'
-name: Update Billing Contact
-title: Update Billing Contact
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-07-20T22:40:21Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - billing
-  - Performance Plan
-  - Container Plan
-  - billing contact
-  - contact
-body: "<h2><strong>Performance</strong></h2>\n<p><span style=\"font-weight: 400;\">Go to your billing portal by clicking on the “View and Configure Plan” button on your Plan Overview page. Go to “My Account” and add or alter the fields in the Account Information area. Please ensure you <strong>check the box for “Update Contact Information”</strong> before clicking “Save.”\_</span></p>\n<p><strong><img src=\"https://support.circleci.com/hc/article_attachments/360058111194/Screen_Shot_2020-02-12_at_3.39.55_PM.png\" alt=\"Screen_Shot_2020-02-12_at_3.39.55_PM.png\"></strong></p>\n<h2><strong>Container\_</strong></h2>\n<p><span style=\"font-weight: 400;\">Go to the Statement Emails section of your organization settings page. Click \"Edit Statement Email\" to replace the existing email addresses or add to the list by separating addresses with a comma. Save the Information.</span></p>"

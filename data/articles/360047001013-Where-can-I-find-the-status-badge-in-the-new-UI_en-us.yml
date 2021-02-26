@@ -1,26 +1,11 @@
 id: 360047001013
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047001013.json
+title: Where can I find the status badge in the new UI?
+author_id: 385569260514
+created_at: '2020-04-17T10:51:15Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115004127248
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360047001013-Where-can-I-find-the-status-badge-in-the-new-UI-
-author_id: 385569260514
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -18
-vote_count: 34
-section_id: 115004127248
-created_at: '2020-04-17T10:51:15Z'
-updated_at: '2021-02-25T08:28:21Z'
-name: Where can I find the status badge in the new UI?
-title: Where can I find the status badge in the new UI?
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:36Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: "<p>Currently, under the new UI, status badges for implementing into README files or websites have not been implemented. While we work to implement these, the following template can be filled in:</p>\n<pre>https://circleci.com/&lt;gh or bb&gt;/&lt;org&gt;/&lt;project name&gt;.svg?style=svg</pre>\n<p>For example, to fetch the status page of the CircleCI CLI, the following URL would be used:</p>\n<pre>https://circleci.com/gh/CircleCI-Public/circleci-cli.svg?style=svg</pre>\n<p>\_</p>"

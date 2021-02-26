@@ -1,27 +1,11 @@
 id: 360047644153
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360047644153.json
+title: CircleCI CLI - Context Command errors with "Must have admin permission"
+author_id: 4008831568
+created_at: '2020-04-30T05:51:56Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 360001263193
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360047644153-CircleCI-CLI-Context-Command-errors-with-Must-have-admin-permission-
-author_id: 4008831568
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -2
-vote_count: 2
-section_id: 360001263193
-created_at: '2020-04-30T05:51:56Z'
-updated_at: '2021-01-12T01:53:35Z'
-name: CircleCI CLI - Context Command errors with "Must have admin permission"
-title: CircleCI CLI - Context Command errors with "Must have admin permission"
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:12Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - cli
-body: "<p>If you encounter the following error\_while running a Context command while using the CircleCI CLI:</p>\n<pre>Error: failed to load context list: Non-nullable field was null. Must have admin permission.</pre>\n<p>First, ensure you are an admin in your organization's VCS (GitHub or Bitbucket). The Org Admin restriction is in place as an additional layer of security for utilizing the CLI to manage Contexts. Without this, the only other option would be to manage Contexts via the UI.\_</p>\n<p>If you are an Org Admin and still encounter the above error, verify you have run <strong>circleci setup</strong> and entered your <a href=\"https://app.circleci.com/settings/user/tokens\" target=\"_self\">Personal API Token.</a></p>\n<p>If the Personal API Token is missing or incorrect, the same error message will occur</p>\n<p>Note: for <a href=\"https://github.com/CircleCI-Public/circleci-cli/releases/tag/v0.1.6772\" target=\"_self\">CLI version 0.1.6772</a>\_to current</p>"

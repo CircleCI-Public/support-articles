@@ -4,14 +4,9 @@ url: >-
 html_url: >-
   https://support.circleci.com/hc/en-us/sections/115003756627-Troubleshooting-and-Known-Issues
 category_id: 115001866207
-position: 0
-sorting: manual
 created_at: '2017-10-27T13:28:27Z'
-updated_at: '2021-02-25T21:57:25Z'
 name: Troubleshooting and Known Issues
 description: ''
 locale: en-us
-source_locale: en-us
 outdated: false
 parent_section_id: null
-theme_template: section_page

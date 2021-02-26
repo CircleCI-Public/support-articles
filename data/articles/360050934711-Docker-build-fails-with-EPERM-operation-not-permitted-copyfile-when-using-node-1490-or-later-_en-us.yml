@@ -1,33 +1,13 @@
 id: 360050934711
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360050934711.json
-html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360050934711-Docker-build-fails-with-EPERM-operation-not-permitted-copyfile-when-using-node-14-9-0-or-later-
-author_id: 405001866574
-comments_disabled: false
-draft: false
-promoted: false
-position: 0
-vote_sum: 12
-vote_count: 14
-section_id: 115003332287
-created_at: '2020-10-13T18:49:26Z'
-updated_at: '2021-01-12T01:40:42Z'
-name: >-
-  Docker build fails with `EPERM: operation not permitted, copyfile.....` when
-  using node 14.9.0 or later 
 title: >-
   Docker build fails with `EPERM: operation not permitted, copyfile.....` when
   using node 14.9.0 or later 
-source_locale: en-us
+author_id: 405001866574
+created_at: '2020-10-13T18:49:26Z'
 locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:55:47Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - docker
-  - permissions
-  - node
-body: "<p>If you are using node version 14.9.0 or later as a base image when trying to build a docker image on CircleCI you may come across the following permissions error:\_</p>\n<p>\_</p>\n<pre><span class=\"hljs-attr\">EPERM:</span><span> </span><span class=\"hljs-string\">operation</span><span> </span><span class=\"hljs-string\">not</span><span> </span><span class=\"hljs-string\">permitted,</span><span> </span><span class=\"hljs-string\">copyfile</span></pre>\n<p>\_</p>\n<p>Node's docker image is officially supported on Docker version 1.9.1. Support for older versions (down to 1.6) is provided on a best-effort basis. You can find more information on <a href=\"https://github.com/nodejs/docker-node#supported-docker-versions\" target=\"_self\">Supported Docker Versions</a>\_here.\_</p>\n<p>\_</p>\n<h3>How to make sure you are using the desired Docker version:\_</h3>\n<p>When using `<span>setup_remote_docker` key, if a docker engine version is not specified, CircleCI will default to Docker version 17.09.0-ce. To specify the Docker version, you can set it with a <code class=\"highlighter-rouge\">version</code>\_attribute:</span></p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360072711471/Screen_Shot_2020-10-13_at_11.43.16_AM.png\" alt=\"Screen_Shot_2020-10-13_at_11.43.16_AM.png\"></p>\n<p>\_</p>\n<p>You can find more information on <a href=\"https://circleci.com/docs/2.0/building-docker-images\" target=\"_self\">Building Docker Images on CircleCI </a>in our docs.\_</p>"
+section_id: 115003332287
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360050934711-Docker-build-fails-with-EPERM-operation-not-permitted-copyfile-when-using-node-14-9-0-or-later-
+draft: false

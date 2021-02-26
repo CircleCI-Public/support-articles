@@ -3,14 +3,9 @@ url: >-
   https://circleci.zendesk.com/api/v2/help_center/en-us/sections/115003580328.json
 html_url: https://support.circleci.com/hc/en-us/sections/115003580328-General
 category_id: 115001866207
-position: 2
-sorting: manual
 created_at: '2017-10-11T16:44:21Z'
-updated_at: '2021-02-25T22:07:29Z'
 name: General
 description: Configuration settings and general information
 locale: en-us
-source_locale: en-us
 outdated: false
 parent_section_id: null
-theme_template: section_page

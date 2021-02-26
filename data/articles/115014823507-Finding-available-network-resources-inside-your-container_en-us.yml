@@ -1,28 +1,11 @@
 id: 115014823507
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/115014823507.json
+title: Finding available network resources inside your container
+author_id: 25261361207
+created_at: '2017-11-10T13:59:25Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/115014823507-Finding-available-network-resources-inside-your-container
-author_id: 25261361207
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -2
-vote_count: 4
-section_id: 115003756627
-created_at: '2017-11-10T13:59:25Z'
-updated_at: '2021-01-12T01:43:31Z'
-name: Finding available network resources inside your container
-title: Finding available network resources inside your container
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:39Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - nmap
-  - networking
-body: "<p>Sometimes you may have trouble connecting\_to a\_networked resource in your container, such as database images connected as service containers. A simple way to discover\_the available connections within your container is to use nmap. Specifically the command <code>nmap -v -A localhost</code></p>\n<p>\_When you run this command it will scan available\_ports to see which ones are open, and sometimes provide useful information about the service behind it. In the example below nmap\_has found an instance of MySQL running on port 3306 while also providing some information about the instance. It has also found a service running on port 5432 and correctly guessed that it's an instance of Postgres running.\_</p>\n<p>It is not installed by default so you'll need to install it first before running it in your config</p>\n<p><strong>config.yml</strong></p>\n<p><code class=\"config-yml  language-yaml\"><span class=\"token punctuation\">-</span> <span class=\"token key atrule\">run</span><span class=\"token punctuation\">:</span> sudo apt install nmap <span class=\"token punctuation\">-</span>y<br></code></p>\n<p><code class=\"config-yml  language-yaml\"><span class=\"token punctuation\">-</span> <span class=\"token key atrule\">run</span><span class=\"token punctuation\">:</span> nmap -v -A localhost</code></p>\n<p class=\"line-numbers language-yaml\">\_</p>\n<p class=\"line-numbers language-yaml\"><strong>Output</strong></p>\n<pre class=\"bash-command\" title=\"The full bash command used to run this setup\">#!/bin/bash -eo pipefail\nnmap -v -A localhost</pre>\n<pre class=\"output\"><span class=\"pre\"><span class=\"white\">\nStarting Nmap 6.47 ( http://nmap.org ) at 2017-10-04 18:19 UTC\nNSE: Loaded 118 scripts for scanning.\nNSE: Script Pre-scanning.\nInitiating Ping Scan at 18:19\nScanning localhost (127.0.0.1) [2 ports]\nStats: 0:00:00 elapsed; 0 hosts completed (0 up), 1 undergoing Ping Scan\nPing Scan Timing: About 100.00% done; ETC: 18:19 (0:00:00 remaining)\nCompleted Ping Scan at 18:19, 0.00s elapsed (1 total hosts)\nInitiating Connect Scan at 18:19\nScanning localhost (127.0.0.1) [1000 ports]\nDiscovered open port 3306/tcp on 127.0.0.1\nDiscovered open port 5432/tcp on 127.0.0.1\nCompleted Connect Scan at 18:19, 0.02s elapsed (1000 total ports)\nInitiating Service scan at 18:19\nScanning 2 services on localhost (127.0.0.1)\nCompleted Service scan at 18:19, 6.02s elapsed (2 services on 1 host)\nNSE: Script scanning 127.0.0.1.\nInitiating NSE at 18:19\nCompleted NSE at 18:19, 0.01s elapsed\nNmap scan report for localhost (127.0.0.1)\nHost is up (0.00034s latency).\nOther addresses for localhost (not scanned): 127.0.0.1\nNot shown: 998 closed ports\nPORT     STATE SERVICE     VERSION\n3306/tcp open  mysql       MySQL 5.7.18\n| mysql-info: \n|   Protocol: 53\n|   Version: .7.18\n|   Thread ID: 5\n|   Capabilities flags: 65535\n|   Some Capabilities: SupportsLoadDataLocal, IgnoreSpaceBeforeParenthesis, Speaks41ProtocolNew, SupportsCompression, Support41Auth, SwitchToSSLAfterHandshake, FoundRows, LongPassword, LongColumnFlag, IgnoreSigpipes, SupportsTransactions, InteractiveClient, DontAllowDatabaseTableColumn, Speaks41ProtocolOld, ODBCClient, ConnectWithDatabase\n|   Status: Autocommit\n|_  Salt: W\\x1Ff&amp;}Wzg/\\x02BrhX\\x1E\\x1Cm+\\x1F!\n5432/tcp open  postgresql?\n1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :\nSF-Port5432-TCP:V=6.47%I=7%D=10/4%Time=59D5261D%P=x86_64-pc-linux-gnu%r(SM\nSF:BProgNeg,8C,\"E\\0\\0\\0\\x8bSFATAL\\0VFATAL\\0C0A000\\0Munsupported\\x20fronten\nSF:d\\x20protocol\\x2065363\\.19778:\\x20server\\x20supports\\x201\\.0\\x20to\\x203\nSF:\\.0\\0Fpostmaster\\.c\\0L2031\\0RProcessStartupPacket\\0\\0\")%r(Kerberos,8C,\"\nSF:E\\0\\0\\0\\x8bSFATAL\\0VFATAL\\0C0A000\\0Munsupported\\x20frontend\\x20protocol\nSF:\\x2027265\\.28208:\\x20server\\x20supports\\x201\\.0\\x20to\\x203\\.0\\0Fpostmas\nSF:ter\\.c\\0L2031\\0RProcessStartupPacket\\0\\0\");\n\nNSE: Script Post-scanning.\nRead data files from: /usr/bin/../share/nmap\nService detection performed. Please report any incorrect results at http://nmap.org/submit/ .\n</span><span class=\"white\">Nmap done: 1 IP address (1 host up) scanned in 6.28 seconds</span></span></pre>"

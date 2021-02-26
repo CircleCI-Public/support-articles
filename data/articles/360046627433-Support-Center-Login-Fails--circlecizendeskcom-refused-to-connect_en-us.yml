@@ -1,26 +1,11 @@
 id: 360046627433
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360046627433.json
+title: Support Center Login Fails - circleci.zendesk.com refused to connect
+author_id: 4008831568
+created_at: '2020-04-10T23:00:16Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 360001263193
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360046627433-Support-Center-Login-Fails-circleci-zendesk-com-refused-to-connect
-author_id: 4008831568
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 2
-section_id: 360001263193
-created_at: '2020-04-10T23:00:16Z'
-updated_at: '2021-01-12T01:53:18Z'
-name: Support Center Login Fails - circleci.zendesk.com refused to connect
-title: Support Center Login Fails - circleci.zendesk.com refused to connect
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:45Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: "<h2>\"circleci.zendesk.com refused to connect\"</h2>\n<p>This error can occur if you are using a privacy browser extension, such as Ghostery in Chrome, or stricter custom settings in your respective browser.\_The Support Center is attempting a connection to `https://circleci.zendesk.com/access/login` and will fail with a 403 error viewed in the Network tab of Inspect within your Chrome Browser.</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360066193713/Screen_Shot_2020-04-10_at_4.23.28_PM.png\" alt=\"Screen_Shot_2020-04-10_at_4.23.28_PM.png\"></p>\n<p>\_</p>\n<h4>To fix this:</h4>\n<ol>\n<li>In the Ghostery Chrome Extension, you will need to add `<a href=\"https://support.circleci.com/\">https://support.circleci.com/</a>` as a trusted site.</li>\n<li><img src=\"https://support.circleci.com/hc/article_attachments/360066200713/Screen_Shot_2020-04-10_at_5.25.04_PM.png\" alt=\"Screen_Shot_2020-04-10_at_5.25.04_PM.png\"></li>\n<li>In your respective browser, you will need to add `<a href=\"https://support.circleci.com/\">https://support.circleci.com/</a>` as a trusted site or exception.</li>\n</ol>\n<p>\_</p>\n<h4>Related:</h4>\n<p>If you were previously logging into the Support Center and have recently encountered an \"<strong>Access to support.circleci.com was denied</strong>\" error, see this article:\_<a href=\"https://support.circleci.com/hc/en-us/articles/360046626653-Access-to-support-circleci-com-was-denied\">https://support.circleci.com/hc/en-us/articles/360046626653-Access-to-support-circleci-com-was-denied</a></p>"

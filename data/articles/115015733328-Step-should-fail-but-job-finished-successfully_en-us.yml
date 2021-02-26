@@ -1,26 +1,11 @@
 id: 115015733328
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/115015733328.json
+title: Step should fail but job finished successfully
+author_id: 25261361207
+created_at: '2017-12-07T12:35:01Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/115015733328-Step-should-fail-but-job-finished-successfully
-author_id: 25261361207
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -23
-vote_count: 43
-section_id: 115003756627
-created_at: '2017-12-07T12:35:01Z'
-updated_at: '2020-12-10T14:17:26Z'
-name: Step should fail but job finished successfully
-title: Step should fail but job finished successfully
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:42Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: "<p>Steps will pass or fail based on the error code that is raised from the processes launched within the step and how the shell has been configured to handle errors. You can see some of the linux shell configuration that we apply to each shell that runs a step in the job step output.</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360066774093/mceclip0.png\" alt=\"mceclip0.png\"></p>\n<p>We have applied the settings <strong>-eo pipefail</strong> to the bash shell. <strong>-e</strong> tells bash to exit and raise a failure if it encounters any errors. If you are piping commands together bash will typically only raise an error based on the final command of the pipeline. The <strong>-o pipefail\_</strong>tells bash to raise an error if it encounters one at any point within a pipeline sequence.</p>\n<p>Calling commands from within scripts can launch a new shell, which overrides the settings we apply. Or programs can report their error codes incorrectly, and produce success results when they should not. This can commonly happen when you're running your tests within a multi-line run step, as each step executers in a separate shell. You can apply these configurations more explicitly by adding them to the top of your scripts or to the config.yml directly. This can improve the reliability of what is being reported as a failure.\_</p>\n<p>Example:</p>\n<pre>- run:<br>    name: run tests<br>    command: |<br>      source venv/bin/activate<br>      python manage.py test</pre>\n<p>To work around this add\_<strong>set -e</strong> at the top of the multiline command. This will ensure that errors are not suppressed and are instead passed up to fail the build.</p>\n<pre>- run:<br> name: run tests<br> command: |<br>   set -e<br>   source venv/bin/activate<br>   python manage.py test\_</pre>"

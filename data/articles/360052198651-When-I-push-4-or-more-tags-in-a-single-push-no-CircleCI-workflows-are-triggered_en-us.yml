@@ -1,51 +1,13 @@
 id: 360052198651
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360052198651.json
-html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360052198651-When-I-push-4-or-more-tags-in-a-single-push-no-CircleCI-workflows-are-triggered
-author_id: 405652843914
-comments_disabled: true
-draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 1
-section_id: 115003756627
-created_at: '2020-11-05T18:42:35Z'
-updated_at: '2021-02-04T08:35:13Z'
-name: >-
-  When I push 4 or more tags in a single push, no CircleCI workflows are
-  triggered
 title: >-
   When I push 4 or more tags in a single push, no CircleCI workflows are
   triggered
-source_locale: en-us
+author_id: 405652843914
+created_at: '2020-11-05T18:42:35Z'
 locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-27T02:22:02Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - tags
-  - GitHub
-body: >-
-  <p dir="auto">This actually stems from the GitHub side of things:</p>
-
-  <p dir="auto"><a
-  href="https://developer.github.com/webhooks/event-payloads/#push"
-  rel="noreferrer">https://developer.github.com/webhooks/event-payloads/#push</a></p>
-
-  <blockquote dir="ltr">
-
-  <p dir="auto">Note: You will not receive a webhook for this event when you
-  push more than three tags at once.</p>
-
-  </blockquote>
-
-  <p dir="auto">Since we rely on a GitHub webhook to trigger builds, and the
-  above notes that one isn't generated when 3+ tags are involved, that is why
-  you aren't seeing builds in CircleCI.</p>
-
-  <p dir="auto">You will want to ensure you are only pushing up to three tags at
-  a time if you want builds triggered within CircleCI.</p>
+section_id: 115003756627
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360052198651-When-I-push-4-or-more-tags-in-a-single-push-no-CircleCI-workflows-are-triggered
+draft: false

@@ -1,40 +1,11 @@
 id: 360048418331
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360048418331.json
+title: JAXB Missing on CircleCI Android Docker Images
+author_id: 403418857853
+created_at: '2020-08-20T01:50:37Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360048418331-JAXB-Missing-on-CircleCI-Android-Docker-Images
-author_id: 403418857853
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 1
-section_id: 115003756627
-created_at: '2020-08-20T01:50:37Z'
-updated_at: '2021-01-12T01:48:38Z'
-name: JAXB Missing on CircleCI Android Docker Images
-title: JAXB Missing on CircleCI Android Docker Images
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-08-20T01:50:37Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: >-
-  <p>On August 17, 2020, the CircleCI Android Docker convenience images were
-  upgraded from Java 8 to Java 11.</p>
-
-  <p>You can read more about that announcement here:</p>
-
-  <p><a
-  href="https://discuss.circleci.com/t/android-convenience-image-moving-to-java-v11-on-august-17th/36601">https://discuss.circleci.com/t/android-convenience-image-moving-to-java-v11-on-august-17th/36601</a></p>
-
-  <p>Because Java 11 no longer included JAXB, this can cause errors in builds.
-  The following article can help describe how to enable JAXB for projects now
-  that the Android images are running on Java 11:</p>
-
-  <p><a
-  href="https://www.jesperdj.com/2018/09/30/jaxb-on-java-9-10-11-and-beyond/">https://www.jesperdj.com/2018/09/30/jaxb-on-java-9-10-11-and-beyond/</a></p>

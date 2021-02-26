@@ -1,28 +1,11 @@
 id: 360045816254
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360045816254.json
+title: How to `sudo` on Powershell - Windows executor
+author_id: 377853350854
+created_at: '2020-04-07T08:43:29Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115004141747
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360045816254-How-to-sudo-on-Powershell-Windows-executor
-author_id: 377853350854
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 18
-section_id: 115004141747
-created_at: '2020-04-07T08:43:29Z'
-updated_at: '2021-02-25T20:51:42Z'
-name: How to `sudo` on Powershell - Windows executor
-title: How to `sudo` on Powershell - Windows executor
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-09-04T23:40:35Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - Windows
-  - Powershell
-body: "<p>Windows Powershell doesn't have\_<code>sudo</code>\_- some commands needs to be run as an administrator\_ Powershell has no concept of it.</p>\n<p>\_</p>\n<p>One solution we can use is\_<code>Start-Process</code>\_command:\_<a href=\"https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process\">https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process</a>\_The following line is the example of this command.</p>\n<pre>Start-Process wpr -verb runAs -Args \"-start GeneralProfile\"</pre>\n<p>This is calling <code>wpr</code>\_(Windows Performance Recorder) as an administrator and passing necessary arguments with\_<code>-Args</code> flag.\_ However in this case, the challenge is that we don't see the output because theoretically, since it starts a new shell somewhere.</p>\n<p>\_</p>\n<p>The other way you can think is scoop (<a href=\"https://scoop.sh/\">https://scoop.sh/</a>) which enables the commands equivalent to the one in Linux. You can install by following way:</p>\n<pre>iex (new-object net.webclient).downloadstring('https://get.scoop.sh')<br>set-executionpolicy unrestricted -s cu -f<br>scoop install sudo</pre>\n<p>By installing this, you can use\_<code>sudo</code>\_just like you're in Linux. However with this, it's basically doing the same thing with the above so it's not possible to see the output anyway. (You can see the script inside here:\_<a href=\"https://github.com/lukesampson/psutils/blob/master/sudo.ps1\">https://github.com/lukesampson/psutils/blob/master/sudo.ps1</a>)\_</p>"

@@ -1,40 +1,11 @@
 id: 360057509411
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360057509411.json
+title: Backtick (`) unable to be used in project level environment variables
+author_id: 405652843914
+created_at: '2021-02-24T16:50:16Z'
+locale: en-us
+permission_group_id: 237847
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360057509411-Backtick-unable-to-be-used-in-project-level-environment-variables
-author_id: 405652843914
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 0
-section_id: 115003756627
-created_at: '2021-02-24T16:50:16Z'
-updated_at: '2021-02-24T16:50:48Z'
-name: Backtick (`) unable to be used in project level environment variables
-title: Backtick (`) unable to be used in project level environment variables
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-02-24T16:50:48Z'
-user_segment_id: null
-permission_group_id: 237847
-label_names:
-  - environment variable
-  - variable
-  - backtick
-body: >-
-  <p>If the value you need to store in an environment variable contains a
-  backtick (i.e. <code>`</code>) you will not be able to store it as a <a
-  href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project"
-  target="_blank" rel="noopener">project-level environment variable</a>.
-  However, you can store the variable and value instead at either the <a
-  href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-context"
-  target="_blank" rel="noopener">context level</a> or within the <a
-  href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-job"
-  target="_blank" rel="noopener">job itself</a>. One note is that storing it at
-  the job level is not secure and will expose the value within your
-  configuration file.</p>

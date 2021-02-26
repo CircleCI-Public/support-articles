@@ -1,31 +1,11 @@
 id: 115014006248
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/115014006248.json
+title: Command not found error in CircleCI
+author_id: 405001866574
+created_at: '2017-10-27T13:37:32Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/115014006248-Command-not-found-error-in-CircleCI
-author_id: 405001866574
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -10
-vote_count: 10
-section_id: 115003756627
-created_at: '2017-10-27T13:37:32Z'
-updated_at: '2021-02-08T20:00:09Z'
-name: Command not found error in CircleCI
-title: Command not found error in CircleCI
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-29T20:15:24Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - postgres
-  - psql
-  - mysql
-  - mariadb
-  - mongo
-body: "<p>If you see something like this on CircleCI builds when using two docker images:</p>\n<p><code>/bin/bash: {name_of_command}: command not found</code></p>\n<p>Below is example `config.yml` file that uses `circleci/python:3.6.4` as primary image and `circleci/postgres:9.6.2` as an additional image that will run in a separate<span>\_container with the DB service being available via port\_</span><code>27017</code><span>\_(or whatever port you want to use) in the primary container.</span></p>\n<pre style=\"background-color: #f3f3f3;\">version: 2.1\norbs:\n  slack: circleci/slack@4.0.0\n\njobs:\n  build:\n    working_directory: ~/circleci-demo-python-django\n    docker:\n      - image: circleci/python:3.6.4\n        environment:\n          PIPENV_VENV_IN_PROJECT: true\n          DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable\n      - image: circleci/postgres:9.6.2\n        environment:\n          POSTGRES_USER: root\n          POSTGRES_DB: circle_test  \n    steps:\n      - checkout\n      - run: postgres -V</pre>\n<p>\_</p>\n<p>\_</p>\n<p>This is because all of your commands will run in the first container that is listed (primary container). This is typically <strong>not</strong> the database container, which means that the\_<code>postgres</code> cli is likely not installed in the primary container. The same can happen for mysql and mongo.</p>\n<p>In these cases you can install the client using <code>sudo pip install</code> or the relevant package manager for the distro your image is running.</p>\n<p>example:</p>\n<pre>- run: sudo pip install postgressql</pre>\n<p>More details on Discuss here: <a href=\"https://discuss.circleci.com/t/bin-bash-mongo-command-not-found/16218/6?u=tom\" target=\"_blank\" rel=\"noopener\">https://discuss.circleci.com/t/bin-bash-mongo-command-not-found/16218/6</a></p>"

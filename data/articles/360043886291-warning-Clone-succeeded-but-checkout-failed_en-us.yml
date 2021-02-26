@@ -1,26 +1,11 @@
 id: 360043886291
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360043886291.json
+title: 'warning: Clone succeeded, but checkout failed.'
+author_id: 25261361207
+created_at: '2020-05-20T09:22:47Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360043886291-warning-Clone-succeeded-but-checkout-failed-
-author_id: 25261361207
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -3
-vote_count: 5
-section_id: 115003756627
-created_at: '2020-05-20T09:22:47Z'
-updated_at: '2021-01-12T01:46:26Z'
-name: 'warning: Clone succeeded, but checkout failed.'
-title: 'warning: Clone succeeded, but checkout failed.'
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:58:49Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: "<p>You may see the error \"The authenticity of host &lt;vcs-info&gt; can't be established.\" after all git objects have successfully downloaded, or\_\"warning: Clone succeeded, but checkout failed\". These would be visible within the checkout step log.</p>\n<p><br>If you encounter either of these errors while using git-lfs it could be\_<a href=\"https://github.com/git-lfs/git-lfs/pull/3199\" target=\"_blank\" rel=\"noopener\">due to a bug and has been fixed</a>\_in recent versions. If you are using git-lfs and encounter these errors add a step to manually update git-lfs before performing the checkout step. Steps for installing on various executors is <a href=\"https://github.com/git-lfs/git-lfs/wiki/Installation#installing\" target=\"_blank\" rel=\"noopener\">available here</a>.</p>"

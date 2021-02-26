@@ -1,36 +1,13 @@
 id: 360004086734
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360004086734.json
-html_url: >-
-  https://support.circleci.com/hc/ja/articles/360004086734-error-while-loading-shared-libraries-libgconf-2-so-4-cannot-open-shared-object-file-No-such-file-or-directory
-author_id: 25261361207
-comments_disabled: false
-draft: false
-promoted: false
-position: 0
-vote_sum: 65
-vote_count: 111
-section_id: 115003756627
-created_at: '2018-05-10T09:45:00Z'
-updated_at: '2021-02-16T12:56:23Z'
-name: >-
-  error while loading shared libraries: libgconf-2.so.4: cannot open shared
-  object file: No such file or directory
 title: >-
   error while loading shared libraries: libgconf-2.so.4: cannot open shared
   object file: No such file or directory
-source_locale: en-us
+author_id: 25261361207
+created_at: '2018-05-10T09:45:00Z'
 locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-29T05:57:49Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - chrome
-  - libgconf
-body: >-
-  <p>このエラーは、Google Chrome のパッケージが最近変更されたことが原因である可能性が高いです - Google Chromeでは
-  <code>libgconf-2-4</code> を依存関係に追加しなくなりました。
-
-  </p><p>次のような手順で追加します。</p><pre>- run: sudo apt-get install
-  libgconf-2-4</pre><p>これで以前と同じようにビルドが実行されます。</p>
+section_id: 115003756627
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/ja/articles/360004086734-error-while-loading-shared-libraries-libgconf-2-so-4-cannot-open-shared-object-file-No-such-file-or-directory
+draft: false

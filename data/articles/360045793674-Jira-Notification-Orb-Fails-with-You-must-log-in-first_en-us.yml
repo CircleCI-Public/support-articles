@@ -1,29 +1,11 @@
 id: 360045793674
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360045793674.json
+title: Jira Notification Orb Fails with "You must log in first."
+author_id: 403418857853
+created_at: '2020-04-06T21:02:15Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115004127248
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360045793674-Jira-Notification-Orb-Fails-with-You-must-log-in-first-
-author_id: 403418857853
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 5
-vote_count: 11
-section_id: 115004127248
-created_at: '2020-04-06T21:02:15Z'
-updated_at: '2021-01-12T01:44:51Z'
-name: Jira Notification Orb Fails with "You must log in first."
-title: Jira Notification Orb Fails with "You must log in first."
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-09-04T23:51:15Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - orbs
-  - jira
-  - notifications
-body: "<p>The Jira Notification Orb (<a href=\"https://circleci.com/orbs/registry/orb/circleci/jira\" target=\"_self\">circleci/jira</a>) can fail with the message</p>\n<pre class=\"css-9561s5\">401:https://circleci.com/api/v2/me\nCurl failed with code 401. full response below.\n{\n  \"message\" : \"You must log in first.\"\n}\n</pre>\n<p>Verify that the environment variable <strong>CIRCLE_TOKEN</strong>\_is set in the project's environment variables section.</p>\n<p>Verify that CIRCLE_TOKEN is set to a <a href=\"https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token\" target=\"_self\">personal API token</a> as opposed to a project API token.</p>"

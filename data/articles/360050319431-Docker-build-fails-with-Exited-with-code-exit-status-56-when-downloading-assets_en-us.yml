@@ -1,30 +1,13 @@
 id: 360050319431
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360050319431.json
-html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360050319431-Docker-build-fails-with-Exited-with-code-exit-status-56-when-downloading-assets
-author_id: 403418857853
-comments_disabled: true
-draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 3
-section_id: 115003756627
-created_at: '2020-09-29T17:48:16Z'
-updated_at: '2021-01-12T01:43:35Z'
-name: >-
-  Docker build fails with "Exited with code exit status 56" when downloading
-  assets
 title: >-
   Docker build fails with "Exited with code exit status 56" when downloading
   assets
-source_locale: en-us
+author_id: 403418857853
+created_at: '2020-09-29T17:48:16Z'
 locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-28T17:17:51Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names: []
-body: "<p>Docker builds can fail with the following error:</p>\n<pre>curl: (56) OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 104\nThe command '/bin/sh -c curl -v -o /downloads/out.zip https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip' returned a non-zero code: 56\n\nExited with code exit status 56\nCircleCI received exit code 56\n</pre>\n<p>This can occur on <a href=\"https://circleci.com/docs/2.0/building-docker-images/\" target=\"_self\">Remote Docker (</a><a href=\"https://circleci.com/docs/2.0/configuration-reference/#setup_remote_docker\" target=\"_self\">setup_remote_docker</a>) and <a href=\"https://circleci.com/docs/2.0/executor-types/#using-machine\" target=\"_self\">Linux Machine Executors</a>.</p>\n<p>To resolve this issue on Remote Docker, add the following\_<strong>run</strong> step after\_<strong>setup_remote_docker</strong> but before\_<strong>docker build</strong> or other Docker commands:</p>\n<pre>- run: <span>ssh remote-docker 'sudo iptables -I INPUT -m conntrack --ctstate INVALID -j DROP'</span></pre>\n<p>Remote Docker users can also simply upgrade to 19.03.13</p>\n<pre>- setup_remote_docker:\n    version: 19.03.13</pre>\n<p>To resolve this issue on Linux Machine Executors, add the following\_<strong>run</strong> step before\_<strong>docker build</strong> or other Docker commands:</p>\n<pre>- run: <span>sudo iptables -I INPUT -m conntrack --ctstate INVALID -j DROP</span><span></span></pre>"
+section_id: 115003756627
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360050319431-Docker-build-fails-with-Exited-with-code-exit-status-56-when-downloading-assets
+draft: false

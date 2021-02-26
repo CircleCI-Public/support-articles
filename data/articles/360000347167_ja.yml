@@ -1,28 +1,10 @@
 id: 360000347167
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360000347167.json
-html_url: https://support.circleci.com/hc/ja/articles/360000347167
-author_id: 28200990948
-comments_disabled: false
-draft: false
-promoted: false
-position: 0
-vote_sum: -5
-vote_count: 21
-section_id: 115003580328
-created_at: '2018-02-14T14:17:31Z'
-updated_at: '2021-02-25T22:07:29Z'
-name: マニフェスト一覧のエントリに、linux/amd64 用のマニフェストが存在しない
 title: マニフェスト一覧のエントリに、linux/amd64 用のマニフェストが存在しない
-source_locale: en-us
+author_id: 28200990948
+created_at: '2018-02-14T14:17:31Z'
 locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-29T05:58:19Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - docker
-  - linux/amd64
-  - manifest
-  - docker pull
-body: "<p>「Spin up Environment」もしくは Docker イメージをプルするステップにて、次のようなエラーが発生することがあります。</p><pre class=\"output\"><span class=\"pre\"><span class=\"white\">Step 1/26 : FROM &lt;IMAGE&gt;latest: Pulling from library/&lt;IMAGE&gt;</span><span class=\"white\">no matching manifest for linux/amd64 in the manifest list entries</span></span><span class=\"pre\"><span class=\"white\">Exited with code 1<br></span></span>\n</pre><p>このエラーには、3 つの原因が考えられます。</p><ol>\n<li>\n<strong>「latest」タグを使用するときにエラーが発生する</strong><br>Dockerub でイメージを再ビルドしている間は、「latest」タグが一時的に利用できなくなることがあります。 この問題はDocker imageが再ビルドされ次第、解決します。もしくはバージョン付きタグを選択することでも解決できます。</li>\n<li>\n<strong>タグが利用できない</strong><br>これまで利用可能であったタグがリストから削除される、もしくはその命名規則が変更される場合があります。 例えば、これまで \"Version8.0\" だったタグが、\"Version8.0.0\" に変更された可能性があります。</li>\n<li>\n<strong>イメージが ARM 向けなど x86 用に設計されていない</strong><br>ビルドしようとしているイメージがARM ベースの\_CPU など異なるアーキテクチャで実行されるよう設計されている場合があります。</li>\n</ol>"
+section_id: 115003580328
+user_segment_id: null
+html_url: https://support.circleci.com/hc/ja/articles/360000347167
+draft: false

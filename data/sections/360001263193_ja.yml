@@ -2,14 +2,9 @@ id: 360001263193
 url: https://circleci.zendesk.com/api/v2/help_center/ja/sections/360001263193.json
 html_url: https://support.circleci.com/hc/ja/sections/360001263193
 category_id: 360000427854
-position: 0
-sorting: manual
 created_at: '2018-06-18T13:10:16Z'
-updated_at: '2021-02-24T15:02:17Z'
 name: サポート
 description: ''
 locale: ja
-source_locale: en-us
 outdated: false
 parent_section_id: null
-theme_template: section_page

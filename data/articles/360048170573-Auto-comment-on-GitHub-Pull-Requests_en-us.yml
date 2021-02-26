@@ -1,61 +1,11 @@
 id: 360048170573
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360048170573.json
+title: Auto comment on GitHub Pull Requests
+author_id: 405652843914
+created_at: '2020-05-11T20:22:35Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115004127248
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360048170573-Auto-comment-on-GitHub-Pull-Requests
-author_id: 405652843914
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 11
-section_id: 115004127248
-created_at: '2020-05-11T20:22:35Z'
-updated_at: '2021-02-23T16:40:00Z'
-name: Auto comment on GitHub Pull Requests
-title: Auto comment on GitHub Pull Requests
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:04Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names: []
-body: >-
-  <p>The GitHub API supports the ability to <a
-  href="https://developer.github.com/v3/issues/comments/#create-a-comment"
-  target="_blank" rel="noopener">add comments to open Pull Requests</a>. With
-  this in mind you can utilize environment variables and a cURL to automatically
-  update/comment on a PR.</p>
-
-  <p>This could be utilized for reporting data collected during builds running
-  on CircleCI, such as overall test coverage stats.</p>
-
-  <p>The first step would be to setup a new personal token for a user who will
-  be making the comments, this could be you (the admin on the account) or a new
-  bot user. Then set the username of who will make comments and the personal
-  token as <a
-  href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project"
-  target="_blank" rel="noopener">project-level environment variables</a>.</p>
-
-  <p><code>GH_USER</code> and <code>GH_TOKEN</code></p>
-
-  <p>Once that is complete you can add a new step that will check for an Open PR
-  and post a comment to it:</p>
-
-  <pre>- run:<br>    name: Post Stats to GitHub PR<br>    command: |<br>     
-  sudo apt-get install jq<br><br>      pr_response=$(curl --location --request
-  GET
-  "https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/pulls?head=$CIRCLE_PROJECT_USERNAME:$CIRCLE_BRANCH&amp;state=open"
-  \<br>      -u $GH_USER:$GH_API)<br><br>      if [ $(echo $pr_response | jq
-  length) -eq 0 ]; then<br>        echo "No PR found to update"<br>     
-  else<br>        pr_comment_url=$(echo $pr_response | jq -r
-  ".[]._links.comments.href")<br>      fi<br><br>      curl --location --request
-  POST "$pr_comment_url" \<br>      -u $GH_USER:$GH_API \<br>      --header
-  'Content-Type: application/json' \<br>      --data-raw '{<br>       "body":
-  "This would be the data to add"<br>      }'</pre>
-
-  <p>Last step is to replace the "This would be the data to add" with the
-  content you want added as a comment.</p>

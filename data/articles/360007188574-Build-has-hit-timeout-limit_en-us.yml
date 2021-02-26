@@ -1,29 +1,11 @@
 id: 360007188574
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360007188574.json
+title: Build has hit timeout limit
+author_id: 361269018513
+created_at: '2018-07-19T16:41:05Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003580328
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360007188574-Build-has-hit-timeout-limit
-author_id: 361269018513
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 75
-vote_count: 103
-section_id: 115003580328
-created_at: '2018-07-19T16:41:05Z'
-updated_at: '2021-02-21T23:58:12Z'
-name: Build has hit timeout limit
-title: Build has hit timeout limit
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:58:51Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - no_output_timeout
-  - no output
-  - timeout
-body: "<p>CircleCI has a built-in <strong>10 minute</strong> no-output timeout. This means that if it has been 10 minutes since the last output, the build will be canceled and stopped. This can cause users to encounter issues where they intend for a part of their build to continue beyond 10 minutes without giving output, but the system kills it.</p>\n<p>The <code>no_output_timeout</code> parameter for <a href=\"https://circleci.com/docs/2.0/configuration-reference/#run\">run</a>\_gives users the option to change the no-output timeout from the default 10 minutes to a user-specified timeout.</p>\n<p>For example, if we have a run step as follows:</p>\n<p><code> - run:<br>\_ \_ command: . ./ourlongscript.sh</code><code><code><code></code></code></code></p>\n<p>If we expect our script will take a while to complete execution, we can extend the no-output timeout as follows:</p>\n<p><code>- run:\n\_ <br>\_ \_ command: . ./ourlongscript.sh\n<br>\_ \_ no_output_timeout: 30m</code></p>\n<p>The value set for no_output_timeout can be in hours, minutes or seconds - a digit followed by h, m or s respectively. Partial times can also be used, like 1.5h.</p>"

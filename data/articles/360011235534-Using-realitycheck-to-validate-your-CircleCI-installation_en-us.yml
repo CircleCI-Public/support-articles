@@ -1,28 +1,11 @@
 id: 360011235534
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360011235534.json
+title: Using realitycheck to validate your CircleCI installation
+author_id: 24240290787
+created_at: '2018-10-25T19:39:37Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003332367
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360011235534-Using-realitycheck-to-validate-your-CircleCI-installation
-author_id: 24240290787
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: 3
-vote_count: 5
-section_id: 115003332367
-created_at: '2018-10-25T19:39:37Z'
-updated_at: '2021-01-12T01:53:06Z'
-name: Using realitycheck to validate your CircleCI installation
-title: Using realitycheck to validate your CircleCI installation
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-05-20T00:49:34Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - realitycheck
-  - server
-body: "<p><a href=\"https://github.com/circleci/realitycheck\" target=\"_blank\" rel=\"noopener\"><strong>realitycheck</strong></a> is a CircleCI repository that can be used to validate the basic features of a hosted CircleCI installation.</p>\n<p>To run realitycheck, fork the repository and start building it on your installation of CircleCI. See <a href=\"https://circleci.com/docs/2.0/project-build\" target=\"_blank\" rel=\"noopener\">Projects and Builds</a> in our documentation or <a href=\"https://youtube.com/watch?v=KhjwnTD4oec\" target=\"_blank\" rel=\"noopener\">How to Get Started on CircleCI</a> on YouTube for guidance on adding new project to CircleCI.</p>\n<p>If your organization uses GitHub Enterprise rather than github.com, you will need to first create an empty repository in GitHub Enterprise and then add realitycheck to it.</p>\n<p>To do so, either clone your new repository to your local machine, pull in our repository, and then push it back to GHE (see below); or else <a href=\"https://github.com/circleci/realitycheck/archive/master.zip\" target=\"_blank\" rel=\"noopener\">download realitycheck as a .zip file</a>, expand it, and then upload the contents of the resultant <strong><code>realitycheck-master</code></strong> directory to your new GHE repository via the GitHub Enterprise UI, making sure to include hidden files (CircleCI configuration files live in a <strong><code>.circleci</code></strong> directory that is hidden by default on most operating systems).</p>\n<p>To\_successfully run realitycheck, you will need to configure certain environment variables and generate a CircleCI API token—<a href=\"https://github.com/circleci/realitycheck\" target=\"_blank\" rel=\"noopener\">see the repository's README for details</a>. The README also contains further information about which specific features are tested, and how they are tested.</p>\n<h1><strong><span class=\"wysiwyg-font-size-medium\">Adding realitycheck to GitHub Enterprise via the CLI</span></strong></h1>\n<pre><code>git pull git@github.com:circleci/realitycheck.git &amp;&amp; cd realitycheck<br>git remote set-url origin &lt;your-ghe-repo-url&gt;<br>git push</code></pre>"

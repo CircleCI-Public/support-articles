@@ -1,26 +1,11 @@
 id: 360003490814
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360003490814.json
+title: Why does my build require more RAM than locally?
+author_id: 28200990948
+created_at: '2018-04-25T00:15:36Z'
+locale: ja
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/ja/articles/360003490814-Why-does-my-build-require-more-RAM-than-locally-
-author_id: 28200990948
-comments_disabled: false
 draft: false
-promoted: false
-position: 0
-vote_sum: -4
-vote_count: 4
-section_id: 115003756627
-created_at: '2018-04-25T00:15:36Z'
-updated_at: '2021-01-12T01:45:26Z'
-name: Why does my build require more RAM than locally?
-title: Why does my build require more RAM than locally?
-source_locale: en-us
-locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-12T01:45:26Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - memory usage
-body: "<p>Under certain circumstances it may appear that jobs will use more RAM than expected, causing a build failure, likely resulting in the <a href=\"https://support.circleci.com/hc/en-us/articles/115014359648\" target=\"_blank\" rel=\"noopener\">exit code 137</a>. If your project utilizes the JVM, <a href=\"https://circleci.com/blog/how-to-handle-java-oom-errors/\" target=\"_blank\" rel=\"noopener\">we have a great blog post detailing how to limit the memory usage of the JVM.</a></p><p>Also, check to see what and how many service containers your project is utilizing. Additional service containers such as postgres\_or mysql share the resources with your primary container.</p><p>Lastly, when Linux runs out of available memory, memory page files will be copied to disk in <em>swap space</em>. On CircleCI since we limit memory usage, once you approach this limit the build will be killed, it will not have the chance to utilize swap space. Your local build may be benefitting from the \"effectively\" additional RAM given by swap space.</p><p>\_</p><p>\_</p>"

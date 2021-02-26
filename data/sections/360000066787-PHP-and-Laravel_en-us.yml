@@ -3,14 +3,9 @@ url: >-
   https://circleci.zendesk.com/api/v2/help_center/en-us/sections/360000066787.json
 html_url: https://support.circleci.com/hc/en-us/sections/360000066787-PHP-and-Laravel
 category_id: 115001913988
-position: 0
-sorting: manual
 created_at: '2018-02-14T14:56:53Z'
-updated_at: '2021-01-12T01:50:47Z'
 name: PHP and Laravel
 description: Language specific guide for PHP and Laravel on CircleCI
 locale: en-us
-source_locale: en-us
 outdated: false
 parent_section_id: null
-theme_template: section_page

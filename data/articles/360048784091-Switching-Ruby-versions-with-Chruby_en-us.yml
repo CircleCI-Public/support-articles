@@ -1,29 +1,11 @@
 id: 360048784091
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360048784091.json
+title: Switching Ruby versions with Chruby
+author_id: 405652843914
+created_at: '2020-08-26T15:20:13Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003332167
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360048784091-Switching-Ruby-versions-with-Chruby
-author_id: 405652843914
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 1
-section_id: 115003332167
-created_at: '2020-08-26T15:20:13Z'
-updated_at: '2021-01-12T01:44:01Z'
-name: Switching Ruby versions with Chruby
-title: Switching Ruby versions with Chruby
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:56:28Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - ruby
-  - ruby version
-  - chruby
-body: "<p>Some <a href=\"https://circleci.com/docs/2.0/circleci-images/#next-generation-convenience-images\" target=\"_blank\" rel=\"noopener\">convenience images</a> don't support using <code>rvm</code> or <code>rbenv</code>, such as the Andriod image. While a system Ruby is available, it may not be the version you need.</p>\n<p>If you encounter this you can utilize <a href=\"https://github.com/postmodern/chruby\" target=\"_blank\" rel=\"noopener\">Chruby</a>\_to download the proper Ruby version and swap to utilizing it in the rest of your job steps.</p>\n<pre style=\"background-color: #f3f3f3;\">- run:\n    name: install chruby\n    command: |\n      wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz\n      tar -xzvf chruby-0.3.9.tar.gz\n      cd chruby-0.3.9/\n      sudo make install\n- run: ruby-install ruby 2.7.1\n- run:\n    name: Set chruby\n    command: |\n      echo 'source /usr/local/share/chruby/chruby.sh' &gt;&gt; $BASH_ENV\n      echo 'chruby ruby-2.7.1' &gt;&gt; $BASH_ENV </pre>\n<p>The above installs Chruby, then installs Ruby version <code>2.7.1</code>, then sets that version to be used in the rest of the build.\_</p>\n<p>One thing to note is downloading and installing a version of Ruby takes a bit of time, so you may want to <a href=\"https://circleci.com/docs/2.0/caching/\" target=\"_blank\" rel=\"noopener\">utilize caching</a> to speed up future builds that implement this solution.</p>"

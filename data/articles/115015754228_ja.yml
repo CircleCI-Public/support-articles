@@ -1,31 +1,11 @@
 id: 115015754228
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/115015754228.json
+title: Java memory issues (Gradle, Maven, Kotlin, Lein, Elasticsearch)
+author_id: 25261361207
+created_at: '2017-12-08T13:29:53Z'
+locale: ja
+permission_group_id: 237867
+section_id: 115003332187
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/ja/articles/115015754228-Java-memory-issues-Gradle-Maven-Kotlin-Lein-Elasticsearch-
-author_id: 25261361207
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -3
-vote_count: 3
-section_id: 115003332187
-created_at: '2017-12-08T13:29:53Z'
-updated_at: '2021-01-21T05:27:57Z'
-name: Java memory issues (Gradle, Maven, Kotlin, Lein, Elasticsearch)
-title: Java memory issues (Gradle, Maven, Kotlin, Lein, Elasticsearch)
-source_locale: en-us
-locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-12T01:51:46Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - memory usage
-  - memory
-  - android
-  - java
-  - OOM
-  - gradle
-body: "<p>Java tends to use a lot of memory. This can cause out-of-memory (OOM) issues inside your jobs with limited resources. We recommend specifying a maximum memory allocation to avoid this error. You can also consider configuring your <a href=\"https://circleci.com/product/features/resource-classes/?utm_medium=SEM&amp;utm_source=gnb&amp;utm_campaign=SEM-gb-DSA-Eng-ni&amp;utm_content=&amp;utm_term=dynamicSearch-&amp;gclid=EAIaIQobChMItdzttOLF6QIVF47ICh0LSgGtEAAYASAAEgLow_D_BwE\" target=\"_self\">memory-intensive jobs to run in a larger resource class</a>.</p><p>There are a variety of different environment variables you can set to manage memory usage,\_whether\_you're using Gradle, Maven, Kotlin, or Lein.</p><p>The blog post below can be helpful to guide you in controlling the memory usage of java, depending on the framework that you are using:</p><p><a href=\"https://circleci.com/blog/how-to-handle-java-oom-errors/\" target=\"_blank\" rel=\"noopener\">https://circleci.com/blog/how-to-handle-java-oom-errors/</a></p><p>Also, consider <a href=\"https://www.littlerobots.nl/blog/disable-android-pre-dexing-on-ci-builds/\">disabling pre-dexing</a>\_for your Android builds while in CI</p>"

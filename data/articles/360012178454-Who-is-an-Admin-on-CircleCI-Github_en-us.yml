@@ -1,31 +1,11 @@
 id: 360012178454
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360012178454.json
+title: Who is an "Admin" on CircleCI? (Github)
+author_id: 28200990948
+created_at: '2018-11-16T14:42:41Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003332287
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360012178454-Who-is-an-Admin-on-CircleCI-Github-
-author_id: 28200990948
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: -4
-vote_count: 4
-section_id: 115003332287
-created_at: '2018-11-16T14:42:41Z'
-updated_at: '2021-02-16T00:52:49Z'
-name: Who is an "Admin" on CircleCI? (Github)
-title: Who is an "Admin" on CircleCI? (Github)
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-11-16T22:49:55Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - github
-  - admin
-  - permissions
-  - GitHub
-  - Contexts
-body: "<p>For certain tasks, such as creating \_<a href=\"https://circleci.com/docs/2.0/contexts/#restricting-a-context/\">Restricted Contexts</a> or adjusting your plan settings, we require that the user have \"Admin\" permissions for the organization being modified.<br><br>We check if you are an admin based on if you have \"Owner\" status for the GitHub organization. If you do,\_your user will be able to perform any administrative functions on CircleCI.</p>"

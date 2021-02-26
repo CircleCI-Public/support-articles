@@ -1,30 +1,11 @@
 id: 360021127693
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360021127693.json
+title: How to generate and store read/write SSH keys
+author_id: 24240290787
+created_at: '2019-04-03T16:34:16Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003755767
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360021127693-How-to-generate-and-store-read-write-SSH-keys
-author_id: 24240290787
-comments_disabled: false
 draft: false
-promoted: true
-position: 0
-vote_sum: -9
-vote_count: 31
-section_id: 115003755767
-created_at: '2019-04-03T16:34:16Z'
-updated_at: '2021-02-18T12:43:09Z'
-name: How to generate and store read/write SSH keys
-title: How to generate and store read/write SSH keys
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-16T08:06:37Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - github
-  - ssh
-  - ssh key
-  - bitbucket
-body: "<p>If you want to enable write-permissions to your checkout repo within a job, interact with other private repositories entirely, you'll need to add an SSH key to CircleCI which provides write access.\_</p>\n<p>Check out our docs with <a href=\"https://circleci.com/docs/2.0/add-ssh-key/\" target=\"_self\">with full instructions to generate and add the keys</a></p>\n<p>See GitHub and Bitbucket documentation for guidelines on storing SSH public keys:</p>\n<ul>\n<li><a href=\"https://developer.github.com/v3/guides/managing-deploy-keys\">https://developer.github.com/v3/guides/managing-deploy-keys</a></li>\n<li><a href=\"https://confluence.atlassian.com/bitbucket/use-deployment-keys-294486051.html\">https://confluence.atlassian.com/bitbucket/use-deployment-keys-294486051.html</a></li>\n</ul>\n<p>\_</p>"

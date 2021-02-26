@@ -1,34 +1,10 @@
 id: 360034990033
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360034990033.json
-html_url: https://support.circleci.com/hc/en-us/articles/360034990033-Am-I-an-Org-Admin-
-author_id: 379006459554
-comments_disabled: false
-draft: false
-promoted: false
-position: 0
-vote_sum: -1
-vote_count: 3
-section_id: 115003332287
-created_at: '2019-08-27T16:50:04Z'
-updated_at: '2020-10-22T07:03:11Z'
-name: Am I an Org Admin?
 title: Am I an Org Admin?
-source_locale: en-us
+author_id: 379006459554
+created_at: '2019-08-27T16:50:04Z'
 locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T06:59:04Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - admin
-  - organization
-  - org
-  - permissions
-  - org admin
-  - GitHub
-  - BitBucket
-  - Team
-  - VCS
-body: "<h2>How CircleCI Checks Permissions</h2>\n<p>CircleCI mirrors permissions from your VCS provider: GitHub or Bitbucket. Anyone who has admin access to your org there is an admin on CircleCI. Permissions are checked against the VCS for each page load.</p>\n<h2>GitHub</h2>\n<p>An org admin is an <strong>Owner</strong>\_on Github and following at least one repo being built on CircleCI</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360044700594/Screen_Shot_2019-08-27_at_9.46.17_AM.png\" alt=\"Screen_Shot_2019-08-27_at_9.46.17_AM.png\"></p>\n<p>\_You can read more about GitHub Permissions here (<a href=\"https://help.github.com/en/articles/permission-levels-for-an-organization\">https://help.github.com/en/articles/permission-levels-for-an-organization</a>)</p>\n<h2>Bitbucket</h2>\n<p>An org admin is an <strong>Admin</strong> on Bitbucket and following at least one repo being built on CircleCI</p>\n<p><img src=\"https://support.circleci.com/hc/article_attachments/360046703033/bbadmin.png\" alt=\"bbadmin.png\"></p>\n<h2>Troubleshooting</h2>\n<p>If you are experiencing issues with permissions mirroring to CircleCI, try the following steps:</p>\n<ol>\n<li>Access the page on Incognito mode, with a different browser, and/or different device. This may be a browser cache issue and will require the cache to be cleared on your browser. If you no longer see the warning banner, please clear your browser cache for any times related to\_<code>*.<a href=\"http://circleci.com/\" target=\"_blank\" rel=\"noopener\" data-saferedirecturl=\"https://www.google.com/url?q=http://circleci.com&amp;source=gmail&amp;ust=1574187152165000&amp;usg=AFQjCNHi1NQgEyoSZKOMVLG1eXfreSecFQ\">circleci.com</a></code>, and\_<code><a href=\"http://circleci.com/\" target=\"_blank\" rel=\"noopener\" data-saferedirecturl=\"https://www.google.com/url?q=http://circleci.com&amp;source=gmail&amp;ust=1574187152165000&amp;usg=AFQjCNHi1NQgEyoSZKOMVLG1eXfreSecFQ\">circleci.com</a></code><code></code>Refresh your account permissions by visiting circleci.com/account and click <strong>Refresh Permissions.</strong>\n</li>\n<li>If the above steps do not work, please submit a <a href=\"https://support.circleci.com/hc/en-us\" target=\"_self\">Support Ticket</a> or write to <a href=\"mailto:support@circleci.com\">support@circleci.com</a>\_ with the organization name, your admin username and the VCS provider (GitHub or Bitbucket). Support will clear the cache on CircleCI's end to clear any potentially stale or corrupt permissions.</li>\n</ol>"
+section_id: 115003332287
+user_segment_id: null
+html_url: https://support.circleci.com/hc/en-us/articles/360034990033-Am-I-an-Org-Admin-
+draft: false

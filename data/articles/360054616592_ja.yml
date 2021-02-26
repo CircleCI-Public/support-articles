@@ -1,26 +1,10 @@
 id: 360054616592
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360054616592.json
-html_url: https://support.circleci.com/hc/ja/articles/360054616592
-author_id: 397881110914
-comments_disabled: true
-draft: false
-promoted: false
-position: 0
-vote_sum: 0
-vote_count: 0
-section_id: 115003327208
-created_at: '2021-01-06T13:51:55Z'
-updated_at: '2021-01-27T03:08:42Z'
-name: '[Server] ライセンス同期の頻度を変更する方法 '
 title: '[Server] ライセンス同期の頻度を変更する方法 '
-source_locale: en-us
+author_id: 397881110914
+created_at: '2021-01-06T13:51:55Z'
 locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-27T03:08:42Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - server
-  - License
-body: "<p>ライセンス同期の頻度は、CircleCI Enterprise または CircleCI Server の管理コンソールから変更できます。</p><p>\_</p><p>コンソールの設定画面に移動して、頻度を変更します。 <strong>ライセンス同期を無効にする</strong>こともできます。</p><p>\_</p><p><a href=\"https://&lt;circleci-server-fqdn&gt;:8800/console/settings#license-syncing\">https://&lt;circleci-server-fqdn&gt;:8800/console/settings#license-syncing</a></p><p>\_</p><p><img src=\"https://support.circleci.com/hc/article_attachments/360081013651/License_sync.png\" alt=\"License_sync.png\"></p>"
+section_id: 115003327208
+user_segment_id: null
+html_url: https://support.circleci.com/hc/ja/articles/360054616592
+draft: false

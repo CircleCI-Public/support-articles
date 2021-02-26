@@ -1,27 +1,10 @@
 id: 360016505753
-url: https://circleci.zendesk.com/api/v2/help_center/ja/articles/360016505753.json
-html_url: https://support.circleci.com/hc/ja/articles/360016505753
-author_id: 28200990948
-comments_disabled: true
-draft: false
-promoted: false
-position: 0
-vote_sum: -24
-vote_count: 78
-section_id: 360001263193
-created_at: '2019-01-30T19:39:39Z'
-updated_at: '2021-02-23T08:50:20Z'
-name: Alpine イメージの「Certificate Signed By Unknown Authority」エラーの解決
 title: Alpine イメージの「Certificate Signed By Unknown Authority」エラーの解決
-source_locale: en-us
+author_id: 28200990948
+created_at: '2019-01-30T19:39:39Z'
 locale: ja
-outdated: false
-outdated_locales: []
-edited_at: '2020-10-22T07:03:05Z'
-user_segment_id: null
 permission_group_id: 237867
-label_names:
-  - alpine
-  - ssl
-  - unknown authority
-body: "<p><em>「Certificate Signed By Unknown Authority」</em>というエラーは、お使いの Docker コンテナに <a href=\"https://pkgs.alpinelinux.org/package/v3.3/main/x86/ca-certificates\">ca-certificates</a>がないことを示している場合があります。これは、SSL 接続の確認と認証に使用されます。 このパッケージがないと、ワークスペースのダウンロードなど、CircleCI の一部の機能が動作しなくなります。</p><p><a href=\"https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs\">Workspaces</a>を使用した際に発生するエラー:</p><pre><code>Error downloading workspace layer for job xxxxx: RequestError: send request failed caused by: Get https://xxxxxxxx.amazonaws.com/xxxxxxxxxxxxxxxxxx: x509: certificate signed by unknown authority</code></pre><h2>解決策</h2><p>ご利用のLinux ディストリビューション用の <a href=\"https://pkgs.alpinelinux.org/package/v3.3/main/x86/ca-certificates\">ca-certificates</a> パッケージをインストールします。</p><p>\_</p><p><strong>Alpine へのインストール</strong>：</p><pre><code> apk add ca-certificates</code></pre><p>\_</p>"
+section_id: 360001263193
+user_segment_id: null
+html_url: https://support.circleci.com/hc/ja/articles/360016505753
+draft: false

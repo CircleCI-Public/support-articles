@@ -1,29 +1,11 @@
 id: 360053201771
-url: >-
-  https://circleci.zendesk.com/api/v2/help_center/en-us/articles/360053201771.json
+title: Resolving "Failed to minify the bundle" Errors
+author_id: 382351624233
+created_at: '2020-12-02T18:25:38Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
 html_url: >-
   https://support.circleci.com/hc/en-us/articles/360053201771-Resolving-Failed-to-minify-the-bundle-Errors
-author_id: 382351624233
-comments_disabled: true
 draft: false
-promoted: false
-position: 0
-vote_sum: 1
-vote_count: 1
-section_id: 115003756627
-created_at: '2020-12-02T18:25:38Z'
-updated_at: '2021-02-25T09:33:58Z'
-name: Resolving "Failed to minify the bundle" Errors
-title: Resolving "Failed to minify the bundle" Errors
-source_locale: en-us
-locale: en-us
-outdated: false
-outdated_locales: []
-edited_at: '2021-01-27T08:16:33Z'
-user_segment_id: null
-permission_group_id: 237867
-label_names:
-  - nodejs
-  - OOM
-  - webpack
-body: "<p>The following error message is usually related to running out of memory during a job:</p>\n<pre class=\"css-1hjuxmj\"><code style=\"white-space: pre !important;\">Failed to minify the bundle. Error: static/js/12.fb78ba11.chunk.js from Terser\nError: Call retries were exceeded</code></pre>\n<p>Webpack4 starts using<span>\_</span><code>terser-webpack-plugin</code>\_to minify your JavaScript as default. The default parallel option in<span>\_</span><code>terser-webpack-plugin</code><span>\_</span>is set to the number of CPUs<span>\_</span><code>(os.cpus().length - 1)</code>. It means the function references the actual VM's CPU count, and it's a bigger number of CPUs than the docker executor has. Therefore, Webpack will make more workers than the vCPU counts, and it causes this error.</p>\n<p dir=\"auto\"><br>To work around this, you will need to specify the parallel option to set to the same number as the vCPUs. For example:</p>\n<pre><code class=\"hljs javascript\" style=\"white-space: pre !important;\">const TerserPlugin = require('terser-webpack-plugin');\n\nmodule.exports = {\n  optimization: {\n    minimizer: [\n      new TerserPlugin({\n        parallel: 2,\n      }),\n    ],\n  }\n};\n</code></pre>\n<p dir=\"auto\">More information about this can be found at the links below:</p>\n<p dir=\"auto\"><a href=\"https://webpack.js.org/configuration/optimization/#optimizationminimizer\" rel=\"noreferrer\">https://webpack.js.org/configuration/optimization/#optimizationminimizer</a><br><a href=\"https://webpack.js.org/plugins/terser-webpack-plugin/#parallel\" rel=\"noreferrer\">https://webpack.js.org/plugins/terser-webpack-plugin/#parallel</a></p>\n<p dir=\"auto\">\_</p>\n<p>If it doesn't solve the problem, there are a couple of options you can try:</p>\n<ul>\n<li>Increase the <a href=\"https://circleci.com/docs/2.0/configuration-reference/#docker-executor\" target=\"_self\">resource class</a> in use to provide more memory to the job</li>\n<li>\n<a href=\"https://support.circleci.com/hc/en-us/articles/360009208393-How-can-I-increase-the-max-memory-for-Node-\" target=\"_self\">Adjust the \"max_old_space_size\" for NodeJS to a suitable value</a>. For example, if you are using the medium resource class with 4GB of memory, then set this to 3GB.</li>\n</ul>\n<p>For additional visibility on memory usage issues, consider <a href=\"https://support.circleci.com/hc/en-us/articles/360043994872-How-to-record-a-job-s-memory-usage\" target=\"_self\">logging the maximum memory usage</a> for the job.</p>"

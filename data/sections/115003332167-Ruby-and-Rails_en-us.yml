@@ -3,14 +3,9 @@ url: >-
   https://circleci.zendesk.com/api/v2/help_center/en-us/sections/115003332167.json
 html_url: https://support.circleci.com/hc/en-us/sections/115003332167-Ruby-and-Rails
 category_id: 115001913988
-position: 1
-sorting: manual
 created_at: '2017-09-06T14:56:44Z'
-updated_at: '2021-01-12T01:51:07Z'
 name: Ruby and Rails
 description: ''
 locale: en-us
-source_locale: en-us
 outdated: false
 parent_section_id: null
-theme_template: section_page
