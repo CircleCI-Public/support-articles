@@ -1,0 +1,4 @@
+<p>All containers and VMs on CircleCI Cloud are isolated, or sandboxed, from each other. This means you cannot communicate directly with containers running in other jobs, even they are within the same project or org.</p>
+<p>The exception to this rule are containers that run <em>within</em> the same job, known as secondary service containers, or the Remote Docker environment.</p>
+<p>All jobs run in a freshly created container/VM, so there are no leftover, or cached, items at the beginning of a job. At the end of each job the container is destroyed for security purposes, so you can be assured any leftover files are not stored unless your config explicitly uploads these as artifacts.</p>
+<p>For more information on our Data Security Policy, please see: <a href="https://circleci.com/security/">Data Security Policy - CircleCI</a></p>
