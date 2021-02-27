@@ -1,0 +1,8 @@
+<p>In some instances, you may need a job to continue running even if a step returns a non zero exit code. This could be due to a subsequent dependant job in a workflow, or that the success of a step is not a contributing factor to the success of your pipeline.</p>
+<p><em>Note: Use the following with caution. Ensure you absolutely need this functionality for the particular step, otherwise failures in your jobs may go unnoticed which may have knock-on effects.</em></p>
+<p>The easiest way to implement this is to set up the step as follows:</p>
+<pre>- run: my_cool_command || true</pre>
+<p>This ensures that the step always returns a zero exit code, regardless of if the command fails or not.</p>
+<p>If you have a mutli-line command, or a script file, then you may consider overriding the default shell options to ensure an exit code zero is passed:</p>
+<pre>- run:<br>    shell: /bin/bash<br>    command: |<br>      echo Running my cool command<br>      mkdir ~/some_dir<br>      my_cool_command</pre>
+<p>For more details on how the default shell options work, and why they have been chosen as the default, please see <a href="https://circleci.com/docs/2.0/configuration-reference/#default-shell-options" target="_self">our documentation</a>.</p>
