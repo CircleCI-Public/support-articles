@@ -29,6 +29,28 @@ jobs:
           docker buildx build .     
 </pre>
 <p> </p>
+<p>If the above configuration is not working for your image, please try the below configuration:</p>
+<p> </p>
+<pre>version: 2.1
+
+workflows:
+  build-deploy:
+    jobs:
+     - build
+
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - setup_remote_docker:
+          version: 19.03.14
+      - checkout
+      - run: |
+          export DOCKER_CLI_EXPERIMENTAL=enabled
+          docker buildx build .
+</pre>
+<p> </p>
 <p><strong>References</strong>:</p>
 <p>1. <a href="https://docs.docker.com/buildx/working-with-buildx/">https://docs.docker.com/buildx/working-with-buildx/ </a></p>
 <p>2. <a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version">https://circleci.com/docs/2.0/building-docker-images/#docker-version</a></p>

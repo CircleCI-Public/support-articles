@@ -1,0 +1,13 @@
+id: 360058281311
+title: >-
+  Jobs Making Use of Docker Layer Caching and --mount=type=cache fail with the
+  error: no such file or directory
+author_id: 403418857853
+created_at: '2021-03-10T22:58:21Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 115003756627
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360058281311-Jobs-Making-Use-of-Docker-Layer-Caching-and-mount-type-cache-fail-with-the-error-no-such-file-or-directory
+draft: false

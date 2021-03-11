@@ -1,0 +1,6 @@
+<p>Jobs making use of <code>--mount=type=cache</code> running a <code>docker build</code> can fail with the following error:</p>
+<pre class="css-1hjuxmj">failed to solve with frontend dockerfile.v0: failed to solve with frontend gateway.v0: rpc error: code = Unknown desc = failed to build LLB: executor failed running [/bin/sh -c test]: stat /var/lib/docker/overlay2/XXXXXXXXXXXXXXXX: no such file or directory</pre>
+<p>To solve this issue, increment the <code>id</code> field. Change:</p>
+<pre>--mount=type=cache,id=v1</pre>
+<p>to:</p>
+<pre>--mount=type=cache,id=v2</pre>
