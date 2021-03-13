@@ -3,7 +3,7 @@ url: >-
   https://circleci.zendesk.com/api/v2/help_center/en-us/categories/115001866207.json
 html_url: https://support.circleci.com/hc/en-us/categories/115001866207-Using-CircleCI
 created_at: '2017-08-26T09:00:14Z'
-updated_at: '2021-03-12T00:33:33Z'
+updated_at: '2021-03-12T19:42:30Z'
 name: Using CircleCI
 description: >-
   Configuration reference and YAML config options. CircleCI settings and
