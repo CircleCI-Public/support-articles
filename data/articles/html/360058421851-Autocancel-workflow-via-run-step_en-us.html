@@ -1,0 +1,18 @@
+<p>At the moment the "Auto-cancel redundant builds" feature is an all or nothing situation, and doesn't allow granular control to allow specific workflows to always run.</p>
+<p>We do have an open <a href="https://circleci.canny.io/cloud-feature-requests/p/allow-specific-workflows-to-ignore-auto-cancel-redundant-builds" target="_blank" rel="noopener">feature request for this functionality</a>, and if you are wanting this built into the product I recommend adding your comments and vote to the request.</p>
+<p>In the meantime though, you could use a run step to accomplish this. To utilize the run step below you will need to <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener">generate a personal API token</a> and then store that token as an <a href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project" target="_blank" rel="noopener">environment variable</a>, in this case called <code>CIRCLE_API_TOKEN</code>.</p>
+<pre style="background-color: #f3f3f3;">- run:
+    name: Check for newer workflow
+    background: true
+    command: |
+      while true; do
+        sleep 5
+        LATEST_COMMIT=$(git ls-remote $CIRCLE_REPOSITORY_URL | grep $CIRCLE_BRANCH | cut -f 1)
+        if [ "$LATEST_COMMIT" != "$CIRCLE_SHA1" ]; then
+          echo "more recent commit to branch, exiting"
+          curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN"
+        fi
+      done
+</pre>
+<p>The above step would need to be added as one of the first run steps in every job in the workflow that you want to cancel. You will leave it out of the workflows you want to always run. In addition, you would disable the "Auto-cancel redundant builds" feature in your Advanced Project Settings.</p>
+<p>What the above step does is check to see if a newer commit exists for the branch you are building on, and if it finds such a case, will send a cancel API request to the currently running workflow.</p>
