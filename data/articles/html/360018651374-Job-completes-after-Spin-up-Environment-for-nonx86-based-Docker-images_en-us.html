@@ -1,2 +1,2 @@
-<p>Images based on the ARM architecture, such as <span>Raspberry Pi</span> images, can't natively run on an x86-based host which is what CircleCI uses. </p>
-<p>The binary files compiled for ARM-based images are not compatible with our hardware. Therefore, and so we will fail to communicate with the image once the Docker container is executed.<br><br>If you are developing for ARM, please tell us about it on <a href="https://ideas.circleci.com/ideas/CCI-I-900" target="_blank" rel="noopener">this CircleCI Ideas page</a>.</p>
+<p>Images based on the Arm architecture, such as <span>Raspberry Pi</span> images, need to be built using the Arm resources rather than the default x86_64 resources that the Docker executor uses. This is because different binaries are required for different platforms.</p>
+<p>If you’d like to run jobs on Arm, check out the <a href="https://github.com/CircleCI-Public/arm-preview-docs" target="_self">Arm preview documentation</a>.</p>
