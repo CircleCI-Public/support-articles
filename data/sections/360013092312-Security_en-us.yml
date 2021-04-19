@@ -1,0 +1,11 @@
+id: 360013092312
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/sections/360013092312.json
+html_url: https://support.circleci.com/hc/en-us/sections/360013092312-Security
+category_id: 360006030451
+created_at: '2021-04-15T16:35:47Z'
+name: Security
+description: ''
+locale: en-us
+outdated: false
+parent_section_id: null

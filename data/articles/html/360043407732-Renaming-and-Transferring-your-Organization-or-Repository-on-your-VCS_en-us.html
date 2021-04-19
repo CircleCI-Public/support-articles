@@ -1,11 +1,16 @@
 <p><span class="wysiwyg-color-red"><strong>Warning : in rare cases, renaming and/or transferring your organization or a repository in your VCS may lead to lost contexts, project build history, and settings in CircleCI.. </strong></span></p>
 <p>Please be sure to keep this in mind. You may want to backup any valuable data.</p>
 <p>Data loss can occur due to difficult edge cases in the way CircleCI syncs organization and repository data from your VCS. This is especially true in cases where the previous name is immediately recreated as a different organization or repository.</p>
-<p>With this in mind, when renaming and or/transferring your organization/repository in your VCS it is best practice to do the following: </p>
+<p>With this in mind, When you transfer a repository in your VCS to another organization , rename a repository or organization, transfer ownership of an organization the following are best practices: </p>
 <ul>
     <li>Login to your VCS and rename and/or transfer your organization/repository (Please try and avoid renaming your organization multiple times)</li>
     <li>Login to <a href="www.circleci.com" target="_self">CircleCI</a> using your new organization's name and confirm that your projects, contexts, settings and billing are all up to date. If you have only changed the name of your repository or transferred one project, this should be reflected in CircleCI automatically once you login to your account. </li>
     <li>After confirming the above, you can create a new organization or repository under the old name in your VCS, if desired.</li>
+</ul>
+<p>Additional resources: </p>
+<ul>
+    <li><a href="https://docs.github.com/en/github/administering-a-repository/transferring-a-repository" target="_self" rel="undefined">Transferring a repository on GitHub</a></li>
+    <li><a href="https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/transferring-organization-ownership" target="_self" rel="undefined">Transferring an organizations ownership on GitHub</a></li>
 </ul>
 <p>Note: You can login to CircleCI's UI using your new organization by navigating through CircleCI's homepage and selecting your new organization or by using this URL directly: <strong>https://app.circleci.com/projects/project-dashboard/:VCS/:NEW_ORG_NAME</strong></p>
 <p>If you come across any issues when renaming your Organization or Repository please reach out to <a href="mailto:Support@circleci.com">support@circleci.com</a></p>

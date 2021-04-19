@@ -1,4 +1,0 @@
-<p>The CircleCI Android images were upgraded from Java 8 to Java 11. If you suddenly notice the error<br> </p>
-<pre>java.lang.ClassNotFoundException: jdk.internal.reflect.GeneratedSerializationConstructorAccessor1</pre>
-<p>This can be due to an issue with JoCoCo. If JoCoCo is in use, you can try adding the following to your JoCoCo config</p>
-<pre>excludes = ['jdk.internal.*']</pre>

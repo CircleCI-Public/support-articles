@@ -1,0 +1,17 @@
+<p>If a build doesn't <a href="https://circleci.com/docs/2.0/contexts/" target="_blank" rel="noopener">apply contexts</a> even if you specified the `context` key in your workflow, you can use the <a href="https://circleci.com/docs/api/v1/#trigger-a-new-job-with-a-branch" target="_self" rel="undefined">CircleCI API v1.1 "Trigger a new Job with a Branch" endpoint</a> to trigger builds.</p>
+<p>If the `workflows` section in your configuration shows up as the one below when you view it in the CircleCI UI, you hit this case.</p>
+<pre style="background-color: #f3f3f3;">workflows:
+  version: 2
+  build:
+    jobs:
+    - build: {}
+</pre>
+<p dir="auto">Context is a part of workflow feature, and this is why the context isn't applied to the job.</p>
+<p dir="auto">So, you can use the following API endpoints to trigger builds as workflow or pipeline, which will allow you to use the `context` feature:</p>
+<ul>
+    <li><a href="https://circleci.com/docs/api/v1/#trigger-a-new-build-by-project-preview" rel="noreferrer">https://circleci.com/docs/api/v1/#trigger-a-new-build-by-project-preview</a></li>
+    <li>
+        <span style="color: #2f3941; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"></span><a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" href="https://circleci.com/docs/api/v2/#operation/triggerPipeline" rel="noreferrer">https://circleci.com/docs/api/v2/#operation/triggerPipeline</a>
+    </li>
+</ul>
+<p> </p>

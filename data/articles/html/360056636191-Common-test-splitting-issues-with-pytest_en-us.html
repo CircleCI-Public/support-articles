@@ -7,6 +7,11 @@
 <p>To get test splitting to work correctly it needs to be in the root directory of where you are running the tests from. If it's not, you may need to run the following command before you test run command:</p>
 <pre style="background-color: #f3f3f3;">cp -f .circleci/resources/pytest_build_config.ini pytest.ini</pre>
 <p>The <code>.circleci/resources/pytest_build_config.ini</code> path may need to be replaced to point to where it's located in your project.</p>
+<h2>Are you setting the junit_family in your <span>pytest.ini?</span>
+</h2>
+<p><span>Check to see if you have something like <code>junit_family=legacy</code> set in your pytest.ini file. More information here:</span></p>
+<p><span><a href="https://docs.pytest.org/en/stable/_modules/_pytest/junitxml.html">https://docs.pytest.org/en/stable/_modules/_pytest/junitxml.html</a></span></p>
+<p><span>Search for "families" to see the relevant information. </span></p>
 <h2>Example project that correctly splits by timings</h2>
 <p>The following is a fork of our <a href="https://github.com/CircleCI-Public/sample-python-cfd" target="_blank" rel="noopener">sample-python-cfd</a> project that implements splitting:</p>
 <p><a href="https://github.com/nbialostosky/sample-python-cfd/blob/split-test/.circleci/config.yml">https://github.com/nbialostosky/sample-python-cfd/blob/split-test/.circleci/config.yml</a></p>
