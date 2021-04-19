@@ -1,0 +1,11 @@
+id: 360000003527
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/sections/360000003527.json
+html_url: https://support.circleci.com/hc/en-us/sections/360000003527-Notifications
+category_id: 115001919067
+created_at: '2018-01-16T08:07:20Z'
+name: Notifications
+description: ''
+locale: en-us
+outdated: false
+parent_section_id: null

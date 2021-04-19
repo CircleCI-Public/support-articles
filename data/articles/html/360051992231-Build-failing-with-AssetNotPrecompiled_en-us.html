@@ -1,6 +1,0 @@
-<p>You may be running Rails or Rspec tests and they encounter an error like the following:</p>
-<pre style="background-color: #f3f3f3;"><span># Sprockets::Rails::Helper::AssetNotPrecompiled:</span><br><span># application.css</span></pre>
-<p>You can fix this by adding the following run step to your config file before your tests run:</p>
-<pre style="background-color: #f3f3f3;">- run:
-    name: Precompile Assets
-    command: bundle exec rake assets:precompile</pre>

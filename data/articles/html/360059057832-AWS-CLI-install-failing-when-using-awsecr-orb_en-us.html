@@ -1,0 +1,9 @@
+<p>Some users using the aws-ecr orb are experiencing failed builds when installing the AWS CLI, resulting in the following error:</p>
+<pre class="css-1hjuxmj">RequirementParseError: Expected ',' or end-of-list in rsa&gt;=3.1.2,&lt;=4.5.0; python_version=="2.7" at ; python_version=="2.7"
+<span class="ansi-yellow ansi-yellow ">You are using pip version 8.1.1, however version 21.0.1 is available.</span>
+You should consider upgrading via the 'pip install --upgrade pip' command.</pre>
+<p>This is due to an updated AWS CLI package changing requirements for Python / pip.</p>
+<p>It's possible to resolve this issue by requesting a more recent version of the aws-ecr orb:</p>
+<pre><span>orbs:<br>  aws-ecr: circleci/aws-ecr@6.15.3</span></pre>
+<p>You can read more about recent releases and implementation on the orb's listing here:</p>
+<p><a href="https://circleci.com/developer/orbs/orb/circleci/aws-ecr">https://circleci.com/developer/orbs/orb/circleci/aws-ecr</a></p>

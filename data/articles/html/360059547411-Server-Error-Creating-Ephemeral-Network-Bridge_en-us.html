@@ -1,0 +1,22 @@
+<p>If you are getting the error message related to "<span><strong>ephemeral network bridge</strong>" </span>and your docker version is <span>18.06 and above, create a file <strong>/etc/docker/daemon.json</strong> on nomad client machines with the below content.</span></p>
+<p> </p>
+<pre>{
+  "default-address-pools": [
+    {"base": "172.17.0.0/16", "size": 24}
+  ]
+}
+</pre>
+<p> </p>
+<p><strong>Note</strong>: As a quick fix, you can also terminate nomad-clients. Nomad ASG will automatically spin new nomad clients as per its policy.</p>
+<p> </p>
+<p><strong>Example error message</strong>:</p>
+<p> </p>
+<pre>Build-agent version 1.219.48216-fe3742fa (2020-12-09T13:47:53+0000)
+Docker Engine Version: 18.09.9
+Kernel Version: Linux 7cfa8725cxxx 4.4.0-1087-aws #98-Ubuntu SMP Wed Jun 26 05:50:53 UTC 2019 x86_64 Linux
+
+Unexpected environment preparation error: error creating ephemeral network bridge: error creating ephemeral docker network: Error response from daemon: could not find an available, \
+non-overlapping IPv4 address pool among the defaults to assign to the network
+</pre>
+<p> </p>
+<p>In case issue is still not resolved, please submit a ticket to <a href="https://support.circleci.com/hc/en-us" target="_self">Support</a> or write to <a href="mailto:support@circleci.com">support@circleci.com</a> along with a <a href="https://support.circleci.com/hc/en-us/articles/360003741314-Creating-a-Support-Bundle" target="_blank" rel="noopener">Support bundle</a>.</p>
