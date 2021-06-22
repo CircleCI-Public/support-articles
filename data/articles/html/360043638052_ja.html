@@ -1,9 +1,47 @@
 <p><a href="https://discuss.circleci.com/t/advanced-logic-in-config/36011" target="_blank" rel="noopener">コンフィグファイルに高度なロジックが最近追加され</a>、ジョブでステップを条件付きでトリガーするオプションやワークフローを条件付きでトリガーするオプションを利用できるようになりました。</p>
 <p><a href="https://circleci.com/docs/2.0/configuration-reference/#logic-statements" target="_blank" rel="noopener">特定のロジックステートメントを使用して</a>ネストされた複数の条件を作成できます。その条件の結果は常にトップレベルで<code> true </code>または<code> false </code>に評価され、ワークフローまたはステップをトリガーするかどうかが決定されます。</p>
 <h3>ジョブステップの例</h3>
-<pre>- when:    condition:      or:        - and:          - equal: [ master, &lt;&lt; pipeline.git.branch &gt;&gt; ]          - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]        - or:          - equal: [ false, &lt;&lt; pipeline.parameters.param1 &gt;&gt; ]    steps:      - run: echo "I am on master AND param1 is true OR param2 is true -- OR param1 is false"</pre>
+<pre>- when:
+    condition:
+      or:
+        - and:
+          - equal: [ master, &lt;&lt; pipeline.git.branch &gt;&gt; ]
+          - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]
+        - or:
+          - equal: [ false, &lt;&lt; pipeline.parameters.param1 &gt;&gt; ]
+    steps:
+      - run: echo "I am on master AND param1 is true OR param2 is true -- OR param1 is false"
+</pre>
 <h3>ワークフローの例</h3>
-<pre>workflows:  conditional-workflow:    when:      and: # All must be true to trigger        - equal: [ master, &lt;&lt; pipeline.git.branch &gt;&gt; ]        - not: &lt;&lt; pipeline.parameters.param1 &gt;&gt;        - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]    jobs:      - job-on-condition </pre>
+<pre>workflows:
+  conditional-workflow:
+    when:
+      and: # All must be true to trigger
+        - equal: [ master, &lt;&lt; pipeline.git.branch &gt;&gt; ]
+        - not: &lt;&lt; pipeline.parameters.param1 &gt;&gt;
+        - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]
+
+    jobs:
+      - job-on-condition
+ </pre>
 <p>最大 100 レベルの深さまで引数の仕様に応じて、条件を任意の方法でネストできます。 これにより、以下のようなネストされた複雑なロジックを作成できます。</p>
-<pre>- when:    condition:      or:        - and:          - or:              - and:                  - equal: [ master, &lt;&lt; pipeline.git.branch &gt;&gt; ]                  - equal: [ false, &lt;&lt; pipeline.parameters.param1 &gt;&gt; ]              - or:                  - not: &lt;&lt; pipeline.parameters.param3 &gt;&gt;          - or:              - equal: [ false, &lt;&lt; pipeline.parameters.param3 &gt;&gt; ]              - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]          - or:            - equal: [ true, &lt;&lt; pipeline.parameters.param4 &gt;&gt; ]    steps:      - run: echo "param 4 is true OR the other nested conditions are true"</pre>
+<pre>- when:
+    condition:
+      or:
+        - and:
+          - or:
+              - and:
+                  - equal: [ master, &lt;&lt; pipeline.git.branch &gt;&gt; ]
+                  - equal: [ false, &lt;&lt; pipeline.parameters.param1 &gt;&gt; ]
+              - or:
+                  - not: &lt;&lt; pipeline.parameters.param3 &gt;&gt;
+          - or:
+              - equal: [ false, &lt;&lt; pipeline.parameters.param3 &gt;&gt; ]
+              - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]  
+        - or:
+            - equal: [ true, &lt;&lt; pipeline.parameters.param4 &gt;&gt; ]
+
+    steps:
+      - run: echo "param 4 is true OR the other nested conditions are true"
+</pre>
 <p> </p>
