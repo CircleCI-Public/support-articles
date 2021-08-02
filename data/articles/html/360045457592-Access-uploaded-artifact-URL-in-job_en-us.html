@@ -15,7 +15,11 @@
       artifacts=$(curl -X GET "https://circleci.com/api/v2/project/(vcs)/(org)/(project)/$CIRCLE_BUILD_NUM/artifacts" \
       -H "Accept: application/json" \
       -u "$CIRCLE_API_TOKEN:")
-      echo "export ARTIFACT_RESPONSE=$artifacts" &gt;&gt; $BASH_ENV
+      # generate a heredoc in BASH_ENV
+      # the '\<<' is a CircleCI escape
+      echo "read -r -d '' STORED_ARTIFACTS \<< 'EOF_ARTIFACTS'" >> $BASH_ENV
+      echo "$artifacts" >> $BASH_ENV
+      echo "EOF_ARTIFACTS" >> $BASH_ENV
 </pre>
 <p>After the above step is run, then you can access the artifact information for the build with <code>$ARTIFACT_RESPONSE</code> -- which in turn can be passed into other steps, such as sending a Slack message.</p>
 <p> </p>
