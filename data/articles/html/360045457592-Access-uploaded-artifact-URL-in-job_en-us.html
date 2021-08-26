@@ -16,10 +16,10 @@
       -H "Accept: application/json" \
       -u "$CIRCLE_API_TOKEN:")
       # generate a heredoc in BASH_ENV
-      # the '\<<' is a CircleCI escape
-      echo "read -r -d '' STORED_ARTIFACTS \<< 'EOF_ARTIFACTS'" >> $BASH_ENV
-      echo "$artifacts" >> $BASH_ENV
-      echo "EOF_ARTIFACTS" >> $BASH_ENV
+      # the '\&lt;&lt;' is a CircleCI escape
+      echo "read -r -d '' STORED_ARTIFACTS \&lt;&lt; 'EOF_ARTIFACTS'" &gt;&gt; $BASH_ENV
+      echo "$artifacts" &gt;&gt; $BASH_ENV
+      echo "EOF_ARTIFACTS" &gt;&gt; $BASH_ENV
 </pre>
 <p>After the above step is run, then you can access the artifact information for the build with <code>$STORED_ARTIFACTS</code> -- which in turn can be passed into other steps, such as sending a Slack message.</p>
 <p> </p>
