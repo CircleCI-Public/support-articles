@@ -3,7 +3,11 @@ url: >-
   https://circleci.zendesk.com/api/v2/help_center/en-us/categories/360006030451.json
 html_url: https://support.circleci.com/hc/en-us/categories/360006030451-Security
 created_at: '2021-04-15T16:34:19Z'
+<<<<<<< HEAD
 updated_at: '2021-04-15T16:38:44Z'
+=======
+updated_at: '2021-08-01T11:24:24Z'
+>>>>>>> [ci skip][ZKB-SYNC]: update contents
 name: Security
 description: ''
 locale: en-us

@@ -1,8 +1,0 @@
-<p>If your Fastfile implements the xcversion action to find and select a specific version of Xcode, in this case Xcode 11, you may find the following error occuring:</p>
-<pre class="output"><span class="pre"><span class="white"><span class="red">[!] Cannot find an installed Xcode satisfying '11.0.0'</span></span></span></pre>
-<h3>Why does this happen?</h3>
-<p>The xcversion action in Fastlane uses the xcode-install gem behind the scenes and, currently as of Fastlane 2.131.0, the minimum version required by Fastlane is outdated.</p>
-<h3>Steps to Resolve</h3>
-<p>In your Gemfile, specify a newer version of xcode-install. At the time of writing, the latest version is 2.6.1:</p>
-<pre>gem 'xcode-install', '~&gt; 2.6', '&gt;= 2.6.1'</pre>
-<p> </p>

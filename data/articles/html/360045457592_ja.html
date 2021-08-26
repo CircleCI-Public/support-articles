@@ -1,17 +1,21 @@
-<p><a href="https://circleci.com/docs/2.0/configuration-reference/#store_artifacts" target="_blank" rel="noopener">store_artifacts ステップ</a> の後、アップロードされたアーティファクトは、ジョブが完了する前でも、すぐに API からアクセスできる状態になります。</p>
-<p>それを踏まえて、API 呼び出しを行い、値を変数に格納すれば、保存されたアーティファクトの URL にアクセスできます。 URL は、その後のステップで次のような使い方ができます。</p>
+<p>After a <a href="https://circleci.com/docs/2.0/configuration-reference/#store_artifacts" target="_blank" rel="noopener">store_artifacts step</a>, the uploaded artifacts become immediately accessible via the API, even before the job has completed.</p>
+<p>With the above in mind, you can access the URL's for the stored artifacts by making an API call and storing the values in a variable. This can then be used on subsequent steps, such uses for this:</p>
 <ul>
-    <li>
-        <a href="https://circleci.com/orbs/registry/orb/circleci/slack" target="_blank" rel="noopener">Slack Orb</a> と一緒に使用することで、アーティファクトの URL をメッセージとして送信できます。
-    </li>
-    <li>
-        <a href="https://circleci.com/docs/2.0/configuration-reference/#the-when-attribute" target="_blank" rel="noopener">when 属性</a> と組み合わせることで、ステップが失敗したとき(<code>on_fail</code>)にのみ API 呼び出しを実行できます。
-    </li>
+    <li>Used with the <a href="https://circleci.com/orbs/registry/orb/circleci/slack" target="_blank" rel="noopener">Slack Orb</a> you can send the artifact URL's in your message</li>
+    <li>This can be combined with the <a href="https://circleci.com/docs/2.0/configuration-reference/#the-when-attribute" target="_blank" rel="noopener">when attribute</a> to only run the API call <code>on_fail</code> </li>
 </ul>
-<p>結果として、ビルドが失敗した場合にのみ、アップロードされたアーティファクト (スクリーンショットや、失敗に関する詳細な情報を含むファイルなど) のURLをSlack メッセージとして送信できます。</p>
-<h1><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">実装例</span></h1>
-<p><a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;" href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener">パーソナル API トークンを生成</a>し、<a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;" href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project" target="_blank" rel="noopener">プロジェクトレベルの環境変数</a>へ保存する必要があります。以下の例では、<code style="font-size: 15px;"> CIRCLE_API_TOKEN </code>がそれに該当します。</p>
-<p>次のスニペットでは、<code>(vcs)</code> を <code>github</code> または <code>bitbucket</code> のいすれか、 <code>(org)</code> を組織のアカウント、 <code>(project)</code> をプロジェクトの名前に置き換える必要があります。 すべてのアーティファクトを確実に使用できるようにするには、 <code>store_artifacts</code> ステップの後に実行する必要があります。</p>
-<pre>- run:    name: Get artifacts    when: on_fail    command: |      artifacts=$(curl -X GET "https://circleci.com/api/v2/project/(vcs)/(org)/(project)/$CIRCLE_BUILD_NUM/artifacts" \      -H "Accept: application/json" \      -u "$CIRCLE_API_TOKEN:")      echo "export ARTIFACT_RESPONSE=$artifacts" &gt;&gt; $BASH_ENV</pre>
-<p>上記のステップを実行した後、<code>$ARTIFACT_RESPONSE</code> を使用して、ビルドのアーティファクト情報にアクセスできます。これは、Slack メッセージを送信するステップなど、他のステップに渡すことができます。</p>
-<p> </p>
+<p>The end result could be that you only send a Slack message containing the artifacts uploaded from a failed build, such as screenshots or files containing more information about the failures.</p>
+<h1><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Run step and process</span></h1>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;">You will need to </span><a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;" href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener">generate and store a personal API token</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;"> in your </span><a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;" href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project" target="_blank" rel="noopener">project level environment variables</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;">, in this example, it should be stored as </span><code style="font-size: 15px;">CIRCLE_API_TOKEN</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;">.</span></p>
+<p>In the following snippet, you will need to update <code>(vcs)</code> to either <code>github</code> or <code>bitbucket</code>, <code>(org)</code> to your organization, and <code>(project)</code> to the name of your project. This needs to be added after all <code>store_artifacts</code> steps to ensure all artifacts are made available.</p>
+<pre>- run:
+    name: Get artifacts
+    when: on_fail
+    command: |
+      artifacts=$(curl -X GET "https://circleci.com/api/v2/project/(vcs)/(org)/(project)/$CIRCLE_BUILD_NUM/artifacts" \
+      -H "Accept: application/json" \
+      -u "$CIRCLE_API_TOKEN:")
+      echo "export ARTIFACT_RESPONSE=$artifacts" &gt;&gt; $BASH_ENV
+</pre>
+<p>After the above step is run, then you can access the artifact information for the build with <code>$ARTIFACT_RESPONSE</code> -- which in turn can be passed into other steps, such as sending a Slack message.</p>
+<p> </p>

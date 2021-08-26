@@ -1,0 +1,35 @@
+<p>There are situations where you may need to kick off a pipeline in another repository, and monitor the status of that build before proceeding in your current build. Such as running tests in another service and then continuing with a deploy if that pipeline is successful.</p>
+<p>This can be accomplished by triggering the build via a run step and then polling the status of that pipeline and proceeding accordingly.</p>
+<p>Below are the two run steps to set this up. You will need to replace <code>(vcs)</code> with either <code>github</code> or <code>bitbucket</code> depending on your version control system. <code>(org)</code> with your Organization name and <code>(project)</code> with your repoistory name. In addition, you will need to <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener">generate a personal API token</a> and store that is a <a href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project" target="_blank" rel="noopener">enviroment variable</a> called <code>CIRCLE_TOKEN</code>.</p>
+<pre style="background-color: #f3f3f3;">- run:
+    command: |
+      PIPELINE_ID=$(curl --location --request POST 'https://circleci.com/api/v2/project/(vcs)/(org)/(project)/pipeline' \
+      --header 'Content-Type: application/json' \
+      --header "Circle-Token: ${CIRCLE_TOKEN}" \
+      --data-raw '{
+          "parameters": {
+              "node-v-1": "10.1.1"
+        }
+      }' | jq -r '.id')
+
+      echo "export PIPELINE=$PIPELINE_ID" &gt;&gt; $BASH_ENV
+- run: |
+    STATUS=$(curl "https://circleci.com/api/v2/pipeline/$PIPELINE/workflow?circle-token=$CIRCLE_TOKEN" | jq -r '.items[].status')
+
+    while [ "$STATUS" == "running" ]; do
+      echo still running
+      sleep 10
+      STATUS=$(curl -s "https://circleci.com/api/v2/pipeline/$PIPELINE/workflow?circle-token=$CIRCLE_TOKEN" | jq -r '.items[].status')
+    done
+
+    echo "finally done, checking final status: $STATUS"
+    if [[ "$STATUS" == "success" ]]; then
+      echo "Proceeding with build, as triggered pipeline was success"
+      exit 0
+    else
+      echo "Stopping build, triggered pipeline was not a success"
+      exit 1
+    fi</pre>
+<p>The first run step kicks off the pipeline to run in the other repository, optionally you can pass in pipeline paramters if needed or remove the <code>--data-raw</code> section. Beyond kicking off the pipeline, it also saves the pipeline ID from the generated pipeline so we can poll the status of it in the next step.</p>
+<p>The next run step will continually check the status of the pipeline. Once that status moves from <code>running</code> to something else -- we will take the appropriate actions. In this case, if <code>success</code> we proceed with the rest of the build. If it is anything else we fail the build with an <code>exit 1</code>.</p>
+<p>You can build in a delay before the status checks occur by adding a <code>sleep X</code> to the top of the second run step if you know that pipeline usually takes a specific amount of time to run. </p>

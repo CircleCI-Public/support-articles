@@ -4,7 +4,11 @@ url: >-
 html_url: >-
   https://support.circleci.com/hc/en-us/categories/115001913988-Languages-and-Databases
 created_at: '2017-09-06T14:55:30Z'
+<<<<<<< HEAD
 updated_at: '2021-04-18T19:22:15Z'
+=======
+updated_at: '2021-08-21T06:23:50Z'
+>>>>>>> [ci skip][ZKB-SYNC]: update contents
 name: Languages and Databases
 description: Python, Ruby, JavaScript, Java, Clojure, PostgreSQL, MySQL and more.
 locale: en-us

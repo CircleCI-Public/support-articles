@@ -1,5 +1,0 @@
-<p>Under certain circumstances it may appear that jobs will use more RAM than expected, causing a build failure, likely resulting in the <a href="https://support.circleci.com/hc/en-us/articles/115014359648" target="_blank" rel="noopener">exit code 137</a>. If your project utilizes the JVM, <a href="https://circleci.com/blog/how-to-handle-java-oom-errors/" target="_blank" rel="noopener">we have a great blog post detailing how to limit the memory usage of the JVM.</a></p>
-<p>Also, check to see what and how many service containers your project is utilizing. Additional service containers such as postgres or mysql share the resources with your primary container.</p>
-<p>Lastly, when Linux runs out of available memory, memory page files will be copied to disk in <em>swap space</em>. On CircleCI since we limit memory usage, once you approach this limit the build will be killed, it will not have the chance to utilize swap space. Your local build may be benefitting from the "effectively" additional RAM given by swap space.</p>
-<p> </p>
-<p> </p>

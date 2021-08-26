@@ -1,0 +1,16 @@
+<h3>Browser images</h3>
+<p><span style="font-weight: 400;">The initial <strong>circleci/*-browsers</strong> images was the intuitive first step in providing a convenient docker image with browsers preinstalled. In this image, the browser versions are static and does not provide the user with control over the browser’s version. <br></span></p>
+<p> </p>
+<p><span style="font-weight: 400;">The new <strong>cimg/*-browsers</strong>  images take a different direction and ship with <a href="https://github.com/SeleniumHQ/selenium" target="_self">Selenium</a> preinstalled. Selenium is introduced as <a href="https://www.selenium.dev/documentation/en/introduction/" target="_self">"an umbrella project for a range of tools and libraries that enable and support the automation of web browsers." Click here to read more.</a> <br></span></p>
+<p> </p>
+<p>You can compare the differences to the convenience images by looking at the publicly available template Dockerfile source:</p>
+<p><strong>circleci/*-browsers</strong>: <a href="https://github.com/circleci/circleci-images/blob/staging/shared/images/Dockerfile-browsers.template">https://github.com/circleci/circleci-images/blob/staging/shared/images/Dockerfile-browsers.template</a></p>
+<p><strong>cimg/node-browsers</strong>: https://github.com/CircleCI-Public/cimg-node/blob/master/variants/browsers.Dockerfile.template</p>
+<p> </p>
+<h3>Should I upgrade?</h3>
+<p>If you already have a test suite configured with the <strong>circleci/*-browsers</strong> images, upgrading to the new convenience image would be recommended if the project already has selenium as a dependency, or a switch to selenium is being made.</p>
+<p> </p>
+<h3>Installing Browsers and Browser drivers</h3>
+<p>Now that the new browser images do not provide the browsers preinstalled themselves, use the non-browser variant image (circleci or cimg namespaces), and implement the <a href="https://circleci.com/developer/orbs/orb/circleci/browser-tools" target="_self">"browser tools" Orb</a> into your configuration. This Orb provides the user the ability to choose which browser and versions they are testing on. </p>
+<p> </p>
+<p>Another alternative would be to create build a docker image on top of the convenience image, and preinstall the browsers required for the project.</p>

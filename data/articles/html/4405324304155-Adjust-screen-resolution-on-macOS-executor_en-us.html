@@ -1,0 +1,4 @@
+<p>There are situations where you may want to increase (or decrease) the screen resolution within the macOS VM's for testing purposes.</p>
+<p>This can be done directly in the job with a <code>run</code> step, like the following:</p>
+<pre style="background-color: #f3f3f3;">-run: /Library/Application\ Support/VMware\ Tools/vmware-resolutionSet 1920 1080</pre>
+<p>The above would set the resolution to <span>1920x1080 -- which is the current maximum screen resolution. Similarly, if you require a different resolution you can adjust the values in the above command.</span></p>
