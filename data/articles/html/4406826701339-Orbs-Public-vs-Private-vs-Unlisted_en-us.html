@@ -1,0 +1,37 @@
+<p>Since introducing Private Orbs, there have been many questions around the differences between Orbs. This guide should help distinguish those answers and help highlight some of the useful differences between them. </p>
+<p>To create an orb, you will need to install the <a href="https://circleci.com/docs/2.0/local-cli-getting-started/" target="_self">CircleCI CLI</a>. This will provide you with the necessary commands to create, update, and modify both Public and Private Orbs</p>
+<h1>Public Orbs</h1>
+<h3 style="text-indent: 20px;">How are they created?</h3>
+<p style="margin-left: 50px;">Using the CircleCI CLI you can use the following command and follow our automated <a href="https://circleci.com/docs/2.0/orb-author/" target="_self">Orb Authoring Process</a></p>
+<pre style="margin-left: 50px;"><code>circleci orb init /path/to/myProject-orb</code></pre>
+<p style="margin-left: 50px;">Alternatively, we do have a <a href="https://circleci.com/docs/2.0/orb-author-validate-publish/" target="_self">manual orb authoring process</a> that still uses the CircleCI CLI but doesn't use the orb development kit.</p>
+<h3 style="text-indent: 20px;">Who can use them?</h3>
+<p style="margin-left: 50px;">These orbs are public and can be used by any user or organization.</p>
+<h3 style="text-indent: 20px;">Where are they found?</h3>
+<p style="margin-left: 50px;">Public Orbs can be found on our <a href="https://circleci.com/developer/orbs" target="_self">Orb Registry</a> or by using the following command:</p>
+<pre style="margin-left: 50px;"><code>circleci orb list &lt;namespace&gt;</code></pre>
+<h1>Private Orbs</h1>
+<h3 style="text-indent: 20px;">How are they created?</h3>
+<p style="margin-left: 50px;">Similar to Public Orbs, but <a href="https://circleci.com/docs/2.0/orb-intro/#private-orbs" target="_self">limited to paid customers</a>. </p>
+<pre style="margin-left: 50px;"><code>circleci orb init /path/to/myProject-orb --private</code></pre>
+<h3 style="text-indent: 20px;">Who can use them?</h3>
+<p style="margin-left: 50px;">Private Orbs can only be used in projects within the same organization that created the Orb.</p>
+<h3 style="text-indent: 20px;">Where are they found?</h3>
+<p style="margin-left: 50px;">Private Orbs will not be listed in the orb registry (however, this is a <a href="https://circleci.canny.io/orbs/p/allow-private-orbs-to-be-viewed-on-orb-registry" target="_self">future planned feature</a>) and will only be listed by the following command:</p>
+<pre style="margin-left: 50px;"><code>circleci orb list &lt;namespace&gt; --private</code></pre>
+<h1>Unlisted Orbs</h1>
+<h3 style="text-indent: 20px;">How are they created?</h3>
+<p style="margin-left: 50px;">Unlisted Orbs are not themselves an Orb, but rather the state of a Private or Public orb. The state of an Orb can be changed with the following command:</p>
+<pre style="margin-left: 50px;"><code>circleci orb unlist &lt;namespace&gt;/&lt;orb&gt; &lt;true|false&gt; [flags]</code></pre>
+<h3 style="text-indent: 20px;">Who can use them?</h3>
+<p style="margin-left: 50px;">Unlisted Orbs do not change in functionality, only in visibility. An unlisted Public Orb will still be available to be used by any user or organization that has implemented it into their project. Similarly, any project can use their own organization's Private Orbs, even if they are unlisted. </p>
+<h3 style="text-indent: 20px;">Where are they found?</h3>
+<p style="margin-left: 50px;">Unlisted Orbs will not appear in the Orb Registry or with <code>orb list</code> command. However, the Public Orb's source can still be viewed if the Orb's name is known by using:</p>
+<pre style="margin-left: 50px;"><code>circleci orb source &lt;namespace&gt;/&lt;orb&gt; [flags]</code></pre>
+<p style="margin-left: 50px;">or, for Public Orbs, you can still access the Orb source page by using the following link format:</p>
+<pre style="margin-left: 50px;">https://circleci.com/developer/orbs/orb/&lt;namespace&gt;/&lt;orb&gt;</pre>
+<h4 style="margin-left: 50px;"> </h4>
+<div style="background: #ffffcc; border: 2px solid #fcba03; border-radius: 5px; padding: 10px;">
+    <h3>Disclaimer: </h3>
+    <p style="margin-left: 50px;">Use caution when unlisting Private Orbs. Currently the <code>orb source</code> and <code>orb info</code> commands <a href="https://circleci.canny.io/orbs/p/allow-circleci-cli-commands-to-work-with-private-orbs" target="_self">do not work for <em>any</em> Private Orbs</a>, regardless if they are listed or unlisted. So unless the Private Orb name is documented before it is unlisted, you will not be able to find the orb through the Orb Registry or the CircleCI CLI. If you believe this happened to you, please create a <a href="https://support.circleci.com/hc/en-us" target="_self">Support Ticket</a>.</p>
+</div>
