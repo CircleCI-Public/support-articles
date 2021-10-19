@@ -4,8 +4,8 @@
 <ul>
     <li><strong><span class="wysiwyg-underline">Not</span> in PEM format.</strong></li>
 </ul>
-<p>If your private key is not in PEM format, force PEM format by generating the key with <code class="highlighter-rouge">ssh-keygen -m PEM -t rsa -C "your_email@example.com"</code></p>
-<p><br>A private key in PEM format should look like the following, including opening and closing tags:</p>
+<p>To get your key, you can use the following command: <code class="highlighter-rouge">ssh-keygen -m PEM -t rsa -C "your_email@example.com"</code></p>
+<p><br>When adding the Private Key to CircleCI, it should follow PEM format and should include the opening and closing tags:</p>
 <pre style="background: #f7f7f7; border: 1px solid #g7g7g7; border-radius: 5px; padding: 10px;"><span>-----BEGIN CERTIFICATE REQUEST-----</span><br><span>MIIB9TCCAWACAQAwgbgxGTAXBgNVBAoMEFF1b1ZhZGlzIExpbWl0ZWQxHDAaBgNV</span><br><span>BAsME0RvY3VtZW50IERlcGFydG1lbnQxOTA3BgNVBAMMMFdoeSBhcmUgeW91IGRl</span><br><span>Y29kaW5nIG1lPyAgVGhpcyBpcyBvbmx5IGEgdGVzdCEhITERMA8GA1UEBwwISGFt</span><br><span>aWx0b24xETAPBgNVBAgMCFBlbWJyb2tlMQswCQYDVQQGEwJCTTEPMA0GCSqGSIb3</span><br><span>DQEJARYAMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJ9WRanG/fUvcfKiGl</span><br><span>EL4aRLjGt537mZ28UU9/3eiJeJznNSOuNLnF+hmabAu7H0LT4K7EdqfF+XUZW/2j</span><br><span>RKRYcvOUDGF9A7OjW7UfKk1In3+6QDCi7X34RE161jqoaJjrm/T18TOKcgkkhRzE</span><br><span>apQnIDm0Ea/HVzX/PiSOGuertwIDAQABMAsGCSqGSIb3DQEBBQOBgQBzMJdAV4QP</span><br><span>Awel8LzGx5uMOshezF/KfP67wJ93UW+N7zXY6AwPgoLj4Kjw+WtU684JL8Dtr9FX</span><br><span>ozakE+8p06BpxegR4BR3FMHf6p+0jQxUEAkAyb/mVgm66TyghDGC6/YkiKoZptXQ</span><br><span>98TwDIK/39WEB/V607As+KoYazQG8drorw==</span><br><span>-----END CERTIFICATE REQUEST-----</span></pre>
 <ul>
     <li><strong>Protected by a passphrase.</strong></li>
