@@ -1,7 +1,7 @@
 <p>You can filter your workflows to run on specific branches by adding the <strong>filters</strong> key to the job name in your <strong>workflows</strong> section.</p>
-<pre>workflows:<br>  version: 2<br>    build:<br>      jobs:<br>        - test:<br>            filters:<br>              branches:<br>                only:<br>                  - master</pre>
+<pre>workflows:<br>  version: 2<br>    build:<br>      jobs:<br>        - test:<br>            filters:<br>              branches:<br>                only:<br>                  - main</pre>
 <p>It can also be used to prevent later jobs unless they are running on a specific branch</p>
 <div>
-    <pre><span>workflows</span><span>:</span><br><span>  version</span><span>: </span><span>2</span><br><span>  build</span><span>:</span><br><span>    jobs</span><span>:</span><br><span>      - </span><span>test</span><br><span>      - </span><span>deploy</span><span>:</span><br><span>        requires</span><span>:</span><br><span>          - </span><span>test</span><br><span>        filters</span><span>:</span><br><span>          branches</span><span>:</span><br><span>            only</span><span>:</span><br><span>              - </span><span>master</span></pre>
+    <pre><span>workflows</span><span>:</span><br><span>  version</span><span>: </span><span>2</span><br><span>  build</span><span>:</span><br><span>    jobs</span><span>:</span><br><span>      - </span><span>test</span><br><span>      - </span><span>deploy</span><span>:</span><br><span>        requires</span><span>:</span><br><span>          - </span><span>test</span><br><span>        filters</span><span>:</span><br><span>          branches</span><span>:</span><br><span>            only</span><span>:</span><br><span>              - </span><span>main</span></pre>
 </div>
 <p><a href="https://circleci.com/docs/2.0/configuration-reference/#filters-1" target="_blank" rel="noopener">Click here for full documentation on job branch filtering</a></p>
