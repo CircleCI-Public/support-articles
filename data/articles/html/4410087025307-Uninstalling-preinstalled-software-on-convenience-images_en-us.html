@@ -1,0 +1,9 @@
+<p>There are situations where you want to utilize <a href="https://circleci.com/developer/images" target="_blank" rel="noopener">one of our convenience images</a>, however an action you need to take for your pipeline conflicts with an item that comes pre-installed on the image.</p>
+<p>Instead of having to <a href="https://circleci.com/docs/2.0/custom-images/" target="_blank" rel="noopener">create and maintain a custom image</a>, in a lot of situations you can simply uninstall the software causing issues, or that you need to test an install on.</p>
+<p>As an example, if you need to verify the actual installation of Homebrew on our macOS executor, since that comes pre-installed, you would need to uninstall with:</p>
+<pre style="background-color: #f3f3f3;">- run:
+    name: Uninstall Homebrew
+    command: |
+      curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh &gt; uninstall.sh
+      sudo sh uninstall.sh -f -q</pre>
+<p>Most installed softwares have a way to uninstall, so implementing a similar command as above on those will help clear the image during the build of anything you don't need. </p>
