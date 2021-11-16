@@ -1,9 +1,0 @@
-<p>After enabling GitHub SSO, you might be unable to access CircleCI pages (settings, projects, etc...).</p>
-<p>When you enable SSO old OAuth tokens are not safelisted for use, so you will need to re-create them after enabling SSO with the following steps:</p>
-<ul dir="auto" type="disc">
-    <li type="disc">Log into the affected organization on GitHub using SSO.</li>
-    <li type="disc">Go to OAuth application settings &gt; <a href="https://github.com/settings/applications" target="_blank" rel="noopener">https://github.com/settings/applications</a>.</li>
-    <li type="disc">Select the CircleCI token and revoke it.</li>
-    <li type="disc">Go to <a href="circleci.com" target="_blank" rel="noopener">circleci.com</a> and log out if necessary.</li>
-    <li type="disc">Log back in -which should prompt you to grant authorization- and make sure CircleCI is authorized to access the organization.</li>
-</ul>
