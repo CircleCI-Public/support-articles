@@ -1,0 +1,25 @@
+<p><span>If your build is taking more than 1 hour you will see that your build has stopped and you are on the free tier you will notice that if you view your jobs there will be a job called: <code>Build timed out</code>. </span></p>
+<p><span>An example of this is shown below:</span><span></span></p>
+<pre class="css-1uk2jcu" style="background-color: #f3f3f3;">&gt;<span>Build timed out<br><br>Upgrade your pricing plan to take advantage of longer build times</span><span>
+</span><span>context deadline exceeded</span></pre>
+<p><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>T</span><span>he reason for this change is the new pricing plan has been put in place which limits builds on the free plan to be able to build for a maximum of 1 hour before a timeout will occur and stop the build.</span></p>
+<p><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>As you can see from the output of your job the build has a recommendation to upgrade your plan as this will allow you to continue to build with longer build times.</span></p>
+<p>If you would like to continue using the free plan, we would recommend switching to the large resource class, available on the free plan.</p>
+<p>It will give you access to more resources which will help reduce the build duration, thanks to additional CPU and memory.</p>
+<p><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>More information about resource classes can be found here: </span><a class="c-link" tabindex="-1" href="https://circleci.com/docs/2.0/executor-types/#available-docker-resource-classes" target="_blank" rel="noopener noreferrer" data-stringify-link="https://circleci.com/docs/2.0/executor-types/#available-docker-resource-classes" data-sk="tooltip_parent" data-remove-tab-index="true">https://circleci.com/docs/2.0/executor-types/#available-docker-resource-classes</a></p>
+<p><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>To upgrade your build to use the large resource class you can add: <code>resource_class: large</code> an example of this can be seen </span><span>below:</span></p>
+<p><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>Current:</span></p>
+<pre style="background-color: #f3f3f3;"><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>    docker:</span><br><span>      - image: ubuntu:bionic</span></pre>
+<p><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>Proposed:</span></p>
+<pre style="background-color: #f3f3f3;"><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>    docker:</span><br><span>      - image: ubuntu:bionic</span><br><span>    resource_class: large</span></pre>
+<p><span>Additional information about our plans and available classes for each  plan they can be found </span><a class="c-link" tabindex="-1" href="https://circleci.com/pricing/" target="_blank" rel="noopener noreferrer" data-stringify-link="https://circleci.com/pricing/" data-sk="tooltip_parent" data-remove-tab-index="true">here</a></p>
+<p>In addition to utilizing a larger resource class size, another option is to utilize parallelism. This is especially helpful if the build encountering this issue is running tests.</p>
+<p>We have information here on utilizing the feature: <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/">https://circleci.com/docs/2.0/parallelism-faster-jobs/</a></p>
+<p>We have some additional details at the following blog post: <a href="https://circleci.com/blog/six-optimization-tips-for-your-config/">https://circleci.com/blog/six-optimization-tips-for-your-config/</a></p>
+<p>As long as your test suite allows you to select a specific set of tests to run, you should be able to execute them in parallel.</p>
+<p>An example of implementing this can be found below:</p>
+<p><span>Current:</span></p>
+<pre style="background-color: #f3f3f3;"><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>    docker:</span><br><span>      - image: ubuntu:bionic</span></pre>
+<p><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>Proposed:</span></p>
+<pre style="background-color: #f3f3f3;"><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>    docker:</span><br><span>      - image: ubuntu:bionic</span><br><span>    <span class="na"><span class="hljs-attr">parallelism</span></span><span class="pi"><span class="hljs-attr">:</span></span> <span class="m"><span class="hljs-number">4</span></span></span></pre>
+<p><span>If you are still facing timeout issues after implementing the above suggestion, please </span><a class="c-link" tabindex="-1" href="https://support.circleci.com/hc/en-us/requests/new" target="_blank" rel="noopener noreferrer" data-stringify-link="https://support.circleci.com/hc/en-us/requests/new" data-sk="tooltip_parent" data-remove-tab-index="true">raise a support ticket</a><span> with the CircleCI support team.</span></p>
