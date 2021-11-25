@@ -1,0 +1,21 @@
+<h3>Enable SSO for SSH Keys and Tokens</h3>
+<p><span style="font-weight: 400;">To get set up with GitHub SSO, there are a couple of settings a user must configure on their account. Follow the below instructions; failure to do so may cause access issues with some GitHub functionality, such as project </span><a href="https://circleci.com/docs/2.0/gh-bb-integration/#deployment-keys-and-user-keys"><span style="font-weight: 400;">deploy/user SSH keys</span></a><span style="font-weight: 400;">, ability to initiate pipelines and edit config, etc.</span></p>
+<ol>
+    <li style="font-weight: 400;" aria-level="1">
+        <span style="font-weight: 400;">Log into GitHub and navigate to your user’s Settings → SSH and GPG keys (</span><a href="https://github.com/settings/keys"><span style="font-weight: 400;">direct link here</span></a><span style="font-weight: 400;">).</span>
+    </li>
+    <li style="font-weight: 400;" aria-level="1">
+        <span style="font-weight: 400;">For each key used in one or more protected orgs, </span><strong>Configure SSO </strong><span style="font-weight: 400;">→ </span><strong>Authorize</strong><span style="font-weight: 400;"> the org(s) so that the key can access protected resources:</span>
+        <p><span style="font-weight: 400;"><img src="https://support.circleci.com/hc/article_attachments/4411055759259/Screen_Shot_2021-11-23_at_1.39.17_PM.png" alt="Screen_Shot_2021-11-23_at_1.39.17_PM.png"></span></p>
+    </li>
+    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">These SSH keys should now have access to the protected orgs. No further action within CircleCI is required.</span></li>
+</ol>
+<h3>Enabling SSO for Tokens and Apps</h3>
+<p><span style="font-weight: 400;">If using GitHub personal access tokens in your CircleCI pipelines, you’ll also need to </span><strong>Enable SSO</strong><span style="font-weight: 400;"> for each token. Follow the same steps as above:</span></p>
+<ol>
+    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Go to Settings → Developer Settings → Personal access tokens</span></li>
+    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Follow the same steps as described above to enable protected org access for these tokens.</span></li>
+</ol>
+<h3>Common Issues</h3>
+<p><span style="font-weight: 400;">See our support article <a href="https://support.circleci.com/hc/en-us/articles/360043002793" target="_blank" rel="noopener">here</a> for troubleshooting common SSO/SAML-related issues for user GitHub OAuth credentials (used for most interactions with CircleCI, including creating pipelines on new commits).</span></p>
+<p><span style="font-weight: 400;">For troubleshooting issues with GitHub SSH keys and personal access tokens, see the above sections.</span></p>
