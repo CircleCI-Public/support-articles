@@ -1,8 +1,10 @@
 <p>Docker executor users can output the max memory consumed by a job by adding the following step to their config:</p>
 <pre class="c-mrkdwn__pre" data-stringify-type="pre">- run:<br>  <wbr></wbr>  <wbr></wbr>command: cat /sys/fs/cgroup/memory/memory.max_usage_in_bytes<br>  <wbr></wbr>  <wbr></wbr>when: always</pre>
-<p><span class="wysiwyg-underline"><strong>This step should be added as the last step in your job, to identify the max usage after all of the steps have completed.</strong></span></p>
+<p><span class="wysiwyg-underline"><strong>This step should be added as the last step in your job, to identify the max usage after all of the previous steps have completed.</strong></span></p>
 <p><strong><br>Note:</strong> This will be accurate if the job has one Docker image. <a href="https://circleci.com/docs/2.0/executor-types/#using-multiple-docker-images" target="_self">Multiple Docker image builds</a> will only report the memory usage of the primary image.<br><br>Memory usage will be reported in bytes. You can convert to GiB using your favorite search engine to check it against the amount of RAM available to your job, according to its assigned <a href="https://circleci.com/docs/2.0/configuration-reference/#resource_class" target="_self">resource class</a>.</p>
 <p>This can help troubleshoot out-of-memory (OOM) errors. </p>
 <p>To log memory usage over time for both Docker and machine executors, you can also add this step as the first step in your job:</p>
 <pre class="c-mrkdwn__pre" data-stringify-type="pre">- run:<br>  <wbr></wbr>  <wbr></wbr>command: |<br>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>while true; do<br>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>sleep 5<br>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>ps auxwwf<br>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>echo "======"<br>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>done<br>  <wbr></wbr>  <wbr></wbr>background: true</pre>
-<p> </p>
+<p>Other enviroments may require a slightly different command.</p>
+<p>for macOS you can use <strong>ps auxww</strong>, as the f parameter is not supported.</p>
+<p>To get memory usage of the remote docker environment you can pass the ps command through SSH with <strong>ssh remote-docker ps auxwwf</strong></p>

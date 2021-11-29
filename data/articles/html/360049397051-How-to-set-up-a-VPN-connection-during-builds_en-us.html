@@ -1,12 +1,36 @@
-<h4>In case you need to connect to a private network during your builds (for example to deploy to an environment behind a VPN), we suggest you configure the VPN connection as follows:</h4>
-<h4><a href="#openvpn" target="_self">OpenVPN</a></h4>
-<h4><a href="#l2tp" target="_self">L2TP</a></h4>
-<h2 id="openvpn"><span>OpenVPN</span></h2>
+<h4>In case you need to connect to a private network during your builds, or if you want to restrict access to your environment to a specific IP address, we suggest configuring a VPN connection as follows.</h4>
+<p><em><strong>Note that you <span class="wysiwyg-underline">must</span> use one of the following executors:</strong></em></p>
 <ul>
-    <li><span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a></span></li>
-    <li><span>If the VPN client authentication is credentials-based, you'll also need to add the username and password as environment variables.</span></li>
     <li>
-        <span><span><span>Use the below sample configuration<br><br></span></span></span><span><span><span></span></span></span>
+        <h4><a href="#h_01F3THFAZEDDNM5FGE00471E2N" target="_self"><code>machine</code></a></h4>
+    </li>
+    <li>
+        <h4><a href="#h_01F3THFMEAY31K30ZKP3M0RVZ7" target="_self"><code>macOS</code></a></h4>
+    </li>
+    <li>
+        <h4><a href="#h_01F7XH9G40MXW14H2GFHRD8XXJ" target="_self"><code>windows</code></a></h4>
+    </li>
+</ul>
+<p> </p>
+<h2 id="h_01F3THFAZEDDNM5FGE00471E2N">
+    <code>machine</code> [Linux] executor (<a href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images" target="_blank" rel="noopener">Available <code>machine</code> images</a>)
+</h2>
+<ul>
+    <li>
+        <h4><a href="#openvpn" target="_self">OpenVPN (2.x)</a></h4>
+    </li>
+    <li>
+        <h4><a href="#h_01F3TBTKPEDA8RBAQCVVZNG0T6" target="_self">OpenVPN Connect (OpenVPN 3)</a></h4>
+    </li>
+    <li>
+        <h4><a href="#l2tp" target="_self">L2TP</a></h4>
+    </li>
+</ul>
+<h4 id="openvpn"><strong>OpenVPN (2.x)</strong></h4>
+<ul>
+    <li><span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a>.</span></li>
+    <li>
+        <span>If the VPN client authentication is credentials-based (user-locked profile), you'll also need to add the username and password as environment variables (<code>VPN_USER</code> and <code>VPN_PASSWORD</code>).</span><span><span><span><br></span></span></span><span><span><span></span></span></span>
     </li>
 </ul>
 <pre style="background-color: #f3f3f3;">version: 2.1
@@ -31,31 +55,17 @@ jobs:
             route -n
             sudo netstat -anp
             cat /etc/resolv.conf
-            curl checkip.amazonaws.com<br>
+            echo "Public IP before VPN connection is $(curl checkip.amazonaws.com)"<br>
       - run:
           name: VPN Setup
           background: true
           command: |
-            phone_home=$(netstat -an | grep ':22 .*ESTABLISHED' | head -n1 | awk '{ split($5, a, ":"); print a[1] }')
-            # phone_home=$(netstat -an | grep '\.2222\s.*ESTABLISHED' | head -n1 | awk '{ split($5, a, "."); print a[1] "." a[2] "." a[3] "." a[4] }') # if you use macOS executor, you can uncomment this line, and comment the above line
-            echo $phone_home
-
-            echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /tmp/config.ovpn
-            printf "user\n$VPN_PASSWORD" &gt; /tmp/vpn.login
-            sudo openvpn --config /tmp/config.ovpn --auth-user-pass /tmp/vpn.login \
-              --route $phone_home 255.255.255.255 net_gateway \
-              --route 169.254.0.0 255.255.0.0 net_gateway<br>
+            echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /tmp/config.ovpn<br><br>            if grep auth-user-pass /tmp/config.ovpn; then<br>              if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then<br>                echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"<br>                exit 1<br>              else<br>                printf "$VPN_USER\\n$VPN_PASSWORD" &gt; /tmp/vpn.login<br>              fi<br>            fi<br><br>            #IMPORTANT: Include the following line and the `--route` options to exclude the connection from CircleCI and the link-local range<br>            phone_home="$(netstat -an | grep ':22 .*ESTABLISHED' | head -n1 | awk '{ split($5, a, ":"); print a[1] }')"<br>            echo $phone_home<br><br>            if grep auth-user-pass /tmp/config.ovpn; then
+              sudo openvpn --config /tmp/config.ovpn --auth-user-pass /tmp/vpn.login \
+                --route $phone_home 255.255.255.255 net_gateway \
+                --route 169.254.0.0 255.255.0.0 net_gateway &gt; /tmp/openvpn.log<br>            else<br>              sudo openvpn --config /tmp/config.ovpn \<br>                --route $phone_home 255.255.255.255 net_gateway \<br>                --route 169.254.0.0 255.255.0.0 net_gateway &gt; /tmp/openvpn.log<br>            fi<br>
       - run:
-          name: Wait for the connection to be established
-          command: sleep 30<br>
-      - run:
-          name: Check IP after VPN connection
-          command: |
-            ifconfig
-            route -n
-            sudo netstat -anp
-            cat /etc/resolv.conf
-            curl checkip.amazonaws.com
+          name: Wait for the connection to be established and check<br>          command: |<br>            while [ $(cat /tmp/openvpn.log|grep -c "<span>Initialization Sequence Completed</span>") == 0 ]; do<br>              echo "Attempting to connect..."<br>              sleep 1;<br>            done<br>            echo "VPN Connected"<br>            echo "Public IP is now $(curl checkip.amazonaws.com)"
 
       - run:
           name: Run commands in our infrastructure
@@ -64,7 +74,48 @@ jobs:
             # Another command<br><br>      - run:<br>          name: Disconnect from OpenVPN<br>          command: sudo killall openvpn || true<br>          when: always
 </pre>
 <p> </p>
-<h2 id="l2tp"><span>L2TP</span></h2>
+<h4 id="h_01F3TBTKPEDA8RBAQCVVZNG0T6"><strong>OpenVPN Connect (OpenVPN 3)</strong></h4>
+<ul>
+    <li>
+        <span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a>.</span><span><span><span><br></span></span></span><span><span><span></span></span></span>
+    </li>
+    <li><span>With OpenVPN 3 Linux, storing user credentials in a text-based file to use when starting a VPN connection is <strong>unsupported</strong>. Please refer to <a href="https://openvpn.net/openvpn-3-linux-and-auth-user-pass/" target="_blank" rel="noopener">this documentation (OpenVPN 3 Linux and --auth-user-pass)</a> to set up a workaround.</span></li>
+</ul>
+<pre style="background-color: #f3f3f3;">version: 2.1
+workflows:
+  btd:
+    jobs:
+      - build
+jobs:
+  build:
+    machine:
+      image: ubuntu-1604:202004-01
+    steps:
+      - run:
+          name: Install OpenVPN
+          command: |
+            sudo apt update &amp;&amp; sudo apt install apt-transport-https<br>            sudo wget https://swupdate.openvpn.net/repos/openvpn-repo-pkg-key.pub<br>            sudo apt-key add openvpn-repo-pkg-key.pub<br>            sudo wget -O /etc/apt/sources.list.d/openvpn3.list https://swupdate.openvpn.net/community/openvpn3/repos/openvpn3-xenial.list<br>            sudo apt update &amp;&amp; sudo apt install openvpn3<br>
+      - run:
+          name: Check IP before VPN connection
+          command: |
+            echo "Public IP before VPN connection is $(curl checkip.amazonaws.com)"<br>
+      - run:
+          name: VPN Setup
+          background: true
+          command: |
+            echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /tmp/config.ovpn
+<br>            #IMPORTANT: Include the following 3 lines to <span>exclude the link-local range</span><br>            phone_home="$(netstat -an | grep ':22 .*ESTABLISHED' | head -n1 | awk '{ split($5, a, ":"); print a[1] }')"<br>            echo $phone_home
+            echo -e "\nroute $phone_home 255.255.255.255 net_gateway" &gt;&gt; /tmp/config.ovpn<br>            echo "route 169.254.0.0 255.255.0.0 net_gateway" &gt;&gt; /tmp/config.ovpn<br>            <br>            #This will start the connection<br>            sudo openvpn3 session-start --config /tmp/config.ovpn &gt; /tmp/openvpn.log<br>
+      - run:
+          name: Wait for the connection to be established and check<br>          command: |<br>            while [ $(sudo openvpn3 sessions-list|grep -c "Client connected") == 0 ]; do<br>              echo "Attempting to connect..."<br>              sleep 1;<br>            done<br>            echo "VPN Connected"<br>            <br>            sudo openvpn3 sessions-list<br>            echo "Public IP is now $(curl checkip.amazonaws.com)"<br>
+      - run:
+          name: Run commands in our infrastructure
+          command: |
+            # A command
+            # Another command<br><br>      - run:<br>          name: Disconnect from OpenVPN<br>          command: |<br>            SESSION_PATH=$(sudo openvpn3 sessions-list | grep Path | awk -F': ' '{print $2}')<br>            echo $SESSION_PATH<br>            sudo openvpn3 session-manage --session-path $SESSION_PATH --disconnect<br>          when: always
+</pre>
+<p> </p>
+<h4 id="l2tp"><strong>L2TP</strong></h4>
 <p><span><span>To set up an L2TP VPN connection, we recommend referring to <a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients.md#configure-linux-vpn-clients-using-the-command-line" target="_blank" rel="noopener">this guide.</a></span></span><span><span></span></span></p>
 <p><span><span>We suggest storing <code>VPN_SERVER_IP</code>, <code>VPN_IPSEC_PSK</code>, <code>VPN_USER</code> and <code>VPN_PASSWORD</code> as <a href="https://circleci.com/docs/2.0/env-vars/" rel="noreferrer">environment variables</a>. Ideally, you might want to base64-encode <code>VPN_IPSEC_PSK</code> before storing it; you'll need to decode it during the build.</span></span></p>
 <p dir="auto">To retrieve the default gateway IP address during the build, you can use either of the following:</p>
@@ -72,4 +123,113 @@ jobs:
     <li type="disc"><code>default_gw_IP=$(netstat -r | grep default | awk '{ print $2 }')</code></li>
     <li type="disc"><code>default_gw_IP=$(ip route | grep default | awk '{ print $3 }')</code></li>
 </ul>
-<p><strong> Note that you must use the <code>machine</code> or <code>macOS</code> executor.</strong></p>
+<p> </p>
+<h2 id="h_01F3THFMEAY31K30ZKP3M0RVZ7">
+    <code>macos</code> executor (<a href="https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions" target="_blank" rel="noopener">Supported Xcode versions</a>)
+</h2>
+<ul>
+    <li>
+        <span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a>.</span><span><span><span><br></span></span></span><span><span><span></span></span></span>
+    </li>
+    <li><span>If the VPN client authentication is credentials-based (user-locked profile), you'll also need to add the username and password as environment variables (<code>VPN_USER</code> and <code>VPN_PASSWORD</code>).</span></li>
+</ul>
+<pre style="background-color: #f3f3f3;">version: 2.1
+workflows:
+  btd:
+    jobs:
+      - build
+jobs:
+  build:
+    macos:<br>      xcode: "12.2.0"
+    steps:
+      - run:
+          name: Install OpenVPN
+          command: |
+            <span>brew install openvpn</span><br>
+      - run:
+          name: Check IP before VPN connection
+          command: |
+            ifconfig
+            echo "Public IP before VPN connection is $(curl checkip.amazonaws.com)"<br>
+      - run:
+          name: VPN Setup
+          command: |
+            <span>echo $VPN_CONFIG | base64 --decode | tee /tmp/config.ovpn 1&gt;/dev/null</span><br>           <span> <br>            if grep auth-user-pass /tmp/config.ovpn; then<br>              if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then<br>                echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"<br>                exit 1<br>              else<br>                printf "$VPN_USER\\n$VPN_PASSWORD" &gt; /tmp/vpn.login<br>                sed -i config.bak 's|^auth-user-pass.*|auth-user-pass /tmp/vpn\.login|' /tmp/config.ovpn<br>              fi<br>            fi<br><br>            touch /tmp/openvpn.log</span>
+<br>            #IMPORTANT: Include the following 3 lines to <span>exclude the link-local range</span><br>            <span>phone_home="$(netstat -an | grep '\.2222\s.*ESTABLISHED' | head -n1 | awk '{ split($5, a, "."); print a[1] "." a[2] "." a[3] "." a[4] }')"<br></span>            echo $phone_home
+            echo -e "\nroute $phone_home 255.255.255.255 net_gateway" | tee -a /tmp/config.ovpn<br>            echo "route 169.254.0.0 255.255.0.0 net_gateway" | tee -a /tmp/config.ovpn<br>            <br>            cat \&lt;&lt; EOF | sudo tee /Library/LaunchDaemons/org.openvpn.plist 1&gt;/dev/null<br>            &lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>            &lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;<br>            &lt;plist version="1.0"&gt;<br>            &lt;dict&gt; <br>                &lt;key&gt;Label&lt;/key&gt;<br>                &lt;string&gt;org.openvpn&lt;/string&gt;<br>                &lt;key&gt;Program&lt;/key&gt;<br>                  &lt;string&gt;/usr/local/sbin/openvpn&lt;/string&gt;<br>                &lt;key&gt;ProgramArguments&lt;/key&gt;<br>                  &lt;array&gt;<br>                    &lt;string&gt;--config&lt;/string&gt;<br>                    &lt;string&gt;/tmp/config.ovpn&lt;/string&gt;<br>                  &lt;/array&gt;<br>                &lt;key&gt;RunAtLoad&lt;/key&gt;<br>                  &lt;false/&gt;<br>                &lt;key&gt;TimeOut&lt;/key&gt;<br>                  &lt;integer&gt;90&lt;/integer&gt;<br>                &lt;key&gt;StandardErrorPath&lt;/key&gt;<br>                  &lt;string&gt;/tmp/openvpn.log&lt;/string&gt;<br>                &lt;key&gt;StandardOutPath&lt;/key&gt;<br>                  &lt;string&gt;/tmp/openvpn.log&lt;/string&gt;<br>                &lt;key&gt;KeepAlive&lt;/key&gt;<br>                 &lt;true/&gt;<br>              &lt;/dict&gt;<br>              &lt;/plist&gt;<br>              EOF<br>              ifconfig<br>              echo "Public IP before VPN connection is &gt; $(curl <a href="http://checkip.amazonaws.com)%22">http://checkip.amazonaws.com)"</a><br><br>              #This will start the connection<br>              sudo launchctl load /Library/LaunchDaemons/org.openvpn.plist<br>              sudo launchctl start org.openvpn<br>
+      - run:
+          name: Wait for the connection to be established and check<br>          command: |<br>            while [ $(cat /tmp/openvpn.log|grep -c "<span>Initialization Sequence Completed</span>") == 0 ]; do<br>              echo "Attempting to connect..."<br>              sleep 1;<br>            done<br>            echo "VPN Connected"<br>         <br>            sudo launchctl list | grep openvpn<br>            echo "Public IP is now $(curl checkip.amazonaws.com)"<br>
+      - run:
+          name: Run commands in our infrastructure
+          command: |
+            # A command
+            # Another command<br><br>      - run:<br>          name: Disconnect from OpenVPN<br>          command: <span>sudo launchctl stop org.openvpn</span><br>          when: always
+</pre>
+<p><strong> </strong></p>
+<h2 id="h_01F7XH9G40MXW14H2GFHRD8XXJ">
+    <code>windows</code> executor (<a href="https://circleci.com/docs/2.0/hello-world-windows/#windows-executor-images" target="_blank" rel="noopener">Windows executor images</a>)
+</h2>
+<ul>
+    <li><span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a>.</span></li>
+    <li>
+        <span>If the VPN client authentication is credentials-based (user-locked profile), you'll also need to add the username and password as environment variables (<code>VPN_USER</code> and <code>VPN_PASSWORD</code>).</span><span><span><span><br></span></span></span><span><span><span></span></span></span>
+    </li>
+</ul>
+<pre style="background-color: #f3f3f3;">version: 2.1
+
+orbs:
+  win: circleci/windows@2.2.0
+  
+workflows:
+  btd:
+    jobs:
+      - build
+jobs:
+  build:
+    executor:
+      name: win/default
+      shell: bash.exe
+      
+    steps:
+      - run:
+          name: Install OpenVPN
+          shell: powershell.exe
+          command: |
+            Invoke-WebRequest -Uri "https://swupdate.openvpn.org/community/releases/OpenVPN-2.5.2-I601-amd64.msi" -OutFile "OpenVPN-2.5.2-I601-amd64.msi"
+            msiexec /i OpenVPN-2.5.2-I601-amd64.msi /qn
+            
+      - run:
+          name: Check IP before VPN connection
+          command: echo "Public IP before VPN connection is $(curl checkip.amazonaws.com)"
+          
+      - run:
+          name: VPN Setup
+          command: |<br>            <span>echo $VPN_CONFIG | base64 --decode &gt; /C/PROGRA~1/OpenVPN/config/config.ovpn</span>
+
+            if grep auth-user-pass "/C/PROGRA~1/OpenVPN/config/config.ovpn"; then<br>              if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then<br>                echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"<br>                exit 1<br>              else<br>                printf "$VPN_USER\\n$VPN_PASSWORD" &gt; /C/PROGRA~1/OpenVPN/config/vpn.login<br>                sed -i 's|^auth-user-pass.*|auth-user-pass vpn\.login|' /C/PROGRA~1/OpenVPN/config/config.ovpn<br>              fi<br>            fi
+            
+            phone_home=$(netstat -an | grep ':22 .*ESTABLISHED' | head -n1 | awk '{ split($3, a, ":"); print a[1] }')
+            echo -e "\nroute $phone_home 255.255.255.255 net_gateway" | tee -a "/C/PROGRA~1/OpenVPN/config/config.ovpn"<br>            echo "route 169.254.0.0 255.255.0.0 net_gateway" | tee -a "/C/PROGRA~1/OpenVPN/config/config.ovpn"<br>            <br>            #Create and start the OpenVPN service<br><span>            sc.exe create "OpenVPN" binPath= "C:\PROGRA~1\OpenVPN\bin\openvpnserv.exe"</span><br>            <span>net start "OpenVPN"</span>
+        
+            
+      - run:
+          name: Wait for the connection to be established and check
+          command: |
+            while [ $(cat <span>/C/PROGRA~1/OpenVPN/log/config.log</span>|grep -c "Initialization Sequence Completed") == 0 ]; do
+              echo "Attempting to connect..."
+              sleep 1;
+            done
+            echo "VPN Connected"
+            echo "Public IP is now $(curl checkip.amazonaws.com)"
+
+      - run:
+          name: Run commands in our infrastructure
+          command: |
+            # A command
+            # Another command
+            
+      - run:
+          name: Disconnect from OpenVPN
+          command: <span>net stop "OpenVPN"</span>
+          when: always
+</pre>

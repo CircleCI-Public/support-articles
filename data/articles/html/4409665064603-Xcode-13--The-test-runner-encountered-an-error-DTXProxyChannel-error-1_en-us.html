@@ -1,0 +1,10 @@
+<p><span>If you upgrade to Xcode 13 and use iPhone mini as a test device, you may encounter an error similar to:</span></p>
+<pre class="css-1uk2jcu"><span>The test runner encountered an error (Failed to establish communication with the test runner.If you believe this error represents a bug, please attach the result bundle at /Users/distiller/Library/Developer/Xcode/DerivedData/XXX.xcresult. (Underlying Error: The operation couldn’t be completed. (DTXProxyChannel error 1.)))</span></pre>
+<p><span>Apple released a fix with Xcode 13.2 for this issue, and to resolve it you can change your config on CircleCI to the following:</span> <code>xcode: "13.2.0"</code>.</p>
+<p><span>Please refer to the Xcode release notes for more details:</span></p>
+<blockquote dir="ltr">
+    <p dir="auto">Resolved an issue that prevents iPhone mini simulators from launching in Virtual Machines that don’t support Metal pass-through. (83663966) (FB9663296)</p>
+    <p dir="auto"><a href="https://developer.apple.com/documentation/xcode-release-notes/xcode-13_2-release-notes#Simulator" rel="noreferrer">https://developer.apple.com/documentation/xcode-release-notes/xcode-13_2-release-notes#Simulator</a></p>
+</blockquote>
+<p><span>Additional information regarding the CircleCI Xcode 13.2 Beta 1 Release can be found here:</span></p>
+<p><a href="https://discuss.circleci.com/t/xcode-13-2-beta-1-released/41748" target="_self">https://discuss.circleci.com/t/xcode-13-2-beta-1-released/41748</a></p>

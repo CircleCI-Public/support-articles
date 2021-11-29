@@ -1,0 +1,17 @@
+<p>CircleCI Dynamic Configs, formally known as Setup Workflows, allows for a maximum of 1 workflows in the initial setup workflow. So if `setup: true` is set then the following config would be invalid:<br><br></p>
+<pre>workflows:
+  one:
+    jobs:
+      - unit-tests
+  two:
+    jobs:
+      - integration-tests
+  </pre>
+<p>Customers can work around this by trying to combine both workflows into a single workflow:</p>
+<pre>workflows:
+  one:
+    jobs:
+      - unit-tests
+      - inegration-tests</pre>
+<p> </p>
+<p><strong>Note</strong>: More than one workflow can be defined within a dynamic config, and the above error can be avoided as long as conditional parameters are set so that only one workflow will be executed.</p>

@@ -1,0 +1,23 @@
+<p>When sending requests to <a href="https://circleci.com/docs/api/v2/#circleci-api" target="_blank" rel="noopener">CircleCI API v2</a> endpoints, you might receive a <code>404</code> response. Depending on which endpoint you're using at the time you could get any of the following response:</p>
+<ul>
+    <li><code>{"message" : "Not Found"}</code></li>
+    <li><code>{"message" : "Pipeline not found"}</code></li>
+    <li><code>{"message" : "Project not found"}</code></li>
+    <li><code>{"message" : "Workflow not found"}</code></li>
+</ul>
+<h3> </h3>
+<h3>Incorrect path</h3>
+<p>The response <code>{"message" : "Not Found"}</code> indicates that the URL path you specified is incorrect, specifically the endpoint path.</p>
+<p>In case you receive this response, make sure that there are no typos in the endpoint path. (ex: <em>"https://circleci.com/api/v2/<strong><span class="wysiwyg-underline">wok</span>flow</strong>"</em> instead of <em>"https://circleci.com/api/v2/<strong><span class="wysiwyg-underline">work</span>flow</strong>"</em>)</p>
+<p> </p>
+<h3>Use of a project API token instead of a personal API token</h3>
+<p>Depending on the endpoint, the responses <code>{"message" : "Project not found"}</code> , <code>{"message" : "Pipeline not found"}</code> or <code>{"message" : "Workflow not found"}</code> can happen when you're authenticating your API call using a <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-project-api-token" target="_blank" rel="noopener">project API token</a> as opposed to a <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener">personal API token</a>.</p>
+<p><span>Project tokens are currently not supported on API v2. Any token found under <em>"Project Settings &gt; API Permissions" </em>is a project API token, regardless of the scope you assigned to it.</span></p>
+<p><span>For any request made via <strong>CircleCI API v2</strong> endpoints, make sure to use <strong>personal API tokens</strong>.</span></p>
+<p><span>In case the API token is likely to be shared across your team, we recommend <a href="https://circleci.com/docs/2.0/gh-bb-integration/#controlling-access-via-a-machine-user" target="_blank" rel="noopener">creating a machine-user</a> and generating and personal API token for that machine-user.</span><span></span></p>
+<p> </p>
+<h3><span>Incorrect project name, pipeline ID or workflow ID</span></h3>
+<p><span>You API request will also returns a <code>{"message" : "Project not found"}</code> , <code>{"message" : "Pipeline not found"}</code> or <code>{"message" : "Workflow not found"}</code> response if the project name, pipeline ID or workflow ID specified in the endpoint path is invalid (incorrect or truncated).</span></p>
+<p><span>If you're using an environment variable to specify the project name, pipeline ID or workflow ID in your API call, make sure the related environment variable is properly populated.</span></p>
+<p> </p>
+<p> </p>

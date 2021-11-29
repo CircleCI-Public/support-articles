@@ -1,0 +1,20 @@
+<p dir="auto"><span>When build artifacts with the extensions <strong>appx</strong> and <strong>nupkg</strong> are uploaded, <strong>build-agent</strong> recognizes them as <strong>zip</strong> files due to them technically being the same, and will automatically attach a content type of <strong>application/zip</strong>. <strong>build-agent</strong> uses the following go package to determine the <strong>MIME</strong> type:</span></p>
+<blockquote dir="ltr">
+    <p dir="auto"><a href="https://golang.org/pkg/mime/#TypeByExtension" rel="noreferrer">https://golang.org/pkg/mime/#TypeByExtension</a></p>
+</blockquote>
+<p dir="auto">There is a workaround by specifying the content type in<span> </span><code>/etc/mime.types</code><span> </span>file <span>or for the Windows executor, a modification in the registry is necessary</span><span>. This configuration allows <strong>appx</strong> and <strong>nupkg</strong> files to retain the content type of</span><span> </span><code>application/octet-stream</code>. </p>
+<p dir="auto"> </p>
+<h2 dir="auto">Windows</h2>
+<pre dir="ltr"><code>      - run:
+          name: Adding MIME types for MSIX
+          shell: powershell.exe
+          command: |
+            reg add HKCR\.appx /v "Content Type" /t REG_SZ /d "application/vns.ms-appx"
+            reg add HKCR\.nupkg /v "Content Type" /t REG_SZ /d "application/vns.ms-appx"
+</code></pre>
+<h2 dir="auto">Linux</h2>
+<pre dir="ltr"><code>      - run:<br><span>          name: Adding MIME types</span><span> </span>
+          command: |
+            sudo bash -c "echo 'application/octet-stream nupkg' &gt;&gt; /etc/mime.types"
+            sudo bash -c "echo 'application/octet-stream appx' &gt;&gt; /etc/mime.types"</code></pre>
+<p> </p>

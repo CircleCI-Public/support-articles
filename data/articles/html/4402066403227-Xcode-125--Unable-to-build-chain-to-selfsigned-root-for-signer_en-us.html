@@ -1,0 +1,13 @@
+<p>If you are utilizing our macOS executors and building on Xcode 12.5+ and not using Fastlane match for your signing, you may encounter an error that looks like:</p>
+<pre style="background-color: #f3f3f3;"><span>Warning: unable to build chain to self-signed root for signer "Apple Development: XXXXXXX"</span></pre>
+<p>By default, we have the proper certificates on the image, however, if you aren't using the <code>setup_circle_ci</code> task in your Fastfile and <a href="https://circleci.com/docs/2.0/testing-ios/#code-signing-with-fastlane-match" target="_blank" rel="noopener">Fastlane match</a> then they won't be properly applied to your build.</p>
+<p>You have two options for resolving this issue, the first would be to follow the above documentation and implement Fastlane match.</p>
+<p>If the above isn't an option, then you can update your Fastfile to include the following:</p>
+<pre style="background-color: #f3f3f3;">import_certificate(
+certificate_path: "AppleWWDRCAG3.cer",
+keychain_path: "/Users/distiller/Library/Keychains/fastlane_tmp_keychain-db",
+keychain_password: ""
+)</pre>
+<p dir="auto">Then download the certificate from the following:</p>
+<p dir="auto"><a href="https://developer.apple.com/support/expiration/" rel="noreferrer">https://developer.apple.com/support/expiration/</a></p>
+<p dir="auto">Then include it in the project's root. Afterward, it can be imported into the temp Fastlane keychain.</p>

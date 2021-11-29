@@ -1,0 +1,20 @@
+<p>Ubuntu 20.04 images set <code>$BASH_ENV</code> in a way that they can not be overridden via the <code>environment</code> parameter.</p>
+<p>For example, the following with not change the <code>$PATH</code></p>
+<p> </p>
+<pre>steps:
+  - run:
+      environment:
+        PATH: /usr/local/bin
+</pre>
+<pre>jobs:
+  build:
+    environment:
+        PATH: /usr/local/bin
+</pre>
+<p>To work around this issue, customers can add an export step at the top of the <code>run</code> step where the environment variable is used</p>
+<pre>- run: |
+    export PATH=/usr/local/bin
+    # additional commands
+</pre>
+<p> </p>
+<p> </p>

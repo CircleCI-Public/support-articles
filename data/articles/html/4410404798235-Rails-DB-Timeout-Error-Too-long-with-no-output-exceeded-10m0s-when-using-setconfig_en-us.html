@@ -1,0 +1,6 @@
+<p><span>When using rails, if you use a <code>DB load</code> on one of the commands that are run as part of the command for <code>set_config [enter key press]</code> -- this will not be handled correctly by <code>less</code>.</span></p>
+<p><span style="font-weight: 400;">Due to the default environment variable for <code>PAGER</code> being <code>less</code>, the enter key is not handled so the output prints <code>set_config ;0;0t</code> and the second part is not interpreted as an enter key press so the system does not continue.</span></p>
+<p><span style="font-weight: 400;">As CircleCI is set to stop when no output is seen for 10 minutes by default, the error seen is: <code>Error: Too long with no output (exceeded 10m0s)</code> as the output was waiting for user input.</span></p>
+<p><span style="font-weight: 400;">To be able to resolve this, you can override the program being used by <code>PAGER</code> using the code snippet given below:</span></p>
+<pre style="background-color: #f3f3f3;">jobs:<br>    build:<br>        docker:<br>          - image: MY_APP_IMAGE<br>            environment:<br>              PAGER: cat</pre>
+<p><span style="font-weight: 400;">Once this has been set the enter keypress is handled correctly and the config is able to complete without hanging.</span></p>

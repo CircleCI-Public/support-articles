@@ -3,5 +3,5 @@
 error: error in sideband demultiplexer</pre>
 <p>This can be resolved by manually resetting the Git repository on Heroku.</p>
 <p>With the <a href="https://devcenter.heroku.com/articles/heroku-cli" target="_self">Heroku CLI client</a>, install the <a href="https://github.com/heroku/heroku-repo" target="_self">heroku-repo plugin</a> and clear the repository on Heroku. Then push a fresh empty commit to Heroku.</p>
-<pre>heroku plugins:install heroku-repo<br>heroku repo:reset -a example-app<br>git commit --allow-empty -m "Reset Heroku Repository"<br>git push heroku master<br>git push origin master</pre>
+<pre>heroku plugins:install heroku-repo<br>heroku repo:reset -a example-app<br>git commit --allow-empty -m "Reset Heroku Repository"<br>git push heroku main<br>git push origin main</pre>
 <p> </p>

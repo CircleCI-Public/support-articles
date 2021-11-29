@@ -1,0 +1,16 @@
+<p><span class="wysiwyg-font-size-medium">If when you're <strong>unable to follow a project</strong> and see a pop-up error or if, in some instances, nothing happens.</span></p>
+<ol>
+    <li><span class="wysiwyg-font-size-medium">Open your<strong> browser console</strong>.</span></li>
+    <li><span class="wysiwyg-font-size-medium">Check if the <strong>following errors</strong> are present:</span></li>
+</ol>
+<pre class="wysiwyg-indent2" style="background-color: #f3f3f3;"><span class="wysiwyg-color-red">POST https://circleci.com/api/v1.1/project/gh/&lt;your_<em>organization</em>&gt;/&lt;your_<em>project</em>&gt;/follow 422 (Unprocessable Entity)
+</span></pre>
+<p><em><strong>Note</strong>: In the above error message, <code>&lt;your_organization&gt;</code> will be replaced with your organization name and <code>&lt;your_project&gt;</code> will be replaced by the name of the project you're trying to follow.</em></p>
+<pre class="wysiwyg-indent2" style="background-color: #f3f3f3;"><span class="wysiwyg-color-red">Uncaught (in promise) Error: {"message":"{\"message\":\"Validation Failed\",\"errors\":[{\"resource\":\"Hook\",\"code\":\"custom\",\"message\":\"Hook already exists on this repository\"}],\"documentation_url\":\"https://docs.github.com/rest/reference/repos#update—a—repository—webhook\"}"}</span></pre>
+<p><span class="wysiwyg-font-size-medium">If you do see the above errors, this suggests the presence of multiple CircleCI webhooks in the related repository settings.</span></p>
+<p><span class="wysiwyg-font-size-medium"><strong>To resolve the issue:</strong></span></p>
+<ol>
+    <li><span class="wysiwyg-font-size-medium"> Go to the <strong>"Webhooks" </strong>section of the corresponding<strong> GitHub repository settings </strong>&gt; <em>https://github.com/&lt;ORG&gt;/&lt;REPO&gt;/settings/hooks</em>.</span></li>
+    <li><span class="wysiwyg-font-size-medium"> Delete any additional CircleCI webhook so that <span class="wysiwyg-underline">only one remains</span>.</span></li>
+</ol>
+<p><em><span class="wysiwyg-font-size-medium"><strong>Important note</strong>: the webhook we're referring to above is the CircleCI webhook in the GitHub repository settings. It is completely distinct from any webhook you configured in the CircleCI UI under Project Settings &gt; Webhooks.</span></em></p>

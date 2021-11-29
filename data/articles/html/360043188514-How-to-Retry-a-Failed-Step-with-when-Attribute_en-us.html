@@ -12,6 +12,8 @@
     </li>
 </ol>
 <p> </p>
+<p><mark><strong>Note</strong>: CircleCI does not support automatic retries of failed steps, jobs &amp; workflows. If you are looking for that feature, please vote for it <a href="https://ideas.circleci.com/cloud-feature-requests/p/support-automatic-retry-of-failed-builds" target="_blank" rel="noopener">here</a>.</mark></p>
+<p> </p>
 <h2>Retrying a Failed Step</h2>
 <p>By default, CircleCI will execute job steps one at a time, in the order that they are defined in <code class="highlighter-rouge">config.yml</code>, until a step fails (returns a non-zero exit code). After a command fails, no further job steps will be executed.</p>
 <p>Adding the <code class="highlighter-rouge">when</code> attribute to a job step <span class="wysiwyg-underline">allows you to override this default behaviour,</span> and selectively run or skip steps depending on the status of the job.</p>
@@ -45,7 +47,7 @@ jobs:
           when: on_fail</pre>
 <p> </p>
 <p><strong>Note</strong>: You can use the same command in the next step (with when attribute), to retry it or any other command. Users can also use API endpoints to <a href="https://circleci.com/docs/api/#retry-a-build" target="_blank" rel="noopener">retry a build</a>. The above is just an example to show the working of <code>when</code> attribute.</p>
-<p>The below<strong> </strong>screenshot shows the triggering of step containing "<strong>when"</strong> attribute when previous step fails.<strong> </strong></p>
+<p>The below<strong> </strong>screenshot shows the triggering of the step containing "<strong>when"</strong> attribute when previous step fails.<strong> </strong></p>
 <center><img src="https://support.circleci.com/hc/article_attachments/360059295453/when_exit1.png" alt="when attribute CircleCI - fail" width="549" height="487"></center>
 <p><strong>Note</strong>: The state of the workflow, in this case, will be <strong>FAILED.</strong></p>
 <p> </p>

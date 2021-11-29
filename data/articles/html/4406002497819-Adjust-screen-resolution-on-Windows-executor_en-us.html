@@ -1,0 +1,15 @@
+<p>There are situations where you may want to increase (or decrease) the screen resolution within the Windows VM for testing purposes.</p>
+<p>This can be done directly in the job with a<span> </span><code>run</code><span> </span>step, like the following:</p>
+<pre style="background-color: #f3f3f3;">- run:
+    name: Restart local mstsc
+    command: psexec64.exe -accepteula -nobanner -i 0 mstsc /v:localhost /w:3840 /h:2160 # 4K!
+    background: true
+- run:
+    name: Naive impl to wait until the screen stretches
+    command: Start-Sleep 5</pre>
+<p>The above would set the resolution to<span> 3840</span><span>x2160 -- you can verify this is the case with the following <code>run</code> command:</span></p>
+<pre style="background-color: #f3f3f3;">- run:
+    name: Get screen info
+    command: |
+      Add-Type -AssemblyName System.Windows.Forms
+      [System.Windows.Forms.Screen]::AllScreens | fl *</pre>

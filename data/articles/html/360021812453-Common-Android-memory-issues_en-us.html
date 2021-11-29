@@ -1,7 +1,7 @@
-<h4>These tips can help reduce the memory footprint during your Android builds.</h4>
-<h3>Emulators</h3>
+<p><span class="wysiwyg-font-size-medium">These tips can help reduce the memory footprint during your Android builds.</span></p>
+<h3 id="emulators"><a href="#emulators" target="_self">Emulators</a></h3>
 <p class="wysiwyg-indent4">They don't work reliably within the cloud environment regardless of memory configuration. We have some workarounds <a href="https://support.circleci.com/hc/en-us/articles/360000028928-Testing-with-Android-emulator-on-CircleCI-2-0" target="_blank" rel="noopener">available here</a></p>
-<h3>Java</h3>
+<h3 id="java"><a href="#java" target="_self">Java</a></h3>
 <p>Start with limiting the <a class="external-link" href="https://www.yourkit.com/docs/kb/sizes.jsp" rel="nofollow">Java heap size</a>. There are <a class="external-link" href="https://stackoverflow.com/questions/28327620/difference-between-java-options-java-tool-options-and-java-opts" target="_self" rel="nofollow">several envars</a> to do this.</p>
 <ul>
     <li>
@@ -9,7 +9,7 @@
     </li>
     <li>_<strong>JAVA_OPTIONS: -Xmx3g </strong>tells Java the heap size cannot grow larger than 3GB which is 75% of the default <strong>medium resource class</strong>. If there are many other services running in the job, you might want to go with <strong>2GB </strong>which leaves more room for other services.</li>
 </ul>
-<h3>Gradle</h3>
+<h3 id="gradle"><a href="#gradle" target="_self">Gradle</a></h3>
 <ol>
     <li>Make sure they are running Gradle with <strong>--no-daemon</strong>. The <a class="external-link" href="https://docs.gradle.org/current/userguide/command_line_interface.html#gradle_daemon_options" rel="nofollow">daemon runs by default </a>and is helpful when running locally as it speeds up recompilation.<br>This is not needed in continuous integration since every compilation is fresh. It takes up more memory for no benefit. You can pass <strong>--no-daemon</strong> directly to the <em>gradlew</em> script or set <strong>org.gradle.daemon=false</strong> in your <strong>gradle.properties</strong> file.<br><br>
     </li>
@@ -17,7 +17,7 @@
         <pre>testOptions {<br> unitTests.all {<br>  maxHeapSize = "1024m"<br> }<br>}</pre>
     </li>
 </ol>
-<h3>Kotlin</h3>
+<h3 id="kotlin"><a href="#kotlin" target="_self">Kotlin</a></h3>
 <p class="wysiwyg-indent4">By default, Kotlin will spawn a daemon alongside Gradle. This is similar to the Gradle daemon and <a class="external-link" href="https://stackoverflow.com/questions/50138863/why-does-my-kotlin-gradle-build-die-with-exit-code-137" rel="nofollow">isn't necessary for CI</a>.<br>Kotlin can be told to run within the same memory allocation as Gradle by setting <strong>GRADLE_OPTS=-Dkotlin.compiler.execution.strategy=in-process</strong></p>
 <p> </p>
 <p><em><span class="wysiwyg-underline">Note</span>: If you're still hitting memory issues, consider increasing the <a href="https://circleci.com/docs/2.0/configuration-reference/#resource_class" target="_self">resource class</a>.</em></p>

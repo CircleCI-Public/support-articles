@@ -1,4 +1,7 @@
 <p>Signing for iOS apps may start failing from 2 September 2020 due to code-signing requiring the new, updated WWDR Intermediate Certificate. Many of the Xcode images that CircleCI provides were created before the new certificate was issued and as such require the certificate to be installed during the job. More information about the WWDR Intermediate Certificate expiration can be found <a href="https://developer.apple.com/support/expiration/" target="_self">on Apple's developer support website</a></p>
-<p>Currently, Fastlane and Xcode do not handle this correctly for the CircleCI environment and in most cases attempting Enterprise iOS code signing will fail.</p>
-<p>To mitigate this, please add the following steps to your job to download and install the new certificate into the system keychain:</p>
+<p>In most cases, Fastlane and Xcode will install this new certificate automatically. Please ensure you are running the latest version of Fastlane in your job by installing any updates via your Gemfile with Bundler.</p>
+<p> </p>
+<p>If you do face issues, even with the latest Fastlane version installed in the job VM, you can add this manually by adding the following commands to your job config:</p>
 <pre>- run: curl https://www.apple.com/certificateauthority/AppleWWDRCAG3.cer -o AppleWWDRCAG3.cer<br>- run: sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain AppleWWDRCAG3.cer</pre>
+<p><strong>NOTE: The above workaround is only applicable to Xcode 12.4 images and lower</strong></p>
+<p>If you are using Xcode 12.5 or higher and are still facing this issue after updating Fastlane, please submit a support ticket linking us to the relevant builds for investigation.</p>

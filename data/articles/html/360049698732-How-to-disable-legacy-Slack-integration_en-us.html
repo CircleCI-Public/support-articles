@@ -1,5 +1,6 @@
-<p>If you have the legacy Slack Integration enabled and would like to disable you can use the following API. Replacing {vcs} (github or bitbucket), {org}, and {project} where appropriate. This API will disable your legacy Slack integration. You will need to create and pass <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_self">the Personal API Token</a> in "Circle Token" header in order to authenticate the API call.</p>
-<pre>curl -X PUT 'https://circleci.com/api/v1.1/project/{vcs}/{org}/{project}/settings" \<br>  -H 'Content-Type: application/json' \<br>  -H "Circle-Token: $CIRCLE_TOKEN" \<br>  --data-binary '{"slack_webhook_url":""}'</pre>
-<p>You can check that if it indeed disabled your legacy Slack Integration with following.</p>
-<pre>curl -X GET -H "Circle-Token: $CIRCLE_TOKEN" 'https://circleci.com/api/v1.1/project/{vcs}/{org}/{project}/settings' | jq '.slack_webhook_url'</pre>
+<p>If you have the legacy Slack Integration enabled and would like to disable it, you can use the following API request to remove the Slack webook URL from your project settings.</p>
+<p>This API call will disable your legacy Slack integration. You will need to create and pass <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_self">the Personal API Token</a> in "Circle Token" header in order to authenticate the API call:<br><em>Note: Replace {vcs} (github or bitbucket), {org}, and {project} with the appropriate values.</em></p>
+<pre style="background-color: #f3f3f3;">curl -X PUT 'https://circleci.com/api/v1.1/project/{vcs}/{org}/{project}/settings' \<br>  -H 'Content-Type: application/json' \<br>  -H "Circle-Token: $CIRCLE_TOKEN" \<br>  --data-binary '{"slack_webhook_url":""}'</pre>
+<p>You can check that the legacy Slack Integration is indeed disabled with following:</p>
+<pre style="background-color: #f3f3f3;">curl -X GET -H "Circle-Token: $CIRCLE_TOKEN" 'https://circleci.com/api/v1.1/project/{vcs}/{org}/{project}/settings' | jq '.slack_webhook_url'</pre>
 <p>It will return a blank string if the legacy Slack Integration has been disabled successfully.</p>

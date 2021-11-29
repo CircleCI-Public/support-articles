@@ -1,0 +1,13 @@
+<p>If you have a build fail with the error message "<span>We were unable to run this job. Please check your configuration and try again." it could be from a few sources.</span></p>
+<p><span><img src="https://support.circleci.com/hc/article_attachments/4409352110619/Screen_Shot_2021-11-01_at_12.03.48_PM.png" alt="Screen_Shot_2021-11-01_at_12.03.48_PM.png"></span></p>
+<h2><span>Active Incident</span></h2>
+<p><span>This error can occur if we are currently having an issue with the CircleCI service, so if you are getting this error and there is a current active incident that is the likely cause:</span></p>
+<p><a href="https://status.circleci.com/">https://status.circleci.com/</a></p>
+<p>However, if you need confirmation feel free to <a href="https://support.circleci.com/hc/en-us/requests/new" target="_blank" rel="noopener">reach out to the support team</a> to confirm that is the root cause.</p>
+<h2>Error from GitHub checks API endpoint</h2>
+<p>If you are utilizing <a href="https://circleci.com/docs/2.0/enable-checks/#checks-status-reporting" target="_blank" rel="noopener">status checks</a> with your CircleCI workflows, we continually send API calls to GitHub to report the status of your workflow as it progresses. However, the GitHub checks API endpoint has a <code>65535</code> character limit on the <code>output</code> key:</p>
+<p><a href="https://github.com/github/docs/issues/3765">https://github.com/github/docs/issues/3765</a></p>
+<p>With the above, if you have a large number of jobs in your workflow -- or very long job names -- you may hit this character limit. If you do, you'll see the above-mentioned error, and if you need confirmation you can <a href="https://support.circleci.com/hc/en-us/requests/new" target="_blank" rel="noopener">reach out to the support team</a>.</p>
+<p>For each job, a status check is made, and the job name is included and contributes to the character limit. One way to work around this error is to consolidate jobs, or shorten job names, to be below the character limit.</p>
+<p>Another option would be to <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/" target="_blank" rel="noopener">utilize parallelism</a> where you can run multiple containers in a single job, as only a single check will be made of that job.</p>
+<p> </p>

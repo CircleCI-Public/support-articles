@@ -1,0 +1,9 @@
+<p><code>circleci tests split</code> can output the following warning:</p>
+<pre>Error reading historical timing data: file does not exist</pre>
+<p>This can happen for several reasons including, but not limited to:</p>
+<ol>
+    <li>The <a href="https://circleci.com/docs/2.0/configuration-reference/#parallelism" target="_self">job parallelism</a> is set to 1. Parallelism needs to be set to at least 2 to generate and attach historical timing data</li>
+    <li>The test splitting job has not had a successful test run that generated the appropriate JUnit XML or Cucumber JSON formatted test results file</li>
+    <li>The test results files are not stored via <a href="https://circleci.com/docs/2.0/collect-test-data/" target="_self">store_test_results</a>
+    </li>
+</ol>

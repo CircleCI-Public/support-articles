@@ -1,8 +1,0 @@
-<p>You might experience builds that are pull requests not running with the error message "This project is configured to only run builds that have open pull requests associated with them. Update the <a href="https://circleci.com/gh/UrbanCompass/uc-frontend/edit#advanced-settings">'Only build pull requests'</a> setting to run this build." </p>
-<p>This happens due to a race condition when a branch is created and a pull request is opened simultaneously. CircleCI will receive notification the branch was created, and will not run the build because it is not a pull request. We will then recieve a second notification of a pull request being opened, with the same commit hash. Since we will never run the same commit hash twice, the build is updated in the UI, but never ran.</p>
-<p>To ensure this doesn't happen to builds with "Only build pull requests" turned on, you can disable the "Branch or tag creation" setting in Github. This will ensure that the only webhooks we receive are when the pull request is open.</p>
-<p> </p>
-<p>How to find your webhook settings: <a href="https://support.circleci.com/hc/en-us/articles/360021511153-How-to-view-your-GitHub-WebHook-deliveries">https://support.circleci.com/hc/en-us/articles/360021511153-How-to-view-your-GitHub-WebHook-deliveries</a></p>
-<p> </p>
-<p>Find this option, and uncheck the box.</p>
-<p><img src="https://support.circleci.com/hc/article_attachments/360043883474/Screen_Shot_2019-08-16_at_4.33.15_PM.png" alt="Screen_Shot_2019-08-16_at_4.33.15_PM.png"></p>
