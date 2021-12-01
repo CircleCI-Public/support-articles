@@ -1,0 +1,42 @@
+<p dir="auto">If you would like to create a ramdisk within CircleCI you can use the windows program <code>imdisk</code><span> which can be installed using the</span><span> </span><a href="https://chocolatey.org/" rel="noreferrer">chocolatey package manager</a><span> </span>which comes preinstalled with the Windows executor.</p>
+<p dir="auto">Below you will find an example config.yml which will install the<span> </span><code>imdisk</code><span> </span>software and then create a ramdisk within the executor.</p>
+<p dir="auto">The issue is that the ramdisk will not be persistent as it will be removed once the machine is stopped.</p>
+<pre dir="ltr" style="background-color: #f3f3f3;">version: 2.1
+
+orbs:
+  win: circleci/windows@2.2.0
+
+jobs:
+  build:
+    executor:
+      name: win/default
+      shell: powershell.exe
+    steps:
+      - checkout
+      - run: systeminfo
+      - run:
+          name: "Install imdisk"
+          shell: powershell.exe
+          command: |
+            choco install imdisk
+      - run:
+          name: "Imdisk"
+          command: |
+            imdisk -a -s 512M -m X: -p "/fs:ntfs /q /y"</pre>
+<p><code>choco install imdisk</code> will install the imdisk software.</p>
+<p>A breakdown of the <code>imdisk</code> command from the config.yml is given below:</p>
+<ul>
+    <li>
+        <span>-a</span><span> </span>initializes the virtual disk.
+    </li>
+    <li>
+        <span>-s 512M</span><span> </span>is the size,<span> </span><span>512 M</span>egaBytes.<br>The full choices are b, k, m, g, t, K, M, G, or T.<br>These denote a number of 512-byte blocks, thousand bytes, million bytes, billion bytes, trillion bytes, KB, MB, GB, and TB, respectively.
+    </li>
+    <li>
+        <span>-m X:</span><span> </span>sets up the mount point a.k.a. the drive letter,<span> </span><span>X:</span>.
+    </li>
+    <li>
+        <span>-p "fs:ntfs /q /y"</span><span> </span>formats the drive.<br><span>-p</span>'s parameters are actually for Windows'<span> </span><span>format</span><span> </span>program.<br>So, if you want the RAM disk in a different filesystem, just change<span> </span><span>ntfs</span><span> </span>to<span> </span><span>fat</span><span> </span>(FAT16) or<span> </span><span>fat32</span><span> </span>(FAT32).
+    </li>
+</ul>
+<p>For more information on <code>imdisk</code> please see <a href="https://sourceforge.net/p/imdisk-toolkit/doc/Home/" rel="noreferrer">this link</a></p>
