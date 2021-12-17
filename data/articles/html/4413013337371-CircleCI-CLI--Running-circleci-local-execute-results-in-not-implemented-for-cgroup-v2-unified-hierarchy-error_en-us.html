@@ -1,0 +1,4 @@
+<p>When executing the command <code>circleci local execute</code>, you may get the following error if your version of Docker is using <span>cgroupsv2:</span></p>
+<pre class="c-mrkdwn__pre" data-stringify-type="pre">Error:
+Unexpected environment preparation error: error looking up cgroup: not implemented for cgroup v2 unified hierarchy</pre>
+<p>At this time, we do not support version 2 of cgroups. Please use cgroupsv1 when running the cli locally.</p>
