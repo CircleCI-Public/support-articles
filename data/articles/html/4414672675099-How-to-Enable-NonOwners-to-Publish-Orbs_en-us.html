@@ -1,0 +1,25 @@
+<p>There is a way to allow non-owners to publish orbs, both public and private, via a <a href="https://circleci.com/docs/2.0/contexts/#creating-and-using-a-context" target="_blank" rel="noopener">context</a> associated with an org owner's personal API token.</p>
+<p> </p>
+<p>This context can be <a href="https://circleci.com/docs/2.0/contexts/#restricting-a-context" target="_blank" rel="noopener">restricted to a certain security group</a> if need be.</p>
+<p> </p>
+<p>The org owner will need to follow these steps:</p>
+<ul>
+    <li>Generate a personal API token:
+        <ul>
+            <li><a class="c-link" tabindex="-1" href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener noreferrer" data-stringify-link="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" data-sk="tooltip_parent" data-remove-tab-index="true">https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token</a></li>
+        </ul>
+    </li>
+    <li>Store the token in a context to be used as an environment variable:
+        <ul>
+            <li><a class="c-link" tabindex="-1" href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-context" target="_blank" rel="noopener noreferrer" data-stringify-link="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-context" data-sk="tooltip_parent" data-remove-tab-index="true">https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-context</a></li>
+        </ul>
+    </li>
+    <li>The environment variable in the context will need to be called<span> </span><code>CIRCLE_TOKEN</code>
+    </li>
+    <li>Using the <a href="https://circleci.com/docs/2.0/creating-orbs/#orb-development-kit" target="_blank" rel="noopener">Orb Development Kit</a>, assign the `publishing-context` to the newly-created context:
+        <ul>
+            <li><a class="c-link" tabindex="-1" href="https://github.com/CircleCI-Public/Orb-Project-Template/blob/master/.circleci/config.yml#L54" target="_blank" rel="noopener noreferrer" data-stringify-link="https://github.com/CircleCI-Public/Orb-Project-Template/blob/master/.circleci/config.yml#L54" data-sk="tooltip_parent" data-remove-tab-index="true">https://github.com/CircleCI-Public/Orb-Project-Template/blob/master/.circleci/config.yml#L54</a></li>
+        </ul>
+    </li>
+</ul>
+<p>You may also use the CLI to publish orbs by <a href="https://circleci.com/developer/orbs/orb/circleci/orb-tools#jobs-publish" target="_self">passing in the token</a>. The <strong>publish-token-variable</strong> pulls in the environment variable from the context called<span> </span><code class="c-mrkdwn__code" data-stringify-type="code">CIRCLE_TOKEN</code>.</p>
