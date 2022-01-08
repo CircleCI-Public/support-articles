@@ -1,0 +1,15 @@
+<p><span>Private orbs are now available to developers on any of our <a href="https://circleci.com/pricing" target="_self">paid plans listed on our plans page</a>. Performance plan customers can create up to three private orbs, whereas our Scale plan customers can create an unlimited number of private orbs. Administrators can create, publish, and maintain their private orbs. For more details on how to start privately sharing configuration across multiple projects within your organization, please refer to our orbs documentation: </span></p>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/orb-intro/#private-orbs" target="_self">Orb Intro: Private Orbs</a></li>
+    <li><a href="https://circleci.com/docs/2.0/orbs-faq/" target="_self"><span>Orbs FAQ</span></a></li>
+</ul>
+<p>Private orbs are now supported for all users, orb publishers can unlist their orbs from <a href="https://circleci.com/orbs/registry/" target="_self">Orb Registry</a> search results by using our CLI (See the documentation of the relevant command here: <a href="https://circleci-public.github.io/circleci-cli/circleci_orb_unlist.html">https://circleci-public.github.io/circleci-cli/circleci_orb_unlist.html</a>). Unlisted orbs can be listed in the orb registry again with the same CLI command. Only org <a href="https://support.circleci.com/hc/en-us/articles/360034990033-Am-I-an-Org-Admin-" target="_self">admins</a> can unlist/list orbs. Note that unlisting an orb does not affect its ability to be referenced by name in builds or for its source to be viewed. </p>
+<p> </p>
+<p><strong>Making a public orb private : </strong></p>
+<p>A public orb cannot be deleted but it can be unlisted. You will not need to make any changes to your orb repository. You will need to re-publish your orb as a new private orb. Because the orb name is already taken, you will not be able to publish the new (private) orb under the same name. To do this, we recommend using the <a href="https://circleci.com/docs/2.0/orb-author/#orb-development-kit" target="_self" rel="undefined">Orb Development Kit.</a> When using the Orb Development Kit you will need to do the following to make an Orb Private:</p>
+<ul class="p-rich_text_list p-rich_text_list__bullet" data-stringify-type="unordered-list" data-indent="0">
+    <li data-stringify-indent="0">Initialize and create the new private orb from the CLI (with the private flag).<br>
+        <pre><span>circleci orb init /path/to/myProject-orb </span><span class="nt"><span class="hljs-comment">--private</span></span></pre>
+    </li>
+    <li data-stringify-indent="0">Change your existing<span> </span><code class="c-mrkdwn__code" data-stringify-type="code">config.yml</code><span> </span>file that automatically published the orb to replace the old orb name with the new orb name.</li>
+</ul>
