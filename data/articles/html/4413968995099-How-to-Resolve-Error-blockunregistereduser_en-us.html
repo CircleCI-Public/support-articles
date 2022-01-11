@@ -1,0 +1,24 @@
+<h4><strong>Overview</strong></h4>
+<p><span style="font-weight: 400;">The following issue of having unregistered users spend your organization’s credits through unsanctioned builds can be resolved by enabling a plan usage feature that will disable unregistered users from using credits belonging to your organization.</span></p>
+<h4><strong>How to Enable Usage Control</strong></h4>
+<p><span style="font-weight: 400;"></span><span style="font-weight: 400;">To disable the ability of unregistered users to trigger builds and save credits you can follow these steps:</span></p>
+<p class="wysiwyg-text-align-left"><span style="font-weight: 400;">1. Visit the Usage Control tab URL (also available on the left-hand column of the application landing page through the Plan tab): app.circleci.com/settings/plan/[githubORbitbucket]/[OrganizationName]/usage-controls</span></p>
+<p class="wysiwyg-text-align-center"><span style="font-weight: 400;"><br><img src="https://support.circleci.com/hc/article_attachments/4413961375771/Fig_A.jpg" alt="Fig_A.jpg" width="605" height="323"></span><span style="font-weight: 400;"></span></p>
+<p><span style="font-weight: 400;">2. Toggle on the usage control switch titled “</span><span style="font-weight: 400;">Prevent unregistered user spend</span><span style="font-weight: 400;">”. As noted in the example images below, upon a successful toggle the switch will turn blue.</span></p>
+<p class="wysiwyg-text-align-center"><span style="font-weight: 400;"><img src="https://support.circleci.com/hc/article_attachments/4413961512859/Fig_B.jpg" alt="Fig_B.jpg" width="576" height="308"></span></p>
+<p class="wysiwyg-text-align-center"><span style="font-weight: 400;"><img src="https://support.circleci.com/hc/article_attachments/4413968966043/Fig_C.jpg" alt="Fig_C.jpg" width="573" height="306"></span></p>
+<p><span style="font-weight: 400;"><br><br></span></p>
+<h4><strong>How to Confirm Usage Control is Enabled</strong></h4>
+<p><span style="font-weight: 400;"></span><span style="font-weight: 400;">Once the Usage Control is enabled the feature is effective immediately. Any GitHub/Bitbucket user who is not associated with your organization’s GitHub/Bitbucket account will be unable to trigger a build moving forward, and thus halts their ability to misuse credits.</span></p>
+<p class="wysiwyg-text-align-left"><span style="font-weight: 400;">Should an unregistered user trigger a build in your organization after the feature has been enabled, a failed build will occur in the Pipelines dashboard. Upon clicking into the job, one will note a message displaying </span><span style="font-weight: 400;">“block-unregistered-user”, as noted in the image below:</span></p>
+<p class="wysiwyg-text-align-center"><span style="font-weight: 400;"><br></span><span style="font-weight: 400;"><img src="https://support.circleci.com/hc/article_attachments/4413968977435/Fig_D.jpg" alt="Fig_D.jpg" width="650" height="347"><br><br></span></p>
+<h4><strong>How to Register a User</strong></h4>
+<p><span style="font-weight: 400;">In order to register a user, they can </span><a href="https://circleci.com/signup/"><span style="font-weight: 400;">sign up for CircleCI</span></a><span style="font-weight: 400;"> with their respective GitHub or Bitbucket login. If they are part of your organization, they can </span><a href="https://circleci.com/docs/2.0/project-build/#add-projects-page"><span style="font-weight: 400;">follow projects</span></a><span style="font-weight: 400;"> in order to view build history.</span><span style="font-weight: 400;"> </span></p>
+<p><span style="font-weight: 400;">Once registered they can then be included on the active user list on your Plan Usage page under the Users tab: app.circleci.com/settings/plan/[githubORbitbucket]/[OrganizationName]/usage</span></p>
+<h4>
+    <span style="font-weight: 400;"><br></span><strong>How to Turn Off Usage Control</strong>
+</h4>
+<p><span style="font-weight: 400;"></span><span style="font-weight: 400;">In order to disable the Usage Control and allow unregistered users to trigger builds, one can go into their Usage Controls section in the Plans tab and toggle the switch to an off position as noted in the images below.</span></p>
+<p><span style="font-weight: 400;">Here is a direct link to the Usage Controls section: app.circleci.com/settings/plan/[githubORbitbucket]/[OrganizationName]/usage-controls</span></p>
+<p class="wysiwyg-text-align-center"><img src="https://support.circleci.com/hc/article_attachments/4413968966043/Fig_C.jpg" alt="Fig_C.jpg" width="601" height="321"><br><br></p>
+<p class="wysiwyg-text-align-center"><img src="https://support.circleci.com/hc/article_attachments/4413961512859/Fig_B.jpg" alt="Fig_B.jpg" width="588" height="314"></p>
