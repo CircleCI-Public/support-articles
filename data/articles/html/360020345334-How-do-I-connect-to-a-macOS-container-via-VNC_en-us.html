@@ -1,19 +1,21 @@
 <h3>To connect to a MacOS container via VNC:</h3>
-<ol>
-    <li>Select one of your MacOS jobs and click the <strong><em>Rerun</em> </strong>button, then <strong><em><a href="https://circleci.com/docs/2.0/ssh-access-jobs/" target="_blank" rel="noopener">Rerun Job with SSH<br><br></a></em></strong>
+<ul>
+    <li>Add the following step to the job you wish to VNC into:</li>
+</ul>
+<pre><code>      run:
+        name: Add VNC user
+      	command: sudo /usr/sbin/sysadminctl -addUser vncuser -fullName "VNC User" -password &lt;&lt;password&gt;&gt; -admin</code></pre>
+<p><em>Tip: Replace <code>&lt;&lt;password&gt;&gt;</code> with a password of your choosing.</em></p>
+<ul>
+    <li>Select the macOS job in question and click the <strong><em>Rerun</em> </strong>button, then <strong><em><a href="https://circleci.com/docs/2.0/ssh-access-jobs/" target="_blank" rel="noopener">Rerun Job with SSH</a></em></strong>
     </li>
-    <li>Log into the container and change the password<br><code>$ sudo passwd distiller</code><br><br>
-    </li>
-    <li>Configure SSH port-forwarding <span class="wysiwyg-underline">on your local machine</span><br><code>ssh -p 54782 &lt;mac container ip&gt; -L5901:localhost:5900 -N</code><br><br>
+    <li>Configure SSH port-forwarding <span class="wysiwyg-underline">on your local machine</span>:
+        <ul>
+            <li><code>ssh -p 54782 &lt;mac container ip&gt; -L5901:localhost:5900 -N</code></li>
+        </ul>
     </li>
     <li>
-        <a style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 1.142em; background-color: #ffffff;" href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank" rel="noopener">Download</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; color: #172b4d; font-size: 1.142em;"> and install VNC Viewer and access localhost:5901<br><br></span>
+        <a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank" rel="noopener">Download</a><span> and install VNC Viewer and access <code>localhost:5901</code></span>
     </li>
-    <li>
-        <p id="HowtoconnecttomaccontainerviaVNC-installVNCclientandaccesslocalhost:5901&gt;https://www.realvnc.com/en/connect/download/viewer/" style="margin: 0px; padding: 0px; color: #172b4d; font-size: 1.142em; font-weight: 400; line-height: 1.5; text-transform: none;">Use the credentials "<em>distiller/&lt;new password&gt;"</em> when prompted</p>
-        <p> </p>
-    </li>
-</ol>
-<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"><strong>Note</strong>: There is a known issue with version 10.2.0+ of the macOS images where </span><code>sudo passwd distiller</code> <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">is unable to reset the password without the knowledge of the current password.<br><br>To mitigate this, you can create a new user account, and use the credentials of that new account instead of the "<em>distiller</em>" account for VNC login.</span></p>
-<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">For example, the following command will create a user "<em>vncuser</em>":</span></p>
-<pre dir="ltr"><code>sudo /usr/sbin/sysadminctl -addUser vncuser -fullName "VNC User" -password &lt;password&gt; -admin</code></pre>
+    <li>Use the credentials <code>vncuser/&lt;&lt;password&gt;&gt;</code> when prompted.</li>
+</ul>
