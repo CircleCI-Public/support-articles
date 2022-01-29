@@ -17,6 +17,9 @@
         <pre>testOptions {<br> unitTests.all {<br>  maxHeapSize = "1024m"<br> }<br>}</pre>
     </li>
 </ol>
+<h3 id="zygote"><a href="#zygote" target="_self">Zygote</a></h3>
+<p class="wysiwyg-indent4">There's a race condition in the Android 10 emulator image init process that sometimes causes Zygote (the Android OS process that spawns apps) to be started with the incorrect arguments, ultimately causing apps to be started with a tiny Java heap <code>(-Xmx16m)</code>. If you then try to run espresso tests on a running emulator which has Zygote running with the wrong heap size of 16m, OutOfMemoryExceptions will be thrown, causing the espresso orchestrator process to crash (for more details about this issue, check out this article <a href="https://rainforest.engineering/2021-04-16-android-heap-race/" target="_blank" rel="noopener">here</a>).</p>
+<p class="wysiwyg-indent4"><span>The simplest way to resolve this issue is to call <code>adb root &amp;&amp; sleep 5 &amp;&amp; adb setprop ctl.restart zygote</code> as a post-emulator-run-step. This will kill any running logging sessions, so you will have to manually restart your own logging as another post-emulator-run-step, but otherwise this will cause Zygote to restart with the correct arguments and alleviate OOM issues. Please be aware this will not work on "google_play" image flavors as it is not possible to <code>adb root</code> in those images.<br></span></p>
 <h3 id="kotlin"><a href="#kotlin" target="_self">Kotlin</a></h3>
 <p class="wysiwyg-indent4">By default, Kotlin will spawn a daemon alongside Gradle. This is similar to the Gradle daemon and <a class="external-link" href="https://stackoverflow.com/questions/50138863/why-does-my-kotlin-gradle-build-die-with-exit-code-137" rel="nofollow">isn't necessary for CI</a>.<br>Kotlin can be told to run within the same memory allocation as Gradle by setting <strong>GRADLE_OPTS=-Dkotlin.compiler.execution.strategy=in-process</strong></p>
 <p> </p>
