@@ -1,0 +1,12 @@
+<p>お客様の組織のネットワーク転送とストレージの使用状況の詳細は、<span>Plan &gt; Plan Usage </span>画面で確認することができます。<a href="https://circleci.com/docs/ja/2.0/persist-data#managing-network-and-storage-use" target="_self" rel="undefined">さらに、ネットワークとストレージのコストを管理する方法については、こちらをご覧ください。</a></p>
+<p>しかし、特定のビルドのネットワーク転送（ingress / egress）を測定したい場合があります。これは、例えば、ビルド内のどのプロセスが高いネットワーク転送使用量を消費しているかを知る事で、チームに役立つ場合があります。</p>
+<p>Docker の Job では、<a href="https://www.kernel.org/doc/html/latest/filesystems/proc.html#id15" target="_self" rel="undefined">ネットワーク情報、特に`/proc/net/dev`</a>を前後に入れて調べたいコマンドの実行でネットワーク転送を把握することができます。</p>
+<pre>cat /proc/net/dev</pre>
+<p>上記の方法を拡張して、情報を読みやすい形式に計算するOrbの例を以下に示します。以下のスクリーンショットの例で、その動作を見ることができます。</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/4417183051035/image.png" alt="image.png"></p>
+<p>この<a href="https://circleci.com/developer/orbs/orb/nanophate/docker-profiling#commands-network" target="_self">Orbの`network`コマンドの使い方を説明</a>すると、例えば `checkout`の送受信バイト数を見るために、以下のように設定することができます。</p>
+<pre><span class="hljs-attr">version:</span><span> </span><span>'2.1'<br></span><br><span class="hljs-attr">orbs:<br></span><span class="hljs-attr">  profiling:</span> nanophate/docker-profiling@0.3.0<br><br>jobs:<br><span>  build</span>:<br>    docker:<br>      - image: cimg/base:stable<br>  steps:<br><span>    - checkout<br></span><span>    - profiling/network</span></pre>
+<p>注：<strong>ネットワーク全体の転送量</strong>が、請求可能な使用量を測定するものではありません。特定のアクションのみがネットワーク転送を行い、その結果、請求可能な使用量となります。詳細については、こちらのガイドをご覧ください： <a href="https://circleci.com/docs/2.0/persist-data/#overview-of-storage-and-network-transfer">https://circleci.com/docs/2.0/persist-data/#overview-of-storage-and-network-transfer</a></p>
+<p> </p>
+<p><span>お困りの点やご不明な点がありましたら、</span><a href="https://support.circleci.com/hc/ja/requests/new" target="_self">サポートチームまで</a><span>お気軽にお問い合わせください。</span></p>
+<p> </p>

@@ -1,0 +1,7 @@
+<p>Running <code>sudo apt install somepackage=12.3.4 -y</code> results in the following message:</p>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">  Reading package lists... Done
+  Building dependency tree
+  Reading state information... Done
+  E: Unable to locate package
+</pre>
+<p>This can be a result of an out-of-date apt update cache. The most common solution for this is to update apt using <code>sudo apt update</code> prior to running the <code>sudo apt install</code> command.</p>

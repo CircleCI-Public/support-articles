@@ -1,12 +1,16 @@
-<p>If your project is utilizing <a href="https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs">Workspaces</a>, but you run into trouble when attaching the workspace later on in the workflow, you may have exceeded your memory limit.</p>
-<p>Your error may look similar to below.</p>
-<pre><code class="bash">"Error applying workspace layer for job 5cb8xxxx-xxxx-4499-9xxxx-1aaa2943xxxx: Error extracting tarball /tmp/workspace-layer-5cb8xxxx-xxxx-4499-9xxx-1aaa2943xxxxx04313xx: signal: killed"</code></pre>
-<p>In this particular error, we can clearly see the process was gracefully killed with the `signal: killed` message. This is a guaranteed message that your container has exceeded its memory resource limits. Your error may or may not contain this message but have failed anyway in a similar way.</p>
-<p> You can follow the instructions in <a href="https://support.circleci.com/hc/en-us/articles/360043994872" target="_self">this article</a> to record the max memory usage of your job.</p>
-<h2>Options to resolve:</h2>
+<p>プロジェクトで <a href="https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs">Workspaces</a> を利用しており、後で Workspace を Workflow に接続するとき問題が発生した場合、メモリ制限を超過している可能性があります。</p>
+<p>この場合のエラーは次のようなものになります。</p>
+<pre><code class="bash">
+"Error applying workspace layer for job 5cb8xxxx-xxxx-4499-9xxxx-1aaa2943xxxx: 
+Error extracting tarball /tmp/workspace-layer-5cb8xxxx-xxxx-4499-9xxx-1aaa2943xxxxx04313xx: 
+signal: killed"
+</code></pre>
+<p>この `signal: killed` メッセージが表示されるエラーの場合、プロセスが安全に停止されたことを意味します。 これは、コンテナがメモリリソースの制限を超過したことを示すメッセージです。 エラーにこのメッセージが含まれていない場合でも、失敗の理由はほぼ同じです。</p>
+<p> </p>
+<h2>解決方法</h2>
 <ol>
-    <li>Reduce tarball size. The larger the tarball, the more memory will be utilized while decompressing. If your workspace's physical size is near or over your container's memory limit (4gb by default), you can exceed it easily, especially if you have one or more databases also running.</li>
+    <li>tarball のサイズを減らします。 tarball が大きいほど、解凍に必要なメモリが多くなります。 Workspace の物理サイズがコンテナのメモリ制限 (デフォルトでは 4GB) に近い、または超えている場合、特に 1 つ以上のデータベースを同時に実行していると、この制限を超過する可能性が高くなります。</li>
     <li>
-        <a href="https://circleci.com/support/premium-support/">Contact support</a> to inquire about upgrading your container's resource limits via the `resource_class` key in your config.yml. This option is already available to those on the "Performance plan"<br><a href="https://circleci.com/docs/2.0/configuration-reference/#resource_class" target="_blank" rel="noopener">https://circleci.com/docs/2.0/configuration-reference/#resource_class</a>
+        <a href="https://circleci.com/support/premium-support/">サポートに連絡し、</a> config.yml の `resource_class` キーを使用してコンテナのリソース制限を増やす方法について問い合わせてください。 "PERFORMANCE プラン"<br><a href="https://circleci.com/docs/2.0/configuration-reference/#resource_class" target="_blank" rel="noopener">https://circleci.com/docs/2.0/configuration-reference/#resource_class</a> を使用している場合は、このオプションを利用できます。
     </li>
 </ol>

@@ -1,0 +1,7 @@
+<p> </p>
+<p>Legacy Slack インテグレーションを無効にしたい場合は、下記のAPI リクエストを用いて、Project から Slack webhook URLを削除することで可能です。API を認証するために、「Circle-Token」HTTPヘッダーに <a href="https://circleci.com/docs/ja/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_self">Personal API Token</a> を作成し、渡す必要があります。</p>
+<p><br>注: ${vcs} を (github または bitbucket)、{org}、{project} は適切な名前に置き換えてください。</p>
+<pre>curl -X PUT 'https://circleci.com/api/v1.1/project/{vcs}/{org}/{project}/settings" \<br>  -H 'Content-Type: application/json' \<br>  -H "Circle-Token: $CIRCLE_TOKEN" \<br>  --data-binary '{"slack_webhook_url":""}'</pre>
+<p>Legacy Slack インテグレーションが無効になっていることを、次のようにして確認が行えます</p>
+<pre>curl -X GET -H "Circle-Token: $CIRCLE_TOKEN" 'https://circleci.com/api/v1.1/project/{vcs}/{org}/{project}/settings' | jq '.slack_webhook_url'</pre>
+<p>Legacy Slack インテグレーションが正常に無効化された場合は、空文字列が返されるはずです。</p>

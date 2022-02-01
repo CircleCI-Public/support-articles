@@ -1,11 +1,10 @@
 id: 360005430214
-title: Why is my attach_workspace step failing to extract the workspace?
+title: attach_workspace ステップで Workspace の抽出に失敗する理由
 author_id: 25261361207
 created_at: '2018-06-07T10:55:59Z'
 locale: ja
 permission_group_id: 237867
 section_id: 115003756627
 user_segment_id: null
-html_url: >-
-  https://support.circleci.com/hc/ja/articles/360005430214-Why-is-my-attach-workspace-step-failing-to-extract-the-workspace-
+html_url: https://support.circleci.com/hc/ja/articles/360005430214
 draft: false

@@ -1,0 +1,5 @@
+<p>テストに必要な<a href="https://circleci.com/docs/2.0/gh-bb-integration/#enable-your-project-to-check-out-additional-private-repositories">追加リポジトリのチェックアウト</a>を行うため、ユーザーキーを構成できます。 多数のプロジェクトを含むリポジトリでは、個別のプロジェクト設定ページでユーザーキーの割り当てを行うより、API で行う方が簡単です。</p>
+<p>このためにはまず、ユーザーのアカウントに SSH キーを追加するアクセス許可を、CircleCI が GitHub から取得する必要があります。 このアクセス許可を与えるには、<strong>[PROJECT SETTINGS] &gt; [PERMISSIONS] &gt;
+        [Checkout SSH keys]</strong> の順番にアクセスし、単一プロジェクトの <strong>Authorize With GitHub</strong> をクリックします。</p>
+<p>CircleCI アプリケーションを認可した後で、<a href="https://circleci.com/docs/api/v1-reference">CircleCI の API</a> を使用し、<code>curl</code> コマンドを使用する任意の他のプロジェクトについて <code>github-user-key</code> タイプのチェックアウトキーを追加できます。</p>
+<pre>curl -X POST \ --header <span class="hljs-string">"Content-Type: application/json"</span> \ -d <span class="hljs-string">'{"type":"github-user-key"}'</span> \ <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/circleci.com/api</span><span class="hljs-regexp">/v1/project</span><span class="hljs-regexp">/ORG_NAME/PROJECT_NAME</span>/checkout-key?circle-token=<span class="hljs-number">8</span>e9c47...etc</pre>

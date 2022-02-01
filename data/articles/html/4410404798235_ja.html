@@ -1,0 +1,7 @@
+<p>Rails を利用している際に DB load のコマンドを実行した場合正しく処理されずに何も表示されない状態になり、タイムアウトしてしまいます。</p>
+<p><span style="font-weight: 400;"><code>PAGER</code></span> のデフォルト環境変数が <span style="font-weight: 400;"><code>less</code></span> であるため、エンターキーが処理されず、 <span style="font-weight: 400;"><code>set_config ;0;0t</code></span> と出力され、後半部分はエンターキーが押されたと認識できないため、次の処理に移りません。。</p>
+<p>CircleCI では10分間出力がないと ビルドを停止するように設定されているため、次のようなエラーが表示されます。</p>
+<pre>Error: Too long with no output (exceeded 10m0s) as the output was waiting for user input.</pre>
+<p>以下のコードで<span style="font-weight: 400;"><code>PAGER</code></span> が設定される部分を変更する事で回避可能です。</p>
+<pre style="background-color: #f3f3f3;">jobs:<br>    build:<br>        docker:<br>          - image: MY_APP_IMAGE<br>            environment:<br>              PAGER: cat</pre>
+<p>正しくキーの処理が行われ、ハングアップする事が解消されます。</p>

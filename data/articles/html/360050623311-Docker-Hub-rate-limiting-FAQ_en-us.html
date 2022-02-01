@@ -3,7 +3,7 @@
 <p>We have additional information and up to date details on the <a href="https://discuss.circleci.com/t/authenticate-with-docker-to-avoid-impact-of-nov-1st-rate-limits/37567" target="_blank" rel="noopener">"Authenticate with Docker to avoid impact of Nov. 1st rate limits" Discuss post</a>.</p>
 <p><strong>*Exceptions: Remote Docker and Machine Executors will be impacted by the rate limiting unless pulling CircleCI-published images.</strong></p>
 <p>Below we will describe frequently asked questions on how this affects your CircleCI jobs and how to handle each situation. This change does affect both Cloud and Enterprise CircleCI customers.</p>
-<h2>How do I authenticate with Docker Hub?</h2>
+<h2 id="docker-auth">How do I authenticate with Docker Hub?</h2>
 <p>You will need to pass an <code>auth</code> key with your Docker image and utilize a username and password. Specific steps can be found here: <a href="https://circleci.com/docs/2.0/private-images/">https://circleci.com/docs/2.0/private-images/</a> </p>
 <h2>How can I confirm my authentication was successful?</h2>
 <p>If you have passed the <code>auth</code> key on your Docker pulls and the pulls continue to be successful, such as on the "Spin up environment" step, your credentials are being successfully used. At this time we don't have a way to see in the UI the authenticated credentials.</p>

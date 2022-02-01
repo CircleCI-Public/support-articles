@@ -1,0 +1,42 @@
+<p>Troubleshooting UI / permission issues can prove difficult when Support don't see the same behaviour when trying to reproduce. A HTTP Archive (HAR) can often help here.</p>
+<p>A HAR file is a JSON log of the web browser's HTTP interaction with a site. This can often expose errors that aren't otherwise displayed in the UI, or timescales that can demonstrate performance issues.</p>
+<p>You can then attach and send the HAR file in your email to Support.</p>
+<p>Here are some instructions on how to create a HAR file for:</p>
+<ul>
+    <li>Chrome / Chromium based browsers</li>
+    <li>Firefox</li>
+    <li>Safari</li>
+</ul>
+<p><strong>To create a HAR file in Chrome / Chromium based browsers:</strong></p>
+<ol>
+    <li>Navigate to the page you wish to record</li>
+    <li>Navigate to menu (☰) &gt; More Tools &gt; Developer Tools</li>
+    <li>Select the Network tab</li>
+    <li>Check the Preserve Log checkbox</li>
+    <li>Click the Stop Recording (⚫) button to stop logging</li>
+    <li>Click the Clear (🚫) button to clear the current log</li>
+    <li>Click the Record (⚫) button to start recording</li>
+    <li>Refresh the page or perform the task to record the events</li>
+    <li>Click the Export HAR (↓) button to download and save the HAR file</li>
+</ol>
+<p><strong>To create a HAR file in Firefox:</strong></p>
+<ol>
+    <li>Navigate to the menu (☰) &gt; More Tools &gt; Web Developer Tools</li>
+    <li>Select the Network tab</li>
+    <li>Click the Network Settings (⚙) button &gt; Persist Logs</li>
+    <li>The tool automatically starts recording</li>
+    <li>Refresh the page or perform the task to record the events</li>
+    <li>Click the Network Settings (⚙) button &gt; Save All As HAR</li>
+</ol>
+<p><strong>To create a HAR file in Safari:</strong></p>
+<ol>
+    <li>Enable the Developer menu:
+        <ul>
+            <li>Click on Safari menu &gt; Advanced &gt; Show Develop menu in menu bar</li>
+        </ul>
+    </li>
+    <li>Select Develop (menu) &gt; Show Web Inspector &gt; Menu (tab)</li>
+    <li>Check the Preserve Log checkbox</li>
+    <li>Refresh the page or perform the task to record the events</li>
+    <li>Click Export to download and save the HAR file</li>
+</ol>
