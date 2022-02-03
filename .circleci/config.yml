@@ -1,169 +1,47 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-# Use a package of configuration called an orb.
+
+# Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
+# See: https://circleci.com/docs/2.0/orb-intro/
 orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
-# Orchestrate or schedule a set of jobs
+  # The python orb contains a set of prepackaged CircleCI configuration you can use repeatedly in your configuration files
+  # Orb commands and jobs help you with common scripting around a language/tool
+  # so you dont have to copy and paste it everywhere.
+  # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/python
+  python: circleci/python@1.5.0
+
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+jobs:
+  build-and-test: # This is the name of the job, feel free to change it to better match what you're trying to do!
+    # These next lines defines a Docker executors: https://circleci.com/docs/2.0/executor-types/
+    # You can specify an image from Dockerhub or use one of the convenience images from CircleCI's Developer Hub
+    # A list of available CircleCI Docker convenience images are available here: https://circleci.com/developer/images/image/cimg/python
+    # The executor is the environment in which the steps below will be executed - below will use a python 3.10.2 container
+    # Change the version below to your required version of python
+    docker:
+      - image: cimg/python:3.10.2
+    # Checkout the code as the first step. This is a dedicated CircleCI step.
+    # The python orb's install-packages step will install the dependencies from a Pipfile via Pipenv by default.
+    # Here we're making sure we use just use the system-wide pip. By default it uses the project root's requirements.txt.
+    # Then run your tests!
+    # CircleCI will report the results back to your VCS provider.
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+          # app-dir: ~/project/package-directory/  # If you're requirements.txt isn't in the root directory.
+          # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
+      - run:
+          name: Run tests
+          # This assumes pytest is installed via the install-package step above
+          command: pytest
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
+  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - welcome/run
-# "http//:www.dentalleon.es"
-# "copyright 2021-2022 Maximo Leòn Ramirez Peña"
-# "username Centro Odontologico Ramirez Feliz SL"
-# "tv chart updates entry= tv chart updates enyty-initial js chart update entry"
-# "tv chart updates= tv chart created selectable"
-# "tv chart updates= created wrap"
-#"tv chart updates= timestamp"
-# "tv chart updates= time upd"
-# "tv chart updates= "tv chart updates label"
-# "user link title= "http://www.tradingwiew.com" 
-# "title= "id 38210217"
-# "title= "username humorousSalami52275"
-# "title= "Ppsignal algorithmic trading systen" ="data scripts id part=PUB: QF5vhiXiriIZUuIyvSKL13cqBT1yU3b role= "buttom "
-# capital= 100000
-# possition= 100
-# Buy= Bid
-# Sell= Ask
-# pyramid= Max= 1
-# presicion= 2
-# lots= 0.01 - 06
-# long Chort= 1439
-# signal= 1200
-# source= open
-
-# TP last Price Buy limit % >= 300  volume 
-# TP last Price Buy stop % >= 300  volume
-# SL last Price Buy stop % <= 300  volume
-# TP last Price Sell limit % <= 100 volume
-# SL last Price Sell stop % <= 0 volume
-# leverage= 30:1
-# overLay= true
-# maximum Drawn Down= 0.03
-# commission<= 0.075 %
-# curMoving Average = symbol EUR/USA, GBP/USA, USA/JPY
-# timeFrame= 15 MN, 30 MN, 1H, 4H, 6H, 1D, 1W, 1M, 1Y
-# curPeriods= *239, *359, *1439,  *10079
-# slipPage= 1 tick, 1 pip, 1 BTCUSDT, 1contract
-# finance Instrument= symbols All, shores, Forex, crypt, Opciones
-# calcOnOrder fills= true
-# caicOnticks,Pips, %, Shares contract,Futures period, cryptoScreener= true
-# indicator trend= "scripts trendAnalysis"= "tv chart view tag page link"
-# indicator volatily= "scripts volatily"= "tv chart view tag page link"
-# indicator volume= "scripts volumeStudies"= "tv chart view tag page link"
-# indicator fractal= "scripts fractal"= tv chart view tag page link"
-# indicator Index= "scripts index"= tv chart view tag page link"
-# indicator Supportandresistance= "scripts supportandresistance"= tv chart tag page link"
-# symbol NASDAQ-ATRA= "tv inline quotes ticker source test"
-# symbol S&P 500(SPX)="tv inlinee quotes ticker source test"
-# finance Instrument crypto= "scripts cryptocurrency"
-# finance Instrument crypto= "scripts cryptotrading"
-# finance Instrument btcusd= "scripts btcusd"
-# finance instrument stock= "scripts stockcurrency"
-# finance Instrument stock= "scripts stocktrading"
-# finance Instrumeent forex= "scripts forex"
-# finance Instrument futures= "scripts futures"
-# finance Instrument indices= "scripts indices"
-# strategy= "scripts strategyTesting"
-
-#{
-# init robot= "scripts robot, overLay= true"
-# title= "property indicator Zig Zag Max period"= "scripts Zig Zag PC *10079= weekly"
-# title= "property indicator Zig Zag Midle period"= "scripts Zig Zagtrading *1439= daily"
-# title= property indicator Zig Zag Small period"= "scripts Zig Zagtrading *359= 6H"
-# {!curPeriod > TF Small, alert the chart period must be less than or errorTF= 1; return"
-# !TF Small >= TFMidle || TFMidle >= TFLarge || TFLarge <= TFSmall Alert incorrect choice timeframes calculator"
-# "indicator style1= 0"
-# "indicator style2= 0"
-# "indicator style3= 0"
-# "indicator width1= 5"
-# "indicator width2= 3"
-# "indicator width3= 1"
-
-# title= "voLExt= 1200"
-# title= "TFLarge= *40319"
-# title= "TFMidle= *10079"
-# title= "TFSmall= *1439"
-# title= "Large[], Midlee[], mall"
-# title= "P1439, PC1439"
-# title= "Zig Zag code= PC *10079"
-# title= curPeriod, ErrolFT= 0, NumberExt, period, LargeLast"
-#}
-
-#{
-# title= "property indicator Buffer, for perspective entry"
-# title= "SetIndexBuffer= 0.Large"
-# title= "SetIndexStyle= 0.DRAW SEC"
-# title= "SetIndexEmtpyValue= 0,0.0"
-# title= "SetIndexBuffer= 1.Midle"
-# title= "SetIndexStyle= 1.DRAW SEC"
-# title= "SetIndexEmtpyValue= 1,0.0"
-# title= "SetIndexBuffer= 2.Small"
-# title= "SetIndexStyle= 2. DRAW SEC" 
-# title= "SetIndexEmtpyValue= 2,0.0"
-# title= "ArrayInitialize(PrevTimePer.0)"
-# title= "curPeriods= CP= *1439 Period + *10079 Period"
-# title= "retrictions"
-# title= "control of TF and inputted parameters"
-# title= "MathCeil TFSmall/curPeriod"
-# title= "TFSmall/curPeriod"
-# title= "TFSmall= mathCeil (TFSmall/curPeriod) *curPeriod"
-# title= "MathCeil (TFMidle/curPriod)! = TFMidle/curPeriod"
-# title= "TFMidle= MathCeil (TFMidle/curPeriod) *curPeriod"
-# title= "MathCeil (TFLarge/curPeriod)! = TFLargecurPeriod"
-# title= "TFLarge= MathCeil (TFLarge/curPeriod) *curPeriod"
-# title= "curPeriod> TFSmall= Alert (the chart period must be less than"
-# title= Error FT= 1; return"
-# title= "TFSmall>= TFMidle. || TFMidle>= TFLarge. || TFLarge<= TFSmall"
-# title= TFLarge<= TFSmall= Alert incorrect choice of timeFrames for calc
-#}
-
-#{
-# title= "litle >= open, high, low, close"
-# title= "star"
-# title= "pre calculate= 0"
-# title= "DirectionBuffer! = 0"
-# title= "LastHighBarBuffer ! = 1"
-# title= "LastLowBarBuffer ! = -1"
-# title= "litle= start= 1"
-# title= "litle=  start=-1"
-# title= "DirectionBuffer ! = DiretionBuffer 0 -1"
-# title= "ArrayMaximum|| ArrayMinimum i r t ps= -period +1"
-# title= "o r t hb= ArrayMaximum high,ps period>= 1"
-# title= "o r t lb= ArrayMinimum low, ps period<= -1"
-# title= "DirectionBuffer !"
-# title= "litle=lb= 0 || hb= 0"
-# title= "DirectionBuffer= 1"
-# title= "DirectionBuffer=-1"
-# title= "LastHighBarBuffer ! = LastHighBarBuffer 0., 1"
-# title= "LastLowBarBuffer ! = LastLowBarBuffer o., -1 "
-# title= "Zig ZagBuffer ! = EMTPY VALUE"
-# title= "SetArrayMinimum ! = LastLowBarBuffer= -1 *40319| *10079 || *1439 (open SetArrayMinimum= 0.01 buy stop"
-# title= "SetArrayMaximum ! = "LastHighBarBuffer= 1 *1439 || *10079 || +40319 "(close SetArraymaximum= 0.01 Sell Limit
-# }
-
-#{
-# "title= Zig Zag average LastLowBarBufferLoss= 2000 /LastHighBarBufferProfit= 6660 X 100"
-# "LastLowhBarBufferLoss  = 2000/ 100= 20 % .,  LastHighBarBufferProfit/100>= 6660 /100= 66.6 %"
-# title= "entry ! <= DirectioBuffer= 1 + LastLowhBarBuffer 100 % = Buy stop"
-# title= "entry ! >= DirectionBuffer= -1 + LastLowBarBufferLoss 3 % = Stop Loss"
-# title= "Stop Loss= true"
-# title= "entry ! >= DirectionBuffer= 1 + LastHighBarBufferProfit 3 % = Break even"
-# title= "entry ! >= DirectionBuffer= 1 + LastHighbarBufferProfit 10 % = Step Profit"
-# title= "entry ! >= DirectionBuffer= 1 + LastHighBarBufferProfit 20 % = Step profit"
-# title= "entry !>= DirectionBuffer= 1 + LastHighBarBufferProfit 30 % = Take profit"
-#}
-
-#{
-# title= "trailingProfit= Take profit || Step profit"
-# title= "trailingStopLoss= Stop Loss || close"
-# init "entry Zig Zag Automatic trailingProfit, overLay= true"
-# title= "entry Zig Zag Automatic trailingStepProfit ! = DirectionBuffer= 1 + LastHighBarBuffer 20 %.30 %. 40 %. 50 % . 60 %. 70 %. 80 %. 90 %. 100 % = Step profit than 0.01 Buy stop"
-# title= "entry Zig Zig automatict trailingTakeProfit ! = DirectionBuffer= -1 + LastHighBarBuffer= 99 % = Take Profit than close" 
-# title= "entry Zig Zig Automatic trailingStopLoss ! = Directionbuffer= 1 + LastHighBarBuffer= 5 %. 15 %. 25 %. 35 %. 45 %. 55 %. 65 %. 75 %. 85 % "
-#}
-
-
+      - build-and-test
