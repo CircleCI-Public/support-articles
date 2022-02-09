@@ -1,4 +1,0 @@
-<p>iOS アプリへのエンタープライズ署名では、コード署名の際に最新の WWDR 中間証明書が必要になった関係で、2020 年 9 月 2 日からエラーが発生するようになりました。 CircleCI が提供する Xcode イメージの多くは、この新しい証明書の発行前に作成されたものであるため、ジョブの実行中に証明書をインストールする必要があります。 WWDR 中間証明書の失効に関して詳しくは、<a href="https://developer.apple.com/jp/support/expiration/" target="_self">Apple 社の開発者サポート Web サイト</a>をご覧ください。</p>
-<p>現在、fastlane と Xcode は CircleCI 環境でこの問題を適切に処理することができないため、ほとんどの場合エンタープライズ iOS のコード署名は失敗します。</p>
-<p>問題の回避策として、ジョブに以下のステップを追加し、新しい証明書をダウンロードしてシステムのキーチェーンにインストールするようにしてください。</p>
-<pre>- run: curl https://www.apple.com/certificateauthority/AppleWWDRCAG3.cer -o AppleWWDRCAG3.cer<br>- run: sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain AppleWWDRCAG3.cer</pre>

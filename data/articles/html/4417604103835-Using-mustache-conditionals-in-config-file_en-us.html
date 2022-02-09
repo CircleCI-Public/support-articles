@@ -1,0 +1,7 @@
+<p>When using parameters and pipeline values in your config.yml file, it is possible to conditionally set a value. </p>
+<p>To check if a value is true or a non-empty string:</p>
+<p><code>&lt;&lt;#parameters.parametername&gt;&gt; &lt;&lt;/parameters.parametername&gt;&gt;</code></p>
+<p>To check if a value is false or an empty string:<br><code>&lt;&lt;^parameters.parametername&gt;&gt; &lt;&lt;/parameters.parametername&gt;&gt;</code></p>
+<p>For example, you can conditionally insert a value into your config.yml file based on whether <span><code>pipeline.git.tag</code> contains a value.</span></p>
+<p><code><span>&lt;&lt;#pipeline.git.tag&gt;&gt;Sometext&lt;&lt;/pipeline.git.tag&gt;&gt;</span></code></p>
+<p><span>In the above example, the line <code>&lt;&lt;#pipeline.git.tag&gt;&gt;Sometext&lt;&lt;/pipeline.git.tag&gt;&gt;</code> would be replaced with <code>Sometext</code> if <code>pipeline.git.tag</code> contained a value.</span></p>

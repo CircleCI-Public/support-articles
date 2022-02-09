@@ -1,5 +1,0 @@
-<p>CircleCI コンビニエンス イメージにインストールされ設定されている Node のバージョンと、必要としているバージョンと一致していないことがあります。 <a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">Node Version Manager (NVM).</a> を使用すると、必要な Node バージョンをインストールして切り替えることができます。</p>
-<pre style="background-color: #f3f3f3;">- run:    name: Node バージョンの切り替え    command: |      set +e      wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash      export NVM_DIR="$HOME/.nvm"      [ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh"      [ -s "$NVM_DIR/bash_completion" ] &amp;&amp; \. "$NVM_DIR/bash_completion"      nvm install v12      nvm alias default 12.19.0      echo 'export NVM_DIR="$HOME/.nvm"' &gt;&gt; $BASH_ENV      echo '[ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; \. "$NVM_DIR/nvm.sh"' &gt;&gt; $BASH_ENV</pre>
-<p>上記のコマンドでは、Node v12 をインストールし、ジョブの以降の部分で使用されるデフォルト値を v12.19.0 に設定しています。 この run コマンドはジョブ実行の冒頭近くに配置するようにしてください。実際の状況に応じて修正が必要な項目は下記の箇所だけです。</p>
-<pre style="background-color: #f3f3f3;">nvm install v12nvm alias default 12.19.0</pre>
-<p>install コマンドの引数をインストールしたい Node バージョンに切り替え、default コマンドの引数にジョブの残りの部分で実際に使用するバージョンを設定します。</p>

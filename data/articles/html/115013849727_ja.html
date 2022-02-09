@@ -1,8 +1,0 @@
-<h2>Docker Executor</h2>
-<p>Docker のバージョンは、構成されているビルド環境によって異なる可能性があります。 また、一部の環境では、使用する Docker のバージョンを手動で構成できます。</p>
-<p>CircleCI のイメージの保守および更新ポリシーの詳細については、<a href="https://circleci.com/blog/official-image-maintenance/" target="_blank" rel="noopener">こちらのブログ</a>を参照してください。 以下に示す以外の Docker バージョンが必要な場合は、<a href="https://discuss.circleci.com/c/feature-requests" target="_blank" rel="noopener">公式コミュニティ</a>から機能追加をリクエストしてください。</p>
-<p><code style="font-size: 15px;">docker</code> executor と <code style="font-size: 15px;">setup_remote_docker</code> 構成を使用すると、実行中のコンテナから Docker コマンドを使うことができます。 <code style="font-size: 15px;">setup_remote_docker</code> が別のバージョンを使用するよう設定できます。 <a href="https://circleci.com/docs/ja/2.0/building-docker-images/#docker-version" target="_blank" rel="noopener">使用可能なバージョンについては、こちらからドキュメントページを確認してください</a>。</p>
-<pre><span class="hljs-attr">- setup_remote_docker:<br></span><span>    </span><span class="hljs-attr">version:</span><span> 19<span class="hljs-selector-class">.03</span><span class="hljs-selector-class">.13</span></span></pre>
-<h2>Machine Executor</h2>
-<p><code>machine</code> executor を使用する場合は、使用可能な Docker バージョンは、どのイメージを使用するかによって変わります。 使用可能なイメージと、それらに含まれている Docker のバージョンについては、<a href="https://circleci.com/docs/ja/2.0/configuration-reference/#machine" target="_blank" rel="noopener">こちらのドキュメントページ</a>を参照してください。</p>
-<p>注意：現在利用可能なバージョン以外のDockerバージョンが必要な場合は、<a href="https://ideas.circleci.com/" target="_self">CircleCI Ideas</a>ページで機能要求を開いてください。</p>

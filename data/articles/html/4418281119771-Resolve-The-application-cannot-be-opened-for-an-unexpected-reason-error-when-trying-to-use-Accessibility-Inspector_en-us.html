@@ -1,0 +1,10 @@
+<p>When trying to open the Accessibility Inspector on macOS builds, you may see the following error:</p>
+<pre>The application cannot be opened for an unexpected reason, 
+error=Error Domain=NSOSStatusErrorDomain Code=-10827 
+"kLSNoExecutableErr: The executable is missing" UserInfo={_LSLine=3762,
+_LSFunction=_LSOpenStuffCallLocal}
+</pre>
+<p>This can often be resolved by running the command again if it fails the first time:</p>
+<pre><code>open /Applications/Xcode.app/Contents/Applications/Accessibility\ Inspector.app || 
+open /Applications/Xcode.app/Contents/Applications/Accessibility\ Inspector.app
+</code></pre>
