@@ -1,0 +1,8 @@
+<p>ビルドとテストを CircleCI で実行する場合、ローカルの開発者マシンより低速になることがあります。 この記事では、CI 環境よりも自分のラップトップで高速に実行される理由と、CircleCI でテストを高速化する方法について説明します。</p>
+<p>開発者やプログラマは通常、4 つ以上の強力な CPU コアと、ソリッドステートストレージを持つ、強力な個人用マシンを使用しています。 開発者向けコンピューターの一般的なコストは $1,000 ～ $4,000 で、数年ごとに最新の高性能ハードウェアに置き換えられます。</p>
+<p>同じ計算能力を CircleCI 上のすべてのビルドに提供するのは、多くのコストが必要です。 コスト効果の高いサービスを提供するため、すべての標準ビルドは 2 つの CPU コアと 4GB の RAM で実行されます。</p>
+<h2>ビルドとテストを高速化する方法</h2>
+<h3>ジョブの並列実行</h3>
+<p>テストを分割し、複数のコンテナで並列実行できます。 詳細については、<a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/" target="_blank" rel="noopener">https://circleci.com/docs/2.0/parallelism-faster-jobs/</a> を参照してください。</p>
+<h3>リソースクラス</h3>
+<p><span>より高い性能を要求するお客様のため、CircleCI はプレミアム機能を提供しています。この機能では、CircleCI 2.0 上の </span><code>resource_class</code><span> を選択できます。詳細については、次のドキュメントを参照してください。</span><br><a href="https://circleci.com/docs/2.0/configuration-reference/#resource_class" target="_blank" rel="noopener">https://circleci.com/docs/2.0/configuration-reference/#resource_class</a></p>

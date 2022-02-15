@@ -1,0 +1,14 @@
+<p>リモート Docker 環境上で何か操作を行う場合に、Docker コマンドのみ<em>設定なく</em>実行できます。ただし、<em>任意</em>のコマンドをシェルに組み込み、SSH で接続しそのシェルを実行することで、リモート Docker 環境でプログラムを実行できます。</p>
+<p> </p>
+<p>リモート Docker 環境に SSH で接続するには、<code>setup_remote_docker</code> を使用すジョブに対して Rerun job with sshでビルドへSSH 接続し、その後 <code>ssh remote-docker</code> を実行する、もしくは<code>run</code> ステップ上でsshコマンドを実行します。 補足：<code>setup_remote_docker</code> ステップを必ず先に実行します。実行前の場合SSH接続は失敗します。</p>
+<p>任意のコマンドをSSHコマンドと組み合わせ実行する場合、次のようになります。</p>
+<pre><code>run: |  ssh remote-docker \ echo "this echo command will be executed in the remote Docker environment \ <br>  rather than the initial job container itself"</code></pre>
+<p>ここで問題となるのは、SSH シェルに渡すことのできるコマンドは 1 つだけだということです。例えば、 <code>ssh remote-docker touch file1 &amp;&amp; touch file2</code> を実行すると、<code>file1</code> はリモート Docker 環境に作成されますが、<code>file2</code> はジョブのローカルコンテナに作成されます。</p>
+<p>そのため、リモート Docker 環境で複雑なコマンドの組み合わせ実行するには、それらを単一のコマンドとして実行する方法を考える必要があります。</p>
+<p>次にいくつかの例を紹介します。</p>
+<p><a href="https://stackoverflow.com/questions/4412238/what-is-the-cleanest-way-to-ssh-and-run-multiple-commands-in-bash%0A" rel="nofollow">https://stackoverflow.com/questions/4412238/what-is-the-cleanest-way-to-ssh-and-run-multiple-commands-in-bash
+    </a></p>
+<p>上記のリンクでは<a href="http://tldp.org/LDP/abs/html/here-docs.html" rel="nofollow">"ヒアドキュメント" を使用する</a>、もしくはコマンドをシェルスクリプトに保存し、<code>ssh</code> コマンドへ渡すなどの例が紹介されています。</p>
+<p><code> ssh remote-docker </code> を使用して Docker ストレージドライバを更新する場合は、CircleCI フォーラムの以下のスレッドを参照ください。</p>
+<p><a href="https://discuss.circleci.com/t/changing-docker-storage-driver/36494/2%0A" rel="noreferrer">https://discuss.circleci.com/t/changing-docker-storage-driver/36494/2
+    </a></p>

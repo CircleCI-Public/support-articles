@@ -1,0 +1,5 @@
+<p><code>config.yml</code> ファイルを大幅に変更したいものの、変更ごとにはビルドが実行されないようにしたい場合があります。</p>
+<p>そのためには、変更作業をする際に、ワークフローの各ジョブの最初 (<code>- checkout</code> ステップの後) に以下のコードを追加します。</p>
+<pre>- run: | <br>    changes=`git show --name-only ${CIRCLE_SHA1} | tail -n +7` <br>    if [ "$changes" = ".circleci/config.yml" ]; then <br>      echo "Only found a configuration change. Stopping build" <br>      circleci-agent step halt<br>    fi</pre>
+<p>このコードは、コミット内でどのファイルが変更されたかを確認するものです。変更対象が設定ファイルのみだった場合、ジョブは <a href="https://circleci.com/docs/ja/2.0/configuration-reference/#step-%E5%86%85%E3%81%8B%E3%82%89%E3%81%AE%E3%82%B8%E3%83%A7%E3%83%96%E3%81%AE%E7%B5%82%E4%BA%86" target="_blank" rel="noopener">"circleci-agent step halt" コマンド</a>により正常に終了されます。</p>
+<p>設定ファイルの変更が完了したら、上記の実行ステップを削除すれば、通常どおりにビルドのプロセスが開始されます。</p>
