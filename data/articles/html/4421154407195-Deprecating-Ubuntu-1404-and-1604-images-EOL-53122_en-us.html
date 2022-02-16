@@ -1,0 +1,29 @@
+<h2 id="Jobs-using-machine:-true-or-specifying-a-14.04-ubuntu-Machine-image" data-renderer-start-pos="2321">
+    <span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044">Applies to: jobs using </span><code class="code css-9z42f9" data-renderer-mark="true"><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044">machine: true</span></code><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044"> or specifying a </span><code class="code css-9z42f9" data-renderer-mark="true"><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044">14.04 ubuntu</span></code><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044"> Machine image</span>
+</h2>
+<ul class="p-rich_text_list p-rich_text_list__bullet" data-stringify-type="unordered-list" data-indent="0" data-border="0">
+    <li data-stringify-indent="0" data-stringify-border="0">
+        <strong><em>Note:</em></strong><span> </span><em>Ubuntu 16.04 has reached the end of its LTS window as of April 2021 and will no longer be supported by Canonical. As a result,<span> </span><code class="language-plaintext highlighter-rouge">ubuntu-1604:202104-01</code><span> </span>is the final Ubuntu 16.04 image released by CircleCI. We suggest upgrading to the latest Ubuntu 20.04 image for continued releases and support past April 2021.<br><br></em>Please contact <a href="mailto:support@circleci.com">support@circleci.com </a>or open a ticket in the <a href="https://support.circleci.com/hc/en-us/requests/new" target="_self">CircleCI Support Center</a> with any questions or issues that arise during migration.
+    </li>
+</ul>
+<p>If you don’t <a href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images">specify a machine image</a>, you are using the default image and you’ll need to take action</p>
+<p data-renderer-start-pos="2390">You can tell if you fall into this category if any of your jobs look like this:</p>
+<pre style="background-color: #f3f3f3;" data-renderer-start-pos="2390">jobs:
+  build:
+    machine: true # This is using the default old machine image
+    steps:
+      - checkout</pre>
+<p data-renderer-start-pos="2579"><span>Or it may look like this which is an example of a 14.04 based image:</span></p>
+<pre class="code-block sc-exAgwC bECVZf" style="background-color: #f3f3f3;">jobs:
+  build:
+    machine:
+      image: circleci/classic:201709-01 # This is a 14.04 based image
+    steps:
+      - checkout</pre>
+<p data-renderer-start-pos="2716">The following options are available, <a class="sc-dNLxif kFXRWW" title="https://discuss.circleci.com/t/old-linux-machine-image-remote-docker-deprecation/37572" href="https://discuss.circleci.com/t/old-linux-machine-image-remote-docker-deprecation/37572" data-renderer-mark="true">given the deprecation of older images</a>, <strong data-renderer-mark="true">our recommendation is to update your image following our guides:</strong></p>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/images/linux-vm/14.04-to-20.04-migration/" target="_blank" rel="noopener">Migrating from Ubuntu 14.04 to Ubuntu 20.04</a></li>
+    <li><a href="https://circleci.com/docs/2.0/images/linux-vm/16.04-to-20.04-migration/" target="_blank" rel="noopener">Migrating from Ubuntu 16.04 to Ubuntu 20.04</a></li>
+</ul>
+<p data-renderer-start-pos="2897">See our documentation update on our <a class="sc-dNLxif kFXRWW" title="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images" href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images" data-renderer-mark="true">newer machine images.</a></p>
+<p data-renderer-start-pos="2897"> </p>

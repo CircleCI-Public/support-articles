@@ -181,3 +181,7 @@
         <p>Alternatively, if the image you are using is older or you can’t update it, you’ll want to generate a new SSH key, <a href="https://github.blog/2021-09-01-improving-git-protocol-security-github/">meeting the requirements set forth by GitHub</a>, and add and use that key within CircleCI.</p>
     </li>
 </ol>
+<p><span class="wysiwyg-font-size-x-large">Mass regeneration of checkout keys</span></p>
+<p>For organizations that have a lot of projects, and the option you are proceeding with is regenerating your keys, we have created a script to help with that process:</p>
+<p><a href="https://github.com/CircleCI-Public/github-ssh-regeneration">https://github.com/CircleCI-Public/github-ssh-regeneration</a></p>
+<p>You will want to ensure that the person who runs this script, AKA the personal API key used, has the proper access to generate keys for the repositories. <a href="https://support.circleci.com/hc/en-us/articles/360034990033-Am-I-an-Org-Admin-" target="_blank" rel="noopener">That likely means an Organization Owner/Admin</a>.</p>
