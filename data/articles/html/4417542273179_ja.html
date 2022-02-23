@@ -38,6 +38,8 @@
       image: circleci/classic:201709-01 # 14.04 ベースイメージ
     steps:
       - checkout</pre>
+<p>GitHub の<a href="https://github.com/search" target="_self">検索</a>を下記の内容で行うと、項目に該当する Config を見つけることもできます。（CircleCI-Public を自分の Organization に変更して下さい。）</p>
+<pre class="c-mrkdwn__pre" data-stringify-type="pre">org:CircleCI-Public circleci/classic path:.circleci filename:config.yml</pre>
 <p>上記以外にも<a href="https://discuss.circleci.com/t/docker/42242" target="_self">こちらから非推奨のイメージのリスト</a>の確認をお願いします。非推奨のイメージから更新することをお勧めします。他にも下記のリストの方法で対処は可能です。</p>
 <ol>
     <li>新しい<a href="https://circleci.com/docs/ja/2.0/configuration-reference/#available-machine-images" target="_self">マシンイメージに更新</a>する事で必要な機能が扱えるようになります。</li>
@@ -153,3 +155,7 @@
     <li>Dokcer やマシンイメージが最新版に更新されている限り、キーを使い続けることができます。また、OpenSSH 7.2 以上がインストールされている必要がありますので、確認する際は <span>: </span><span class="code" spellcheck="false"><code>- run: ssh -V</code></span> を実行して下さい。</li>
     <li>使用しているイメージが古い場合や更新が難しい場合は、<a href="https://github.blog/2021-09-01-improving-git-protocol-security-github/" target="_self">GitHubが定める要件</a>を満たした新しい SSHキーを生成し、CircleCI　内にキーを追加して使用することが可能です。</li>
 </ol>
+<h2>全ての Checkout  キーをリジェネレーションしたい</h2>
+<p>多くのプロジェクトを抱える組織で、キーをリジェネレーションする必要がある場合、その作業を補助するスクリプトを作成しました。</p>
+<p><a href="https://github.com/CircleCI-Public/github-ssh-regeneration" target="_self">https://github.com/CircleCI-Public/github-ssh-regeneration</a></p>
+<p>このスクリプトを実行する前に Persoanl API キーが、リポジトリのキーを作成に適切なアクセス権を持っていることを確認して下さい。キーの作成をアクセス権は主に Organization の Owner / Admin になります。</p>
