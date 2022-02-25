@@ -6,7 +6,9 @@
         <strong><em>Note:</em></strong><span> </span><em>Ubuntu 16.04 has reached the end of its LTS window as of April 2021 and will no longer be supported by Canonical. As a result,<span> </span><code class="language-plaintext highlighter-rouge">ubuntu-1604:202104-01</code><span> </span>is the final Ubuntu 16.04 image released by CircleCI. We suggest upgrading to the latest Ubuntu 20.04 image for continued releases and support past April 2021.<br><br></em>Please contact <a href="mailto:support@circleci.com">support@circleci.com </a>or open a ticket in the <a href="https://support.circleci.com/hc/en-us/requests/new" target="_self">CircleCI Support Center</a> with any questions or issues that arise during migration.
     </li>
 </ul>
-<p>If you don’t <a href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images">specify a machine image</a>, you are using the default image and you’ll need to take action</p>
+<p>If you don’t <a href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images">specify a machine image</a>, you are using the default image and you’ll need to take action. </p>
+<p>Currently, when using <em><code class="language-plaintext highlighter-rouge">machine: true</code><span> </span></em> builds are using  a <em><code class="language-plaintext highlighter-rouge">Ubuntu 14.04</code></em><span> image. If you do not specify an image, your build will be using the default image which will be <em><code class="language-plaintext highlighter-rouge">Ubuntu 22.04</code></em> as of  31-May-2022. This may lead to a breaking change. </span></p>
+<p> </p>
 <p data-renderer-start-pos="2390">You can tell if you fall into this category if any of your jobs look like this:</p>
 <pre style="background-color: #f3f3f3;" data-renderer-start-pos="2390">jobs:
   build:
