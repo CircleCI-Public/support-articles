@@ -41,7 +41,7 @@ workflows:
 jobs:
   build:
     machine:
-      image: ubuntu-1604:202004-01
+      image: ubuntu-2004:202201-02
     steps:
       - run:
           name: Install OpenVPN
@@ -51,21 +51,17 @@ jobs:
       - run:
           name: Check IP before VPN connection
           command: |
-            ifconfig
-            route -n
-            sudo netstat -anp
-            cat /etc/resolv.conf
+            ip a
             echo "Public IP before VPN connection is $(curl checkip.amazonaws.com)"<br>
       - run:
           name: VPN Setup
           background: true
           command: |
-            echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /tmp/config.ovpn<br><br>            if grep auth-user-pass /tmp/config.ovpn; then<br>              if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then<br>                echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"<br>                exit 1<br>              else<br>                printf "$VPN_USER\\n$VPN_PASSWORD" &gt; /tmp/vpn.login<br>              fi<br>            fi<br><br>            #IMPORTANT: Include the following line and the `--route` options to exclude the connection from CircleCI and the link-local range<br>            phone_home="$(netstat -an | grep ':22 .*ESTABLISHED' | head -n1 | awk '{ split($5, a, ":"); print a[1] }')"<br>            echo $phone_home<br><br>            if grep auth-user-pass /tmp/config.ovpn; then
-              sudo openvpn --config /tmp/config.ovpn --auth-user-pass /tmp/vpn.login \
-                --route $phone_home 255.255.255.255 net_gateway \
-                --route 169.254.0.0 255.255.0.0 net_gateway &gt; /tmp/openvpn.log<br>            else<br>              sudo openvpn --config /tmp/config.ovpn \<br>                --route $phone_home 255.255.255.255 net_gateway \<br>                --route 169.254.0.0 255.255.0.0 net_gateway &gt; /tmp/openvpn.log<br>            fi<br>
+            echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /tmp/config.ovpn<br><br>            if grep -q auth-user-pass /tmp/config.ovpn; then<br>              if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then<br>                echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"<br>                exit 1<br>              else<br>                printf "$VPN_USER\\n$VPN_PASSWORD" &gt; /tmp/vpn.login<br>              fi<br>            fi<br><br>            ### IMPORTANT: Include the following line and the `--route` options to exclude the connection from CircleCI and the link-local range<br>            phone_home=$(ss -Hnto state established '( sport = :ssh )' | head -n1 | awk '{ split($4, a, ":"); print a[1] }') <br>            ### In case you're using an image with Ubuntu &lt; <span>20.04, replace the above line with:<br></span>            ### phone_home=$(ss -an | grep 'ESTAB .*:22' | head -n1 | awk '{ split($6, a, ":"); print a[1] }')<br>            echo $phone_home<br><br>            if grep -q auth-user-pass /tmp/config.ovpn; then
+              vpn_command=(sudo openvpn --config /tmp/config.ovpn --auth-user-pass /tmp/vpn.login \
+                --route 169.254.0.0 255.255.0.0 net_gateway)<br>            else<br>              <span>vpn_command=(sudo openvpn --config /tmp/config.ovpn \</span><br>                --route 169.254.0.0 255.255.0.0 net_gateway)<br>            fi<br><br>            if [ -n "$phone_home" ]; then<br>              vpn_command+=(--route $phone_home 255.255.255.255 net_gateway)<br>            fi<br><br>            "${vpn_command[@]}" &gt; /tmp/openvpn.log<br>
       - run:
-          name: Wait for the connection to be established and check<br>          command: |<br>            while [ $(cat /tmp/openvpn.log|grep -c "<span>Initialization Sequence Completed</span>") == 0 ]; do<br>              echo "Attempting to connect..."<br>              sleep 1;<br>            done<br>            echo "VPN Connected"<br>            echo "Public IP is now $(curl checkip.amazonaws.com)"
+          name: Wait for the connection to be established and check<br>          command: |<br>            while [ $(cat /tmp/openvpn.log|grep -c "<span>Initialization Sequence Completed</span>") == 0 ]; do<br>              echo "Attempting to connect..."<br>              sleep 1;<br>            done<br>            echo "VPN Connected"<br>            <span>ip a</span><br>            cat /etc/resolv.conf<br>            echo "Public IP is now $(curl checkip.amazonaws.com)"
 
       - run:
           name: Run commands in our infrastructure
@@ -79,6 +75,7 @@ jobs:
     <li>
         <span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a>.</span><span><span><span><br></span></span></span><span><span><span></span></span></span>
     </li>
+    <li><span>Make sure to <a href="https://openvpn.net/cloud-docs/openvpn-3-client-for-linux/#installation-for-debian-and-ubuntu" target="_blank" rel="noopener">install the proper repository for the Ubuntu release</a> you're using</span></li>
     <li><span>With OpenVPN 3 Linux, storing user credentials in a text-based file to use when starting a VPN connection is <strong>unsupported</strong>. Please refer to <a href="https://openvpn.net/openvpn-3-linux-and-auth-user-pass/" target="_blank" rel="noopener">this documentation (OpenVPN 3 Linux and --auth-user-pass)</a> to set up a workaround.</span></li>
 </ul>
 <pre style="background-color: #f3f3f3;">version: 2.1
@@ -89,25 +86,24 @@ workflows:
 jobs:
   build:
     machine:
-      image: ubuntu-1604:202004-01
+      image: ubuntu-2004:202201-02
     steps:
       - run:
           name: Install OpenVPN
           command: |
-            sudo apt update &amp;&amp; sudo apt install apt-transport-https<br>            sudo wget https://swupdate.openvpn.net/repos/openvpn-repo-pkg-key.pub<br>            sudo apt-key add openvpn-repo-pkg-key.pub<br>            sudo wget -O /etc/apt/sources.list.d/openvpn3.list https://swupdate.openvpn.net/community/openvpn3/repos/openvpn3-xenial.list<br>            sudo apt update &amp;&amp; sudo apt install openvpn3<br>
+            sudo apt update &amp;&amp; sudo apt install apt-transport-https<br>            sudo wget https://swupdate.openvpn.net/repos/openvpn-repo-pkg-key.pub<br>            sudo apt-key add openvpn-repo-pkg-key.pub<br>            <br>            ### The repository URL will depend on your Ubuntu release name (here we chose "focal" since Ubuntu 20.04 is used<br>            sudo wget -O /etc/apt/sources.list.d/openvpn3.list https://swupdate.openvpn.net/community/openvpn3/repos/openvpn3-focal.list<br>            sudo apt update &amp;&amp; sudo apt install openvpn3<br>
       - run:
           name: Check IP before VPN connection
-          command: |
-            echo "Public IP before VPN connection is $(curl checkip.amazonaws.com)"<br>
+          command: |<br><span>            ip a</span><br>            echo "Public IP before VPN connection is $(curl checkip.amazonaws.com)"<br>
       - run:
           name: VPN Setup
           background: true
           command: |
             echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /tmp/config.ovpn
-<br>            #IMPORTANT: Include the following 3 lines to <span>exclude the link-local range</span><br>            phone_home="$(netstat -an | grep ':22 .*ESTABLISHED' | head -n1 | awk '{ split($5, a, ":"); print a[1] }')"<br>            echo $phone_home
-            echo -e "\nroute $phone_home 255.255.255.255 net_gateway" &gt;&gt; /tmp/config.ovpn<br>            echo "route 169.254.0.0 255.255.0.0 net_gateway" &gt;&gt; /tmp/config.ovpn<br>            <br>            #This will start the connection<br>            sudo openvpn3 session-start --config /tmp/config.ovpn &gt; /tmp/openvpn.log<br>
+<br>            ### IMPORTANT: Include the following line to exclude the connection from CircleCI and the link-local range<br>            phone_home=$(ss -Hnto state established '( sport = :ssh )' | head -n1 | awk '{ split($4, a, ":"); print a[1] }')<br>            ### In case you're using an image with Ubuntu &lt; 20.04, replace the above line with:<br>            # phone_home=$(ss -an | grep 'ESTAB .*:22' | head -n1 | awk '{ split($6, a, ":"); print a[1] }')<br>            echo $phone_home<br>            <br>            <span>if [ -n "$phone_home" ]; then</span>
+              echo -e "\nroute $phone_home 255.255.255.255 net_gateway" &gt;&gt; /tmp/config.ovpn<br>            fi<br>            <br>            echo "\nroute 169.254.0.0 255.255.0.0 net_gateway" &gt;&gt; /tmp/config.ovpn<br>            <br>            # This will start the connection<br>            sudo openvpn3 session-start --config /tmp/config.ovpn &gt; /tmp/openvpn.log<br>
       - run:
-          name: Wait for the connection to be established and check<br>          command: |<br>            while [ $(sudo openvpn3 sessions-list|grep -c "Client connected") == 0 ]; do<br>              echo "Attempting to connect..."<br>              sleep 1;<br>            done<br>            echo "VPN Connected"<br>            <br>            sudo openvpn3 sessions-list<br>            echo "Public IP is now $(curl checkip.amazonaws.com)"<br>
+          name: Wait for the connection to be established and check<br>          command: |<br>            while [ $(sudo openvpn3 sessions-list|grep -c "Client connected") == 0 ]; do<br>              echo "Attempting to connect..."<br>              sleep 1;<br>            done<br>            echo "VPN Connected"<br>            <br>            sudo openvpn3 sessions-list<br>            <br><span>            ip a</span><br>            cat /etc/resolv.conf<br>            echo "Public IP is now $(curl checkip.amazonaws.com)"<br>
       - run:
           name: Run commands in our infrastructure
           command: |
@@ -118,10 +114,9 @@ jobs:
 <h4 id="l2tp"><strong>L2TP</strong></h4>
 <p><span><span>To set up an L2TP VPN connection, we recommend referring to <a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients.md#configure-linux-vpn-clients-using-the-command-line" target="_blank" rel="noopener">this guide.</a></span></span><span><span></span></span></p>
 <p><span><span>We suggest storing <code>VPN_SERVER_IP</code>, <code>VPN_IPSEC_PSK</code>, <code>VPN_USER</code> and <code>VPN_PASSWORD</code> as <a href="https://circleci.com/docs/2.0/env-vars/" rel="noreferrer">environment variables</a>. Ideally, you might want to base64-encode <code>VPN_IPSEC_PSK</code> before storing it; you'll need to decode it during the build.</span></span></p>
-<p dir="auto">To retrieve the default gateway IP address during the build, you can use either of the following:</p>
+<p dir="auto">Also, we suggest storing the default gateway IP address in an environment variable:</p>
 <ul dir="auto" type="disc">
-    <li type="disc"><code>default_gw_IP=$(netstat -r | grep default | awk '{ print $2 }')</code></li>
-    <li type="disc"><code>default_gw_IP=$(ip route | grep default | awk '{ print $3 }')</code></li>
+    <li type="disc"><code>DEFAULT_GW_IP=$(ip route show default|awk '{print $3}')</code></li>
 </ul>
 <p> </p>
 <h2 id="h_01F3THFMEAY31K30ZKP3M0RVZ7">
@@ -155,8 +150,7 @@ jobs:
           name: VPN Setup
           command: |
             <span>echo $VPN_CLIENT_CONFIG | base64 --decode | tee /tmp/config.ovpn 1&gt;/dev/null</span><br>           <span> <br>            if grep auth-user-pass /tmp/config.ovpn; then<br>              if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then<br>                echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"<br>                exit 1<br>              else<br>                printf "$VPN_USER\\n$VPN_PASSWORD" &gt; /tmp/vpn.login<br>                sed -i config.bak 's|^auth-user-pass.*|auth-user-pass /tmp/vpn\.login|' /tmp/config.ovpn<br>              fi<br>            fi<br><br>            touch /tmp/openvpn.log</span>
-<br>            #IMPORTANT: Include the following 3 lines to <span>exclude the link-local range</span><br>            <span>phone_home="$(netstat -an | grep '\.2222\s.*ESTABLISHED' | head -n1 | awk '{ split($5, a, "."); print a[1] "." a[2] "." a[3] "." a[4] }')"<br></span>            echo $phone_home
-            echo -e "\nroute $phone_home 255.255.255.255 net_gateway" | tee -a /tmp/config.ovpn<br>            echo "route 169.254.0.0 255.255.0.0 net_gateway" | tee -a /tmp/config.ovpn<br>            <br>            cat \&lt;&lt; EOF | sudo tee /Library/LaunchDaemons/org.openvpn.plist 1&gt;/dev/null<br>            &lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>            &lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;<br>            &lt;plist version="1.0"&gt;<br>            &lt;dict&gt; <br>                &lt;key&gt;Label&lt;/key&gt;<br>                &lt;string&gt;org.openvpn&lt;/string&gt;<br>                &lt;key&gt;Program&lt;/key&gt;<br>                  &lt;string&gt;/usr/local/sbin/openvpn&lt;/string&gt;<br>                &lt;key&gt;ProgramArguments&lt;/key&gt;<br>                  &lt;array&gt;<br>                    &lt;string&gt;--config&lt;/string&gt;<br>                    &lt;string&gt;/tmp/config.ovpn&lt;/string&gt;<br>                  &lt;/array&gt;<br>                &lt;key&gt;RunAtLoad&lt;/key&gt;<br>                  &lt;false/&gt;<br>                &lt;key&gt;TimeOut&lt;/key&gt;<br>                  &lt;integer&gt;90&lt;/integer&gt;<br>                &lt;key&gt;StandardErrorPath&lt;/key&gt;<br>                  &lt;string&gt;/tmp/openvpn.log&lt;/string&gt;<br>                &lt;key&gt;StandardOutPath&lt;/key&gt;<br>                  &lt;string&gt;/tmp/openvpn.log&lt;/string&gt;<br>                &lt;key&gt;KeepAlive&lt;/key&gt;<br>                 &lt;true/&gt;<br>              &lt;/dict&gt;<br>              &lt;/plist&gt;<br>              EOF<br>              ifconfig<br>              echo "Public IP before VPN connection is &gt; $(curl <a href="http://checkip.amazonaws.com)%22">http://checkip.amazonaws.com)"</a><br><br>              #This will start the connection<br>              sudo launchctl load /Library/LaunchDaemons/org.openvpn.plist<br>              sudo launchctl start org.openvpn<br>
+<br>            ### IMPORTANT: Include the following 3 lines to <span>exclude the link-local range</span><br>            <span>phone_home="$(netstat -an | grep '\.2222\s.*ESTABLISHED' | head -n1 | awk '{ split($5, a, "."); print a[1] "." a[2] "." a[3] "." a[4] }')"<br></span>            echo -e "\nroute $phone_home 255.255.255.255 net_gateway" | tee -a /tmp/config.ovpn<br>            echo "route 169.254.0.0 255.255.0.0 net_gateway" | tee -a /tmp/config.ovpn<br>            <br>            echo $phone_home<br><br>            cat \&lt;&lt; EOF | sudo tee /Library/LaunchDaemons/org.openvpn.plist 1&gt;/dev/null<br>            &lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>            &lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;<br>            &lt;plist version="1.0"&gt;<br>            &lt;dict&gt; <br>                &lt;key&gt;Label&lt;/key&gt;<br>                &lt;string&gt;org.openvpn&lt;/string&gt;<br>                &lt;key&gt;Program&lt;/key&gt;<br>                  &lt;string&gt;/usr/local/sbin/openvpn&lt;/string&gt;<br>                &lt;key&gt;ProgramArguments&lt;/key&gt;<br>                  &lt;array&gt;<br>                    &lt;string&gt;--config&lt;/string&gt;<br>                    &lt;string&gt;/tmp/config.ovpn&lt;/string&gt;<br>                  &lt;/array&gt;<br>                &lt;key&gt;RunAtLoad&lt;/key&gt;<br>                  &lt;false/&gt;<br>                &lt;key&gt;TimeOut&lt;/key&gt;<br>                  &lt;integer&gt;90&lt;/integer&gt;<br>                &lt;key&gt;StandardErrorPath&lt;/key&gt;<br>                  &lt;string&gt;/tmp/openvpn.log&lt;/string&gt;<br>                &lt;key&gt;StandardOutPath&lt;/key&gt;<br>                  &lt;string&gt;/tmp/openvpn.log&lt;/string&gt;<br>                &lt;key&gt;KeepAlive&lt;/key&gt;<br>                 &lt;true/&gt;<br>              &lt;/dict&gt;<br>              &lt;/plist&gt;<br>              EOF<br>              ifconfig<br>              echo "Public IP before VPN connection is &gt; $(curl <a href="http://checkip.amazonaws.com)%22">http://checkip.amazonaws.com)"</a><br><br>              # This will start the connection<br>              sudo launchctl load /Library/LaunchDaemons/org.openvpn.plist<br>              sudo launchctl start org.openvpn<br>
       - run:
           name: Wait for the connection to be established and check<br>          command: |<br>            while [ $(cat /tmp/openvpn.log|grep -c "<span>Initialization Sequence Completed</span>") == 0 ]; do<br>              echo "Attempting to connect..."<br>              sleep 1;<br>            done<br>            echo "VPN Connected"<br>         <br>            sudo launchctl list | grep openvpn<br>            echo "Public IP is now $(curl checkip.amazonaws.com)"<br>
       - run:
@@ -193,10 +187,8 @@ jobs:
     steps:
       - run:
           name: Install OpenVPN
-          shell: powershell.exe
           command: |
-            Invoke-WebRequest -Uri "https://swupdate.openvpn.org/community/releases/OpenVPN-2.5.2-I601-amd64.msi" -OutFile "OpenVPN-2.5.2-I601-amd64.msi"
-            msiexec /i OpenVPN-2.5.2-I601-amd64.msi /qn
+            choco install openvpn
             
       - run:
           name: Check IP before VPN connection
@@ -207,9 +199,9 @@ jobs:
           command: |<br>            <span>echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /C/PROGRA~1/OpenVPN/config/config.ovpn</span>
 
             if grep auth-user-pass "/C/PROGRA~1/OpenVPN/config/config.ovpn"; then<br>              if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then<br>                echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"<br>                exit 1<br>              else<br>                printf "$VPN_USER\\n$VPN_PASSWORD" &gt; /C/PROGRA~1/OpenVPN/config/vpn.login<br>                sed -i 's|^auth-user-pass.*|auth-user-pass vpn\.login|' /C/PROGRA~1/OpenVPN/config/config.ovpn<br>              fi<br>            fi
-            
+            <br>            ### IMPORTANT: Include the following 3 lines to exclude the connection from CircleCI and the link-local range
             phone_home=$(netstat -an | grep ':22 .*ESTABLISHED' | head -n1 | awk '{ split($3, a, ":"); print a[1] }')
-            echo -e "\nroute $phone_home 255.255.255.255 net_gateway" | tee -a "/C/PROGRA~1/OpenVPN/config/config.ovpn"<br>            echo "route 169.254.0.0 255.255.0.0 net_gateway" | tee -a "/C/PROGRA~1/OpenVPN/config/config.ovpn"<br>            <br>            #Create and start the OpenVPN service<br><span>            sc.exe create "OpenVPN" binPath= "C:\PROGRA~1\OpenVPN\bin\openvpnserv.exe"</span><br>            <span>net start "OpenVPN"</span>
+            echo -e "\nroute $phone_home 255.255.255.255 net_gateway" | tee -a "/C/PROGRA~1/OpenVPN/config/config.ovpn"<br>            echo "route 169.254.0.0 255.255.0.0 net_gateway" | tee -a "/C/PROGRA~1/OpenVPN/config/config.ovpn"<br>            <br>            # Create and start the OpenVPN service<br><span>            sc.exe create "OpenVPN" binPath= "C:\PROGRA~1\OpenVPN\bin\openvpnserv.exe"</span><br>            <span>net start "OpenVPN"</span>
         
             
       - run:
@@ -231,5 +223,5 @@ jobs:
       - run:
           name: Disconnect from OpenVPN
           command: <span>net stop "OpenVPN"</span>
-          when: always
-</pre>
+          when: always<span style="font-size: 15px; white-space: normal;">
+</span></pre>
