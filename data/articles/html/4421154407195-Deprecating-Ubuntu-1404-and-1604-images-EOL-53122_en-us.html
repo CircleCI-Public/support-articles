@@ -1,5 +1,5 @@
 <h1 id="Jobs-using-machine:-true-or-specifying-a-14.04-ubuntu-Machine-image" data-renderer-start-pos="2321">
-    <span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044">Applies to: jobs using </span><code class="code css-9z42f9" data-renderer-mark="true"><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044">machine: true</span></code><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044"> or specifying a </span><code class="code css-9z42f9" data-renderer-mark="true"><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044">14.04 ubuntu</span></code><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044"> Machine image</span>
+    <span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044">Applies to: jobs using </span><code class="code css-9z42f9" data-renderer-mark="true"><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044">machine: true</span></code><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044"> or specifying a </span><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044">Machine image based on Ubuntu 14.04 or 16.04.</span>
 </h1>
 <ul class="p-rich_text_list p-rich_text_list__bullet" data-stringify-type="unordered-list" data-indent="0" data-border="0">
     <li data-stringify-indent="0" data-stringify-border="0">
@@ -19,7 +19,7 @@
 <pre class="code-block sc-exAgwC bECVZf" style="background-color: #f3f3f3;">jobs:
   build:
     machine:
-      image: circleci/classic:201709-01 # This is a 14.04 based image
+      image: circleci/classic:201709-01 # This is an image based on Ubuntu 14.04
     steps:
       - checkout</pre>
 <p data-renderer-start-pos="2716">The following options are available, <a class="sc-dNLxif kFXRWW" title="https://discuss.circleci.com/t/old-linux-machine-image-remote-docker-deprecation/37572" href="https://discuss.circleci.com/t/old-linux-machine-image-remote-docker-deprecation/37572" data-renderer-mark="true">given the deprecation of older images</a>, <strong data-renderer-mark="true">our recommendation is to update your image following our guides:</strong></p>
@@ -28,6 +28,13 @@
     <li><a href="https://circleci.com/docs/2.0/images/linux-vm/16.04-to-20.04-migration/" target="_blank" rel="noopener">Migrating from Ubuntu 16.04 to Ubuntu 20.04</a></li>
 </ul>
 <p data-renderer-start-pos="2897">See our documentation update on our <a class="sc-dNLxif kFXRWW" title="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images" href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images" data-renderer-mark="true">newer machine images.</a></p>
+<p data-renderer-start-pos="2897"> </p>
+<h2 data-renderer-start-pos="2897">How can I know if my project is using deprecated Machine images?</h2>
+<p data-renderer-start-pos="2897"> </p>
+<p data-renderer-start-pos="2897">You will see a warning on a job's build details itself, if the job is using a deprecated Machine image.<br><br><img src="https://support.circleci.com/hc/article_attachments/4678303152923/Screen_Shot_2022-03-14_at_18.29.50.png" alt="Screen_Shot_2022-03-14_at_18.29.50.png"></p>
+<p data-renderer-start-pos="2897"><br>Next, <a href="https://circleci.com/docs/2.0/local-cli/" target="_self">if you have the CircleCI CLI tool installed</a>, you can also run `circleci config validate` against your project's .circleci/config.yml. <br>The <a href="https://circleci.com/docs/2.0/local-cli/#validate-a-circleci-config" target="_self">validation</a> will return an error if your project's build config is still referencing deprecated Machine images.<br><br>Here is an example from the CLI output when we are referencing a deprecated Machine image.<br><br></p>
+<pre>$ circleci config validate<br><br>Error: The config is using a deprecated Linux VM image (circleci/classic:201709-01). Please see https://circleci.com/blog/ubuntu-14-16-image-deprecation/. This error can be ignored by using the '--ignore-deprecated-images' flag.</pre>
+<p data-renderer-start-pos="2897"> </p>
 <p data-renderer-start-pos="2897"> </p>
 <h2 data-renderer-start-pos="2897"><span>How to Locate Image Use using GitHub Search<br></span></h2>
 <h3 data-renderer-start-pos="2897">
