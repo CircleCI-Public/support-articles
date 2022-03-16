@@ -47,7 +47,7 @@ jobs:
           name: Install OpenVPN
           command: |
             sudo apt-get update
-            sudo apt-get install openvpn -y<br>
+            sudo apt-get install openvpn <span>openvpn-systemd-resolved</span><br>
       - run:
           name: Check IP before VPN connection
           command: |
@@ -57,17 +57,17 @@ jobs:
           name: VPN Setup
           background: true
           command: |
-            echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /tmp/config.ovpn<br><br>            if grep -q auth-user-pass /tmp/config.ovpn; then<br>              if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then<br>                echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"<br>                exit 1<br>              else<br>                printf "$VPN_USER\\n$VPN_PASSWORD" &gt; /tmp/vpn.login<br>              fi<br>            fi<br><br>            ### IMPORTANT: Include the following line and the `--route` options to exclude the connection from CircleCI and the link-local range<br>            phone_home=$(ss -Hnto state established '( sport = :ssh )' | head -n1 | awk '{ split($4, a, ":"); print a[1] }') <br>            ### In case you're using an image with Ubuntu &lt; <span>20.04, replace the above line with:<br></span>            ### phone_home=$(ss -an | grep 'ESTAB .*:22' | head -n1 | awk '{ split($6, a, ":"); print a[1] }')<br>            echo $phone_home<br><br>            if grep -q auth-user-pass /tmp/config.ovpn; then
-              vpn_command=(sudo openvpn --config /tmp/config.ovpn --auth-user-pass /tmp/vpn.login \
-                --route 169.254.0.0 255.255.0.0 net_gateway)<br>            else<br>              <span>vpn_command=(sudo openvpn --config /tmp/config.ovpn \</span><br>                --route 169.254.0.0 255.255.0.0 net_gateway)<br>            fi<br><br>            if [ -n "$phone_home" ]; then<br>              vpn_command+=(--route $phone_home 255.255.255.255 net_gateway)<br>            fi<br><br>            "${vpn_command[@]}" &gt; /tmp/openvpn.log<br>
+            echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /tmp/config.ovpn<br><br>            if grep -q auth-user-pass /tmp/config.ovpn; then<br>              if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then<br>                echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"<br>                exit 1<br>              else<br>                printf "$VPN_USER\\n$VPN_PASSWORD" &gt; /tmp/vpn.login<br>              fi<br>            fi<br><br>            <span>SYS_RES_DNS=$(systemd-resolve --status | grep 'DNS Servers'|awk '{print $3}')</span><br>            <span>echo $SYS_RES_DNS</span><br><br>            <span>phone_home=$(ss -Hnto state established '( sport = :ssh )' | head -n1 | awk '{ split($4, a, ":"); print a[1] }') || $(sudo netstat -an | grep ':22 .*ESTABLISHED' | head -n1 | awk '{ split($5, a, ":"); print a[1] }')</span><br>            echo $phone_home<br><br>            vpn_command=(sudo openvpn<br>              --config /tmp/config.ovpn<br>              --route $SYS_RES_DNS 255.255.255.255 net_gateway<br>              --route 169.254.0.0 255.255.0.0 net_gateway<br>              --script-security 2<br>              --up /etc/openvpn/update-systemd-resolved --up-restart<br>              --down /etc/openvpn/update-systemd-resolved --down-pre<br>              --dhcp-option DOMAIN-ROUTE .)<br><br>            if grep -q auth-user-pass /tmp/config.ovpn; then
+              <span>vpn_command+=(--auth-user-pass /tmp/vpn.login)</span>
+            fi<br><br>            <span>if [ -n "$phone_home" ]; then</span><br>              <span>vpn_command+=(--route $phone_home 255.255.255.255 net_gateway)</span><br>            fi<br><br>            <span>for IP in $(host runner.circleci.com | awk '{ print $4; }')</span><br>              do<br>                <span>vpn_command+=(--route $IP 255.255.255.255 net_gateway)</span><br>                <span>echo $IP</span><br>            done<br><br>            "${vpn_command[@]}" &gt; /tmp/openvpn.log<br>
       - run:
-          name: Wait for the connection to be established and check<br>          command: |<br>            while [ $(cat /tmp/openvpn.log|grep -c "<span>Initialization Sequence Completed</span>") == 0 ]; do<br>              echo "Attempting to connect..."<br>              sleep 1;<br>            done<br>            echo "VPN Connected"<br>            <span>ip a</span><br>            cat /etc/resolv.conf<br>            echo "Public IP is now $(curl checkip.amazonaws.com)"
+          name: Wait for the connection to be established and check IP<br>          command: |<br>            <span>until [ -f /tmp/openvpn.log ] &amp;&amp; [ "$(grep -c "Initialization Sequence Completed" /tmp/openvpn.log)" != 0 ]; do</span><br>              echo <span>Attempting to connect to VPN server...</span>"<br>              sleep 1;<br>            done<br><br>            <span>printf "\nVPN connected\n"</span><br>            <span>printf "\n</span>Public IP is now $(curl checkip.amazonaws.com)\n"
 
       - run:
           name: Run commands in our infrastructure
           command: |
             # A command
-            # Another command<br><br>      - run:<br>          name: Disconnect from OpenVPN<br>          command: sudo killall openvpn || true<br>          when: always
+            # Another command<br><br>      - run:<br>          name: Disconnect from OpenVPN<br>          command: |<br>            sudo killall openvpn || true<br>          when: always
 </pre>
 <p> </p>
 <h4 id="h_01F3TBTKPEDA8RBAQCVVZNG0T6"><strong>OpenVPN Connect (OpenVPN 3)</strong></h4>
@@ -103,7 +103,7 @@ jobs:
 <br>            ### IMPORTANT: Include the following line to exclude the connection from CircleCI and the link-local range<br>            phone_home=$(ss -Hnto state established '( sport = :ssh )' | head -n1 | awk '{ split($4, a, ":"); print a[1] }')<br>            ### In case you're using an image with Ubuntu &lt; 20.04, replace the above line with:<br>            # phone_home=$(ss -an | grep 'ESTAB .*:22' | head -n1 | awk '{ split($6, a, ":"); print a[1] }')<br>            echo $phone_home<br>            <br>            <span>if [ -n "$phone_home" ]; then</span>
               echo -e "\nroute $phone_home 255.255.255.255 net_gateway" &gt;&gt; /tmp/config.ovpn<br>            fi<br>            <br>            echo "\nroute 169.254.0.0 255.255.0.0 net_gateway" &gt;&gt; /tmp/config.ovpn<br>            <br>            # This will start the connection<br>            sudo openvpn3 session-start --config /tmp/config.ovpn &gt; /tmp/openvpn.log<br>
       - run:
-          name: Wait for the connection to be established and check<br>          command: |<br>            while [ $(sudo openvpn3 sessions-list|grep -c "Client connected") == 0 ]; do<br>              echo "Attempting to connect..."<br>              sleep 1;<br>            done<br>            echo "VPN Connected"<br>            <br>            sudo openvpn3 sessions-list<br>            <br><span>            ip a</span><br>            cat /etc/resolv.conf<br>            echo "Public IP is now $(curl checkip.amazonaws.com)"<br>
+          name: Wait for the connection to be established and check<br>          command: |<br>            until sudo openvpn3 sessions-list|grep "Client connected"; do<br>              echo "Attempting to connect to VPN server..."<br>              sleep 1;<br>            done<br>            <br>            printf "\nPublic IP is now $(curl checkip.amazonaws.com)\n"<br>
       - run:
           name: Run commands in our infrastructure
           command: |

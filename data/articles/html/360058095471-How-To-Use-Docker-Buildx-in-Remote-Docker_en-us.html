@@ -17,11 +17,11 @@ jobs:
       - image: cimg/base:stable
     steps:
       - setup_remote_docker:
-          version: 19.03.14
+          version: 20.10.11
       - checkout
    - run: |
         ssh remote-docker \&lt;&lt;EOF
-          sudo bash -c 'echo "{\"experimental\": true}" &gt; /etc/docker/daemon.json'
+          sudo bash -c 'echo <span>"{\"features\": {\"buildkit\": true } }"</span> &gt; /etc/docker/daemon.json'
           sudo systemctl restart docker
           sudo docker info
         EOF
@@ -44,10 +44,10 @@ jobs:
       - image: cimg/base:stable
     steps:
       - setup_remote_docker:
-          version: 19.03.14
+          version: 20.10.11
       - checkout
       - run: |
-          export DOCKER_CLI_EXPERIMENTAL=enabled
+          export <span>DOCKER_BUILDKIT=1</span>
           docker buildx build .
 </pre>
 <p> </p>
