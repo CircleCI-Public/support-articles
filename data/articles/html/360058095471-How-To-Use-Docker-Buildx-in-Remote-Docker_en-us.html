@@ -1,4 +1,10 @@
-<p>For using Docker buildx, you need <strong>Docker version 19.03</strong> &amp; must enable the "<strong>Experimental features</strong>" option.</p>
+<p> </p>
+<p>If you are using the <a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version" target="_self">Docker version 20.x</a> you can use Buildx without any need of a setup.</p>
+<p>Below are the sample config and the build link and sample config</p>
+<p><strong>Build Link</strong>: <a href="https://app.circleci.com/pipelines/github/kelvintaywl-cci/docker-buildx/1/workflows/485da888-c62a-4df4-9dcd-d2ff752645d6/jobs/2">https://app.circleci.com/pipelines/github/kelvintaywl-cci/docker-buildx/1/workflows/485da888-c62a-4df4-9dcd-d2ff752645d6/jobs/2</a></p>
+<pre>version: 2.1<br><br>workflows:<br>  build-deploy:<br>    jobs:<br>      - build<br><br>jobs:<br>  build:<br>    docker:<br>      - image: cimg/base:stable<br>  steps:<br>    - setup_remote_docker:<br>        version: 20.10.11<br>    - checkout<br>    - run: docker buildx build . </pre>
+<p> </p>
+<p>If you are using need <strong>Docker version 19.03</strong> &amp; must enable the "<strong>Experimental features</strong>" option.</p>
 <p> </p>
 <p>Below are the sample config and the build link for reference.</p>
 <p> </p>
@@ -17,11 +23,11 @@ jobs:
       - image: cimg/base:stable
     steps:
       - setup_remote_docker:
-          version: 20.10.11
+          version: 19.03.14
       - checkout
    - run: |
         ssh remote-docker \&lt;&lt;EOF
-          sudo bash -c 'echo <span>"{\"features\": {\"buildkit\": true } }"</span> &gt; /etc/docker/daemon.json'
+          sudo bash -c 'echo "{\"experimental\": true}" &gt; /etc/docker/daemon.json'
           sudo systemctl restart docker
           sudo docker info
         EOF
@@ -44,10 +50,10 @@ jobs:
       - image: cimg/base:stable
     steps:
       - setup_remote_docker:
-          version: 20.10.11
+          version: 19.03.14
       - checkout
       - run: |
-          export <span>DOCKER_BUILDKIT=1</span>
+          export DOCKER_CLI_EXPERIMENTAL=enabled
           docker buildx build .
 </pre>
 <p> </p>
