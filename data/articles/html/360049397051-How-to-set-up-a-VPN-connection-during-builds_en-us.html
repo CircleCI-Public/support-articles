@@ -61,7 +61,7 @@ jobs:
               <span>vpn_command+=(--auth-user-pass /tmp/vpn.login)</span>
             fi<br><br>            <span>if [ -n "$phone_home" ]; then</span><br>              <span>vpn_command+=(--route $phone_home 255.255.255.255 net_gateway)</span><br>            fi<br><br>            <span>for IP in $(host runner.circleci.com | awk '{ print $4; }')</span><br>              do<br>                <span>vpn_command+=(--route $IP 255.255.255.255 net_gateway)</span><br>                <span>echo $IP</span><br>            done<br><br>            "${vpn_command[@]}" &gt; /tmp/openvpn.log<br>
       - run:
-          name: Wait for the connection to be established and check IP<br>          command: |<br>            <span>until [ -f /tmp/openvpn.log ] &amp;&amp; [ "$(grep -c "Initialization Sequence Completed" /tmp/openvpn.log)" != 0 ]; do</span><br>              echo <span>Attempting to connect to VPN server...</span>"<br>              sleep 1;<br>            done<br><br>            <span>printf "\nVPN connected\n"</span><br>            <span>printf "\n</span>Public IP is now $(curl checkip.amazonaws.com)\n"
+          name: Wait for the connection to be established and check IP<br>          command: |<br>            <span>until [ -f /tmp/openvpn.log ] &amp;&amp; [ "$(grep -c "Initialization Sequence Completed" /tmp/openvpn.log)" != 0 ]; do</span><br>              echo "<span>Attempting to connect to VPN server...</span>"<br>              sleep 1;<br>            done<br><br>            <span>printf "\nVPN connected\n"</span><br>            <span>printf "\n</span>Public IP is now $(curl checkip.amazonaws.com)\n"
 
       - run:
           name: Run commands in our infrastructure
