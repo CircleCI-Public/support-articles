@@ -1,0 +1,33 @@
+<p> </p>
+<h2>
+    <span>Before We Start</span><span></span>
+</h2>
+<p>Typically, we are trying to compare between two builds from the same project.<br>Let us call them build A and build B, where the following is true:</p>
+<ul>
+    <li>build A ran before build B.</li>
+    <li>both builds A and B are creating an image from the same, <strong>unchanged</strong> Dockerfile.</li>
+    <li>we are <em>expecting</em> build B to leverage some, if not all, cached layers from build A.</li>
+</ul>
+<p>If the Dockerfile has been modified, this can cause the cache to bust, and result in cache misses.<br>Please refer to Docker documentation on the <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/" target="_self">best practices for writing a Dockerfile</a>.</p>
+<p> </p>
+<h2>Step 1: Confirm DLC is enabled</h2>
+<p>As a quick check, make sure that you have enabled DLC on your build indeed.<br>Depending on your job's executor, you should have enabled DLC on either <a href="https://circleci.com/docs/2.0/docker-layer-caching/#remote-docker-environment" target="_self">the Remote Docker (for Docker executor)</a> or the <a href="https://circleci.com/docs/2.0/docker-layer-caching/#machine-executor" target="_self">Machine image definition itself (for Machine executor).</a></p>
+<p> </p>
+<p>When DLC is enabled, confirm that a volume (specifically, by volume ID) is assigned for the build.</p>
+<p> </p>
+<p class="wysiwyg-text-align-center"><img src="https://support.circleci.com/hc/article_attachments/4860936237595/remote-docker-volume-id.png" alt="remote-docker-volume-id.png"></p>
+<p class="wysiwyg-text-align-center">Inspect the volume ID in the DLC-enabled Remote Docker engine for a Docker<strong> executor</strong> build.</p>
+<p class="wysiwyg-text-align-center"> </p>
+<p class="wysiwyg-text-align-center"><img src="https://support.circleci.com/hc/article_attachments/4860976987419/machine-volume-id.png" alt="machine-volume-id.png"><br>Inspect the volume ID for a DLC-enabled <strong>Machine executor</strong> build.</p>
+<p class="wysiwyg-text-align-center"> </p>
+<h2 class="wysiwyg-text-align-left">Step 2: Verify if same volume was used</h2>
+<p> </p>
+<p>Check that the volume assigned to both build A and B are the <strong>same</strong> (i.e, same volume ID).</p>
+<p>If they are not the same, we will likely not see 100% cache hits for all layers.<br>For example, all layers of this Docker image in build B would need to be built from the start if a fresh volume for this project was assigned.<br><br>Because assigned volumes may be different, a full DLC cache hit thus is <a href="https://support.circleci.com/hc/en-us/articles/4407580027675-Docker-Layer-Caching-FAQ" target="_self">not a guarantee</a>.</p>
+<p>CircleCI assigns a volume to a build based on availability and recency of use.</p>
+<p>In other words, currently there is no way to pin any affinity between a specific volume and a build.</p>
+<p>Please refer to our documentation on <a href="https://circleci.com/docs/2.0/docker-layer-caching/#how-dlc-works" target="_self">how volumes are assigned</a>.</p>
+<p> </p>
+<p> </p>
+<p><code class="language-yml"><span class="token key atrule"></span></code></p>
+<p><code class="language-yml"></code></p>

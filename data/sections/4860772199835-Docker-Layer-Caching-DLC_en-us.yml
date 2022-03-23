@@ -1,0 +1,12 @@
+id: 4860772199835
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/sections/4860772199835.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/sections/4860772199835-Docker-Layer-Caching-DLC-
+category_id: 115001866207
+created_at: '2022-03-22T06:53:53Z'
+name: Docker Layer Caching (DLC)
+description: ''
+locale: en-us
+outdated: false
+parent_section_id: null
