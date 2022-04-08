@@ -1,1 +1,20 @@
-<p>For certain tasks, such as creating  <a href="https://circleci.com/docs/2.0/contexts/#restricting-a-context/">Restricted Contexts</a> or adjusting your plan settings, we require that the user have "Admin" permissions for the organization being modified.<br><br>We check if you are an admin based on if you have "Owner" status for the GitHub organization. If you do, your user will be able to perform any administrative functions on CircleCI.</p>
+<p>For certain tasks, such as creating  <a href="https://circleci.com/docs/2.0/contexts/#restricting-a-context/">Restricted Contexts</a> or adjusting your plan settings, we require that the user have "Admin" permissions for the organization being modified.<br><br>We check if you are an admin based on if you have "Owner" status for the GitHub organization. If you do, your user will be able to perform any administrative functions on CircleCI.<br><br></p>
+<p dir="auto">If you are trying to create a namespace and the token is simply outdated or wrong you get this error:</p>
+<pre dir="ltr"><code>Error: Unable to find organization &lt;org&gt; of vcs-type GITHUB: Either the org 'github/&lt;org&gt;' does not exist or you do not have permission to view it.: the organization '&lt;org&gt;' under 'GITHUB' VCS-type does not exist. Did you misspell the organization or VCS?
+</code></pre>
+<p>vs a token that is not an admin's scope:</p>
+<pre><span>Error: AUTHORIZATION_FAILURE</span></pre>
+<p dir="auto"> </p>
+<p dir="auto">If you are not an owner of the GitHub organization, there is a way to allow non-owners to take this action via a context associated with the org owner's personal API token.</p>
+<p dir="auto">This context can be restricted to a certain security group if need be.</p>
+<p dir="auto">Your org owner will need to follow these steps:</p>
+<ol dir="auto" type="1">
+    <li>Generate a personal API token:<span> </span><a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" rel="noreferrer">https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token</a>
+    </li>
+    <li>Store the token in a context to be used as an environment variable:<span> </span><a href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-context" rel="noreferrer">https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-context</a>
+    </li>
+    <li>The environment variable in the context will need to be called CIRCLE_TOKEN</li>
+    <li>For namespace creation non owners can ssh into the build and run the one time command using the token</li>
+    <li>For orb development, using the Orb Development Kit, assign the publishing-context as the newly-created context:<span> </span><a href="https://github.com/CircleCI-Public/Orb-Project-Template/blob/master/.circleci/config.yml#L54" rel="noreferrer">https://github.com/CircleCI-Public/Orb-Project-Template/blob/master/.circleci/config.yml#L54</a>
+    </li>
+</ol>
