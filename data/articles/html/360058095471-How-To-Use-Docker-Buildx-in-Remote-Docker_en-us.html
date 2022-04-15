@@ -1,12 +1,12 @@
 <p> </p>
-<p>If you are using the <a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version" target="_self">Docker version 20.x</a> you can use Buildx without any need of a setup.</p>
-<p>Below are the sample config and the build link and sample config</p>
+<p>If you are using <a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version" target="_self">Docker version 20.x</a> you can use Buildx without any need of a setup.</p>
+<p>Below are the sample config and the build link and sample config:</p>
 <p><strong>Build Link</strong>: <a href="https://app.circleci.com/pipelines/github/kelvintaywl-cci/docker-buildx/1/workflows/485da888-c62a-4df4-9dcd-d2ff752645d6/jobs/2">https://app.circleci.com/pipelines/github/kelvintaywl-cci/docker-buildx/1/workflows/485da888-c62a-4df4-9dcd-d2ff752645d6/jobs/2</a></p>
 <pre>version: 2.1<br><br>workflows:<br>  build-deploy:<br>    jobs:<br>      - build<br><br>jobs:<br>  build:<br>    docker:<br>      - image: cimg/base:stable<br>  steps:<br>    - setup_remote_docker:<br>        version: 20.10.11<br>    - checkout<br>    - run: docker buildx build . </pre>
 <p> </p>
-<p>If you are using need <strong>Docker version 19.03</strong> &amp; must enable the "<strong>Experimental features</strong>" option.</p>
+<p>If you are using <strong>Docker version 19.03</strong> , please note that you must enable the "<strong>Experimental features</strong>" option.</p>
 <p> </p>
-<p>Below are the sample config and the build link for reference.</p>
+<p>Below are the sample config and the build link for reference:</p>
 <p> </p>
 <p><strong>Build link</strong>: <a href="https://app.circleci.com/pipelines/github/pawanbahuguna/sample-config/43/workflows/f29ef170-b61b-412f-8b37-1f562cae7d7b/jobs/55">https://app.circleci.com/pipelines/github/pawanbahuguna/sample-config/43/workflows/f29ef170-b61b-412f-8b37-1f562cae7d7b/jobs/55</a></p>
 <p> </p>
@@ -56,7 +56,7 @@ jobs:
           export DOCKER_CLI_EXPERIMENTAL=enabled
           docker buildx build .
 </pre>
-<p> </p>
+<p><strong>Please note that if you are using a docker image other than one of our `cimg` images, you will need to make sure that buildx is available within that image.</strong></p>
 <p><strong>References</strong>:</p>
 <p>1. <a href="https://docs.docker.com/buildx/working-with-buildx/">https://docs.docker.com/buildx/working-with-buildx/ </a></p>
 <p>2. <a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version">https://circleci.com/docs/2.0/building-docker-images/#docker-version</a></p>
