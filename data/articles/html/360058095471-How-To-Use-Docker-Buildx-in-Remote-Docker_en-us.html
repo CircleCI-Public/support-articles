@@ -56,6 +56,13 @@ jobs:
           export DOCKER_CLI_EXPERIMENTAL=enabled
           docker buildx build .
 </pre>
+<p> </p>
+<p>There may also be cases where you get the error:</p>
+<pre class="css-1uk2jcu"><span>could not create a builder instance with TLS data loaded from environment</span></pre>
+<p>To resolve this, please create a context with commands like the following:</p>
+<pre>docker context create buildx-build
+docker buildx create --use buildx-build
+</pre>
 <p><strong>Please note that if you are using a docker image other than one of our `cimg` images, you will need to make sure that buildx is available within that image.</strong></p>
 <p><strong>References</strong>:</p>
 <p>1. <a href="https://docs.docker.com/buildx/working-with-buildx/">https://docs.docker.com/buildx/working-with-buildx/ </a></p>
