@@ -1,0 +1,8 @@
+<p>Networking issues will stop your job from running but you are able to use a for loop to be able to retry the same command multiple times.</p>
+<p>An example command can be found below:</p>
+<pre dir="ltr"><code>- run: for i in $(seq 1 5); do docker-compose up -d &amp;&amp; s=0 &amp;&amp; break || s=$? &amp;&amp; sleep 10; done; (exit $s)</code></pre>
+<p>The for loop will run five times but this could be changed to any number by changing the 5 within the <code>seq 1 5)</code> section of the command.</p>
+<p>Replace the `docker-compose up -d` command with the command to are retrying.</p>
+<p>The sleep 10 can be changed or removed if required.</p>
+<p>It is not recommend to remove the <code>exit $s</code> as this will pass the exit 1 to stop the run on the failing step rather than trying to continue.</p>
+<p>If you need any assistance setting the command raise a support ticket with our team and we will be happy to help.</p>
