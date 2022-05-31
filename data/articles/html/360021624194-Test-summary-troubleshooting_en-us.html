@@ -1,14 +1,28 @@
 <p>The test summary in the UI is a place where we display some basic information about tests such as which tests failed, or what the slowest tests were. For basic configuration to set up the test summary you can <a href="https://circleci.com/docs/2.0/collect-test-data/">view our docs</a>. This document will outline some caveats, limitations, and common issues people run into when trying to get the test summary working.</p>
 <h2> </h2>
-<h2>JUnit is the only supported format</h2>
-<p>The only test reporting format we support is JUnit. JUnit is not exactly a standard format, so each test reporting tool may output their JUnit differently. This can also be the source of some issues. For instance if you want to use test timing based splitting your JUnit files most pass the <strong>file </strong>parameter with test cases. You can validate your JUnit results on CircleCI using this validator: <a href="https://github.com/levlaz/circleci-test-results-validator">https://github.com/levlaz/circleci-test-results-validator</a></p>
-<h2>XML files must be in a subfolder</h2>
-<p>Test data must be inside a subfolder of whatever path is provided to <code>store_test_results</code>. <br><br>If their path is set to <code>test-results</code> then the test report XML must be in a subfolder of <code>test-results</code>, and not directly within it. for example: <code>test-results/somefolder/report.xml</code></p>
+<h2>Ensure test reports are in supported format</h2>
+<p>Currently, <a href="https://circleci.com/docs/2.0/collect-test-data/#overview" target="_self">we support JUnit XML and Cucumber JSON formats</a>. <br><br>To note, there is not one official schema or standard for JUnit.<br>Each test reporting tool may output their JUnit XML reports differently. This can cause some issues, in particular to <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/" target="_self">our test-splitting feature</a>. <br><br>To <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/#splitting-by-timing-data" target="_self">split tests by timing</a>, each &lt;testcase&gt; element in the JUnit XML report should include the following attributes:</p>
+<ul>
+    <li>
+        <strong>file </strong>: file path of the test file which the test case can be found in
+    </li>
+    <li>
+        <strong>name</strong> : name of the test case
+    </li>
+    <li>
+        <strong>time</strong> : time taken for the test case to complete
+    </li>
+    <li>
+        <strong>classname</strong> : class name of the test case 
+    </li>
+</ul>
+<h2>Report files must be in a subfolder</h2>
+<p>Test data must be inside a subfolder of whatever path is provided to <code>store_test_results</code>. <br><br>If their path is set to <code>test-results</code> then the test report file must be in a subfolder of <code>test-results</code>, and not directly within it. For example: <code>test-results/somefolder/report.xml</code></p>
 <p> </p>
 <h2>Subfolders cannot be hidden folders</h2>
 <p>Test data subfolders cannot be hidden folders. <code>test-results/.somefolder/report.xml</code> would be ignored by our system.</p>
 <p> </p>
 <h2>Test files cannot be larger than 15MB</h2>
-<p>Test files larger than 15MB will fail to upload, though it will not show this failure in the UI. It fails silently in the background. </p>
+<p>Test files larger than 15MB will fail to upload.<br>Note that this upload failure will not show up in the build Ui.<br>Instead, it fails silently in the background. </p>
 <p> </p>
 <p> </p>

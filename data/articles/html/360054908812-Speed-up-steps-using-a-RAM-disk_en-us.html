@@ -5,6 +5,14 @@
 <h3>Other executors<br><span></span>
 </h3>
 <p>The RAM disk is not configured by default on other executors. It's less likely that you'll need it because they operate as isolated VMs, and avoid the issues outlined in the blog post mentioned above. You may still find that a RAM disk offer performance benefits over utilizing the hard disk. In other executors (Machine,  MacOS, etc) you have far more control over the environment, so it's possible to configure a RAM disk yourself. Using instructions such as <a href="https://unix.stackexchange.com/questions/66329/creating-a-ram-disk-on-linux" target="_self">this stack exchange answer</a> for Linux based systems</p>
-<h4>Windows<br><span></span>
+<h4>
+    <strong>Windows</strong><br><span></span>
 </h4>
 <p>To configure a RAM disk on windows please see our guide <a href="https://support.circleci.com/hc/en-us/articles/4411520952091" target="_self">linked here</a></p>
+<p><strong>Caution:</strong></p>
+<p><strong>/mnt/ramdisk </strong>is owned by root which can cause issues when using the default circleci user. Such as using checkout while within the /mnt/ramdisk directory.</p>
+<p>You can check the current user by adding the following run step below:</p>
+<p>- run: whoami </p>
+<p>If the user is circleci you may have permissions issues when <strong>/mnt/ramdisk </strong>is owned by root.</p>
+<p>You can check the owned of the ramdisk by running.</p>
+<p>- run: ls -lah /mnt/ramdisk</p>
