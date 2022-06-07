@@ -1,7 +1,7 @@
 <h3>Why is this happening?</h3>
 <p>If a job is not starting and showing a status "<strong>Not Running</strong>" after you triggered a pipeline, it means that you have reached the <strong>concurrency limit</strong> of your plan.</p>
-<p>This is most likely to happen to customers on our <a href="https://circleci.com/pricing/" target="_blank" rel="noopener">Free Plan</a>, as they have access to use a single container at any one time (1x concurrency), therefore jobs will queue if that container is already in use.</p>
-<p>However, customers on plans with a higher concurrency limit can also encounter this situation.</p>
+<p>This is most likely to happen to customers on our <a href="https://circleci.com/pricing/" target="_blank" rel="noopener">Free Plan</a>, as they have access to use a 30 jobs at a time and run, therefore jobs will queue if that many jobs are already in use.</p>
+<p>However, customers on performance plans can also encounter this situation which have limit of 80 jobs at a time.</p>
 <p>The delayed start of your job, and the fact it remains in a "Not Running" state before eventually starting, is due to the fact that other jobs are still running when the new job is triggered.</p>
 <p> </p>
 <h3>Check for running SSH jobs</h3>
