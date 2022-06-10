@@ -1,39 +1,42 @@
+<h1><strong>Configuring VPN Connection during a Build</strong></h1>
 <h4>In case you need to connect to a private network during your builds, or if you want to restrict access to your environment to a specific IP address, we suggest configuring a VPN connection as follows.</h4>
+<h2>
+    <strong>Prerequisites:</strong><em><strong><br></strong></em>
+</h2>
 <p><em><strong>Note that you <span class="wysiwyg-underline">must</span> use one of the following executors:</strong></em></p>
 <ul>
     <li>
-        <h4><a href="#machine" target="_self"><code>machine</code></a></h4>
+        <p><a href="#machine" target="_self"><code>machine</code></a></p>
     </li>
     <li>
-        <h4><a href="#macos" target="_self"><code>macOS</code></a></h4>
+        <p><a href="#macos" target="_self"><code>macOS</code></a></p>
     </li>
     <li>
-        <h4><a href="#windows" target="_self"><code>windows</code></a></h4>
+        <p><a href="#windows" target="_self"><code>windows</code></a></p>
     </li>
 </ul>
-<p> </p>
 <h2 id="machine">
-    <code>machine</code> [Linux] executor (<a href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images" target="_blank" rel="noopener">Available <code>machine</code> images</a>)
+    <strong><code>machine</code> [Linux] executor </strong>(<a href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images" target="_blank" rel="noopener">Available <code>machine</code> images</a>)
 </h2>
 <ul>
     <li>
-        <h4><a href="#openvpn" target="_self">OpenVPN (2.x)</a></h4>
+        <p><a href="#openvpn" target="_self">OpenVPN (2.x)</a></p>
     </li>
     <li>
-        <h4><a href="#openvpn-connect" target="_self">OpenVPN Connect (OpenVPN 3)</a></h4>
+        <p><a href="#openvpn-connect" target="_self">OpenVPN Connect (OpenVPN 3)</a></p>
     </li>
     <li>
-        <h4><a href="#l2tp" target="_self">L2TP</a></h4>
+        <p><a href="#l2tp" target="_self">L2TP</a></p>
     </li>
 </ul>
-<h4 id="openvpn"><strong>OpenVPN (2.x)</strong></h4>
+<h2 id="openvpn"><strong>OpenVPN (2.x)</strong></h2>
 <ul>
     <li><span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a>.</span></li>
     <li>
         <span>If the VPN client authentication is credentials-based (user-locked profile), you'll also need to add the username and password as environment variables (<code>VPN_USER</code> and <code>VPN_PASSWORD</code>).</span><span><span><span><br></span></span></span><span><span><span></span></span></span>
     </li>
 </ul>
-<pre style="background-color: #f3f3f3;">version: 2.1
+<pre style="background-color: #f3f3f3;"><code>version: 2.1
 workflows:
   btd:
     jobs:
@@ -68,14 +71,14 @@ jobs:
           command: |
             # A command
             # Another command<br><br>      - run:<br>          name: Disconnect from OpenVPN<br>          command: |<br>            sudo killall openvpn || true<br>          when: always
-</pre>
+</code></pre>
 <p> </p>
-<h4 id="openvpn-connect"><strong>OpenVPN Connect (OpenVPN 3)</strong></h4>
+<h2 id="openvpn-connect"><strong>OpenVPN Connect (OpenVPN 3)</strong></h2>
 <ul>
     <li><span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a>.</span></li>
     <li><span>OpenVPN 3 Linux <strong>does not support</strong> storing user credentials in a text-based file to use when starting a VPN connection. Please refer to <a href="https://openvpn.net/openvpn-3-linux-and-auth-user-pass/" target="_blank" rel="noopener">this documentation (OpenVPN 3 Linux and --auth-user-pass)</a> to set up a workaround.</span></li>
 </ul>
-<pre style="background-color: #f3f3f3;">version: 2.1
+<pre style="background-color: #f3f3f3;"><code>version: 2.1
 workflows:
   btd:
     jobs:
@@ -106,9 +109,9 @@ jobs:
           command: |
             # A command
             # Another command<br><br>      - run:<br>          name: Disconnect from OpenVPN<br>          command: |<br>            SESSION_PATH=$(sudo openvpn3 sessions-list | grep Path | awk -F': ' '{print $2}')<br>            echo $SESSION_PATH<br>            sudo openvpn3 session-manage --session-path $SESSION_PATH --disconnect<br>          when: always
-</pre>
+</code></pre>
 <p> </p>
-<h4 id="l2tp"><strong>L2TP</strong></h4>
+<h2 id="l2tp"><strong>L2TP</strong></h2>
 <p><span><span>To set up an L2TP VPN connection, we recommend referring to <a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients.md#configure-linux-vpn-clients-using-the-command-line" target="_blank" rel="noopener">this guide.</a></span></span><span><span></span></span></p>
 <p><span><span>We suggest storing <code>VPN_SERVER_IP</code>, <code>VPN_IPSEC_PSK</code>, <code>VPN_USER</code> and <code>VPN_PASSWORD</code> as <a href="https://circleci.com/docs/2.0/env-vars/" rel="noreferrer">environment variables</a>. Ideally, you might want to base64-encode <code>VPN_IPSEC_PSK</code> before storing it; you'll need to decode it during the build.</span></span></p>
 <p dir="auto">Also, we suggest storing the default gateway IP address in an environment variable:</p>
@@ -116,16 +119,14 @@ jobs:
     <li type="disc"><code>DEFAULT_GW_IP=$(ip route show default|awk '{print $3}')</code></li>
 </ul>
 <p> </p>
-<h2 id="macos">
-    <code>macos</code> executor (<a href="https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions" target="_blank" rel="noopener">Supported Xcode versions</a>)
-</h2>
+<h2 id="macos"><strong><code>macos</code> executor (<a href="https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions" target="_blank" rel="noopener">Supported Xcode versions</a>)</strong></h2>
 <ul>
     <li>
         <span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a>.</span><span><span><span><br></span></span></span><span><span><span></span></span></span>
     </li>
     <li><span>If the VPN client authentication is credentials-based (user-locked profile), you'll also need to add the username and password as environment variables (<code>VPN_USER</code> and <code>VPN_PASSWORD</code>).</span></li>
 </ul>
-<pre style="background-color: #f3f3f3;">version: 2.1
+<pre style="background-color: #f3f3f3;"><code>version: 2.1
 workflows:
   btd:
     jobs:
@@ -155,18 +156,16 @@ jobs:
           command: |
             # A command
             # Another command<br><br>      - run:<br>          name: Disconnect from OpenVPN<br>          command: <span>sudo launchctl stop org.openvpn</span><br>          when: always
-</pre>
+</code></pre>
 <p><strong> </strong></p>
-<h2 id="windows">
-    <code>windows</code> executor (<a href="https://circleci.com/docs/2.0/hello-world-windows/#windows-executor-images" target="_blank" rel="noopener">Windows executor images</a>)
-</h2>
+<h2 id="windows"><strong><code>windows</code> executor (<a href="https://circleci.com/docs/2.0/hello-world-windows/#windows-executor-images" target="_blank" rel="noopener">Windows executor images</a>)</strong></h2>
 <ul>
     <li><span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a>.</span></li>
     <li>
         <span>If the VPN client authentication is credentials-based (user-locked profile), you'll also need to add the username and password as environment variables (<code>VPN_USER</code> and <code>VPN_PASSWORD</code>).</span><span><span><span><br></span></span></span><span><span><span></span></span></span>
     </li>
 </ul>
-<pre style="background-color: #f3f3f3;">version: 2.1
+<pre style="background-color: #f3f3f3;"><code>version: 2.1
 
 orbs:
   win: circleci/windows@2.2.0
@@ -220,4 +219,29 @@ jobs:
           name: Disconnect from OpenVPN
           command: <span>net stop "OpenVPN"</span>
           when: always<span style="font-size: 15px; white-space: normal;">
-</span></pre>
+</span></code></pre>
+<p> </p>
+<h2><strong>Additional Notes:</strong></h2>
+<p><span style="font-weight: 400;"><span class="wysiwyg-underline"><strong>Please note:</strong></span> any VPN configuration steps are done </span><em><span style="font-weight: 400;">at your own risk</span></em><span style="font-weight: 400;"> and can break if any changes occur in IP Ranges or Routing tables.</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">In the event, your configuration is met with </span><strong>T</strong><strong>his job was claimed but has not received a heartbeat in over 5 minutes</strong><span style="font-weight: 400;"> error. Try to add routing exclusions to unblock your build using our example below which will require some modifications to meet your build needs.<br><br></span><span style="font-weight: 400;"><span class="wysiwyg-underline"><strong>OpenVPN Example:</strong></span><br></span><span style="font-weight: 400;"></span></p>
+<pre class="c-mrkdwn__pre" data-stringify-type="pre"><code>  ET_phone_home=$(ss -Hnto state established '( sport = :ssh )' | head -n1 | awk '{ split($4, a, ":"); print a[1] }')
+  DEFAULT_GW="$(ip route show default|awk '{print $3}')"
+  echo "Original default gateway is $DEFAULT_GW"
+
+  if [ -n "$ET_phone_home" ]; then
+    sudo ip route add "$ET_phone_home"/32 via "$DEFAULT_GW"
+    echo "Added route to $ET_phone_home/32 via default gateway"
+  fi
+
+  for IP in $(host runner.circleci.com | awk '{ print $4; }')
+    do
+      sudo ip route add "$IP"/32 via "$DEFAULT_GW"
+      echo "Added route to $IP/32 via default gateway"
+  done
+
+  sudo ip route add 169.254.0.0/16 via "$DEFAULT_GW"</code></pre>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>

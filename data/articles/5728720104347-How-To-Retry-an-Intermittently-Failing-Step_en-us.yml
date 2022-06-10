@@ -1,5 +1,5 @@
 id: 5728720104347
-title: How to retry an intermittently failing step
+title: How To Retry an Intermittently Failing Step
 author_id: 1264374340689
 created_at: '2022-05-03T10:07:29Z'
 locale: en-us
@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 115003756627
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/5728720104347-How-to-retry-an-intermittently-failing-step
+  https://support.circleci.com/hc/en-us/articles/5728720104347-How-To-Retry-an-Intermittently-Failing-Step
 draft: false
