@@ -1,5 +1,5 @@
 <h1>Overview</h1>
-<p>Networking issues will stop your job from running but you are able to use a for loop to be able to retry the failing step until it succeeds with a non-zero exit code or reaches the end of the last loop.</p>
+<p>Networking issues can stop your job from running but one can mitigate this issue by implementing a for loop to be able to retry the failing step until it succeeds with a non-zero exit code or reaches the end of the last loop.</p>
 <p> </p>
 <h2>For-Loop Example and Explanation</h2>
 <p>An example command can be found below:</p>
@@ -7,7 +7,7 @@
 <p>The for loop will run five times but this could be changed to any number by changing the 5 within the <code>$(seq 1 5)</code> section of the command.</p>
 <p>Replace the `docker-compose up -d` command with the command to are retrying.</p>
 <p>The sleep 10 can be changed or removed if required.</p>
-<p>It is not recommend to remove the <code>exit $s</code> as this will pass the exit 1 to stop the run on the failing step rather than trying to continue.</p>
+<p>It is not recommended to remove the <code>exit $s</code> as this will pass the exit 1 to stop the run on the failing step rather than trying to continue.</p>
 <p>If you need any assistance setting the command raise a support ticket with our team and we will be happy to help.</p>
 <p> </p>
 <h2>Additional Resources:</h2>

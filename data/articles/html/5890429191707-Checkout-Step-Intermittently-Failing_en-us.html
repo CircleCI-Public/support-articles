@@ -1,9 +1,9 @@
 <h1>Overview</h1>
-<p>If the checkout step is intermittently failing with the following error (or similar) : </p>
+<p>If your checkout step is intermittently failing with the below error message (or similar), it can often be caused by networking issues : </p>
 <p><img src="https://support.circleci.com/hc/article_attachments/5890223501979/Screen_Shot_2022-05-11_at_9.15.03_AM.png" alt="Screen_Shot_2022-05-11_at_9.15.03_AM.png"></p>
-<p>The above error is often caused by networking issues. These issues often times occur when the size of your repository is large. You can resolve this issue by either using a custom checkout step (in a <a href="https://circleci.com/docs/2.0/configuration-reference/#run" target="_self">run command</a>) with retries or a custom checkout step to implement a <a href="https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/" target="_self">partial or shallow clone .</a></p>
+<p>These issues often occur when the size of your repository is large. You can resolve this issue by either using a custom checkout step in a <a href="https://circleci.com/docs/2.0/configuration-reference/#run" target="_self">run command</a> with retries or a custom checkout step to implement a <a href="https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/" target="_self">partial or shallow clone.</a></p>
 <p>You can find more details on how to retry an intermittently failing step <a href="https://support.circleci.com/hc/en-us/articles/5728720104347" target="_blank" rel="noopener">here.</a> Your custom command will look like the following: </p>
-<pre><span>- run: for i in $(seq 1 5); do checkout &amp;&amp; s=0 &amp;&amp; break || s=$? &amp;&amp; sleep 5; done; (exit $s)</span> </pre>
+<pre style="background-color: #f3f3f3;"><span>- run: for i in $(seq 1 5); do checkout &amp;&amp; s=0 &amp;&amp; break || s=$? &amp;&amp; sleep 5; done; (exit $s)</span> </pre>
 <h2>Additional Resources:</h2>
 <ul>
     <li><a href="https://circleci.com/docs/2.0/configuration-reference/#checkout" target="_blank" rel="noopener">Configuring CircleCI (checkout)</a></li>
