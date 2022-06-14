@@ -1,0 +1,17 @@
+<h1 data-pm-slice="1 1 []">Overview</h1>
+<p>When using Docker Layer Caching (DLC) in AWS, the image layers are saved using separate external volumes of Elastic Block Store (EBS) and attached to the instances running machine and Remote Docker jobs. This allows for re-use of docker images across jobs to optimize build times.</p>
+<p> </p>
+<h2>Solution</h2>
+<p data-pm-slice="1 1 []">First, confirm that projects are using <span class="code" spellcheck="false">docker_layer_caching.</span></p>
+<p>The EBS volumes are used when <span class="code" spellcheck="false">docker_layer_caching</span> is set as <span class="code" spellcheck="false">true</span> for a project. To support docker layer caching, the volumes are not removed until a period of inactivity (by default, 3 days) has elapsed.</p>
+<p> </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/6578364874651/mceclip0.png" alt="mceclip0.png"></p>
+<p> </p>
+<p>It is possible to enable faster removal of the volumes by shortening the threshold for inactivity.</p>
+<p>If you visit the Settings page of your Replicated console and click on "Show advanced settings" under "VM Provider", there is a field called "Inactivity period before clearing Docker cache storage volumes (days)". Reducing the value will enable faster garbage collection of unused volumes.</p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="Additional%20Resources:%20(If%20Applicable)%20%20If%20further%20resources/notes%20are%20necessary%20or%20prove%20relevant%20to%20the%20context,%20linking%20them%20at%20the%20end%20for%20follow-up%20can%20guide%20customers%20on%20any%20further%20steps%20they%20may%20need%20to%20take%20or%20be%20mindful%20of%20after%20their%20error%20is%20resolved%20or%20unresolved.%20%20Example%20Article%20Link...%20Example%20Article%20Link..." target="_blank" rel="noopener">Enabling Docker Layer Caching</a></li>
+    <li><a href="https://circleci.com/docs/2.0/updating-server-replicated-version/" target="_blank" rel="noopener">Updating Replicated</a></li>
+</ul>
