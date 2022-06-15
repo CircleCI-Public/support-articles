@@ -2,8 +2,8 @@
 <p>When using Docker Layer Caching (DLC) in AWS, the image layers are saved using separate external volumes of Elastic Block Store (EBS) and attached to the instances running machine and Remote Docker jobs. This allows for re-use of docker images across jobs to optimize build times.</p>
 <p> </p>
 <h2>Solution</h2>
-<p data-pm-slice="1 1 []">First, confirm that projects are using <span class="code" spellcheck="false">docker_layer_caching.</span></p>
-<p>The EBS volumes are used when <span class="code" spellcheck="false">docker_layer_caching</span> is set as <span class="code" spellcheck="false">true</span> for a project. To support docker layer caching, the volumes are not removed until a period of inactivity (by default, 3 days) has elapsed.</p>
+<p>First, confirm that projects are using <code>docker_layer_caching.</code></p>
+<p>The EBS volumes are used when <code>docker_layer_caching</code> is set as <code>true</code> for a project. To support docker layer caching, the volumes are not removed until a period of inactivity (by default, 3 days) has elapsed.</p>
 <p> </p>
 <p><img src="https://support.circleci.com/hc/article_attachments/6578364874651/mceclip0.png" alt="mceclip0.png"></p>
 <p> </p>

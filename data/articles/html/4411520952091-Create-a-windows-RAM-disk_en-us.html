@@ -1,6 +1,10 @@
+<h1 dir="auto">Overview</h1>
+<p dir="auto">Creating a RAM disk allows for a portion of your RAM to be reserved for read/write operations very much like a HDD or SSD except at faster speeds.</p>
+<p dir="auto"> </p>
+<h2 dir="auto">Instructions</h2>
 <p dir="auto">If you would like to create a ramdisk within CircleCI you can use the windows program <code>imdisk</code><span> which can be installed using the</span><span> </span><a href="https://chocolatey.org/" rel="noreferrer">chocolatey package manager</a><span> </span>which comes preinstalled with the Windows executor.</p>
 <p dir="auto">Below you will find an example config.yml which will install the<span> </span><code>imdisk</code><span> </span>software and then create a ramdisk within the executor.</p>
-<p dir="auto">The issue is that the ramdisk will not be persistent as it will be removed once the machine is stopped.</p>
+<p dir="auto"><strong>Note:</strong> Ramdisk is not persistent as it will be removed once the machine is stopped.</p>
 <pre dir="ltr" style="background-color: #f3f3f3;">version: 2.1
 
 orbs:
@@ -40,3 +44,10 @@ jobs:
     </li>
 </ul>
 <p>For more information on <code>imdisk</code> please see <a href="https://sourceforge.net/p/imdisk-toolkit/doc/Home/" rel="noreferrer">this link</a></p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360054908812-Speed-up-steps-using-a-RAM-disk" target="_blank" rel="noopener">Speed up steps using a RAM disk</a></li>
+    <li><a href="https://unix.stackexchange.com/questions/66329/creating-a-ram-disk-on-linux" target="_blank" rel="noopener">Creating a ram disk on Linux</a></li>
+    <li><a href="https://circleci.com/blog/the-issue-of-speed-and-determinism-in-ci/" target="_blank" rel="noopener">The issue of speed and determinism in CI</a></li>
+</ul>

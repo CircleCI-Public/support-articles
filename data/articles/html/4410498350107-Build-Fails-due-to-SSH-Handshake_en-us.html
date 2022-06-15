@@ -1,0 +1,15 @@
+<h1>Overview</h1>
+<p>As of <strong>March 15, 2022</strong>, GitHub no longer support the DSA SHA256 key. The details can be found on the <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys" target="_blank" rel="noopener">Checking for existing SSH keys</a> page in GitHub Docs. This would cause a custom image that has not updated `git` before November 16, 2021 to fail with the following error while attempting to `checkout` from GitHub:</p>
+<p> </p>
+<pre style="background-color: #f3f3f3;"><code>Either git or ssh (required by git to clone through SSH) is not installed in the image. Falling back to CircleCI's native git client but the behavior may be different from official git. If this is an issue, please use an image that has official git and ssh installed.
+Cloning git repository
+
+error cloning repository: ssh: handshake failed: knownhosts: key mismatch</code></pre>
+<p> </p>
+<h2>Solution</h2>
+<p>In this case, it will be necessary to update git on your custom image and to utilize one of the recommended keys GitHub lists in the above documentation.</p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account" target="_blank" rel="noopener">Adding a new SSH key to your GitHub account</a></li>
+</ul>
