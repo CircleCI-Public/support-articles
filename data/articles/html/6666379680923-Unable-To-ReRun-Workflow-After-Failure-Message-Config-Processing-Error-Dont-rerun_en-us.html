@@ -1,0 +1,17 @@
+<h1>Config Processing Error</h1>
+<p>If you encounter the error shown below:</p>
+<p> </p>
+<pre style="background-color: #f3f3f3;"><span style="font-style: code;">Warning: This configuration was auto-generated to show you the message above.
+Don't rerun this job. Rerunning will have no effect.</span></pre>
+<p> </p>
+<p>you have a <code>Config Processing Error</code>, meaning there was something in your previous <code style="background-color: #f3f3f3;">.circleci/config.yml</code> file that caused it to be considered invalid and no workflow was actually run. Re-running the workflow would result in the same message and failure since the config file has not been changed to a valid state. This is why re-running workflows with this type of failure is not an option in CircleCI.</p>
+<p> </p>
+<h2>Solution</h2>
+<p>The best way to fix this error is to edit your config to fix any mistakes within it, commit those changes and trigger another build through a GitHub Pull Request.</p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/config-intro" target="_blank" rel="noopener">Configuration Introduction</a></li>
+    <li><a href="https://circleci.com/docs/2.0/config-editor" target="_blank" rel="noopener">Using the CircleCI In-app Configuration Editor</a></li>
+    <li><a href="https://circleci.com/docs/2.0/introduction-to-yaml-configurations" target="_blank" rel="noopener">Introduction to YAML Configurations</a></li>
+</ul>
