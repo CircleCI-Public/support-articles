@@ -1,7 +1,6 @@
 <h1>Overview</h1>
 <p>Ubuntu 20.04 images set <code style="background-color: #f3f3f3;">$BASH_ENV</code> in a way that they can not be overridden via the <code style="background-color: #f3f3f3;">environment</code> parameter.</p>
-<p>For example, the following with not change the <code style="background-color: #f3f3f3;">$PATH</code></p>
-<p> </p>
+<p>For example, the following code will not change the <code style="background-color: #f3f3f3;">$PATH</code></p>
 <pre style="background-color: #f3f3f3;"><code>steps:
   - run:
       environment:

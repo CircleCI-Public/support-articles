@@ -1,0 +1,10 @@
+<h1>Convert To RSA Format</h1>
+<p>Some tools have issues with the newer key formats generated and used by CircleCI. In these situations it can be helpful to change the key pair to RSA format so that older tools can communicate using them. For example, <a href="https://clojure.atlassian.net/browse/TDEPS-91?page=com.atlassian.jira.plugin.system.issuetabpanels%3Aall-tabpanel" target="_blank" rel="noopener">JGit+JSch can fail</a> on CircleCI when using the newer OpenSSH keys created by default.</p>
+<p>Using ssh-keygen, we can change the key to a RSA format:</p>
+<pre style="background-color: #f3f3f3;"><code>ssh-keygen -p -f ~/.ssh/id_rsa -m pem -q -N ""</code></pre>
+<p>This will reformat the key, and it can successfully be used for authentication. After this, upload the converted public key to GitHub under <a href="https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys" target="_blank" rel="noopener">Deploy keys</a> and the private key to your CircleCI account under <a href="https://circleci.com/docs/2.0/github-integration#create-a-github-deploy-key" target="_self">SSH Keys</a>. Finally, update your <code style="background-color: #f3f3f3;">.circleci/config.yml</code> with the newly converted key which will allow for the use of tools requiring the older RSA format.</p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/add-ssh-key" target="_blank" rel="noopener">Adding an SSH Key to CircleCI</a></li>
+</ul>

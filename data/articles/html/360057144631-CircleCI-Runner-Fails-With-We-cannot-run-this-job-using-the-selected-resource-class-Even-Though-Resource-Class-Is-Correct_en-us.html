@@ -1,0 +1,15 @@
+<h1>Error on Runner Install</h1>
+<p>Customers may receive the following error when installing the CircleCI Runner:</p>
+<pre style="background-color: #f3f3f3;"><code>"We cannot run this job using the selected resource class. Please check your configuration and try again."</code></pre>
+<p>If you have verified that the namespace and resource class have been created correctly, the issue may be that the CircleCI Runner is not enabled for your plan.</p>
+<p> </p>
+<h2>Solution</h2>
+<p>You can verify that the namespace and resource class have been created correctly with the following command in the CircleCI CLI. Replace "namespace-name" with the name of your namespace. You should see your resource class listed in the response.</p>
+<pre style="background-color: #f3f3f3;"><code>circleci runner resource-class list &lt;namespace-name&gt;</code></pre>
+<p><span>You can get in touch with our support team to help debug the issue by submitting a <a href="https://support.circleci.com/hc/en-us/requests/new" target="_self">support ticket</a>.</span></p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/local-cli" target="_blank" rel="noopener">Using the CircleCI Local CLI</a></li>
+    <li><a href="https://circleci-public.github.io/circleci-cli/" target="_blank" rel="noopener">CircleCI CLI Documentation</a></li>
+</ul>

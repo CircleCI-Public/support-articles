@@ -1,0 +1,8 @@
+<h1>Viewing Logs Using Syslog and Dmesg</h1>
+<p>The following can be added to assist in troubleshooting networking and other issues with Remote Docker. This should be added as the next steps immediately after <a href="https://circleci.com/docs/2.0/configuration-reference#setupremotedocker" target="_self" rel="undefined">setup_remote_docker</a>.</p>
+<pre style="background-color: #f3f3f3;"><code>- run:<br>    background: true<br>    command: ssh remote-docker "sudo tail -f /var/log/dmesg"<br>- run:<br>    background: true<br>    command: ssh remote-docker "sudo tail -f /var/log/syslog"</code></pre>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/configuration-reference#background-commands" target="_blank" rel="noopener">Background Commands</a></li>
+</ul>
