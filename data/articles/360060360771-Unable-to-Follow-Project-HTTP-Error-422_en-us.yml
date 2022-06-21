@@ -1,5 +1,5 @@
 id: 360060360771
-title: Unable to follow project (HTTP Error 422)
+title: 'Unable to Follow Project: (HTTP Error 422)'
 author_id: 403103999173
 created_at: '2021-04-24T20:27:44Z'
 locale: en-us
@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 115003756627
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360060360771-Unable-to-follow-project-HTTP-Error-422-
+  https://support.circleci.com/hc/en-us/articles/360060360771-Unable-to-Follow-Project-HTTP-Error-422-
 draft: false
