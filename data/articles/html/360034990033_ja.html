@@ -1,0 +1,17 @@
+<h2>How CircleCI Checks Permissions</h2>
+<p>CircleCI mirrors permissions from your VCS provider: GitHub or Bitbucket. Anyone who has admin access to your org there is an admin on CircleCI. Permissions are checked against the VCS for each page load.</p>
+<h2>GitHub</h2>
+<p>An org admin is an <strong>Owner</strong> on Github and following at least one repo being built on CircleCI</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360044700594/Screen_Shot_2019-08-27_at_9.46.17_AM.png" alt="Screen_Shot_2019-08-27_at_9.46.17_AM.png"></p>
+<p> You can read more about GitHub Permissions here (<a href="https://help.github.com/en/articles/permission-levels-for-an-organization">https://help.github.com/en/articles/permission-levels-for-an-organization</a>)</p>
+<h2>Bitbucket</h2>
+<p>An org admin is an <strong>Admin</strong> on Bitbucket and following at least one repo being built on CircleCI</p>
+<p> </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/4407611102363/Screen_Shot_2021-09-29_at_4.13.06_PM.png" alt="Screen_Shot_2021-09-29_at_4.13.06_PM.png"></p>
+<h2>Troubleshooting</h2>
+<p>If you are experiencing issues with permissions mirroring to CircleCI, try the following steps:</p>
+<ol>
+    <li>Access the page on Incognito mode, with a different browser, and/or different device. This may be a browser cache issue and will require the cache to be cleared on your browser. If you no longer see the warning banner, please clear your browser cache for any times related to <code>*.<a href="http://circleci.com/" target="_blank" rel="noopener" data-saferedirecturl="https://www.google.com/url?q=http://circleci.com&amp;source=gmail&amp;ust=1574187152165000&amp;usg=AFQjCNHi1NQgEyoSZKOMVLG1eXfreSecFQ">circleci.com</a></code>, and <code><a href="http://circleci.com/" target="_blank" rel="noopener" data-saferedirecturl="https://www.google.com/url?q=http://circleci.com&amp;source=gmail&amp;ust=1574187152165000&amp;usg=AFQjCNHi1NQgEyoSZKOMVLG1eXfreSecFQ">circleci.com</a></code>Refresh your account permissions by visiting circleci.com/account and click <strong>Refresh Permissions.</strong>
+    </li>
+    <li>If the above steps do not work, please submit a <a href="https://support.circleci.com/hc/en-us" target="_self">Support Ticket</a> or write to <a href="mailto:support@circleci.com">support@circleci.com</a>  with the organization name, your admin username and the VCS provider (GitHub or Bitbucket). Support will clear the cache on CircleCI's end to clear any potentially stale or corrupt permissions.</li>
+</ol>

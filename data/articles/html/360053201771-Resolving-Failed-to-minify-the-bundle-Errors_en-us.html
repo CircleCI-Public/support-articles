@@ -2,7 +2,7 @@
 <p>The following error message is usually related to running out of memory during a job:</p>
 <pre style="background-color: #f3f3f3;"><code>Failed to minify the bundle. Error: static/js/12.fb78ba11.chunk.js from Terser
 Error: Call retries were exceeded</code></pre>
-<p>Webpack4 uses<span> </span><code style="background-color: #f3f3f3;">terser-webpack-plugin</code> to minify your JavaScript as default when <code style="background-color: #f3f3f3;">mode: 'production'</code> is set. The default parallel option in<span> </span><code style="background-color: #f3f3f3;">terser-webpack-plugin</code><span> </span>is set to the number of CPUs<span> available</span><code style="background-color: #f3f3f3;">(os.cpus().length - 1)</code>. It means the function references the actual VM's CPU count, which is a higher quantity than the docker executor has. Therefore, Webpack will make more workers than the vCPU counts, and it causes this error.</p>
+<p>Webpack4 uses<span> </span><code style="background-color: #f3f3f3;">terser-webpack-plugin</code> to minify your JavaScript as default when <code style="background-color: #f3f3f3;">mode: 'production'</code> is set. The default parallel option in<span> </span><code style="background-color: #f3f3f3;">terser-webpack-plugin</code><span> </span>is set to the number of CPUs<span> available</span><code style="background-color: #f3f3f3;">(os.cpus().length - 1)</code>. This means the function references the actual VM's CPU count, which is a higher quantity than what is available to the docker executor. Therefore, Webpack will make more workers than the vCPU counts, and it causes this error.</p>
 <p dir="auto"> </p>
 <h2 dir="auto">Solution</h2>
 <p dir="auto">To work around this, you will need to specify the <a href="https://webpack.js.org/plugins/terser-webpack-plugin/#parallel" target="_blank" rel="noopener">parallel</a> option to set to the same number as the vCPUs. For example:</p>
@@ -18,7 +18,7 @@ module.exports = {
   }
 };
 </code></pre>
-<p dir="auto">More information about this can be found at the links below:</p>
+<p dir="auto">More information about this can be found at the link below:</p>
 <p dir="auto"><a href="https://webpack.js.org/configuration/optimization/#optimizationminimizer" target="_blank" rel="noopener">https://webpack.js.org/configuration/optimization/#optimizationminimizer</a></p>
 <p dir="auto"> </p>
 <p dir="auto">Also, if your project created by <a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener">create-react-app</a>, it needs to use `<span>eject` or `react-app-rewired` to update Webpack configuration.</span></p>
