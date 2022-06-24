@@ -1,7 +1,14 @@
-<p>If the AWS CLI fails with the below error, it can be due to that fact that the AWS CLI is installed under python 2.7 as opposed to python 3.x</p>
-<pre>"TypeError: unsupported operand type(s) for -=: 'Retry' and 'int'"</pre>
-<p>The reason this error may not happen on each build is due to the fact that this error only occurs when the AWS CLI retries a network connection. So on most builds this code path will never be reached.</p>
+<h1>AWS CLI v1 (Deprecated)</h1>
+<p><em><strong>Note: </strong>As of July 15, 2021, AWS have formally ended support for Python 2.7 and recommend upgrading to AWS CLI v2.</em></p>
+<p>If the AWS CLI v1 fails with the below error, it can be due to that fact that the AWS CLI v1 is installed under python 2.7 as opposed to python 3.x:</p>
+<pre style="background-color: #f3f3f3;"><code>"TypeError: unsupported operand type(s) for -=: 'Retry' and 'int'"</code></pre>
+<p>The reason this error may not happen on each build is due to the fact that this error only occurs when the AWS CLI v1 retries a network connection. So on most builds this code path will never be reached.</p>
 <p>If on the Docker Executor, you can change your python version to 3.x.</p>
 <p>If on Machine Executor, you can make use of pyenv before installing via pip. Be sure not to call `pip` with `sudo`.</p>
-<pre>pyenv global 3.7.0
-  pip install awscli</pre>
+<pre style="background-color: #f3f3f3;"><code>pyenv global 3.7.0
+  pip install awscli</code></pre>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://aws.amazon.com/blogs/developer/announcing-end-of-support-for-python-2-7-in-aws-sdk-for-python-and-aws-cli-v1/" target="_blank" rel="noopener">Announcing the end of support for Python 2.7 in the AWS SDK for Python and AWS CLI v1</a></li>
+</ul>

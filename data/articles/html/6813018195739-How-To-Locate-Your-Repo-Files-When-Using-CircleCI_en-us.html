@@ -1,0 +1,8 @@
+<p>This guide is to help you to be able to find your repo files when building on CircleCI on all executors.</p>
+<h2>Checkout Command</h2>
+<p>There is a command that is called which will pull from your VCS which is the checkout command, this is called using the following line on your <code>config.yml</code>:</p>
+<p><code>- checkout</code></p>
+<p>This command will pull all of the files into a directory called project which can be found at ~/project.</p>
+<p>If you do not include the checkout step you will find that the folder exists but with no content.</p>
+<h2>Additional Resources:</h2>
+<p>More information about the checkout step can be found in our documentation linked <a href="https://circleci.com/docs/2.0/configuration-reference#checkout" target="_self">here</a>.</p>
