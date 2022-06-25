@@ -1,5 +1,5 @@
 id: 360051749992
-title: Build fails on 'apt-get update' command
+title: Build Fails Using 'apt-get update' Command
 author_id: 405652843914
 created_at: '2020-11-05T21:13:56Z'
 locale: en-us
@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 115003756627
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360051749992-Build-fails-on-apt-get-update-command
+  https://support.circleci.com/hc/en-us/articles/360051749992-Build-Fails-Using-apt-get-update-Command
 draft: false

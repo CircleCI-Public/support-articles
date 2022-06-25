@@ -1,0 +1,14 @@
+<h1>Corruption or Orb YAML Error</h1>
+<p>Running various CircleCI CLI commands can fail with the error:</p>
+<pre style="background-color: #f3f3f3;"><code>panic: yaml: line 4: could not find expected ':'</code></pre>
+<p>This can be caused by a corrupted <code style="background-color: #f3f3f3;">~/.circleci/cli.yml</code> file. To resolve the issue, delete the contents of the <code style="background-color: #f3f3f3;">~/.circleci</code> folder and re-run setup.</p>
+<pre style="background-color: #f3f3f3;"><code>rm ~/.circleci/*<br>circleci setup</code></pre>
+<p>You can then add a previous or newly created <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener">Personal API Token</a>.</p>
+<p>If a similar error occurs when running <code style="background-color: #f3f3f3;">circleci validate</code>, but does not occur when running commands like <code style="background-color: #f3f3f3;">circleci version</code> or <code style="background-color: #f3f3f3;">circleci setup</code>, then this is likely due to an error in the Orb YAML and is not related to corruption of the <code style="background-color: #f3f3f3;">~/.circleci/cli.yml</code> file.</p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/local-cli" target="_blank" rel="noopener">Installing the CircleCI Local CLI</a></li>
+    <li><a href="https://circleci.com/docs/2.0/local-cli-getting-started" target="_blank" rel="noopener">Getting Started with the CircleCI CLI</a></li>
+    <li><a href="https://circleci.com/docs/2.0/how-to-use-the-circleci-local-cli" target="_blank" rel="noopener">How to use the CircleCI local CLI</a></li>
+</ul>
