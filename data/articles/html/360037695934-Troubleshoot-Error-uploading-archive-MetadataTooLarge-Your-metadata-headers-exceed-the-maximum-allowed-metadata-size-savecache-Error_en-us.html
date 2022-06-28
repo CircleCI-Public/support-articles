@@ -1,0 +1,9 @@
+<h1>Amount of save_cache Paths</h1>
+<p>When too many paths are specified to the <strong>save_cache</strong> step, the <strong>save_cache</strong> step can fail with error output similar to the following:</p>
+<pre style="background-color: #f3f3f3;">Creating cache archive...<br>Uploading cache archive...<br><br>Error uploading archive: MetadataTooLarge: Your metadata headers exceed the maximum allowed metadata size<br>status code: 400, request id: 519C2A1181266E40, host id: A/Ahq11R30q0fAEEaZoUyPnGQgTmrQH3GwprdI0+iaRbAFkwYHDNedpPZ3gFOLUnvAgB28c5954=</pre>
+<p>This is due to a limitation with the size of the metadata associated with the cache, as the paths form a part of the metadata. To resolve the error, reduce the number of paths specified to the <strong>save_cache</strong> step, for example, by splitting the step into multiple <strong>save_cache</strong> steps.</p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="Additional%20Resources:%20(If%20Applicable)%20If%20further%20resources/notes%20are%20necessary%20or%20prove%20relevant%20to%20the%20context,%20linking%20them%20at%20the%20end%20for%20follow-up%20can%20guide%20customers%20on%20any%20further%20steps%20they%20may%20need%20to%20take%20or%20be%20mindful%20of%20after%20their%20error%20is%20resolved%20or%20unresolved.%20%20Example%20Article%20Link...%20Example%20Article%20Link..." target="_blank" rel="noopener">Basic example of dependency caching</a></li>
+</ul>
