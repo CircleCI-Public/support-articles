@@ -1,5 +1,5 @@
 id: 360048353271
-title: Accessing $BASH_ENV results in "No such file or directory"
+title: Accessing $BASH_ENV Results in "No such file or directory"
 author_id: 403418857853
 created_at: '2020-08-19T18:38:02Z'
 locale: en-us
@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 115003756627
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360048353271-Accessing-BASH-ENV-results-in-No-such-file-or-directory-
+  https://support.circleci.com/hc/en-us/articles/360048353271-Accessing-BASH-ENV-Results-in-No-such-file-or-directory-
 draft: false
