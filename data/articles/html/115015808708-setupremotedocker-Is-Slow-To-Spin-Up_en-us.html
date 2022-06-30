@@ -1,0 +1,5 @@
+<h1>Overview</h1>
+<p>One major cause of this is using Docker Layer Caching when your image has many layers, you're caching many images or a combination of both. The more cached layers/images you have the longer it will take to start remote docker.</p>
+<p>To mitigate this you can try reducing the number of layers in your image, or separate building images into multiple jobs using <a href="https://circleci.com/docs/2.0/workflows/">workflows</a>. </p>
+<p>Additional Resources:</p>
+<p><a href="https://circleci.com/docs/2.0/configuration-reference#setupremotedocker" target="_self">Documentation: setup_remote_docker</a></p>

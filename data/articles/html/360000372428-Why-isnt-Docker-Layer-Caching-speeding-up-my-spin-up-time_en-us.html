@@ -1,5 +1,6 @@
+<h2>Overview</h2>
 <p><strong><a href="https://circleci.com/docs/2.0/docker-layer-caching/">Docker Layer Caching</a></strong> (DLC) is a feature that speeds up <strong>building</strong> Docker images on CircleCI.</p>
-<h2>Docker executor build image caching is not 'Docker Layer Caching'</h2>
+<h2>Docker executor build image caching is not the same as Docker Layer Caching</h2>
 <p>When you launch a build using the <a href="https://circleci.com/docs/2.0/executor-types/#using-docker">Docker executor</a>, CircleCI pulls the Docker image you specify in your <code>.circleci/config.yml</code> from Docker Hub.</p>
 <p><img src="https://support.circleci.com/hc/article_attachments/360002472834/mceclip3.png" width="645"></p>
 <p>If we find cached layers for that image on the host being used for your job we will use them. For this reason, we recommend using our <a href="https://hub.docker.com/r/circleci/">CircleCI convenience</a> images since they are popular and have a good chance of being fully cached on our hosts.</p>
@@ -8,6 +9,7 @@
 <p>There is currently no way to force us to "cache" your executor image.</p>
 <p>If you've enabled Docker Layer Caching for your project and you see 'image cache not found on this host', that's the correct output because Docker Layer Caching does not affect this part of the build.</p>
 <h2>Use Docker Layer Caching when BUILDING a Docker image</h2>
-<p>If you've enabled Docker Layer Caching (DLC) for your project it helps with <strong>building</strong> Docker images and caches layers that have been built in previous job runs. Here's how the config for using this feature looks:</p>
+<p>If you've enabled DLC for your project it helps with <strong>building</strong> Docker images and caches layers that have been built in the previous job runs. Here's how the config for using this feature looks:</p>
 <p><img src="https://support.circleci.com/hc/article_attachments/360002481413/mceclip4.png" width="645" height="197"></p>
-<p>Documentation on <strong><a href="https://circleci.com/docs/2.0/docker-layer-caching/">Docker Layer Caching</a></strong> (DLC)</p>
+<h2>Additional Resources:</h2>
+<p>Documentation on <strong><a href="https://circleci.com/docs/2.0/docker-layer-caching/">Docker Layer Caching</a></strong></p>
