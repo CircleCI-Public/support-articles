@@ -12,6 +12,7 @@
 <p> </p>
 <h3>Use of a project API token instead of a personal API token</h3>
 <p>Depending on the endpoint, the responses <code>{"message" : "Project not found"}</code> , <code>{"message" : "Pipeline not found"}</code> or <code>{"message" : "Workflow not found"}</code> can happen when you're authenticating your API call using a <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-project-api-token" target="_blank" rel="noopener">project API token</a> as opposed to a <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener">personal API token</a>.</p>
+<p><em>note: Please ensure that the user who created the personal API token has access to the repository.</em></p>
 <p><span>Project tokens are currently not supported on API v2. Any token found under <em>"Project Settings &gt; API Permissions" </em>is a project API token, regardless of the scope you assigned to it.</span></p>
 <p><span>For any request made via <strong>CircleCI API v2</strong> endpoints, make sure to use <strong>personal API tokens</strong>.</span></p>
 <p><span>In case the API token is likely to be shared across your team, we recommend <a href="https://circleci.com/docs/2.0/gh-bb-integration/#controlling-access-via-a-machine-user" target="_blank" rel="noopener">creating a machine-user</a> and generating and personal API token for that machine-user.</span><span></span></p>
