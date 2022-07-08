@@ -2,10 +2,10 @@ id: 115003332287
 url: >-
   https://circleci.zendesk.com/api/v2/help_center/en-us/sections/115003332287.json
 html_url: >-
-  https://support.circleci.com/hc/en-us/sections/115003332287-Permissions-and-logging-in
+  https://support.circleci.com/hc/en-us/sections/115003332287-Permissions-and-Logging-In
 category_id: 115001919067
 created_at: '2017-09-06T15:15:40Z'
-name: Permissions and logging in
+name: Permissions and Logging In
 description: ''
 locale: en-us
 outdated: false
