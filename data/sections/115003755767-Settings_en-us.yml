@@ -1,0 +1,11 @@
+id: 115003755767
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/sections/115003755767.json
+html_url: https://support.circleci.com/hc/en-us/sections/115003755767-Settings
+category_id: 115001866207
+created_at: '2017-10-27T11:08:34Z'
+name: Settings
+description: Settings that can be changed from the CircleCI UI
+locale: en-us
+outdated: false
+parent_section_id: null
