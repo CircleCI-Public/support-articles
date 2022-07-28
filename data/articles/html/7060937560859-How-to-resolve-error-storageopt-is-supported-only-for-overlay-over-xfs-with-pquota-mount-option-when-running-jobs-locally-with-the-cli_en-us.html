@@ -1,0 +1,18 @@
+<h1>Overview</h1>
+<p>When running the CircleCI cli command `<span>circleci local execute --job &lt;jobname&gt;` locally, you may run into a similar error to the following:</span></p>
+<pre><code><span>Error: error starting container cimg/base:stable: Error response from daemon: --storage-opt is supported only for overlay over xfs with 'pquota' mount option</span>
+</code></pre>
+<h2>Solution</h2>
+<p>You can resolve this error by modifying <code><span>/etc/default/grub</span></code>.</p>
+<p><span class="wysiwyg-color-red"><strong>Warning : Please be careful when modifying <code><span>/etc/default/grub</span></code> as making a mistake could result in your system not booting up.</strong></span></p>
+<ol>
+    <li>Open <span>/etc/default/grub in an editor such as vim, and add <code>rootflags=pquota</code> to the end of <code>GRUB_CMDLINE_LINUX_DEFAULT=</code>.<br><strong>Example</strong>: <code>GRUB_CMDLINE_LINUX_DEFAULT="console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 nvme_core.io_timeout=4294967295 rd.emergency=poweroff rd.shell=0 rootflags=pquota"</code></span>
+    </li>
+    <li><span>After saving the file, run <code>sudo grub2-mkconfig -o /boot/grub2/grub.cfg</code>.</span></li>
+    <li><span>Reboot the system by running <code>sudo reboot</code>.</span></li>
+    <li><span>After rebooting, try running the CircleCI cli command again.</span></li>
+</ol>
+<h2>Additional Resources: </h2>
+<ul>
+    <li><a href="https://opensource.com/article/17/3/introduction-grub2-configuration-linux" target="_self">An introduction to GRUB2 configuration for your Linux machine</a></li>
+</ul>

@@ -1,0 +1,22 @@
+<p><a href="https://circleci.com/docs/ja/contexts#restricting-a-context/" target="_self" rel="undefined">コンテキスト</a>の作成やプラン設定の調整など、特定の作業については、ユーザー変更を行う際に Organization の「管理者」権限を持っていることが必要です。</p>
+<p><br>GitHub Organization の "Owner" Role があるかどうかで、あなたが管理者であるかどうかを確認します。もしそうであれば、CircleCI 上であらゆる管理者権限を実行することができます。<br><br></p>
+<p dir="auto"> namespace を作成しようとしているときに、Token が古かったり間違っていたりすると、以下のエラーが発生します。</p>
+<pre dir="ltr"><code>Error: Unable to find organization &lt;org&gt; of vcs-type GITHUB: Either the org 'github/&lt;org&gt;' does not exist or you do not have permission to view it.: the organization '&lt;org&gt;' under 'GITHUB' VCS-type does not exist. Did you misspell the organization or VCS?
+</code></pre>
+<p>vs 管理者権限のスコープでない Token を利用した場合</p>
+<pre><span>Error: AUTHORIZATION_FAILURE</span></pre>
+<p dir="auto"> </p>
+<p dir="auto">GitHub Organization の Ownerでない場合は、その Organization の Owner の個人用 API トークンに関連づけられたコンテキストで Owner 以外の人がこのアクションを実行できるようにする方法があります。</p>
+<p dir="auto">このコンテキストは、必要であれば、特定のセキュリティグループに制限することができます。</p>
+<p dir="auto">Organization の Owner は、以下のステップを行う必要があります。</p>
+<ol dir="auto" type="1">
+    <li>個人用 API token 作成:<span> </span><a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" rel="noreferrer">https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token</a>
+    </li>
+    <li>
+        <span>トークンをコンテキストに環境変数として格納 </span><a href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-context" rel="noreferrer">https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-context</a>
+    </li>
+    <li>コンテキスト内の環境変数に CIRCLE_TOKEN というNameで登録が必要です。</li>
+    <li>namespace の作成では、所有者以外の人はビルドに ssh して Token を使って一度だけコマンドを実行することができます。</li>
+    <li>Orb 開発では、Orb Development Kitを使って、新しく作成されたコンテキストとして publishing-context を割り当てます:<span> </span><a href="https://github.com/CircleCI-Public/Orb-Project-Template/blob/master/.circleci/config.yml#L54" rel="noreferrer">https://github.com/CircleCI-Public/Orb-Project-Template/blob/master/.circleci/config.yml#L54</a>
+    </li>
+</ol>
