@@ -1,7 +1,8 @@
-<p>User keys can be configured to <a href="https://circleci.com/docs/2.0/gh-bb-integration/#enable-your-project-to-check-out-additional-private-repositories">checkout additional repositories</a> needed for testing. For repos with a large number of projects, it may be easier to assign User Keys via the API than configuring this on the individual project settings page. </p>
-<p>To do this, CircleCI first needs permissions from GitHub to add SSH keys to your account. You can grant this permission by visiting <strong>Project Settings &gt; Permissions &gt; Checkout SSH keys</strong> and clicking on <strong>Create and Add User Key.</strong></p>
-<p>After you authorize the CircleCI application, you can use <a href="https://circleci.com/docs/api/v1-reference">our API</a> to add a checkout key of type <code>github-user-key</code> for any of your other projects using the <code>curl</code> command:</p>
-<pre>curl -X POST \ 
---header <span class="hljs-string">"Content-Type: application/json"</span> \ 
--d <span class="hljs-string">'{"type":"github-user-key"}'</span> \ 
-<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/circleci.com/api</span><span class="hljs-regexp">/v1/project</span><span class="hljs-regexp">/ORG_NAME/PROJECT_NAME</span>/checkout-key?circle-token=<span class="hljs-number">8</span>e9c47...etc</pre>
+<h2>Overview</h2>
+<p>Unlike deploy keys, user keys are tied to a specific user, and thus can be used to <a href="https://circleci.com/docs/2.0/gh-bb-integration/#enable-your-project-to-check-out-additional-private-repositories" target="_self" rel="undefined">checkout additional repositories</a>.<br>This can be useful for CI pipelines where you want to pull other repositories to do end-to-end testing, for example.<br>Besides using our web UI, you can also create a user key for the project via our <a href="https://circleci.com/docs/api/v2/index.html#operation/createCheckoutKey" target="_self">API</a>.</p>
+<p> </p>
+<h2>Before You Start</h2>
+<p>Please ensure you have authorized with GitHub before creating user keys.<br>This is necessary to allow CircleCI permissions to create a user key associated to your GitHub user account.<br><br><img src="https://support.circleci.com/hc/article_attachments/7668536708891/Screen_Shot_2022-07-28_at_17.45.14.png" alt="Screen_Shot_2022-07-28_at_17.45.14.png"><br><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">You can find this page by visiting </span><strong style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Project Settings &gt; Checkout SSH Keys .<br><br>If you have not authorized with GitHub, </strong>you will encounter the following Internal Server Error message when creating a user key via API:<br><br></p>
+<pre>$ curl --request POST \<br>--url https://circleci.com/api/v2/project/gh/ORG_NAME/PROJECT_NAME/checkout-key \<br>--header "Circle-Token: $CIRLCLE_TOKEN" \<br>--header 'content-type: application/json' \<br>--data '{"type":"user-key"}'<br><br>{"message":"An internal server error occurred."}</pre>
+<p> </p>
+<pre> </pre>
