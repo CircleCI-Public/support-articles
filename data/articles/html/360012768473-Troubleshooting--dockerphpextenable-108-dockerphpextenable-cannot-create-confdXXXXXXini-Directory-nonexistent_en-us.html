@@ -1,6 +1,7 @@
 <p>A recent change in the way the config location of modules is decided in the upstream PHP images can result in the error message in the title.</p>
 <p>The config location is decided by the environment variable "PHP_INI_DIR", which is set as part of the image's environment.</p>
-<p>If using sudo to enable config, the necessary environment variable is stripped before the command is run, resulting in config going to the wrong place.</p>
+<p>If using sudo to enable config, the necessary environment variable is stripped before the command is run, resulting in the config going to the wrong place.</p>
+<h2 data-renderer-start-pos="7432">Solution</h2>
 <p>To get things to work as they did before, you can add the -E flag to the sudo command to have it preserve the environment.</p>
 <p>Old config:</p>
 <pre>sudo docker-php-ext-install mcrypt </pre>
