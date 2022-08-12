@@ -13,7 +13,7 @@
         <strong>File ordering</strong>. Some filesystems maintain an ordered file structure for each directory. This means that all files are read in the same order during each run. However, the filesystems in our build containers are unordered. If your tests only pass when run in a certain order, they may fail on CircleCI.
     </li>
     <li>
-        <strong>"Out of Memory" errors</strong>. If a process in your build container uses too much memory, Linux's OOM killer may end it. If you are interested in recording your memory usage, visit <a href="https://support.circleci.com/hc/en-us/articles/360043994872" target="_self">How to record a job's memory usage</a>.
+        <strong>"Out of Memory" errors</strong>. If a process in your build container uses too much memory, Linux's OOM killer may end it. If you are interested in recording your memory usage, visit <a href="https://support.circleci.com/hc/en-us/articles/360043994872" target="_self">How to record a job's memory usage</a>. You can also view the `<a href="https://circleci.com/blog/optimize-resources-dashboard/" target="_self">Resources</a>` tab on a Docker container to view CPU/RAM usage.
     </li>
     <li>
         <strong>Differing startup times</strong>. Applications like Elasticsearch and PostgreSQL may take more time to start up on CircleCI. You can fix this by explicitly waiting for a service to be available before running tests.

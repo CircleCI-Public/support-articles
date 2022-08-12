@@ -21,7 +21,7 @@ npm ERR!     &lt;http://github.com/isaacs/npm/issues&gt;
 npm ERR! or email it to:
 npm ERR!     &lt;npm-@googlegroups.com&gt;</pre>
 <p>This happens when you list a git repository as a dependency in your package.json file.</p>
-<pre>"somepackage": "git://github.com/someorg/somerepo.git"</pre>
+<pre>"&lt;somepackage&gt;": "git://github.com/someorg/somerepo.git"</pre>
 <p>If the repository is public, swap the URL to an HTTP URL:</p>
-<pre>"somepackage": "https://github.com/someorg/somerepo"</pre>
-<p>If the repository is private, enable user keys in <strong>Project settings &gt; Checkout SSH keys</strong>. See <a href="https://circleci.com/docs/2.0/gh-bb-integration/#enable-your-project-to-check-out-additional-private-repositories">this document</a> for more information.</p>
+<pre>"&lt;somepackage&gt;": "https://github.com/someorg/somerepo"</pre>
+<p>If the repository is private, add an additional SSH key in <strong>Project settings &gt; SSH Keys &gt; Additional SSH Keys</strong>. See <a href="https://circleci.com/docs/add-ssh-key" target="_self">this document</a> for more information.</p>
