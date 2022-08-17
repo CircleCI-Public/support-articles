@@ -1,0 +1,11 @@
+<p><span>Running <code>which jenv</code> or <code>jenv versions</code> before they are added to <code>$BASH_ENV</code> will cause a build to fail.</span><span></span><span></span></p>
+<h2 data-renderer-start-pos="6861">Instructions:</h2>
+<p>To resolve this you can add the following commands to clone <code>jenv</code> and setup <code>$BASH_ENV</code> </p>
+<pre dir="ltr"><code>    steps:
+      - run: git clone https://github.com/jenv/jenv.git ~/.jenv
+      - run: |
+         echo "export PATH=$HOME/.jenv/bin:$PATH" &gt;&gt; $BASH_ENV echo "eval $(jenv init -)" &gt;&gt; $BASH_ENV 
+      - run: |
+         which jenv 
+         jenv versions</code></pre>
+<p data-renderer-start-pos="6916">The <code>jenv</code> commands will run successfully.</p>
