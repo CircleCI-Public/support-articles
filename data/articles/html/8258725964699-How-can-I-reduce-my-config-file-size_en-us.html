@@ -1,0 +1,45 @@
+<h1>
+    <br>Overview
+</h1>
+<p>There is <a href="https://support.circleci.com/hc/en-us/articles/360045043634" target="_blank" rel="noopener">a hard constraint on the overall file size of a CircleCI config file</a>. <br>Overtime, as your team sets up more jobs in the project's pipeline, the config file may be at risk of exceeding the file size limits.<br><br>This article aims to share some suggestions on how you can reduce your config file, depending on your use case.<br><br><br></p>
+<h2>Tip 1: Pack commands into a script</h2>
+<p><span>Instead of writing a series of commands within a </span><code class="code css-1xivnph" data-renderer-mark="true">run</code><span> step, pack these commands into a script.<br><br>This way, your <code class="code css-1xivnph" data-renderer-mark="true">run</code> step would be a one-liner that executes the script.<br>This also means your team can easily execute this same script in other environments, such as during local development.<br><br></span></p>
+<p>If you prefer being able to see the exact commands for debugging, you can always make use of<span> </span><code class="code css-1xivnph" data-renderer-mark="true">set -x</code><span> within the step.</span></p>
+<p><span><br></span>As an example:</p>
+<pre>- run:<br>    name: Run tests<br>    command: |<br>      # set -x will enable debugging; <br>      # prints out commands run in the ./run-tests.sh script<br>      set -x<br>      sh ./run-tests.sh</pre>
+<p><span> </span></p>
+<h2>Tip 2: Pre-install dependencies in custom Docker image</h2>
+<p><span><a href="https://circleci.com/docs/custom-images" target="_blank" rel="noopener">Create a custom Docker image with all required dependencies</a>, for your Docker executor job.<br><strong>Note</strong> that this applies to jobs using the Docker executor.<br><br>This way, you do not need to install additional dependencies as part of your build.<br>An additional benefit is that the overall job duration will also improve.<br>We also avoid potential network issues from external package registries that may arise when we are installing the dependencies within a CircleCI build.<br><br>Take advantage of <a href="https://circleci.com/developer/images?imageType=docker" target="_self">our convenience images</a>, which comes with various tools already pre-installed.<br>You can for example, build a custom image <strong>based off</strong> one of our convenience images.<br><br></span></p>
+<pre><span>docker:<br>  - cimg/python:3.9<br>steps:<br>  - run: |<br>      # NOTE: the following dependencies are already available in cimg/* images.<br>      which jq <br>      which yq<br>      which psql<br>  - run: |<br>      # SUGGESTION: Build a custom image FROM cimg/python:3.9<br>      # and install the additional tools required instead.<br>      # After publishing the image, <br>      # make sure you update your job's executor to use this custom image then.<br>      sudo apt-get update<br>      sudo apt-get install openjdk-13-jdk openjdk-13-jre mysql-client<br></span></pre>
+<p><span> </span></p>
+<h2>Tip 3: Trim imported Orb's commands and jobs</h2>
+<p><span>Instead of importing Orb commands or jobs as-is, trim out unnecessary steps.<br><br>CircleCI's official Orbs try to support all execution environments (e.g., Linux, MacOS, Windows).<br>The Orb commands or jobs can include steps that may not be relevant for for your job.<br>For instance, the <code class="code css-1xivnph" data-renderer-mark="true">aws-cli/install</code> command is long, <a href="https://circleci.com/developer/orbs/orb/circleci/aws-cli#commands-install" target="_blank" rel="noopener">because it covers installation of the AWS CLI for MacOS, Linux, and Windows.</a></span><span></span></p>
+<p> </p>
+<p><span>Instead, we can extract these commands, and trim out accordingly.<br>For example you can obtain the source code of the <code class="code css-1xivnph" data-renderer-mark="true">aws-cli/install</code> command via the <a href="https://circleci.com/docs/local-cli#overview" target="_blank" rel="noopener">CircleCI CLI</a> and yq:<br></span></p>
+<pre><span>$ circleci orb source circleci/aws-cli \<br>| yq -e '.commands.install' -</span></pre>
+<p><span> </span></p>
+<p>With this, you can then:</p>
+<ol>
+    <li>Copy this onto your config.</li>
+    <li>Declare it as a command (or job, if you are trying to modify a job).</li>
+    <li>Trim out the unnecessary steps, as needed.</li>
+    <li>Replace the section using the original Orb's command with your custom command in (2).</li>
+</ol>
+<p><span><em>Alternatively</em>, you can choose to fork our Orbs to modify and publish as your own.<br>Our Orbs are open-sourced, and you can find them <a href="https://github.com/orgs/CircleCI-Public/repositories?q=orb&amp;type=all&amp;language=&amp;sort=" target="_blank" rel="noopener">on GitHub here</a>.</span><span></span></p>
+<p> </p>
+<h2>Tip 4: Split config using Dynamic Configuration</h2>
+<p><span>Use <a href="https://circleci.com/docs/2.0/dynamic-config/" target="_self">Dynamic Configuration</a> to split pipeline from a <em>.circleci/config.yml</em> file into various config files.<br><br></span></p>
+<p data-renderer-start-pos="3819">You can <a class="css-tgpl01" title="https://circleci.com/docs/2.0/dynamic-config/" href="https://circleci.com/docs/2.0/dynamic-config/" target="_blank" rel="noopener" data-renderer-mark="true">leverage Dynamic Configuration</a> to break down various workflows based on conditions.<br><br>For example, our Path-filtering Orb can help teams to simplify the overall pipeline to run workflows only based on files modified.<br>You can then take advantage of Dynamic Configuration to generate a smaller config file, on the fly, for the pipeline's continuation.<br><br>Here is an example from one of our colleagues, for the Rails project:<br><a href="https://github.com/zzak/rails/blob/70dba04faf11eb28ca6761049f8654837dbcbec2/.circleci/config.yml">https://github.com/zzak/rails/blob/70dba04faf11eb28ca6761049f8654837dbcbec2/.circleci/config.yml</a><br><br></p>
+<h2>Tip 5: Break project into multiple projects</h2>
+<p>Consider splitting the project into multiple projects instead.<br><br></p>
+<p>This is really applicable or recommended only if your project has the following characteristics:</p>
+<ul>
+    <li>is a mono-repo</li>
+    <li><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">contains loosely coupled components that can stand as a project on their own</span></li>
+</ul>
+<p>If so, why not split the mono-repo into separate projects then?<br>This way, each project can have their own CircleCI config.<br>Of course, this decision will depend on your team's philosophy as well.</p>
+<p data-renderer-start-pos="3819"> </p>
+<p data-renderer-start-pos="3955"> </p>
+<p><span> </span></p>
+<p><span><br><br></span></p>
+<p> </p>

@@ -1,20 +1,20 @@
 <h1>Max Memory Consumption and Memory Usage Over Time</h1>
 <p>The method of acquiring memory usage data varies between execution environments and is useful in the optimization and debugging of jobs. Below, we have outlined a few methods that will provide this data.</p>
 <p> </p>
-<h2>Docker Executor Max Memory Usage</h2>
+<h2 id="docker">Docker Executor Max Memory Usage</h2>
 <p>Docker executor users can output the max memory consumed by a job by adding the following as the <strong>last</strong> step in the job:</p>
 <pre class="c-mrkdwn__pre" style="background-color: #f3f3f3;" data-stringify-type="pre"><code>- run:<br>  <wbr></wbr>  <wbr></wbr>command: cat /sys/fs/cgroup/memory/memory.max_usage_in_bytes<br>  <wbr></wbr>  <wbr></wbr>when: always</code></pre>
 <p><strong><br>Note:</strong> This will be accurate if the job has one Docker image. Multiple Docker image builds will only report the memory usage of the <a href="https://circleci.com/docs/2.0/glossary#primary-container:~:text=The%20first%20image%20listed%20in%20.circleci/config.yml.%20This%20is%20where%20commands%20are%20executed%20for%20jobs%20using%20the%20Docker%20executor." target="_blank" rel="noopener">primary image</a>.<br><br>Memory usage will be reported in bytes. You can convert to GiB using your favorite search engine to check it against the amount of RAM available to your job, according to its assigned <a href="https://circleci.com/docs/2.0/configuration-reference#resourceclass" target="_blank" rel="noopener">resource class</a>.</p>
 <p>This can help troubleshoot out-of-memory (OOM) errors. </p>
 <p> </p>
-<h2>Docker/Machine Executors Memory Usage Over Time</h2>
+<h2 id="machine-or-docker">Docker/Machine Executors Memory Usage Over Time</h2>
 <p>To log memory usage over time for both Docker and machine executors, you can also add this step as the first step in your job:</p>
 <pre class="c-mrkdwn__pre" style="background-color: #f3f3f3;" data-stringify-type="pre"><code>- run:<br>  <wbr></wbr>  <wbr></wbr>command: |<br>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>while true; do<br>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>sleep 5<br>        # NOTE: on MacOS, the f argument is not supported.<br>        # In this case, you can drop the f argument instead.<br>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>ps auxwwf<br>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>echo "======"<br>  <wbr></wbr>  <wbr></wbr>  <wbr></wbr>done<br>  <wbr></wbr>  <wbr></wbr>background: true</code></pre>
 <p><br>Alternatively, we can also take advantage of <a href="https://man7.org/linux/man-pages/man1/top.1.html" target="_blank" rel="noopener">the top command</a> (available on Docker, Machine (Linux) or MacOS executors). This can help show both memory and CPU utilization by individual processes.<br><br></p>
 <pre style="background-color: #f3f3f3;"><code>- run:<br>    name: Profile CPU and memory every 5s (background)<br>    command: |<br>      while true; do<br>        sleep 5<br>        printf "\n\n$(date)\n"<br>        top -b -c -n 1<br>        echo "======"<br>      done<br>    background: true</code></pre>
 <p> </p>
 <p><strong>Note</strong> that you have may have to install these tools, or use an alternative command if these tools are not available in the specific Executor.<br><br></p>
-<h2>Remote Docker</h2>
+<h2 id="remote-docker">Remote Docker</h2>
 <p>To get the memory usage of the <a href="https://circleci.com/docs/2.0/building-docker-images/#accessing-the-remote-docker-environment" target="_self">Remote Docker environment</a>, you can pass the ps command <strong>through SSH</strong> with</p>
 <pre style="background-color: #f3f3f3;"><code>ssh remote-docker ps auxwwf</code></pre>
 <p> </p>

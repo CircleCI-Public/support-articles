@@ -1,0 +1,26 @@
+<p dir="auto"> </p>
+<p data-renderer-start-pos="7337">When running ./gradlew you may find that the command is not able to run which is because the ./gradlew file will be part of your VCS commit so you will need to either set the directory or define it within the command.</p>
+<h2 data-renderer-start-pos="7432">Solution</h2>
+<ul class="ak-ul" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="7446">Solution 1 - cd to the directory containing ./gradlew</p>
+        <ul>
+            <li>- checkout</li>
+            <li>cd ~/project</li>
+        </ul>
+    </li>
+    <li>
+        <p data-renderer-start-pos="7498">Solution 2 set the working directory to the directory containing ./gradlew</p>
+        <ul>
+            <li>working_directory: ~/project</li>
+        </ul>
+    </li>
+    <li>
+        <p data-renderer-start-pos="7550">Solution 3 define the full directory containing ./gradlew</p>
+        <ul>
+            <li>~/project/gradlew assembleDebugAndroidTest</li>
+        </ul>
+    </li>
+</ul>
+<p data-renderer-start-pos="7610">This will allow you to use the gradlew file and you will no longer see the issue.</p>
+<p data-renderer-start-pos="7610">If you do please make sure that you have included the file within the top level of your VCS.</p>
