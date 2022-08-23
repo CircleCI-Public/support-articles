@@ -1,11 +1,13 @@
 name: Submodule Update Notifications (Approval)
 
 on:
-  push:
+  pull_request_review:
+    types: [submitted]
     branches: [ "main" ]
 
 jobs:
   notify-zkb-sync:
+    if: github.event.review.state == 'approved'
     name: Article update notification
     runs-on: ubuntu-latest
 
