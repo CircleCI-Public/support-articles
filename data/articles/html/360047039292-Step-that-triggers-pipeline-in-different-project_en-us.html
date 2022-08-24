@@ -6,5 +6,5 @@
   command: |
     curl --location --request POST 'https://circleci.com/api/v2/project/(vcs)/(org)/(project)/pipeline' \
     --header 'Content-Type: application/json' \
-    -u "${API_TOKEN}"</pre>
+    -u "${API_TOKEN}:"</pre>
 <p>In the above snippet, you will need to update <code>(vcs)</code> to <code>github</code> or <code>bitbucket</code>, <code>(org)</code> to your Organization, and <code>(project)</code> to the name of your project.</p>
