@@ -1,0 +1,20 @@
+<p data-renderer-start-pos="6586">If you need to use NPM on a windows executor you will find that this is not installed by default as part of the executor, but you can install it using PowerShell as an admin.</p>
+<h2 data-renderer-start-pos="6861">Instructions</h2>
+<p>Below is a code block which can be used to install node version 16.17.0</p>
+<pre dir="ltr"><code>     - run: choco install wget -y
+      - run:
+         command: wget https://nodejs.org/dist/v16.17.0/node-v16.17.0-x86.msi -P C:\Users\circleci\Downloads\
+         shell: cmd.exe
+      - run: MsiExec.exe /i C:\Users\circleci\Downloads\node-v16.17.0-x86.msi /qn
+      - run: 
+          command: |
+              Start-Process powershell -verb runAs -Args "-start GeneralProfile"
+              nvm install 16.17.0
+              nvm use 16.17.0</code></pre>
+<p data-renderer-start-pos="6916">The code will install <code>wget</code> using chocolatey which is included in the CircleCI windows executor to help install software on Windows. It then downloads <code>node</code> from the <code>nodejs</code> website to the Downloads folder of the CircleCI user using and runs the install in silent mode. Next <code>powershell</code> is run as admin using the <code>Start-Process</code> command. Finally <code>nvm install</code> is used to install the version <code>16.17.0</code>and it is set as the version for <code>node</code> to be used using <code>nvm use</code>.</p>
+<h2 data-renderer-start-pos="6916">Outcome</h2>
+<p data-renderer-start-pos="6916">You can run npm commands such as <code>npm install</code> to install the required software.</p>
+<p data-renderer-start-pos="6916"> </p>
+<h2 data-renderer-start-pos="6916">External sources used</h2>
+<p data-renderer-start-pos="6916">nodejs: https://nodejs.org</p>
+<p data-renderer-start-pos="6916">chocolatey: https://chocolatey.org/</p>
