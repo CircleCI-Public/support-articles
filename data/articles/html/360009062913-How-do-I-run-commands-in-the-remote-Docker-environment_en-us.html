@@ -1,6 +1,6 @@
 <p>Although only Docker commands are <em>automatically</em> executed in the remote Docker environment, you can programmatically execute <em>any</em> set of commands in the remote Docker environment by SSHing into it and chaining any subsequent commands to your shell command.</p>
 <p> </p>
-<p>To SSH into the remote Docker environment, run <code>ssh remote-docker</code> while SSH'd into any CircleCI job that uses <a href="https://circleci.com/docs/2.0/configuration-reference/#setup_remote_docker" target="_self"><code>setup_remote_docker</code></a> or execute it programmatically in a <code>run</code> step. (Make sure the <code>setup_remote_docker</code> step runs first, otherwise, your SSH command will fail!)</p>
+<p>To SSH into the remote Docker environment, run <code>ssh remote-docker</code> while SSH'd into any CircleCI job that uses <a href="https://circleci.com/docs/configuration-reference#setupremotedocker" target="_self"><code>setup_remote_docker</code></a> or execute it programmatically in a <code>run</code> step. (Make sure the <code>setup_remote_docker</code> step runs first, otherwise, your SSH command will fail!)</p>
 <p>Chaining a command to this SSH command in a headless fashion, i.e., as part of your CircleCI job, could look something like:</p>
 <pre><code>run: |
   ssh remote-docker \ echo "this echo command will be executed in the remote Docker environment \ <br>  rather than the initial job container itself"
