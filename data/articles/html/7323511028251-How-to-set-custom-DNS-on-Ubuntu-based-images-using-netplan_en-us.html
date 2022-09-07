@@ -3,8 +3,8 @@
     <p data-renderer-start-pos="6389">This guide will allow you to set custom DNS to help with networking issues.</p>
     <h2 data-renderer-start-pos="6389">Commands to run</h2>
     <p>Below is a block of code which will install OpenSSL and add the following DNS servers, 8.8.8.8 and 1.1.1.1 but these could be replaced with any DNS you would like to use.</p>
+    <pre style="background-color: #f3f3f3;"><span>steps:<br>    - run: sudo apt-get update<br>    - run: sudo apt-get install openssl<br>    - run: sudo sed -i '13 i \ \ \ \ \ \ \ \ \ \ \ \ nameservers:' /etc/netplan/50-cloud-init.yaml<br>    - run: sudo sed -i '14 i \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ addresses:' /etc/netplan/50-cloud-init.yaml<br>    - run: sudo sed -i "s/addresses:/ addresses":" [8.8.8.8, 1.1.1.1] /g" /etc/netplan/50-cloud-init.yaml<br>    - run: cat /etc/netplan/50-cloud-init.yaml<br>    - run: sudo netplan apply</span></pre>
 </div>
-<pre><span>steps:<br>- run: sudo apt-get update<br>- run: sudo apt-get install openssl<br>- run: sudo sed -i '12 i \ \ \ \ \ \ \ \ nameservers:' /etc/netplan/50-cloud-init.yaml<br>- run: sudo sed -i '13 i \ \ \ \ \ \ \ \ \ \ \ \ addresses:' /etc/netplan/50-cloud-init.yaml<br>- run: sudo sed -i "s/addresses:/ addresses":" [8.8.8.8, 1.1.1.1] /g" /etc/netplan/50-cloud-init.yaml<br>- run: cat /etc/netplan/50-cloud-init.yaml<br>- run: sudo netplan apply<br>- run: systemd-resolve --status | grep 'DNS Servers' -A2</span></pre>
 <div>
     <h2 data-renderer-start-pos="6826">Notes</h2>
     <p>When setting this the original DNS server will also be set so you will have three DNS servers defined that can be used.</p>
