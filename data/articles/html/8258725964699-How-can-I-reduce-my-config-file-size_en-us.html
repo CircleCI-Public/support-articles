@@ -1,10 +1,8 @@
-<h1>
-    <br>Overview
-</h1>
+<h1>Overview</h1>
 <p>There is <a href="https://support.circleci.com/hc/en-us/articles/360045043634" target="_blank" rel="noopener">a hard constraint on the overall file size of a CircleCI config file</a>. <br>Overtime, as your team sets up more jobs in the project's pipeline, the config file may be at risk of exceeding the file size limits.<br><br>This article aims to share some suggestions on how you can reduce your config file, depending on your use case.<br><br><br></p>
 <h2>Tip 1: Pack commands into a script</h2>
 <p><span>Instead of writing a series of commands within a </span><code class="code css-1xivnph" data-renderer-mark="true">run</code><span> step, pack these commands into a script.<br><br>This way, your <code class="code css-1xivnph" data-renderer-mark="true">run</code> step would be a one-liner that executes the script.<br>This also means your team can easily execute this same script in other environments, such as during local development.<br><br></span></p>
-<p>If you prefer being able to see the exact commands for debugging, you can always make use of<span> </span><code class="code css-1xivnph" data-renderer-mark="true">set -x</code><span> within the step.</span></p>
+<p>If you prefer being able to see the exact commands for debugging, you can always make use of<span> </span><code class="code css-1xivnph" data-renderer-mark="true">set -x</code><span> within the step.<br>&gt; <strong>Note</strong> that <a href="https://circleci.com/docs/env-vars#secrets-masking" target="_self">using `set -x` may reveal secrets in the build output</a>. Do exercise caution as needed.</span></p>
 <p><span><br></span>As an example:</p>
 <pre>- run:<br>    name: Run tests<br>    command: |<br>      # set -x will enable debugging; <br>      # prints out commands run in the ./run-tests.sh script<br>      set -x<br>      sh ./run-tests.sh</pre>
 <p><span> </span></p>
