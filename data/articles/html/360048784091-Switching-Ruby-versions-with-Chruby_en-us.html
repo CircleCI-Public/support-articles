@@ -1,4 +1,5 @@
-<p>Some <a href="https://circleci.com/docs/2.0/circleci-images/#next-generation-convenience-images" target="_blank" rel="noopener">convenience images</a> don't support using <code>rvm</code> or <code>rbenv</code>, such as the Andriod image. While a system Ruby is available, it may not be the version you need.</p>
+<h2>Swap To Use Ruby Version Management Tools</h2>
+<p>Some <a href="https://circleci.com/docs/2.0/circleci-images/#next-generation-convenience-images" target="_blank" rel="noopener">convenience images</a> don't support using <code>rvm</code> or <code>rbenv</code>, such as the Android image. While a Ruby system is available, it may not be the version you need.</p>
 <p>If you encounter this you can utilize <a href="https://github.com/postmodern/chruby" target="_blank" rel="noopener">Chruby</a> to download the proper Ruby version and swap to utilizing it in the rest of your job steps. The following will work out of the box for the <code>circleci/android:api-29-node</code> Android image:</p>
 <pre style="background-color: #f3f3f3;">- run:
     name: install chruby
