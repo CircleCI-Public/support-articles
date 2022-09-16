@@ -3,7 +3,7 @@ url: >-
   https://circleci.zendesk.com/api/v2/help_center/ja/categories/115001866207.json
 html_url: https://support.circleci.com/hc/ja/categories/115001866207
 created_at: '2017-08-26T09:00:14Z'
-updated_at: '2022-09-15T01:21:25Z'
+updated_at: '2022-09-15T23:30:06Z'
 name: "\x10CircleCIを使う"
 description: CircleCIの設定レファレンス、YAMLのコンフィグオプション、セッティングと機能について
 locale: ja
