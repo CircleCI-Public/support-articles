@@ -1,13 +1,13 @@
-<p> </p>
-<p>If you are using <a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version" target="_self">Docker version 20.x</a> you can use Buildx as-is.</p>
+<h1>Docker Version 20.x and 19.03</h1>
+<p>If you are using <a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version" target="_self">Docker version 20.x</a> you can use Buildx as is.</p>
 <p>Below is a sample config to enable set the Remote Docker version, and use `docker buildx build`. </p>
-<pre>version: 2.1<br><br>workflows:<br>  build-deploy:<br>    jobs:<br>      - build<br><br>jobs:<br>  build:<br>    docker:<br>      - image: cimg/base:stable<br>  steps:<br>    - setup_remote_docker:<br>        version: 20.10.11<br>    - checkout<br>    - run: docker buildx build . </pre>
+<pre style="background-color: #f3f3f3;">version: 2.1<br><br>workflows:<br>  build-deploy:<br>    jobs:<br>      - build<br><br>jobs:<br>  build:<br>    docker:<br>      - image: cimg/base:stable<br>  steps:<br>    - setup_remote_docker:<br>        version: 20.10.11<br>    - checkout<br>    - run: docker buildx build . </pre>
 <p> </p>
 <p>If you are using <strong>Docker version 19.03</strong> , please note that you must enable the "<strong>Experimental features</strong>" option.</p>
 <p> </p>
 <p>Below is a sample config to showcase how to enable the "<strong>Experimental features</strong>" option on the remote Docker daemon.</p>
 <p> </p>
-<pre>version: 2.1
+<pre style="background-color: #f3f3f3;">version: 2.1
 
 workflows:
   build-deploy:
@@ -34,7 +34,7 @@ jobs:
 <p> </p>
 <p>If the above configuration is not working for your image, please try the below configuration:</p>
 <p> </p>
-<pre>version: 2.1
+<pre style="background-color: #f3f3f3;">version: 2.1
 
 workflows:
   build-deploy:
@@ -55,17 +55,15 @@ jobs:
 </pre>
 <p> </p>
 <p>There may also be cases where you get the error:</p>
-<pre class="css-1uk2jcu"><span>could not create a builder instance with TLS data loaded from environment</span></pre>
+<pre class="css-1uk2jcu" style="background-color: #f3f3f3;"><span>could not create a builder instance with TLS data loaded from environment</span></pre>
 <p>To resolve this, please create a context with commands like the following:</p>
-<pre>docker context create buildx-build
+<pre style="background-color: #f3f3f3;">docker context create buildx-build
 docker buildx create --use buildx-build
 </pre>
 <p><strong>Please note that if you are using a docker image other than one of our `cimg` images, you will need to make sure that buildx is available within that image.<br><br></strong></p>
-<p><strong>References</strong>:</p>
-<ol>
-    <li><a href="https://docs.docker.com/buildx/working-with-buildx/">https://docs.docker.com/buildx/working-with-buildx/ </a></li>
-    <li><a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version">https://circleci.com/docs/2.0/building-docker-images/#docker-version</a></li>
-    <li><a href="https://github.com/kelvintaywl-cci/docker-buildx" target="_self">https://github.com/kelvintaywl-cci/docker-buildx</a></li>
-</ol>
-<p> </p>
-<p> </p>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://docs.docker.com/build/" target="_blank" rel="noopener">Overview of Docker Build</a></li>
+    <li><a href="https://circleci.com/docs/building-docker-images#docker-version" target="_blank" rel="noopener">Specify a Docker version for remote docker</a></li>
+    <li><a href="https://github.com/docker/buildx" target="_blank" rel="noopener">docker/buildx repository</a></li>
+</ul>
