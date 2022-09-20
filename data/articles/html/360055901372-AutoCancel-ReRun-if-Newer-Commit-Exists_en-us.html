@@ -1,3 +1,4 @@
+<h1>Exiting Build From Run Step</h1>
 <p>There are situations where re-running a build would cause issues, such as deploying a stale version of your application. To work around this the following run step will exit a build if a newer commit exists on the branch it is running on:</p>
 <pre style="background-color: #f3f3f3;">- run:
     name: Check last commit to this commit
@@ -12,3 +13,9 @@
 <p>Example of this in action:</p>
 <p><img src="https://support.circleci.com/hc/article_attachments/360084358852/testing_cancel.png" alt="testing_cancel.png"></p>
 <p>Build 714 runs successfully, I then make a change and push that commit up, and build 715 runs successfully. Then I re-run build 714 which fails since it found a newer commit on the branch.</p>
+<p> </p>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360058421851-Auto-cancel-workflow-via-run-step" target="_blank" rel="noopener">Auto-cancel workflow via run step</a></li>
+    <li><a href="https://circleci.com/docs/skip-build" target="_blank" rel="noopener">Skip or cancel jobs and workflows</a></li>
+</ul>
