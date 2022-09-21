@@ -1,5 +1,5 @@
 id: 360051656632
-title: Swap node version on CircleCI convenience image
+title: Swap Node Version on CircleCI Convenience Image
 author_id: 405652843914
 created_at: '2020-11-04T19:43:13Z'
 locale: en-us
@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 7513289222427
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360051656632-Swap-node-version-on-CircleCI-convenience-image
+  https://support.circleci.com/hc/en-us/articles/360051656632-Swap-Node-Version-on-CircleCI-Convenience-Image
 draft: false

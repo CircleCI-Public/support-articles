@@ -1,3 +1,4 @@
+<h1>Cancel On Test Fail Using API</h1>
 <p>You may have specific builds that you want to exit/fail as soon as any test fails, especially if you are splitting the tests across many containers.</p>
 <p>You can accomplish this by adding the following step after your test run step:</p>
 <pre style="background-color: #f3f3f3;">- run:
@@ -13,3 +14,7 @@
     <li>It will cancel the workflow instead of moving it to a "Failed" state</li>
     <li>This command will run on<span> </span><em>any</em><span> </span>failure of a job step, not just a test failure</li>
 </ol>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/api/v2/index.html#operation/cancelWorkflow" target="_blank" rel="noopener">Cancel a workflow</a></li>
+</ul>
