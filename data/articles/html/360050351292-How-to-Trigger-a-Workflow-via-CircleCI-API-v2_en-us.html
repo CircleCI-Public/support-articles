@@ -1,6 +1,8 @@
-<p><span> CircleCI API (v2) doesn't currently provide a dedicated endpoint to specifically trigger a new workflow.</span></p>
+<h2>Trigger a Workflow</h2>
+<p><span>CircleCI API (v2) doesn't currently provide a dedicated endpoint to specifically trigger a new workflow.</span></p>
 <p><span>However, it is still possible to trigger a specific workflow using the "<a href="https://circleci.com/docs/api/v2/#operation/triggerPipeline" target="_blank" rel="noopener">Trigger a new pipeline"</a> endpoint. It requires some modification to your <code>config.yml</code>, and the use of <a href="https://circleci.com/docs/2.0/pipeline-variables/#pipeline-parameters-in-configuration" target="_blank" rel="noopener">pipeline parameters</a>, as well as, <a href="https://circleci.com/docs/2.0/configuration-reference/#using-when-in-workflows" target="_blank" rel="noopener">conditional workflows</a>.</span></p>
-<p>For example, if you have the following <code>workflows</code> declared in your <code>config.yml</code>:</p>
+<h2><span>Example</span></h2>
+<p>If you have the following <code>workflows</code> declared in your <code>config.yml</code>:</p>
 <pre dir="ltr" style="background-color: #f3f3f3;">workflows:
   version: 2
   build:
@@ -12,7 +14,6 @@
   deploy:
     jobs:
       - job_c</pre>
-<p> </p>
 <p>You will need to declare the following <a href="https://circleci.com/docs/2.0/pipeline-variables/#pipeline-parameters-in-configuration" target="_blank" rel="noopener noreferrer">pipeline parameters</a>:</p>
 <pre dir="ltr" style="background-color: #f3f3f3;">version: 2.1<br>parameters:
   run_workflow_build:
