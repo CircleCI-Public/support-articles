@@ -1,0 +1,21 @@
+<h1>Validate your config file</h1>
+<p>You can avoid pushing additional commits to test your <code>.circleci/config.yml</code> and confirm that your file is free of syntax errors, YAML linting issues, etc. by using the CircleCI CLI to validate your configuration locally.</p>
+<h2>Using CircleCI CLI to validate</h2>
+<ul>
+    <li>Visit <a href="https://circleci.com/docs/2.0/local-cli" target="_blank" rel="noopener">https://circleci.com/docs/2.0/local-cli</a> and install the CLI</li>
+    <li>Generating a <a href="https://app.circleci.com/settings/user/tokens" target="_blank" rel="noopener">personal API token</a> and configure the CLI by running <code><strong>circleci setup</strong></code>
+    </li>
+    <li>Navigate<span> to a directory with a</span><code>.circleci/config.yml</code> <span>file</span>
+    </li>
+    <li>Run <code><strong>circleci config validate</strong></code> in your project's root directory</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+    <li>Confirm that your configuration file is in the right directory: <code>.circleci/config.yml</code> and you are in the project's root directory</li>
+    <li>If the error still occurs, please run <strong><code>circleci version</code></strong> and <a href="https://support.circleci.com/hc/en-us/requests/new" target="_blank" rel="noopener">reach out to our support team</a>
+    </li>
+</ul>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/local-cli" target="_blank" rel="noopener">Installing the CircleCI Local CLI</a></li>
+</ul>

@@ -1,7 +1,13 @@
-<p>You can filter your workflows to run on specific branches by adding the <strong>filters</strong> key to the job name in your <strong>workflows</strong> section.</p>
-<pre>workflows:<br>    build:<br>      jobs:<br>        - test:<br>            filters:<br>              branches:<br>                only:<br>                  - main</pre>
-<p>It can also be used to prevent later jobs unless they are running on a specific branch</p>
+<h1>Filtering jobs by branch</h1>
+<p>You might come across a scenario where you only need to trigger certain jobs when the merge occurs on a branch. Filters will allow you to define the rules for execution on specific branches.</p>
+<h2><span>Branch filtering in workflows</span></h2>
+<p>You can filter your jobs to run on specific branches by adding the <code>filters</code> key to the job name in your <code>workflows</code> section.</p>
+<pre style="background-color: #f3f3f3;">workflows:<br>  build:<br>    jobs:<br>      - test:<br>          filters:<br>            branches:<br>              only:<br>                - main</pre>
+<p>Filters can also be used to prevent later jobs, unless they are running on a specific branch:</p>
 <div>
-    <pre><span>workflows</span><span>:</span><br><span>  build</span><span>:</span><br><span>    jobs</span><span>:</span><br><span>      - </span><span>test</span><br><span>      - </span><span>deploy</span><span>:</span><br><span>          requires</span><span>:</span><br><span>            - </span><span>test</span><br><span>          filters</span><span>:</span><br><span>            branches</span><span>:</span><br><span>              only</span><span>:</span><br><span>                - </span><span>main</span></pre>
+    <pre style="background-color: #f3f3f3;"><span>workflows</span><span>:</span><br><span>  build</span><span>:</span><br><span>    jobs</span><span>:</span><br><span>      - </span><span>test</span><br><span>      - </span><span>deploy</span><span>:</span><br><span>          requires</span><span>:</span><br><span>            - </span><span>test</span><br><span>          filters</span><span>:</span><br><span>            branches</span><span>:</span><br><span>              only</span><span>:</span><br><span>                - </span><span>main</span></pre>
 </div>
-<p><a href="https://circleci.com/docs/2.0/configuration-reference/#filters-1" target="_blank" rel="noopener">Click here for full documentation on job branch filtering</a></p>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/configuration-reference#jobfilters" target="_blank" rel="noopener">Job Filtering Documentation</a></li>
+</ul>
