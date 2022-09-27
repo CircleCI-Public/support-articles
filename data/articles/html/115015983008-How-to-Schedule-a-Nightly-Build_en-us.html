@@ -1,0 +1,15 @@
+<p> </p>
+<h1>Nightly Builds</h1>
+<p>CircleCI makes it seamless to schedule a nightly build using Cron. You can find an <a href="https://circleci.com/docs/2.0/workflows/#nightly-example" target="_self">example config</a> and <a href="https://circleci.com/docs/2.0/workflows/#scheduling-a-workflow" target="_self" rel="undefined">more details on Scheduling a workflow</a> in our docs.</p>
+<h2>Please note: Scheduled workflows will be phased out by the end of 2022.</h2>
+<p><span>Visit the scheduled pipelines </span><span><a class="css-x7gnkn" href="https://circleci.com/docs/scheduled-pipelines#get-started">migration guide </a></span><span>to find out how to migrate existing scheduled workflows to scheduled pipelines, or to set up scheduled pipelines from scratch.</span></p>
+<p> </p>
+<h2><span>Nightly Example</span></h2>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><span>workflows:<br>   version: 2<br>   commit:<br>     jobs:<br>       - test<br>       - deploy<br>    nightly:<br>     triggers:<br>      - schedule:<br>         cron: "0 0 * * *"<br>         filters:<br>           branches:<br>             only:<br>               - main<br>               - beta<br>    jobs:<br>      - coverage<br></span></pre>
+<p> </p>
+<p>Additionally, you can use the <a href="https://crontab.guru/" target="_self">crontab guru</a> to generate cron schedule expressions.</p>
+<h2> </h2>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/scheduled-pipelines" target="_blank" rel="noopener">CircleCI Documentation: Scheduled Pipelines</a></li>
+</ul>

@@ -1,5 +1,6 @@
+<h1>Setting "experimental" to true in daemon.json</h1>
 <p>Docker experimental features can be enabled by adding an /etc/docker/daemon.json with {"experimental": true} on the Remote Docker instance and restarting the daemon.</p>
-<pre>  steps:
+<pre style="background-color: #f3f3f3;">  steps:
     - setup_remote_docker:
         version: 18.09.3
     - run: |
@@ -7,7 +8,14 @@
           sudo bash -c 'echo "{\"experimental\": true}" &gt; /etc/docker/daemon.json'
           sudo systemctl restart docker
         EOF</pre>
-<p>Be sure to set a Docker version that supports the functionality you are looking to make use up. A list of currently support Docker versions for Remote Docker is available here:<br><br>https://circleci.com/docs/2.0/building-docker-images/#docker-version</p>
-<p><br>This can then be used from the Docker cli.</p>
-<pre>  - run: DOCKER_BUILDKIT=1 docker build .
+<p>Be sure to set a Docker version that supports the functionality you are looking to make use of.</p>
+<p><br>You can check to see if experimental features are enabled by running the command below:</p>
+<pre style="background-color: #f3f3f3;">docker version -f '{{.Server.Experimental}}'
 </pre>
+<p>If enabled, the command will print a value of <code style="background-color: #f3f3f3;">true</code>.</p>
+<p> </p>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/building-docker-images#docker-version" target="_blank" rel="noopener">Specify a Docker version for remote docker</a></li>
+    <li><a href="https://github.com/docker/cli/blob/master/experimental/README.md" target="_blank" rel="noopener">Docker Experimental Features</a></li>
+</ul>
