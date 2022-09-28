@@ -1,4 +1,4 @@
-<p>Shallow cloning a git repository can offer some performance improvement, especially for larger projects with a number of commits, by pulling the smallest number of changes possible. This can either be implemented manually using a custom cloning step or by utilizing <a href="https://circleci.com/orbs/registry/?filterBy=all&amp;query=shallow" target="_self">an Orb</a>.</p>
+<p>Shallow cloning of a git repository can offer some performance improvement, especially for larger projects with a number of commits, by pulling the smallest number of changes possible. This can either be implemented manually using a custom cloning step or by utilizing <a href="https://circleci.com/orbs/registry/?filterBy=all&amp;query=shallow" target="_self">an Orb</a>.</p>
 <p>To fetch and modify the default checkout step, see this article: <a href="https://support.circleci.com/hc/en-us/articles/115015659247" target="_blank" rel="noopener">How do I modify the checkout step?</a></p>
 <p>Some flags to note that can be added to the <code>git clone &lt;repository&gt;</code> command:</p>
 <ul>
@@ -12,5 +12,9 @@
         <code>--no-tags</code> prevents git from cloning any tags from the repository (if the installed version of git supports it).
     </li>
 </ul>
-<p><em>source &amp; more flags: <a href="https://git-scm.com/docs/git-clone">https://git-scm.com/docs/git-clone</a></em></p>
+<p>Here is an example:</p>
 <pre>version: 2.1<br><br>jobs:<br>  build:<br>    docker:<br>      - image: circleci/node:latest<br>    steps:<br>      - run: git clone --depth 5 "$<span class="pre"><span class="white">CIRCLE_REPOSITORY_URL" --branch "$</span></span><span class="pre"><span class="white">CIRCLE_BRANCH"</span></span></pre>
+<p>You can read more information on Git's website:</p>
+<ul>
+    <li><a href="https://git-scm.com/docs/git-clone">https://git-scm.com/docs/git-clone</a></li>
+</ul>

@@ -1,5 +1,5 @@
 id: 360009699913
-title: Can't read from remote git repository during npm install
+title: Can’t Read From Remote Git Repository During npm install
 author_id: 405001866574
 created_at: '2018-09-24T18:56:56Z'
 locale: en-us
@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 7513289222427
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360009699913-Can-t-read-from-remote-git-repository-during-npm-install
+  https://support.circleci.com/hc/en-us/articles/360009699913-Can-t-Read-From-Remote-Git-Repository-During-npm-install
 draft: false

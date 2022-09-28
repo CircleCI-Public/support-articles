@@ -1,5 +1,6 @@
+<h1>Cloning Repositories</h1>
 <p>You may encounter this error when installing npm. </p>
-<pre>npm ERR! git clone ssh://git@github.com/someuser/somerepo.git Cloning into bare repository '/home/ubuntu/.npm/_git-remotes/ssh-git-github-com-creativelive-shared-git-01234abc'...
+<pre style="background-color: #f3f3f3;">npm ERR! git clone ssh://git@github.com/someuser/somerepo.git Cloning into bare repository '/home/ubuntu/.npm/_git-remotes/ssh-git-github-com-creativelive-shared-git-01234abc'...
 npm ERR! git clone ssh://git@github.com/someuser/somerepo.git
 npm ERR! git clone ssh://git@github.com/someuser/somerepo.git ERROR: Repository not found.
 npm ERR! git clone ssh://git@github.com/someuser/somerepo.git fatal: Could not read from remote repository.
@@ -21,7 +22,7 @@ npm ERR!     &lt;http://github.com/isaacs/npm/issues&gt;
 npm ERR! or email it to:
 npm ERR!     &lt;npm-@googlegroups.com&gt;</pre>
 <p>This happens when you list a git repository as a dependency in your package.json file.</p>
-<pre>"&lt;somepackage&gt;": "git://github.com/someorg/somerepo.git"</pre>
+<pre style="background-color: #f3f3f3;">"&lt;somepackage&gt;": "git://github.com/someorg/somerepo.git"</pre>
 <p>If the repository is public, swap the URL to an HTTP URL:</p>
-<pre>"&lt;somepackage&gt;": "https://github.com/someorg/somerepo"</pre>
+<pre style="background-color: #f3f3f3;">"&lt;somepackage&gt;": "https://github.com/someorg/somerepo"</pre>
 <p>If the repository is private, add an additional SSH key in <strong>Project settings &gt; SSH Keys &gt; Additional SSH Keys</strong>. See <a href="https://circleci.com/docs/add-ssh-key" target="_self">this document</a> for more information.</p>
