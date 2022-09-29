@@ -1,12 +1,12 @@
 <p>Within your config file, you can opt to upload build artifacts using the <code>store_artifacts</code> <a href="https://circleci.com/docs/2.0/artifacts/#uploading-artifacts" target="_blank" rel="noopener">key and specifying a path to upload.</a></p>
-<p>These artifacts are then able to be downloaded on the artifacts tab or <a href="https://circleci.com/docs/api/#artifacts" target="_blank" rel="noopener">via the API</a>. The download link in both cases is constructed of two parts, the first part of the URL is where we are hosting it:</p>
-<p><code>https://output.circle-artifacts.com/output/job/db8a7ff3-3382-44ff-b50f-6cd2891e0ae4/artifacts/0</code></p>
+<p>These artifacts are then able to be downloaded on the artifacts tab or <a href="https://circleci.com/docs/api/v2/index.html#operation/getJobArtifacts" target="_blank" rel="noopener">via the API</a>. The download link in both cases is constructed of two parts, the first part of the URL is where we are hosting it:</p>
+<pre>https://output.circle-artifacts.com/output/job/db8a7ff3-3382-44ff-b50f-6cd2891e0ae4/artifacts/0</pre>
 <p>While the second part of the URL is the path you specified in the <code>store_artifacts</code> step:</p>
-<p><code>~/project/app/test/app.txt</code></p>
+<pre><code>~/project/app/test/app.txt</code></pre>
 <p>So altogether the URL would look something like:</p>
-<p><code>https://output.circle-artifacts.com/output/job/db8a7ff3-3382-44ff-b50f-6cd2891e0ae4/artifacts/0/~/project/app/test/app.txt</code></p>
+<pre>https://output.circle-artifacts.com/output/job/db8a7ff3-3382-44ff-b50f-6cd2891e0ae4/artifacts/0/~/project/app/test/app.txt</pre>
 <p>However, if you had your <code>store_artifacts</code> step set to:</p>
-<pre>  - store_artifacts:
+<pre><code>  - store_artifacts:
   	path: ../project/app/test
-</pre>
+</code></pre>
 <p>This would result in the destination path to implicitly strip all instances of <code>..</code>, resulting in the URL to be at <code>https://output.circle-artifacts.com/output/job/db8a7ff3-3382-44ff-b50f-6cd2891e0ae4/artifacts/0/project/app/test</code></p>

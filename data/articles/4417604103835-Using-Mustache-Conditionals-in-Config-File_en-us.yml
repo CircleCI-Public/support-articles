@@ -1,5 +1,5 @@
 id: 4417604103835
-title: Using mustache conditionals in config file
+title: Using Mustache Conditionals in Config File
 author_id: 406303320371
 created_at: '2022-02-03T13:00:22Z'
 locale: en-us
@@ -7,5 +7,5 @@ permission_group_id: 237847
 section_id: 7513266924955
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/4417604103835-Using-mustache-conditionals-in-config-file
+  https://support.circleci.com/hc/en-us/articles/4417604103835-Using-Mustache-Conditionals-in-Config-File
 draft: false

@@ -1,7 +1,7 @@
 <h1><span>Adding jEnv to $BASH_ENV</span></h1>
 <p><span>Running <code style="background-color: #f3f3f3;">which jenv</code> or <code style="background-color: #f3f3f3;">jenv versions</code> before they are added to <code style="background-color: #f3f3f3;">$BASH_ENV</code> will cause a build to fail.</span><span></span><span></span></p>
 <p> </p>
-<h2 data-renderer-start-pos="6861">Resolution</h2>
+<h2 data-renderer-start-pos="6861">Solution</h2>
 <p>To resolve this you can add the following commands to clone <code style="background-color: #f3f3f3;">jenv</code> and setup <code style="background-color: #f3f3f3;">$BASH_ENV</code> </p>
 <pre dir="ltr" style="background-color: #f3f3f3;"><code>    steps:
       - run: git clone https://github.com/jenv/jenv.git ~/.jenv

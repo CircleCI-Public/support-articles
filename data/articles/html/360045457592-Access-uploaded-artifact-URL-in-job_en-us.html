@@ -6,9 +6,9 @@
 </ul>
 <p>The end result could be that you only send a Slack message containing the artifacts uploaded from a failed build, such as screenshots or files containing more information about the failures.</p>
 <h1><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Run step and process</span></h1>
-<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;">You will need to </span><a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;" href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener">generate and store a personal API token</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;"> in your </span><a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;" href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project" target="_blank" rel="noopener">project level environment variables</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;">, in this example, it should be stored as </span><code style="font-size: 15px;">CIRCLE_API_TOKEN</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;">.</span></p>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">You will need to </span><a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener">generate and store a personal API token</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> in your </span><a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project" target="_blank" rel="noopener">project level environment variables.</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> In this example, it should be stored as </span><code>CIRCLE_API_TOKEN</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">.</span></p>
 <p>In the following snippet, you will need to update <code>(vcs)</code> to either <code>github</code> or <code>bitbucket</code>, <code>(org)</code> to your organization, and <code>(project)</code> to the name of your project. This needs to be added after all <code>store_artifacts</code> steps to ensure all artifacts are made available.</p>
-<pre>- run:
+<pre><code>- run:
     name: Get artifacts
     when: on_fail
     command: |
@@ -20,6 +20,6 @@
       echo "read -r -d '' STORED_ARTIFACTS \&lt;&lt; 'EOF_ARTIFACTS'" &gt;&gt; $BASH_ENV
       echo "$artifacts" &gt;&gt; $BASH_ENV
       echo "EOF_ARTIFACTS" &gt;&gt; $BASH_ENV
-</pre>
+</code></pre>
 <p>After the above step is run, then you can access the artifact information for the build with <code>$STORED_ARTIFACTS</code> -- which in turn can be passed into other steps, such as sending a Slack message.</p>
 <p> </p>

@@ -1,3 +1,4 @@
+<h2><span>Deploying to Multiple GitHub Repositories</span></h2>
 <p><span>The approach we suggest is to have a dedicated CircleCI build that pushes the configuration to a list of repositories by leveraging the GitHub API.</span></p>
 <p>The repository this CircleCI project is built on would contain:</p>
 <ul>
@@ -6,6 +7,7 @@
     <li>A file containing the list of repositories in the form “user/repository” or “org/repository” (<code>satellites.txt</code><span> </span>in this example)</li>
 </ul>
 <p>You would also need to add an environment variable containing a <a href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token#creating-a-token" target="_blank" rel="noopener">GitHub API token</a> with appropriate permissions/scopes.</p>
+<h2>Config Example</h2>
 <p><span>The </span><code>config.yml</code><span> would be:</span></p>
 <pre style="background-color: #f3f3f3;">version: 2.1
 
