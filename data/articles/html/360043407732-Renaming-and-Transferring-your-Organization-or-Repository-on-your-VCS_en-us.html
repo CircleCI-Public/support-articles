@@ -1,13 +1,14 @@
-<p><span class="wysiwyg-color-red"><strong>Warning : in rare cases, renaming and/or transferring your organization or a repository in your VCS may lead to lost contexts, project build history, and settings in CircleCI.</strong></span></p>
-<p>Please be sure to keep this in mind. You may want to backup any valuable data.</p>
+<h1>Transferring or Renaming Repositories</h1>
+<p><span class="wysiwyg-color-red"><strong>Warning: In rare cases, renaming and/or transferring your organization or a repository in your VCS may lead to lost contexts, project build history, and settings in CircleCI. </strong></span><strong><span class="wysiwyg-color-red">Please be sure to keep this in mind. You may want to backup any valuable data.</span></strong></p>
 <p>Data loss can occur due to difficult edge cases in the way CircleCI syncs organization and repository data from your VCS. This is especially true in cases where the previous name is immediately recreated as a different organization or repository.</p>
-<p>With this in mind, When you transfer a repository in your VCS to another organization , rename a repository or organization, transfer ownership of an organization the following are best practices: </p>
+<h2>Best Practices</h2>
+<p>When transferring a repository in your VCS to another organization, renaming a repository or organization, or transferring ownership of an organization - the following are best practices: </p>
 <ul>
     <li>Login to your VCS and rename and/or transfer your organization/repository (Please try and avoid renaming your organization multiple times)</li>
     <li>Login to <a href="www.circleci.com" target="_self">CircleCI</a> using your new organization's name and confirm that your projects, contexts, settings and billing are all up to date. Make sure you are following all transferred projects within your new organization . If you have only changed the name of your repository or transferred one project, this should be reflected in CircleCI automatically once you login to your account. </li>
     <li>After confirming the above, you can create a new organization or repository under the old name in your VCS, if desired.</li>
 </ul>
-<p>Additional resources: </p>
+<h2>Additional resources</h2>
 <ul>
     <li><a href="https://docs.github.com/en/github/administering-a-repository/transferring-a-repository" target="_self" rel="undefined">Transferring a repository on GitHub</a></li>
     <li><a href="https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams/transferring-organization-ownership" target="_self" rel="undefined">Transferring an organizations ownership on GitHub</a></li>

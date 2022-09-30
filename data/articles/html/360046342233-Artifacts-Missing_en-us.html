@@ -1,0 +1,14 @@
+<h1>
+    <span style="font-weight: 400;">Redirect Changes</span><span style="font-weight: 400;"></span>
+</h1>
+<p><span style="font-weight: 400;">In order to improve the performance of our artifacts hosting, we rolled out a change that would make non-HTML artifacts on CircleCI redirect to a short-lived pre-signed cloud storage URL. If you are downloading via curl to a file output and not finding the expected artifact, it may be due to these historical redirect changes.</span></p>
+<h2><span style="font-weight: 400;">JSON &amp; Browser Downloads for Artifacts are Unaffected</span></h2>
+<p><span style="font-weight: 400;">We currently allow JSON files to bypass this to ensure test suites that produce dashboards to view results are able to function correctly.<br></span></p>
+<p><span style="font-weight: 400;">If using a web browser (to view HTML resources such as test / coverage reports or download tarballs / zip files) you will not need to change anything, as browsers follow redirects by default.</span><span style="font-weight: 400;"></span></p>
+<h2><span style="font-weight: 400;">CURL<br></span></h2>
+<p><span style="font-weight: 400;">If you are using </span><strong>curl</strong><span style="font-weight: 400;"> or another HTTP client that does not follow redirects by default, you will need to enable redirect support (</span><strong>wget</strong><span style="font-weight: 400;"> follows redirects by default, while curl requires the -L switch).</span></p>
+<p><span style="font-weight: 400;">For curl commands that don’t specify the -L option, you will now see the following message:</span></p>
+<pre><span style="font-weight: 400;">$ curl -H'Circle-Token: XXXXXX' 'https://9648-63890343-gh.circle-artifacts.com/0/sample/logs.txt' </span><br><br><span style="font-weight: 400;">Redirecting to &lt;https://circle-production-customer-artifacts.s3.amazonaws.com/...&gt;</span></pre>
+<p><span style="font-weight: 400;">Adding the -L switch will make the artifact get fetched correctly:</span></p>
+<pre><span style="font-weight: 400;">$ curl -L -H'Circle-Token: XXXXXX' 'https://9648-63890343-gh.circle-artifacts.com/0/sample/logs.txt'</span><br><span style="font-weight: 400;">some logs......</span></pre>
+<p><span style="font-weight: 400;">Keep in mind that this change only affects non-HTML artifacts. All HTML files will still be served without a redirect.<br></span></p>
