@@ -1,3 +1,12 @@
-<p><span>It is not possible to have a config split across multiple files as CircleCI requires a single config file in </span><code>.circleci/config.yml</code><span> to start running.</span></p>
-<p><span>While there are examples of split configs in some open source project, such as our Orbs, this is generally just to make them more human-readable. Before these can be used the config must be <a href="https://circleci.com/docs/2.0/local-cli/#packing-a-config" target="_self">packed with the CLI</a> - this creates a single config.yml file which can be used with CircleCI.</span></p>
+<h1><span>Single Config File</span></h1>
+<p><span>It is not possible to have a config split across multiple files as CircleCI requires a single config file in </span><code style="background-color: #f3f3f3;">.circleci/config.yml</code><span> to start running.</span></p>
+<p><span>While there are examples of split configs in some open source projects, such as our Orbs, this is generally just to make them more human-readable. Before these can be used the config must be <a href="https://circleci.com/docs/2.0/local-cli/#packing-a-config" target="_self">packed with the CLI</a> - this creates a single <code style="background-color: #f3f3f3;">config.yml</code> file which can be used with CircleCI.</span></p>
 <p>This packing procedure cannot be run as a "pre" step on CircleCI itself as it<span> is not possible to run arbitrary commands before a workflow. Additionally, the workflow itself will not be generated if a valid "whole" config is not found. Config packing must be run locally, with the resulting file checked in to your repo.</span></p>
+<p> </p>
+<h2><span>Dynamic Configuration As An Alternative</span></h2>
+<p><span>Dynamic configuration uses a setup workflow to determine pipeline parameter values and based on those values a separate config.yml can be triggered even if it doesn't reside in the .circleci/ folder. Using this method, you can create different config.yml files to trigger depending on the computed value of pipeline parameters in the setup workflow in the .circleci/config.yml.</span></p>
+<p> </p>
+<h2><span>Additional Resources</span></h2>
+<ul>
+    <li><span><a href="https://circleci.com/docs/dynamic-config" target="_blank" rel="noopener">Dynamic Configuration</a></span></li>
+</ul>
