@@ -1,8 +1,9 @@
 <p> </p>
-<h2>We recommend un-listing an orb whenever possible. </h2>
+<h2>Deleting an orb: </h2>
+<p><span>CircleCI does not support deleting an orb, as publicly released orbs are potentially dependencies for other CircleCI user’s builds. Orbs are </span><a href="https://semver.org/">SemVer<span> </span><span class="badge badge-notification clicks" title="4 clicks">4</span></a><span> compliant, and each published version is immutable. Allowing for deletions would make users susceptible to unexpected loss of functionality.</span></p>
+<h2> </h2>
+<h2>We recommend un-listing an orb whenever possible</h2>
 <p>You can un-list Orbs from the public registry using the <a href="https://circleci.com/docs/how-to-use-the-circleci-local-cli" target="_self">CircleCI CLI</a> with the following command:</p>
 <pre><code>circleci orb unlist &lt;namespace&gt;/&lt;orb&gt; &lt;true|false&gt; [flags]</code></pre>
 <p>More information on un-listing orbs is available here: <a href="https://support.circleci.com/hc/en-us/articles/360035341894" target="_self">How can I make my orbs private?</a></p>
 <p> </p>
-<h2>Deleting an orb: </h2>
-<p><span>We do not recommend deleting an orb, as publicly released orbs are potentially dependencies for other CircleCI user’s builds. Orbs are </span><a href="https://semver.org/">SemVer<span> </span><span class="badge badge-notification clicks" title="4 clicks">4</span></a><span> compliant, and each published version is immutable. Allowing for deletions would make users susceptible to unexpected loss of functionality.</span></p>
