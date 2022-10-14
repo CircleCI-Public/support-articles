@@ -1,28 +1,12 @@
-<pre>-
-Beginning November 1, 2020, [Docker Hub](https://hub.docker.com/) has enabled rate limits based on the originating
-IP address. Since CircleCI runs jobs from a shared pool of IPs, it is strongly
-recommended to use authenticated Docker pulls with Docker Hub to avoid encountering
-rate limits.
-
-Identifying this error can be done by examining the `Spin Up Environment` step
-of your build output for a `toomanyrequests:Too Many Requests` error message.
-
-**Solutions:** 
-Using authentication for Docker Hub in your builds is the best way to avoid being rate limited for Docker image Pulls.
-The first suggestion is to create a [Context](https://circleci.com/docs/2.0/contexts/) for your Docker Hub credentials to encorporate in your `config.yml`.
-
-Example config: 
-
-![context-example](https://support.circleci.com/hc/article_attachments/360071877191/docker-hub-context.png)
-
-You may also use a per-project Environment Variables as shown here.
-
-![project-level-env-var](https://support.circleci.com/hc/article_attachments/360071877271/project-env-var.png)
-
-Alternative soltuions can also be found here in our [Documentation here.](https://circleci.com/docs/2.0/private-images) 
-
-Below is an example of a build failure due to encountering the Docker
-rate limit.
-
-![screenshot](https://support.circleci.com/hc/article_attachments/360070433772/Screen_Shot_2020-09-27_at_8.55.35_AM.png)
-</pre>
+<p> </p>
+<h1>Docker Hub Rate Limiting</h1>
+<p>As of <strong>November 1, 2020</strong>, <a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a> enabled rate limits based on the originating IP address. Since CircleCI runs jobs from a shared pool of IPs, it is strongly recommended to use authenticated Docker pulls with Docker Hub to avoid encountering rate limits.</p>
+<p>Identifying this error can be done by examining the <code style="background-color: #f3f3f3;">Spin Up Environment</code> step of your build output for a <code style="background-color: #f3f3f3;">toomanyrequests:Too Many Requests</code> error message.</p>
+<h2>Solutions</h2>
+<p>Using authentication for Docker Hub in your builds is the best way to avoid being rate limited for Docker image Pulls. The first suggestion is to create a <a href="https://circleci.com/docs/2.0/contexts/" target="_blank" rel="noopener">Context</a> for your Docker Hub credentials to incorporate in your <code style="background-color: #f3f3f3;">config.yml</code>.</p>
+<p>Example config: <img src="https://support.circleci.com/hc/article_attachments/360071877191/docker-hub-context.png" alt="context-example"></p>
+<p>You may also use a per-project Environment Variables as shown here.</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360071877271/project-env-var.png" alt="project-level-env-var"></p>
+<p>Alternative solutions can also be found here in our <a href="https://circleci.com/docs/2.0/private-images" target="_blank" rel="noopener">Documentation here</a>.</p>
+<p>Below is an example of a build failure due to encountering the Docker rate limit.</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360070433772/Screen_Shot_2020-09-27_at_8.55.35_AM.png" alt="screenshot"></p>
