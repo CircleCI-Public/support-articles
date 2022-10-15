@@ -4,7 +4,8 @@
 <p>Identifying this error can be done by examining the <code style="background-color: #f3f3f3;">Spin Up Environment</code> step of your build output for a <code style="background-color: #f3f3f3;">toomanyrequests:Too Many Requests</code> error message.</p>
 <h2>Solutions</h2>
 <p>Using authentication for Docker Hub in your builds is the best way to avoid being rate limited for Docker image Pulls. The first suggestion is to create a <a href="https://circleci.com/docs/2.0/contexts/" target="_blank" rel="noopener">Context</a> for your Docker Hub credentials to incorporate in your <code style="background-color: #f3f3f3;">config.yml</code>.</p>
-<p>Example config: <img src="https://support.circleci.com/hc/article_attachments/360071877191/docker-hub-context.png" alt="context-example"></p>
+<p>Example config: </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360071877191/docker-hub-context.png" alt="context-example"></p>
 <p>You may also use a per-project Environment Variables as shown here.</p>
 <p><img src="https://support.circleci.com/hc/article_attachments/360071877271/project-env-var.png" alt="project-level-env-var"></p>
 <p>Alternative solutions can also be found here in our <a href="https://circleci.com/docs/2.0/private-images" target="_blank" rel="noopener">Documentation here</a>.</p>
