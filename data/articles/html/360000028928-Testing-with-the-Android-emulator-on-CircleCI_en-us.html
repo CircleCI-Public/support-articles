@@ -6,8 +6,9 @@
 <p><strong>- Insufficient memory</strong></p>
 <p>We recommend using at least a resource class of at least "large" and above, as "medium" is usually insufficient to run the emulator and gradle processes.</p>
 <p><strong>- Emulator configuration</strong></p>
-<p>Higher API levels and/or system images that come with Google APIs installed have been observed to be less stable, or require specific emulator options (e.g. no-window to be enabled/disabled). If UI tests are failing, we recommend trying out <em>both</em> system images "<span>system-images;android-29;default;x86" and "system-images;android-29;default;x86_64" to see if the tests will pass with either, as these 2 system images are observed to be relatively more stable.</span></p>
-<p><span>Certain tests may also require emulator capabilities, e.g. Google/Playstore APIs, or the camera, to be present.</span></p>
+<p>Higher API levels and/or system images that come with Google APIs installed have been observed to be less stable, or require specific emulator options (e.g. no-window to be enabled/disabled). If UI tests are failing, we recommend trying out a different image. Please check a list of our Android machine images here:</p>
+<p><a href="https://circleci.com/developer/machine/image/android" target="_self">https://circleci.com/developer/machine/image/android</a></p>
+<p>Additional options such as <code>partition-size </code>can be set for the emulator via the <a href="https://circleci.com/developer/orbs/orb/circleci/android" target="_self">Android orb's</a> <code>additional-emulator-args</code> parameter.</p>
 <p><span><strong>- Emulator animations</strong></span></p>
 <p>We recommend disabling of emulator animations to prevent interference with tests. This can be done through this orb command, <a href="https://circleci.com/developer/orbs/orb/circleci/android#commands-disable-animations" target="_self">disable-animations</a> , or other commands from the orb that wrap it.</p>
 <p><strong>- Flakiness</strong></p>
