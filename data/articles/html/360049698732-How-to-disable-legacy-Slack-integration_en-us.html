@@ -1,0 +1,6 @@
+<p>If you have the legacy Slack Integration enabled and would like to disable it, you can use the following API request to remove the Slack webook URL from your project settings.</p>
+<p>This API call will disable your legacy Slack integration. You will need to create and pass <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_self">the Personal API Token</a> in the "Circle-Token" HTTP header in order to authenticate the API call:<br><em>Note: Replace {vcs} (github or bitbucket), {org}, and {project} with the appropriate values.</em></p>
+<pre style="background-color: #f3f3f3;">curl -X PUT 'https://circleci.com/api/v1.1/project/{vcs}/{org}/{project}/settings' \<br>  -H 'Content-Type: application/json' \<br>  -H "Circle-Token: $CIRCLE_TOKEN" \<br>  --data-binary '{"slack_webhook_url":""}'</pre>
+<p>We can then confirm that the legacy Slack Integration is indeed disabled with the following:</p>
+<pre style="background-color: #f3f3f3;">curl -X GET 'https://circleci.com/api/v1.1/project/{vcs}/{org}/{project}/settings' \<br>  -H "Circle-Token: $CIRCLE_TOKEN"  | jq '.slack_webhook_url'</pre>
+<p>It should return a blank string if the legacy Slack Integration has been disabled successfully.</p>
