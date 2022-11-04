@@ -1,0 +1,11 @@
+<p data-renderer-start-pos="7578">You can use the CircleCI V2 API to get job details.</p>
+<h2 data-renderer-start-pos="7853">Instructions</h2>
+<p>Using a curl GET request as shown below you will need to replace the <span>project-slug which is your VCS information in the example below this is CircleCI<span class="token operator">-</span>Public<span class="token operator">/</span>api<span class="token operator">-</span>preview<span class="token operator">-</span>docs and the job number. You will also need to include a form of <span class="token string">authorization which can be an api_key_header basic_auth or an api_key_query. A guide can be found under additional resources for utilizing basic authorization.</span></span></p>
+<pre class="sc-fzqBkg sc-fzqPZZ hEZDP">curl <span class="token operator">--</span>request GET \
+  <span class="token operator">--</span>url https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>circleci<span class="token punctuation">.</span>com<span class="token operator">/</span>api<span class="token operator">/</span>v2<span class="token operator">/</span>project<span class="token operator">/</span>gh<span class="token operator">/</span>CircleCI<span class="token operator">-</span>Public<span class="token operator">/</span>api<span class="token operator">-</span>preview<span class="token operator">-</span>docs<span class="token operator">/</span>job<span class="token operator">/</span><span class="token number">123</span> \
+  <span class="token operator">--</span>header <span class="token string">'authorization: Basic REPLACE_BASIC_AUTH'</span></pre>
+<h2 data-renderer-start-pos="7908">Outcome</h2>
+<p data-renderer-start-pos="7908">You will retrieve the data for the job.</p>
+<h2 data-renderer-start-pos="8142">Additional Resources</h2>
+<p>A link to the API can be found here: <a href="https://circleci.com/docs/api/v2/index.html#tag/Job">https://circleci.com/docs/api/v2/index.html#tag/Job</a></p>
+<p>A link to utilizing authorization can be found here: <a href="https://support.circleci.com/hc/en-us/articles/360052405651-Utilizing-Basic-Authorization-in-CircleCI-API-Calls">https://support.circleci.com/hc/en-us/articles/360052405651-Utilizing-Basic-Authorization-in-CircleCI-API-Calls</a></p>
