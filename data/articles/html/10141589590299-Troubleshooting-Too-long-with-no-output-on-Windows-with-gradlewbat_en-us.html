@@ -1,0 +1,23 @@
+<h2><span>Problem</span></h2>
+<p>When using Gradle with the Windows executors/orb, you may experience a timeout error:</p>
+<div class="css-tht5jc">
+    <div class="css-1h6v3uz">
+        <div class="css-hv9sku">
+            <pre class="css-1uk2jcu"><span>Too long with no output (exceeded 10m0s): context deadline exceeded</span></pre>
+        </div>
+    </div>
+</div>
+<p> </p>
+<h2><span>Solution</span></h2>
+<p id="section1">For context, <code>gradlew.bat</code> <span></span>doesn't return the exit code for PowerShell. So, the step doesn't stop when the command has finished.</p>
+<p>To resolve, set <code>shell: bash.exe</code>.</p>
+<p>This will cause the batch file and <span>step to run in Bash, not PowerShell.</span></p>
+<p> </p>
+<p>For example:</p>
+<pre dir="ltr"><code id="shell-command">      - run: 
+          shell: bash.exe
+          command: ./gradlew.bat build</code></pre>
+<p> </p>
+<h2 data-renderer-start-pos="8602"><span>Additional Resources</span></h2>
+<p id="contact-support">See information on our Windows Orb:<br><a href="https://circleci.com/developer/orbs/orb/circleci/windows">https://circleci.com/developer/orbs/orb/circleci/windows</a><br><br>You can also reference Gradle's troubleshooting user guides:<br><a href="https://docs.gradle.org/current/userguide/troubleshooting.html">https://docs.gradle.org/current/userguide/troubleshooting.html</a><br><br>If you are still experiencing problems after trying this, for further questions or suggestions for your particular use-case, please contact <a href="mailto:support@circleci.com">support@circleci.com</a> </p>
+<p> </p>
