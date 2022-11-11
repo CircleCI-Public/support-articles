@@ -1,26 +1,50 @@
-<p dir="auto"> </p>
-<p data-renderer-start-pos="7337">When running ./gradlew you may find that the command is not able to run which is because the ./gradlew file will be part of your VCS commit so you will need to either set the directory or define it within the command.</p>
+<h2><span>Problem</span></h2>
+<p data-renderer-start-pos="7337">When running ./gradlew, you may find that the command is not able to run. This is because the ./gradlew file will be part of your VCS commit, so you will need to either set the directory or define it within the command.</p>
 <h2 data-renderer-start-pos="7432">Solution</h2>
 <ul class="ak-ul" data-indent-level="1">
-    <li>
-        <p data-renderer-start-pos="7446">Solution 1 - cd to the directory containing ./gradlew</p>
-        <ul>
-            <li>- checkout</li>
-            <li>cd ~/project</li>
+    <ul class="ak-ul" data-indent-level="1">
+        <ul class="ak-ul" data-indent-level="1">
+            <li>
+                <p data-renderer-start-pos="7446">Solution 1: cd to the directory containing ./gradlew</p>
+                <pre>- checkout<br>- cd ~/project</pre>
+            </li>
+            <li>
+                <p data-renderer-start-pos="7498">Solution 2: set the working directory to the directory containing ./gradlew</p>
+                <pre>working_directory: ~/project</pre>
+            </li>
+            <li>
+                <p data-renderer-start-pos="7550">Solution 3: define the full directory containing ./gradlew</p>
+                <pre>~/project/gradlew assembleDebugAndroidTest</pre>
+            </li>
+            <li>
+                <p data-renderer-start-pos="7610">Solution 4: Enable the execute permissions for the user</p>
+            </li>
         </ul>
-    </li>
-    <li>
-        <p data-renderer-start-pos="7498">Solution 2 set the working directory to the directory containing ./gradlew</p>
-        <ul>
-            <li>working_directory: ~/project</li>
-        </ul>
-    </li>
-    <li>
-        <p data-renderer-start-pos="7550">Solution 3 define the full directory containing ./gradlew</p>
-        <ul>
-            <li>~/project/gradlew assembleDebugAndroidTest</li>
-        </ul>
-    </li>
+    </ul>
 </ul>
-<p data-renderer-start-pos="7610">This will allow you to use the gradlew file and you will no longer see the issue.</p>
+<p>Either use:</p>
+<ul class="ak-ul" data-indent-level="1">
+    <ul class="ak-ul" data-indent-level="1">
+        <ul class="ak-ul" data-indent-level="1">
+            <li>
+                <pre><span>chmod +x gradlew</span></pre>
+            </li>
+            <li>
+                <pre><span>chmod 777 gradlew</span></pre>
+            </li>
+        </ul>
+    </ul>
+</ul>
+<p data-renderer-start-pos="7610"> </p>
+<p data-renderer-start-pos="7610"> </p>
+<p data-renderer-start-pos="7610">This will allow you to use the ./gradlew file and you will no longer see the issue.</p>
 <p data-renderer-start-pos="7610">If you do please make sure that you have included the file within the top level of your VCS.</p>
+<p data-renderer-start-pos="7610"> </p>
+<h2 data-renderer-start-pos="8602"><span>Additional Resources</span></h2>
+<p>Gradle:</p>
+<p><a href="https://gradle.org/">https://gradle.org/</a></p>
+<p> </p>
+<p>Android Orb:</p>
+<p><a href="https://circleci.com/developer/orbs/orb/circleci/android">https://circleci.com/developer/orbs/orb/circleci/android</a></p>
+<p> </p>
+<p> </p>
