@@ -36,6 +36,8 @@
                   - equal: [ false, &lt;&lt; pipeline.parameters.param1 &gt;&gt; ]
               - or:
                   - not: &lt;&lt; pipeline.parameters.param3 &gt;&gt;
+                  - not:
+                      equal: [ testbranch, &lt;&lt; pipeline.git.branch &gt;&gt; ] 
           - or:
               - equal: [ false, &lt;&lt; pipeline.parameters.param3 &gt;&gt; ]
               - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]  
