@@ -18,7 +18,31 @@
 <p>それでは、<strong>when: on_fail</strong> を使用して失敗したステップを再試行する例をご紹介していきます。</p>
 <p><strong> 次のサンプルの config.yml ファイルでは、「<span class="wysiwyg-underline">Run on fail status</span>」ステップは、前のステップがエラー（exit 1）のため <span class="wysiwyg-underline">トリガー</span>されます</strong>。</p>
 <p> </p>
-<pre>version: 2.1workflows:  version: 2  build_deploy:    jobs:      - buildjobs:  build:    docker:      - image: circleci/python:3.7.5    steps:      - checkout      - run:          name: Run commands          command: |              echo "I will exit fail status"              exit 1      - run:          name: Run on fail status          command: |              echo "I am result of above failed job"          when: on_fail</pre>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">version: 2.1
+
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - build
+
+jobs:
+  build:
+
+    docker:
+      - image: circleci/python:3.7.5
+    steps:
+      - checkout
+      - run:
+          name: Run commands
+          command: |
+              echo "I will exit fail status"
+              exit 1
+      - run:
+          name: Run on fail status
+          command: |
+              echo "I am result of above failed job"
+          when: on_fail</pre>
 <p> </p>
 <p><strong>補足</strong>：同じコマンドを次のステップで（when 属性を付けて）再試行したり、他のコマンドを使用したりできます。 ユーザーは API エンドポイントを使用して<a href="https://circleci.com/docs/api/#retry-a-build" target="_blank" rel="noopener">ビルドを再試行</a>することもできます。 上記は <code>when</code> 属性がどのように機能するかを確認する例になります。</p>
 <p>次のスクリーンショットでは、前のステップが失敗したときに、「<strong>when</strong>」属性を含むステップがトリガーされたことが確認できます。</p>
@@ -26,7 +50,31 @@
 <p><strong>補足</strong>：Workflow のステータスは、この場合 <strong>FAILED </strong> になります。</p>
 <p> </p>
 <p><strong> 次のサンプルの config.yml ファイルでは、前のステップの出力が成功（exit 0）であるため、「<span class="wysiwyg-underline">Run on fail status</span>」が <span class="wysiwyg-underline">トリガーされません</span></strong>。</p>
-<pre>version: 2.1workflows:  version: 2  build_deploy:    jobs:      - buildjobs:  build:    docker:      - image: circleci/python:3.7.5    steps:      - checkout      - run:          name: Run commands          command: |              echo "I will exit success status"              exit 0      - run:          name: Run on fail status          command: |              echo "I am result of above failed job"          when: on_fail</pre>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">version: 2.1
+
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - build
+
+jobs:
+  build:
+
+    docker:
+      - image: circleci/python:3.7.5
+    steps:
+      - checkout
+      - run:
+          name: Run commands
+          command: |
+              echo "I will exit success status"
+              exit 0
+      - run:
+          name: Run on fail status
+          command: |
+              echo "I am result of above failed job"
+          when: on_fail</pre>
 <p>  </p>
 <center><img src="https://support.circleci.com/hc/article_attachments/360058391054/when_exit0.png%0A" alt="when attribute CircleCI - Success" width="526" height="250"></center>
 <p> </p>
