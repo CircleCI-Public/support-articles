@@ -9,9 +9,9 @@
           - equal: [ main, &lt;&lt; pipeline.git.branch &gt;&gt; ]
           - or: [ &lt;&lt; pipeline.parameters.param1 &gt;&gt;, &lt;&lt; pipeline.parameters.param2 &gt;&gt; ]
         - or:
-          - equal: [ false, &lt;&lt; pipeline.parameters.param1 &gt;&gt; ]
+          - equal: [ false, &lt;&lt; pipeline.parameters.param3 &gt;&gt; ]
     steps:
-      - run: echo "I am on main AND param1 is true OR param2 is true -- OR param1 is false"
+      - run: echo "This condition is true: ( main && ( param1 || param2 ) ) || param3"
 </pre>
 <h3>Workflow Example</h3>
 <pre>workflows:
