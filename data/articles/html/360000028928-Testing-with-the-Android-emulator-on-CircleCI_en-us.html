@@ -1,17 +1,18 @@
-<p>CircleCI supports running the Android emulator through our new Android machine image that supports x86 Android emulator tests and nested virtualization. Documentation on how to access it is available here: <a href="https://circleci.com/docs/2.0/android-machine-image/" target="_self">https://circleci.com/docs/2.0/android-machine-image/</a>. We also recommend using the <a href="https://circleci.com/developer/orbs/orb/circleci/android" target="_self">circleci/android</a> orb in your config as it provides useful commands for emulator testing.</p>
-<p> </p>
+<h1>Andriod Emulator</h1>
+<p>CircleCI supports running the Android emulator through our Android machine image, which supports x86 Android emulator tests and nested virtualization. Documentation is available here:</p>
+<p><a href="https://circleci.com/docs/2.0/android-machine-image/" target="_self">https://circleci.com/docs/2.0/android-machine-image/</a>.</p>
+<p>We also recommend using the <a href="https://circleci.com/developer/orbs/orb/circleci/android" target="_self">circleci/android</a> orb in your config as it provides useful commands for emulator testing.</p>
 <p>Note: The Android machine image is different from the Android docker convenience images, which do not support emulators</p>
-<p> </p>
-<p><strong>Common causes of failed UI tests when using the emulator on Android machine image</strong></p>
-<p><strong>- Insufficient memory</strong></p>
+<h2>Common UI Test Failures </h2>
+<h3>Insufficient memory</h3>
 <p>We recommend using at least a resource class of at least "large" and above, as "medium" is usually insufficient to run the emulator and gradle processes.</p>
-<p><strong>- Emulator configuration</strong></p>
+<h3>Emulator configuration</h3>
 <p>Higher API levels and/or system images that come with Google APIs installed have been observed to be less stable, or require specific emulator options (e.g. no-window to be enabled/disabled). If UI tests are failing, we recommend trying out a different image. Please check a list of our Android machine images here:</p>
 <p><a href="https://circleci.com/developer/machine/image/android" target="_self">https://circleci.com/developer/machine/image/android</a></p>
 <p>Additional options such as <code>partition-size </code>can be set for the emulator via the <a href="https://circleci.com/developer/orbs/orb/circleci/android" target="_self">Android orb's</a> <code>additional-emulator-args</code> parameter.</p>
-<p><span><strong>- Emulator animations</strong></span></p>
+<h3>Emulator animations</h3>
 <p>We recommend disabling of emulator animations to prevent interference with tests. This can be done through this orb command, <a href="https://circleci.com/developer/orbs/orb/circleci/android#commands-disable-animations" target="_self">disable-animations</a> , or other commands from the orb that wrap it.</p>
-<p><strong>- Flakiness</strong></p>
+<h3>Flakiness</h3>
 <p>Some degree of flakiness may be expected from the emulator. We recommend using our android orb command, <a href="https://circleci.com/developer/orbs/orb/circleci/android#commands-run-tests" target="_self" rel="undefined">run-tests</a>, (or other commands from the orb that wrap it, like <a href="https://circleci.com/developer/orbs/orb/circleci/android#commands-start-emulator-and-run-tests" target="_self">start-emulator-and-run-tests</a>) to run your tests with, as it supports retries</p>
 <p> </p>
 <p> </p>

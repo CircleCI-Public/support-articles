@@ -1,3 +1,4 @@
+<h1>Caching Error on macOS</h1>
 <p>When restoring a cache on a macOS job, you may run into the following error:</p>
 <pre class="css-dm1rdx">Downloading cache archive...
 Validating cache...
@@ -8,6 +9,7 @@ Failed to unarchive cache
 
 Error untarring cache: Error extracting tarball /var/... : home/circleci/project/...: Cannot extract through symlink</pre>
 <p>This error is commonly caused by trying to extract a cache that has been created on a Docker or Machine job. It is not advisable to share caches between different executor types as features such as symlinks or permissions metadata can differ and cause issues.</p>
+<h2>Solution</h2>
 <p>To work around this, use a cache key that includes the platform you are running the job on. For example:</p>
 <pre>node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}</pre>
 <p>Can become:</p>
