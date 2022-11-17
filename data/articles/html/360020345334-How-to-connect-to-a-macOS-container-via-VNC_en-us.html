@@ -1,7 +1,7 @@
 <h2>Overview</h2>
 <p>When troubleshooting macOS builds, sometimes it can be useful to find out what's happening on screen in the macOS GUI. This can be done by ensuring that VNC is enabled in the host OS, and setting up the credentials with which to connect to the host.</p>
-<p><em>Note: It is not possible to know the password for the default user. As such this method creates a new user from where you can VNC into the session and run any commands from there.</em></p>
-<h3>To connect to a MacOS container using the macOS Orb:</h3>
+<p><em>Note: It is not possible to know the password for the default user. As such this method creates a new user from whom you can VNC into the session and run any commands from there.</em></p>
+<h3>To connect to a macOS container using the macOS Orb:</h3>
 <ul>
     <li>Set up your desired VNC password in an <a href="https://circleci.com/docs/env-vars" target="_blank" rel="noopener">environment variable</a> or <a href="https://circleci.com/docs/contexts" target="_blank" rel="noopener">context variable</a> named <code>MAC_ORB_VNC_PASSWORD</code>
     </li>
@@ -10,7 +10,7 @@
 <pre><code>orbs:<br>  mac: circleci/macos@2.3.0<br><br>jobs:<br>  build:<br>    steps:<br>      - mac/enable-vnc
 </code></pre>
 <ul>
-    <li>Install a VNC viewer:
+    <li>Install a VNC viewer on your local machine:
         <ul>
             <li>macOS users can use the Screen Sharing app</li>
             <li>Linux and Windows users can download and install <a href="https://www.tightvnc.com/download.php" target="_blank" rel="noopener">TightVNC</a> or <a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank" rel="noopener">RealVNC Viewer</a>

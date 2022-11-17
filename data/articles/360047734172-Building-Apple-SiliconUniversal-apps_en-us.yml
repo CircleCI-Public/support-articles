@@ -1,5 +1,5 @@
 id: 360047734172
-title: Can I build Apple Silicon/Universal apps?
+title: Building Apple Silicon/Universal apps?
 author_id: 382351624233
 created_at: '2020-08-18T15:01:01Z'
 locale: en-us
@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 115003327088
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360047734172-Can-I-build-Apple-Silicon-Universal-apps-
+  https://support.circleci.com/hc/en-us/articles/360047734172-Building-Apple-Silicon-Universal-apps-
 draft: false

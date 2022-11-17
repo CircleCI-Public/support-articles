@@ -1,5 +1,5 @@
 id: 360039061974
-title: Can I use rbenv on macOS?
+title: How to use rbenv on macOS
 author_id: 382351624233
 created_at: '2019-11-26T16:27:09Z'
 locale: en-us
@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 115003327088
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360039061974-Can-I-use-rbenv-on-macOS-
+  https://support.circleci.com/hc/en-us/articles/360039061974-How-to-use-rbenv-on-macOS
 draft: false
