@@ -1,0 +1,20 @@
+<p>If you would like to add resource class limits from within your config.yml you can define these within the spec section of your config.</p>
+<h2><span>Instructions</span></h2>
+<p>An example can be found below which will limit both the CPU and memory for the containers within the specified resource class.</p>
+<p><span>CPU resources are always specified as an absolute amount of resources, never as a relative amount.</span></p>
+<p>Memory resource is the amount of ram made available to the container running the job for the specific resource class</p>
+<pre class="c-mrkdwn__pre" style="background-color: #f3f3f3; padding: 5px;" data-stringify-type="pre">agent:
+  resourceClasses:
+    my-namespace/my-resourceClass:
+      token: MY_TOKEN
+      spec:
+        containers:
+          - resources:
+              limits:
+                cpu: 500m
+                memory: 256Mi
+        nodeSelector:
+          key: value</pre>
+<p><span class="c-mrkdwn__br" aria-label="" data-stringify-type="paragraph-break"></span><span>You can define pod configuration settings in the</span><code class="c-mrkdwn__code" data-stringify-type="code">spec</code> <span>block, in the same way as creating pods directly.</span></p>
+<h2><span>Additional Resources</span></h2>
+<p>More information can be found <a href="https://circleci.com/docs/container-runner/#resource-class-configuration-custom-pod" target="_blank" rel="noopener">here</a> in our documentation.</p>
