@@ -1,0 +1,20 @@
+<h1>Overview</h1>
+<p>You can <a href="https://circleci.com/docs/local-cli/#validate-a-circleci-config" target="_blank" rel="noopener">use the CircleCI CLI to validate our .circleci/config.yml file.</a><br>However, when your config references private Orbs, you may encounter the following error:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;">Error: Cannot find acme-org/foo-private@0.1.0 in the orb registry. Check that the namespace, orb name and version are correct.</pre>
+<p> </p>
+<h2>Solution</h2>
+<p>We can resolve this by making sure we pass the following arguments to <code>circleci
+        config validate</code> :</p>
+<ul>
+    <li>
+        <code>--org-slug</code> : Set this to your organization's slug. For example, `github/acme-org`
+    </li>
+    <li>
+        <code>--token</code> <em>(optional)</em>: Point this to your CircleCI user API token if you have not <a href="https://circleci.com/docs/local-cli/#configuring-the-cli" target="_blank" rel="noopener">set up your CLI profile</a>
+    </li>
+</ul>
+<p>As an example, given the following .circleci/config.yml file:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;">version: 2.1<br><br>orbs:<br>  dummy-private: kelvintaywl/dummy-private@0.1.0<br><br>jobs:<br>  my-job:<br>  docker:<br>    - image: cimg/base:current<br>  steps:<br>    - dummy-private/greet<br><br>workflows:<br>  main:<br>    jobs:<br>      - my-job</pre>
+<p> </p>
+<p>In this case, my API token can access the kelvintaywl GitHub organization on CircleCI.<br>My CircleCI user can also use the kelvintaywl/dummy-private Orb.<br><br>We can then simply run the following command to validate this config:<br><br></p>
+<pre style="background-color: #f3f3f3; padding: 5px;">$ circleci config validate --org-slug github/kelvintaywl --token $CIRCLE_TOKEN</pre>
