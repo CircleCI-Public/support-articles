@@ -5,7 +5,5 @@
     at parseHttpResponse (node_modules/selenium-webdriver/lib/http.js:655:13)
     at Executor.execute (node_modules/selenium-webdriver/lib/http.js:581:28)
     at processTicksAndRejections (node:internal/process/task_queues:94:5)</pre>
-<p>To resolve this, run the following near the start of your job:</p>
-<pre><span>- run: defaults write com.apple.Safari AllowRemoteAutomation 1</span></pre>
-<p>If this alone does not resolve the issue, try adding the following additional command directly afterwards:</p>
-<pre>- run: sudo safaridriver --enable</pre>
+<p>To resolve this, you can use the <a href="https://circleci.com/developer/orbs/orb/circleci/macos" target="_self">CircleCI macOS orb</a> and <a href="https://circleci.com/developer/orbs/orb/circleci/macos#commands-add-safari-permissions" target="_self">enable safaridriver testing. </a></p>
+<pre> </pre>

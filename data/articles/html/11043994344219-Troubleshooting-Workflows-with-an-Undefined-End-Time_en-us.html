@@ -1,0 +1,35 @@
+<h2>Problem</h2>
+<p>You may be experiencing the following with a workflow where a job has been completed or cancelled, but:</p>
+<ul>
+    <li>You experience an error in a job that says:</li>
+</ul>
+<p><code>"This job appears to have stopped responding, try re-running it."</code></p>
+<ul>
+    <li>The workflow is completed or cancelled, but a job still has a timer running incrementally indefinitely</li>
+    <li>The workflow is completed or cancelled, but the UI instead shows an "*" or a "?" with:</li>
+</ul>
+<p><code>"Actual time could not be calculated."</code></p>
+<h2>Solution</h2>
+<p><span>This inconsistency is due to the UI being dependent on data that is not guaranteed to be populated in our database that the UI uses. </span></p>
+<p><span>We recognize that the accuracy of time reporting is important in the UI and are currently working to make our systems more robust and efficient in order to address this UI inconsistency</span><strong>. </strong></p>
+<p> </p>
+<p>Please also be aware that credit consumption calculations are not affected. They are based on an individual job reporting usage that is separate from our UI system. For further analysis on job workflow credit consumption, you can also utilize our API V2 Endpoint:</p>
+<pre class="p1">https://circleci.com/api/v2/insights/github/{org}/{project}/workflows/{workflow-name}?branch={branch-name}</pre>
+<p>You can reference the Workflow ID to search among your API results. For example:</p>
+<pre>{
+    "id" : "9c0cc99-i99x-9999-99c0-9c9c0i299000",
+    "duration" : 999,
+    "status" : "success",
+    "created_at" : "2022-12-03T00:50:06.216Z",
+    "stopped_at" : "2022-12-03T00:57:17.796Z",
+    "credits_used" : 72,
+    "branch" : "master",
+    "is_approval" : false
+  }, </pre>
+<p> </p>
+<h2 data-renderer-start-pos="8602"><span>Additional Resources</span></h2>
+<p><span>Our Optimizations Overview: <a href="https://circleci.com/docs/optimizations/">https://circleci.com/docs/optimizations/</a></span></p>
+<p> </p>
+<p><span>CircleCI V2 API: <a href="https://circleci.com/docs/api/v2/index.html?">https://circleci.com/docs/api/v2/index.html?</a></span></p>
+<p><span> </span></p>
+<p>If you have any additional questions, feedback, or interest in accurate end time in the UI or API, please feel free to reach out for additional assistance at <a href="mailto:support@circleci.com">support@circleci.com</a> <span></span></p>
