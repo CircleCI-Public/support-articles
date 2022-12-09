@@ -1,9 +1,9 @@
-<p>If CircleCI is not able to build when a branch is created or updates are pushed to a pull request, first of all, check the <a href="https://support.circleci.com/hc/en-us/articles/360021511153-How-to-view-your-GitHub-WebHook-deliveries" target="_blank" rel="noopener">GitHub WebHook deliveries</a> as it will help in discovering why perhaps a push to your repo has potentially not resulted in a job on CircleCI.</p>
-<p>If you are seeing the <strong>response 400</strong> in spite of having the read/write/admin access to the repository, please try to <em><span class="wysiwyg-underline">completely re-authenticating,</span></em> i.e. sign out of Github in the browser, sign out of CircleCI, then log back into CircleCI via Github.<br><br>You can also follow the below steps to cause CircleCI to generate a new webhook:</p>
+<p>If CircleCI is not able to build when a branch is created or updates are pushed to a pull request, first of all, please check the <a href="https://support.circleci.com/hc/en-us/articles/360021511153-How-to-view-your-GitHub-WebHook-deliveries" target="_blank" rel="noopener">GitHub WebHook deliveries</a> as this might help in discovering why a push to your repo has not resulted in a job on CircleCI.</p>
+<p>If you are seeing the <strong>response 400</strong> in spite of having the read/write/admin access to the repository, please try signing out of Github in your browser, signing out of CircleCI, then logging back into CircleCI via Github.<br><br>You can also follow the below steps to make CircleCI generate a new webhook:</p>
 <ol dir="auto" type="1">
     <li>Unfollow the project from the CircleCI ‘Project settings’ page - click the ‘Unfollow’ button</li>
     <li>Remove the webhook for the affected repo on GitHub (Settings &gt; Webhooks and services)</li>
     <li>Re-add the project by following the project again on the CircleCI ‘Project settings’ page</li>
 </ol>
-<p>This should resolve your issue. If you are still facing the problem, please contact <a href="https://support.circleci.com/" target="_blank" rel="noopener">CircleCI support</a>.</p>
+<p>This should resolve your issue. If you are still facing the problem, please feel free to contact <a href="https://support.circleci.com/hc/en-us/requests/new" target="_blank" rel="noopener">CircleCI support</a>.</p>
 <p> </p>
