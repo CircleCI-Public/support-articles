@@ -1,0 +1,17 @@
+<p><span>You are able to set resource limits for containers that will be run with a job inside them by setting the limits within your config.yml.</span></p>
+<p>You can do this by adding a spec section to your config.yml at the same level as the token you have defined. An example of this can be found below limiting the CPU to 500m and the ram to 256Mi.</p>
+<pre class="c-mrkdwn__pre" style="background-color: #f3f3f3; padding: 5px;" data-stringify-type="pre">agent:
+  resourceClasses:
+    my-namespace/my-resourceClass:
+      token: MY_TOKEN
+      spec:
+        containers:
+          - resources:
+              limits:
+                cpu: 500m
+                memory: 256Mi
+        nodeSelector:
+          key: value</pre>
+<h2><span>Additional Resources</span></h2>
+<p><span>More information can be found on the link below:</span></p>
+<p>https://circleci.com/docs/container-runner/#resource-class-configuration-custom-pod</p>

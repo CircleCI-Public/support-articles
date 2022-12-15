@@ -1,7 +1,7 @@
 <h1>Workers/Threads Exceed Available Memory</h1>
 <p>A common issue with running NodeJS test suites that spawn workers/threads in a Docker container is that these scripts will spawn too many workers/threads and cause excessive memory usage. In most cases this will cause jobs to fail with ENOMEM errors.</p>
 <p>This happens because the script looks at the number of CPUs available on the <em>physical</em> machine, which can be 32+ cores, rather than the number vCPUs the Docker container has been allocated.</p>
-<p>The number of workers/threads your test suites uses will need to be configured to not exceed the number of vCPUs allocated to the <a href="https://circleci.com/docs/2.0/configuration-reference/#resource_class" target="_self">resource class</a> in use (medium by default).</p>
+<p>The number of workers/threads your test suites uses will need to be configured to not exceed the number of vCPUs allocated to the <a href="https://circleci.com/docs/2.0/configuration-reference/#resourceclass" target="_self">resource class</a> in use.</p>
 <p>For example, if using Jest, set the <a href="https://jestjs.io/docs/cli#--maxworkersnumstring" target="_blank" rel="noopener">maxWorkers</a> option:</p>
 <pre style="background-color: #f3f3f3; padding: 5px;"><code>--maxWorkers=2</code></pre>
 <p> </p>
