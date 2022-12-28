@@ -1,0 +1,14 @@
+<h1><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Introduction</span></h1>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;">Users can sometimes encounter an </span><code style="font-size: 15px;">Error Fetching Config</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 15px;"> error that blocks the pipelines from triggering. This occurs for users who are using the GitLab VCS Integration.</span></p>
+<p> </p>
+<h2>Solution </h2>
+<p>To resolve this error, please follow the steps below to re-create the triggers and configuration source:</p>
+<p> </p>
+<p>1. Navigate to Project Settings</p>
+<p>2. Under the "Triggers" section, delete all the triggers associated with the problematic configuration first. </p>
+<p>3. Under the "Configuration" section, delete the problematic configuration source after the triggers.</p>
+<p>4. Once the triggers and configuration source have been successfully deleted, recreate the triggers and configuration source</p>
+<p>5. Push a new commit to verify a pipeline triggers</p>
+<p> </p>
+<h2>Outcome</h2>
+<p>Once the Triggers and Configuration Source have been deleted and re-created, kindly trigger the pipeline by pushing a new commit and if you are still encountering issues, please contact the CircleCI Support Team by submitting a request.</p>
