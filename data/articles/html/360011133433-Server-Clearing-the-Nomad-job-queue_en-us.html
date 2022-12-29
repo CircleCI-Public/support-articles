@@ -1,0 +1,35 @@
+<h1>Clearing the Nomad job queue</h1>
+<p>When CircleCI jobs are queued or otherwise won't run, it is sometimes necessary to manually clear out the Nomad job queue as part of regular troubleshooting—refer to our <a href="https://circleci.com/docs/2.0/nomad" target="_blank" rel="noopener">Introduction to Nomad Cluster Operation</a> article for a basic overview.</p>
+<p> </p>
+<h2>CircleCI Server 3.x/4.x</h2>
+<h3>To cancel a single job:</h3>
+<ol>
+    <li>Make sure you are connected to the Kubernetes Cluster</li>
+    <li>
+        <pre><span>kubectl get pods -l layer=execution -n &lt;namespace&gt;</span></pre>
+    </li>
+    <li>
+        <pre><span>kubectl exec -it &lt;nomad_server_pod&gt; -n &lt;namespace&gt; -- nomad status</span></pre>
+    </li>
+    <li>
+        <pre><span>kubectl exec -it &lt;nomad_server_pod&gt; -n &lt;namespace&gt; -- nomad stop $ID</span></pre>
+    </li>
+</ol>
+<h3>To force cancel all jobs in the queue:</h3>
+<ol>
+    <li>Make sure you are connected to the Kubernetes Cluster</li>
+    <li>
+        <pre><span>kubectl get pods -l layer=execution -n &lt;namespace&gt;</span></pre>
+    </li>
+    <li>
+        <pre><span>kubectl exec -it &lt;nomad_server_pod&gt; -n &lt;namespace&gt; -- sh -c "nomad status | cut -d' ' -f1 | grep -v 'ID' | xargs -n1 nomad stop"</span></pre>
+    </li>
+</ol>
+<p> </p>
+<h2>CircleCI Server 2.x</h2>
+<p>Running <strong><code>nomad</code> status, while SSH'd into the Services machine,</strong> will display all currently running Nomad jobs, each of which represents a specific CircleCI job.</p>
+<p>Running <strong><code>nomad stop $ID</code></strong> with a job ID from the ID column of this output will clear an individual job from the queue.</p>
+<p>However, the list of jobs can sometimes be very long, depending on how long queueing has been happening and how frequently developers have been pushing new commits.</p>
+<p>Instead of manually running <strong><code>nomad stop</code></strong> for each job in the queue, you can automate this process using the following series of shell commands:</p>
+<p><code>nomad status | awk 'NR&gt;1{print $1}' | xargs -iID replicated admin nomad stop ID</code></p>
+<p>These shell commands will cancel all queued/running jobs in the Nomad job queue.</p>

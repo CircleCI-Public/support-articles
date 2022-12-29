@@ -1,0 +1,59 @@
+<h1>Overview</h1>
+<p>When submitting a Support ticket for a private Server installation of CircleCI, you may be asked to provide a support bundle by the CircleCI Support Engineer working on your ticket.</p>
+<p>Usually, this can be downloaded from the "Support" tab in the Management Console.</p>
+<p> </p>
+<h3>Server 2.x Installations:</h3>
+<p>1. Navigate to the Management Console's <strong>Support</strong> Tab</p>
+<p>2. Select <strong>Download Support Bundle</strong><br><br></p>
+<h3>Server 3.x Installations:</h3>
+<p>1. Navigate to the KOTS Admin Console Menu Bar<br>2. Select the <strong>Troubleshoot </strong>Tab<br>3. Click <strong>Analyze CircleCI Server </strong>to generate a Support Bundle</p>
+<p> </p>
+<h2>Manual Creation of Bundle</h2>
+<p><br>In cases where this is unsuccessful and the KOTS admin console is unavailable, you can manually create a support bundle by following the steps below for your Server Installation with Replicated.</p>
+<p> </p>
+<h3>Server 2.x Installations:</h3>
+<ol>
+    <li>SSH into the <a href="https://circleci.com/docs/2.0/overview/#services-machine" target="_self">Services machine</a>
+    </li>
+    <li>To obtain the app id for CircleCI, run: <code>sudo replicated apps</code>
+    </li>
+    <li>To download the Support bundle, run: <code>sudo replicated support-bundle [app-id]</code>
+    </li>
+</ol>
+<h3>Server 3.x Installations:</h3>
+<ol>
+    <li>Install the <code>Support-bundle</code> plugin if it's not already installed by running<br><code>curl https://krew.sh/support-bundle | bash</code>
+    </li>
+    <li>Generate the Bundle by running:<br>
+        <pre>kubectl support-bundle secret/NAMESPACE/kotsadm-APP_SLUG-supportbundle --redactors=configmap/NAMESPACE/kotsadm-redact-spec/redact-spec,configmap/NAMESPACE/kotsadm-APP_SLUG-redact-spec/redact-spec  -n &lt;namespace&gt;</pre>
+    </li>
+</ol>
+<p>          Replace the following:</p>
+<ul>
+    <li style="list-style-type: none;">
+        <ul>
+            <li style="list-style-type: none;">
+                <ul>
+                    <li>
+                        <code>NAMESPACE</code><span></span>with the name of the namespace.
+                    </li>
+                    <li>
+                        <code>APP_SLUG</code><span></span>with the unique application slug.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li>Additional documentation from Replicated can be found below:
+        <ul>
+            <li><a href="https://docs.replicated.com/enterprise/troubleshooting-an-app#generating-a-bundle-using-the-cli" data-darkreader-inline-bgcolor="">Generating a Support Bundle from the CLI</a></li>
+        </ul>
+    </li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/11627195237403" target="_blank" rel="noopener">Creating a Support Bundle in Server 4</a></li>
+</ul>
+<p><br><br></p>
+<p> </p>
