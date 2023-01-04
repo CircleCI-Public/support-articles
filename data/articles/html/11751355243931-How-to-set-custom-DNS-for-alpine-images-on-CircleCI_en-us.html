@@ -1,0 +1,11 @@
+<p>You may want to use a custom DNS on an Alpine image due to networking issues or if you have a preferred DNS provider. This guide will help you to set the DNS when using an Alpine image while using CircleCI. </p>
+<h2 data-renderer-start-pos="8152">Instructions</h2>
+<p>You can use the following echo command to set the nameserver to 8.8.8.8 but this can be set to any DNS server. If you would like to have multiple you will need to add another \nnameserver x.x.x.x with your preferred DNS settings after the nameserver section.</p>
+<pre style="background-color: #f3f3f3;"><span>steps:<br>  - run: cat /etc/resolv.conf<br>  - run: echo -e "search ec2.internal\nnameserver 8.8.8.8\noptions ndots:0" &gt; /etc/resolv.conf<br>  - run: cat /etc/resolv.conf</span></pre>
+<h2 data-renderer-start-pos="8207">Outcome</h2>
+<p>Once this has been set your DNS requests will use the DNS servers that you have set on the /etc/resolv.conf file.</p>
+<h2 data-renderer-start-pos="8441">Additional Resources</h2>
+<p>The following support article is about how to set custom DNS on Ubuntu:</p>
+<p><a href="https://support.circleci.com/hc/en-us/articles/7323511028251-How-to-set-custom-DNS-on-Ubuntu-based-images-using-netplan">https://support.circleci.com/hc/en-us/articles/7323511028251-How-to-set-custom-DNS-on-Ubuntu-based-images-using-netplan</a></p>
+<p>The following link is the official Alpine Linux networking link:</p>
+<p>https://wiki.alpinelinux.org/wiki/Configure_Networking</p>
