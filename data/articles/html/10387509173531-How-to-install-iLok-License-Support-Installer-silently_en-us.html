@@ -1,31 +1,32 @@
 <p dir="auto">This guide is for installing the iLok License Support Installer silently for use within CircleCI, it is split into two sections you need to generate a .iss file and the second is to use the file to silently install the software.</p>
 <h2 dir="auto">Generating the .iss file</h2>
-<p>You will need to <a href="https://support.circleci.com/hc/en-us/articles/5170139355547-How-to-rerun-a-job-with-SSH" target="_self">re-run a windows job with SSH</a> for the RDP step later on.</p>
+<p>You will need to <a href="https://support.circleci.com/hc/en-us/articles/5170139355547-How-to-rerun-a-job-with-SSH" target="_self">re-run a windows job with SSH</a> for the <a href="https://support.circleci.com/hc/en-us/articles/5170139355547-How-to-rerun-a-job-with-SSH" target="_self">RDP step</a> later on.</p>
 <p dir="auto">The iLok license support install software can be downloaded <a href="https://installers.ilok.com/iloklicensemanager/LicenseSupportInstallerWin64.zip" target="_self">here</a>.</p>
-<p dir="auto">To download this within a CircleCI job you can use the following command:</p>
+<p dir="auto">To download this within your <em>config.yml</em> CircleCI job you can use the following command alternatively you can run the following two commands on the executor using a PowerShell window if you prefer omitting the <em>-run:</em></p>
 <div>
     <pre><span>-run: Invoke-WebRequest -Uri https://installers.ilok.com/iloklicensemanager/LicenseSupportInstallerWin64.zip -OutFile C:\Users\circleci\License.zip</span></pre>
 </div>
 <p dir="auto">This will download the install to the location <span>C:\Users\circleci\License.zip</span><span></span></p>
-<p dir="auto"><span>Once this is complete you can use the following command to expand the .zip</span></p>
+<p dir="auto"><span>Once this is complete you can use the following command to expand the .zip to <em>C:\Users\circleci\</em></span></p>
 <div>
     <pre><span>- run: Expand-Archive -Path C:\Users\circleci\License.zip -DestinationPath C:\Users\circleci\</span></pre>
 </div>
-<p dir="auto">You will now have the expanded directory located at <span>C:\Users\circleci\</span></p>
-<p dir="auto"><span>At this point, you will need to connect to the windows machine using RDP using our guide linked <a href="https://support.circleci.com/hc/en-us/articles/360051808652-Connecting-to-Remote-Desktop-RDP-on-Windows-jobs" target="_self">here</a>.</span></p>
+<p dir="auto">You will now have the expanded directory located at <em>C:\Users\circleci\</em></p>
+<p dir="auto"><strong>At this point, you will need to connect to the windows machine using RDP using our guide linked <a href="https://support.circleci.com/hc/en-us/articles/360051808652-Connecting-to-Remote-Desktop-RDP-on-Windows-jobs" target="_self">here</a>.</strong></p>
 <p dir="auto"><span>Once connected to the machine over RDP you will need to run the program using the -r argument on the installer .exe to generate the .iss file, you will require RDP as the installer requires the GUI to complete the install.</span></p>
 <p dir="auto"><span>You can use the following command on a PowerShell window to start the installer.</span></p>
 <div>
     <pre><span>&amp; 'C:\Users\circleci\LicenseSupportInstallerWin64_v5.6.3_46ee731e\License Support Win64.exe' -r </span></pre>
 </div>
 <p dir="auto"><span>You can also specify where to store the .iss file with the -f1 option (i.e. License Support Win64.exe -r -f1“C:\Temp\SilentInstall.iss”).</span></p>
-<p dir="auto"><span>At this point, you should have a file called setup.iss located under C:\Windows or where you have specified if using the -f1 parameter. </span></p>
+<p dir="auto"><span>At this point, you should have a file called <strong>setup.iss</strong> located under <strong>C:\Windows</strong> or where you have specified if using the <strong>-f1</strong> parameter. </span></p>
 <p dir="auto"><span>You can copy and paste this file from the RDP session to your local machine by either dragging and dropping or using the copy-and-paste function.</span></p>
-<p dir="auto">You will need to upload this file to a location that is accessible by a CircleCI job for use on the silent install. We would recommend adding this to your VCS and using the special checkout step to pull this file. The second part of this guide will assume the file is accessible from the top level of your VCS.</p>
+<p dir="auto">You will need to upload this file to a location that is accessible by a CircleCI job for use on the silent install. We would recommend adding this to your VCS and using the special checkout step to pull this file.</p>
+<p dir="auto">The second part of this guide will assume the file is accessible from the top level of your VCS.</p>
 <h2 dir="auto">Silent install</h2>
 <p>The following config.yml will complete the silent install and each step is explained below</p>
 <pre dir="auto">version: 2.1<br>orbs:<br>  win: circleci/windows@2.2.0<br>jobs:<br>  build:<br>    executor:<br>     name: win/default<br>     shell: powershell.exe<br>  steps:<br>    - checkout<br>    - run: <br>      command: |<br>        Invoke-WebRequest -Uri https://installers.ilok.com/iloklicensemanager/LicenseSupportInstallerWin64.zip -OutFile C:\Users\circleci\License.zip<br>        Expand-Archive -Path C:\Users\circleci\License.zip -DestinationPath C:\Users\circleci\<br>        &amp; 'C:\Users\circleci\LicenseSupportInstallerWin64_v5.6.3_46ee731e\License Support Win64.exe' -s -f1“C:\Users\circleci\project\setup.iss”<br>workflows:<br>  workflow:<br>    jobs:<br>      - build</pre>
-<p dir="auto">The checkout step pulls down the contents from your VCS into the C:\Users\circleci\project\ folder in the example above the setup.iss file is located at the top level.</p>
+<p dir="auto">The checkout step pulls down the contents from your VCS into the C:\Users\circleci\project\ folder in the example above the <strong>setup.iss</strong> file is located at the top level.</p>
 <p dir="auto">The Invoke-WebRequest and Expand-Archive commands are the same commands from the generating the .iss file section above.</p>
-<p dir="auto">The final line of the command section does the silent install by having the License Support installer and “.iss” file defined if your setup.iss that was generated is located in another location please change the final section to the full directory of the file.</p>
+<p dir="auto">The final line of the command section does the silent install by having the License Support installer and “.iss” file defined if your <strong>setup.iss</strong> that was generated is located in another location please change the final section to the full directory of the file.</p>
 <p dir="auto">It will run “License Support Win64.exe” using the -s switch along with pointing it to the “.iss” file on the command line which will silently install the software.</p>
