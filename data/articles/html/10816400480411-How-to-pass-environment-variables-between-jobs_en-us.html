@@ -1,0 +1,9 @@
+<h1>Overview</h1>
+<p>You can pass environment variables (env vars) between jobs via <a href="https://circleci.com/docs/workspaces/" target="_blank" rel="noopener">workspaces</a>.</p>
+<p>In this article, we will showcase how to do so, with a sample configuration.<br><br></p>
+<h2>Prerequisites</h2>
+<p>This solution requires that the <strong>jobs are in the same workflow</strong>.<br>This is because workspaces can only be shared between jobs in the same workflow.<br><br>The solution requires an execution environment with Bash available, as we rely on the <code>BASH_ENV</code> env var.</p>
+<p> </p>
+<h2>Sample Configuration<br><br>
+</h2>
+<pre style="background-color: #f3f3f3; padding: 5px;">version: 2.1<br><br>executors:<br>  basic:<br>    docker:<br>      - image: cimg/base:current<br>    resource_class: small<br><br>jobs:<br>  create-env-var:<br>    executor: basic<br>    steps:<br>      - run: |<br>          echo "export FOO=BAR" &gt;&gt; $BASH_ENV<br>      - run: |<br>          # verify; optional step<br>          printenv FOO<br>      - run: |<br>          cp $BASH_ENV bash.env<br>      - persist_to_workspace:<br>          root: .<br>          paths:<br>            - bash.env<br>  load-env-var:<br>    executor: basic<br>    steps:<br>      - attach_workspace:<br>          at: .<br>      - run: |<br>          cat bash.env &gt;&gt; $BASH_ENV<br>      - run: |<br>          # verify; this should print 'BAR'<br>          printenv FOO<br><br>workflows:<br>  main:<br>    jobs:<br>      - create-env-var<br>      - load-env-var:<br>          requires:<br>            - create-env-var</pre>

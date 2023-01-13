@@ -1,0 +1,8 @@
+<h1>SSO Auth Issues</h1>
+<p>An uncommon, yet not impossible situation can arise due to SSO authentication issues with GitHub where a newly created repo, such as <a href="https://github.com/CircleCI-Public/oss-mac" target="_self">this open source CircleCI-Public repo</a>, is unable to be added as a project. <br><br>Another situation can arise if the project is then added by another authenticated repo owner and then  said user clicks "Follow Project" which results in a 403.</p>
+<h2>
+    <br>Solution
+</h2>
+<p><br>1. Single Sign-on for your org <img src="https://support.circleci.com/hc/article_attachments/4410446083995/Screen_Shot_2021-11-15_at_5.02.15_PM.png" alt="Screen_Shot_2021-11-15_at_5.02.15_PM.png"><br><br>go to Project Settings &gt;&gt; select "SSH Keys" &gt;&gt; "Authorize with GitHub" under the User Key section <img src="https://support.circleci.com/hc/article_attachments/4410446080283/Screen_Shot_2021-11-15_at_5.00.14_PM.png" alt="Screen_Shot_2021-11-15_at_5.00.14_PM.png"></p>
+<p> </p>
+<p>Alternatively, visit your User Settings under your avatar in the lower left hand corner of the menu and "Check permissions on GitHub" under "Account Integrations. <img src="https://support.circleci.com/hc/article_attachments/4410446085787/Screen_Shot_2021-11-15_at_5.03.32_PM.png" alt="Screen_Shot_2021-11-15_at_5.03.32_PM.png"></p>

@@ -1,0 +1,11 @@
+<p>When wanting to manually analyze test result data, you can use our API's <a href="https://circleci.com/docs/api/v2/#operation/getJobArtifacts" target="_blank" rel="noopener">Job Artifact Endpoint</a> to get the raw data for your builds.</p>
+<p>Here is an example of how to use this endpoint:</p>
+<pre>curl --request GET \<br>--url https://circleci.com/api/v2/project/gh/CircleCI-Public/api-preview-docs/123/tests \<br>--header "Circle-Token: $CIRCLE_TOKEN"</pre>
+<p>In order to use the API, you will need to create a <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_self">personal API token</a> and store it under an environment variable if running it in a build, or in your own environment if running it locally. In the above example, it will need to be stored as an environment variable called <code>CIRCLE_TOKEN</code>. </p>
+<p>You will also need to set the url for the API request which follows this format:</p>
+<p><code>https://circleci.com/api/v2/project/{project-slug}/{job-number}/tests</code> </p>
+<p>If the request is successful, you will get test metadata back in the following JSON format:</p>
+<div>
+    <pre><span>{</span><br><span> </span><span>"items"</span><span>: [</span><br><span>   {</span><br><span>     </span><span>"message"</span><span>: </span><span>""</span><span>,</span><br><span>     </span><span>"source"</span><span>: </span><span>""</span><span>,</span><br><span>     </span><span>"run_time"</span><span>: </span><span>""</span><span>,</span><br><span>     </span><span>"file"</span><span>: </span><span>""</span><span>,</span><br><span>     </span><span>"result"</span><span>: </span><span>""</span><span>,</span><br><span>     </span><span>"name"</span><span>: </span><span>""</span><span>,</span><br><span>     </span><span>"classname"</span><span>: </span><span>""</span><br><span>   }</span><br><span> ],</span><br><span> </span><span>"next_page_token"</span><span>: </span><span>"string"</span><br><span>}</span></pre>
+    <p>By compiling the above data from your jobs, you can gain an insight which tests may be flaky or taking the longest to complete.</p>
+</div>

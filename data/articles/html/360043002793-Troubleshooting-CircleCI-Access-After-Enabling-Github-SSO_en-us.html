@@ -11,16 +11,16 @@
         <span style="font-weight: 400;">Go to </span><a href="https://app.circleci.com" target="_blank" rel="noopener">https://app.circleci.com</a><span style="font-weight: 400;"> and log out if necessary.</span>
     </li>
     <li style="font-weight: 400;" aria-level="1">
-        <span style="font-weight: 400;">Log back in to CircleCI via GitHub (), or after logging in via another means (e.g. email+password), re-connect your VCS identity (</span><a href="https://app.circleci.com/settings/user" target="_blank" rel="noopener">https://app.circleci.com/settings/user</a><span style="font-weight: 400;">)</span><br>
+        <span style="font-weight: 400;"><a href="https://circleci.com/vcs-authorize/" target="_blank" rel="noopener">Log back in to CircleCI</a> via GitHub, or after <a href="https://circleci.com/vcs-authorize/" target="_blank" rel="noopener">logging in</a> via another means (e.g. email &amp; password), re-connect your VCS identity (</span><a href="https://app.circleci.com/settings/user" target="_blank" rel="noopener">https://app.circleci.com/settings/user</a><span style="font-weight: 400;">)</span><br>
         <ol>
-            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">When prompted, be sure to click “Authorize” for any SAML-protected orgs you need access to</span></li>
+            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">When prompted, <strong>be sure to click “Authorize” for any SAML-protected orgs you need access to</strong></span></li>
             <li style="font-weight: 400;" aria-level="2">
-                <span style="font-weight: 400;">Click “Continue” to be redirected to CircleCI</span><span style="font-weight: 400;"><br></span>
+                <span style="font-weight: 400;">Click “Continue”, and you should be redirected to CircleCI</span><span style="font-weight: 400;"><br></span>
             </li>
         </ol>
     </li>
 </ol>
-<p><span style="font-weight: 400;">It’s important to note that CircleCI only stores a <em>single</em> OAuth token for each GitHub user, <em>regardless</em> of how many orgs they interact within CircleCI. This means that, if a user regularly interacts with multiple orgs, and does not want to re-authenticate when switching between them, it is recommended that they authorize SAML-protected orgs on <em>every</em> re-authentication to CircleCI via GitHub, including when switching devices. This will prevent access-related problems arising from that user’s actions on either platform, e.g. failure to create CircleCI pipelines based when pushing commits.</span><span style="font-weight: 400;"></span></p>
-<p>Sometimes when you switch to SSO, due to how CircleCI handles permissions, all projects will then be unfollowed, and deploy keys will be deleted. Please follow projects in order to add a deploy key and start building on CircleCI.</p>
+<p><span style="font-weight: 400;">It is important to note that CircleCI only stores a <em>single</em> OAuth token for each GitHub user, <em>regardless</em> of how many orgs they interact within CircleCI. <br><br>If a user regularly interacts with multiple orgs, and does not want to re-authenticate when switching between them, we recommend that they authorize SAML-protected orgs on <em>every</em> re-authentication to CircleCI via GitHub. This includes when switching devices. <br>This will prevent access-related problems arising from that user’s actions on either platform, e.g. failure to create CircleCI pipelines based when pushing commits.</span><span style="font-weight: 400;"></span></p>
+<p><br>Sometimes when you switch to SSO, due to how CircleCI handles permissions, all projects will then be unfollowed, and deploy keys will be deleted. Please follow projects in order to add a deploy key and start building on CircleCI.</p>
 <p><span style="font-weight: 400;">If you are an org admin and are interested in some preventative steps or how you can avoid common pitfalls when you set up GitHub SSO, check out <a href="https://support.circleci.com/hc/en-us/articles/4410418394523" target="_blank" rel="noopener">this article here</a>.</span></p>
 <p data-renderer-start-pos="2079"> </p>

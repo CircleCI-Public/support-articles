@@ -1,0 +1,13 @@
+id: 11220194479003
+title: >-
+  [Server] How to whitelist branches to override “Only build pull requests” on a
+  project
+author_id: 1265290025669
+created_at: '2022-12-13T10:38:54Z'
+locale: en-us
+permission_group_id: 237847
+section_id: 115003327208
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/11220194479003--Server-How-to-whitelist-branches-to-override-Only-build-pull-requests-on-a-project
+draft: false

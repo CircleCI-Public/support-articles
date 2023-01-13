@@ -1,0 +1,2 @@
+<p><span> After setup_remote_docker step add:<br></span></p>
+<pre><span>- setup_remote_docker<br>    version: 20.10.14<br></span>- run: <br><span>    command: |<br></span>      ssh remote-docker echo "nameserver x.x.x.x" | ssh remote-docker sudo tee -a /etc/resolv.conf<span></span></pre>

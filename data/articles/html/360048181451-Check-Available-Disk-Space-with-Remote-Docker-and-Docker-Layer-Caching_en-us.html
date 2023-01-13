@@ -1,0 +1,6 @@
+<p>When running <a href="https://circleci.com/docs/2.0/building-docker-images/" target="_self">Remote Docker</a> with <a href="https://circleci.com/docs/2.0/docker-layer-caching/" target="_self">Docker Layer Caching</a> you can run the following commands to see how much space has been currently used on the volume before running your build.</p>
+<pre>ssh remote-docker 'sudo df' | grep '/var/lib/docker' | awk '{print $4}'</pre>
+<p>You could store that value and use it to see how much remaining space you have. Our DLC volumes are 50GB.</p>
+<pre>DLC_AVAILABLE_SPACE=$(ssh remote-docker 'sudo df' | grep '/var/lib/docker' | awk '{print $4}');</pre>
+<p><br> You could also simply run the following command to output the available space into your build logs</p>
+<pre>docker system df</pre>
