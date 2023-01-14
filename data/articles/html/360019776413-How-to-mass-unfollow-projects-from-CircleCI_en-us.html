@@ -1,0 +1,18 @@
+<p>To stop building any single project you can visit the settings page for that repository and click the <em>"Stop Building"</em> button.<br> <br> To unfollow many projects at once, it is best to use our API. </p>
+<p>We have created this short `bash` script to help achieve this easily.<br> <br> <strong>Step 1.</strong></p>
+<p><br> Save the following as `script.sh`</p>
+<pre><span style="background-color: #bfe6ff; font-family: monospace, monospace; font-size: 1em;">  TOKEN="x"</span><code><br>  ORG="MyOrgName"
+  URL_SUFFIX="/enable?circle-token="$TOKEN
+  URL_PREFIX="https://circleci.com/api/v1.1/project/github/"$ORG"/"
+  while IFS='' read -r repo || [[ -n "$repo" ]]; do
+    sleep 2
+    curl -X "DELETE" $URL_PREFIX$repo$URL_SUFFIX
+  done &lt; "$1"</code></pre>
+<p>Replace `$TOKEN` with your personal user token and `$ORG`with the organization name.</p>
+<p> <strong>Note:</strong> You must use a <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_self">Personal API token</a> and not a Project API token to access all projects</p>
+<p><strong>Step 2.</strong></p>
+<p>Create a text file with a list of repo names (one per line, no commas) to be removed.</p>
+<pre><span class="wysiwyg-color-black"><font face="monospace, monospace">repo1</font></span><br><span class="wysiwyg-color-black"><font face="monospace, monospace">repo2</font></span><br><span class="wysiwyg-color-black"><font face="monospace, monospace">repo3</font></span></pre>
+<p><br> <strong>Step 3.</strong><br> <br> Run the script as:</p>
+<pre><code>./script.sh repos.txt</code></pre>
+<p>This will easily mass unfollow and remove all listed projects.</p>
