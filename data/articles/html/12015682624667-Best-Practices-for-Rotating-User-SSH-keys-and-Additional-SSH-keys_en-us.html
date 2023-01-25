@@ -4,7 +4,9 @@
 <p>Once authorized under the "User Key" section of Project SSH Key Settings, the fingerprint will be logged on the UI<br><img src="https://support.circleci.com/hc/article_attachments/12015452633499" alt="Screen_Shot_2023-01-12_at_2.59.04_PM.png"><br>Keys will show in the GitHub User settings format of CircleCI: &lt;username&gt;/&lt;project name&gt;:</p>
 <p><img src="https://support.circleci.com/hc/article_attachments/12015451976219" alt="Screen_Shot_2023-01-12_at_2.53.21_PM.png"></p>
 <p> </p>
-<p><strong>Keep in mind for best practices that the source key listed under GitHub settings will need to be deleted completely as well as what is saved on the CircleCI Side. </strong></p>
+<p><strong>Keep in mind for best practices that the source key listed under GitHub settings will need to be deleted completely as well as what is saved on the CircleCI Side AS WELL as removing the SSH key from your ~/.ssh directory locally and updating the ~/.ssh/config as described in the GitHub documentation <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_self">here</a>.</strong></p>
+<p> </p>
+<p> </p>
 <h2>Related feature requests/work in progress:</h2>
 <p>We will be adding the ability to view SHA-256 hash via the API. For more information on release reach out to <a href="https://support.circleci.com/hc/en-us" target="_self">CircleCI Support</a>.</p>
 <p>Please do vote on additional related feature requests in our <a href="https://circleci.canny.io/" target="_self">Ideas portal</a> such as:<br><span><a href="https://circleci.canny.io/cloud-feature-requests/p/add-the-ability-to-log-and-capture-user-ssh-key-creators" target="_self">Add the ability to log and capture User SSH Key creators</a>.</span></p>
