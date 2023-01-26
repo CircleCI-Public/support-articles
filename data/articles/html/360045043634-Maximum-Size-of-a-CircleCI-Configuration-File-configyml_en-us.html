@@ -1,6 +1,8 @@
-<h1>Exceeding 3MB Max Config Size</h1>
-<p>The maximum size of a CircleCI configuration file (config.yml) is 3MB. When this limit is exceeded, customers may see errors such as "<strong>Unexpected exception processing config"</strong> or "<strong>A compiled config YAML must be at most 3MB"</strong> or <strong>"Your compiled config is too large to be processed. Please contact support.<span>"</span></strong> in their build logs.</p>
-<p>It is important to remember that this is the <em>compiled</em> configuration. This is the result of expanding any YAML anchors and aliases as well as importing all required/imported orbs' commands.</p>
+<h1>Exceeding 4MB Max Config Size</h1>
+<p>The maximum size of a CircleCI configuration file (config.yml) is 3MB. When this limit is exceeded, customers may see errors such as "<strong>Unexpected exception processing config"</strong> or "<strong>A compiled config YAML must be at most 4MB"</strong> or <strong>"Your compiled config is too large to be processed. Please contact support.<span>"</span></strong> in their build logs.</p>
+<p>It is important to remember that this is the <em>compiled</em> configuration. This is the result of expanding any YAML anchors and aliases as well as importing all required/imported orbs' commands.<br><br></p>
+<h2>Update</h2>
+<p>As of January 2023, the limit was increased from 3MB to 4MB.</p>
 <h2>Troubleshooting oversize config files</h2>
 <p>To find out the size of the final <em>compiled</em> configuration, use the CircleCI CLI <a class="css-bspq7p" title="https://circleci.com/docs/2.0/local-cli/#processing-a-config" href="https://circleci.com/docs/2.0/how-to-use-the-circleci-local-cli#processing-a-config" target="_blank" rel="noopener" data-renderer-mark="true">to process the original config</a>. From here, you can inspect the compiled configuration file using the commands below:<br><span class="prismjs css-14r4yet" data-code-lang="shell" data-ds--code--code-block=""></span></p>
 <pre style="background-color: #f3f3f3; padding: 5px;"><span class="">circleci config process .circleci/config.yml </span><span class="token operator">&gt;</span><span class=""> compiled.yml<br></span><br>ls -lH <span class="">compiled.yml</span></pre>
