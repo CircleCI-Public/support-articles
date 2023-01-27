@@ -1,0 +1,40 @@
+<h1>How to rotate GitHub Checkout Keys</h1>
+<p>You can delete and rotate your Deploy and User keys fairly easily using both the CircleCI and GitHub API. Utilizing these API endpoints can be done programmatically to do this automatically. </p>
+<p> </p>
+<h2>How to view the keys from the API</h2>
+<p>To view the <code>User Key</code> and <code>Deploy Key</code>. This can be done via the API by the <a href="https://circleci.com/docs/api/v2/index.html#operation/listCheckoutKeys" target="_blank" rel="noopener">Get All Checkout Keys</a>. endpoint. The v2 endpoint can currently return an <code>MD5</code> signature. An example response is as follows:</p>
+<pre>{
+  "next_page_token" : null,
+  "items" : [ {
+    "type" : "deploy-key",
+    "preferred" : true,
+    "created_at" : "...",
+    "public_key" : "ssh-ed25519 ...",
+    "fingerprint" : "c5:35:95:6d:a7:28:7d:47:67:6a:a0:30:a1:29:74:72"
+  }, {
+    "type" : "github-user-key",
+    "preferred" : false,
+    "created_at" : "...",
+    "public_key" : "ssh-ed25519 ...",
+    "fingerprint" : "50:49:fb:ba:1f:43:eb:8d:a6:91:5c:08:3e:aa:e5:59"
+  } ]
+}</pre>
+<p> </p>
+<h2>How to delete the Checkout Keys </h2>
+<p>To delete these keys, we can utilize the <a href="https://circleci.com/docs/api/v2/index.html#operation/deleteCheckoutKey" target="_blank" rel="noopener">Delete Checkout Key</a> endpoint, which can delete both the <code>User</code> and <code>Deploy</code> keys from CircleCI. You can utilize the <code>fingerprint</code> found in the response above, to delete the key in CircleCI. You can confirm this has been deleted by viewing the example response below:</p>
+<pre>{<br>"message" : "Checkout key deleted."<br>}</pre>
+<p> </p>
+<h2>Creating a new Checkout Key on CircleCI</h2>
+<p>Once the checkout key has been deleted, you can then use the <a href="https://circleci.com/docs/api/v2/index.html#operation/createCheckoutKey" target="_blank" rel="noopener">Create Checkout Key</a>, to create a new Deploy Key in your project. You can confirm this deploy key has been created via the example response below:</p>
+<pre>{<br>"type" : "deploy-key",<br>"preferred" : true,<br>"created_at" : "...",<br>"public_key" : "ssh-ed25519 ...",<br>"fingerprint" : "..."<br>}% </pre>
+<p> </p>
+<h2>Delete the Deploy Key from your GitHub</h2>
+<p>To delete the key from GitHub, you can utilize the v1.1 API endpoint, <a href="https://circleci.com/docs/api/v1/index.html#list-checkout-keys" target="_blank" rel="noopener">List Checkout Keys</a> which will return a <code>SHA256</code> signature. This can then be matched to the GitHub <code>Deploy Key</code> found via the GitHub <a href="https://docs.github.com/en/rest/deploy-keys?apiVersion=2022-11-28#list-deploy-keys" target="_blank" rel="noopener">List Deploy Keys</a> endpoint. </p>
+<p>With the <code>KEY_ID</code> found, and <code>SHA256</code> signatures matching, you can then delete the key via the <a href="https://docs.github.com/en/rest/deploy-keys?apiVersion=2022-11-28#delete-a-deploy-key" target="_blank" rel="noopener">Delete a Deploy Key API</a> endpoint. </p>
+<p> </p>
+<h3> </h3>
+<h2>Additional References: </h2>
+<ul>
+    <li><a href="https://circleci.com/docs/rotate-project-ssh-keys/#github-projects">https://circleci.com/docs/rotate-project-ssh-keys/#github-projects</a></li>
+</ul>
+<p> </p>
