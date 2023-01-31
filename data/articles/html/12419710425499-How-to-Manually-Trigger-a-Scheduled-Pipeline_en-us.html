@@ -1,0 +1,17 @@
+<h1><span>Why Trigger a Scheduled Pipeline Manually?</span></h1>
+<p>Sometimes you may need to run a scheduled pipeline outside the scope of your scheduled time in order to debug or test that a workflow in a pipeline is working as expected. While CircleCI does not have an out-of-the-box solution for this, the Support team has come up with a workaround!</p>
+<p> </p>
+<h2>Triggering via the API:</h2>
+<p>The best way to achieve this would be to duplicate the desired workflow in your config, then add a condition to <em>only</em> run the job based on an API trigger:</p>
+<pre style="bacground-color: #F3F3F3;">my-workflow:<br>    when:<br>        equal: [ api, &lt;&lt; pipeline.trigger_source &gt;&gt; ]<br>    jobs:<br>        &lt;specify jobs here&gt;</pre>
+<p> </p>
+<p>You can then trigger the pipeline using the following API endpoint:</p>
+<p><a href="https://circleci.com/docs/api/v2/index.html#operation/triggerPipeline"> https://circleci.com/docs/api/v2/index.html#operation/triggerPipeline</a></p>
+<p>This would allow you to control when the pipeline is triggered and make sure that no jobs are duplicated unnecessarily.</p>
+<p> </p>
+<h2>Additional Notes:</h2>
+<p>It should be noted that the Scheduled Workflow functionality is being deprecated in the future. We have documentation on how to migrate to Scheduled Pipelines here on our documentation site:</p>
+<ul>
+    <li><a href="https://circleci.com/docs/migrate-scheduled-workflows-to-scheduled-pipelines/#introduction%5C">https://circleci.com/docs/migrate-scheduled-workflows-to-scheduled-pipelines/#introduction</a></li>
+</ul>
+<p>If you have any additional questions related to this topic, please feel free to reach out to our Support team!</p>
