@@ -1,7 +1,7 @@
 <h1>Test Summary</h1>
 <p>The test summary in the UI is a place where we display some basic information about tests such as which tests failed, or what the slowest tests were. For basic configuration to set up the test summary you can <a href="https://circleci.com/docs/2.0/collect-test-data/">view our docs</a>. This document will outline some caveats, limitations, and common issues people run into when trying to get the test summary working.</p>
 <h2>Ensure Test Reports are in Supported Format</h2>
-<p>Currently, <a href="https://circleci.com/docs/2.0/collect-test-data/#overview" target="_self">we support JUnit XML and Cucumber JSON formats</a>. <br><br>To note, there is not one official schema or standard for JUnit.<br>Each test reporting tool may output their JUnit XML reports differently. This can cause some issues, in particular to <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/" target="_self">our test-splitting feature</a>. <br><br>To <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/#splitting-by-timing-data" target="_self">split tests by timing</a>, each &lt;testcase&gt; element in the JUnit XML report should include the following attributes:</p>
+<p>Currently, <a href="https://circleci.com/docs/2.0/collect-test-data/#overview" target="_self">we support JUnit XML</a>. <br><br>To note, there is not one official schema or standard for JUnit. Each test reporting tool may output its JUnit XML reports differently. This can cause some issues, in particular with <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/" target="_self">our test-splitting feature</a>. <br><br>To <a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/#splitting-by-timing-data" target="_self">split tests by timing</a>, each &lt;testcase&gt; element in the JUnit XML report should include the following attributes:</p>
 <ul>
     <li>
         <strong>file </strong>: file path of the test file which the test case can be found in
@@ -22,7 +22,6 @@
 <h2>Subfolders Cannot be Hidden Folders</h2>
 <p>Test data subfolders cannot be hidden folders. <code>test-results/.somefolder/report.xml</code> would be ignored by our system.</p>
 <p> </p>
-<h2>Test Files Cannot be Larger than 15MB</h2>
-<p>Test files larger than 15MB will fail to upload.<br>Note that this upload failure will not show up in the build Ui.<br>Instead, it fails silently in the background. </p>
+<h2>Compressed Test Results Should not be Larger than 100 MB</h2>
 <p> </p>
 <p> </p>

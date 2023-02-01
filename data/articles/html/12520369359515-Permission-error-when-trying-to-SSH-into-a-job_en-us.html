@@ -1,0 +1,10 @@
+<h2><span>Debugging with SSH</span></h2>
+<p><span>In some cases you might want to <a href="https://circleci.com/docs/ssh-access-jobs/" target="_blank" rel="noopener">rerun a job and access it via SSH</a> to troubleshoot problems (e.g.: inspect things like log files, running processes, and directory paths).</span><span></span></p>
+<p><span>If you run into an error when trying to SSH into the job, as a first step, please make sure that the SSH key that you are using is valid and the correct key is being offer to CircleCI.<br></span></p>
+<p><span>You can find the steps to verify that the SSH key is correct in <a href="https://circleci.com/docs/ssh-access-jobs/#debugging-permission-denied-publickey" target="_blank" rel="noopener">our documentation</a>.</span></p>
+<h2><span>SSH key is correct but still get a permission error</span></h2>
+<p><span>If you have verified that the SSH key is valid and the correct SSH key is being used but you still see a <code>Permission denied (publickey)</code> error, your key's signature algorithm might be outdated.</span></p>
+<p><span>Following <a href="https://www.openssh.com/txt/release-8.8" target="_blank" rel="noopener">OpenSSH 8.8</a>, the ssh-rsa signature scheme that uses SHA-1 has been deprecated and are no longer accepted on CircleCI. If you SSH has been created within this signature scheme, this might cause the permission error.</span></p>
+<p><span>If this is the case, please try generating a new SSH key. We recommend using an <code>ed25519</code> key.</span></p>
+<p><span><code>ssh-keygen -t ed25519 -C "your_email@example.com"</code></span></p>
+<p><span>Once you generated a new SSH key, please make sure</span> that you add it to your <span><a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/" target="_blank" rel="noopener">Github</a></span> <span class="external-link-icon"></span>or <a href="https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html" target="_blank" rel="noopener">Bitbucket</a><span class="external-link-icon"></span><span> </span>account.</p>
