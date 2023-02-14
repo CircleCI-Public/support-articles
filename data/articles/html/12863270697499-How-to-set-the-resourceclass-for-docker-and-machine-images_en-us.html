@@ -1,0 +1,20 @@
+<p> </p>
+<p>If you need more or fewer resources when using CircleCI you can set the resource_class which allows you to use a different amount of resources.</p>
+<h2 data-renderer-start-pos="8152">Instructions</h2>
+<p>The following examples show the one-line change that allows you to set the resource_class to large for a docker build.</p>
+<p>If you do not define a resource_class one will be allocated and you can view which was used on the workflows page of a job.</p>
+<p>An example where no resource_class is set is shown below:</p>
+<pre>jobs:<br>  build:<br>    docker:<br>    - image: circleci/ruby:2.7</pre>
+<p>By adding resource_class: large at the same indentation as docker it will set the resource_class to large.</p>
+<pre>jobs:<br>  build:<br>    docker:<br>      - image: circleci/ruby:2.7<br>    resource_class: large</pre>
+<p>An example using a machine executor can be seen below</p>
+<pre><span>jobs</span><span>:</span><br><span></span><span>  build</span><span>:</span><br><span></span><span>    machine</span><span>:</span><br><span></span><span>      image</span><span>: </span><span>ubuntu-2204:current</span></pre>
+<p>By adding resource_class: large at the same indentation as machine it will set the resource_class to large.</p>
+<div>
+    <pre><span>jobs</span><span>:</span><br><span></span><span>  build</span><span>:</span><br><span></span><span>    machine</span><span>:</span><br><span></span><span>      image</span><span>: </span><span>ubuntu-2204:current</span><br><span></span><span>    resource_class</span><span>: </span><span>large</span></pre>
+</div>
+<h2 data-renderer-start-pos="8207">Outcome</h2>
+<p data-renderer-start-pos="8207">You will now see that on the workflow page, the resource_class that you set is always used.</p>
+<h2 data-renderer-start-pos="8441">Additional Resources </h2>
+<p>To see all of the available resource_class selections available you can view the following link:</p>
+<p data-renderer-start-pos="8441"><a href="https://circleci.com/docs/configuration-reference/">https://circleci.com/docs/configuration-reference/</a></p>
