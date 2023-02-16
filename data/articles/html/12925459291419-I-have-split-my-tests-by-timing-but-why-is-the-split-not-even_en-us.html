@@ -1,0 +1,36 @@
+<h2>Overview</h2>
+<p>Test splitting by timing tries to split the tests across N nodes (based on the <a href="https://circleci.com/docs/parallelism-faster-jobs/#specify-a-jobs-parallelism-level" target="_blank" rel="noopener">parallelism number</a>) as evenly as possible. However, the evenness of the split largely depends on how well it can partition the test cases into N nodes.<br><br>When the test cases have outliers in terms of duration, it can make <a href="https://en.wikipedia.org/wiki/Partition_problem" target="_self">partitioning</a> challenging.</p>
+<h3>Example</h3>
+<p>Let's say we are <a href="https://circleci.com/docs/use-the-circleci-cli-to-split-tests/#set-the-timing-type" target="_self">grouping test cases by filenames</a> here.<br>The duration taken to run the tests for all files were as follow:</p>
+<ul>
+    <li>a_test.py : 1 minute</li>
+    <li>b_test.py : 1 minute </li>
+    <li>c_test.py : 1 minute</li>
+    <li>d_test.py : 2 minutes</li>
+    <li>e_test.py : 5 minutes</li>
+</ul>
+<p>Let's say we have `parallelism: 2` set currently.<br>Assuming a <a href="https://en.wikipedia.org/wiki/Greedy_number_partitioning" target="_blank" rel="noopener">greedy number partitioning approach</a>, we can split the files to 2 nodes nicely:</p>
+<ol>
+    <li>e_test.py ( = 5 minutes ) </li>
+    <li>d_test.py, c_test.py, b_test.py, a_test.py ( = 5 minutes )</li>
+</ol>
+<p>Now, what if we want `parallelism: 3` then?</p>
+<p>This would likely lead to the following situation:</p>
+<ol>
+    <li>e_test.py ( = 5 minutes )</li>
+    <li>d_test.py ( = 2 minutes )</li>
+    <li>c_test.py, b_test.py, a_test.py ( = 3 minutes )</li>
+</ol>
+<p>As we can see, node 1 here will take considerably longer than nodes 2 and 3.<br>However, you can say this is the best way we can split or partition the files across the 3 nodes based on their duration.<br><br>The outlier here is e_test.py, since its drastically long duration can make splitting evenly a challenge, depending on the parallelism number.</p>
+<h3>
+    <br>For your investigation
+</h3>
+<p>We can use a little bit of `jq` to aggregate the test cases' duration.</p>
+<p>This can give us a quick idea if our test-splitting may be affected by cases like the above.<br><br>First, download the test metadata JSON from <a href="https://circleci.com/docs/api/v2/index.html#operation/getTests" target="_self">the CircleCI API</a>:</p>
+<pre style="background-color: #f3f3f3; padding: 10px;"># NOTE: replace the project slug and job number as required<br>curl -H "Circle-Token: ${CIRCLE_TOKEN}" \<br>  "https://circleci.com/api/v2/project/github/foobar/repo/123/tests" &gt; metadata.json</pre>
+<p>Next, we can group by filename, and sum the duration, before sorting by slowest first.</p>
+<pre style="background-color: #f3f3f3; padding: 10px;">jq ".items | group_by(.file) | map({key: .[0].file, value: map(.run_time) | add}) | sort_by(.value) | reverse | from_entries" metadata.json</pre>
+<p><br>If you are grouping by classname, run the following instead:</p>
+<pre style="background-color: #f3f3f3; padding: 10px;">jq ".items | group_by(.classname) | map({key: .[0].classname, value: map(.run_time) | add}) | sort_by(.value) | reverse | from_entries" metadata.json</pre>
+<p><br>You can get an output like this, as an example:</p>
+<pre style="background-color: #f3f3f3; padding: 10px;"># "filename or classname" : duration in seconds<br><br>{<br>  "spec/foobar/foobar_spec.rb": 92.912708,<br>  "spec/foobar/hoge_spec.rb": 49.292962,<br>  "spec/fizzbuzz/controller_spec.rb": 2.842457,<br>  "spec/uploader/uploader_spec.rb": 0.145463,<br>  "spec/analyzer/analyzer_spec.rb": 0.046291<br>}</pre>
