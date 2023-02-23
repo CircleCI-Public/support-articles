@@ -1,6 +1,16 @@
 <h2>Overview</h2>
-<p>Test splitting by timing tries to split the tests across N nodes (based on the <a href="https://circleci.com/docs/parallelism-faster-jobs/#specify-a-jobs-parallelism-level" target="_blank" rel="noopener">parallelism number</a>) as evenly as possible. However, the evenness of the split largely depends on how well it can partition the test cases into N nodes.<br><br>When the test cases have outliers in terms of duration, it can make <a href="https://en.wikipedia.org/wiki/Partition_problem" target="_self">partitioning</a> challenging.</p>
-<h3>Example</h3>
+<p>Test splitting by timing tries to split the tests across N nodes (based on the <a href="https://circleci.com/docs/parallelism-faster-jobs/#specify-a-jobs-parallelism-level" target="_blank" rel="noopener">parallelism number</a>) as evenly as possible. However, the evenness of the split can depend on many reasons.<br><br>We will explore some of these reasons below.</p>
+<h3>Changing duration of a test case</h3>
+<p>Firstly, test-splitting by timing data uses historical data (past test results) to split the current job’s tests.<br>Importantly, this means the system <strong>assumes</strong> that existing test cases <strong>should run in the same time as before.</strong></p>
+<p>However, there can be reasons why this assumption may no longer be true.<br>There can be some reasons why a subsequent run of the same test case is slower or faster than before.<br><br>Possible scenarios include:</p>
+<ul>
+    <li>Test case requires connecting to an external service (e.g., remote server for an acceptance test)</li>
+    <li>Test case is updated to include more steps (e.g., additional test fixtures, or longer test setup / teardown)</li>
+</ul>
+<h3>Partitioning Problem</h3>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">The evenness of a split also depends on how well CircleCI can partition these test cases into N nodes.</span></p>
+<p>When the test cases have outliers in terms of duration, it can make <a href="https://en.wikipedia.org/wiki/Partition_problem" target="_self">partitioning</a> challenging.<br><br></p>
+<h4><strong>Example</strong></h4>
 <p>Let's say we are <a href="https://circleci.com/docs/use-the-circleci-cli-to-split-tests/#set-the-timing-type" target="_self">grouping test cases by filenames</a> here.<br>The duration taken to run the tests for all files were as follow:</p>
 <ul>
     <li>a_test.py : 1 minute</li>
@@ -21,11 +31,8 @@
     <li>d_test.py ( = 2 minutes )</li>
     <li>c_test.py, b_test.py, a_test.py ( = 3 minutes )</li>
 </ol>
-<p>As we can see, node 1 here will take considerably longer than nodes 2 and 3.<br>However, you can say this is the best way we can split or partition the files across the 3 nodes based on their duration.<br><br>The outlier here is e_test.py, since its drastically long duration can make splitting evenly a challenge, depending on the parallelism number.</p>
-<h3>
-    <br>For your investigation
-</h3>
-<p>We can use a little bit of `jq` to aggregate the test cases' duration.</p>
+<p>As we can see, node 1 here will take considerably longer than nodes 2 and 3.<br>However, you can say this is the best way we can split or partition the files across the 3 nodes based on their duration.<br><br>The <strong>outlier</strong> here is e_test.py, since its drastically long duration can make splitting evenly a challenge, depending on the parallelism number.<br><br></p>
+<p>In this case, we can use a little bit of `jq` to aggregate the test cases' duration, for investigation.</p>
 <p>This can give us a quick idea if our test-splitting may be affected by cases like the above.<br><br>First, download the test metadata JSON from <a href="https://circleci.com/docs/api/v2/index.html#operation/getTests" target="_self">the CircleCI API</a>:</p>
 <pre style="background-color: #f3f3f3; padding: 10px;"># NOTE: replace the project slug and job number as required<br>curl -H "Circle-Token: ${CIRCLE_TOKEN}" \<br>  "https://circleci.com/api/v2/project/github/foobar/repo/123/tests" &gt; metadata.json</pre>
 <p>Next, we can group by filename, and sum the duration, before sorting by slowest first.</p>
