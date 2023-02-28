@@ -1,0 +1,34 @@
+<p data-renderer-start-pos="7877">If a Bitbucket personal workspace and the name of the Bitbucket user whose personal workspace it is <strong>do not match</strong>, CircleCI is not able to confirm the “Admin” status of any user in the related CircleCI org; even if they are listed as “Admin” in the Bitbucket workspace.</p>
+<p data-renderer-start-pos="7877">This will result in any actions that require admin-level access not being possible.</p>
+<p data-renderer-start-pos="7877"><span>Our documentation highlights the requirement for a matching personal/default workspace and username (please refer to the documentation for the </span><span data-inline-card="true" data-card-url="https://circleci.com/docs/bitbucket-integration/#overview"><span class="loader-wrapper"><span aria-expanded="false" aria-haspopup="true" data-testid="hover-card-trigger-wrapper"><a href="https://circleci.com/docs/bitbucket-integration/#overview" target="_blank" rel="noopener">Bitbucket Integration</a>).</span></span></span></p>
+<p data-renderer-start-pos="7877"> </p>
+<h2 data-renderer-start-pos="8009">Prerequisites</h2>
+<p>You will need to identify all users listed as "Admin" of the workspace (<a href="https://bitbucket.org/&lt;org_name&gt;/workspace/settings/groups),">https://bitbucket.org/&lt;org_name&gt;/workspace/settings/groups),</a> and have them follow the instructions outlined below.</p>
+<p> </p>
+<h2 data-renderer-start-pos="8152">Instructions</h2>
+<ol>
+    <li>Go to your <em>"All workspaces"</em> page (https://bitbucket.org/account/workspaces).</li>
+    <li>Click on the workspace for which <strong>you don't</strong> have the <em>"Leave"</em> option.</li>
+    <li>Go to that workspace <em>"Settings"</em> page, and note the <code>Workspace ID</code>.</li>
+</ol>
+<p> </p>
+<h2 data-renderer-start-pos="8207">Outcome</h2>
+<p>In case the thus obtained <code>Workspace ID</code> doesn’t match your username, then you'll need to either:</p>
+<ul>
+    <li>Change their username or the related workspace name (<code>Workspace ID</code>) so they match. <em>(Keep in mind that a change to the workspace name will result in a name change for the related org name)</em>
+    </li>
+</ul>
+<p><strong>or</strong></p>
+<ul>
+    <li>Transfer the repositories to another workspace that <strong>is not</strong> a personal/default.</li>
+</ul>
+<p> </p>
+<h2><span>Additional Notes</span></h2>
+<p>If you want the org name to remain unchanged, you'll need to:</p>
+<ol>
+    <li>Create a new workspace with a temporary name.</li>
+    <li>Transfer the repositories from the personal/default Bitbucket workspace to that new workspace.</li>
+    <li>Change the name of the personal/default Bitbucket workspace <em>(ideally, back to the same name as their Bitbucket username).</em>
+    </li>
+    <li>Change the name of the newly created workspace to the previous name (before the above change) of the personal/default Bitbucket workspace you were encountering the issue with.</li>
+</ol>

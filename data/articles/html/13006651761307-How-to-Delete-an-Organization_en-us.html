@@ -1,9 +1,21 @@
 <h1>Organization Data Deletion</h1>
-<p class="p1"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Organization deletion effectively deletes all build history, contexts, and project environment variables for a given org. At this time, requests for org deletion can only be completed by filing a Support ticket.</span></p>
+<p class="p1"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Organization deletion effectively deletes all build history, contexts, and project environment variables for a given organization. <br><br>To delete an organization account, please <strong>file a Support ticket.</strong></span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"></span></p>
+<p class="p1"> </p>
 <h2 class="p1"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Submitting a Request</span></h2>
-<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">To submit a deletion request, please open a ticket with our support team via the <a href="https://support.circleci.com/">Support Center.</a> In the ticket, </span>please provide the Organization Name (case-sensitive) and indicate if it is GitHub, Bitbucket, Gitlab, or any combination of the three. Once a request is received, expect our agents to ask for confirmation of your request. </p>
-<p><strong>Note: CircleCI will <em>only</em> approve deletion requests made my org admins. Please ensure you have <em>not</em> disconnected your org from CircleCI before submitting a request, otherwise our Support agents will not be able to verify admin status. </strong></p>
-<p class="p1">Once the deletion begins processing, it can take up to several hours, depending on the size of the org, for deletion to complete. </p>
-<h2 class="p1">After Deletion is Complete</h2>
-<p>Upon receiving confirmation from our agents that your organization is deleted, please be sure and log in to your VCS to remove any CircleCI webhooks that remain in your repository settings. This support article describes this process should you need guidance:</p>
-<p class="p3"><a href="https://support.circleci.com/hc/en-us/articles/360021666393-How-to-stop-building-by-manually-removing-the-CircleCI-webhook-and-deploy-key-from-your-GitHub-repository">https://support.circleci.com/hc/en-us/articles/360021666393-How-to-stop-building-by-manually-removing-the-CircleCI-webhook-and-deploy-key-from-your-GitHub-repository</a></p>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">To submit a deletion request, please open a ticket with our support team via the <a href="https://support.circleci.com/">Support Center.</a> <br><br>In the ticket, </span>please provide the following details:</p>
+<ol>
+    <li>Organization Name (case-sensitive)</li>
+    <li>VCS provider (if it is GitHub, Bitbucket, Gitlab, etc)</li>
+</ol>
+<p>Once a request is received, you can expect our agents to ask for confirmation of your request. <br><br></p>
+<p>CircleCI will <em>only</em> approve deletion requests made by organization admins.<strong><br>Please ensure you have <em>not</em> disconnected your org from CircleCI before submitting a request, otherwise our Support agents will not be able to verify your admin status directly.<br><br></strong></p>
+<p class="p1">Please understand that the deletion of your organization can take up to several hours.<br>This depends on the total number of builds made under the organization.<br><br></p>
+<h2 id="important" class="p1">Important: After Deletion is Complete</h2>
+<p>Our agents will inform you once the organization account is deleted.<br>Please be aware that, this organization account can <strong>still</strong> show up on the left navigation bar on our UI.</p>
+<p>This is because when a user logs in to CircleCI, CircleCI looks up all their linked organizations in the user's connected VCS account (e.g., GitHub), and <em>recreates</em> them if not found.</p>
+<p>Please note that the original organization account was deleted, and <strong>all build histories are removed.</strong><br>This newly-created organization account does not have any build history<strong>,</strong> and has a different organization ID.<br><br>Please update your organization's repositories to prevent them from further building on CircleCI.<br>You would want to:</p>
+<ol>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360021666393-How-to-stop-building-by-manually-removing-the-CircleCI-webhook-and-deploy-key-from-your-GitHub-repository" target="_blank" rel="noopener">Remove any CircleCI webhooks in your repository settings</a></li>
+    <li>(Optional) Remove the <em>.circleci/config.yml</em> file from your repository source code<br><br>
+    </li>
+</ol>
