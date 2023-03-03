@@ -1,0 +1,33 @@
+<h1>Overview</h1>
+<p class="p1"><span class="s1">Our GPU-enabled cloud machines are currently only available to users on a Scale plan as outlined on the following pages:</span></p>
+<ul>
+    <li class="p2"><span class="s2"><a href="https://circleci.com/product/features/resource-classes/">https://circleci.com/product/features/resource-classes/</a></span></li>
+    <li class="p2"><span class="s3"><span class="s2"><a href="https://circleci.com/pricing/">https://circleci.com/pricing/</a></span></span></li>
+</ul>
+<p class="p2"><span class="s3"><span class="s2">Users who try to use a GPU resource class on an ineligible CircleCI plan will be met with a message similar to the one below:</span></span></p>
+<p class="p2"><span class="s3"><span class="s2"><br><img src="https://support.circleci.com/hc/article_attachments/13352489623707" alt="Screenshot_2023-03-02_at_12.28.42_PM.png"><br></span></span></p>
+<p class="p2"><span class="s3"><span class="s2"><span class="wysiwyg-underline">Note:</span> GPU Builders are not currently supported in Server 3.x and 4.x</span></span></p>
+<h2 class="p2"><span class="s3"><span class="s2">Prerequisites</span></span></h2>
+<p><span class="s3"><span class="s2">To use our cloud GPU resources, the organization using these in their configuration needs to be on the Scale Plan.</span></span></p>
+<p> </p>
+<h2><span class="s3"><span class="s2">Selecting GPU Resource Classes</span></span></h2>
+<p><span class="s3"><span class="s2">We offer resource classes on both Windows and Linux with GPUs available which all include an Nvidia Tesla GPU. The available GPU resource classes can be found in the following section of our documentation:</span></span></p>
+<ul>
+    <li>
+        <p id="available-resource-classes" class="css-sycgw4" data-testid="title-available-resource-classes"><a href="https://circleci.com/docs/using-gpu/#available-resource-classes">Available GPU resource classes</a></p>
+    </li>
+</ul>
+<h2>Using a Self-Hosted Runner</h2>
+<p>For organizations not on the scale plan, we suggest trying out a machine runner with GPU resources available on that machine/instance. In this case, the user would provide a GPU-enabled machine locally or perhaps an instance on a third-party service (Such as AWS, GCP, or any other cloud provider that offers these). This means that while the user provides the hardware, CircleCI will run all of your jobs, and tests similar to using a resource class provided by CircleCI.</p>
+<p>More details about our runner offering can be found in the section of our documentation linked below:</p>
+<ul>
+    <li class="css-1d5kwgy"><a href="https://circleci.com/docs/runner-overview/">CircleCI’s self-hosted runner overview</a></li>
+</ul>
+<p> </p>
+<h2>Additional Resources</h2>
+<ul>
+    <li>
+        <p class="css-1d5kwgy"><a href="https://circleci.com/docs/using-gpu/">Documentation: Using the GPU execution environment</a></p>
+    </li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360046991573" target="_blank" rel="noopener">How many credits does each executor use?</a></li>
+</ul>
