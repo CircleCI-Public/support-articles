@@ -1,0 +1,17 @@
+<h1>Overview</h1>
+<p>Sometimes when using the Windows Environment, you may run into applications that need ports that are not openly available. You can use Powershell commands to enable ports that are required.</p>
+<p> </p>
+<h2>How to change the available ports of the Windows Firewall: </h2>
+<p>You can change the TCP firewall rules with the Windows Command Prompt:</p>
+<p>To see the Windows Firewall status, you can use:</p>
+<pre><span class="hljs-bullet">-</span><span></span><span class="hljs-attr">run:<br></span><span></span><span class="hljs-attr">   command:</span><span></span><span class="hljs-string">| <br>       netsh advfirewall show all</span></pre>
+<p>To turn off <em><strong>ANY </strong></em>profiles no matter the connection type:</p>
+<pre><span class="hljs-bullet">-</span><span></span><span class="hljs-attr">run:<br></span><span></span><span class="hljs-attr">   command:</span><span></span><span class="hljs-string">| <br>       netsh advfirewall set allprofiles state off</span></pre>
+<p>If there are specific ports that need to be enabled on the Firewall, you can use:</p>
+<pre><span class="hljs-operator">-</span><span> run: <br>    command: </span><span class="hljs-operator">|<br></span><span></span><span class="hljs-keyword">        New</span><span class="hljs-operator">-</span><span>NetFirewallRule </span><span class="hljs-operator">-</span><span>DisplayName "{Display_Name}" </span><span class="hljs-operator">-</span><span>Direction inbound </span><span class="hljs-operator">-</span><span>Profile </span><span class="hljs-keyword">Any</span><span></span><span class="hljs-operator">-</span><span>Action Allow </span><span class="hljs-operator">-</span><span>LocalPort </span><span class="hljs-number">{Port} </span><span></span><span class="hljs-operator">-</span><span>Protocol TCP </span></pre>
+<p><br>*<strong>Note:</strong> Please ensure that your shell is set to Powershell while using these commands.</p>
+<h2 data-renderer-start-pos="8602"><span>Additional Resources</span></h2>
+<p id="contact-support">See information on our Windows Orb:<br><a href="https://circleci.com/developer/orbs/orb/circleci/windows">https://circleci.com/developer/orbs/orb/circleci/windows</a></p>
+<p><br>Using the Windows Environment:</p>
+<p><a href="https://circleci.com/docs/using-windows/">https://circleci.com/docs/using-windows/</a></p>
+<p><br>If you are still experiencing problems after trying this, for further questions or suggestions for your particular use-case, please contact <a href="mailto:support@circleci.com">support@circleci.com</a> </p>
