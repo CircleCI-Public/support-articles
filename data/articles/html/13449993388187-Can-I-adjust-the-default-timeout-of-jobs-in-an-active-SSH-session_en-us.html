@@ -1,0 +1,5 @@
+<h1 dir="auto">Default Timeout</h1>
+<p dir="auto">At this time, there is no setting to change the default timeout of jobs that have an active SSH session. If you terminate the SSH session in your terminal, the job will automatically end after 10 minutes.</p>
+<h2 dir="auto">Workaround</h2>
+<p dir="auto">One work around would be to create a script that determines if SSH is enabled, and run it in the background. You could then use a command like<span> </span><code>sleep</code><span> </span>to cancel the job after a defined time has elapsed. This could be added as a step to your job.</p>
+<p dir="auto"> </p>
