@@ -1,0 +1,24 @@
+<h2>Overview</h2>
+<p>The Warp terminal is  uses an SSH wrapper to enable Warp Blocks and Input Editor. However, this is currently incompatible with CircleCI Re-run with SSH sessions, and will throw an error similar to the following:</p>
+<pre>&gt; ssh -p 63535 54.236.40.67<br>Error: exec: "export": executable file not found in $PATH<br>Connection to 54.236.40.67 closed.</pre>
+<h2>Workarounds</h2>
+<p>There are two ways to work around this issue:</p>
+<ul>
+    <li>Invoke SSH directly by using <code>/usr/bin/ssh</code>
+        <ul>
+            <li><code>/usr/bin/ssh -p 63535 54.236.40.67</code></li>
+        </ul>
+    </li>
+    <li>Disable Warp's SSH wrapper
+        <ul>
+            <li>Warp Menu &gt; Settings &gt; Settings &gt; Features &gt; Warp SSH Wrapper<img src="https://support.circleci.com/hc/article_attachments/13550813215643">
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://docs.warp.dev/features/ssh#implementation" target="_blank" rel="noopener">Warp Documentation on the SSH Wrapper</a></li>
+    <li><a href="https://github.com/warpdotdev/Warp/issues/1598" target="_blank" rel="noopener">Warp GitHub Issue for the SSH Wrapper</a></li>
+    <li><a href="https://www.warp.dev/" target="_blank" rel="noopener">More information about the Warp terminal</a></li>
+</ul>
