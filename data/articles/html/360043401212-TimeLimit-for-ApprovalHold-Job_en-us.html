@@ -2,7 +2,9 @@
 <p>Approval/hold jobs have a <span class="wysiwyg-underline"><strong>90-day</strong></span> limit on when they can be approved.</p>
 <p> </p>
 <h2>On-Hold Workflows</h2>
-<p>While<em> after 90 days</em> they can't be approved, <strong>workflows will remain on hold until canceled</strong>, we don't automatically transition an on-hold workflow out of its current state.</p>
+<p>While<em> after 90 days</em> they can't be approved, <strong>workflows will remain on hold for 90 days until canceled</strong>, we don't automatically transition an on-hold workflow out of its current state.</p>
+<p> </p>
+<p>If the on-hold job is &gt;90 days, it cannot be cancelled via the API or UI. </p>
 <p> </p>
 <h2>Jobs that use Workspaces</h2>
 <p><strong>The only caveat</strong> to the above is jobs that utilize <a href="https://circleci.com/docs/2.0/persist-data/#using-workspaces" target="_blank" rel="noopener">workspaces.</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> </span></p>
