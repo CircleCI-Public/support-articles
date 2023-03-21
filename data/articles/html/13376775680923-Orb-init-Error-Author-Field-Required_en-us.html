@@ -1,0 +1,8 @@
+<h1>What Is This Error?</h1>
+<p>Sometimes you may encounter this error when running through the <span> </span><code>init</code><span> </span> command at the end of initializing the orb:</p>
+<pre><span>Error: author field is required</span></pre>
+<p>This just means that there is no user email set in git, as we use that for the "author" value of the orb.</p>
+<p> </p>
+<h2>How Do I Fix This?</h2>
+<p dir="auto">You can address this issue by ensuring that your<span> </span><code>user.email</code><span> is </span>set globally in<span> </span><code>git</code>. You can verify this by looking in your<span> </span><code>~/.gitconfig</code><span> </span>file, and seeing if your email is set globally. If your email is not set globally, you can set it using this command:</p>
+<p><code>git config --global user.email user@example.com</code></p>

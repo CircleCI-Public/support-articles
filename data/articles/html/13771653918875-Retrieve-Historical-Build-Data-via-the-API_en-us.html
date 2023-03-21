@@ -1,0 +1,24 @@
+<h1>Overview:</h1>
+<p class="p1">Typically, build data will disappear after a set amount of time, based on your organization's plan. But what if I need data that is outside of my organization's plan? The CircleCI v2 API contains endpoints that will help retrieve build data outside of your retention period by iterating through the data as required.</p>
+<p class="p1"> </p>
+<h2 class="p1">Steps to Retrieve Data:</h2>
+<ol>
+    <li>Retrieve a list of pipelines for a given project:<a href="https://circleci.com/docs/api/v2/index.html#operation/listPipelinesForProject" target="_self"> Get all pipelines </a>
+    </li>
+    <li>Retrieve a list of workflows for a given pipeline by the pipeline ID: <a href="https://circleci.com/docs/api/v2/index.html#operation/listWorkflowsByPipelineId" target="_self" rel="undefined">Get a pipeline’s workflows</a>
+    </li>
+    <li>Retrieve the workflow data by the workflow ID: <a href="https://circleci.com/docs/api/v2/index.html#operation/getWorkflowById" target="_self">Get a workflow by ID</a>
+    </li>
+    <li>Retrieve the jobs of a workflow by the workflow ID: <a href="https://circleci.com/docs/api/v2/index.html#operation/listWorkflowJobs" target="_self">Get a workflow’s jobs</a>
+    </li>
+    <li>Store the retrieved pipeline, workflow, and job data in your chosen data stores</li>
+    <li>Repeat steps as required with the <code>next_page_token</code> response from step 1</li>
+</ol>
+<p class="p2">To expedite to process, we would recommend performing these steps in a script that can be reused and modified to suit your needs.</p>
+<p class="p1"> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li>
+        <a href="https://circleci.com/docs/api-developers-guide/" target="_blank" rel="noopener">CircleCI API Developer's Guide - CircleCI</a> - Please see the v2 API developer's guide for relevant information, including prerequisites and rate limits
+    </li>
+</ul>
