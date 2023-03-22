@@ -1,0 +1,8 @@
+<p data-renderer-start-pos="8628">When you see the error <em>CIRCLE_CONTINUATION_KEY is required. Make sure setup workflows are enabled </em>this is due to not having the setup key set to true which is required for dynamic config to be enabled for a workflow.</p>
+<h2 data-renderer-start-pos="8723">Solution</h2>
+<p>You need to add setup: true within your config <span>at the same indentation as the version key as shown below:</span></p>
+<pre>version: 2.1<br><br>setup: true<br><br>jobs:<br>...</pre>
+<h2 data-renderer-start-pos="8901">Outcome</h2>
+<p data-renderer-start-pos="8901">You are now able to use dynamic config without an error trying to access the additional config file.</p>
+<h2 data-renderer-start-pos="9200">Additional Resouces</h2>
+<p><a href="https://discuss.circleci.com/t/intro-to-dynamic-config-via-setup-workflows/39868">https://discuss.circleci.com/t/intro-to-dynamic-config-via-setup-workflows/39868</a></p>
