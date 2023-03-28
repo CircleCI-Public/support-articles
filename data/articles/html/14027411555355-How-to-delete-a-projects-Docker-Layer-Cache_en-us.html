@@ -1,0 +1,14 @@
+<h1>How to delete a projects Docker Layer Cache</h1>
+<p>Previously, you would have to wait for 3 days of no builds to reset the DLC Cache or remove it from your config. This is now possible via the <a href="https://circleci.com/docs/local-cli/" target="_blank" rel="noopener">CircleCI CLI</a>.</p>
+<p> </p>
+<h2>Step 1</h2>
+<p>Confirm you are on version <code>v0.1.24705</code> or later of the CircleCI CLI.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">circleci version</pre>
+<p> </p>
+<h2>Step 2</h2>
+<p>Please run the following command for the project for which you wish to delete the DLC for:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">circleci project dlc purge &lt;vcs-type&gt; &lt;org-name&gt; &lt;project-name&gt; [flags] </pre>
+<p> </p>
+<h3><span>Additional Resources</span></h3>
+<p><span><a class="c-link" href="https://circleci-public.github.io/circleci-cli/circleci_project_dlc_purge.html" target="_blank" rel="noopener noreferrer" data-stringify-link="https://circleci-public.github.io/circleci-cli/circleci_project_dlc_purge.html" data-sk="tooltip_parent">https://circleci-public.github.io/circleci-cli/circleci_project_dlc_purge.html</a></span></p>
+<p> </p>

@@ -1,0 +1,24 @@
+<h1>Overview</h1>
+<p><span><a href="https://circleci.com/docs/ip-ranges/" target="_self">IP ranges</a> is a feature for CircleCI customers who need to configure IP-based access to their restricted environments using existing wokflows and platforms. As part of this feature, CircleCI provides a list of well-defined IP address ranges associated with the CircleCI service. CircleCI jobs that have this feature enabled will have their traffic routed through one of the defined IP address ranges during job execution.</span></p>
+<p> </p>
+<p><span>You may want to only enable IP ranges for a specific branch. To do this, you can use IP ranges in co-junction with <a href="https://circleci.com/docs/workflows/#branch-level-job-execution" target="_self">branch level job execution</a>. </span></p>
+<p> </p>
+<h2><span>Example:</span></h2>
+<div class="language-yaml highlighter-rouge">
+    <pre style="background-color: #f3f3f3; padding: 5px;"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token number">2.1</span>
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">circleci_ip_ranges</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment"># opts the job into the IP ranges feature</span>
+    <span class="token key atrule">docker</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">image</span><span class="token punctuation">:</span> curlimages/curl
+        <span class="token key atrule">auth</span><span class="token punctuation">:</span>
+          <span class="token key atrule">username</span><span class="token punctuation">:</span> mydockerhub<span class="token punctuation">-</span>user
+          <span class="token key atrule">password</span><span class="token punctuation">:</span> $DOCKERHUB_PASSWORD  <span class="token comment"># context / project UI env-var reference</span>
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> echo “Hello World”
+<span class="token key atrule">workflows</span><span class="token punctuation">:</span>
+  <span class="token key atrule">build-workflow</span><span class="token punctuation">:</span>
+    <span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> build:<br>          filters:<br>            branches: <br>               only: deploy</pre>
+</div>
+<p> </p>
