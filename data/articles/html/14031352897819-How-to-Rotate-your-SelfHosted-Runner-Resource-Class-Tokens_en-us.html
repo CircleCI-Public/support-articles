@@ -1,0 +1,80 @@
+<h1>Introduction</h1>
+<p>There are times when a Self-Hosted runner resource class token needs to be rotated either for best security practices or if it has been unintentionally exposed in plain text when working with a CircleCI Support engineer on a support request.</p>
+<p> </p>
+<h2>Prerequisites</h2>
+<ul>
+    <li>An existing running installation of a Self-Hosted Runner Resource Class on either a Linux, macOS, or Windows environment</li>
+    <li>A current installation of the CircleCI CLI on your machine</li>
+</ul>
+<h2>Instructions</h2>
+<ol>
+    <li>Navigate to your terminal, and confirm that the CircleCI CLI is installed by running <code>circleci version</code>
+    </li>
+    <li>Get a list of tokens for your resource class
+        <ul>
+            <li>Run <code><span>circleci runner token list &lt;resource-class name&gt;</span></code><span><br> <br>Example:</span><span></span>
+                <pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><span>$ circleci runner token list runner-rc/support-demo<br>+--------------------------------------+----------+----------------------+<br>|                ID                    | NICKNAME |       CREATED AT     |<br>+--------------------------------------+----------+----------------------+<br>| 350a1717-5c96-4964-9cf4-228a3298d0d1 |          | 2022-05-09T16:20:45Z |<br>+--------------------------------------+----------+----------------------+</span></pre>
+            </li>
+        </ul>
+    </li>
+    <li>Delete Token using the identifier <code>ID</code>
+        <ul>
+            <li>Run <code>circleci runner token delete "&lt;token identifier&gt;"</code><br><br>Example:<br><code>circleci runner token delete "350a1717-5c96-4964-9cf4-228a3298d0d1"</code><br><br>
+            </li>
+        </ul>
+    </li>
+    <li>Create a new token 
+        <ul>
+            <li>
+                <code><span>circleci runner token create &lt;resource-class-name&gt; "&lt;nickname&gt;"<br></span></code><br>Example:<br><code><span class="">circleci runner token create runner-rc/support-demo "NEW"</span></code><br><br>
+            </li>
+            <li>This will return an <code>auth_token</code> value that will be used in the next step<br><br>
+            </li>
+        </ul>
+    </li>
+    <li>Update <code>launch-agent-config.yaml</code>with new token by updating the `auth_token` field with the new value from the response in Step 4 above and save this file.<br><br>Please note: The default location of this file will depend on the OS that this runner is hosted on.
+        <ul>
+            <li>Linux: <code><span>/etc/opt/circleci/launch-agent-config.yaml</span></code>
+            </li>
+            <li>macOS: <code><span>/Library/Preferences/com.circleci.runner/launch-agent-config.yaml</span></code>
+            </li>
+            <li>Windows: <code><span>C:\Program Files\CircleCI\launch-agent-config.yaml</span></code><br><br>
+            </li>
+        </ul>
+    </li>
+    <li>Restart the Runner Service </li>
+</ol>
+<p id="[hardBreak]Linux:[hardBreak]sudo-systemctl-start-circleci.service" data-renderer-start-pos="1792"><strong>Linux:</strong><br><code class="code css-z5oxh7" data-renderer-mark="true">sudo systemctl start circleci.service</code><span class="heading-anchor-wrapper" role="presentation"><span class="css-1afrefi" role="img" aria-label="Copy"></span></span></p>
+<p id="macOS:" data-renderer-start-pos="1841"><strong>macOS:</strong></p>
+<p data-renderer-start-pos="1841"><span class="heading-anchor-wrapper" role="presentation"></span><code class="code css-z5oxh7" data-renderer-mark="true">sudo launchctl unload '/Library/LaunchDaemons/com.circleci.runner.plist'</code></p>
+<p data-renderer-start-pos="1923"><code class="code css-z5oxh7" data-renderer-mark="true">sudo launchctl load '/Library/LaunchDaemons/com.circleci.runner.plist</code></p>
+<p id="Windows:[hardBreak][inlineCard]" data-renderer-start-pos="1995"><strong>Windows:</strong><br>Uninstalling CircleCI self-hosted runners will prepare the system for installation again.</p>
+<ol class="ak-ol" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="2101">Download the <code class="code css-z5oxh7" data-renderer-mark="true">Uninstall-CircleCIRunner.ps1</code>script from GitHub to an easily accessible location.</p>
+    </li>
+    <li>
+        <p data-renderer-start-pos="2198">Open PowerShell as an administrator and navigate to the directory where you placed the script file.</p>
+    </li>
+    <li>
+        <p data-renderer-start-pos="2301">Run the following in your PowerShell:</p>
+        <div class="code-block  css-1si5tit"><span class="prismjs css-ojew7r" data-code-lang="" data-ds--code--code-block=""><code><span class="">./Uninstall-CircleCIRunner.ps1</span></code></span></div>
+    </li>
+</ol>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/11858740696219" target="_blank" rel="noopener">Best Practices of API Token Rotation</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/13659631461403" target="_blank" rel="noopener">Enable SSH on a Machine Runner</a></li>
+</ul>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
