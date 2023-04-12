@@ -1,10 +1,10 @@
-<h2>Basic Authorization</h2>
+<h2>Basic Authentication</h2>
 <p>You can use Basic Authentication for our CircleCI V2 APIs:</p>
 <p><a href="https://circleci.com/docs/api/v2/#section/Authentication/basic_auth">https://circleci.com/docs/api/v2/#section/Authentication/basic_auth</a><br><br></p>
 <p>Please note that this would require you to:</p>
 <ul>
     <li>set the username value to your CircleCI user API token, and</li>
-    <li>set the password as empty</li>
+    <li>(optional) set the password as empty</li>
 </ul>
 <p> </p>
 <h2>Examples</h2>
@@ -12,3 +12,5 @@
 <pre dir="ltr" style="background-color: #f3f3f3;">curl -X GET -u "${CIRCLE_TOKEN}:" https://circleci.com/api/v2/me</pre>
 <p dir="auto"> </p>
 <pre dir="ltr" style="background-color: #f3f3f3;">BASIC_AUTH=$(echo -n "${CIRCLE_TOKEN}:" | base64)<br><br>curl -H "Authorization: Basic ${BASIC_AUTH}" https://circleci.com/api/v2/me</pre>
+<p dir="auto"> </p>
+<pre dir="ltr" style="background-color: #f3f3f3;"># example without setting password for Basic Authentication<br># Note the `:` is not set here<br>curl -H "Authorization: Basic $(echo -n $CIRCLE_TOKEN | base64)" https://circleci.com/api/v2/me</pre>
