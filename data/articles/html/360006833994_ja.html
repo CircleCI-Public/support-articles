@@ -1,6 +1,0 @@
-<p>ローカルまたは AWS インストールを再起動する場合、管理コンソールからコンテナを開始するときに次のエラーが表示されることがあります。</p>
-<p><img src="https://support.circleci.com/hc/article_attachments/360008655914/API_error__409_.png" alt="API_error__409_.png"></p>
-<p>この場合、Replicated を再起動することで問題を解決できます。</p>
-<p>SSH でユーザーのサービスボックスにアクセスし、下記の通りコマンドを実行してください。</p>
-<pre><code class="bash">sudo service replicated-operator stopsudo service replicated-ui stopsudo service replicated stopsudo service docker stopsudo service docker start sudo service replicated startsudo service replicated-ui startsudo service replicated-operator start</code></pre>
-<p>Replicated のトラブルシューティングの詳細については、<a href="https://circleci.com/docs/2.0/admin-faq/#how-do-i-debug-the-management-console-replicated">https://circleci.com/docs/2.0/admin-faq/#how-do-i-debug-the-management-console-replicated</a> を参照してください。</p>
