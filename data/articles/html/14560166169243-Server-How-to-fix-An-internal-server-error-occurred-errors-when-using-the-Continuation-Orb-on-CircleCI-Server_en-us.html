@@ -1,0 +1,26 @@
+<h1>Introduction</h1>
+<p>CircleCI Server users may encounter "<span>An internal server error occurred." errors when first using <a href="https://circleci.com/developer/orbs/orb/circleci/continuation">the Continuation Orb</a> on their Server environment due to an undefined domain.</span></p>
+<p> </p>
+<h2>Prerequisites</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/server/v4.1/overview/circleci-server-overview/">CircleCI Server Instance</a></li>
+    <li>Orb Imported from the public registry
+        <ul>
+            <li>More details on Importing a Public Orb can be found in <a href="https://circleci.com/docs/server/v4.1/operator/managing-orbs/#import-a-public-orb">our documentation here</a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2>Instructions</h2>
+<ol>
+    <li>When using the <code>circleci/continuation</code> orb on server using the default parameter values, it will return <code><span>An internal server error occurred.</span></code> errors when using any of the commands/jobs this orb offers.</li>
+    <li>To remedy this error, the domain of the server instance needs to be defined under the <code><span>circleci_domain</span></code> parameter since the default is <code>circleci.com</code> for our cloud users. Kindly see the exmaple below:</li>
+</ol>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><span>            - continuation/continue:</span><br><span>                circleci_domain: circleci.&lt;your_org_domain_here&gt;.com</span><br><span>                configuration_path: .circleci/release.yml<br></span></pre>
+<p><br>If your team continues to encounter issues with this orb after configuration of the <code><span>circleci_domain</span></code> parameter to use your server domain, please reach out to the CircleCI Support team by submitting a ticket.</p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/13082520537243" target="_blank" rel="noopener">How to pass a parameter when using the continuation orb</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/4405444957467" target="_blank" rel="noopener">Orbs: Authorization Errors </a></li>
+</ul>
