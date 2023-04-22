@@ -1,31 +1,52 @@
-<p>You may run into a situation where your app attempts to access the database before it is ready to accept connections, resulting in a failure. It this case it is necessary to wait for the database to come online fully before continuing.</p>
-<p>We suggest dockerize: <a href="https://github.com/jwilder/dockerize" target="_blank" rel="noopener">https://github.com/jwilder/dockerize</a></p>
-<p>In this example PostgreSQL  is our database. Our first run step downloads the newest Dockerize binary and the next run step `Wait for db` waits on the port for our database until it receives a response, with a 1 minute timeout.</p>
-<pre><code>
-version: 2.0<br>
-jobs:<br>
-  build:<br>
-    docker:<br>
-      - image: your/image_for_primary_container<br>
-      - image: postgres:9.6.2-alpine<br>
-    environment:<br>
-      POSTGRES_USER: your_postgres_user<br>
-      POSTGRES_DB: your_postgres_test<br>
-    workDir: /your/workdir<br>
-    steps:<br>
-      - checkout<br>
-      - run:<br>
-        name: install dockerize<br>
-        command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz &amp;&amp; sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz &amp;&amp; rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz<br>
-        environment:<br>
-          DOCKERIZE_VERSION: v0.3.0<br>
-      - run:<br>
-        name: Wait for db<br>
-        command: dockerize -wait tcp://localhost:5432 -timeout 1m<br>
-</code></pre>
-<p>You can apply the same principle for MySQL:</p>
-<pre><code>dockerize -wait tcp://localhost:3306 -timeout 1m</code></pre>
-<p>Redis:</p>
-<pre><code>dockerize -wait tcp://localhost:6379 -timeout 1m</code></pre>
-<p>and other services such as web servers</p>
-<pre><code>dockerize -wait http://localhost:80 -timeout 1m</code></pre>
+<h1>Overview</h1>
+<p>You may run into a situation where your app attempts to access the database <strong>before</strong> it is ready to accept connections, resulting in a failure.<br><br>In this article, we will discuss strategies you can use in your CircleCI build in this situation.</p>
+<p> </p>
+<h2>Option 1: Sleep</h2>
+<p>Some users may opt to use the <a href="https://man7.org/linux/man-pages/man3/sleep.3.html" target="_self">sleep</a> command to wait for N seconds (e.g., `sleep 60` to wait for 1 minute).<br><br>This option is not preferred, since it is hard to be sure that the wait is consistent for every build every time.<br>Builds may sometimes need a longer wait.<br>For example, you may have added more <a href="https://github.com/docker-library/docs/blob/master/postgres/README.md#initialization-scripts" target="_self">initialization scripts to run for your Postgres database</a> in a new build.</p>
+<h2>
+    <br>Option 2: Dockerize
+</h2>
+<p><a href="https://github.com/jwilder/dockerize" target="_self">Dockerize</a> is a useful tool that comes with a `-wait` option.<br>Given an address, Dockerize will poll the address until the service can be reached <em>or</em> when we exceed the timeout specified.</p>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"><br>As an example, we use Dockerize to wait on our Postgres database below:</span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"></span></p>
+<pre style="background-color: #f3f3f3; padding: 5px;">version: 2.1<br><br>jobs:<br>  build:<br>    docker:<br>      # NOTE: cimg/base:current comes with Dockerize pre-installed<br>      - image: cimg/base:current<br>      - image: postgres:9.6.2-alpine<br>        environment:<br>          POSTGRES_USER: "your_postgres_user"<br>          POSTGRES_DB: "your_postgres_database"<br>    steps:<br>      - checkout<br>      - run:<br>          name: Wait for DB<br>          command: dockerize -wait tcp://localhost:5432 -timeout 1m</pre>
+<p><br>Note that <a href="https://circleci.com/docs/databases#using-dockerize-to-wait-for-dependencies" target="_self">Dockerize is not limited to just databases.</a><br>We can use it to check up on other services like Redis or an web server for example:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;"># Redis<br>dockerize -wait tcp://localhost:6379 -timeout 1m<br><br># application server on port 8080<br>dockerize -wait tcp://localhost:8080 -timeout 1m</pre>
+<p><br>However, when it comes to databases, a successful Dockerize wait only means the database server can be reached.<br>It does <strong>not</strong> mean that the Database server can accept connections from then.</p>
+<h2>
+    <br>Option 3: Ping via SQL query
+</h2>
+<p>This last option takes advantage of making a simple `SELECT 1;` SQL query to ensure the database server can accept connections.<br><br>Here is an example with a MySQL database:<br><br></p>
+<pre style="background-color: #f3f3f3; padding: 5px;">version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/base:current
+      - image: mysql:latest
+        environment:<br>          # as a trivial example; not recommended
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    steps:
+      - checkout
+      - run: |
+          sudo apt-get update &amp;&amp; sudo apt-get install -y mysql-client
+      - run:
+          name: Wait for DB
+          command: |
+            N=20
+            while [ $N -gt 0 ]
+            do
+              if $(mysql -h 127.0.0.1 -u root -e "/* ping */ SELECT 1" &gt; /dev/null); then
+                echo "Connected to MySQL!"
+                exit 0
+              fi
+              echo "Not connected; retrying"
+              N=$(( $N - 1 ))
+              sleep 1
+            done
+            exit 1
+      - run:
+          name: Verify
+          command: |
+            mysql -h 127.0.0.1 -u root -e "SHOW DATABASES;"</pre>
+<p> </p>
+<p> </p>
