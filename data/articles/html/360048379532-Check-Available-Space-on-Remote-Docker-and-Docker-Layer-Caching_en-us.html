@@ -1,7 +1,14 @@
+<h1 dir="auto">Bash Commands</h1>
 <p dir="auto">You can run the following command to see how much space has been currently used on the Docker Layer Caching volume with Remote Docker.</p>
-<pre>ssh remote-docker 'sudo df' | grep '/var/lib/docker' | awk '{print $4}'</pre>
+<pre style="background-color: #f3f3f3;">ssh remote-docker 'sudo df' | grep '/var/lib/docker' | awk '{print $4}'</pre>
 <p dir="auto">You could store that value and use it in additional scripting to perform actions to that Remote Docker instance and volume.</p>
-<pre>DLC_AVAILABLE_SPACE=$(ssh remote-docker 'sudo df' | grep '/var/lib/docker' | awk '{print $4}');</pre>
-<p dir="auto">You could also run:</p>
-<pre>docker system df</pre>
+<pre style="background-color: #f3f3f3;">DLC_AVAILABLE_SPACE=$(ssh remote-docker 'sudo df' | grep '/var/lib/docker' | awk '{print $4}');</pre>
+<p dir="auto">You could also run to display the amount of disk space used by the Docker daemon:</p>
+<pre style="background-color: #f3f3f3;">docker system df</pre>
 <p dir="auto">This would produce more human-readable output.</p>
+<p dir="auto"> </p>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://docs.docker.com/engine/reference/commandline/system_df/" target="_blank" rel="noopener">docker system df</a></li>
+    <li><a href="https://manpages.ubuntu.com/manpages/trusty/man1/df.1posix.html" target="_blank" rel="noopener">df Command</a></li>
+</ul>

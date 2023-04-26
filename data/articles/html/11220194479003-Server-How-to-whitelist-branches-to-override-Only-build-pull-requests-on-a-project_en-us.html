@@ -1,0 +1,21 @@
+<h1>How do I whitelist additional branches?</h1>
+<p>For Server 3.x and 4.x admins, you can whitelist branches on your CircleCI Server instance.<br>By whitelisting specific branches, you are setting them as default branches.<br>This would therefore allow builds on these branches to run regardless whether these branches are pull-requests or not.<br><br>A common use-case can be when your project has multiple release branches like <code>main</code>, <code>staging</code> and <code>production</code>.<br><br></p>
+<p dir="auto">Please note that <span></span><strong>this is a delicate process, and we would recommend you to test out on a testing/staging CircleCI Server instance, if available</strong>.</p>
+<h2 dir="auto">Steps</h2>
+<ol dir="auto" type="1">
+    <li>Run <code>kubectl exec -it &lt;frontend pod&gt; -n &lt;namespace&gt; bash</code> to exec into one of the frontend pod</li>
+    <li>Within the Bash session in the frontend pod, execute <code>lein repl :connect 6005</code>
+    </li>
+    <li>Within this Clojure REPL session, you can confirm a project's current features by running <code>(circle.http.api.admin-commands/get-project-features-by-url "&lt;URL to project&gt;")</code>
+    </li>
+    <li>Override the list of default branches for this projects by running <code>(circle.http.api.admin-commands/set-project-feature-by-url "&lt;URL to project&gt;" :pr-only-branch-overrides "&lt;list of branch names&gt;")</code>
+    </li>
+    <li>Rerun step 3 to confirm the <code>:pr-only-branch-overrides</code> feature is now applied.</li>
+</ol>
+<p dir="auto">For step 3, an example of the command would look like:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;"># example project: https://github.com/acmeorg/realitycheck<br><br>user=&gt; (circle.http.api.admin-commands/get-project-features-by-url "<a href="https://github.com/acmeorg/realitycheck">https://github.com/acmeorg/realitycheck"</a>)</pre>
+<p> </p>
+<p>For step 4, here is the example, where we override our default branches:<br><br></p>
+<pre style="background-color: #f3f3f3; padding: 5px;">user=&gt; (circle.http.api.admin-commands/set-project-feature-by-url "https://github.com/acmeorg/realitycheck" :pr-only-branch-overrides "main, release.*")<br><br># output below<br>{:pr-only-branch-overrides "main, release.*"}</pre>
+<p><br><strong>Note</strong> that your output can vary based on your project's settings.</p>
+<p>In addition, the `set-project-feature-by-url` command is a PUT operation (overwrite) as per step 4;<br>You have to supply the full list of branches you want overridden <strong>each time</strong> you run the command.<br><br><strong>Java Regular Expressions are supported for the branches.</strong><br><br></p>

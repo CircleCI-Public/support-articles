@@ -1,0 +1,39 @@
+<h1>How to cancel all jobs</h1>
+<p>Some times you would like to cancel all the jobs - to do that you can run the following script. Please change the `org_name` and `prj_name` to match with your organization name and project name (repository name)</p>
+<pre dir="ltr"><code>org_name='nanophate'
+prj_name='circleci-template'
+
+initail_req=$(curl -s -H "Circle-Token: ${CIRCLECI_PERSONAL_TOKEN}" "https://circleci.com/api/v2/project/gh/${org_name}/${prj_name}/pipeline")
+pipeline_ids+=$(echo $initail_req | jq -r '.items[].id')
+next_page_token=$(echo $initail_req | jq -r '.next_page_token')
+
+while [ "$next_page_token" != "null" ]
+do
+  echo "start pipeline while"
+  echo $next_page_token
+  reqs=$(curl -s -H "Circle-Token: ${CIRCLECI_PERSONAL_TOKEN}" "https://circleci.com/api/v2/project/gh/${org_name}/${prj_name}/pipeline?page-token=${next_page_token}")
+  pipeline_ids="${pipeline_ids}\n$(echo $reqs | jq -r '.items[].id')"
+  next_page_token=$(echo $reqs | jq -r '.next_page_token')
+  echo $next_page_token
+  echo "end pipeline while"
+done
+
+echo ${pipeline_ids} | while read pip_id; do 
+  initail_wf_req=$(curl -s -H "Circle-Token: ${CIRCLECI_PERSONAL_TOKEN}" "https://circleci.com/api/v2/https://circleci.com/api/v2/pipeline/${pip_id}/workflow")
+  workflow_ids+="$(echo $initail_wf_req | jq -r '.items[].pipeline_id')"
+
+  while [ "$wf_next_page_token" != "null" ]
+  do
+    echo "start workflow while"
+    echo $wf_next_page_token
+    echo $pip_id
+    wf_reqs=$(curl -s -H "Circle-Token: ${CIRCLECI_PERSONAL_TOKEN}" "https://circleci.com/api/v2/https://circleci.com/api/v2/pipeline/${pip_id}/workflow?page-token=${next_page_token}")
+    workflow_ids+="$(echo $initail_wf_req | jq -r '.items[].pipeline_id')"
+    wf_next_page_token=$(echo $wf_reqs | jq -r '.next_page_token')
+    echo $wf_next_page_token
+    echo "end workflow while"
+  done
+done
+
+echo ${workflow_ids} | while read wf_id; do curl -fsS -X POST -H "Circle-Token: ${CIRCLECI_PERSONAL_TOKEN}" "https://circleci.com/api/v2/workflow/${wf_id}/cancel"; done</code></pre>
+<p> </p>

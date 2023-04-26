@@ -1,0 +1,19 @@
+<h1>CircleCI was unable to execute the job to completion, because the CircleCI runner received a kill signal midway through the job.</h1>
+<p>When running your jobs in CircleCI, you may encounter this error causing your builds to not complete, almost randomly. </p>
+<p>This error can also be in combination with <code>CircleCI received exit
+        code 1</code> or <code>CircleCI received exit code 137</code>.</p>
+<p> </p>
+<h2><span>Step 1</span></h2>
+<p><span>These exit codes and errors typically go in combination with resource constraints. Please take a look at the <a href="https://discuss.circleci.com/t/product-launch-resources-tab-now-shows-resource-utilization-for-machine-jobs/45359" target="_blank" rel="noopener">resource tab</a> on your job's page.</span></p>
+<p><span><img src="https://support.circleci.com/hc/article_attachments/13567904840475" alt="Screenshot_2023-03-10_at_4.28.13_PM.png"></span></p>
+<p><span>If your graph looks similar to this, please consider upgrading your <a href="https://circleci.com/product/features/resource-classes/" target="_blank" rel="noopener">resource class</a> to a larger one.</span></p>
+<p> </p>
+<h2><span>Step 2</span></h2>
+<p><span>If you are continuing to see resource class exhaustion during your build, and you are testing your application, you may take a look at <code>test splitting</code> which involves splitting your tests up to separate containers which can reduce resource usage and even speed up your tests.</span></p>
+<ul>
+    <li><span><a href="https://circleci.com/docs/test-splitting-tutorial/">https://circleci.com/docs/test-splitting-tutorial/</a></span></li>
+    <li><span><a href="https://circleci.com/docs/parallelism-faster-jobs/">https://circleci.com/docs/parallelism-faster-jobs/</a></span></li>
+    <li><span><a href="https://circleci.com/blog/a-guide-to-test-splitting/">https://circleci.com/blog/a-guide-to-test-splitting/</a></span></li>
+    <li><span><a href="https://circleci.com/docs/use-the-circleci-cli-to-split-tests/">https://circleci.com/docs/use-the-circleci-cli-to-split-tests/</a></span></li>
+</ul>
+<p> </p>

@@ -1,3 +1,4 @@
+<h2>Ruby Version Installation</h2>
 <p>When using the <code>machine</code> executor, RVM is available for easy installation and use of custom ruby versions.</p>
 <p>To get this going, add a step like the following:</p>
 <pre style="background-color: #f3f3f3;">      steps:<br>        - run:<br>           name: Set ruby version to 2.3.4<br>           command: |<br>                rvm install 2.3.4<br>                echo . $(rvm 2.3.4 do rvm env --path) &gt;&gt; $BASH_ENV</pre>
@@ -14,3 +15,8 @@ jobs:
     steps:
       - ruby/install:
           version: '2.7'</pre>
+<p> </p>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360048784091-Switching-Ruby-versions-with-Chruby" target="_blank" rel="noopener">Switching Ruby versions with Chruby</a></li>
+</ul>

@@ -1,0 +1,55 @@
+<h2><span>Initial Troubleshooting</span></h2>
+<p><span>Please see the <a href="https://circleci.com/docs/2.0/ip-ranges" target="_blank" rel="noopener">IP ranges documentation page </a></span><span>to e</span>nable CircleCI jobs to go through a set of well-defined IP address ranges.</p>
+<p dir="auto">If the above feature does not meet your needs, below are some alternative methods many of our customers are using:</p>
+<h2 dir="auto">CircleCI Runner</h2>
+<ul>
+    <li style="list-style-type: none;">
+        <ul>
+            <li type="disc">Install CircleCI runners on supported platforms (<a href="https://circleci.com/docs/2.0/runner-overview">https://circleci.com/docs/2.0/runner-overview</a>)</li>
+            <li type="disc">Use your own infrastructure for running specific jobs</li>
+            <li type="disc">Get additional control over the environment</li>
+        </ul>
+    </li>
+</ul>
+<h2>Bastion Host</h2>
+<ul dir="auto" type="disc">
+    <li style="list-style-type: none;">
+        <ul>
+            <li type="disc">Configure SSH tunneling into your private environment via a bastion/jump host. <a href="https://github.com/eddiewebb/circleci-dmz-orb/blob/master/README.md" target="_self">Example Configuration / Orb</a>
+            </li>
+            <li type="disc">If you require, you could safelist this bastion host for your environment's firewall.</li>
+            <li type="disc">In addition to the SSH key, you can further secure your SSH connection by limiting what commands can be run via the jump host. <a href="https://research.kudelskisecurity.com/2013/05/14/restrict-ssh-logins-to-a-single-command/" target="_self">Example<br><br></a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2>VPN</h2>
+<ul dir="auto" type="disc">
+    <li style="list-style-type: none;">
+        <ul>
+            <li type="disc"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Configure a VPN connection to your environment on our <a href="https://circleci.com/docs/2.0/executor-types/#using-machine" target="_blank" rel="noopener">machine executor</a>.</span></li>
+            <li type="disc"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">See the article "<a href="https://support.circleci.com/hc/en-us/articles/360049397051" target="_blank" rel="noopener">How to set up a VPN connection during builds?</a>"<br><br></span></li>
+        </ul>
+    </li>
+</ul>
+<h2><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Dynamic Safelisting</span></h2>
+<ul dir="auto" type="disc">
+    <li style="list-style-type: none;">
+        <ul>
+            <li type="disc"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Using your cloud provider's CLI tool, dynamically fetch the current builder's IP address and add it to a security group which has access to internal resources. At the end of the build, you'd remove that IP to prevent having leftover IPs.</span></li>
+            <li type="disc"><a href="https://discuss.circleci.com/t/circleci-source-ip/1202/10" target="_self"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">AWS-Specific Example</span></a></li>
+            <li type="disc">To always run cleanup, use the `when: always` declaration under a run step. <a href="https://circleci.com/docs/2.0/configuration-reference/#the-when-attribute" target="_self">Documentation<br><br></a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2>Server Product</h2>
+<ul>
+    <li style="list-style-type: none;">
+        <ul>
+            <li type="disc">
+                <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">If the above solutions don't work for you, you may consider our <a href="https://circleci.com/enterprise/" target="_self">Server solution</a> </span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">where you can run a CircleCI installation in your own VPC and/or specify your own IP ranges.</span>
+            </li>
+        </ul>
+    </li>
+</ul>

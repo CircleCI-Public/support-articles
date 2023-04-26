@@ -1,0 +1,20 @@
+<h1><span>Overview</span></h1>
+<p><span>Heartbeats are periodic signals sent to indicate normal operation or to synchronize with other parts of a system. This error can occur with OpenVPN or for a runner if the task-agent hasn't sent this signal after 5 minutes.</span></p>
+<p> </p>
+<h2><span>Check a Job's Status Using CircleCI API (v2)</span></h2>
+<p><span>To check a job's status, send a cURL GET request similar to the one below:</span></p>
+<pre style="background-color: #f3f3f3;"><code>curl --request GET \<br>--url https://circleci.com/api/v2/workflow/{workflow-id}/job \<br>--header 'authorization: Basic REPLACE_BASIC_AUTH'</code></pre>
+<p><span>This will provide you with a list of jobs within the workflow along with specifics about each job.</span></p>
+<p> </p>
+<h2><span>Runner Solution</span></h2>
+<p><span>The best course of action to correct this error is to restart (<a href="https://circleci.com/docs/2.0/runner-installation-mac/#enable-the-launchd-service" target="_blank" rel="noopener">unload and load</a>) the runner and try a fresh commit. If the error persists, please contact the CircleCI Support Team for help in taking further action to correct this issue.</span></p>
+<p> </p>
+<h2><span>OpenVPN Solution</span></h2>
+<p><span>Please reference <a href="https://support.circleci.com/hc/en-us/articles/360049397051-How-to-set-up-a-VPN-connection-during-builds" target="_self">How to setup a VPN connection during builds</a> on how to add additional routing exclusions. </span></p>
+<h2>
+    <br>Additional Resources:
+</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/api/v2/#operation/listWorkflowJobs" target="_blank" rel="noopener">Get a workflow's jobs</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/requests/new" target="_self">Submit a Request</a></li>
+</ul>

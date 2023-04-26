@@ -1,0 +1,15 @@
+<h1>Default Memory Size</h1>
+<p>Node has a default max memory usage of less than 2GB on some 64bit systems (<a href="https://medium.com/geekculture/node-js-default-memory-settings-3c0fe8a9ba1" target="_self">depending on the Node runtime version</a>). This can cause unexpected memory issues when running on CircleCI. It's possible to adjust the max memory ceiling using a command-line flag passed into Node:</p>
+<p><code>--max-old-space-size=&lt;memory in MB&gt;</code></p>
+<p> </p>
+<h2>How to Increase Memory Size</h2>
+<p>The flag can be difficult to ensure that it is being used, especially when node processes are forked. The best way to ensure this setting will be picked up by all node processes within the environment is to apply this setting directly to an environment variable, which can be done using Node. 8 or higher:<br><br></p>
+<p><code>NODE_OPTIONS=--max-old-space-size=4096</code></p>
+<p> </p>
+<p><em><strong>Note</strong>: If you have specified <code>export NODE_OPTIONS=&lt;value&gt;</code> in your <code>package.json</code>, it'll override what you set in the <code>NODE_OPTIONS</code> environment variable in the <code>config.yml</code> (either at the container, job, or step respective level)</em></p>
+<p> </p>
+<h2><strong>Additional Information:</strong></h2>
+<ul>
+    <li><a href="https://futurestud.io/tutorials/node-js-increase-the-memory-limit-for-your-process">https://futurestud.io/tutorials/node-js-increase-the-memory-limit-for-your-process</a></li>
+    <li><a href="https://stackoverflow.com/questions/48387040/nodejs-recommended-max-old-space-size/48392705">https://stackoverflow.com/questions/48387040/nodejs-recommended-max-old-space-size/48392705</a></li>
+</ul>

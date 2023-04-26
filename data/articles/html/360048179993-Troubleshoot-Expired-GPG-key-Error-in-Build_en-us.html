@@ -1,0 +1,19 @@
+<h1>Identify Expired GPG Keys</h1>
+<p>You can identify and validate there are expired GPG keys in your container by running:</p>
+<pre style="background-color: #f3f3f3;"><code>sudo apt-key list | grep "expired:"</code></pre>
+<p> </p>
+<h2>Pre-Built Docker Image</h2>
+<p>If you are using a CircleCI pre-built Docker Image and are getting an "Expired GPG key" error in your build. You can resolve this issue by simply upgrading to a newer version of the image you are using. </p>
+<p> </p>
+<h2>Custom Image</h2>
+<p>If you are using a custom image you can upgrade your GPG keys with:</p>
+<pre style="background-color: #f3f3f3;"><code>apt-key adv --keyserver keys.gnupg.net --recv-keys KEY_ID</code></pre>
+<p>You will need to run this command with the KEY_ID of the expired key(s).</p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/circleci-images" target="_blank" rel="noopener">Pre-Built CircleCI Docker Images</a></li>
+    <li><a href="https://linux-audit.com/how-to-solve-an-expired-key-keyexpired-with-apt/" target="_blank" rel="noopener">How to solve an expired key (KEYEXPIRED) with apt</a></li>
+    <li><a href="https://askubuntu.com/questions/1259803/what-does-the-apt-key-adv-command-mean" target="_blank" rel="noopener">What does the apt-key adv command mean?</a></li>
+</ul>
+<p> </p>

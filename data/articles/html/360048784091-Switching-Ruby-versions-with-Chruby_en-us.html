@@ -1,5 +1,6 @@
-<p>Some <a href="https://circleci.com/docs/2.0/circleci-images/#next-generation-convenience-images" target="_blank" rel="noopener">convenience images</a> don't support using <code>rvm</code> or <code>rbenv</code>, such as the Andriod image. While a system Ruby is available, it may not be the version you need.</p>
-<p>If you encounter this you can utilize <a href="https://github.com/postmodern/chruby" target="_blank" rel="noopener">Chruby</a> to download the proper Ruby version and swap to utilizing it in the rest of your job steps.</p>
+<h2>Swap To Use Ruby Version Management Tools</h2>
+<p>Some <a href="https://circleci.com/docs/2.0/circleci-images/#next-generation-convenience-images" target="_blank" rel="noopener">convenience images</a> don't support using <code>rvm</code> or <code>rbenv</code>, such as the Android image. While a Ruby system is available, it may not be the version you need.</p>
+<p>If you encounter this you can utilize <a href="https://github.com/postmodern/chruby" target="_blank" rel="noopener">Chruby</a> to download the proper Ruby version and swap to utilizing it in the rest of your job steps. The following will work out of the box for the <code>circleci/android:api-29-node</code> Android image:</p>
 <pre style="background-color: #f3f3f3;">- run:
     name: install chruby
     command: |
@@ -13,5 +14,5 @@
     command: |
       echo 'source /usr/local/share/chruby/chruby.sh' &gt;&gt; $BASH_ENV
       echo 'chruby ruby-2.7.1' &gt;&gt; $BASH_ENV </pre>
-<p>The above installs Chruby, then installs Ruby version <code>2.7.1</code>, then sets that version to be used in the rest of the build. </p>
+<p>The above installs Chruby, then installs Ruby version <code>2.7.1</code>, then sets that version to be used in the rest of the build. While the above will work outright for the image listed above, adjustments may be needed depending on what environment you are trying to install on. If you need assistance with that you can reach out to the Support team and we can take a look.</p>
 <p>One thing to note is downloading and installing a version of Ruby takes a bit of time, so you may want to <a href="https://circleci.com/docs/2.0/caching/" target="_blank" rel="noopener">utilize caching</a> to speed up future builds that implement this solution.</p>

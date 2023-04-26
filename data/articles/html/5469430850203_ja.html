@@ -1,0 +1,2 @@
+<p>setup_remote_docker の後に下記の様な設定を行う事で問題を回避する事ができます。</p>
+<pre>- setup_remote_docker<br>    version: 20.10.14<br>- run: <br>    command: |<br>      ssh remote-docker echo "nameserver x.x.x.x" | ssh remote-docker sudo tee -a /etc/resolv.conf</pre>

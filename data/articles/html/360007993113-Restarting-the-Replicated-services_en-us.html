@@ -1,4 +1,18 @@
+<h1>Restarting KOTS Admin Console</h1>
 <p>Oftentimes, issues around installations refusing to stop/start, or upgrades failing, can be resolved by restarting the Replicated services:</p>
+<p> </p>
+<h2>CircleCI Server 3.x</h2>
+<ol>
+    <li>Make sure that you are connected to the Kubernetes cluster.</li>
+    <li>
+        <pre>kubectl get pods -n &lt;namespace&gt; | grep kots</pre>
+    </li>
+    <li>
+        <pre>kubectl delete pod &lt;kotsadm-(string)-(string)&gt; -n &lt;namespace&gt;</pre>
+    </li>
+</ol>
+<p> </p>
+<h2>CircleCI Server 2.x</h2>
 <ol>
     <li>SSH into the Services machine</li>
     <li>run the following</li>

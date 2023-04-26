@@ -5,12 +5,13 @@
 Error extracting tarball /tmp/workspace-layer-5cb8xxxx-xxxx-4499-9xxx-1aaa2943xxxxx04313xx: 
 signal: killed"
 </code></pre>
-<p>In this particular error, we can clearly see the process was gracefully killed with the `signal: killed` message. This is a guaranteed message that your container has exceeded its memory resource limits. Your error may or may not contain this message but have failed anyway in a similar way.</p>
-<p> You can follow the instructions in <a href="https://support.circleci.com/hc/en-us/articles/360043994872" target="_self">this article</a> to record the max memory usage of your job.</p>
+<p>In this particular error, we can clearly see the process was gracefully killed with the `signal: killed` message. This is a guaranteed message that your job has exceeded its memory resource limits. Your error may or may not contain this message but have failed anyway in a similar way.</p>
+<p>You can follow the instructions in <a href="https://support.circleci.com/hc/en-us/articles/360043994872" target="_self">this article</a> to record the max memory usage of your job.</p>
+<p>You can also view the "Resource" tab on your docker jobs to view memory usage.</p>
 <h2>Options to resolve:</h2>
 <ol>
     <li>Reduce tarball size. The larger the tarball, the more memory will be utilized while decompressing. If your workspace's physical size is near or over your container's memory limit (4gb by default), you can exceed it easily, especially if you have one or more databases also running.</li>
     <li>
-        <a href="https://circleci.com/support/premium-support/">Contact support</a> to inquire about upgrading your container's resource limits via the `resource_class` key in your config.yml. This option is already available to those on the "Performance plan"<br><a href="https://circleci.com/docs/2.0/configuration-reference/#resource_class" target="_blank" rel="noopener">https://circleci.com/docs/2.0/configuration-reference/#resource_class</a>
+        <a href="https://circleci.com/docs/configuration-reference#resourceclass" target="_self">Visit our docs</a> to inquire about upgrading your job's resource limits via the `resource_class` key in your config.yml. Free plans can use up-to large, while performance and scale can access higher. More information here: https://circleci.com/product/features/resource-classes/
     </li>
 </ol>

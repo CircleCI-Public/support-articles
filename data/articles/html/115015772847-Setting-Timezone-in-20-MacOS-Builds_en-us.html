@@ -1,4 +1,8 @@
-<p>Using the <code>TZ</code> environment key does not work on 2.0 macOS builds. In order to set the timezone, you'll need to add the following command to your configuration: </p>
+<h2>Problem</h2>
+<p>Using the <code>TZ</code> environment key does not work on 2.0 macOS builds.</p>
+<p> </p>
+<h2>Solution</h2>
+<p>In order to set the timezone, you'll need to add the following command to your configuration: </p>
 <pre><code class="hljs bash">      <span class="hljs-comment"># Set Timezone</span>
       - run:
           name: <span class="hljs-built_in">set</span> timezone

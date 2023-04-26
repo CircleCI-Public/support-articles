@@ -1,0 +1,27 @@
+<h1>What is a complete key rotation?</h1>
+<p>Token rotation of stored credentials includes removing any keys created on the original source application, creating a new token on the source application  and ends in updating your stored token on the CircleCI application.</p>
+<p> </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/11859488659227" alt="Screen_Shot_2023-01-06_at_4.27.37_PM.png"></p>
+<p><em>      Remember to visit the application where the token was created and delete the original token!</em></p>
+<p> </p>
+<p>As an example, if your team stores a Honeycomb API Key, and due to any announced recommendations to rotate these keys, such as the <a href="https://circleci.com/blog/january-4-2023-security-alert/" target="_self">security alert for CircleCI on January 4, 2023</a>, or simply planned key rotation schedules that your team agrees on, the Honeycomb API Key will need to be removed by visiting the Honeycomb application and the settings. </p>
+<p> </p>
+<h2>Steps</h2>
+<p>1. Create a new API token at the source.</p>
+<p>2. Update the token within the existing context and/or project environment variables on the CircleCI application. Our recommendation is to <a href="https://circleci.com/docs/api/v2/index.html#operation/addEnvironmentVariableToContext" target="_self">update these via the CircleCI V2 API for continuous pipeline access to the variable</a>. Deleting and recreating the token name on the UI is also an option.</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/11859436614811" alt="Screen_Shot_2023-01-06_at_4.25.50_PM.png"></p>
+<p>3. Delete the old API token at the source.</p>
+<p> </p>
+<p><strong><em>Note:</em> Regarding the sequence of these steps, please be aware that deleting the old API token after the update risks human error of only completing steps 1 &amp; 2.  Please ensure all three steps are completed. </strong>Pros to the above sequence: the pipeline will have continuous access to the referenced token. Deleting the API token immediately after creating the new API token may help in that the pipeline utilizing the API token will break. Cons: this sequence results in downtime if deleting the old API token at the source beforehand.</p>
+<h1> </h1>
+<h2>Additional Resources</h2>
+<p>You can find more information in our documentation below:</p>
+<ul>
+    <li><a href="https://circleci.com/docs/contexts/" target="_self">Contexts</a></li>
+    <li><a href="https://circleci.com/docs/set-environment-variable/" target="_self">Environment variables</a></li>
+</ul>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>

@@ -1,2 +1,5 @@
-<p>CircleCI の非公開インストールからユーザーの削除が必要な場合があります。 この操作を行なうには、サービスインスタンスに SSH で接続し、次のコマンドを実行します。</p>
-<pre><code>circleci dev-console(circle.http.api.admin-commands.user/delete-by-login-vcs-type! "github-username-of-user" :github)</code></pre>
+<h1>REPL commands to delete a user on the CircleCI Server installation</h1>
+<p>Sometimes it is necessary to remove users from your private installation of CircleCI. To do this, SSH into the services instance and run the following:</p>
+<pre><code>circleci dev-console
+(circle.http.api.admin-commands.user/delete-by-login-vcs-type! "github-username-of-user" :github)
+</code></pre>

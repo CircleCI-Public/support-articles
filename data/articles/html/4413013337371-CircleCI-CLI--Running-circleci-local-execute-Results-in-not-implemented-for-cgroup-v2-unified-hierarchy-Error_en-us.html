@@ -1,0 +1,14 @@
+<h1>Overview</h1>
+<p>When executing the command</p>
+<pre style="background-color: #f3f3f3;"><code>circleci local execute</code></pre>
+<p>you may get the following error if your version of Docker is using <span>cgroups v2:</span></p>
+<pre class="c-mrkdwn__pre" style="background-color: #f3f3f3;" data-stringify-type="pre"><code>Error:
+Unexpected environment preparation error: error looking up cgroup: not implemented for cgroup v2 unified hierarchy</code></pre>
+<p> </p>
+<h2>Solution</h2>
+<p><span>Please use cgroups v1 as we do not support cgroups v2 on our current version of circleci-cli at this time. You will need to downgrade and pin the circleci-cli tool to a previous version. More detailed instructions and discussion can be found on our <a href="https://github.com/CircleCI-Public/circleci-cli/issues/676" target="_blank" rel="noopener">CircleCI-Public / circleci-cli</a> page.</span></p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/local-cli/" target="_blank" rel="noopener">Using the CircleCI Local CLI</a></li>
+</ul>

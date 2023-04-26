@@ -1,4 +1,8 @@
-<p>The <strong>checkout </strong>step is a special convenience step which can not be changed.</p>
-<p>If you need to change how the checkout step retrieves your code you'll need to perform raw git commands <a href="https://circleci.com/docs/2.0/configuration-reference/#run" target="_blank" rel="noopener">using a run step</a>. From there you can customize the checkout process to suit your needs. Remember to remove the convenience <strong>checkout </strong>if adding your own custom <strong>run</strong> step checkout.</p>
-<p> </p>
-<p> </p>
+<h2>The <code>checkout</code> step</h2>
+<p><span><code>Checkout</code> is a special step used to check out source code to the configured <code>path</code>. (The path defaults to the working directory.<span>) It is more of a helper function designed to make checking out code easy for you.</span> </span></p>
+<p><span><span>The <code>checkout</code> step is a special convenience step in the form of a string and no additional attributes and it cannot be changed.</span></span></p>
+<h2>Modifying the checkout</h2>
+<p>If you need to change how the checkout step retrieves your code, you will need to perform raw git commands <a href="https://circleci.com/docs/2.0/configuration-reference/#run" target="_blank" rel="noopener">using a run step</a>. In this, you will be able to customize the checkout process to suit your needs.</p>
+<p>Example: </p>
+<pre style="background-color: #f3f3f3;"><span> - </span><span class="pl-ent">run</span><span>: </span><span class="pl-s">git clone -b "$CIRCLE_BRANCH" "$CIRCLE_REPOSITORY_URL"</span></pre>
+<p>Please remember to remove the convenience <code>checkout</code> step if adding your own custom <code>run</code> step to process the checkout.</p>

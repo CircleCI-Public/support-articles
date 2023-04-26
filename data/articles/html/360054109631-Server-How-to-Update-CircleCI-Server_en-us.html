@@ -1,10 +1,25 @@
+<h1>Updating your Server Installation</h1>
 <p>To update your <a href="https://circleci.com/enterprise/" target="_blank" rel="noopener">CircleCI Enterprise or server</a> you can follow the below steps. The process is simple and may take 15-20 minutes.</p>
 <p> </p>
+<h2>CircleCI Server 4.x</h2>
+<ol>
+    <li>Before upgrading, please create a <a href="https://circleci.com/docs/server/operator/backup-and-restore/" target="_blank" rel="noopener">Backup and Restore</a> point.</li>
+    <li>You can then follow the steps outlined <a href="https://circleci.com/docs/server/installation/upgrade-server-4" target="_blank" rel="noopener">in our docs</a> to guide you through the upgrade.</li>
+</ol>
+<pre class="highlight line-numbers language-shell" tabindex="0"><code class="language-shell" data-testid="code-snippet-highlight">helm <span class="token function">diff</span> upgrade circleci-server oci://cciserver.azurecr.io/circleci-server <span class="token parameter variable">-n</span><span class="token variable">$namespace</span><span class="token parameter variable">--version</span><span class="token operator">&lt;</span>version<span class="token operator">&gt;</span><span class="token parameter variable">-f</span><span class="token operator">&lt;</span>path-to-values.yaml<span class="token operator">&gt;</span><span class="token parameter variable">--username</span><span class="token variable">$USERNAME</span><span class="token parameter variable">--password</span><span class="token variable">$PASSWORD</span></code></pre>
+<pre>helm upgrade circleci-server oci://cciserver.azurecr.io/circleci-server -n $namespace --version &lt;version&gt; -f &lt;path-to-values.yaml&gt; --username $USERNAME --password $PASSWORD</pre>
+<p>To get the <code>&lt;version&gt;</code>, you can consult our <a href="https://circleci.com/server/changelog/" target="_blank" rel="noopener">changelog</a>.</p>
+<h2>CircleCI Server 3.x</h2>
+<ol>
+    <li>Before upgrading, please create a <a href="https://circleci.com/docs/server-3-operator-backup-and-restore/" target="_blank" rel="noopener">Backup and Restore</a> point.</li>
+    <li>Once a backup has been created, you can follow the instructions found <a style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" href="https://circleci.com/docs/server-3-upgrade/#upgrade-server-v3-x" target="_blank" rel="noopener">in our docs</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> via the KOTS Admin Console.</span>
+    </li>
+</ol>
+<p><img style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" src="https://support.circleci.com/hc/article_attachments/12979089015963" alt="Screenshot_2023-02-16_at_5.05.55_PM.png"></p>
+<h2>CircleCI Server 2.x </h2>
 <p><strong>1.</strong> While on the management console dashboard, click on "<strong>View Update</strong>".</p>
-<p> </p>
 <p><img src="https://support.circleci.com/hc/article_attachments/360079630251/server_update_1.png" alt="server_update_1.png"></p>
 <p><br><strong>2.</strong> Click on "<strong>Install Update</strong>". This will start updating your server installation.</p>
-<p> </p>
 <p><img src="https://support.circleci.com/hc/article_attachments/360079630271/server_update_2.png" alt="server_update_2.png"></p>
 <p> </p>
 <p><strong>Note</strong>:<br><strong>1.</strong> Before updating check the server changelog at <a href="https://circleci.com/server/changelog" target="_blank" rel="noopener">https://circleci.com/server/changelog</a><br><strong>2.</strong> Backup of your installation. Check instructions here: <a href="https://circleci.com/docs/2.0/backup/#backing-up-circleci-data" target="_blank" rel="noopener">https://circleci.com/docs/2.0/backup/#backing-up-circleci-data</a><br><strong>3.</strong> Make sure no job is running.</p>

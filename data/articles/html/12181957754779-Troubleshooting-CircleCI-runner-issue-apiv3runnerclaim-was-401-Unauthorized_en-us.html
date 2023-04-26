@@ -1,0 +1,11 @@
+<div class="p-rich_text_section">
+    <p data-renderer-start-pos="8723">When your runner job is queuing you should check your logs.</p>
+    <div class="p-rich_text_section">For container runner, you will find the container agent pod to have an error log of:</div>
+    <pre class="c-mrkdwn__pre" style="background-color: #f3f3f3; padding: 5px;" data-stringify-type="pre">error=Error calling CircleCI: the response from POST /api/v3/runner/claim was 401 (Unauthorized) (1 attempts)<br>mode=agent result=error service.name=container-agent service_name=container-agent</pre>
+    <div class="p-rich_text_section">For machine runner, you will see a similar log of:</div>
+    <pre class="c-mrkdwn__pre" style="background-color: #f3f3f3; padding: 5px;" data-stringify-type="pre">RRO[0016] error running task<br>error="unexpected error claiming task: server supplied detail: invalid bearer token (401-Unauthorized)"</pre>
+    <h2 data-renderer-start-pos="8723">Solutions</h2>
+    <p>To be able to resolve this issue if you should change your API token by generating a new token and updating it within your <strong>values.yaml</strong></p>
+    <h2 data-renderer-start-pos="8901">Outcome</h2>
+    <p>You should no longer see your jobs queuing without starting.</p>
+</div>

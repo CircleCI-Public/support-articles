@@ -1,8 +1,34 @@
-<p>If you want to see the complete list of the users on your server installation, you can leverage the below API endpoint. </p>
 <p> </p>
-<pre><span>&lt;circleci_url&gt;/api/v1/admin/users</span></pre>
-<p> <strong>Note</strong>: You should be an admin to run this endpoint.</p>
-<p>It will show you user name, VCS login ID,  suspended user flag, and a few other details as shown below:</p>
+<h1>Introduction</h1>
+<p>If you want to see the complete list of the users on your CircleCI server installation, you can leverage the below API to query these details which include:</p>
+<ul>
+    <li>Username</li>
+    <li>VCS Login ID</li>
+    <li>Suspended User Flag</li>
+    <li>Creation Timestamp</li>
+    <li>Admin Permissions that are scoped</li>
+    <li>Total Sign-in count</li>
+</ul>
+<h2>Prerequisites:</h2>
+<ul>
+    <li>CircleCI Server </li>
+    <li>Must be an admin to run this endpoint</li>
+</ul>
+<h2>Instructions</h2>
+<p>Use the following endpoint with your CircleCI instance URL to query:</p>
+<p><code>&lt;circleci_url&gt;/api/v1/admin/users</code></p>
+<p> </p>
+<h2>Outcome</h2>
+<p>It will show the user name, VCS login ID,  suspended user flag, and a few other details as shown below:</p>
+<p> </p>
 <p><img src="https://support.circleci.com/hc/article_attachments/360066448271/server_api_user.png" alt="server_api_user.png"></p>
-<p> </p>
+<h2>Additional Notes:</h2>
+<ul>
+    <li>This is for Server Only and is not available on the cloud product</li>
+</ul>
 <p>If you have any more questions, please submit a ticket to <a href="https://support.circleci.com/hc/en-us" target="_self">Support</a> or write to <a href="mailto:support@circleci.com">support@circleci.com</a>.</p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360048310252" target="_blank" rel="noopener">[Server] How to See License Details?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360052616031" target="_blank" rel="noopener">[Server] How to See All the Projects?</a></li>
+</ul>

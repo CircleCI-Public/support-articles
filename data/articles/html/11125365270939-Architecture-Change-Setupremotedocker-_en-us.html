@@ -1,0 +1,28 @@
+<h1>Overview</h1>
+<p><span>CircleCI is making </span><a class="c-link c-link--focus-visible" tabindex="-1" href="https://discuss.circleci.com/t/setup-remote-docker-architecture-change/45303" target="_blank" rel="noopener noreferrer" data-stringify-link="https://discuss.circleci.com/t/setup-remote-docker-architecture-change/45303" data-sk="tooltip_parent" data-remove-tab-index="true">changes </a><span>to the underlying architecture of how the </span><a class="c-link c-link--focus-visible" tabindex="-1" href="https://circleci.com/docs/building-docker-images" target="_blank" rel="noopener" data-stringify-link="https://circleci.com/docs/building-docker-images" data-sk="tooltip_parent" data-remove-tab-index="true"><code class="highlighter-rouge language-plaintext" style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">setup_remote_docker</code> feature </a><span>works on our platform. </span></p>
+<ul class="p-rich_text_list p-rich_text_list__bullet" data-stringify-type="unordered-list" data-indent="0" data-border="0">
+    <li data-stringify-indent="0" data-stringify-border="0">From within your job, if you are using the Docker CLI or SDK (set to read the configuration of the Docker client from the environment) -  <strong>no changes are required</strong>.</li>
+    <li data-stringify-indent="0" data-stringify-border="0">If you have a custom script that refers to the Docker environment variables <code>DOCKER_TLS_VERIFY</code> or <code>DOCKER_CERT_PATH</code> - these will no longer be set. <br>In the new architecture, the Docker daemon is available on the standard UNIX socket, and TLS certificates are no longer required.</li>
+</ul>
+<p> </p>
+<h2><span>User Impact</span></h2>
+<ul>
+    <li>The new architecture should result in faster job execution for the vast majority of users who use <code class="highlighter-rouge language-plaintext" style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">setup_remote_docker</code>.</li>
+    <li>The architecture is significantly simplified and should improve the reliability of jobs that use <code class="highlighter-rouge language-plaintext" style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">setup_remote_docker</code>.</li>
+</ul>
+<h2><span><br>Recommended Docker Versions</span></h2>
+<p><span>If your projects use the following docker versions, CircleCI recommends using the <strong>default</strong> version since it is now being kept <a href="https://discuss.circleci.com/t/default-docker-version-for-remote-docker-jobs-changing-on-september-6/45157/2">up to date </a>:<br></span></p>
+<p class="wysiwyg-text-align-left wysiwyg-indent4"><span><br>docker-17.03.0-ce<br>docker-17.05.0-ce<br>docker-17.06.0-ce<br>docker-17.07.0-ce<br>docker-17.09.0-ce<br>docker-17.11.0-ce<br>docker-17.12.1-ce<br>docker-18.03.0-ce<br>docker-18.03.1-ce<br>docker-18.05.0-ce<br>docker-18.06.0-ce<br>docker-18.09.3<br>docker-19.03.8<br>docker-19.03.12<br>docker-19.03.13<br>docker-19.03.14<br>docker-20.10.2<br>docker-20.10.6<br>docker-20.10.7<br>docker-20.10.11<br>docker-20.10.12<br><br></span></p>
+<p class="wysiwyg-text-align-left"><span>This is to avoid a possible risk of incompatibility with the more current software on the new architecture and the older version of Docker being specified in the job’s configuration file.</span></p>
+<p class="wysiwyg-text-align-left"> </p>
+<h2 class="wysiwyg-text-align-left"><span>Exclusions</span></h2>
+<p><span>At the moment, this rollout excludes jobs that use <a href="https://circleci.com/docs/docker-layer-caching">DLC </a>in tandem with <code class="highlighter-rouge language-plaintext" style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">setup_remote_docker</code>. <strong>Those jobs will be included in the rollout at a later date.</strong></span></p>
+<p> </p>
+<p><span>If you are seeing issues with jobs that use the <code>setup_remote_docker</code> feature, please submit a support ticket at </span><a href="https://support.circleci.com/">https://support.circleci.com/</a></p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/115015808708-setup-remote-docker-Is-Slow-To-Spin-Up">setup_remote_docker Is Slow To Spin Up</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360007162153-Debugging-the-Remote-Docker-Environment">Debugging the Remote Docker Environment</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360050448351-Enabling-Docker-Experimental-Features-on-Remote-Docker">Enabling Docker Experimental Features on Remote Docker</a></li>
+</ul>

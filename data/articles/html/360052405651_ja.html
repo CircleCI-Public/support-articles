@@ -1,0 +1,6 @@
+<p>CircleCI API v2 のドキュメントの例で示しているように、API 呼び出しに対して <code style="background-color: #f3f3f3;">Basic</code> 認証を使用できます。</p>
+<p><a href="https://circleci.com/docs/api/v2/#section/Authentication/basic_auth">https://circleci.com/docs/api/v2/#section/Authentication/basic_auth</a></p>
+<p>この場合、<code style="background-color: #f3f3f3;">Basic</code><span> </span>認証のヘッダー内の API トークンは、呼び出しに渡す前に <span>Base64 でエンコードする必要があります。<span> </span> そのためには、次のようなコマンドを実行します。</span></p>
+<pre dir="ltr" style="background-color: #f3f3f3;">echo -n &lt;personal-api-token&gt; | base64</pre>
+<p dir="auto">そして、Base64 でエンコードされた出力を curl に渡します。その例は次のようになります。</p>
+<pre dir="ltr" style="background-color: #f3f3f3;">curl --request GET \  --url https://circleci.com/api/v2/workflow/&lt;workflow-id-here&gt;/job \  --header 'authorization: Basic &lt;base64-encoded-token-here&gt;'</pre>

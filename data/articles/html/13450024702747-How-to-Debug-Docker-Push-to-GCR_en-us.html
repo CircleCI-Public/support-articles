@@ -1,0 +1,21 @@
+<h1>How to debug Docker Push to GCR</h1>
+<p>Sometimes, when pushing a built docker image to the Google Container Registry (GCR), it can fail with the following error:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">denied: Unable to write blob sha256:29416d5f02a649cf688b551c289c535c2177de6263d43c5279db2cba514315bc</pre>
+<p>Here are some steps to get your docker pushes working correctly. </p>
+<p> </p>
+<h2>Step 1 - Check DLC Usage</h2>
+<p>In some cases, this can be due to a broken DLC cache. You can verify if you are using DLC by viewing the <code>Setup Remote Docker Engine</code> step or under the <code>Spin
+        Up Environment</code> step if using Docker with Remote Docker or the Machine Executor respectfully. </p>
+<p><img src="https://global.discourse-cdn.com/circleci/optimized/3X/2/6/260d09838df280f953d334f33fd0b79bdf2c5c86_2_690x228.png" alt="image"></p>
+<p><img src="https://support.circleci.com/hc/article_attachments/13449682549019" alt="Screenshot_2023-03-06_at_4.54.43_PM.png"></p>
+<p>You can simply set <code>docker_layer_cache: false</code> for 3 days on a project, which will clear all layers. If builds have been succeeding without DLC, you can re-enable DLC after the 3 days. </p>
+<p> </p>
+<h2>Step 2 - Check IAM Permissions</h2>
+<p><span>GCR and a few docker registry services have </span><a href="https://cloud.google.com/container-registry/docs/access-control" target="_blank" rel="noopener">IAM settings</a><span> to control actions. For GCR, it requires some permissions to push the docker image to GCR. You can see the example settings in the following GCR doc. </span></p>
+<p><span>Adding the following IAM permissions can provide a positive experience:</span></p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><code>storage.objects.delete
+storage.objects.update</code></pre>
+<p> </p>
+<h2>Step 3 - Check Registry Configuration </h2>
+<p>Registries also have some security features, and it sometimes causes an issue. In this example, the<span> </span><code>Google Cloud Storage (GCS)</code><span> </span><a href="https://cloud.google.com/storage/docs/bucket-lock">Retention Policy</a>, which prevents objects in the bucket from being deleted or modified for a specified minimum period of time after they are uploaded, caused this issue when uploading a large image.</p>
+<p>When pushing a blob object that is slightly larger like 400MB in size, the docker push command uploads the data in smaller pieces. However, the<span> </span><code>Retention Policy</code><span> </span>does not allow modifications to the file in GCS and it declines the second request causing the docker push to fail. In this case, you will need to disable the Retention Policy.</p>

@@ -1,0 +1,9 @@
+<h2><span>SSH not allowed with this context</span></h2>
+<p><span>If your project's config.yml file includes <a href="https://circleci.com/docs/contexts/" target="_blank" rel="noopener">contexts</a> that are incorrectly set up or you do not have permission to access, you might see this error message pop up in the right bottom corner of the page when trying to <a href="https://support.circleci.com/hc/en-us/articles/5170139355547" target="_blank" rel="noopener">re-run a job with SSH</a>.</span></p>
+<p class="wysiwyg-text-align-center"><img src="https://support.circleci.com/hc/article_attachments/12969448295067" alt="Screenshot_2023-02-16_at_17.52.43.png"></p>
+<p><span>If this is the case, the SSH re-run will not start.</span></p>
+<h2><span>Troubleshooting</span></h2>
+<p><span><span style="font-weight: 400;">As a first step, if you are using <a href="https://circleci.com/docs/contexts/#restrict-a-context" target="_self" rel="undefined">restricted contexts</a>, please confirm that your user is part of the security group that has access to every context in the config file.<br></span></span></p>
+<p><span><span style="font-weight: 400;">Please verify that every context and environment variable within the context, referenced in the config file, are set up in the organization settings. You can find the contexts under <code>Organization Settings &gt; Contexts</code>.</span></span></p>
+<p><span><span style="font-weight: 400;">Please make sure that every context and context environment variable have the exact same name in the config.yml as the name displayed on the contexts list in CircleCI. Look out for capitalization and blank spaces before and after the names.</span></span></p>
+<p><span><span style="font-weight: 400;">Once this is done, please trigger a new build. This will now allow you to re-run the job with SSH in this build.</span></span></p>

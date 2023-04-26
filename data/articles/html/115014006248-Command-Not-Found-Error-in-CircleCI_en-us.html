@@ -1,0 +1,30 @@
+<h1><span class="wysiwyg-font-size-x-large">Troubleshooting Guide for "Command not found" Error</span></h1>
+<p>Example of error for CircleCI builds when using two docker images:</p>
+<p><code>/bin/bash: {name_of_command}: command not found</code></p>
+<p>Below is example `config.yml` file that uses `circleci/python:3.6.4` as primary image and `circleci/postgres:9.6.2` as an additional image that will run in a separate<span> container with the DB service being available via port </span><code>27017</code><span> (or whatever port you want to use) in the primary container.</span></p>
+<pre style="background-color: #f3f3f3;">version: 2.1
+orbs:
+  slack: circleci/slack@4.0.0
+
+jobs:
+  build:
+    working_directory: ~/circleci-demo-python-django
+    docker:
+      - image: circleci/python:3.6.4
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+          DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
+      - image: circleci/postgres:9.6.2
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test  
+    steps:
+      - checkout
+      - run: postgres -V</pre>
+<p> </p>
+<p> </p>
+<p>All of your commands will run in the first container that is listed (primary container). This is typically <strong>not</strong> the database container, which means that the <code>postgres</code> cli is likely not installed in the primary container. The same can happen for mysql and mongo.</p>
+<p>In these cases, you can install the client using <code>sudo pip install</code> or the relevant package manager for the distro your image is running.</p>
+<p>example:</p>
+<pre>- run: sudo pip install postgressql</pre>
+<p>More details can be found on Discuss here: <a href="https://discuss.circleci.com/t/bin-bash-mongo-command-not-found/16218/6?u=tom" target="_blank" rel="noopener">https://discuss.circleci.com/t/bin-bash-mongo-command-not-found/16218/6</a></p>

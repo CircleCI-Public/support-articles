@@ -1,0 +1,10 @@
+<p>Images based on the Arm architecture, such as <span>Raspberry Pi</span> images, need to be built using the Arm resources rather than the default x86_64 resources that the Docker executor uses. This is because different binaries are required for different platforms.</p>
+<h2 data-renderer-start-pos="7432">Solutions:</h2>
+<ul class="ak-ul" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="7446">Add resource_class: arm.medium to your executor</p>
+    </li>
+</ul>
+<p data-renderer-start-pos="7610">You should now be able to build on arm.</p>
+<h2 data-renderer-start-pos="7909">Additional Resouces </h2>
+<p data-renderer-start-pos="7909">If you’d like to run jobs on Arm, check out the <a href="https://github.com/CircleCI-Public/arm-preview-docs" target="_self">Arm preview documentation</a>.</p>

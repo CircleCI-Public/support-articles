@@ -1,0 +1,13 @@
+<ol dir="auto" type="1">
+    <li>Flakiness is defined on a rolling 14-day window.</li>
+    <li>
+        <code>times_flaked</code><span> </span>is the sum of all flakes detected for a specific test over the last 14 days, qualified by the job it’s been run in, so if Test A is run in Job 1 and Job 2, those are kept as separate counts
+    </li>
+    <li>
+        <span> Is the `times_flaked` counter collected over a specific timespan? e.g: past day, week? Or is it an all time aggregate? For the count of all the tests that have flaked, is this an all time aggregate?</span>To answer these questions: these are both collected over the most recent 14 day timespan; we delete any records that have a workflow<span> </span><code>created_at</code><span> </span>timestamp of older than 14 days
+    </li>
+    <li>So long as new workflows are created that flake on the same test, that workflow<span> </span><code>created_at</code><span> </span>timestamp will be updated</li>
+</ol>
+<p dir="auto"><em>Therefore</em></p>
+<p dir="auto">If the customer fixes the flaky test, and it doesn’t flake for 14 days, we will no longer flag it as flaky.</p>
+<p dir="auto">If the customer stops running the test, after 14 days, we will no longer flag it as flaky.</p>

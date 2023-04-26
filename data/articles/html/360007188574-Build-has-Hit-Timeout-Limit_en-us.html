@@ -1,0 +1,28 @@
+<h1>Timeout Limit</h1>
+<p>CircleCI has a built-in <strong>10 minute</strong> no-output timeout. This means that if it has been 10 minutes since the last output, the build will be canceled and stopped.</p>
+<p>This can cause users to encounter issues where they intend for a part of their build to continue beyond 10 minutes without giving output, but the system kills the process/job.</p>
+<h2> </h2>
+<h2>Adjusting the timeout</h2>
+<p>The <code style="background-color: #f3f3f3;">no_output_timeout</code> parameter for <a href="https://circleci.com/docs/2.0/configuration-reference/#run">run</a> gives users the option to change the no-output timeout from the default 10 minutes to a user-specified timeout.</p>
+<p> </p>
+<p>For example, if we have a run step as follows:</p>
+<pre style="background-color: #f3f3f3;">- run: <br>    command: . ./ourlongscript.sh </pre>
+<p> </p>
+<p>If we expect our script will take a while to complete execution, we can extend the no-output timeout as follows:</p>
+<pre style="background-color: #f3f3f3;">- run: <br>    command: . ./ourlongscript.sh<br>    no_output_timeout: 30m</pre>
+<p> </p>
+<p>The value set for no_output_timeout can be in hours, minutes or seconds - a digit followed by h, m or s respectively. Partial times can also be used, like 1.5h. Please see the examples below:</p>
+<pre style="background-color: #f3f3f3;">no_output_timeout: 30s<br>no_output_timeout: 30m<br>no_output_timeout: 3h<br>no_output_timeout: 1.5h<strong><br></strong></pre>
+<p> </p>
+<h2>Additional Notes:</h2>
+<ul>
+    <li>There are cases when a job may run for longer than the timeout limit (a common case being test runners not exiting).</li>
+    <li>This will not override your build time limits enforced by your organization's plan.</li>
+</ul>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/4410707277083-Context-deadline-exceeded-after-1-hour-Build-timed-out-Free-tier-only-" target="_blank" rel="noopener">Context deadline exceeded after 1 hour - Build timed out (Free tier only)</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/4411204604059-Automatically-cancel-build-after-set-amount-of-time" target="_blank" rel="noopener">Automatically cancel build after set amount of time</a></li>
+</ul>
+<p> </p>

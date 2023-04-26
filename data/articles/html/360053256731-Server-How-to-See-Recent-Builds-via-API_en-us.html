@@ -1,0 +1,10 @@
+<p> </p>
+<h1>Overview</h1>
+<p>You can leverage an admin API endpoint to see recent builds on your CircleCI Server.</p>
+<h2>
+    <br>Prerequisites
+</h2>
+<p><br>You need to be <strong>an admin user</strong> on the Server instance.<br>From there, please generate a user API token.<br><br>For Server &gt;= 3.x, visit https://app.&lt;server domain&gt;/settings/user/tokens to generate a user API token.</p>
+<h2>Usage</h2>
+<p>You can leverage the admin API endpoint as follows:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;"># to see the first 10 builds<br>$ curl -H "Circle-Token: &lt;user API token&gt;" \<br>    https://&lt;server domain&gt;/api/v1/admin/recent-builds\?limit\=10<br><br># to see only running builds<br>$ curl -H "Circle-Token: &lt;user API token&gt;" \<br>    https://&lt;server domain&gt;/api/v1/admin/recent-builds\?status\=running<br><br># to see first 10 queued builds<br>$ curl -H "Circle-Token: &lt;user API token&gt;" \<br>    https://&lt;server domain&gt;/api/v1/admin/recent-builds\?status\=queued\&amp;limit\=10</pre>

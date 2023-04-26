@@ -1,0 +1,11 @@
+<h2>概要</h2>
+<p>"Unregistered User「未登録ユーザー"」は、CircleCI がビルドをトリガーしたけれども CircleC Iにサインアップしていないユーザーを表示する方法です。これらのユーザーは、未登録であるにもかかわらず、"Active Users「アクティブユーザー」"としてカウントされます。</p>
+<h2>未登録ユーザーが実際に誰であるかを確認するにはどうすればよいですか？</h2>
+<p>"Unregistered User「未登録ユーザー"」は CircleC Iに登録していないため、誰がビルドをトリガーしたか確認する事ができません。"Unregistered User「未登録ユーザー"」が実際にどのユーザーを参照しているかを確認する最も簡単な方法は、コミットハッシュから辿る方法になります。ビルドページの右上に、コミッターの名前とコミットハッシュが表示されます。これをクリックすると、GitHub または Bitbucket のコミットにリンクしたURLにアクセスできます。そこから、コミットの作者を見ることができます。</p>
+<p class="wysiwyg-text-align-center"><img src="https://support.circleci.com/hc/article_attachments/360063892892/mceclip1.png" alt="mceclip1.png"></p>
+<h2 class="wysiwyg-text-align-left">未登録ユーザーを登録するになるにはどうしたらいいですか？</h2>
+<p>ユーザーを登録するために、GitHub または Bitbucket のログインで <a href="https://circleci.com/ja/signup/" target="_self">CircleCI にサインアップ</a>する必要があります。ビルドを見る為に該当のプロジェクトをフォローする必要があります。</p>
+<h2 class="wysiwyg-text-align-left">未登録ユーザーがCircleCIに登録した場合、表示されるのでしょうか？</h2>
+<p>CircleCI は未登録ユーザーに結びつけるのに情報を保持していないため、これまで CircleCI で未登録になったユーザーが、ビルドやシートに関連する「未登録ユーザー」のエンティティを置き換えることはありません。このユーザーがまだユーザーシートを取っている場合、「アクティブユーザー」がリセットされる次の課金サイクルで削除されます。  </p>
+<h2 class="wysiwyg-text-align-left">その他に「未登録ユーザー」としてカウントされるものは何ですか？</h2>
+<p><a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-project-api-token" target="_self">CircleCI プロジェクトの API トークン</a>を介して起動されたビルドは、「未登録ユーザー」としてカウントされます。</p>

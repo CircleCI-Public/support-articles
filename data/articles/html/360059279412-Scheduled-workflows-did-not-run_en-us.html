@@ -1,9 +1,0 @@
-<h3>Scheduled workflows no longer running</h3>
-<p>If you notice that scheduled workflows that were previously triggered according to the schedule specified in your <code>config.yml</code> suddenly stopped running, you'll need to check the last <strong>non-scheduled</strong> build attempt on the related branch (triggered by a push, a pull-request or via the CircleCI API).</p>
-<p>If that build attempt resulted in a <code>Build Error</code> failure due to a <code>Config Processing Error</code> (which happens if the configuration file is invalid), <strong>then all currently scheduled workflows will get unscheduled</strong>.</p>
-<p>To restore the schedule you'll need to trigger a new build (with a valid configuration file) on the related branch.</p>
-<p> </p>
-<h3>Gap in the scheduled workflows runs</h3>
-<p>In case you see a gap in the scheduled workflows runs (they stopped running for a period of time, and then started running again), this means that at some point a build was triggered with an invalid configuration file which caused the situation described above.</p>
-<p>Then another build was subsequently triggered with a valid configuration file, and the schedule was restored.</p>
-<p> </p>

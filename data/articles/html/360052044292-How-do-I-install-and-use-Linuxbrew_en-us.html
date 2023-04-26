@@ -1,5 +1,6 @@
-<p>You may encounter a situation where you are using one of our CircleCI convenience images and you need to utilize Homebrew/Linuxbrew and it isn't installed. </p>
-<p>You can add the following run command before trying to install anything with <code>brew</code> and it will ensure its installed and set for the rest of the job.</p>
+<h1>Install Linuxbrew in Run Step</h1>
+<p>You may encounter a situation where you are using one of our CircleCI convenience images and you need to utilize Homebrew/Linuxbrew and it isn't installed.</p>
+<p>You can add the following run command before trying to install anything with <code style="background-color: #f3f3f3;">brew</code> and it will ensure it's installed and set for the rest of the job.</p>
 <pre style="background-color: #f3f3f3;">- run:
     name: Install and set Linuxbrew
     command: |
@@ -9,3 +10,8 @@
       echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin/:$PATH"' &gt;&gt; $BASH_ENV
       echo 'export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"' &gt;&gt; $BASH_ENV
       echo 'export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"' &gt;&gt; $BASH_ENV</pre>
+<p> </p>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://brew.sh/" target="_blank" rel="noopener">Homebrew</a></li>
+</ul>

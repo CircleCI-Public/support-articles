@@ -1,2 +1,9 @@
-<p>Occasionally, Makefile commands won't behave as expected within a Docker image - for example, creating multiple directories with <code>mkdir -p build/{assets,bin}</code> will produce a directory named <code>{assets,bin}/</code> rather than two directories (<code>assets/</code> and <code>bin/</code>). This is typically because <code>make</code> does not know which shell to use, defaulting to one that does not handle the command parameters as expected. Your Makefile should have the following line added to ensure bash is used:</p>
-<pre>SHELL := /bin/bash</pre>
+<h1>Default Shell</h1>
+<p>Occasionally, Makefile commands won't behave as expected within a Docker image - for example, creating multiple directories with <code style="background-color: #f3f3f3;">mkdir -p build/{assets,bin}</code> will produce a directory named <code style="background-color: #f3f3f3;">{assets,bin}/</code> rather than two directories (<code style="background-color: #f3f3f3;">assets/</code> and <code style="background-color: #f3f3f3;">bin/</code>). This is typically because <code style="background-color: #f3f3f3;">make</code> does not know which shell to use, defaulting to one that does not handle the command parameters as expected. Your step in <code style="background-color: #f3f3f3;">.circleci/config.yml</code> should have the following line added to ensure bash is used:</p>
+<pre style="background-color: #f3f3f3;">-run:<br>   <span style="background-color: #ffff00;">shell: /bin/bash</span><br>   command: mkdir -p build/{assets,bin}</pre>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/configuration-reference#default-shell-options" target="_blank" rel="noopener">Default shell options</a></li>
+    <li><a href="https://github.com/moby/moby/issues/32593#:~:text=I%20find%20it%27s%20the%20difference%20between%20bash%20and%20sh%2C%20so%20you%20can%20write%20the%20Dockerfile%20as%20RUN%20/bin/bash%20%2Dc%20%22mkdir%20%2Dp%20/path/to/dir/dirname%7B1..8%7D%22%20to%20get%20the%20result%20you%20want." target="_blank" rel="noopener">incremental mkdir command not working in dockerfile</a></li>
+</ul>

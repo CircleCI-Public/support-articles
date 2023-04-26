@@ -1,0 +1,26 @@
+<h1>Overview</h1>
+<p>Ubuntu 20.04 images set <code style="background-color: #f3f3f3;">$BASH_ENV</code> in a way that they can not be overridden via the <code style="background-color: #f3f3f3;">environment</code> parameter.</p>
+<p>For example, the following code will not change the <code style="background-color: #f3f3f3;">$PATH</code></p>
+<pre style="background-color: #f3f3f3;"><code>steps:
+  - run:
+      environment:
+        PATH: /usr/local/bin
+</code></pre>
+<pre style="background-color: #f3f3f3;"><code>jobs:
+  build:
+    environment:
+        PATH: /usr/local/bin
+</code></pre>
+<p> </p>
+<h2>Solution</h2>
+<p>To work around this issue, customers can add an export step at the top of the <code>run</code> step where the environment variable is used</p>
+<pre style="background-color: #f3f3f3;"><code>- run: |
+    export PATH=/usr/local/bin
+    # additional commands
+</code></pre>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">Using Environment Variables</a></li>
+    <li><a href="https://circleci.com/docs/2.0/env-vars/#using-parameters-and-bash-environment" target="_blank" rel="noopener">Using parameters and bash environment</a></li>
+</ul>

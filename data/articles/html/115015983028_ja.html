@@ -1,5 +1,0 @@
-<p>CircleCI 2.0 では、<a href="https://circleci.com/docs/2.0/ios-codesigning/#nav-button" target="_blank" rel="noopener">コードの署名のドキュメント</a>で説明しているように、コード署名でサポートされている唯一の方法は、Fastlane Match を使用することです。</p>
-<p><strong>メモ：</strong><code>fastlane match</code> を正しく動作させるには、<code>Fastfile</code> で <code>setup_circle_ci</code> を <code>before_all</code> に追加する<em>必要があります</em>。これにより、一時的な Fastlane キーチェーンが確実に使用されます。</p>
-<p>「コード署名エラー：プロファイルが存在しません」 または 「プロビジョニングプロファイルが見つかりません」 というエラーが表示される場合、キーチェーンのロックが解除されていないことが考えられます。</p>
-<p>ビルドの内部から <code>security find-identity -v -p codesigning</code> を実行すると、コード署名の認証情報の現在のステータスが表示されます。</p>
-<p> </p>

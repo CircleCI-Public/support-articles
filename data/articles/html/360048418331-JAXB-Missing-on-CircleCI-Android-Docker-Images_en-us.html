@@ -1,5 +1,8 @@
-<p>On August 17, 2020, the CircleCI Android Docker convenience images were upgraded from Java 8 to Java 11.</p>
-<p>You can read more about that announcement here:</p>
-<p><a href="https://discuss.circleci.com/t/android-convenience-image-moving-to-java-v11-on-august-17th/36601">https://discuss.circleci.com/t/android-convenience-image-moving-to-java-v11-on-august-17th/36601</a></p>
-<p>Because Java 11 no longer included JAXB, this can cause errors in builds. The following article can help describe how to enable JAXB for projects now that the Android images are running on Java 11:</p>
-<p><a href="https://www.jesperdj.com/2018/09/30/jaxb-on-java-9-10-11-and-beyond/">https://www.jesperdj.com/2018/09/30/jaxb-on-java-9-10-11-and-beyond/</a></p>
+<h1>Removal of Java EE Modules</h1>
+<p>On August 17, 2020, the CircleCI Android Docker convenience images were upgraded from Java 8 to Java 11. You can read more about that announcement here: <a href="https://discuss.circleci.com/t/android-convenience-image-moving-to-java-v11-on-august-17th/36601" target="_blank" rel="noopener">Android Convenience Image Moving to Java v11 on August 17th</a>.</p>
+<p>Since Java 11 no longer includes JAXB, this causes errors in builds. The following article can help describe how to enable JAXB for projects now that the Android images are running on Java 11: <a href="https://www.jesperdj.com/2018/09/30/jaxb-on-java-9-10-11-and-beyond/" target="_blank" rel="noopener">JAXB on Java 9, 10, 11 and beyond</a>.</p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://blogs.oracle.com/javamagazine/post/its-time-to-move-your-applications-to-java-17-heres-why-and-heres-how#:~:text=The%20biggest%20change%20in%20JDK%2011%20was%20the%20removal%20of%20Java%20EE%20modules.%20Java%20EE%20modules%20such%20as%20JAXB%2C%20mentioned%20earlier%2C%20are%20used%20by%20many%20applications." target="_blank" rel="noopener">More about Java deprecations and feature removals</a></li>
+</ul>

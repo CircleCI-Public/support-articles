@@ -1,15 +1,16 @@
-<p>Windows ジョブでリモート デスクトップ (RDP) セッションに接続するには、以下の手順を実行します。</p>
+<p>Windowsのマシンを利用して Remote Desktop (RDP) セッションに接続するには、以下の手順に従います。</p>
 <ol>
-    <li>Windows ジョブを選択し、<a href="https://circleci.com/docs/ja/2.0/ssh-access-jobs/" target="_self"><strong>[Rerun job with SSH (SSH でジョブを再実行する)]</strong></a> を選択します。</li>
-    <li>SSH セッションにログインし、以下のコマンドを使用してユーザー パスワードを変更します。
+    <li>Windowsジョブを選択し、<a href="https://circleci.com/docs/ja/2.0/ssh-access-jobs/#steps" target="_self">Rerun Job with SSH</a> を選択します。</li>
+    <li><span>ジョブ出力に 『Enable SSH』に コンテナの IP アドレスが表示されるので、展開します。</span></li>
+    <li>SSH セッションにログインし、次のコマンドでユーザーパスワードを変更します。<br>
         <pre>passwd</pre>
-        <strong>注: </strong>Windows では複雑なパスワードの使用が必須なため、パスワードの強度が不十分な場合は「Try Again (もう一度やり直してください)」と表示されます。 <a href="https://passwordsgenerator.net" target="_self">ランダムに生成される安全なパスワード</a>の使用を検討してください。
+        <strong>注意：</strong>Windows は複雑なパスワードが必要です。パスワードが十分に強くない場合、"Try Again "を返します。<a href="https://passwordsgenerator.net" target="_self">ランダムに生成された安全なパスワード</a>を使用することを検討してください。<strong><br></strong>
     </li>
-    <li>ローカル マシンで以下のコマンドを実行して、SSH ポートフォワーディングを設定します。
+    <li>ローカルマシンで以下を実行し、SSH ポートフォワーディングが行える様にします。<span>&lt;windows job ip&gt; を手順 </span>2 で取得したコンテナの IP に置き換えてください。<br>
         <pre><span>ssh -fN -L 3390:localhost:3389 -p 54782 &lt;windows job ip&gt;</span></pre>
     </li>
-    <li>リモート デスクトップ アプリ (Windows に付属しています。ない場合は、<a href="https://apps.apple.com/jp/app/microsoft-remote-desktop/id1295203466?mt=12" target="_self">Mac App Store</a> からダウンロードできます) を起動して、以下のポートに接続します。
+    <li>Remote Desktop アプリ（Windowsに付属、またはMac App Storeからダウンロード）を開き、以下に接続します。<br>
         <pre><span>localhost:3390</span></pre>
     </li>
-    <li>ユーザー名 "circleci" と手順 2 で設定したパスワードを使用してログインします。</li>
+    <li>ユーザー名「circleci」、手順 3 で設定したパスワードでログインします。</li>
 </ol>

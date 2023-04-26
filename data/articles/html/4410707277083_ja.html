@@ -1,0 +1,25 @@
+<p>Freeプランのユーザーは、ビルドが1時間以上かかった場合、タイムアウトが発生する恐れがあります。</p>
+<p>この場合は、以下のようなエラーが出ます。</p>
+<p><span> </span></p>
+<pre><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>Try out a larger resource class or running tests in parallel to speed up job execution. Upgrade your pricing plan to take advantage of longer max job runtimes.<br><br>context deadline exceeded</span></pre>
+<p><span><br>具体には、以下の画面が見られます。<br><br><img src="https://support.circleci.com/hc/article_attachments/4411086766491/Screen_Shot_2021-11-24_at_17.44.03.png" alt="Screen_Shot_2021-11-24_at_17.44.03.png"></span></p>
+<p> </p>
+<p><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span>プランの変更に関わり、Freeプランのビルドは最大実行時間が1時間に制限されています。</p>
+<p><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>プランのアップグレードになりますと、より長い最大実行時間の利用ができるようになり、他の改善点もあります。<br><br></span></p>
+<p>Freeプランを継続する場合、より大きなリソースクラスに変更すると1時間以内にビルドを完了させる一つの方法です。例えば、FreeプランでのビルドはDockerとMachine Executorでも`large`のリソースクラスが利用できます。</p>
+<p>より大きなリソースクラスの使用の場合、増加のCPUとメモリにアクセスするため、ビルド時間の<span>短縮</span>ができます。</p>
+<p><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>リソースクラスについての関連情報はこちらにご覧ください。<br></span><a href="https://circleci.com/docs/ja/2.0/executor-types/#available-docker-resource-classes">https://circleci.com/docs/ja/2.0/executor-types/#available-docker-resource-classes</a></p>
+<p> </p>
+<p><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>Largeのリソースクラスに使用の設定に関しては、以下のサンプルコードにご参考ください。</span></p>
+<pre><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>    docker:</span><br><span>      - image: ubuntu:bionic</span></pre>
+<p><span class="c-mrkdwn__br" data-stringify-type="paragraph-break">↓<br></span></p>
+<pre><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>    docker:</span><br><span>      - image: ubuntu:bionic</span><br><span>    resource_class: large</span></pre>
+<p><br>プランと使用可能なリソースクラスについての詳細は、こちらのページでご確認ください。<br><a href="https://circleci.com/ja/pricing/">https://circleci.com/ja/pricing/</a></p>
+<p>さらに、ビルド時間の短縮もう一つの方法は、並列処理の利用をおすすめします。こちらはテストの実行に関することに対して特に有効です。<br><br></p>
+<p>並列処理の利用<span>に関しては、以下のサンプルコードにご参考ください。</span></p>
+<pre><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>    docker:</span><br><span>      - image: ubuntu:bionic</span></pre>
+<p><span class="c-mrkdwn__br" data-stringify-type="paragraph-break">↓<br></span></p>
+<pre><span class="c-mrkdwn__br" data-stringify-type="paragraph-break"></span><span>    docker:</span><br><span>      - image: ubuntu:bionic</span><br><span>    <span class="na"><span class="hljs-attr">parallelism</span></span><span class="pi"><span class="hljs-attr">:</span></span> <span class="m"><span class="hljs-number">4</span></span></span></pre>
+<p><span> </span>詳しくは、こちらのリンクに是非ご覧ください。<br><a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/">https://circleci.com/docs/2.0/parallelism-faster-jobs/</a></p>
+<p>また、最適化するポイントは、以下のブログ記事で説明致しますので、お気になり方は是非見てください。<a href="https://circleci.com/blog/six-optimization-tips-for-your-config/">https://circleci.com/blog/six-optimization-tips-for-your-config/</a></p>
+<p><span>お困りの点やご不明な点がありましたら、</span><a href="https://support.circleci.com/hc/ja/requests/new" target="_self">サポートチームまで</a><span>お気軽にお問い合わせください。</span></p>

@@ -1,0 +1,17 @@
+<h1>Overview</h1>
+<p>Test splitting is a feature provided by CircleCI to optimize testing times. Splitting by historical timing data distributes tests most evenly across all parallel executors.</p>
+<p>Although, <span><code style="background-color: #f3f3f3;">circleci tests split --split-by=timings</code><span> can output the following warning: </span></span></p>
+<pre style="background-color: #f3f3f3;"><code>Error reading historical timing data: file does not exist</code></pre>
+<p> </p>
+<h2>Why It Happens and How To Fix It</h2>
+<p>This can happen for several reasons including, but not limited to:</p>
+<ol>
+    <li>The <a href="https://circleci.com/docs/2.0/configuration-reference/#parallelism" target="_self">job parallelism</a> is set to 1. Parallelism needs to be set to at least 2 to generate and attach historical timing data.</li>
+    <li>The test splitting job has not had a successful test run that generated the appropriately formatted test results file.</li>
+    <li>The test results files are not stored via <a href="https://circleci.com/docs/2.0/collect-test-data/" target="_self">store_test_results</a>.</li>
+</ol>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/parallelism-faster-jobs/#splitting-by-timing-data" target="_blank" rel="noopener">Splitting by timing data</a></li>
+</ul>

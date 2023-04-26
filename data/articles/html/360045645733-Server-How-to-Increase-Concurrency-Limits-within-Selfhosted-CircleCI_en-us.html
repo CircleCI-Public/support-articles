@@ -1,10 +1,11 @@
-<p>There is no concurrency limit from our side for server customers, you just have to increase the <code>nomad_clients</code> <strong>autoscaling group (AWS)</strong> to the desired value and add <code>parallelism</code> attribute in the config file like below.</p>
+<h1>How to increase concurrency on Server</h1>
+<p>There is no concurrency limit from within the installation for server customers. You just have to increase the <code>nomad_clients</code> <strong>autoscaling group </strong> to the desired value and add <code>parallelism</code> attribute in the config file like below.</p>
 <p> </p>
-<pre>version: 2
+<pre>version: 2.1
 jobs:
   test:
     docker:
-      - image: circleci/&lt;language&gt;:&lt;version TAG&gt;
+      - image: cimg/&lt;language&gt;:&lt;version TAG&gt;
     parallelism: 4
 </pre>
 <p> </p>

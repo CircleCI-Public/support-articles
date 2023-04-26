@@ -1,0 +1,12 @@
+<p data-renderer-start-pos="7578">The CircleCI cancel job API is used to cancel a job<span> with a given job number.</span></p>
+<h2 data-renderer-start-pos="7900"><span>Prerequisites</span></h2>
+<p><span>You will need to have a form of authentication to be able to perform the API request, this can either be basic auth or a personal API token.</span></p>
+<p dir="auto">For basic authentication, the following support article titled Utilizing 'Basic' Authorization in CircleCI API Calls is linked <a href="https://support.circleci.com/hc/en-us/articles/360052405651-Utilizing-Basic-Authorization-in-CircleCI-API-Calls" target="_self">here.</a></p>
+<p dir="auto">For setting up a personal API token our documentation is linked <a href="https://circleci.com/docs/managing-api-tokens/#creating-a-personal-api-token" rel="noreferrer">here</a>.</p>
+<h2 dir="auto"><span>Instructions</span></h2>
+<p dir="auto">An example is given below, you will need to replace the project slug, the job number, and the authorization with the job you would like to cancel.</p>
+<pre dir="ltr"><code>curl --request POST \<br>--url https://circleci.com/api/v2/project/gh/CircleCI-Public/api-preview-docs/job/123/cancel \<br>--header 'authorization: Basic REPLACE_BASIC_AUTH'
+</code></pre>
+<p dir="auto">If successful the job will be canceled, if it has not been please wait a few seconds for the API call to propagate.</p>
+<h2 dir="auto"><span>Additional Notes</span></h2>
+<p data-renderer-start-pos="8015">Please see the link to our documentation for this feature <a href="https://circleci.com/docs/api/v2/index.html#operation/getJobDetails" target="_self">here</a> for other examples of how you can use this API endpoint.</p>

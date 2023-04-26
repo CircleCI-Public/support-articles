@@ -1,4 +1,0 @@
-<p>Sometimes you'll have a user who submits a pull request to your repository from a fork, but no pipeline will be triggered with the pull request. This can happen when the user is following the project fork on their personal account rather than the project itself on CircleCI.</p>
-<p>This will cause the jobs to trigger under the user's personal account. If the user is following a fork of the repository on CircleCI, we will only build on that fork and not the parent, so the parent’s PR will not get status updates. </p>
-<p>In these cases have the user unfollow their fork of the project on CircleCI and follow the source project instead. This will trigger their jobs to run under the organization when they submit pull requests.</p>
-<p>Note: This feature is not currently supported for BitBucket users.</p>

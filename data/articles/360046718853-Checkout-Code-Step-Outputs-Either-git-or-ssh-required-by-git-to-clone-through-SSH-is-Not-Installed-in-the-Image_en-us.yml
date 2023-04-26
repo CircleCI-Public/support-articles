@@ -1,0 +1,13 @@
+id: 360046718853
+title: >-
+  Checkout Code Step Outputs "Either git or ssh (required by git to clone
+  through SSH) is Not Installed in the Image"
+author_id: 403418857853
+created_at: '2020-04-13T22:57:45Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 7513289222427
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360046718853-Checkout-Code-Step-Outputs-Either-git-or-ssh-required-by-git-to-clone-through-SSH-is-Not-Installed-in-the-Image-
+draft: false

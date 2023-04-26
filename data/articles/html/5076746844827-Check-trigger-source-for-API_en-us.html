@@ -1,0 +1,13 @@
+<h2 dir="auto">Overview</h2>
+<p dir="auto">This guide is on how to use conditional workflows to check when the <code>trigger_source</code> was the API used as a trigger.</p>
+<h2 dir="auto">Workflow example</h2>
+<p dir="auto">The following code can be used:</p>
+<pre dir="ltr"><code>workflows:
+  theworkflow:
+    when:
+      - equal: [ api, &lt;&lt; pipeline.trigger_source &gt;&gt; ]
+    jobs:
+      - myjob
+</code></pre>
+<p dir="auto">This uses logic statements to check the<span> </span><code>trigger_source</code><span> </span>pipeline parameter against the api string The documentation for pipeline parameters can be found<span> </span><a href="https://circleci.com/docs/2.0/pipeline-variables/#pipeline-values" rel="noreferrer">here</a>.</p>
+<p dir="auto"><span>P</span>lease note: The "Trigger Pipeline" button uses the API to trigger it. Please be aware that because of that design, it's impossible to differentiate between starting a workflow using an API and using the button.</p>

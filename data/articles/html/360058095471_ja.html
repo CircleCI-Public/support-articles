@@ -1,0 +1,65 @@
+<p><a href="https://circleci.com/docs/2.0/ja/building-docker-images/#docker-version" target="_self">Dockerバージョン20.x</a>を使用している場合は、設定不要でBuildxを使用することができます。</p>
+<p>サンプルの Config とビルドリンクを下記で紹介します。</p>
+<p><strong>Build Link</strong>: <a href="https://app.circleci.com/pipelines/github/kelvintaywl-cci/docker-buildx/1/workflows/485da888-c62a-4df4-9dcd-d2ff752645d6/jobs/2">https://app.circleci.com/pipelines/github/kelvintaywl-cci/docker-buildx/1/workflows/485da888-c62a-4df4-9dcd-d2ff752645d6/jobs/2</a></p>
+<pre>version: 2.1<br><br>workflows:<br>  build-deploy:<br>    jobs:<br>      - build<br><br>jobs:<br>  build:<br>    docker:<br>      - image: cimg/base:stable<br>  steps:<br>    - setup_remote_docker:<br>        version: 20.10.11<br>    - checkout<br>    - run: docker buildx build . </pre>
+<p> </p>
+<p><strong>Docker 19.03</strong>をご使用の場合、<strong>Experimental features </strong>のオプションを有効にする必要がありますので、ご注意ください。</p>
+<p>サンプルの Config とビルドリンクを下記で紹介します。</p>
+<p><strong>Build link</strong>: <a href="https://app.circleci.com/pipelines/github/pawanbahuguna/sample-config/43/workflows/f29ef170-b61b-412f-8b37-1f562cae7d7b/jobs/55">https://app.circleci.com/pipelines/github/pawanbahuguna/sample-config/43/workflows/f29ef170-b61b-412f-8b37-1f562cae7d7b/jobs/55</a></p>
+<pre>version: 2.1
+
+workflows:
+  build-deploy:
+    jobs:
+     - build
+
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - setup_remote_docker:
+          version: 19.03.14
+      - checkout
+   - run: |
+        ssh remote-docker \&lt;&lt;EOF
+          sudo bash -c 'echo "{\"experimental\": true}" &gt; /etc/docker/daemon.json'
+          sudo systemctl restart docker
+          sudo docker info
+        EOF
+   - run: |
+          docker buildx build .     
+</pre>
+<p> </p>
+<p>上記の設定がうまくいかない場合は、下記の設定をお試しください。</p>
+<pre>version: 2.1
+
+workflows:
+  build-deploy:
+    jobs:
+     - build
+
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - setup_remote_docker:
+          version: 19.03.14
+      - checkout
+      - run: |
+          export DOCKER_CLI_EXPERIMENTAL=enabled
+          docker buildx build .
+</pre>
+<p> </p>
+<p>下記のエラーが発生する可能性があります。</p>
+<pre class="css-1uk2jcu"><span>could not create a builder instance with TLS data loaded from environment</span></pre>
+<p>エラーが発生した場合は下記のコマンドを設定して下さい。</p>
+<pre>docker context create buildx-build
+docker buildx create --use buildx-build
+</pre>
+<p>もし、私たちの `cimg` イメージ以外の docker イメージを使用している場合は、そのイメージ内で buildx が使用可能であることを確認する必要があることに注意してください。</p>
+<p><strong>References</strong>:</p>
+<p>1. <a href="https://docs.docker.com/buildx/working-with-buildx/">https://docs.docker.com/buildx/working-with-buildx/ </a></p>
+<p>2. <a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version">https://circleci.com/docs/2.0/building-docker-images/#docker-version</a></p>
+<p> </p>

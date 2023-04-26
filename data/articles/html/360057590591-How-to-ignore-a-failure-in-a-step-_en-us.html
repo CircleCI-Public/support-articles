@@ -1,0 +1,18 @@
+<p> </p>
+<h1>How to ignore a failure in a step:</h1>
+<p>In some instances, you may need a job to continue running even if a step returns a non zero exit code. This could be due to a subsequent dependent job in a workflow, or that the success of a step is not a contributing factor to the success of your pipeline.</p>
+<p><em>Note: Use the following with caution. Ensure you absolutely need this functionality for the particular step. Otherwise, failures in your jobs may go unnoticed which may have knock-on effects.</em></p>
+<h2> </h2>
+<h2>The easiest way to implement this is to set up the step as follows:</h2>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">- run: my_cool_command || true</pre>
+<p>This ensures that the step always returns a zero exit code, regardless of if the command fails or not.</p>
+<h2> </h2>
+<h2>If you have a mutli-line command, or a script file, then you may consider overriding the default shell options to ensure an exit code zero is passed:</h2>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">- run:<br>    shell: /bin/bash<br>    command: |<br>      echo Running my cool command<br>      mkdir ~/some_dir<br>      my_cool_command</pre>
+<p>For more details on how the default shell options work, and why they have been chosen as the default, please see <a href="https://circleci.com/docs/2.0/configuration-reference/#default-shell-options" target="_self">our documentation</a>.</p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/5170139355547" target="_blank" rel="noopener">How to rerun a job with SSH</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360007188574-Build-has-hit-timeout-limit" target="_blank" rel="noopener">Build has Hit Timeout Limit</a></li>
+</ul>

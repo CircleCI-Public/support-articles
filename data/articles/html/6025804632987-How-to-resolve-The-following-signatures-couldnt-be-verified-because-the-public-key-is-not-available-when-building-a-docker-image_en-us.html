@@ -1,0 +1,26 @@
+<h1>Overview</h1>
+<p>When building a Docker image based on Ubuntu <code>22.04</code>, you may run into errors such as the following when calling <code>apt-get</code>:</p>
+<pre><code>The following signatures couldn't be verified because the public key is not available: NO_PUBKEY</code></pre>
+<p>This can happen when the image used for your machine executor or remote docker build is older. </p>
+<h2>Machine Executor</h2>
+<p>For machine executor builds, please try setting one of our updated <code>20.04</code> or <code>22.04</code> Ubuntu images. </p>
+<p>Here is an example using the image <code>ubuntu-2004:current</code>:</p>
+<pre style="background-color: #f3f3f3;"><code>version: 2.1
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004:current</code></pre>
+<p>For a list of other image tags, please reference the following page:</p>
+<p><a href="https://circleci.com/developer/machine/image/ubuntu-2004" target="_blank" rel="noopener">https://circleci.com/developer/machine/image/ubuntu-2004</a></p>
+<h2>Remote Docker</h2>
+<p>For users building images with <code>setup_remote_docker</code> enabled, please try setting a recent version of the Docker engine. This will use an updated image when the vm is launched.</p>
+<p>To set a version of Docker to be used, please follow this syntax:</p>
+<pre style="background-color: #f3f3f3;"><code>- setup_remote_docker:
+    version: 20.10.14</code></pre>
+<p>Additional versions are available on the following page in our documentation:</p>
+<p><a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version" target="_blank" rel="noopener">https://circleci.com/docs/2.0/building-docker-images/#docker-version</a></p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/building-docker-images/#docker-version" target="_blank" rel="noopener">Introduction to Execution Environments</a></li>
+</ul>

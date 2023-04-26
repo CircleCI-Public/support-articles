@@ -1,0 +1,20 @@
+<h1>Manifest not found when building a Docker Image</h1>
+<p>in some cases, you may see <code>manifest for &lt;image&gt; not found</code> while building your Dockerfile.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><span>manifest for ubuntu:18.04 not found</span></pre>
+<p>This has recently impacted the <code>ubuntu:18.04</code> image but could affect others.</p>
+<p> </p>
+<h2>Step 1</h2>
+<p>If you are building this image with <a href="https://circleci.com/docs/building-docker-images/#run-docker-commands-using-the-docker-executor" target="_blank" rel="noopener">remote docker</a>, please make sure you are on the latest version. A list of versions CircleCI offers can be found <a href="https://circleci.com/docs/building-docker-images/#docker-version" target="_blank" rel="noopener">here</a>.</p>
+<p>If are you building using the <a href="https://circleci.com/docs/building-docker-images/#run-docker-commands-using-the-machine-executor">machine executor</a>, please try a later version of the machine image as this will dictate your Docker version. A full list of available machine images can be found at the following links.</p>
+<ul>
+    <li><a href="https://circleci.com/developer/machine/image/ubuntu-2004" target="_blank" rel="noopener">Ubuntu 20.04</a></li>
+    <li><a href="https://circleci.com/developer/machine/image/ubuntu-2204" target="_blank" rel="noopener">Ubuntu 22.04</a></li>
+</ul>
+<h2>Step 2</h2>
+<p>In some cases, the manifest for that image no longer exists, which can be confirmed by running the following command.</p>
+<pre>docker manifest inspect $image_name</pre>
+<p>If the image manifest does not return anything, you can simply specify the SHA of the image you wish to pull or change the version.</p>
+<p>Using <code>ubuntu:18.04</code> as an example, we can specify one of  the following in our <code>Dockerfile</code>:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><span>FROM ubuntu:bionic-20220829</span></pre>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">FROM  docker pull ubuntu@sha256:d85f9e8f65828689ef2c9054d751a5842e870835f950d0a406e0b64988130661</pre>
+<p>These would allow you to use the image you are looking to use. </p>

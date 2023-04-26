@@ -1,0 +1,27 @@
+<h1>Overview</h1>
+<p>CircleCI Dynamic Configuration, formally known as Setup Workflow, allows for a maximum of 1 workflow in the initial setup workflow. So if <code style="background-color: #f3f3f3;">setup: true</code> is set then the following config would be invalid:<br><br></p>
+<pre style="background-color: #f3f3f3;"><code>workflows:
+  one:
+    jobs:
+      - unit-tests
+  two:
+    jobs:
+      - integration-tests
+</code></pre>
+<p> </p>
+<h2>Solution</h2>
+<p>Customers can work around this by combining both workflows into a single workflow:</p>
+<pre style="background-color: #f3f3f3;"><code>workflows:
+  one:
+    jobs:
+      - unit-tests
+      - integration-tests
+</code></pre>
+<p> </p>
+<p><strong>Note</strong>: More than one workflow can be defined within a dynamic config, and the above error can be avoided as long as conditional parameters are set so that only one workflow will be executed.</p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/dynamic-config/" target="_blank" rel="noopener">Dynamic Configuration</a></li>
+    <li><a href="https://circleci.com/docs/2.0/using-dynamic-configuration/" target="_blank" rel="noopener">Using dynamic configuration</a></li>
+</ul>

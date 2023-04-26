@@ -1,4 +1,5 @@
-<p>You may have a situation where you want a build on a specific branch to deploy to the App Store, while all other branches deploy as ad-hoc. This can be accomplished with Fastlane and setting specific profiles using <code>PROVISIONING_PROFILE_SPECIFIER</code>.</p>
+<h1>Conditionally Deploy by Branch</h1>
+<p>You may want a build on a specific branch to deploy to the App Store, while all other branches deploy as ad-hoc. This can be accomplished with Fastlane and setting specific profiles using <code>PROVISIONING_PROFILE_SPECIFIER</code>.</p>
 <h2>Fastlane setup</h2>
 <p>Then you can adjust your Fastfile to have an if/else conditional like the following:</p>
 <pre style="background-color: #f3f3f3;"># fastlane/Fastfile

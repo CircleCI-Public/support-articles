@@ -1,0 +1,189 @@
+<p data-renderer-start-pos="1"><a class="sc-dNLxif kFXRWW" title="https://github.blog/2021-09-01-improving-git-protocol-security-github/" href="https://github.blog/2021-09-01-improving-git-protocol-security-github/" data-renderer-mark="true">On March 15th, 2022 GitHub will be deprecating the types of SSH keys that can be utilized to access their service. </a>With this deprecation, there are circumstances that could cause your builds to fail on the repository checkout step after the 15th. </p>
+<p data-renderer-start-pos="250"><strong data-renderer-mark="true">If you meet one of the following criteria, you will need to take action before March 15th, 2022:</strong></p>
+<ol class="ak-ol" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="350">Project created between Nov 2nd, 2021 - January 13th, 2022 that has a job using <span>an Ubuntu 14.04-based</span> machine image, including the default <code class="code css-9z42f9" data-renderer-mark="true">machine: true</code> image</p>
+        - If you don’t <a href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images">specify a machine image</a>, you are using the default image and you’ll need to take action
+    </li>
+    <li>
+        <p data-renderer-start-pos="616">Project created between Nov 2nd, 2021 - January 13th, 2022 using <a class="sc-dNLxif kFXRWW" title="https://circleci.com/docs/2.0/next-gen-migration-guide/#overview" href="https://circleci.com/docs/2.0/next-gen-migration-guide/#overview" data-renderer-mark="true">deprecated Docker image</a></p>
+    </li>
+    <li>
+        <p data-renderer-start-pos="854">Project using an uploaded DSA SSH key for checkout purposes</p>
+    </li>
+</ol>
+<p data-renderer-start-pos="917">If you meet one of the above, there are sections below that will cover the steps needed to ensure builds continue to run after March 15th, 2022.</p>
+<p data-renderer-start-pos="1063"><strong data-renderer-mark="true"><span id="035295ed-8d21-401e-b32e-30a28aa3cf29" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="035295ed-8d21-401e-b32e-30a28aa3cf29">You are not affected by the deprecation, if your project meets one of these criteria:</span></strong></p>
+<ol class="ak-ol" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="1152"><span id="035295ed-8d21-401e-b32e-30a28aa3cf29" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="035295ed-8d21-401e-b32e-30a28aa3cf29">Your project was set up </span><strong data-renderer-mark="true"><span id="035295ed-8d21-401e-b32e-30a28aa3cf29" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="035295ed-8d21-401e-b32e-30a28aa3cf29">before</span></strong><span id="035295ed-8d21-401e-b32e-30a28aa3cf29" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="035295ed-8d21-401e-b32e-30a28aa3cf29"> November 2nd, 2021.</span></p>
+    </li>
+    <li>
+        <p data-renderer-start-pos="1247"><span id="035295ed-8d21-401e-b32e-30a28aa3cf29" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="035295ed-8d21-401e-b32e-30a28aa3cf29">Your project was set up </span><strong data-renderer-mark="true"><span id="035295ed-8d21-401e-b32e-30a28aa3cf29" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="035295ed-8d21-401e-b32e-30a28aa3cf29">after</span></strong><span id="035295ed-8d21-401e-b32e-30a28aa3cf29" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="035295ed-8d21-401e-b32e-30a28aa3cf29"> January 13th, 2022.</span></p>
+    </li>
+    <li>
+        <p data-renderer-start-pos="1300"><span id="035295ed-8d21-401e-b32e-30a28aa3cf29" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="035295ed-8d21-401e-b32e-30a28aa3cf29">Generated a new user/deploy key </span><strong data-renderer-mark="true"><span id="035295ed-8d21-401e-b32e-30a28aa3cf29" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="035295ed-8d21-401e-b32e-30a28aa3cf29">after</span></strong><span id="035295ed-8d21-401e-b32e-30a28aa3cf29" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="035295ed-8d21-401e-b32e-30a28aa3cf29"> January 13th, 2022 and it is your "PREFERRED" key</span></p>
+    </li>
+</ol>
+<p data-renderer-start-pos="1391">If your project falls under one of the three items listed directly above, you shouldn't need to take any action before March 15th, 2022. However, if you wish to verify you can check if your key is <code class="code css-9z42f9" data-renderer-mark="true">ed25519</code> with the following API call:</p>
+<p data-renderer-start-pos="1604"><a class="sc-dNLxif kFXRWW" title="https://circleci.com/docs/api/v2/#operation/listCheckoutKeys" href="https://circleci.com/docs/api/v2/#operation/listCheckoutKeys" data-renderer-mark="true">https://circleci.com/docs/api/v2/#operation/listCheckoutKeys</a></p>
+<pre style="background-color: #f3f3f3;" data-renderer-start-pos="1604">curl --request GET \
+  --url https://circleci.com/api/v2/project/gh/ORG/PROJECT/checkout-key \
+  --header 'Circle-Token: '</pre>
+<p data-renderer-start-pos="1807"><span id="b1117736-f912-44be-8cc6-6d81b3d0af00" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="b1117736-f912-44be-8cc6-6d81b3d0af00">If the above returns any </span><code class="code css-9z42f9" data-renderer-mark="true"><span id="b1117736-f912-44be-8cc6-6d81b3d0af00" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="b1117736-f912-44be-8cc6-6d81b3d0af00">items</span></code><span id="b1117736-f912-44be-8cc6-6d81b3d0af00" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="b1117736-f912-44be-8cc6-6d81b3d0af00"> that have a </span><code class="code css-9z42f9" data-renderer-mark="true"><span id="b1117736-f912-44be-8cc6-6d81b3d0af00" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="b1117736-f912-44be-8cc6-6d81b3d0af00">"public_key" : "ssh-rsa</span></code>, and your project was created between November 2nd, 2021 - January 13th, 2022, <span id="b1117736-f912-44be-8cc6-6d81b3d0af00" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="b1117736-f912-44be-8cc6-6d81b3d0af00">you will want to ensure you are using a newer image (convenience image or machine image) or you’ll want to regenerate your user/deploy key. If all the keys returned, or your "PREFERRED" key is </span><code class="code css-9z42f9" data-renderer-mark="true"><span id="b1117736-f912-44be-8cc6-6d81b3d0af00" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="b1117736-f912-44be-8cc6-6d81b3d0af00">"public_key" : "ssh-ed25519</span></code><span id="b1117736-f912-44be-8cc6-6d81b3d0af00" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="b1117736-f912-44be-8cc6-6d81b3d0af00"> then </span>no action should be needed.</p>
+<p data-renderer-start-pos="2129">Depending on your situation, different actions may be required. If you want to find out the OpenSSH version for the image you are utilizing in a job you can run the following:</p>
+<pre style="background-color: #f3f3f3;" data-renderer-start-pos="2129">run: ssh -V</pre>
+<h2 id="Jobs-using-machine:-true-or-specifying-a-14.04-ubuntu-Machine-image" data-renderer-start-pos="2321">
+    <span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044">Jobs using </span><code class="code css-9z42f9" data-renderer-mark="true"><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044">machine: true</span></code><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044"> or specifying a </span><code class="code css-9z42f9" data-renderer-mark="true"><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044">14.04 ubuntu</span></code><span id="f593b9bd-9c2b-4f43-943c-f3a1520dc044" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="f593b9bd-9c2b-4f43-943c-f3a1520dc044"> Machine image</span>
+</h2>
+<p data-renderer-start-pos="2390">You can tell if you fall into this category if any of your jobs look like this:</p>
+<pre style="background-color: #f3f3f3;" data-renderer-start-pos="2390">jobs:
+  build:
+    machine: true # This is using the default old machine image
+    steps:
+      - checkout</pre>
+<p data-renderer-start-pos="2579"><span>Or it may look like this which is an example of a 14.04 based image:</span></p>
+<pre class="code-block sc-exAgwC bECVZf" style="background-color: #f3f3f3;">jobs:
+  build:
+    machine:
+      image: circleci/classic:201709-01 # This is a 14.04 based image
+    steps:
+      - checkout</pre>
+<p data-renderer-start-pos="2716">Additionally, you can search via GitHub for these image uses too:</p>
+<pre style="background-color: #f3f3f3;" data-renderer-start-pos="2716">org:CircleCI-Public circleci/classic path:.circleci filename:config.yml</pre>
+<p data-renderer-start-pos="2716">The following options are available, <a class="sc-dNLxif kFXRWW" title="https://discuss.circleci.com/t/old-linux-machine-image-remote-docker-deprecation/37572" href="https://discuss.circleci.com/t/old-linux-machine-image-remote-docker-deprecation/37572" data-renderer-mark="true">given the deprecation of older images</a>, <strong data-renderer-mark="true">our recommendation is to update your image</strong>. However, all options listed will solve the issue at hand.</p>
+<ol class="ak-ol" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="2897">Update to a <a class="sc-dNLxif kFXRWW" title="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images" href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images" data-renderer-mark="true">newer machine image</a> any listed on that page have the proper items installed</p>
+    </li>
+    <li>
+        <p data-renderer-start-pos="2988">Regenerate your deploy/user key in your project settings</p>
+        <ol class="ak-ol" data-indent-level="2">
+            <li>
+                <p data-renderer-start-pos="3048">This can be done via the UI (Project Settings → SSH Keys → Click <code class="code css-9z42f9" data-renderer-mark="true">X</code> on the current key)</p>
+                <ol class="ak-ol" data-indent-level="2">
+                    <li>
+                        <p data-pm-slice='1 1 ["orderedList",{},"listItem",null,"orderedList",{},"listItem",null,"orderedList",null,"listItem",null]'>Once that is done, you’ll click “Add Deploy key” or “Add User key” depending on which type of key you removed</p>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <p data-renderer-start-pos="3138">This can also be done <a class="sc-dNLxif kFXRWW" title="https://circleci.com/docs/api/v2/#operation/createCheckoutKey" href="https://circleci.com/docs/api/v2/#operation/createCheckoutKey" data-renderer-mark="true">via the API</a></p>
+            </li>
+        </ol>
+    </li>
+    <li>
+        <p data-renderer-start-pos="3177">Add a <code class="code css-9z42f9" data-renderer-mark="true">run</code> step before your <code class="code css-9z42f9" data-renderer-mark="true">- checkout</code> step that installs OpenSSH 7.2 or greater, as an example, this would install OpenSSH 8.1p1:</p>
+    </li>
+</ol>
+<pre style="background-color: #f3f3f3;">jobs:
+  jobname:
+    machine: true
+    steps:
+      - run:
+          name: Install OpenSSH 8.1p1
+          command: |
+            sudo apt-get update
+            mkdir ~/tempdownload; 
+            cd ~/tempdownload; 
+            wget https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.1p1.tar.gz; 
+            tar zxvf openssh-8.1p1.tar.gz; 
+            cd openssh-8.1p1 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; sudo make install
+      - checkout</pre>
+<div class="code-block sc-exAgwC bECVZf"></div>
+<h2 id="Jobs-using-circleci-convenience-images-(i.e.-circleci/ruby:2.2.6)" data-renderer-start-pos="3755">Jobs using <code class="code css-9z42f9" data-renderer-mark="true">circleci</code> convenience images (i.e. <code class="code css-9z42f9" data-renderer-mark="true">circleci/ruby:2.2.6</code>)</h2>
+<p data-renderer-start-pos="3822">The following options are available, given the support for the legacy <code class="code css-9z42f9" data-renderer-mark="true">circleci</code> images is going away, the preferred option is to update your image. However, all options listed will solve the issue at hand.</p>
+<ol class="ak-ol" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="4030">Update to a <a class="sc-dNLxif kFXRWW" title="https://circleci.com/docs/2.0/next-gen-migration-guide/#overview" href="https://circleci.com/docs/2.0/next-gen-migration-guide/#overview" data-renderer-mark="true">next-gen convenience image</a>, all next-gen images have the proper items installed</p>
+    </li>
+    <li>
+        <p data-renderer-start-pos="4125">Regenerate your deploy/user key in your project settings</p>
+        <ol class="ak-ol" data-indent-level="2">
+            <li>
+                <p data-renderer-start-pos="4185">This can be done via the UI (Project Settings → SSH Keys → Click <code class="code css-9z42f9" data-renderer-mark="true">X</code> on the current key)</p>
+                <ol class="ak-ol" data-indent-level="2">
+                    <li>
+                        <p data-pm-slice='1 1 ["orderedList",{},"listItem",null,"orderedList",{},"listItem",null,"orderedList",null,"listItem",null]'>Once that is done, you’ll click “Add Deploy key” or “Add User key” depending on which type of key you removed</p>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <p data-renderer-start-pos="4275">This can also be done <a class="sc-dNLxif kFXRWW" title="https://circleci.com/docs/api/v2/#operation/createCheckoutKey" href="https://circleci.com/docs/api/v2/#operation/createCheckoutKey" data-renderer-mark="true">via the API</a></p>
+            </li>
+        </ol>
+    </li>
+    <li>
+        <p data-renderer-start-pos="4314">Add a <code class="code css-9z42f9" data-renderer-mark="true">run</code> step before your <code class="code css-9z42f9" data-renderer-mark="true">- checkout</code> step that installs OpenSSH 7.2 or greater, as an example, this would install OpenSSH 8.1p1:</p>
+    </li>
+</ol>
+<pre style="background-color: #f3f3f3;">jobs:
+  jobname:
+    docker:
+      - image: circleci/ruby:2.2.6
+    steps:
+      - run:
+          name: Install OpenSSH 8.1p1
+          command: |
+            sudo apt-get update
+            mkdir ~/tempdownload; 
+            cd ~/tempdownload; 
+            wget https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.1p1.tar.gz; 
+            tar zxvf openssh-8.1p1.tar.gz; 
+            cd openssh-8.1p1 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; sudo make install
+      - checkout</pre>
+<h2 id="Jobs-using-custom-or-non-circleci-Docker-images" data-renderer-start-pos="4921">
+    <span id="396f5a7c-054c-4641-8e23-97029f3b2cfd" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="396f5a7c-054c-4641-8e23-97029f3b2cfd">Jobs using </span><a class="sc-dNLxif kFXRWW" title="https://circleci.com/docs/2.0/custom-images/" href="https://circleci.com/docs/2.0/custom-images/" data-renderer-mark="true"><span id="54a28d7b-7530-4019-99be-451f9422a67f" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="54a28d7b-7530-4019-99be-451f9422a67f"><span id="396f5a7c-054c-4641-8e23-97029f3b2cfd" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="396f5a7c-054c-4641-8e23-97029f3b2cfd">custom</span></span></a><span id="396f5a7c-054c-4641-8e23-97029f3b2cfd" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="396f5a7c-054c-4641-8e23-97029f3b2cfd"> or non-circleci Docker images</span>
+</h2>
+<p data-renderer-start-pos="4970">If the docker image you are utilizing has OpenSSH 7.2 or greater, and <code class="code css-9z42f9" data-renderer-mark="true">git</code> installed, you do not need to make any changes. With both those requirements met, you’ll have no issues with the deprecation. In addition, if your image has <em>neither</em> installed, you'll also not be affected as we'll take care of the checkout process on our side. </p>
+<p data-renderer-start-pos="4970">With the above in mind, you'll really only be affected on your custom docker images if you specifically installed an old OpenSSH version.</p>
+<p data-renderer-start-pos="5305">1. Regenerate your deploy/user key in your project settings</p>
+<ul>
+    <li>This can be done via the UI (Project Settings → SSH Keys → Click <code class="code css-9z42f9" data-renderer-mark="true">X</code> on the current key)
+        <ul>
+            <li>
+                <p data-pm-slice='1 1 ["orderedList",{},"listItem",null,"orderedList",{},"listItem",null,"orderedList",null,"listItem",null]'>Once that is done, you’ll click “Add Deploy key” or “Add User key” depending on which type of key you removed</p>
+            </li>
+        </ul>
+    </li>
+    <li>This can also be done <a class="sc-dNLxif kFXRWW" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" title="https://circleci.com/docs/api/v2/#operation/createCheckoutKey" href="https://circleci.com/docs/api/v2/#operation/createCheckoutKey" data-renderer-mark="true">via the API</a>
+    </li>
+</ul>
+<p data-renderer-start-pos="5494">2. Add a <code class="code css-9z42f9" data-renderer-mark="true">run</code> step before your <code class="code css-9z42f9" data-renderer-mark="true">- checkout</code> step that installs OpenSSH 7.2 or greater, as an example, this would install OpenSSH 8.1p1:</p>
+<pre style="background-color: #f3f3f3;">jobs:
+  jobname:
+    docker:
+      - image: koalaman/shellcheck-alpine:v0.7.1
+    steps:
+      - run:
+          name: Install OpenSSH 8.1p1
+          command: |
+            sudo apt-get update
+            mkdir ~/tempdownload; 
+            cd ~/tempdownload; 
+            wget https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.1p1.tar.gz; 
+            tar zxvf openssh-8.1p1.tar.gz; 
+            cd openssh-8.1p1 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; sudo make install
+      - checkout</pre>
+<p data-renderer-start-pos="5494"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">3. If </span><code class="code css-9z42f9" style="font-size: 15px;" data-renderer-mark="true">git</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> is not installed on the image, you’ll need to install that before the </span><code class="code css-9z42f9" style="font-size: 15px;" data-renderer-mark="true">- checkout</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> step, an example of doing that here:</span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"></span></p>
+<pre style="background-color: #f3f3f3;">- run:
+      name: Install git for checkout
+      command: |
+          apt-get update &amp;&amp; apt-get --no-install-recommends -y install git</pre>
+<p data-renderer-start-pos="5494"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"></span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">4. Swap to a different image, or build a custom image, that has both the proper OpenSSH version and </span><code class="code css-9z42f9" style="font-size: 15px;" data-renderer-mark="true">git</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> installed -- or one that doesn't have either installed.</span></p>
+<h2 id="Projects-with-manually-uploaded-DSA-or-RSA-SHA1-SSH-keys" data-renderer-start-pos="6496">Projects with manually uploaded DSA or RSA SHA1 SSH keys</h2>
+<p data-pm-slice="1 3 []">If you <a href="https://circleci.com/docs/2.0/add-ssh-key/#overview">manually uploaded an SSH key</a> to use for checkout purposes, and that key is DSA, you’ll need to update the key to have it continue to work.</p>
+<p>You’ll want to generate a new SSH key, <a href="https://github.blog/2021-09-01-improving-git-protocol-security-github/">meeting the requirements set forth by GitHub</a>, and add and use that key within CircleCI.</p>
+<p>If the key you manually uploaded was <span class="fabric-editor-annotation" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="a0552cb5-2ea1-46e6-b258-02b8d9cca1e3">RSA SHA1</span>:</p>
+<ol class="ak-ol">
+    <li>
+        <p>As long as the docker or machine image you are using is new enough, you’ll be able to continue to use the key. The image needs to have OpenSSH 7.2 or greater installed, you can check using the following command in the job using that image: <span class="code" spellcheck="false"><code>- run: ssh -V</code></span></p>
+    </li>
+    <li>
+        <p>Alternatively, if the image you are using is older or you can’t update it, you’ll want to generate a new SSH key, <a href="https://github.blog/2021-09-01-improving-git-protocol-security-github/">meeting the requirements set forth by GitHub</a>, and add and use that key within CircleCI.</p>
+    </li>
+</ol>
+<p><span class="wysiwyg-font-size-x-large">Mass regeneration of checkout keys</span></p>
+<p>For organizations that have a lot of projects, and the option you are proceeding with is regenerating your keys, we have created a script to help with that process:</p>
+<p><a href="https://github.com/CircleCI-Public/github-ssh-regeneration">https://github.com/CircleCI-Public/github-ssh-regeneration</a></p>
+<p>You will want to ensure that the person who runs this script, AKA the personal API key used, has the proper access to generate keys for the repositories. <a href="https://support.circleci.com/hc/en-us/articles/360034990033-Am-I-an-Org-Admin-" target="_blank" rel="noopener">That likely means an Organization Owner/Admin</a>.</p>

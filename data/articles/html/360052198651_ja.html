@@ -1,7 +1,0 @@
-<p dir="auto">これは、GitHub 側の制約から生じる問題です。</p>
-<p dir="auto"><a href="https://developer.github.com/webhooks/event-payloads/#push" rel="noreferrer">https://developer.github.com/webhooks/event-payloads/#push</a></p>
-<blockquote dir="ltr">
-    <p dir="auto">Note: You will not receive a webhook for this event when you push more than three tags at once. (注: 一度に 4 つ以上のタグをプッシュした場合、そのイベントでは Web フックが送信されません。)</p>
-</blockquote>
-<p dir="auto">CircleCI ではビルドのトリガーに GitHub Web フックを使用していますが、上記リンク先のページで 4 つ以上のタグが含まれている場合は Web フックが生成されない旨が記載されていることから、この制約が CircleCI でビルドがトリガーされない理由であることがわかります。</p>
-<p dir="auto">CircleCI 内でビルドをトリガーする場合は、一度に含めるタグを最大 3 つまでにするようにしてください。</p>

@@ -1,0 +1,13 @@
+id: 7060937560859
+title: >-
+  How to resolve error: "--storage-opt is supported only for overlay over xfs
+  with 'pquota' mount option" when running jobs locally with the cli
+author_id: 406303320371
+created_at: '2022-07-04T05:41:48Z'
+locale: en-us
+permission_group_id: 237847
+section_id: 7513342638875
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/7060937560859-How-to-resolve-error-storage-opt-is-supported-only-for-overlay-over-xfs-with-pquota-mount-option-when-running-jobs-locally-with-the-cli
+draft: false

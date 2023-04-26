@@ -1,0 +1,11 @@
+id: 360052092532
+title: Conditionally Stop Job When Only Change Was to config.yml File
+author_id: 405652843914
+created_at: '2020-11-13T19:01:41Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 7513289222427
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/360052092532-Conditionally-Stop-Job-When-Only-Change-Was-to-config-yml-File
+draft: false

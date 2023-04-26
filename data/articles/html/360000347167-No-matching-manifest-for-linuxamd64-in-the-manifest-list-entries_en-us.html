@@ -1,12 +1,13 @@
+<h1>Docker Images</h1>
 <p>In the "Spin up Environment" step, or elsewhere when pulling a Docker image from a repository, you may run into an error similar to the following: </p>
-<pre class="output"><span class="pre"><span class="white">Step 1/26 : FROM &lt;IMAGE&gt;
+<pre class="output" style="background-color: #f3f3f3;"><span class="pre"><span class="white">Step 1/26 : FROM &lt;IMAGE&gt;
 latest: Pulling from library/&lt;IMAGE&gt;
 </span><span class="white">no matching manifest for linux/amd64 in the manifest list entries
 </span></span><span class="pre"><span class="white">Exited with code 1<br></span></span></pre>
 <p>There are three possible reasons for this error.</p>
 <ol>
     <li>
-        <strong>Error When Using "Latest" Tag</strong><br>While images are rebuilding on Dockerub, the "latest" tag will become momentarily unavailable while updating. This issue will resolve itself or can be mitigated by selecting a versioned tag.
+        <strong>Error When Using "Latest" Tag</strong><br>While images are rebuilding on Dockerhub, the "latest" tag will become momentarily unavailable while updating. This issue will resolve itself or can be mitigated by selecting a versioned tag.
     </li>
     <li>
         <strong>The Tag Is Not Available</strong><br>A tag that used to be available may no longer be listed or have had it's naming convention modified. A tag may have been "Version8.0" previously and became "Version8.0.0" recently.
@@ -15,3 +16,8 @@ latest: Pulling from library/&lt;IMAGE&gt;
         <strong>Image Is Not Designed For x86, Such As ARM</strong><br>The image you are trying to build may be designed to run on a different architecture, such as an ARM-based CPU. If you need to use an Arm image, consider using an <a href="https://github.com/CircleCI-Public/arm-preview-docs" target="_self">Arm resource class</a>.
     </li>
 </ol>
+<p> </p>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/style/using-images" target="_blank" rel="noopener">Using images</a></li>
+</ul>

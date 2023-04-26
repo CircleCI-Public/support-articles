@@ -1,0 +1,161 @@
+<p>2022年3月15日、<a href="https://github.blog/2021-09-01-improving-git-protocol-security-github/" target="_self" rel="undefined">GitHub はサービスへのアクセスに使用できる SSH キーの一部を廃止</a>することを決定しました。この廃止に伴い、2022年3月15日以降のビルドで checkout ステップが失敗する可能性があります。</p>
+<p><strong>下記のいずれかに該当する場合、2022年3月15日までに対処する必要があります</strong>。</p>
+<ol>
+    <li>2021年11月2日～2022年1月13日の間に作成されたプロジェクトで、Ubuntu 14.04 ベースのマシンイメージや <code class="code css-9z42f9" data-renderer-mark="true">machine: true</code> などを使用したジョブがある。
+        <ul>
+            <li>
+                <a href="https://circleci.com/docs/ja/2.0/configuration-reference/#available-machine-images" target="_self">マシンイメージの指定</a>を行わず、デフォルトのイメージを使用している場合も、同じく対処が必要です
+            </li>
+        </ul>
+    </li>
+    <li>2021年11月2日～2022年1月13日の間に<a href="https://circleci.com/docs/ja/2.0/next-gen-migration-guide/#overview" target="_self">非推奨の Docker イメージ</a>を使って作成したプロジェクト。</li>
+    <li>checkout ステップで DSA SSH キーを登録し利用している。</li>
+</ol>
+<p>上記のいずれかに該当する場合、2022年3月15日以降もビルドを継続的に実行するために必要な手順を末尾のセクションで説明します。</p>
+<p><strong>プロジェクトが下記のいずれかに該当する場合、対処は不要です</strong>。</p>
+<ol>
+    <li>2021年11月2日<strong>より前</strong>にセットアップされたプロジェクトで、User / Deploy キーを追加していない。</li>
+    <li>2022年1月13日<strong>より後</strong>にセットアップされたプロジェクト。</li>
+    <li>2022年1月13日<strong>より後</strong>に新たに User / Deploy キーを生成し、それが「PREFERRED」キーに設定されている。</li>
+</ol>
+<p>上記のいずれかに該当する場合、2022年3月15日までに対処をする必要はありません。念の為に確認したい場合は、以下の API コールでキーが <code class="code css-9z42f9" data-renderer-mark="true">ed25519</code><span> </span> であるかどうかを確認します。</p>
+<pre>curl --request GET \
+  --url https://circleci.com/api/v2/project/gh/ORG/PROJECT/checkout-key \
+  --header 'Circle-Token: ${CIRCLECI_TOKEN}'</pre>
+<p>API のレスポンス<code class="code css-9z42f9" data-renderer-mark="true"><span id="b1117736-f912-44be-8cc6-6d81b3d0af00" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="b1117736-f912-44be-8cc6-6d81b3d0af00">items</span></code>に <code class="code css-9z42f9" data-renderer-mark="true"><span id="b1117736-f912-44be-8cc6-6d81b3d0af00" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="b1117736-f912-44be-8cc6-6d81b3d0af00">"public_key" : "ssh-rsa</span></code> を持つ項目がある場合、新しいイメージ（<a href="https://circleci.com/docs/ja/2.0/circleci-images/#next-generation-convenience-images" target="_self" rel="undefined">CircleCI イメージ</a>またはマシンイメージ）を使用していることを確認するか、User / Deploy キーを再生成する必要があります。すべてのキー、または「PREFERRED」キーが <code class="code css-9z42f9" data-renderer-mark="true"><span id="b1117736-f912-44be-8cc6-6d81b3d0af00" data-renderer-mark="true" data-mark-type="annotation" data-mark-annotation-type="inlineComment" data-id="b1117736-f912-44be-8cc6-6d81b3d0af00">"public_key" : "ssh-ed25519</span></code>の場合は、対応は必要ありません。</p>
+<p>SSH キー以外にも、ジョブで利用しているイメージの <a href="https://discuss.circleci.com/t/circleci-user-key-uses-rsa-with-sha1-which-github-has-deprecated/42548/4" target="_self" rel="undefined">OpenSSH のバージョン 7.2 以上を必要とする変更も加えられました</a>。バージョンの確認には下記のコマンドを実行して下さい。</p>
+<pre data-renderer-start-pos="2129">run: ssh -V</pre>
+<h2>ジョブで<code class="code css-9z42f9" data-renderer-mark="true">machine: true</code> や 14.04 Ubuntu Machine イメージを利用している</h2>
+<p>Config に下記のような記載がある場合はこの項目に該当します。</p>
+<pre data-renderer-start-pos="2390">jobs:
+  build:
+    machine: true # デフォルトの古いマシンイメージを使っている例になります。
+    steps:
+      - checkout</pre>
+<pre class="code-block sc-exAgwC bECVZf">jobs:
+  build:
+    machine:
+      image: circleci/classic:201709-01 # 14.04 ベースイメージ
+    steps:
+      - checkout</pre>
+<p>GitHub の<a href="https://github.com/search" target="_self">検索</a>を下記の内容で行うと、項目に該当する Config を見つけることもできます。（CircleCI-Public を自分の Organization に変更して下さい。）</p>
+<pre class="c-mrkdwn__pre" data-stringify-type="pre">org:CircleCI-Public circleci/classic path:.circleci filename:config.yml</pre>
+<p>上記以外にも<a href="https://discuss.circleci.com/t/docker/42242" target="_self">こちらから非推奨のイメージのリスト</a>の確認をお願いします。非推奨のイメージから更新することをお勧めします。他にも下記のリストの方法で対処は可能です。</p>
+<ol>
+    <li>新しい<a href="https://circleci.com/docs/ja/2.0/configuration-reference/#available-machine-images" target="_self">マシンイメージに更新</a>する事で必要な機能が扱えるようになります。</li>
+    <li>プロジェクト設定で User / Deploy キーを再度生成してください。<br>
+        <ol>
+            <li>キーの削除画面上で操作を行うことができます（Project Settings → SSH Keys → キーの X をクリック）。<br>
+                <ol>
+                    <li>削除したキーの種類に応じて、「<span> Add Deploy key」 もしくは「Add User key」</span>をクリックし再度キーを作成します。</li>
+                </ol>
+            </li>
+            <li>これは<a href="https://circleci.com/docs/api/v2/#operation/listCheckoutKeys" target="_self">API経由</a>でも可能です</li>
+        </ol>
+    </li>
+    <li>OpenSSH 7.2 以上をインストールするステップを <code class="code css-9z42f9" data-renderer-mark="true">- checkout</code>ステップの前に追加します。下記のサンプルコードの例では、OpenSSH 8.1p1をインストールしています。</li>
+</ol>
+<pre>jobs:
+  jobname:
+    machine: true
+    steps:
+      - run:
+          name: Install OpenSSH 8.1p1
+          command: |
+            sudo apt-get update
+            mkdir ~/tempdownload; 
+            cd ~/tempdownload; 
+            wget https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.1p1.tar.gz; 
+            tar zxvf openssh-8.1p1.tar.gz; 
+            cd openssh-8.1p1 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; sudo make install
+      - checkout</pre>
+<p> </p>
+<h2 data-renderer-start-pos="3755">ジョブで <code class="code css-9z42f9" data-renderer-mark="true">circleci/</code>イメージを利用している</h2>
+<p><span> </span><code class="code css-9z42f9" data-renderer-mark="true">circleci/</code>はレガシーイメージと呼ばれ、<a href="https://discuss.circleci.com/t/circleci-cimg/42239" target="_self">非推奨のイメージ</a>になっています。非推奨のイメージから更新することをお勧めします。他にも下記のリストの方法で対処は可能です。</p>
+<ol>
+    <li>新しい<a href="https://circleci.com/docs/ja/2.0/next-gen-migration-guide" target="_self" rel="undefined">イメージに更新</a>する事で必要な機能が扱えるようになります。</li>
+    <li>プロジェクト設定で User / Deploy キーを再度生成してください。<br>
+        <ol>
+            <li>キーの削除画面上で操作を行うことができます（Project Settings → SSH Keys → キーの X をクリック）。<br>
+                <ol>
+                    <li>削除したキーの種類に応じて、「<span> Add Deploy key」 もしくは「Add User key」</span>をクリックし再度キーを作成します。</li>
+                </ol>
+            </li>
+            <li>これは<a href="https://circleci.com/docs/api/v2/#operation/listCheckoutKeys" target="_self">API経由</a>でも可能です</li>
+        </ol>
+    </li>
+    <li>OpenSSH 7.2 以上をインストールするステップを <code class="code css-9z42f9" data-renderer-mark="true">- checkout</code>ステップの前に追加します。下記のサンプルコードの例では、OpenSSH 8.1p1をインストールしています。</li>
+</ol>
+<pre>jobs:
+  jobname:
+    machine: true
+    steps:
+      - run:
+          name: Install OpenSSH 8.1p1
+          command: |
+            sudo apt-get update
+            mkdir ~/tempdownload; 
+            cd ~/tempdownload; 
+            wget https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.1p1.tar.gz; 
+            tar zxvf openssh-8.1p1.tar.gz; 
+            cd openssh-8.1p1 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; sudo make install
+      - checkout</pre>
+<h2>ジョブで<a href="https://circleci.com/docs/ja/2.0/custom-images/" target="_self">カスタム</a>や<code class="code css-9z42f9" data-renderer-mark="true">circleci/</code>以外のイメージを利用している</h2>
+<p>OpenSSH 7.2 以上と git がインストールされている docker イメージを利用している場合は、対処する必要はありません。この2つの要件が満たされていれば GitHub SSH キーの廃止後も問題は起こりません。また、イメージにどちらもインストールされていない場合、CircleCI 側で <code class="code css-9z42f9" data-renderer-mark="true">- checkout</code> の処理が行えるようにするので、影響を受けることはありません。</p>
+<p>以上のことから、カスタムの docker イメージで影響を受けるのは、古いバージョンの OpenSSH をインストールした場合だけとなります。その場合は下記のリストの方法で対処は可能です。</p>
+<ol>
+    <li>プロジェクト設定で User / Deploy キーを再度生成してください。<br>
+        <ul>
+            <li>キーの削除画面上で操作を行うことができます（Project Settings → SSH Keys → キーの X をクリック）。<br>
+                <ul>
+                    <li>削除したキーの種類に応じて、「<span> Add Deploy key」 もしくは「Add User key」</span>をクリックし再度キーを作成します。</li>
+                </ul>
+            </li>
+            <li>これは<a href="https://circleci.com/docs/api/v2/#operation/listCheckoutKeys" target="_self">API経由</a>でも可能です</li>
+        </ul>
+    </li>
+    <li>OpenSSH 7.2 以上をインストールするステップを <code class="code css-9z42f9" data-renderer-mark="true">- checkout</code>ステップの前に追加します。下記のサンプルコードの例では、OpenSSH 8.1p1をインストールしています。
+        <ol>
+            <li>
+                <pre>jobs:
+  jobname:
+    docker:
+      - image: koalaman/shellcheck-alpine:v0.7.1
+    steps:
+      - run:
+          name: Install OpenSSH 8.1p1
+          command: |
+            sudo apt-get update
+            mkdir ~/tempdownload; 
+            cd ~/tempdownload; 
+            wget https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.1p1.tar.gz; 
+            tar zxvf openssh-8.1p1.tar.gz; 
+            cd openssh-8.1p1 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; sudo make install
+      - checkout</pre>
+            </li>
+        </ol>
+    </li>
+    <li>git がインストールされていない場合は、<span style="font-family: monospace, monospace; font-size: 1em; background-color: #f7f7f7;">- checkout </span>の前に git をインストールする必要があります。
+        <ol>
+            <li>
+                <pre>- run:
+      name: Install git for checkout
+      command: |
+          apt-get update &amp;&amp; apt-get --no-install-recommends -y install git</pre>
+            </li>
+        </ol>
+    </li>
+    <li>別のイメージに交換するか、カスタムイメージを構築することで、 OpenSSH バージョンと git の両方がインストールされたイメージを使用するようにします。もしくは、いずれもインストールされていないイメージを使用します。</li>
+</ol>
+<h2>DSA ・ RSA SHA1 の SSH キーを手動登録しているプロジェクト</h2>
+<p><span style="font-family: monospace, monospace; font-size: 1em; background-color: #f7f7f7;">- checkout </span>に使用する <a href="https://circleci.com/docs/ja/2.0/add-ssh-key/#overview" target="_self">SSH キーを手動で登録した</a>場合、DSA であれば、 キーの更新を行い継続させる必要があります。</p>
+<p><a href="https://github.blog/2021-09-01-improving-git-protocol-security-github/" target="_self">GitHubによって規定された要件を満たす</a>新しい SSH キーを生成し、CircleCI 内にそのキーを追加して使用する必要があります。</p>
+<p>手動で登録したキーが RSA SHA1 だった場合:</p>
+<ol>
+    <li>Dokcer やマシンイメージが最新版に更新されている限り、キーを使い続けることができます。また、OpenSSH 7.2 以上がインストールされている必要がありますので、確認する際は <span>: </span><span class="code" spellcheck="false"><code>- run: ssh -V</code></span> を実行して下さい。</li>
+    <li>使用しているイメージが古い場合や更新が難しい場合は、<a href="https://github.blog/2021-09-01-improving-git-protocol-security-github/" target="_self">GitHubが定める要件</a>を満たした新しい SSHキーを生成し、CircleCI　内にキーを追加して使用することが可能です。</li>
+</ol>
+<h2>全ての Checkout  キーをリジェネレーションしたい</h2>
+<p>多くのプロジェクトを抱える組織で、キーをリジェネレーションする必要がある場合、その作業を補助するスクリプトを作成しました。</p>
+<p><a href="https://github.com/CircleCI-Public/github-ssh-regeneration" target="_self">https://github.com/CircleCI-Public/github-ssh-regeneration</a></p>
+<p>このスクリプトを実行する前に Persoanl API キーが、リポジトリのキーを作成に適切なアクセス権を持っていることを確認して下さい。キーの作成をアクセス権は主に Organization の Owner / Admin になります。</p>

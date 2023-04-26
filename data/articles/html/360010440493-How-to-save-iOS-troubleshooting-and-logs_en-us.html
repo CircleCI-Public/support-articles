@@ -1,0 +1,10 @@
+<div>CircleCI is configured to capture many logs from iOS builds, such as from Gym and Scan.</div>
+<h2><span>Instructions</span></h2>
+<div>You need to set the environment variable <code>FL_OUTPUT_DIR</code> to t<span>he artifact directory where FastLane logs and signed</span><code class="highlighter-rouge language-plaintext" data-testid="code-snippet-highlight">.ipa</code> the <span>file should be stored.</span><span></span>
+</div>
+<div><span></span></div>
+<div>You can then use an environmental variable to set the path in the <code>store_artifacts</code> step to automatically save logs such as Gym and Scan.</div>
+<div></div>
+<div>An example config can be found below:</div>
+<pre style="background-color: #f3f3f3; padding: 5px;"># .circleci/config.yml<br>version: 2.1<br>jobs:<br>  build-and-test:<br>    macos:<br>     xcode: 14.0.1<br> environment:<br>  FL_OUTPUT_DIR: output<br>  FASTLANE_LANE: test<br>steps:<br>  - checkout<br>  - run: bundle install<br>  - run:<br>  name: Fastlane<br>    command: bundle exec fastlane $FASTLANE_LANE<br>  - store_artifacts:<br>    path: output<br>  - store_test_results:<br>    path: output/scan<br><br>  adhoc:<br>    macos:<br>      xcode: 14.0.1<br>    environment:<br>      FL_OUTPUT_DIR: output<br>      FASTLANE_LANE: adhoc<br>   steps:<br>     - checkout<br>     - run: bundle install<br>     - run:<br>   name: Fastlane<br>     command: bundle exec fastlane $FASTLANE_LANE<br>    - store_artifacts:<br>      path: output<br><br>workflows:<br>  build-test-adhoc:<br>    jobs:<br>      - build-and-test<br>      - adhoc:<br>   filters:<br>    branches:<br>     only: development<br>   requires:<br>     - build-and-test</pre>
+<div>More information can be found in the <a href="https://circleci.com/docs/2.0/testing-ios/#example-configuration-for-using-fastlane-on-circleci" target="_blank" rel="noopener">iOS Best Practices documentation</a>.</div>

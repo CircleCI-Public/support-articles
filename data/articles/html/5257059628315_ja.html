@@ -1,0 +1,24 @@
+<p><span style="font-size: 2.1em;">概要</span></p>
+<p>Heartbeats とは、正常な動作を示すため、またはシステムの同期するために送られる定期的な信号のことです。このエラーは、OpenVPN やランナーで、task-agent がこのシグナルを5分経っても送信しない場合に発生することがあります。</p>
+<p> </p>
+<h2>CircleCI API (v2)によるジョブのステータス確認</h2>
+<p>ジョブの状態を確認するには、以下のようなcURL GETリクエストを送信してください。</p>
+<pre style="background-color: #f3f3f3;"><code>curl --request GET \<br>--url https://circleci.com/api/v2/workflow/{workflow-id}/job \<br>--header 'authorization: Basic REPLACE_BASIC_AUTH'</code></pre>
+<p>ワークフロー内のジョブの一覧や各ジョブの詳細が表示されます。</p>
+<p> </p>
+<h2><span>Runner 解決方法</span></h2>
+<p><span>The best course of action to correct this error is to restart (<a href="https://circleci.com/docs/2.0/runner-installation-mac/#enable-the-launchd-service" target="_blank" rel="noopener">unload and load</a>) the runner and try a fresh commit. If the error persists, please contact the CircleCI Support Team for help in taking further action to correct this issue.</span></p>
+<p> </p>
+<p><span>このエラーを解決する方法は、ランナーを再起動（<a href="https://circleci.com/docs/ja/runner-installation-mac#enable-the-launchd-service" target="_self">アンロードおよびロード</a>）を行い、追加コミットでビルドを実行し、試すことです。エラーが続く場合は、CircleCI サポートチームにお問合せください。</span></p>
+<p> </p>
+<h2>
+    <span>OpenVPN 解決方法</span><span></span>
+</h2>
+<p><span>ルーティング除外を追加する方法については、「<a href="https://support.circleci.com/hc/en-us/articles/360049397051-How-to-set-up-a-VPN-connection-during-builds" target="_self">ビルド時のVPN接続の設定方法</a>」を参照してください。 </span></p>
+<h2>
+    <br>その他の資料:
+</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/api/v2/#operation/listWorkflowJobs" target="_blank" rel="noopener">Get a workflow's jobs</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/requests/new" target="_self">Submit a Request</a></li>
+</ul>

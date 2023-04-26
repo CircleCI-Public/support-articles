@@ -1,0 +1,14 @@
+<h1>Append To/Create $BASH_ENV</h1>
+<p>The $BASH_ENV environment variable holds a string that holds the location of a file in the /tmp directory. This is used to pass values between steps in a CircleCI Job.</p>
+<p>Typically this is appended to and created within the same step:</p>
+<pre style="background-color: #f3f3f3;">- run: echo "export MY_ENV_VAR=example" &gt;&gt; $BASH_ENV</pre>
+<p>If a build tries to access that value before it has been created it will result in a not found error:</p>
+<pre style="background-color: #f3f3f3;">- run: cat $BASH_ENV
+cat: /tmp/.bash_env-5f3d6eeXXXXXXXa54XXXX-0-build: No such file or directory</pre>
+<p>The solution can be to either make sure to run at least one step that appends values to the file listed in $BASH_ENV or to simply touch the file:</p>
+<pre style="background-color: #f3f3f3;">- run: touch $BASH_ENV</pre>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/env-vars#setting-an-environment-variable-in-a-shell-command:~:text=Another%20possible%20method%20to%20interpolate%20values%20into%20your%20config%20is%20to%20use%20a%20run%20step%20to%20export%20environment%20variables%20to%20BASH_ENV%2C%20as%20shown%20below." target="_blank" rel="noopener">Using parameters and bash environment</a></li>
+</ul>

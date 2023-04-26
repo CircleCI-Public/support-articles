@@ -1,3 +1,26 @@
-<p>Yes, using our caching tools for your dependencies can significantly speed up your jobs. You can <a href="https://circleci.com/docs/2.0/caching/#basic-example-of-dependency-caching">see a basic example here</a> along with other resources related to caching configuration for your project. You can also <a href="https://circleci.com/docs/2.0/demo-apps/">view our demo apps</a> to see how caching might be implemented for your project type.</p>
-<p> Further watching:</p>
+<p> </p>
+<h1>Caching Dependencies</h1>
+<p>Yes, you can - using our caching tools for your dependencies can significantly speed up your jobs.</p>
+<p> </p>
+<h2>Saving Cache Example</h2>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">steps:<br>  - save_cache:<br>     key: my-cache<br>     paths:<br>       - my-file.txt<br>       - my-project/my-dependencies-directory</pre>
+<h2> </h2>
+<h2>Restoring Cache Example</h2>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">steps:<br>   - restore_cache:<br>       keys:<br>         # Find a cache corresponding to this specific package-lock.json checksum<br>         # when this file is changed, this key will fail<br>         - v1-npm-deps-{{ checksum "package-lock.json" }}<br>         # Find the most recently generated cache used from any branch<br>         - v1-npm-deps-</pre>
+<p>You can <a href="https://circleci.com/docs/2.0/caching/#basic-example-of-dependency-caching">see more pertaining to these basic examples here</a> along with other resources related to caching configuration for your project.</p>
+<p>You can also <a href="https://circleci.com/docs/2.0/demo-apps/">view our demo apps</a> to see how caching might be implemented for your project type.</p>
+<h2> </h2>
+<h2>Clearing Cache</h2>
+<p>Since Caches are immutable, they can not be cleared.</p>
+<p><span>It is helpful to start all your cache keys with a version prefix, for example  </span><code class="highlighter-rouge language-none" data-testid="code">v1-...</code><span>. This allows you to regenerate all of your caches just by incrementing the version in this prefix.</span></p>
+<h2> </h2>
+<h2>Cache Size</h2>
+<p><span>We recommend keeping cache sizes under 500MB. This is our upper limit for corruption checks. Above this limit, check times would be excessively long.</span></p>
+<p><span>To keep cache sizes down, consider splitting them into multiple distinct caches.</span></p>
+<h2> </h2>
 <p><iframe src="//www.youtube-nocookie.com/embed/0-ePDGv1qLc" width="560" height="315" frameborder="0" allowfullscreen=""></iframe></p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><span class="wysiwyg-underline"><a href="https://circleci.com/docs/caching" target="_blank" rel="noopener">CircleCI Documentation: Caching Dependencies</a></span></li>
+</ul>

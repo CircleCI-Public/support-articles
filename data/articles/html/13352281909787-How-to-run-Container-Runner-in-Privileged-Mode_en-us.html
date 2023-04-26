@@ -1,0 +1,16 @@
+<h1>Container Runner in Privileged Mode</h1>
+<p>In some cases, you may wish to run your docker containers in a privileged environment. CircleCI Cloud does not offer this at this time, but you can do this with <a href="https://circleci.com/docs/container-runner-installation/" target="_blank" rel="noopener">container runner</a>. Please cast your vote to this <a href="https://circleci.canny.io/cloud-feature-requests/p/ability-to-run-privileged-containers-when-using-the-docker-executor" target="_blank" rel="noopener">feature request</a> to see this in the cloud environment.</p>
+<p> </p>
+<h2>Values Setup</h2>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">agent:<br>  resourceClasses:<br>    namespace/container-runner:<br>     token: ${TOKEN}<br>     spec:<br>       containers:<br>        - resources:<br>          volumeMounts:<br>             - name: docker-socket<br>               mountPath: /var/run/docker.sock<br>          securityContext:<br>           privileged: true<br>       volumes:<br>         - name: docker-socket<br>           hostPath:<br>             path: /var/run/docker.sock<br>             type: Socket</pre>
+<p> </p>
+<h2>Verifying Privileged Mode</h2>
+<p>You can run the following step within your job to verify the container is in privileged mode.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><span>      - run:</span><br><span>          name: Privilege check</span><br><span>          command: |</span><br><span>            (ip link add dummy2 type dummy 2&gt;&amp;1 &gt;/dev/null &amp;&amp; echo "Running in privileged container" )|| (echo "Not in privileged container" )</span></pre>
+<p>You can also run the following Kubernetes command to verify.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">kubectl get pod ${POD_NAME} -n &lt;namespace&gt; -o json | jq -r '.spec.containers[].securityContext.privileged'</pre>
+<p> </p>
+<h2>Additional Resources</h2>
+<ul>
+    <li>https://kubernetes.io/docs/tasks/configure-pod-container/security-context/</li>
+</ul>

@@ -1,0 +1,9 @@
+<h1>Why does the Docker Executor return total CPU Cores?</h1>
+<p>When calling <code>nproc</code>, <code>lscpu</code> etc on the Docker Executor, you will see it return the total host CPU core count, instead of what is depicted on your <code>resource_class</code>. See below:</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/10653479204891" alt="Screen_Shot_2022-11-24_at_2.53.55_PM.png"></p>
+<p>This is by design to allow for slight overprovisioning where you may see your CPU reach 100% usage on the resource tab, but not fail. </p>
+<p> </p>
+<h1>Typical Use Case</h1>
+<p>The typical use case for this is typically to utilize a <code>--parallelism</code> flag to auto-scale workers to available CPU cores. However, it is best practice to allow the command to auto-scale or specify the core count based on the <a href="https://circleci.com/product/features/resource-classes/" target="_blank" rel="noopener">resource class</a> you are using.</p>
+<p> </p>
+<p>You can also utilize the <a href="https://circleci.com/docs/using-linuxvm/" target="_blank" rel="noopener">Machine Executor</a> which will return the specific CPU core count that your resource class specifies. </p>

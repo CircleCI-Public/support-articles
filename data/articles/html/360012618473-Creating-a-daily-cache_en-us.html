@@ -1,7 +1,8 @@
-<p>Here is a trick to give yourself a cache that is cleared daily. This is not required or recommended for many use cases but can prove potentially useful for some instances.</p>
-<p>For instance, in building static blog sites that fetch from external API's, you may want to clear your cache periodically to ensure any new information is fetched.</p>
-<p><strong>How:</strong></p>
-<p>Early in your job create a file containing today's date without a timestamp</p>
+<h1>Daily Cache</h1>
+<p><strong><span class="wysiwyg-color-red">Note: This is not required or recommended for many use cases, but can prove potentially useful for some instances.</span></strong></p>
+<p>For example, if you are building static blog sites that fetch from external API's, you may want to build with a new cache periodically to ensure any new information is fetched.</p>
+<h2>Solution</h2>
+<p>Early in your job, create a file containing today's date without a timestamp:</p>
 <pre><code>- run: date +%F &gt; date</code></pre>
 <p>You can now use this file to test against when choosing when to rebuild cache by utilizing the checksum template.</p>
 <pre><code>
@@ -13,4 +14,7 @@
             paths:
                 - "/docs"
 </code></pre>
-<p> The checksum of the <code>date</code> file will remain static until the next day, at which point a new cache will be created.</p>
+<p>The checksum of the <code>date</code> file will remain static until the next day, at which point a new cache will be created.</p>
+<p><em>Note: The old caches will still exist under a different cache key and will expire after 15 days as per our retention policy:</em></p>
+<p><a href="https://circleci.com/docs/2.0/caching/#cache-expiration">https://circleci.com/docs/2.0/caching/#cache-expiration</a></p>
+<p> </p>

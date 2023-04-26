@@ -1,9 +1,18 @@
-<p><a href="https://circleci.com/docs/2.0/docker-layer-caching/#overview" target="_blank" rel="noopener">Docker Layer Caching (DLC)</a> can reduce Docker image build times on CircleCI. Some frequently asked questions around DLC are:</p>
+<h1>Overview</h1>
+<p><a href="https://circleci.com/docs/2.0/docker-layer-caching/#overview" target="_blank" rel="noopener">Docker Layer Caching (DLC)</a> can reduce Docker image build times on CircleCI by caching individual layers of any Docker images built as part of your jobs.<br><br>Here are some frequently asked questions concerning DLC that will hopefully help our users understand CircleCI's DLC feature.<br><br></p>
+<h2>Frequently Asked Questions:</h2>
 <h3 dir="auto"><strong>Is DLC available between different workflows under the same project?</strong></h3>
-<p class="wysiwyg-indent3" dir="auto">Yes, DLC is not locked to workflows or jobs. You can create a maximum of 50 DLC volumes per project.</p>
-<h3 dir="auto"><strong>Why are subsequent builds not able to access the cache consistently?</strong></h3>
-<p class="wysiwyg-indent3" dir="auto">If a job fails while calling a specific DLC volume, it would require rebuilding when calling it again, causing inconsistencies. It is worth noting that different jobs may also use different volumes. An example being if two<span> </span><code>machine</code><span> </span>jobs are run in parallel, they <a href="https://circleci.com/docs/2.0/docker-layer-caching/#how-dlc-works" target="_blank" rel="noopener">will get different DLC volumes</a>.</p>
-<h3 dir="auto"><strong>Is DLC guaranteed? </strong></h3>
-<p class="wysiwyg-indent3" dir="auto">Unfortunately, DLC is not guaranteed. <span>If you are experiencing issues with cache-misses or need high-parallelism, consider trying the experimental</span><span> </span><a href="https://circleci.com/developer/orbs/orb/cci-x/docker-registry-image-cache" rel="noreferrer">cci-x/docker-registry-image-cache orb</a>.</p>
-<h3 dir="auto"><strong>As an admin, can I see the content of a DLC volume?</strong></h3>
-<p class="wysiwyg-indent3" dir="auto">While you can see what volume is used for each job, at this time, the content is unavailable.</p>
+<p class="wysiwyg-indent3" dir="auto">Yes, DLC is not locked to specific workflows, jobs or branches of a project. </p>
+<h3 id="purge-DLC" dir="auto"><strong>How can I delete my DLC cache instance?</strong></h3>
+<p>Via the CLI: </p>
+<p class="wysiwyg-indent3" dir="auto">You can delete the DLC cache for your project using <a href="https://circleci-public.github.io/circleci-cli/circleci_project_dlc_purge.html" target="_self">our CircleCI CLI</a> with the following command:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">circleci project dlc purge &lt;vcs-type&gt; &lt;org-name&gt; &lt;project-name&gt; [flags]</pre>
+<p class="wysiwyg-indent3" dir="auto">To use the above command, ensure that your CircleCI CLI version is <strong><a href="https://github.com/CircleCI-Public/circleci-cli/releases/tag/v0.1.24705" target="_blank" rel="noopener">v0.1.24705</a> </strong>or newer<strong>.</strong></p>
+<p>Via the UI:</p>
+<p class="wysiwyg-indent3" dir="auto">Navigate to your project on <a href="https://app.circleci.com" target="_self">app.circleci.com</a></p>
+<p class="wysiwyg-indent3" dir="auto">Click <code>Project Settings</code>.</p>
+<p class="wysiwyg-indent3" dir="auto">Navigate to <code>Docker Layer Caching</code>.</p>
+<p class="wysiwyg-indent3" dir="auto">Click <code>Delete Cache Contents</code>.</p>
+<p class="wysiwyg-indent3" dir="auto"><img src="https://support.circleci.com/hc/article_attachments/14317251044763" alt="Screenshot_2023-04-06_at_10.05.43_AM.png"></p>
+<h3 dir="auto"><strong>Will cache hits be guaranteed with DLC? </strong></h3>
+<p class="wysiwyg-indent3" dir="auto">With DLC enabled, there can be scenarios where cache hits are not seen at certain steps.<br><br>Docker will attempt to leverage cache at each step (defined by your Dockerfile's RUN, ADD, COPY commands, for example).<br><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#leverage-build-cache" target="_blank" rel="noopener">Once an earlier step misses the cache, the cache is invalidated and subsequent steps will see cache miss as well.</a><br><br><span>If you are experiencing issues with frequent cache-misses or need high-parallelism, consider trying caching using <code><a href="https://docs.docker.com/engine/reference/commandline/build/#specifying-external-cache-sources">docker build</a></code>, which you can optionally implement using the <a href="https://circleci.com/developer/orbs/orb/circleci/docker#commands-build">CircleCI Docker orb</a></span>. </p>

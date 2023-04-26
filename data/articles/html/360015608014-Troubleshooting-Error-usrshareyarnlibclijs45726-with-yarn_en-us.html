@@ -1,0 +1,18 @@
+<p>While trying to install <em><strong>yarn</strong></em>, you might encounter a <code>SyntaxError: Unexpected token</code> issue referring to <code>/usr/local/lib/node_modules/yarn/lib/cli.js:45726</code>.</p>
+<p>According to the <a href="https://github.com/yarnpkg/yarn/issues/6900" target="_blank" rel="noopener">related GitHub issue</a>, the problem occurs when your environment meets both the below conditions:</p>
+<ol>
+    <li>
+        <em><strong>yarn</strong> </em>version is<span> <strong>v1.13.0</strong></span>
+    </li>
+    <li><span><strong><em>Node.js</em></strong> is lower than <strong>v6</strong></span></li>
+</ol>
+<h2 data-renderer-start-pos="7432">Solution</h2>
+<ul class="ak-ul" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="7446">Upgrade the version of Node.js</p>
+    </li>
+    <li>
+        <p data-renderer-start-pos="7498">Upgrade the version of yarn</p>
+    </li>
+</ul>
+<p data-renderer-start-pos="7610">You should no longer see the issue when building.</p>

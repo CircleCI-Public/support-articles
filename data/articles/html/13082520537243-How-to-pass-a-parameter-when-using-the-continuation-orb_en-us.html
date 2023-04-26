@@ -1,0 +1,30 @@
+<p data-renderer-start-pos="7877">If you need to pass a parameter (and its associated value) from the <em>Setup Workflow</em> to the <em>Continuation Workflow</em>, you can leverage the `parameters` parameter of the <a href="https://circleci.com/developer/orbs/orb/circleci/continuation#commands-continue" target="_blank" rel="noopener">continuation orb's `continue` command</a>.</p>
+<p data-renderer-start-pos="7877">This is typically useful if you want the execution of the <em>Continuation Workflow</em> to depend on <a href="https://circleci.com/docs/configuration-reference/#logic-statements" target="_blank" rel="noopener">logic statements</a>. </p>
+<p data-renderer-start-pos="7877"> </p>
+<h2 data-renderer-start-pos="8009">Prerequisites</h2>
+<p>This guide assumes that you have some familiarity with <em><a href="https://circleci.com/docs/dynamic-config/" target="_blank" rel="noopener">Dynamic Configuration</a>.</em></p>
+<p> </p>
+<h2 data-renderer-start-pos="8152">Instructions</h2>
+<p data-renderer-start-pos="8169">Below is an example of the <code>config.yml</code> for the <em>Setup Workflow</em>:</p>
+<div>
+    <pre style="background-color: #f3f3f3; padding: 5px;"><span>version</span><span>: </span><span>2.1</span><br><span>setup</span><span>: </span><span>true</span><br><span>orbs</span><span>:</span><br><span> </span><span>continuation</span><span>: </span><span>circleci/continuation@0.3.1<br><br></span>jobs:<br>  set-param:<br>    docker:<br>      - image: cimg/node:19.6.1<br><br>  steps:<br>    <span>- </span><span>continuation/continue</span><span>:<br></span>        parameters: { "further": true }<br><span>        </span><span>configuration_path</span><span>: </span><span>./config_continue.yml</span><br><br><span>workflows</span><span>:</span><br><span> </span><span>use-my-orb</span><span>:</span><br><span>   </span><span>jobs</span><span>:</span><br>     - set-param</pre>
+</div>
+<p data-renderer-start-pos="8207"> </p>
+<p>Below is an example the <code>continue.yml</code> for the <em>Continuation Workflow</em>:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;">version: 2.1<br><br>parameters:<br>  further:<br>    type: boolean<br>    default: false<br><br>jobs:<br>  module-build:<br>    docker:<br>      - image: cimg/node:19.6.1<br>  steps:<br>    - run:<br>        name: Check directory<br>        command: pwd<br><br>workflows:<br>  module-workflow:<br>    when: &lt;&lt; pipeline.parameters.further &gt;&gt;<br>    jobs:<br>      - module-build</pre>
+<p data-renderer-start-pos="8207"> </p>
+<h2 data-renderer-start-pos="8207">Outcome</h2>
+<p data-renderer-start-pos="8207">In the above scenario, the module-workflow will only execute if you specified <code>parameters: { "further": true }</code> when invoking the <code>continuation/continue</code> command.</p>
+<p data-renderer-start-pos="8207"> </p>
+<h2 data-renderer-start-pos="8207">Additional Notes</h2>
+<p>You can pass several parameters when invoking the <code>continuation/continue</code> command; however they need to be part of the same JSON object. For example:</p>
+<div>
+    <pre style="background-color: #f3f3f3; padding: 5px;">steps:<br>  <span>- </span><span>continuation/continue</span><span>:<br></span>      parameters: { "further": true, "other_param": "a_string" }<br><span>      </span><span>configuration_path</span><span>: </span><span>./config_continue.yml</span></pre>
+</div>
+<p data-renderer-start-pos="8207"><em>(Note the absence of double-quotes around the boolean's value)</em></p>
+<p data-renderer-start-pos="8207"> </p>
+<p data-renderer-start-pos="8207">The <code>parameters</code> parameter accepts either a JSON object or a path to a file containing a JSON object. So the following is also valid:</p>
+<div>
+    <pre style="background-color: #f3f3f3; padding: 5px;">steps:<br>  - run: echo '{ "further": true, "other_param": "a_string" }' &gt; /home/circleci/parameters.json<br>  <span>- </span><span>continuation/continue</span><span>:<br></span>      parameters: /home/circleci/parameters.json<br><span>      </span><span>configuration_path</span><span>: </span><span>./config_continue.yml</span></pre>
+</div>
+<p data-renderer-start-pos="8207"> </p>

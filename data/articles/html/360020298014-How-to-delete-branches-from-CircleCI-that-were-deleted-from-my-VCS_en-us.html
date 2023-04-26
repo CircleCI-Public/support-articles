@@ -1,0 +1,15 @@
+<p data-renderer-start-pos="6586">CircleCI automatically deletes branches when we receive a branch deletion event from your VCS provider (GitHub / Bitbucket). For various reasons, this may become out of sync.</p>
+<h2 data-renderer-start-pos="6861">Instructions:</h2>
+<ul class="ak-ul" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="6878">Push the same branch name up to your VCS provider</p>
+    </li>
+    <li>
+        <p data-renderer-start-pos="6888">Run the deletion one again to retrigger the deletion</p>
+    </li>
+</ul>
+<p data-renderer-start-pos="6916">The branch should now be deleted.</p>
+<h2><strong><span>Additional Notes</span></strong></h2>
+<p> If you attempt to delete a branch while a job connected to that branch is still running, the branch will be re-created in CircleCI when the job is finished. Please allow all jobs running on a branch to finish before deleting them from the VCS provider to assure they will stay deleted. </p>
+<h2><strong><span>Additional Resouces</span></strong></h2>
+<p><strong> </strong><a href="https://support.circleci.com/hc/en-us/articles/360041871133" target="_self">How can I delete a branch?</a></p>

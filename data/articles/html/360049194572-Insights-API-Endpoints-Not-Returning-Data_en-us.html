@@ -1,0 +1,20 @@
+<h1>API v2</h1>
+<p>The <a href="https://circleci.com/blog/announcing-new-insights-endpoints-in-circleci-s-api-v2/" target="_blank" rel="noopener">Insights API endpoints</a> allow you to pull information about workflows and jobs, there are several endpoints outlined here:</p>
+<p><a href="https://circleci.com/docs/api/v2/#tag/Insights" target="_blank" rel="noopener">https://circleci.com/docs/api/v2/#tag/Insights</a></p>
+<p>There are a few caveats when utilizing these endpoints where you may find the response you receive back isn't what you are expecting.</p>
+<h2>Not specifying a <code style="background-color: #f3f3f3;">branch</code> parameter</h2>
+<p>The Insights endpoints are scoped to branches, and if you don't pass a branch parameter we will pull the data for the default branch of your project.</p>
+<p>However, a new parameter was introduced <code style="background-color: #f3f3f3;">all-branches</code> which is a boolean parameter. If you set it to <code style="background-color: #f3f3f3;">true</code> you will get information back on all branches.</p>
+<h2>The workflow is currently "On-Hold"</h2>
+<p>We will only return data for workflows that have moved to an "end" state -- i.e. "Success", "Failed", "Cancelled".</p>
+<p>Since an "On-Hold" workflow is technically still running, the workflow and job data associated with it will not be returned.</p>
+<h2>The workflow was started with a tag</h2>
+<p>At the moment we will only return data from the Insights endpoints if the workflow was started from a branch. Any workflow that was started by a tag will not be returned in the API responses.</p>
+<p>You can add a vote to the request to implement that here:</p>
+<p><a href="https://circleci.canny.io/insights-dashboard-feedback/p/show-tags-in-insights" target="_blank" rel="noopener">https://circleci.canny.io/insights-dashboard-feedback/p/show-tags-in-insights</a></p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/api-intro" target="_blank" rel="noopener">API Reference</a></li>
+    <li><a href="https://circleci.com/docs/2.0/api-developers-guide" target="_blank" rel="noopener">CircleCI API Developer's Guide</a></li>
+</ul>

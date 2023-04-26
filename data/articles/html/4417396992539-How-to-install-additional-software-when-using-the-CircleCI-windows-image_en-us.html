@@ -1,0 +1,15 @@
+<h1>Preinstalled Software</h1>
+<p>The CircleCI Windows image comes with software pre-installed . You can find a list of Software pre-installed in the Windows image <a href="https://circleci.com/docs/2.0/hello-world-windows/#software-pre-installed-in-the-windows-image" target="_self">here</a>. The Windows image comes with <a href="https://chocolatey.org/" target="_self">Chocolatey Package Manager</a> pre-installed too. </p>
+<h2>Additional Software</h2>
+<p>If you require software that is not already pre-installed in the image, you can install it by adding an installation step. Below you can find an example `config.yml` that uses chocolatey to install python 3.8.0 :</p>
+<p> </p>
+<pre dir="ltr"><code>version: 2.1
+orbs:
+  win: circleci/windows@2.4.1
+jobs:
+  install_python_3
+    executor:
+      name: win/default
+    steps:
+      - run: choco install python --version=3.8.0
+      - run: python --version </code></pre>

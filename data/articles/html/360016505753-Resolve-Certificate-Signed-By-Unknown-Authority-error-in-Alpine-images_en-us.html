@@ -1,3 +1,4 @@
+<h2>Overview</h2>
 <p>The error "<em>Certificate Signed By Unknown Authority</em>" may indicate your Docker container lacks <a href="https://pkgs.alpinelinux.org/package/v3.3/main/x86/ca-certificates">ca-certificates</a>, which are used to check against and authenticate SSL connections. Without this package, some features of CircleCI will be unable to function, such as downloading workspaces.</p>
 <p>Error when attempting to use <a href="https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs">Workspaces</a>:</p>
 <pre><code>

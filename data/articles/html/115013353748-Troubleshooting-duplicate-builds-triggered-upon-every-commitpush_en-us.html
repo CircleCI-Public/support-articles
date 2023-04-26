@@ -1,0 +1,22 @@
+<p>When you have duplicate builds triggering on every commit or push this usually indicates that there's a problem with the webhook in GitHub.</p>
+<p>Typically this means there are multiple webhooks added to the repository/project in GitHub for CircleCI.</p>
+<h3>Solution 1</h3>
+<p>We would recommend having an admin of the Github Organization follow these steps in order: </p>
+<p>1. In GitHub, navigate to the impacted repository settings. <em>https://github.com/OrgName/Repository</em></p>
+<p><em><img src="https://support.circleci.com/hc/article_attachments/360058626252/Screenshot_2020-06-03_at_19.36.02.png" alt="Screenshot_2020-06-03_at_19.36.02.png" width="429" height="149"></em></p>
+<p>2. Select Webhooks</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360084903891/Screenshot_2020-06-03_at_19.39.59.png" alt="Screenshot_2020-06-03_at_19.39.59.png" width="292" height="225"></p>
+<p> </p>
+<p>3. If there are multiple webhooks present here, remove all of the duplicate webhooks for CircleCI. </p>
+<p> </p>
+<h3>Solution 2</h3>
+<p>If this does not resolve the duplicate triggered builds issue, then your Organization Admin can entirely remove all webhooks for the repository, stop building, and then add the project back on CircleCI.</p>
+<ol>
+    <li>Navigate to the repository settings/Webhooks as described above.</li>
+    <li>Remove all of the webhooks for CircleCI.</li>
+    <li>In CircleCI, stop building the project through "Project settings". <span class="wysiwyg-color-black"><em><a href="https://app.circleci.com/settings/project/github/ORGNAME/PROJECTNAME">https://app.circleci.com/settings/project/github/ORGNAME/PROJECTNAME</a></em></span>
+    </li>
+    <li>Then, reconnect the project back on CircleCI.</li>
+</ol>
+<p>Once this has been done you should only see one build being triggered with each push/commit.</p>
+<p>A full walkthrough for removing a project/repository from CircleCI <a href="https://support.circleci.com/hc/en-us/articles/360021666393-How-to-manually-stop-building-by-removing-your-deploy-key-and-webhook-from-GitHub" target="_self">can be found here</a>, including screenshots.</p>

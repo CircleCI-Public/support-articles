@@ -1,0 +1,36 @@
+<h1>Overview</h1>
+<p>When submitting a Support ticket for a private Server installation of CircleCI, you may be asked to provide a support bundle by the CircleCI Support Engineer working on your ticket.</p>
+<p>Previously, on Server 2.x and 3.x installations of CircleCI, this was done using the KOTS Admin Dashboard to generate this. However, Server 4.x no longer uses KOTS and requires manual generation following the steps below.</p>
+<p> </p>
+<h2>Prerequisites:</h2>
+<ul>
+    <li>A running deployment of CircleCI Server 4.0 (or higher) with access to the cluster/namespace using <code>kubectl</code>
+    </li>
+</ul>
+<h2>Generating a Support Bundle on Server 4.x</h2>
+<ol>
+    <li>Confirm that you have access to the cluster/namespace by running:<br>
+        <pre class="highlight line-numbers language-bash" tabindex="0"><code class="language-bash" data-testid="code-snippet-highlight">kubectl <span class="token parameter variable">-n </span><span class="token operator">&lt;</span>namespace<span class="token operator">&gt;</span> get pods</code></pre>
+    </li>
+    <li>Make sure that <code>krew</code> is installed
+        <ul>
+            <li>Krew installation instructions can be found <a href="https://krew.sigs.k8s.io/docs/user-guide/setup/install/" target="_blank" rel="noopener">on the official documentation page here</a><br><br>
+            </li>
+        </ul>
+    </li>
+    <li>Install the <a href="https://github.com/replicatedhq/troubleshoot#support-bundle" target="_blank" rel="noopener"> support-bundle (kubectl plugin)</a> by running:
+        <pre class="highlight line-numbers language-bash" tabindex="0"><code class="language-bash" data-testid="code-snippet-highlight">kubectl krew <span class="token function">install</span> support-bundle</code></pre>
+        <span></span>
+    </li>
+    <li>
+        <span>When ready, run the support bundle from the current directory and wait for it to finish</span>
+        <pre class="highlight line-numbers language-bash" tabindex="0"><code class="language-bash" data-testid="code-snippet-highlight">kubectl support-bundle <a href="https://raw.githubusercontent.com/CircleCI-Public/server-scripts/main/support/support-bundle.yaml">https://raw.githubusercontent.com/CircleCI-Public/server-scripts/main/support/support-bundle.yaml</a></code></pre>
+    </li>
+</ol>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"><br>Additional details can be found in<a href="https://circleci.com/docs/server/operator/troubleshooting-and-support/#generate-support-bundle"> our documentation here</a></span></p>
+<p> </p>
+<h2><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Additional Resources:</span></h2>
+<ul>
+    <li><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"><a href="https://support.circleci.com/hc/en-us/articles/360003741314" target="_blank" rel="noopener">Creating a Support Bundle</a></span></li>
+    <li><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"><a href="https://support.circleci.com/hc/en-us/articles/360045662112" target="_blank" rel="noopener">How to reduce the size of the Support Bundle</a></span></li>
+</ul>

@@ -1,5 +1,0 @@
-<p><a href="https://circleci.com/docs/ja/2.0/configuration-reference/#windows-executor" target="_blank" rel="noopener">Windows Executor</a> の使用時に、ジョブで chocolatey を使用してパッケージをダウンロードおよびインストールすると、ダウンロードまたはインストールが失敗することがあります。 chocolatey ではデフォルトでログ ファイルが生成されますが、アーティファクトとして保存しないと、このファイルはアクセス不能になります。</p>
-<p>そのため、ジョブの問題を後でトラブルシューティングするには、chocolatey を使用するステップの後に以下のステップを追加します。</p>
-<pre style="background-color: #f3f3f3;">- store_artifacts:    path: C:\ProgramData\chocolatey\logs    destination: chocolatey_logs</pre>
-<p>このステップにより、ダウンロードとインストールのコマンドの出力結果を詳細に記録した以下のログが保存され、問題の発生箇所を特定しやすくなります。</p>
-<pre style="background-color: #f3f3f3;">chocolatey_logs/choco.summary.logchocolatey_logs/chocolatey.log</pre>
