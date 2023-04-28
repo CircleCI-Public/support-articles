@@ -1,46 +1,29 @@
 <h2>Overview</h2>
-<p>CircleCI Cloud Customers can retrieve <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">audit logs by submitting a support ticket or by using the Self-serve audit log feature via the</span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> CircleCI UI (Custom Performance and Scale plans only). </span></p>
-<p> </p>
-<h3><span class="wysiwyg-underline"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Self-serve Audit logs</span></span></h3>
-<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Starting <strong>11/01/2022 </strong>customers on a scale or custom performance plan can use the self-serve audit log feature to retrieve audit logs from within the UI. To retrieve audit logs please navigate to your organization settings page &gt; "security"  and scroll down to the "Audit logs" section. A user requesting audit logs in required to be an organization admin. If you are not an organization admin, you will not see this feature. </span></p>
+<p>CircleCI Cloud Customers can retrieve <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">audit logs by using the Self-serve audit log feature via the</span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> CircleCI UI. </span></p>
+<h3><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Self-serve Audit logs</span></h3>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">To retrieve audit logs please navigate to your organization settings page &gt; "Security"  and scroll down to the "Audit logs" section. The user requesting audit logs is required to be an organization admin. If you are not an organization admin, you will not see this feature. </span></p>
 <p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Additionally, self-serve audit log retrieval is limited by the following per <a href="https://circleci.com/pricing/" target="_self">plan type</a>: </span></p>
 <ul class="ak-ul" data-indent-level="1">
     <li>
-        <p data-renderer-start-pos="465">Scale - 3 requests per 30-day period</p>
+        <p data-renderer-start-pos="465">Paid plans - 3 requests per day</p>
     </li>
     <li>
-        <p data-renderer-start-pos="496">Performance - 1 request per 30-day period</p>
-    </li>
-    <li>
-        <p data-renderer-start-pos="540">Others - 0 requests per 30-day period</p>
+        <p data-renderer-start-pos="496">Free - 1 request per day</p>
     </li>
 </ul>
-<p data-renderer-start-pos="540"><strong>Note:</strong> Sometimes audit log requests may fail due to audit log files being too large. When requesting audit logs using the self-serve option, we recommend requesting 1 month at a time starting from the most recent month. </p>
-<h3>
-    <span class="wysiwyg-underline">Requesting Audit logs </span> 
-</h3>
-<p>CircleCI Cloud Customers can request audit logs for <span></span><strong>free </strong><span></span>by submitting a <span></span><a href="https://support.circleci.com/hc/en-us" target="_blank" rel="noopener">support ticket</a>. There are several requirements that must be met for the request to be processed. For an example of the audit logs events captured, please see our documentation located here: <span></span><a href="https://circleci.com/docs/audit-logs/" target="_blank" rel="noopener">Audit Logs</a>.</p>
-<p> </p>
-<p><strong>Note</strong>: CircleCI Server customers can access the <span></span><a href="https://support.circleci.com/hc/en-us/articles/360048467812--Server-How-to-Get-Audit-Logs-" target="_blank" rel="noopener">audit log feature from the UI</a>.</p>
-<p> </p>
-<h3><span class="wysiwyg-underline"><span class="wysiwyg-font-size-large">Requirements</span></span></h3>
-<p>The requester should be the organization admin or should have an org admin's approval. This is very important as we provide audit logs for the entire organization. Project-level audit logs are not possible.</p>
-<p> </p>
-<h3><span class="wysiwyg-underline">Submitting Audit Log Request:</span></h3>
-<p>Submit the following in a support ticket.</p>
+<p data-renderer-start-pos="540"><strong>Note:</strong> Requests are limited to a 30-day window.</p>
+<p data-renderer-start-pos="540">For more information on self-serve audit logs, please refer to our documentation:</p>
 <ul>
-    <li>Your VCS Organization Name</li>
-    <li>Date Range</li>
+    <li data-renderer-start-pos="540"><a href="https://circleci.com/docs/audit-logs/#request-audit-logs-from-the-web-app" target="_blank" rel="noopener">Request audit logs from the web app</a></li>
 </ul>
-<p>To provide the logs without any delay, we need a <span></span><strong>date range </strong><span></span>in the format <span></span><strong>year-month-date</strong>. For example, if you want audit logs from May 1st, 2020 to May 31st, 2020, just let us know the start  &amp; end date like below:</p>
-<pre>Start date: 2020-05-01<br>End date: 2020-05-31</pre>
-<p><span class="wysiwyg-font-size-medium">Per our<span></span> <a href="https://circleci.com/privacy/#information" target="_blank" rel="noopener">Data Retention Policy</a>, audit logs can be retrieved for up to 12 months. </span></p>
-<h3><span class="wysiwyg-underline"><span class="wysiwyg-font-size-large">Delivery</span></span></h3>
-<p>Audit logs will be supplied securely to the ticket submitter/organization admin via SendSafely.</p>
-<h3> </h3>
-<h3><span class="wysiwyg-underline"><span class="wysiwyg-font-size-large">Unsupported</span></span></h3>
-<p><span>- Recurring audit logs</span></p>
-<p><span>- Project-level audit logs</span></p>
+<h3><span class="wysiwyg-font-size-large">Unsupported Audit Logs</span></h3>
+<p><span>CircleCI does not support the following:</span></p>
+<ul>
+    <li><span>Recurring audit logs</span></li>
+    <li>Project-level audit logs</li>
+</ul>
+<h3>Considerations</h3>
+<p>Please reach out to Support if you run into trouble accessing your Security settings.</p>
 <p> </p>
 <p> </p>
 <p> </p>
