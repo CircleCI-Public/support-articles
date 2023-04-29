@@ -1,0 +1,45 @@
+<h1>Overview</h1>
+<p>The teams at CircleCI have heard feedback across several channels regarding Project Features that require opening a support request to make changes.</p>
+<p>To empower our userbase, we have started the process of releasing previously private endpoints for users to leverage the ability to configure these features without requiring help from a Support Engineer. </p>
+<p> </p>
+<h2>Available Features</h2>
+<table class="wysiwyg-text-align-center" style="border-collapse: collapse; width: 100%; height: 88px;" border="1">
+    <tbody>
+        <tr style="height: 22px;">
+            <td style="width: 50%; height: 22px;"><strong>Feature</strong></td>
+            <td style="width: 50%; height: 22px;"><strong>Description</strong></td>
+        </tr>
+        <tr style="height: 44px;">
+            <td style="width: 50%; height: 44px;"><code>disable-ssh</code></td>
+            <td style="width: 50%; height: 44px;">Disable SSH capability for builds on this project</td>
+        </tr>
+        <tr style="height: 22px;">
+            <td style="width: 50%; height: 22px;"><code>write-settings-requires-admin</code></td>
+            <td style="width: 50%; height: 22px;">Only admins will be allowed to modify(write permissions) project settings</td>
+        </tr>
+    </tbody>
+</table>
+<p class="wysiwyg-text-align-center"> </p>
+<p>Note: These feature flags are only at the Project Level and default to <code>false</code></p>
+<p> </p>
+<h2>Using the API to toggle these features</h2>
+<p>To toggle these features, please use the following cURL command:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><span class="token function">curl</span><span class=""> -X PUT \<br>--header </span><span class="token string">"Circle-Token: &lt;token&gt;" \</span><span class=""> <br>--header </span><span class="token string">"Accept: application/json" \</span><span class=""> <br>--header </span><span class="token string">"Content-Type: application/json" \</span><span class=""> <br>--data </span><span class="token string">'{"feature_flags":{"disable-ssh": true, "write-settings-requires-admin": true}}'</span><span class=""> </span><span class="token string">'https://circleci.com/api/v1.1/project/vcs-type/org-slug/project-slug/settings'</span></pre>
+<ul>
+    <li>For the project URL under the <code>--data</code> payload, replace <code><span class="token string">vcs-type/org-slug/project-slug</span></code> with the project that you wish to apply these feature flags to.</li>
+    <li>Replace the <code>&lt;token&gt;</code> with a <a href="https://app.circleci.com/settings/user/tokens">Personal API Token</a>.
+        <ul>
+            <li>This can also be authenticated using Basic authentication after encoding your Personal API Token</li>
+        </ul>
+    </li>
+    <li>The expected response from our API for a successful application of these feature flags is <code style="font-size: 15px;">""%</code>
+    </li>
+</ul>
+<p>Please share any feedback with your account team or with the Support Engineering team here at CircleCI!</p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/115014005208" target="_blank" rel="noopener">CircleCI API Access</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360052405651" target="_blank" rel="noopener">Using 'Basic' Authentication in CircleCI API Calls</a></li>
+</ul>
+<p> </p>
