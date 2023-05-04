@@ -36,3 +36,13 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: ${{github.workspace}}/flawfinder_results.sarif
+
+
+on:
+  pull_request:
+    branches:
+    - main
+    on:
+  schedule:
+  - cron: "0 2 * * 1-5"
+    
