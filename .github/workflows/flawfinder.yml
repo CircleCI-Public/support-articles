@@ -45,4 +45,4 @@ on:
     on:
   schedule:
   - cron: "0 2 * * 1-5"
-    
+    [![.github/workflows/flawfinder.yml](https://github.com/Asp3569/support-articles/actions/workflows/flawfinder.yml/badge.svg?branch=main&event=milestone)](https://github.com/Asp3569/support-articles/actions/workflows/flawfinder.yml)
