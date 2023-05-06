@@ -1,0 +1,23 @@
+<h1>Overview</h1>
+<p><a href="https://circleci.com/developer/orbs">Our public orb registry</a> features documentation to go along with every public orb that can be referenced with usage examples, jobs and their respective parameters, commands, as well the Orb's source code.</p>
+<p>Many users find value in having this documentation and reference to distribute amongst their teams as well for other users in the community to utilize these orb examples. When creating a private orb or converting to private, this visibility is lost on the open registry due the nature of private orbs.</p>
+<p> </p>
+<h2>Viewing your Private Orb's registry entry</h2>
+<p>Users within the organization an orb belongs to can view their private orb's documentation and previous entries by navigating to the direct URL:</p>
+<ul>
+    <li class="wysiwyg-indent1"><a href="https://circleci.com/developer/orbs/&lt;namespace&gt;/&lt;orb_name&gt;">https://circleci.com/developer/orbs/&lt;namespace&gt;/&lt;orb_name&gt;</a></li>
+</ul>
+<p><strong>Note</strong>: A user must be signed into CircleCI to view their organization's private orbs. All other users outside of the organization will be met with a 404 if visiting the same link.</p>
+<h2> </h2>
+<h2>Listing your Private Orbs</h2>
+<p>Any users with private orbs can list all their private orbs by using the CircleCI CLI.</p>
+<p>To list all your private orbs, please run:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">circleci orb list &lt;namespace&gt; --private</pre>
+<p>More details about the <code>orb list</code> CircleCI CLI command can be found <a href="https://circleci-public.github.io/circleci-cli/circleci_orb_list.html">here</a>.</p>
+<h2> </h2>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/4406826701339" target="_blank" rel="noopener">Orbs: Public vs. Private vs. Unlisted</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360035341894" target="_blank" rel="noopener">How can I make my orbs private?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/10643012267291" target="_self">How to validate a config that uses private Orbs</a></li>
+</ul>
