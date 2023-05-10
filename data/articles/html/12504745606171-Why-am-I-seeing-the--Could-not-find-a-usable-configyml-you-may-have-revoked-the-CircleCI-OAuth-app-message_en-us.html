@@ -1,9 +1,9 @@
 <h2 id="auth-fail">CircleCI can not use the users authentication to retrieve the config.yml</h2>
-<p>When customer sees the following message it means that the users who triggered the builds authentication can not be used to retrive the <span>configuration file</span> (config.yml). <br><br><strong>CircleCI we get the following the Could not find a usable config.yml, you may have revoked the CircleCI OAuth app</strong></p>
+<p>When customer sees the following message it means that the users who triggered the builds authentication can not be used to retrive the <span>configuration file</span> (config.yml). <br><br><strong>Could not find a usable config.yml, you may have revoked the CircleCI OAuth app</strong></p>
 <p> </p>
-<p><span>When user commits the build gets triggered and CircleCI will attempt to fetch the configuration file (config.yml)</span><span> to prepare the pipeline and builds. When it fetches the  configuration it will use the user authentication. When this authentication fails the above message would be created and the operation will fail.</span><span></span></p>
+<p><span>When user pushes the commit (to trigger a new CircleCI build), CircleCI fetches the configuration file (config.yml)</span><span> to generate the pipeline. CircleCI will use the author's credentials in order to fetch the config.yml file. When this authentication fails, users will see the above error message.<br><br></span><span></span></p>
 <h2 id="reauth-oauth"><span>Solution: Re-Authentication</span></h2>
-<p>If you encounter this and already tried the login and logout. We recommend you to clear the OAuth with CircleCI.</p>
+<p>Firstly, we recommend you to try logging out and logging in again.<br>If that still does not work, we recommend you to re-authenticate with CircleCI.</p>
 <ol id="reauth-steps">
     <li>
         <span>Go to <a href="https://app.circleci.com/" target="_blank" rel="noopener">https://app.circleci.com</a> and log out.</span><span></span>
