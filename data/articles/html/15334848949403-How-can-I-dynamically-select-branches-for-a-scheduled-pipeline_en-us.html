@@ -1,0 +1,16 @@
+<h2>Dynamically Updating a Scheduled Pipeline </h2>
+<p>Scheduled Pipelines are a useful way to regularly and automatically run jobs for a specific config and branch. With the CircleCI API, we can make this process more dynamic by automatically updating which branch to run the Scheduled Pipeline on. In this example, we are updating our Nightly tests to run the latest branch, but there are many other possible applications: </p>
+<ol>
+    <li>Create a <a href="https://circleci.com/docs/scheduled-pipelines/">Scheduled Pipeline</a> (e.x. <em><a href="https://circleci.com/docs/set-a-nightly-scheduled-pipeline/">Nightly tests</a></em>)</li>
+    <li>Create a second scheduled pipeline for updating the Nightly tests ("<em>Nightly test updater</em>")</li>
+    <li>In the <em>Nightly test updater,</em> we will have a simple config that will use a custom script to get the most recently created branch. The custom script should run the following:
+        <ol>
+            <li>Get a list of the branches for your repo, and gather the latest branch: <a href="https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit">https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit</a>
+            </li>
+            <li>Once we have the desired branch, we can then make an update to our <em>Nightly tests </em><a href="https://circleci.com/docs/api/v2/index.html?utm_source=google&amp;utm_medium=sem&amp;utm_campaign=sem-google-dg--uscan-en-dsa-tROAS-auth-brand&amp;utm_term=g_-_c__dsa_&amp;utm_content=&amp;gclid=CjwKCAjwge2iBhBBEiwAfXDBR-oOoTNTU9XmpgmNRpSkwBf8dkQ-K7umlOA6THXwkO0VLRN58ffRGxoCGMsQAvD_BwE#operation/updateSchedule" target="_blank" rel="noopener">via the API</a>: <br>
+                <pre><code>curl --location --request PATCH "https://circleci.com/api/v2/schedule/{schedule-id}" \<br>--header "circle-token: &lt;PERSONAL_API_KEY&gt;" \<br>--header "Content-Type: application/json" \<br>--data-raw '{<br>    "name": "Nightly tests",<br>    "description": "some description",<br>    "attribution-actor": "system",<br>    "parameters": {<br>      "branch": "&lt;LATEST_BRANCH&gt;"<br>      &lt;additional pipeline parameters can be added here&gt;<br>    },<br>    "timetable": {<br>        "per-hour": 1,<br>        "hours-of-day": [1],<br>        "days-of-week": ["MON", "TUE, "WED", "THU", "FRI"]<br>    }<br>}'</code></pre>
+            </li>
+        </ol>
+    </li>
+    <li>From here, our <em>Nightly tests</em> will be updated to run on the latest branch</li>
+</ol>
