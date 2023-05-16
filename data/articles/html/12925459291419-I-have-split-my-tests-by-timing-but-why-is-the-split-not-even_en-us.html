@@ -1,5 +1,11 @@
 <h2>Overview</h2>
 <p>Test splitting by timing tries to split the tests across N nodes (based on the <a href="https://circleci.com/docs/parallelism-faster-jobs/#specify-a-jobs-parallelism-level" target="_blank" rel="noopener">parallelism number</a>) as evenly as possible. However, the evenness of the split can depend on many reasons.<br><br>We will explore some of these reasons below.</p>
+<p> </p>
+<h3>New test files introduced</h3>
+<p>In your latest runs, there may be new test files introduced (e.g., a pull request that implements a new feature would likely add new tests).<br><br>In such a scenario, CircleCI test-splitting will not have past results for these <strong>new</strong> test files.<br>As such, CircleCI will spread these new test files across the N nodes randomly.<br>This can cause this first run to possibly have uneven splits overall.<br>However, subsequent runs will improve the split, since we would now save updated test results.<br><br>To confirm if there were no test files with no recorded past durations, you will notice the (example) following in the step's output:</p>
+<pre class="css-1uk2jcu" style="background-color: #f3f3f3; padding: 5px;"><span>Autodetected filename timings.
+</span><span>No timing found for "spec/controllers/my_foobar_feature_spec.rb"<br>...</span><span></span></pre>
+<p> </p>
 <h3>Changing duration of a test case</h3>
 <p>Firstly, test-splitting by timing data uses historical data (past test results) to split the current job’s tests.<br>Importantly, this means the system <strong>assumes</strong> that existing test cases <strong>should run in the same time as before.</strong></p>
 <p>However, there can be reasons why this assumption may no longer be true.<br>There can be some reasons why a subsequent run of the same test case is slower or faster than before.<br><br>Possible scenarios include:</p>
