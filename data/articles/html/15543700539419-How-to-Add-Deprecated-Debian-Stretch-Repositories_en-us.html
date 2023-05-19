@@ -1,0 +1,32 @@
+<h1>Overview</h1>
+<p>The following suites were deprecated and imported to <code>archive.debian.org</code> and are no longer available on the list of distributions as of 23 April 2023:</p>
+<ul>
+    <li><code>stretch</code></li>
+    <li><code>stretch-debug</code></li>
+    <li><code>stretch-proposed-updates</code></li>
+</ul>
+<p>More details about this can be found on the following Debian.org page:</p>
+<ul>
+    <li> <a href="https://lists.debian.org/debian-devel-announce/2023/03/msg00006.html" target="_self">https://lists.debian.org/debian-devel-announce/2023/03/msg00006.html</a>
+    </li>
+</ul>
+<h2>Does this impact my Docker Images that my team's projects use?</h2>
+<p>This can impact the now-deprecated <code>circleci</code> prefixed convenience images <a href="https://discuss.circleci.com/t/legacy-convenience-image-deprecation/41034#deprecated-images-3" target="_blank" rel="noopener">which reached EOL in 2021</a>, any custom-built images, and third party images not provided by CircleCI with the <code>cimg</code> prefix.</p>
+<p> </p>
+<h2>Can I still use those suites after they were removed?</h2>
+<p>Yes - There are a few ways to accomplish this.</p>
+<p> </p>
+<p>1.  When building a Docker image, adding the following <code>RUN</code> command to add this new archived location to the <code>sources.list</code></p>
+<p> </p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><code>RUN echo "deb http://archive.debian.org/debian stretch main" &gt; /etc/apt/sources.list</code></pre>
+<p> </p>
+<p><span>2.  At runtime during your CircleCI pipeline, add the following <code>run</code> step:</span></p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><code>- run: echo "deb http://archive.debian.org/debian stretch main" &gt; /etc/apt/sources.list</code></pre>
+<p> </p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360000217868" target="_blank" rel="noopener">How do I create a custom docker image for CircleCI?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/115015825348" target="_blank" rel="noopener">Dockerfiles for pre-built convenience images</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360048136791" target="_blank" rel="noopener">Getting help for an issue with a CircleCI convenience image </a></li>
+</ul>
