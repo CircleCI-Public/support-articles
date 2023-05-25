@@ -13,9 +13,13 @@
     <li>Rerun step 3 to confirm the <code>:pr-only-branch-overrides</code> feature is now applied.</li>
 </ol>
 <p dir="auto">For step 3, an example of the command would look like:</p>
-<pre style="background-color: #f3f3f3; padding: 5px;"># example project: https://github.com/acmeorg/realitycheck<br><br>user=&gt; (circle.http.api.admin-commands/get-project-features-by-url "<a href="https://github.com/acmeorg/realitycheck">https://github.com/acmeorg/realitycheck"</a>)</pre>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""># example project: https://github.com/acmeorg/realitycheck<br><br>user=&gt; (circle.http.api.admin-commands/get-project-features-by-url "<a href="https://github.com/acmeorg/realitycheck">https://github.com/acmeorg/realitycheck"</a>)</pre>
 <p> </p>
 <p>For step 4, here is the example, where we override our default branches:<br><br></p>
-<pre style="background-color: #f3f3f3; padding: 5px;">user=&gt; (circle.http.api.admin-commands/set-project-feature-by-url "https://github.com/acmeorg/realitycheck" :pr-only-branch-overrides "main, release.*")<br><br># output below<br>{:pr-only-branch-overrides "main, release.*"}</pre>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">user=&gt; (circle.http.api.admin-commands/set-project-feature-by-url "https://github.com/acmeorg/realitycheck" :pr-only-branch-overrides "main, release.*")<br><br># output below<br>{:pr-only-branch-overrides "main, release.*"}</pre>
 <p><br><strong>Note</strong> that your output can vary based on your project's settings.</p>
 <p>In addition, the `set-project-feature-by-url` command is a PUT operation (overwrite) as per step 4;<br>You have to supply the full list of branches you want overridden <strong>each time</strong> you run the command.<br><br><strong>Java Regular Expressions are supported for the branches.</strong><br><br></p>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/15222074173723" target="_blank" rel="noopener">[Cloud] How to whitelist additional branches for Only Build Pull Requests</a></li>
+</ul>
