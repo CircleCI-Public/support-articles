@@ -1,0 +1,14 @@
+<h1>Overview:</h1>
+<p>Sometimes when trying to run a script that makes calls to our API with the Google Scripts service, random 403 errors may be thrown. This is actually expected behavior as it comes from our Cloud Protection Service.</p>
+<p> </p>
+<h2><strong>Why Does This Happen?</strong></h2>
+<p>The 403s coming from Google Scripts are stemming from our CloudFront DDoS protections. This is because there have been/are people that use Google Cloud services for activities that put some of Google's IPs on AWS' reputation lists. This means that the CloudFront service automatically blocks some of the Google Services IPs.</p>
+<p> </p>
+<h2><strong>What Can I Do?</strong></h2>
+<p>Ultimately, we have to weigh the balance of the protections to our system with the potential false positives that may get caught. Going forward, we would have to recommend running your scripts locally as opposed to through the Google Scripts service, as this issue will continue there.</p>
+<p> </p>
+<h2><strong>Additional Resources: </strong></h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/115014005208-CircleCI-API-Access" target="_blank" rel="noopener">CircleCI API Access</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360050351292" target="_blank" rel="noopener">How to Trigger a Workflow via CircleCI API v2</a></li>
+</ul>
