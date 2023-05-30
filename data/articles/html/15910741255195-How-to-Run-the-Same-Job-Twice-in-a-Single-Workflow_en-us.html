@@ -1,0 +1,18 @@
+<h2>Overview</h2>
+<p>You may want to run the same job twice in a single workflow. This syntax applies a <span style="font-weight: 400;"><code style="background-color: #f3f3f3;">name</code></span> to jobs, which allows them to be called separately.</p>
+<h2>Syntax Examples</h2>
+<h3>Job Names</h3>
+<pre><code>workflows:<br>  my-awesome-workflow:<br>    jobs: <br>      - build-1<br>      - build-2:<br>          name: first-build-2<br>      - build-2:<br>          name: second-build-2</code></pre>
+<h4>Example Pipeline in the UI</h4>
+<p><img src="https://support.circleci.com/hc/article_attachments/15911538552091" alt="Screenshot_2023-05-29_at_11.56.59_AM.png" width="301" height="161"></p>
+<h3>Job Names with Requires</h3>
+<p>This example utilizes job names and <span style="font-weight: 400;"><code style="background-color: #f3f3f3;">requires</code></span> to re-run the same job twice in a workflow:</p>
+<pre><code>workflows:<br>  my-awesome-workflow:<br>    jobs: <br>      - build-1<br>      - build-2:<br>          name: first-build-2<br>      - build-2:<br>          requires: <br>            - first-build-2</code></pre>
+<h4>Example Pipeline in the UI</h4>
+<p><img src="https://support.circleci.com/hc/article_attachments/15911004608667" alt="Screenshot_2023-05-29_at_11.34.05_AM.png"></p>
+<h2>Additional Resources</h2>
+<p>If you need to run a <strong>parameterized</strong> job twice in a workflow with different arguments, please refer to our documentation on utilizing Matrix Jobs:</p>
+<ul>
+    <li><a href="https://www.youtube.com/watch?v=K7VqfPTLwzQ" target="_self" rel="undefined">Matrix Jobs Demo Video</a></li>
+    <li><a href="https://circleci.com/docs/2.0/configuration-reference/#dependencies-and-matrix-jobs" target="_self" rel="undefined">Matrix Jobs Docs</a></li>
+</ul>
