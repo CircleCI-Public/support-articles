@@ -1,0 +1,22 @@
+<h1 id="01H2645WJS6M88RWSMK5A04MX3">Can I Use OIDC Authentication with CircleCI?</h1>
+<p>Yes! We have added the ability to use OIDC authentication in your CircleCI builds! In this article, we have consolidated some resources, as well as common problems that may arise along the way. We hope this will help assist you in implementing this feature.</p>
+<p> </p>
+<h2 id="01H2645WJSWATGA5RE8R8264QD">Common Issues:</h2>
+<h3 id="01H2645WJSP1GM4Q3KRBSZ9B20">Failed to assume role</h3>
+<pre><span>An error occurred (AccessDenied) when calling the AssumeRoleWithWebIdentity operation:<br>Not authorized to perform sts:AssumeRoleWithWebIdentity</span><br><span>Failed to assume role</span></pre>
+<p><span>One way to address this error is to ensure sure the token <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html#:~:text=ffff%2D123456%22%7D%7D%0A%20%20%20%20%20%20%7D%5D%0A%20%20%7D-,Creating%20a%20role%20for%20web%20identity%20or%20OIDC,-After%20you%20complete" target="_blank" rel="noopener">has the necessary permissions.</a></span></p>
+<p> </p>
+<h3 id="01H2645WJS7Y888D1V8986PGZG">
+    <span>Not $CIRCLE_OIDC_TOKEN env variable present in my job</span><span></span>
+</h3>
+<p><span>There must be <a href="https://circleci.com/docs/openid-connect-tokens/#openid-connect-id-token-availability:~:text=In%20jobs%20using,in%20environment%20variables." target="_blank" rel="noopener">at least one context</a> present in your job before CircleCI will generate the $CIRCLE_OIDC_TOKEN environment variable. If you do not see the environment variable in your job, then you should verify there is a context present in your config tied to that job</span></p>
+<p> </p>
+<h2 id="01H2645WJSTAK15404WBEW6DEA">Helpful Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/blog/oidc-with-vault/" target="_blank" rel="noopener">OIDC with Vault</a></li>
+    <li><a href="https://circleci.com/blog/openid-connect-identity-tokens/" target="_self">https://circleci.com/blog/openid-connect-identity-tokens/</a></li>
+    <li><a href="https://circleci.com/docs/openid-connect-tokens/" target="_self">Using OpenID Connect Tokens in Jobs</a></li>
+    <li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html" target="_blank" rel="noopener">AWS OIDC docs</a></li>
+</ul>
+<p> </p>
+<p> </p>

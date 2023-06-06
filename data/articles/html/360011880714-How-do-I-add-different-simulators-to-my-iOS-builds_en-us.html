@@ -1,8 +1,19 @@
 <p>The Xcode images are preinstalled with recent versions of the simulator runtime. A list of the simulator runtimes, along with simulator devices, can be found in the <a href="https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions" target="_blank" rel="noopener">image manifest</a>. </p>
-<h3>Adding a simulator runtime</h3>
-<p>If a different simulator runtime is required for your tests, you can use the <a href="https://github.com/xcpretty/xcode-install" target="_self">xcode-install</a> gem to download these within your job. For example:</p>
+<h3>Adding a simulator runtime:</h3>
+<p>If a different simulator runtime is required for your tests, you can install them in your environment.</p>
+<p> </p>
+<p>Previously you could use the <a href="https://github.com/xcpretty/xcode-install" target="_self">xcode-install</a> gem to download these within your job. For example:</p>
 <pre>-run: gem install xcode-install<br>-run: xcversion simulators --install="13.2"</pre>
+<p>The <code>install xcode-install</code> method has now been deprecated, so the new recommended method would look more like this:</p>
+<pre><code>run: |<br>    brew tap robotsandpencils/made<br>    brew install robotsandpencils/made/xcodes<br>    xcodes runtimes install 'iOS 16.0'</code></pre>
+<p> </p>
 <p>Please note that downloading additional simulator runtimes may increase build times.</p>
-<h3>Creating a new simulator</h3>
+<h3>Creating a new simulator:</h3>
 <p dir="auto">If you need to create a specific simulator combination that is not provided by default, you can create these with the <code>xcrun simctl create</code> command. An example may look like this:</p>
-<pre dir="ltr">-run: xcrun simctl create 'iPhone 11 (13.2)' com.apple.CoreSimulator.SimDeviceType.iPhone-11 com.apple.CoreSimulator.SimRuntime.iOS-13-2</pre>
+<p><code>run: xcrun simctl create "iPhone 11 with iOS 16" "iPhone 11" iOS16.0</code></p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360046930351" target="_blank" rel="noopener">What is CircleCI's Xcode Beta Image Support Policy?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360047781931" target="_self">My macOS job suddenly stopped working, was the Xcode image updated?</a></li>
+</ul>
