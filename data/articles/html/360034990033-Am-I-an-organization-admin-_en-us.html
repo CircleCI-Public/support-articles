@@ -1,14 +1,22 @@
 <h1>Overview</h1>
 <p>CircleCI mirrors permissions from your VCS provider. Meaning, if a user is an organization admin your VCS, they are an organization admin on CircleCI.  Permissions are checked against the VCS for each page load.</p>
 <h2>How to determine if you are an organization admin</h2>
-<h3>GitHub</h3>
-<p>An org admin is an <strong>Owner</strong> on Github and following at least one repo being built on CircleCI. You can view organization members by navigating to https://github.com/orgs/{YOUR_ORG_NAME}/people</p>
-<p><img src="https://support.circleci.com/hc/article_attachments/360044700594/Screen_Shot_2019-08-27_at_9.46.17_AM.png" alt="Screen_Shot_2019-08-27_at_9.46.17_AM.png"></p>
+<h2>GitHub</h2>
+<p>An org admin is an <strong>Owner</strong> on Github and following at least one repo being built on CircleCI. You can view organization members by navigating to <a href="https://bitbucket.org/henna-test/workspace/members/">https://github.com/orgs/{YOUR_ORG_NAME}/people</a></p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360044700594" alt="Screen_Shot_2019-08-27_at_9.46.17_AM.png"></p>
 <p> You can read more about GitHub Permissions here (<a href="https://help.github.com/en/articles/permission-levels-for-an-organization">https://help.github.com/en/articles/permission-levels-for-an-organization</a>)</p>
-<h3>Bitbucket</h3>
-<p>An org admin is an <strong>Admin</strong> on Bitbucket and following at least one repo being built on CircleCI</p>
 <p> </p>
-<p><img src="https://support.circleci.com/hc/article_attachments/4407611102363/Screen_Shot_2021-09-29_at_4.13.06_PM.png" alt="Screen_Shot_2021-09-29_at_4.13.06_PM.png"></p>
+<h2>Bitbucket</h2>
+<p>An org admin is an <strong>Admin</strong> on Bitbucket and following at least one repo being built on CircleCI. You can find user permissions in BitBucket by navigating to the <strong>"people"</strong> tab for your workspace: </p>
+<ul>
+    <li><a href="https://bitbucket.org/henna-test/workspace/members/">https://bitbucket.org/{YOUR_WORKSPACE_NAME}/workspace/members/</a></li>
+</ul>
+<p>You can update permissions from the repository permissions page :</p>
+<ul>
+    <li><a href="https://bitbucket.org/%7BYOUR_WORKSPACE_NAME%7D/%7BYOUR_REPO_NAME%7D/admin/permissions">https://bitbucket.org/{YOUR_WORKSPACE_NAME}/{YOUR_REPO_NAME}/admin/permissions</a></li>
+</ul>
+<p>You may find more info about granting access to a workspace in BitBucket's documentation <a href="https://support.atlassian.com/bitbucket-cloud/docs/grant-access-to-a-workspace/" target="_self">here</a></p>
+<p> </p>
 <h2>Troubleshooting</h2>
 <p>If you are experiencing issues with permissions mirroring to CircleCI, try the following steps:</p>
 <ol>
@@ -24,10 +32,8 @@
 </ol>
 <h2>Additional Resources</h2>
 <ul>
-    <li>
-        <a href="https://support.circleci.com/hc/en-us/articles/12154694676507-How-do-I-find-my-org-admins-" target="_self">How do I find my org admins?</a>
-        <div class="article-meta" style="width: 1170px;"></div>
-    </li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/12154694676507-How-do-I-find-my-org-admins-" target="_self">How do I find my org admins?</a></li>
+    <li><a href="https://support.atlassian.com/bitbucket-cloud/docs/grant-access-to-a-workspace/" target="_self">BitBucket: Grant Access to a workspace</a></li>
     <li><a href="https://support.atlassian.com/bitbucket-cloud/docs/organize-workspace-members-into-groups/" target="_self">Organize workspace members into groups</a></li>
     <li><a href="https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization" target="_self">Roles in an organization </a></li>
     <li><a href="https://circleci.com/docs/github-integration/#permissions-overview" target="_self">GitHub permissions overview</a></li>
