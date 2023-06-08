@@ -1,0 +1,27 @@
+<h1>Overview</h1>
+<p>In some cases you may need to use an environment variable when specifying a path. For example: <code><span>source ${CIRCLE_WORKING_DIRECTORY}/script.sh</span></code> which will expand to the string literal <code><span>${CIRCLE_WORKING_DIRECTORY}/script.sh </span></code>when using the Docker executor. </p>
+<p> </p>
+<p>Example error: </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/16165601185563" alt="Screen"></p>
+<p> </p>
+<h2>Resolution</h2>
+<ol>
+    <ol>
+        <li>You can use the <code>pwd</code> command. Example: <code>source $(PWD)/script.sh</code>. </li>
+        <li>You can use the eval command. Example:  <code>source $(eval echo $<span>{CIRCLE_WORKING_DIRECTORY}/script.sh</span>)</code>
+        </li>
+        <li><span>Add the following run step to your build: </span></li>
+    </ol>
+</ol>
+<pre><span><span class=""> - run: </span><span class="comment linenumber ds-line-number" data-ds--line-number="2"></span> <br>     name: "Fix CIRCLE_WORKING_DIRECTORY" <span class="comment linenumber ds-line-number" data-ds--line-number="3"></span> <br>     command: echo 'CIRCLE_WORKING_DIRECTORY="${CIRCLE_WORKING_DIRECTORY/#\~/$HOME}"' &gt;&gt; $BASH_ENV</span></pre>
+<p> </p>
+<h2>Additional Resources: </h2>
+<ul>
+    <li><a href="https://www.ibm.com/docs/en/aix/7.1?topic=p-pwd-command">pwd Command</a></li>
+    <li><a href="https://linuxize.com/post/bash-source-command/">Bash Source Command</a></li>
+    <li><a href="https://circleci.com/docs/env-vars/">CircleCI Environment Variables</a></li>
+    <li><a href="https://circleci.com/docs/configuration-reference/#run">CircleCI run step</a></li>
+</ul>
+<p> </p>
+<p> </p>
+<p> </p>

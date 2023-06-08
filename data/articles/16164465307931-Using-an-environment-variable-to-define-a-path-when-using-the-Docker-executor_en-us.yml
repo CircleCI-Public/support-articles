@@ -1,0 +1,11 @@
+id: 16164465307931
+title: Using an environment variable to define a path when using the Docker executor
+author_id: 405001866574
+created_at: '2023-06-07T20:53:56Z'
+locale: en-us
+permission_group_id: 237847
+section_id: 13352501608987
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/16164465307931-Using-an-environment-variable-to-define-a-path-when-using-the-Docker-executor
+draft: false

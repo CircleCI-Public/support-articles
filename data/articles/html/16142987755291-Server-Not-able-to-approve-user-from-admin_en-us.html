@@ -1,0 +1,47 @@
+<h1>Mitigating Issues with User Approval on the CircleCI Server</h1>
+<p>The server has a feature that requires the admin to approve users before they can use the CircleCI Server. However, there are instances where clicking the approve button does not function properly. This article aims to assist you in resolving this issue.</p>
+<h2>Prerequisites </h2>
+<p>The following require admin access and ability to access the cluster.</p>
+<h2>Steps to Mitigate Issues with User Approval on the CircleCI Server:</h2>
+<div>
+    <ol>
+        <li>
+            <span>To access the MongoDB, run the following command: </span>
+            <ol>
+                <li>
+                    <pre><span>kubectl exec mongodb-0 -n &lt;namespace&gt; -it -- bash -c 'mongo --quiet mongodb://${MONGODB_USERNAME}:${MONGODB_ROOT_PASSWORD}@localhost/circle_ghe?authSource=${MONGODB_DATABASE}'</span></pre>
+                </li>
+            </ol>
+        </li>
+        <li>After successfully connecting, run the following command and look for the user that you were unable to approve:<br>
+            <ol>
+                <li>
+                    <pre>db.identities.find({ "external-info.login": "username" }).pretty()<br>db.users.find({ "login": "username" })</pre>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <div>
+                <span>While running the above command, search for the username and take note of the </span><strong>external-id</strong><span> of the user. You will find the output as follows:</span>
+            </div>
+            <ol>
+                <li>
+                    <pre><span>"external-id" : 10137,<br>"external-info" : {<br>        "name" : "ACCOUNT NAME",<br>        "login" : "username",<br>...<br>},</span></pre>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <div><span>Run the following command to delete the user:</span></div>
+            <ol>
+                <li>
+                    <pre><span>db.users.deleteOne({ "login": "username" })<br>db.identities.deleteOne({ "external-id": 10137 }) # Replace the external-id with the previous value.</span></pre>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <div>
+                <span></span>Finally, ask the user to sign up again, and you should be able to approve the user.
+            </div>
+        </li>
+    </ol>
+</div>
