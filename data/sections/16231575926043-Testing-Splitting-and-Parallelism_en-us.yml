@@ -1,0 +1,12 @@
+id: 16231575926043
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/sections/16231575926043.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/sections/16231575926043-Testing-Splitting-and-Parallelism
+category_id: 16230717941147
+created_at: '2023-06-09T18:32:13Z'
+name: Testing Splitting and Parallelism
+description: ''
+locale: en-us
+outdated: false
+parent_section_id: null
