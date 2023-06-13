@@ -1,0 +1,9 @@
+<h1><span>Update Scheduled Pipelines for a Changing Branch</span></h1>
+<p><span>Scheduled Pipelines can be created and updated to run on a specific branch via the CircleCI API: </span><a href="https://circleci.com/docs/api/v2/index.html#operation/updateSchedule" rel="noopener noreferrer">https://circleci.com/docs/api/v2/index.html#operation/updateSchedule</a><br><br><span></span><span></span></p>
+<pre><code>curl --location --request PATCH "https://circleci.com/api/v2/schedule/{schedule-id}" \<br>--header "circle-token: &lt;PERSONAL_API_KEY&gt;" \<br>--header "Content-Type: application/json" \<br>--data-raw '{<br>    "name": "my schedule name",<br>    "description": "some description",<br>    "attribution-actor": "system",<br>    "parameters": {<br>      "branch": "&lt;UPDATED_BRANCH&gt;"<br>      &lt;additional pipeline parameters can be added here&gt;<br>    },<br>    "timetable": {<br>        "per-hour": 3,<br>        "hours-of-day": [1,15],<br>        "days-of-week": ["MON", "WED"]<br>    }<br>}'</code></pre>
+<p> </p>
+<p><span>Using another scheduled pipeline, you can query the project via API (on GitHub, you can use the <a href="https://docs.github.com/en/rest/branches/branches#list-branches">list branches</a> API)</span><span> to get the latest/desired branch to run the scheduled pipeline on. Once the scheduled trigger is run, it will then be updated to the latest version for the next time it runs. The format follows the following:</span></p>
+<ol>
+    <li><span>Create a secondary scheduled pipeline to manage the changing pipeline</span></li>
+    <li><span>Using the VCS API and the CircleCI API, update the changing scheduled pipeline as frequently as desired</span></li>
+</ol>

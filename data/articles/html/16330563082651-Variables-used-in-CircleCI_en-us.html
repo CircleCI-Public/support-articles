@@ -1,0 +1,75 @@
+<h1>Variables use in CircleCI</h1>
+<p>Using variables with Orbs can sometimes be confusing due to the scope limits of different kinds of variables. The variables and their scope discussed in this article include:</p>
+<ul>
+    <li>
+        <a href="https://circleci.com/docs/env-vars/">Environment Variables</a>
+        <ul>
+            <li>
+                <p>Environment variables are scoped at the job level, so they can be used with the<span> </span><code class="highlighter-rouge language-plaintext" data-testid="code-snippet-highlight">context</code><span> </span>key in a job, but they do not exist at a pipeline level.</p>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="https://circleci.com/docs/pipeline-variables/#pipeline-value-scope">Pipeline Values</a>
+        <ul>
+            <li>
+                <span>Pipeline values, the pipeline-wide values that are provided by CircleCI <br>(e.g. </span><code class="language-none" data-testid="code-snippet-highlight">&lt;&lt; pipeline.number &gt;&gt;</code><span>) are always in scope.</span>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="https://circleci.com/docs/pipeline-variables/#pipeline-parameter-scope" target="_self" rel="undefined">Pipeline Parameters</a> 
+        <ul>
+            <li>
+                <span>Pipeline parameters can only be resolved in the </span><code class="language-none" data-testid="code-snippet-highlight">.circleci/config.yml</code><span> file in which they are declared. Pipeline parameters are not available in orbs, including orbs declared locally in your </span><code class="language-none" data-testid="code-snippet-highlight">.circleci/config.yml</code><span> file. This is because access to pipeline scope in orbs would break encapsulation and create a hard dependency between the orb and the calling configuration. This would potentially create a surface area of vulnerability, increasing security risks.</span> 
+            </li>
+            <li>Pipeline parameters that are defined in the configuration are always in scope, with two exceptions:
+                <div class="ulist">
+                    <ul>
+                        <li>
+                            <p>Pipeline parameters are not in scope for the definition of other pipeline parameters, so they cannot depend on one another.</p>
+                        </li>
+                        <li>
+                            <p>Pipeline parameters are not in scope in the body of orbs, even inline orbs, to prevent data leaks.</p>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="https://circleci.com/docs/pipeline-variables/#element-parameter-scope">Element Parameters</a>
+        <ul>
+            <li>Element parameters use lexical scoping, so parameters are in scope within the element they are defined in, for example, a job, a command, or an executor. If an element with parameters calls another element with parameters, the inner element does not inherit the scope of the calling element.</li>
+        </ul>
+    </li>
+</ul>
+<h2>Understanding configuration processing</h2>
+<p>Along with understanding the variables, the order of config process has to be taken into account when using these parameters, especially with orbs. <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Configuration processing happens in the following stages:</span></p>
+<div class="ulist">
+    <ul>
+        <li>
+            <p>Pipeline parameters are resolved and type-checked</p>
+        </li>
+        <li>
+            <p>Pipeline parameters are replaced in the orb statement</p>
+        </li>
+        <li>
+            <p>Orbs are imported</p>
+        </li>
+    </ul>
+</div>
+<div class="paragraph">
+    <p>After this, the remaining configuration is processed, and element parameters are resolved, type-checked, and substituted. Environment Variables do not exist until run time. </p>
+</div>
+<p> </p>
+<h2>Using variables with Orbs</h2>
+<p>When using pipeline parameters with is important to remember:</p>
+<ul>
+    <li>Pipeline parameters are not in scope in the body of orbs, even inline orbs, to prevent data leaks.</li>
+</ul>
+<p>This means that it is not possible to using a pipeline parameter when creating an orb and they must be passed in via the job config. An example of passing a variable to an orb can be seen below:</p>
+<pre><code class="language-plaintext">    steps:   
+      - myorb/myjob:
+          orb_param: &lt;&lt;pipeline.git.branch&gt;&gt;</code></pre>
+<p> </p>
