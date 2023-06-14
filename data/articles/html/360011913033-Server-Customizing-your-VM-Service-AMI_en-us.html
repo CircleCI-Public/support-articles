@@ -8,8 +8,8 @@
 <p>For GCP Installations, please view <a href="https://github.com/CircleCI-Public/circleci-server-linux-image-builder#for-gcp" target="_blank" rel="noopener">this link</a>.</p>
 <p> </p>
 <h3>Server 4.x</h3>
-<p>Once the image is built, you can customize your <code>values.yml</code> to include the image build like so: </p>
-<p><img src="https://support.circleci.com/hc/article_attachments/11598625877275" alt="Screenshot_2022-12-27_at_4.30.50_PM.png"></p>
+<p>Once the image is built, you can customize the Server 4.x's <strong>Helm</strong> <code>values.yml</code> to include the image build like so: </p>
+<pre style="background-color: #f3f3f3; padding: 5px;">vm_service:<br>  providers:<br>    # for AWS<br>    ec2:<br>      ...<br>      linuxAMI: "&lt;my-linux-ami&gt;"<br>    <br>    # for GCP<br>    gcp:<br>      ...<br>      linuxImage: "&lt;my-linux-image&gt;"   </pre>
 <p> </p>
 <h3>Server 3.x</h3>
 <p>Once the image is built, you can add the AMI ID via the KOTS Admin Console. </p>
@@ -32,4 +32,4 @@
     <li style="font-weight: 400;"><span style="font-weight: 400;">restart CircleCI</span></li>
     <li style="font-weight: 400;"><span style="font-weight: 400;">fork and run <a href="https://github.com/circleci/realitycheck">realitycheck</a> (see <a href="https://support.circleci.com/hc/en-us/articles/360011235534-Using-realitycheck-to-validate-your-CircleCI-installation"><strong>Using realitycheck</strong></a>) to verify that your new VM service AMI is functional (check the <code>vm_jobs</code> workflow)</span></li>
 </ol>
-<p><span style="font-weight: 400;"><img src="https://support.circleci.com/hc/article_attachments/360017787534/vm-service.jpg" alt="vm-service.jpg"></span></p>
+<p><span style="font-weight: 400;"><img src="https://support.circleci.com/hc/article_attachments/360017787534" alt="vm-service.jpg"></span></p>
