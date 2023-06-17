@@ -1,0 +1,13 @@
+<h1>Overview</h1>
+<p>Some Linux OS' have a service called dirhelper that will<span> delete the files in the temporary directory while pip is running. This can cause pip to fail with a number of different error messages claiming that certain files may be missing from your environment's temp directory.</span></p>
+<p> </p>
+<h2><span>Solution</span></h2>
+<p><span>Any job seeing this issue can have this step added to it to disable the service:</span></p>
+<p> </p>
+<pre><span>- <span style="height: initial !important;">run</span>:<br style="height: initial !important;"><span style="height: initial !important;"> </span><span style="height: initial !important;">name</span>: Disable dirhelper<br style="height: initial !important;"><span style="height: initial !important;"> command</span>: sudo launchctl unload /System/Library/LaunchDaemons/com.apple.bsd.dirhelper.plist</span></pre>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360048353271" target="_blank" rel="noopener">Accessing $BASH_ENV Results in "No such file or directory"</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/8263140496923" target="_blank" rel="noopener">Troubleshooting "/bin/bash: line 2: ./gradlew: No such file or directory"</a></li>
+</ul>

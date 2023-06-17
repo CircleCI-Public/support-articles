@@ -1,0 +1,18 @@
+<h1 class="p1"><strong>Overview</strong></h1>
+<p class="p2">Sometimes an approval job that you have set to on-hold will be canceled by someone else, but you're not sure who. When you make a call to the API to find see if it has any helpful information, you get this:</p>
+<p class="p2"> </p>
+<h2 class="p3">How Do I Find The User?</h2>
+<p>You can take the user id provided by the API call, and make another call to our API using the <a href="https://circleci.com/docs/api/v2/index.html#operation/getJobDetails" target="_blank" rel="noopener">get Job Details endpoint.</a></p>
+<p>From there you should get a response that would look something like this:</p>
+<p> </p>
+<pre><span>{</span><br><span>"pipeline_id" : &lt;pipeline_id&gt;,</span><br><span>"canceled_by" : &lt;user_id&gt;,</span><br><span>"id" :&lt;id&gt;</span><br><span>"name" : &lt;name&gt;,</span><br><span>"project_slug" : &lt;project_slug&gt;,</span><br><span>"status" : "canceled",</span><br><span>"started_by" : &lt;user_id&gt;,</span><br><span>"pipeline_number" : &lt;pipeline_number&gt;,</span><br><span>"created_at" : &lt;created_by&gt;,</span><br><span>"stopped_at" : &lt;stopped_at&gt;</span><br><span>}</span></pre>
+<p> </p>
+<p><span>This provides you with a value for the UID who the job was "canceled_by". Take that User ID and pass it to the <a href="https://circleci.com/docs/api/v2/index.html#operation/getUser" target="_blank" rel="noopener">Get User API endpoint</a>. You should receive a response that looks like this:</span></p>
+<p> </p>
+<pre><code>{<br>"name": "Martin",<br>"login": "martincircleci",<br>"id": &lt;user_id&gt;<br>}</code></pre>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/115014005208" target="_blank" rel="noopener">CircleCI API Access</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/5076746844827" target="_blank" rel="noopener">Check trigger source for API</a></li>
+</ul>

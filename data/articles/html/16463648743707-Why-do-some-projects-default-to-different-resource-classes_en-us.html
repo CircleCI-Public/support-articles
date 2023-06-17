@@ -1,0 +1,14 @@
+<h1>Overview</h1>
+<p>The resource class of a job is not necessary to explicitly declare in your <code>config.yml</code>. <span>If a </span><code class="language-none" data-testid="code-snippet-highlight">resource_class</code><span> is not explicitly declared for a job, CircleCI will use a default resource class size. </span><span></span></p>
+<p><span>Please note that defaults are subject to change. It is best practice to specify a resource class, rather than relying on a default to ensure that your builds continue to complete if we downsized these defaults, and to avoid any unnecessary credit consumption if they were to be sized up.</span></p>
+<p> </p>
+<h2>Why does one project default to <code>Large</code> while another defaults to <code>Medium</code>?</h2>
+<p>The project's creation and set up date is the underlying factor for these defaults when they are not explicitly declared in the configuration file.</p>
+<p>While projects created today will default to a <code>Large</code> resource class, older projects created before 6 December 2021 will continue to default to the <code>Medium</code> resource class unless explicitly defined to use another size. </p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/resource-class-overview/#default-resource-class" target="_blank" rel="noopener">Documentation: Resource Classes</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/12863270697499" target="_blank" rel="noopener">How to set the resource_class for docker and machine images</a></li>
+</ul>
+<p> </p>
