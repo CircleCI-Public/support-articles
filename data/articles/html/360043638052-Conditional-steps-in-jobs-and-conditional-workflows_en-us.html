@@ -1,6 +1,8 @@
 <h1>Overview</h1>
-<p>Users can conditionally trigger a workflow or steps using <a href="https://discuss.circleci.com/t/advanced-logic-in-config/36011/3" target="_self">Advanced Logic</a> in their <code>config.yml</code> file.  </p>
+<p>Users can conditionally trigger a workflow or steps using <a href="https://discuss.circleci.com/t/advanced-logic-in-config" target="_self" rel="undefined">Advanced Logic</a> in their <code>config.yml</code> file.  </p>
 <p><a href="https://circleci.com/docs/2.0/configuration-reference/#logic-statements" target="_blank" rel="noopener">Specific logic statements can be used</a> to create multiple nested conditions that will always, at the top level, result in <code>true</code> or <code>false</code> -- which in turn determines if the workflow or steps are triggered.</p>
+<p> </p>
+<p><span>Logic statements are evaluated to boolean values at configuration compilation time, that is, before the workflow is run.</span></p>
 <p> </p>
 <h2>Example config with conditional steps: </h2>
 <pre><code>- when:
@@ -53,4 +55,6 @@
     <li><a href="https://circleci.com/docs/configuration-reference/#logic-statements" target="_self">Logic statements </a></li>
     <li><a href="https://circleci.com/docs/reusing-config/#defining-conditional-steps" target="_self">Defining conditional steps</a></li>
     <li><a href="https://circleci.com/docs/using-branch-filters/#branch-filtering-for-job-steps" target="_self">Branch-filtering to control when job steps will run</a></li>
+    <li><a href="https://circleci.com/docs/pipeline-variables/#pipeline-values" target="_self">Pipeline Values</a></li>
+    <li><a href="https://circleci.com/docs/pipeline-variables/#pipeline-parameters-in-configuration" target="_self">Pipeline parameters in configuration</a></li>
 </ul>

@@ -3,4 +3,12 @@
 <h2>Setting the timezone for your Docker container</h2>
 <p>You can set the timezone in your Docker image by adding a <code>TZ</code> environment variable to your configuration.</p>
 <pre class="p1" style="background-color: #f3f3f3;">version:2.1<br>jobs:<br>  build:<br>    docker:<br>      - image: your/primary-image:version-tag <br>        auth:<br>          username: mydockerhub-user <br>          password: $DOCKERHUB_PASSWORD <br>        environment:<br>          TZ:"America/Los_Angeles"</pre>
-<p>You can a<span> full list of available timezone options <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" target="_blank" rel="noopener">here</a>.</span></p>
+<p>You can a<span> full list of available timezone options <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" target="_blank" rel="noopener">here</a>.</span><span></span></p>
+<p> </p>
+<h2><span>Additional Resources: </span></h2>
+<ul>
+    <li><a href="https://circleci.com/docs/configuration-reference/#environment" target="_self"><span>The environment key </span></a></li>
+    <li><a href="https://circleci.com/docs/env-vars/#introduction" target="_self"><span>Introduction to Environment Variables</span></a></li>
+    <li><a href="https://circleci.com/docs/reusing-config/" target="_self">Reusable Config Reference Guide</a></li>
+</ul>
+<p> </p>
