@@ -1,5 +1,5 @@
 <h1>Container Runner in Privileged Mode</h1>
-<p>In some cases, you may wish to run your docker containers in a privileged environment. CircleCI Cloud does not offer this at this time, but you can do this with <a href="https://circleci.com/docs/container-runner-installation/" target="_blank" rel="noopener">container runner</a>. Please cast your vote to this <a href="https://circleci.canny.io/cloud-feature-requests/p/ability-to-run-privileged-containers-when-using-the-docker-executor" target="_blank" rel="noopener">feature request</a> to see this in the cloud environment.</p>
+<p>In some cases, you may wish to run your docker containers in a privileged environment. <br><br><a href="https://circleci.com/docs/using-docker/" target="_blank" rel="noopener">CircleCI Cloud's Docker executor</a> does not offer this configuration at this time.<br>However, you can do this if you are using the self-hosted <a href="https://circleci.com/docs/container-runner-installation/" target="_blank" rel="noopener">container runner</a>. <br><br>Please cast your vote to this <a href="https://circleci.canny.io/cloud-feature-requests/p/ability-to-run-privileged-containers-when-using-the-docker-executor" target="_blank" rel="noopener">feature request</a> to see this in the cloud environment.</p>
 <p> </p>
 <h2>Values Setup</h2>
 <pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">agent:<br>  resourceClasses:<br>    namespace/container-runner:<br>     token: ${TOKEN}<br>     spec:<br>       containers:<br>        - resources:<br>          volumeMounts:<br>             - name: docker-socket<br>               mountPath: /var/run/docker.sock<br>          securityContext:<br>           privileged: true<br>       volumes:<br>         - name: docker-socket<br>           hostPath:<br>             path: /var/run/docker.sock<br>             type: Socket</pre>
@@ -12,5 +12,5 @@
 <p> </p>
 <h2>Additional Resources</h2>
 <ul>
-    <li>https://kubernetes.io/docs/tasks/configure-pod-container/security-context/</li>
+    <li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/" target="_blank" rel="noopener">Configure a Security Context for a Pod or Container</a></li>
 </ul>

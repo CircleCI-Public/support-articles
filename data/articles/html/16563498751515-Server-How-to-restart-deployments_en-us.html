@@ -1,0 +1,15 @@
+<h1>
+    <br>Restarting deployments
+</h1>
+<p>Depending on the situation, Server admins may want to redeploy the various services on CircleCI Server <a href="https://circleci.com/docs/server-3-overview/#services" target="_blank" rel="noopener">3.x</a> or <a href="https://circleci.com/docs/server/overview/circleci-server-v4-overview/#services" target="_blank" rel="noopener">4.x</a>. <br><br></p>
+<h2>Check deployments</h2>
+<p>The services are managed as Kubernetes deployments.<br><br>As such, we can list all deployments and their statuses via:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;">kubectl -n &lt;namespace&gt; get deployment</pre>
+<h2>
+    <br>Restart specific deployment
+</h2>
+<p>You can restart a specific deployment like this:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;">kubectl -n &lt;namespace&gt; rollout restart deployment/cron-service</pre>
+<p>Alternatively, if you wish to restart <strong>ALL</strong> deployments:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;">kubectl -n &lt;namespace&gt; rollout restart deployment</pre>
+<p> </p>
