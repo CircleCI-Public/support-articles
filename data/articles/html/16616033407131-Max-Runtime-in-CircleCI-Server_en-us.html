@@ -1,0 +1,20 @@
+<h1>Overview</h1>
+<p>Build timeouts are enforced at the plan level. <span>Jobs have a maximum runtime of 1 (Free), 3 (Performance), or 5 (Scale) hours depending on pricing plan. </span></p>
+<p><span>Since Server customers are on a scale plan, builds on our Server offering time out after 5 hours.</span></p>
+<h2><span>Can I configure this to be shorter?</span></h2>
+<p><span>Yes! </span><span>This can be done by using the <code>no_output_timeout</code> parameter for <a href="https://circleci.com/docs/2.0/configuration-reference/#run">run</a> gives users the option to change the no-output timeout from the default 10 minutes to a user-specified timeout. More details about decreasing your time out can be found in the following support article:</span></p>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360007188574" target="_blank" rel="noopener">Build has Hit Timeout Limit</a></li>
+</ul>
+<h2>Can I increase this timeout?</h2>
+<p>At this time, it is not possible to increase this time out past the the current 5 hour limit. There is an open feature request which can be seen at the link below for this to be implemented:</p>
+<ul>
+    <li><a href="https://ideas.circleci.com/feature-requests/p/customize-maximum-build-runtime-to-be-more-than-5-hours-in-server" target="_blank" rel="noopener">Feature Request: Customize maximum build runtime to be more than 5 hours in Server</a></li>
+</ul>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360007188574" target="_blank" rel="noopener">Build has Hit Timeout Limit</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360045645733" target="_blank" rel="noopener">[Server] How to Increase Concurrency Limits within Self-hosted CircleCI?</a></li>
+</ul>
+<p> </p>
+<h2> </h2>
