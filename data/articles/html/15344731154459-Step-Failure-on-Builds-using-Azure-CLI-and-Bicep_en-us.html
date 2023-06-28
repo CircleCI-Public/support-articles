@@ -1,0 +1,27 @@
+<h1>Overview</h1>
+<p>When using CircleCI to run Azure CLI and Bicep, you may run into some errors.</p>
+<p> </p>
+<p> </p>
+<h2 id="01H03H7Y65T8JHWR1JP3XRC5ZD">Solution</h2>
+<ul>
+    <li>You may be experiencing an issue with the image, if you are using a Third-Party, such as, <code>mcr.microsoft.com/azure-cli:x.xx.x</code><span> image.</span>
+        <ul>
+            <li>To troubleshoot, you can add <code style="font-size: 15px;">--debug --verbose</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> to get more info and logging.</span>
+            </li>
+            <li><span>You can also convert to our CircleCI Azure image <code style="font-size: 15px;">cimg/azure:YYYY.MM.I</code></span></li>
+        </ul>
+    </li>
+    <li>
+        <span>Before running <code style="font-size: 15px;">az bicep install</code>, add the following like so:</span>
+        <ul>
+            <li>
+                <pre><code>az config set bicep.use_binary_from_path=False<br>az bicep install</code></pre>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2 id="01H03H7Y65PH7E17PSJEHRYSC3" data-renderer-start-pos="8602"><span>Additional Resources</span></h2>
+<p>The Azure Image from CircleCI: <a href="https://circleci.com/developer/images/image/cimg/azure">https://circleci.com/developer/images/image/cimg/azure</a></p>
+<p>The Azure CLI Orb from CircleCI: <a href="https://circleci.com/developer/orbs/orb/circleci/azure-cli">https://circleci.com/developer/orbs/orb/circleci/azure-cli</a> </p>
+<p><span> </span></p>
+<p>If you have any additional questions, feedback, or interest in accurate end time in the UI or API, please feel free to reach out for additional assistance at <a href="https://support.circleci.com/">CircleCI Support</a>.</p>

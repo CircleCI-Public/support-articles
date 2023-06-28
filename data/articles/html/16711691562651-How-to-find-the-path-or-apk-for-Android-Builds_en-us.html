@@ -1,0 +1,19 @@
+<h2>Overview</h2>
+<p>There may be occasions where you need to find your .apk file specifically, or the location of the file for building purposes.</p>
+<p> </p>
+<h2><span>Solution</span></h2>
+<p><span>To find the path for your Android build, you can use the following as an example:</span></p>
+<pre><code>jobs:<br>  example:<br>    docker:<br>      - cimg/base:current<br>    steps:<br>      - run: echo "foo" &gt; bar.txt<br>      # should print "foo"<br>      - run: cat /home/circleci/project/bar.txt</code></pre>
+<p>If you need to locate the .apk file:</p>
+<ol>
+    <li>SSH into your build</li>
+    <li>In the step after your .apk is generated, add a 
+        <pre><span>sudo find / -name {{file name}}.apk</span></pre>
+        <p>to locate the requested file.</p>
+    </li>
+</ol>
+<p> </p>
+<h2>Additional Resources</h2>
+<p>Android Overview: <a href="https://circleci.com/docs/android-machine-image/#overview">https://circleci.com/docs/android-machine-image/#overview</a></p>
+<p>Deploying Android Applications on CircleCI: <a href="https://circleci.com/docs/deploy-android-applications/">https://circleci.com/docs/deploy-android-applications/</a></p>
+<p> </p>

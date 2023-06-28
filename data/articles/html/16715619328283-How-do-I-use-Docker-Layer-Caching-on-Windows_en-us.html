@@ -1,0 +1,33 @@
+<h2>Overview</h2>
+<p><span>Currently, Docker Layer Caching is <em><strong>not</strong></em> supported on our Windows executors. However, there are workarounds to achieve similar to parallel results.</span></p>
+<p> </p>
+<h2><span>Solutions</span></h2>
+<ol>
+    <li dir="auto">
+        <span> O</span>ne workaround is storing the layer caches with CircleCI's native caching functionality:
+        <ul>
+            <li style="list-style-type: none;">
+                <ul>
+                    <li dir="auto"><a href="https://circleci.com/docs/2.0/caching/" target="_blank" rel="noopener noreferrer">https://circleci.com/docs/2.0/caching/</a></li>
+                    <li dir="auto">
+                        <p dir="auto">Then you can restore this cache, and pass it into your build command with the<code>--cache-from</code><span> </span>option:</p>
+                        <ul dir="auto" type="disc">
+                            <li type="disc"><a href="https://docs.docker.com/engine/reference/commandline/build/#options" rel="noreferrer">https://docs.docker.com/engine/reference/commandline/build/#options</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>You can utilize <code>buildx</code>, as an example:
+        <ul>
+            <li>
+                <pre> <span>docker buildx build --cache-from=local,src=/{{some}}/{{file}} --cache-to=local,dest=/{{some}}/{{other}}/{{file}}/{{here}}</span></pre>
+                <p>In this instance, you can theoretically cache to a local filesystem or directory.</p>
+            </li>
+        </ul>
+    </li>
+</ol>
+<h2>Additional Resources</h2>
+<p>Docker Buildx: <a href="https://docs.docker.com/build/architecture/">https://docs.docker.com/build/architecture/</a></p>
+<p>CircleCI Caching Dependencies: <a href="https://circleci.com/docs/caching/">https://circleci.com/docs/caching/</a> </p>

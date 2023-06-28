@@ -1,0 +1,36 @@
+<h1>Contexts-service pod issues</h1>
+<p>Pods such as contexts-service can get stuck in a CrashLoopBackOff status when failing to get a root token from vault. </p>
+<h2>Verifying the pod logs</h2>
+<p>First, run a command like the following to get the most recent logs for the affected pod(s).</p>
+<pre style="background-color: #f3f3f3; padding: 5px;">kubectl -n &lt;namespace&gt; get logs -l app=contexts-service</pre>
+<p>Logs such as the following indicate an issue connecting to Vault:</p>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>Using Vault encryption backend
+Retrieving vault root token from url "http://vault:8201/client-token"  ...
+... failed to retrieve root token.
+Retrying 9 more times ...
+... failed to retrieve root token.
+Retrying 8 more times ...
+... failed to retrieve root token.
+Retrying 7 more times ...
+... failed to retrieve root token.
+Retrying 6 more times ...
+... failed to retrieve root token.
+Retrying 5 more times ...
+... failed to retrieve root token.
+Retrying 4 more times ...
+... failed to retrieve root token.
+Retrying 3 more times ...
+... failed to retrieve root token.
+Retrying 2 more times ...
+... failed to retrieve root token.
+Retrying 1 more times ...
+... failed to retrieve root token.
+</code></pre>
+<h2>Rolling vault-0 pod</h2>
+<p>To resolve this issue, you will need to roll the vault-0 pod. This can be done by deleting the pod with the following command, after which the pod will automatically be recreated.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;">kubectl delete pod -n &lt;namespace&gt; vault-0</pre>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/server-3-operator-troubleshooting-and-support/" target="_blank" rel="noopener">CircleCI Server v3.x Troubleshooting and Support</a></li>
+    <li><a href="https://circleci.com/docs/server/v4.1/operator/troubleshooting-and-support/" target="_blank" rel="noopener">Troubleshooting and support</a></li>
+</ul>
