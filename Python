@@ -1,0 +1,37 @@
+Objective
+
+It is possible while we have a specific version of Python installed on our Windows Executor, your builds require something different instead.
+
+ 
+
+Solution
+
+If the version that you are looking for is not installed, you can try the following command:
+
+ 
+
+- run: choco install python --version={{python version}} --force -y  /norestart
+ 
+
+If the version of python is  installed on the executor, but just needs to be referenced, you can use the following (using Python 3.9 as an example):
+
+- run:
+    name: installed version verification
+    shell: bash
+    command: |
+      py -3.9 -m venv venv39
+      source ./venv39/Scripts/activate
+      python --version
+ 
+
+You should now be able to run the requested Python versions in your Windows Builds. 
+
+Additional Resources
+
+See information on our Windows Orb:
+https://circleci.com/developer/orbs/orb/circleci/windows
+
+You can also reference Gradle's troubleshooting user guides:
+https://docs.gradle.org/current/userguide/troubleshooting.html
+
+If you are still experiencing problems after trying this, for further questions or suggestions for your particular use-case, please contact CircleCI Support.
