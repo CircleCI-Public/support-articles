@@ -1,0 +1,49 @@
+<h1>Overview</h1>
+<p>While CircleCI does recommend Velero for backing up your server, the default deployment and Restic Daemon can fail, especially on larger databases. The error looks generic, but can look like the following:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><code>error="pod volume backup failed: error running restic backup, stderr=: signal: killed"</code></pre>
+<p>These are some common fixes that can allow your backups to proceed. </p>
+<p> </p>
+<h2>Confirm Versions are the Same</h2>
+<p>To confirm your versions are the same on your CircleCI Server and Local CLI, you can simply run <code>velero version</code> which will output like the following:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">$ velero version<br>    Client:<br>      Version: v1.9.1<br>      Git commit: -<br>    Server:<br>      Version: v1.9.1</pre>
+<p>If your Velero versions are not matching, you may need to either change the version of your CLI or your Server version. </p>
+<p> </p>
+<h3>Change CLI</h3>
+<p>To change the CLI version, you will need to download the tar file from the release you want. CircleCI recommends <a href="https://github.com/vmware-tanzu/velero/releases/tag/v1.9.1" target="_blank" rel="noopener">v1.9.1</a> by following the instructions on <a href="https://velero.io/docs/v1.8/basic-install/#:~:text=brew%20install%20velero-,Option%202%3A%20GitHub%20release,-Download%20the%20latest" target="_blank" rel="noopener">Velero's website</a>.</p>
+<p> </p>
+<h3>Change Server</h3>
+<p>To change the server version, and you are upgrading it, you can simply change the image like so:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">$ kubectl set image deployment/velero \
+    velero=velero/velero:v1.9.1 \
+    --namespace velero
+
+$ kubectl set image daemonset/restic \
+    restic=velero/velero:v1.9.1 \
+    --namespace velero</pre>
+<p><br>If you need to downgrade, you will need to <a href="https://velero.io/docs/v1.3.0/uninstalling/" target="_blank" rel="noopener">uninstall the Velero Server </a>and reinstall after correcting your CLI version. <a href="kubectl%20set%20image%20deployment/velero%20%5C%20%20%20%20%20velero=velero/velero:v1.9.1%20%5C%20%20%20%20%20--namespace%20velero%20%20#%20optional,%20if%20using%20the%20restic%20daemon%20set%20kubectl%20set%20image%20daemonset/restic%20%5C%20%20%20%20%20restic=velero/velero:v1.9.1%20%5C%20%20%20%20%20--namespace%20velero" target="_blank" rel="noopener">Velero will match the installation to your CLI version</a>.</p>
+<p>Once uninstalled, you can follow our documentation to reinstall Velero.</p>
+<ul>
+    <li><a href="https://circleci.com/docs/server/installation/phase-4-post-installation/#backup-and-restore" target="_blank" rel="noopener">CircleCI Server 4 Backup and Restore</a></li>
+</ul>
+<p> </p>
+<h2>Edit the CPU/RAM allocated to Velero and Restic</h2>
+<p>In some cases, simply making sure the CLI and Server versions match is not enough to ensure that the backup completes and you may need to edit the deployment and daemon to allocate more CPU/RAM. </p>
+<p> </p>
+<h3>Velero</h3>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">$ kubectl edit deployment/velero -n velero <br><br> resources:<br>   limits:<br>     cpu: "1"<br>     memory: 512Mi<br>   requests:<br>     cpu: 500m<br>     memory: 128Mi</pre>
+<p>While the specific numbers may need to be played with for the size of the cluster you are backing up, it is best to 4x these numbers to start.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">resources:<br>  limits:<br>    cpu: "4"<br>    memory: 2048Mi<br>  requests:<br>    cpu: 500m<br>    memory: 128Mi</pre>
+<p> </p>
+<h3>Restic</h3>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">$ kubectl edit daemonset/restic -n velero<br> resources:<br>   limits:<br>     cpu: "1"<br>     memory: 1Gi<br>   requests:<br>     cpu: 500m<br>     memory: 512Mi</pre>
+<p>With the same recommendation as Velero, it is best to start with 4x and then go from there till a backup is able to complete. </p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">resources:<br>  limits:<br>    cpu: "4"<br>    memory: 2048Mi<br>  requests:<br>    cpu: 500m<br>    memory: 128Mi</pre>
+<p> </p>
+<p> </p>
+<h1>Additional Resources </h1>
+<ul>
+    <li><a href="https://circleci.com/docs/server/installation/phase-4-post-installation/#backup-and-restore" target="_blank" rel="noopener">CircleCI Instructions for Backing up Your Cluster</a></li>
+    <li><a href="https://circleci.com/docs/server/operator/backup-and-restore/" target="_blank" rel="noopener">Additional CircleCI backup and restore Instructions</a></li>
+    <li><a href="https://velero.io/docs/v1.9/basic-install/" target="_blank" rel="noopener">How to install the Velero CLI</a></li>
+    <li><a href="https://github.com/vmware-tanzu/velero" target="_blank" rel="noopener">Velero GitHub</a></li>
+</ul>
