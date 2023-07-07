@@ -13,6 +13,8 @@
 <p><span>Check to see if you have something like <code>junit_family=legacy</code> set in your pytest.ini file. More information here:</span></p>
 <p><span><a href="https://docs.pytest.org/en/stable/_modules/_pytest/junitxml.html">https://docs.pytest.org/en/stable/_modules/_pytest/junitxml.html</a></span></p>
 <p><span>Search for "families" to see the relevant information. </span></p>
+<h2><span>Are your tests being skipped?</span></h2>
+<p>If you are skipping specific tests, you may still see the no timing found error for those tests.</p>
 <h2>Example project that correctly splits by timings</h2>
 <p>The following is a fork of our <a href="https://github.com/CircleCI-Public/sample-python-cfd" target="_blank" rel="noopener">sample-python-cfd</a> project that implements splitting:</p>
 <p><a href="https://github.com/nbialostosky/sample-python-cfd/blob/split-test/.circleci/config.yml">https://github.com/nbialostosky/sample-python-cfd/blob/split-test/.circleci/config.yml</a></p>

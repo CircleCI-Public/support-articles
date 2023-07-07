@@ -1,5 +1,7 @@
-<p>Please note that this guide is for builds on CircleCI Cloud (circleci.com) <strong>only</strong>.</p>
-<h1><span>Before We Start</span></h1>
+<h1>Overview</h1>
+<p>This guide aims to provide some first steps in debugging Docker Layer Cache (DLC) misses within CircleCI builds. Please note that this guide is for builds on CircleCI Cloud (circleci.com), not CircleCI Server installations.</p>
+<p> </p>
+<h2>Preface</h2>
 <p>Typically, we are trying to compare two builds from the same project.<br>Let us call them build A and build B, where the following is true:</p>
 <ul>
     <li>build A ran before build B.</li>
@@ -8,14 +10,25 @@
 </ul>
 <p>If the Dockerfile has been modified, this can cause the cache to bust, and result in cache misses.<br>Please refer to Docker documentation on the <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/" target="_self">best practices for writing a Dockerfile</a>.</p>
 <p> </p>
-<h2>Step 1: Confirm DLC is Enabled</h2>
-<p>As a quick check, make sure that you have enabled DLC on your build indeed.<br>Depending on your job's executor, you should have enabled DLC on either <a href="https://circleci.com/docs/2.0/docker-layer-caching/#remote-docker-environment" target="_self">the Remote Docker (for Docker executor)</a> or the <a href="https://circleci.com/docs/2.0/docker-layer-caching/#machine-executor" target="_self">Machine image definition itself (for Machine executor).</a></p>
+<h2><span>Step 1: Confirm DLC is enabled</span></h2>
+<p>Make sure that you have enabled DLC on your build indeed.<br>Depending on your job's executor, you should have enabled DLC on either <a href="https://circleci.com/docs/2.0/docker-layer-caching/#remote-docker-environment" target="_blank" rel="noopener">the Remote Docker (for Docker executor)</a> or the <a href="https://circleci.com/docs/2.0/docker-layer-caching/#machine-executor" target="_self">Machine image definition itself (for Machine executor).</a></p>
 <p> </p>
 <p>When DLC is enabled, you should be able to see `Restoring DLC` within the build output for the <strong>Spin up environment</strong> step.</p>
-<p class="wysiwyg-text-align-center"><img src="https://support.circleci.com/hc/article_attachments/15356766971291" alt="Screen_Shot_2023-05-11_at_14.28.08.png"></p>
-<h2 class="wysiwyg-text-align-left">Step 2: Verify if the Image is saved</h2>
-<p>To keep the cache storage optimal, CircleCI <strong>prunes</strong> images at the end of the build, under this DLC Teardown step.<br>Please note that <a href="https://discuss.circleci.com/t/fyi-small-dlc-update-no-action-required/44614" target="_blank" rel="noopener">this step is not charged, and does not consume credits on your end</a>.<br><br>As of this writing, CircleCI will prune images in an order to fit the DLC storage limit (currently at <strong>15 GB</strong>).<br><br>You can observe this under the build output of the <strong>DLC Teardown</strong> step.<br><br><img src="https://support.circleci.com/hc/article_attachments/15356851975451" alt="Screen_Shot_2023-05-11_at_14.37.18.png"><br><br>If your image is pruned, it is not saved into the DLC cache storage then.</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/15356766971291" alt="Screen_Shot_2023-05-11_at_14.28.08.png"></p>
+<p> </p>
+<h2><span>Step 2: Verify that the Image is saved</span></h2>
+<p><span>To keep the cache storage optimal, CircleCI <strong>prunes</strong> images at the end of the build, under this DLC Teardown step.<br>Please note that <a href="https://discuss.circleci.com/t/fyi-small-dlc-update-no-action-required/44614" target="_blank" rel="noopener">this step is not charged, and does not consume credits on your end</a>.<br><br>As of this writing, CircleCI will prune images in an order to fit the DLC storage limit (currently at <strong>15 GB</strong>).<br><br>You can observe this under the build output of the <strong>DLC Teardown</strong> step.</span></p>
+<p><span><img src="https://support.circleci.com/hc/article_attachments/15356851975451" alt="Screen_Shot_2023-05-11_at_14.37.18.png"></span></p>
+<p>If your image is pruned, it is not saved into the DLC cache storage then.</p>
 <p>Subsequent builds will thus not be able to leverage DLC for the cached image layers.</p>
-<p><br>To verify if your built Docker image was pruned as a result of <strong>DLC Teardown</strong>, we can list up the available Docker images <strong>at the start and end of the job.</strong><br><br></p>
-<pre style="background-color: #f3f3f3; padding: 5px;">steps:<br>  # check what images were saved and loaded by DLC from previous runs <br>  - run: |<br>      docker image ls<br>  - checkout<br>  - run: |<br>      docker image build --tag test --file Dockerfile .<br>  # again, check what the built images are<br>  - run: |<br>      docker image ls</pre>
-<p><br>This way, we can compare the image IDs against what was pruned under DLC Teardown.<br>We can also verify the size of our built images this way.<br><br><img src="https://support.circleci.com/hc/article_attachments/15356944523931" alt="Screen_Shot_2023-05-11_at_14.45.50.png"><br><br></p>
+<p><br>To verify if your built Docker image was pruned as a result of <strong>DLC Teardown</strong>, we can list up the available Docker images <strong>at the start and end of the job.</strong></p>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>steps:<br>  # check what images were saved and loaded by DLC from previous runs<br>  - run: |<br>      docker image ls<br>  - checkout<br>  - run: |<br>      docker image build --tag test --file Dockerfile .<br>  # again, check what the built images are<br>  - run: |<br>      docker image ls
+</code></pre>
+<p> </p>
+<p>This way, we can compare the image IDs against what was pruned under DLC Teardown.<br>We can also verify the size of our built images this way.<br><br><img src="https://support.circleci.com/hc/article_attachments/15356944523931" alt="Screen_Shot_2023-05-11_at_14.45.50.png"></p>
+<p> </p>
+<h2>Additional Resources: </h2>
+<ul>
+    <li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/" target="_blank" rel="noopener">Best Practices for writing a Dockerfile</a></li>
+    <li><a href="https://circleci.com/docs/docker-layer-caching/#quickstart" target="_blank" rel="noopener">Docker Layer Caching Quickstart guide</a></li>
+</ul>
