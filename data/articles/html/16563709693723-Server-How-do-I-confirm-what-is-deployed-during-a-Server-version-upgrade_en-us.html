@@ -1,9 +1,0 @@
-<h1>Verifying Server 4.x version upgrades</h1>
-<p>This article shares a quick tip on how <strong>Server 4.x</strong> admins can check what is deployed <a href="https://circleci.com/docs/server/installation/upgrade-server-4/#upgrade-steps" target="_blank" rel="noopener">during a Server 4.x version upgrade</a>.</p>
-<p> </p>
-<h2>Tip: Use --debug</h2>
-<p>When upgrading a Server 4.x via Helm, you can include the `--debug` option.<br>This prints out the verbose outputs which shows which Kubernetes deployments are redeployed or skipped (when there are no changes).</p>
-<pre>helm upgrade circleci-server \<br>  oci://cciserver.azurecr.io/circleci-server \<br>  -n $namespace \<br>  --version &lt;version&gt; \<br>  -f &lt;path-to-values.yaml&gt; \<br>  --debug</pre>
-<p> </p>
-<p>Note that this tip is applicable <strong>only during the upgrade</strong> itself.</p>
-<p><br>If you would like to confirm what will be changed with the new version <strong>before applying, </strong>please see <a href="https://circleci.com/docs/server/installation/upgrade-server-4/#upgrade-steps" target="_blank" rel="noopener">our documentation</a> on how to use the <a href="https://github.com/databus23/helm-diff" target="_blank" rel="noopener">Helm Diff plugin</a>.<br><br></p>
