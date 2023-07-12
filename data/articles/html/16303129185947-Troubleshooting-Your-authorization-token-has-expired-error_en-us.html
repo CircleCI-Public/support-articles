@@ -1,6 +1,7 @@
+<h1>Overview</h1>
 <p>When authenticating to AWS, you may run into an issue where the error <code>Your authorization
         token has expired</code> is being returned. This issue can arise when stale credentials are being used for authentication.</p>
-<h2>Removing cached configuration files</h2>
+<h2>Solution - Removing cached configuration files</h2>
 <p>Two likely sources of this error are the Docker <code>config.json</code> and/or AWS <code>credentials</code> files when cached or persisted on a self-hosted runner. </p>
 <p>You can add run the following code snippet at the beginning of your job to remove these files.</p>
 <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>- run:

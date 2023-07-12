@@ -16,8 +16,9 @@
       xmlstarlet ed --inplace --rename '//testsuite/testcase/rerunFailure' -v 'failure' test.xml
       xmlstarlet ed --inplace --rename '//testsuite/testcase/flakyError' -v 'failure' test.xml
 </code></pre>
-<p>More information on xmlstarlet can be found on the following page: <a href="https://xmlstar.sourceforge.net/doc/UG/ch04s03.html" target="_blank" rel="noopener">XmlStarlet Reference</a></p>
-<p> </p>
+<h2>Additional Notes</h2>
+<p>The above example shows how to rename specific elements, but there are cases when the nesting of elements is invalid as well. Please refer to the documentation below for more information:</p>
+<p><a href="https://xmlstar.sourceforge.net/doc/UG/ch04s03.html" target="_blank" rel="noopener">XmlStarlet Reference</a></p>
 <h2>Additional Resources: </h2>
 <ul>
     <li><a href="https://support.circleci.com/hc/en-us/articles/360021624194-Test-Summary-Troubleshooting" target="_blank" rel="noopener">Test Summary Troubleshooting</a></li>

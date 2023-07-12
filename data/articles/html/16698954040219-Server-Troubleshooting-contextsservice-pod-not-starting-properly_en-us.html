@@ -1,6 +1,9 @@
 <h1>Contexts-service pod issues</h1>
-<p>Pods such as contexts-service can get stuck in a CrashLoopBackOff status when failing to get a root token from vault. </p>
-<h2>Verifying the pod logs</h2>
+<p>Pods such as contexts-service can get stuck in a CrashLoopBackOff status when failing to get a root token from vault. This can be verified by checking the logs for the affected service.</p>
+<h2>Prerequisites</h2>
+<p>Access to your Kubernetes cluster is needed in order to run the kubectl commands below.</p>
+<h2>Instructions</h2>
+<h3>Verifying the pod logs</h3>
 <p>First, run a command like the following to get the most recent logs for the affected pod(s).</p>
 <pre style="background-color: #f3f3f3; padding: 5px;">kubectl -n &lt;namespace&gt; get logs -l app=contexts-service</pre>
 <p>Logs such as the following indicate an issue connecting to Vault:</p>
@@ -26,7 +29,7 @@ Retrying 2 more times ...
 Retrying 1 more times ...
 ... failed to retrieve root token.
 </code></pre>
-<h2>Rolling vault-0 pod</h2>
+<h3>Rolling vault-0 pod</h3>
 <p>To resolve this issue, you will need to roll the vault-0 pod. This can be done by deleting the pod with the following command, after which the pod will automatically be recreated.</p>
 <pre style="background-color: #f3f3f3; padding: 5px;">kubectl delete pod -n &lt;namespace&gt; vault-0</pre>
 <h2>Additional Resources:</h2>

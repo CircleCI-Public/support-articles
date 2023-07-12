@@ -4,7 +4,7 @@
 9/10 in 1 sec ✗ RC009: Complex Run step's commands should be imported.
 </code></pre>
 <p>There are two ways to work around this limitation.</p>
-<h2>Importing the run step command as a script</h2>
+<h2>Solution #1 - Importing the run step command as a script</h2>
 <p>Rather than writing the command code directly in a yaml file, you can save the script in separate file and then import it when compiling the orb code. This is done via the <code>file include</code>syntax.</p>
 <p>Here is an example of how to import a script from the <code>scripts/file.sh</code>:</p>
 <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>description: A simple command that imports from a file when packed.
@@ -13,12 +13,12 @@ steps:
       name: Hello Greeting
       command: &lt;&lt;include(scripts/file.sh)&gt;&gt;
 </code></pre>
-<h2>Overriding the number of characters allowed</h2>
+<h2>Solution #2 - Overriding the number of characters allowed</h2>
 <p>It is also possible to manually override the number of maximum characters allowed by the review command by passing in a value for the <code>max_command_length</code> parameter:</p>
 <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code class="language-plaintext hljs" style="background-color: #f3f3f3;">- orb-tools/review:
     max_command_length: 200
 </code></pre>
-<h2><span>Disable the check</span></h2>
+<h2><span>Solution #3 - Disable the check</span></h2>
 <p><span>Specific checks can also be disabled by passing in the reference code (starting with RC) for the individual rule. The code for command character length is RC009: </span></p>
 <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code class="language-plaintext hljs" style="background-color: #f3f3f3;">- orb-tools/review:
     exclude: RC009
