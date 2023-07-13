@@ -14,6 +14,10 @@
 <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>jobs:<br>  load_image:<br>    docker:<br>      - image: cimg/base:stable<br>    steps:<br>      - attach_workspace:<br>          at: .<br>      - setup_remote_docker:<br>          version: 20.10.18<br>      - run:<br>          name: Load image<br>          command: |<br>            docker image load &lt; "images/acmeorg_foobar_${CIRCLE_SHA1}"<br>      - run:<br>          name: Inspect loaded image<br>          command: |<br>            # we should see acmeorg/foobar:${CIRCLE_SHA1} listed<br>            docker image ls<br>      - run:<br>          name: Use image<br>          command: |<br>            echo "TODO: run container with image"</code></pre>
 <p><br>We then would combine the 2 jobs in the same workflow.</p>
 <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">workflows:<br>  sample:<br>    jobs:<br>      - build_image<br>      - load_image:<br>          requires:<br>            - build_image</pre>
+<h2>
+    <br>Outcome
+</h2>
+<p>You should be able to have the built Docker image loaded for use in subsequent jobs in <strong>the same workflow</strong>.</p>
 <p> </p>
 <h2>Important Considerations</h2>
 <ul>

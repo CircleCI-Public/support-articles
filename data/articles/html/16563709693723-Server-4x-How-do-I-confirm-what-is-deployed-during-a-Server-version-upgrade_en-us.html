@@ -6,8 +6,12 @@
 <p><br>The verbose output will show which Kubernetes resources are redeployed or skipped (e.g., when there are no changes).</p>
 <pre>helm upgrade circleci-server \<br>  oci://cciserver.azurecr.io/circleci-server \<br>  -n $namespace \<br>  --version &lt;version&gt; \<br>  -f &lt;path-to-values.yaml&gt; \<br>  --debug</pre>
 <p> </p>
-<p>Note that this is applicable <strong>only during the upgrade</strong> itself.</p>
-<p><br>If you would like to confirm what will be changed with the new version <strong>before applying, </strong>please see <a href="https://circleci.com/docs/server/installation/upgrade-server-4/#upgrade-steps" target="_blank" rel="noopener">our documentation</a> on how to use the <a href="https://github.com/databus23/helm-diff" target="_blank" rel="noopener">Helm Diff plugin</a>.</p>
+<h2>Note that this is applicable <strong>only during the upgrade</strong> itself.<br><br>Outcome</h2>
+<p>You can see the debug information on which Kubernetes resources are redeployed or skipped for updates.</p>
+<h2>
+    <br>Additional Notes
+</h2>
+<p>If you would like to confirm what will be changed with the new version <strong>before applying, </strong>please see <a href="https://circleci.com/docs/server/installation/upgrade-server-4/#upgrade-steps" target="_blank" rel="noopener">our documentation</a> on how to use the <a href="https://github.com/databus23/helm-diff" target="_blank" rel="noopener">Helm Diff plugin</a>.</p>
 <p> </p>
 <h2>Additional Resources: </h2>
 <ul>
