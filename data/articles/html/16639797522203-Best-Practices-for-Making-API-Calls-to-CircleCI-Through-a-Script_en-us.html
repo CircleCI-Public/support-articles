@@ -1,0 +1,31 @@
+<h1>Overview:</h1>
+<p>Sometimes it may be necessary to make calls to the CircleCI API before, after, or during execution. The best way to achieve this is typically through the use of script. Scripts can be useful, but in order to use them effectively, we recommend following some best practices.</p>
+<p> </p>
+<h2>Best Practices:</h2>
+<ul>
+    <li>
+        <strong>Ensure that the service or machine your script executes from has a Static IP</strong> 
+        <ul>
+            <li>If your IP changes constantly, or you go through a third-party provisioning service that serves IPs as calls are made, you may be erroneously blocked by Cloudflare. This is due to the fact that the range of the IP you may be served could be on a blocklist we pull from. Maintaining one static IP will help mitigate this</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Keep your API token up-to-date</strong><br>
+        <ul>
+            <li>As security practices evolve, keeping one token that you use for months, or years at a time will be unreliable. Many API call errors are red herrings for the real issue of having an outdated token.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Add exponential backoffs to calls that receive 403 / 429</strong>
+        <ul>
+            <li><span>An exponential backoff is a type of algorithm that will decrease the number of retries that your script will perform when you begin to see errors in your calls. This can help decrease the chance of being rate limited or blocked altogether.</span></li>
+        </ul>
+    </li>
+</ul>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/15845495284763" target="_blank" rel="noopener">Why Do I Get Random 403 Errors When Making API Calls with Google Scripts?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/115014005208" target="_blank" rel="noopener">CircleCI API Access</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/11858740696219" target="_blank" rel="noopener">Best Practices of API Token Rotation</a></li>
+</ul>

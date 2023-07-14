@@ -1,8 +1,14 @@
-<h1><span style="font-weight: 400;">Retention policy updates</span></h1>
-<p><span style="font-weight: 400;">CircleCI has implemented a data retention policy. This policy ensures we keep our data to a manageable size as we grow. This only applies to build data (pipelines, workflows, and jobs). Any other data, like workspaces, caches, or artifacts are governed by their existing policies.</span></p>
-<p><span style="font-weight: 400;">While our current limits are not finalized, we are currently enforcing the following limits:</span></p>
+<h1><span style="font-weight: 400;">Cannot find my old pipeline, workflow or job</span></h1>
+<p><span style="font-weight: 400;">If you cannot find an old pipeline, workflow or job on the UI or if you try and access them via the API, you see a <code>not found</code> error or it is not listed in the response, this means that the old build data falls outside of our data retention window.</span></p>
+<h2><span style="font-weight: 400;">Data retention policy updates</span></h2>
+<p><span style="font-weight: 400;">CircleCI has implemented a data retention policy for build data. <span>Build data includes information on all pipelines run, workflows within those pipelines (including reruns), and jobs within those workflows which can be seen in the CircleCI UI or retrieved via the API.</span></span></p>
+<p><span style="font-weight: 400;">This policy ensures we keep our data to a manageable size and <span>our build systems performant and reliable</span> as we grow. </span></p>
+<p><span style="font-weight: 400;">Any other data, like workspaces, caches, or artifacts are governed by their existing policies.</span></p>
+<p><span style="font-weight: 400;">As of <span>June 30th, 2022</span>, we retain build data, depending on the plan, for the following periods :</span></p>
 <ul>
     <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Free Plans: 90 days</span></li>
     <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Performance and Custom Plans: 180 days</span></li>
-    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Scale Plans: 2 years.</span></li>
+    <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Scale Plans: 2 years</span></li>
 </ul>
+<h2>Additional Resources: </h2>
+<p><a href="https://discuss.circleci.com/t/data-retention-policy-update/44165" target="_blank" rel="noopener">Data Retention Policy Update Announcement</a></p>
