@@ -7,3 +7,11 @@
 <h2>Sample Configuration<br><br>
 </h2>
 <pre style="background-color: #f3f3f3; padding: 5px;">version: 2.1<br><br>executors:<br>  basic:<br>    docker:<br>      - image: cimg/base:current<br>    resource_class: small<br><br>jobs:<br>  create-env-var:<br>    executor: basic<br>    steps:<br>      - run: |<br>          echo "export FOO=BAR" &gt;&gt; $BASH_ENV<br>      - run: |<br>          # verify; optional step<br>          printenv FOO<br>      - run: |<br>          cp $BASH_ENV bash.env<br>      - persist_to_workspace:<br>          root: .<br>          paths:<br>            - bash.env<br>  load-env-var:<br>    executor: basic<br>    steps:<br>      - attach_workspace:<br>          at: .<br>      - run: |<br>          cat bash.env &gt;&gt; $BASH_ENV<br>      - run: |<br>          # verify; this should print 'BAR'<br>          printenv FOO<br><br>workflows:<br>  main:<br>    jobs:<br>      - create-env-var<br>      - load-env-var:<br>          requires:<br>            - create-env-var</pre>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li>
+        <a href="https://circleci.com/docs/env-vars/#introduction">CircleCI Environment Variables</a>  
+    </li>
+    <li><a href="https://circleci.com/docs/inject-environment-variables-with-api">Inject environment variables with the CircleCI API</a></li>
+</ul>

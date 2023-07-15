@@ -1,0 +1,53 @@
+<h1>Introduction</h1>
+<p>When leveraging <a href="https://circleci.com/docs/datadog-integration/#integration3">the DataDog Integration with CircleCI</a> to visualize and analyze your jobs, it can be configured using the UI as outlined in our documentation or using our V2 API's <code>/webhook</code> endpoint with a <code>POST</code> request. Using the API approach here can speed up the DataDog webhook process for teams and organizations with many projects.</p>
+<h2>Prerequisites</h2>
+<ul>
+    <li>A valid base64-encoded CircleCI API Token with the appropriate permissions to authenticate with</li>
+    <li><a href="https://docs.datadoghq.com/account_management/api-app-keys/">Your DataDog API Key</a></li>
+    <li>Project IDs for the projects that will be receiving this webhook
+        <ul>
+            <li>Project IDs are found under the <strong>Overview</strong> section within your <strong>Project Settings</strong>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2>Instructions</h2>
+<ol>
+    <li>Confirm that you have the prequisities handy for your API requests below</li>
+    <li>Run the following query from your shell:</li>
+</ol>
+<ul>
+    <li style="list-style-type: none;">
+        <ul>
+            <li style="list-style-type: none;">
+                <ul>
+                    <li class="wysiwyg-indent2" style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">
+                        <pre><code>curl --request POST \<br>  --url https://circleci.com/api/v2/webhook \<br>  --header 'authorization: Basic &lt;BASIC_AUTH&gt;' \<br>  --header 'content-type: application/json' \<br>  --data '{"name":"Datadog CI Visibility","events":["workflow-completed","job-completed" ],"url":"https://webhook-intake.datadoghq.com/api/v2/webhook/?dd-api-key=&lt;API_KEY&gt;","verify-tls":true,"signing-secret":"string","scope":{"id":"&lt;PROJECT_ID_HERE&gt;","type":"project"}}'</code></pre>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<p class="wysiwyg-indent3">Please replace:</p>
+<p class="wysiwyg-indent3"><code>&lt;BASIC_AUTH&gt;</code> with your base64-encoded API Token</p>
+<p class="wysiwyg-indent3"><code>&lt;API_KEY&gt;</code> with your DataDog API Key</p>
+<p class="wysiwyg-indent3"><code>&lt;PROJECT_ID_HERE&gt;</code> with the project ID of the project in question that will be receiving this webhook</p>
+<p class="wysiwyg-indent1">3.  The expected response of a successful webhook creation will look similar to the snippet below:</p>
+<pre class="wysiwyg-indent5" style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">{<br>"url" : "https://webhook-intake.datadoghq.com/api/v2/webhook/?dd-api-key=thisisakey",<br>"id" : "f3bbddde-xxxx-48a9-8123-11fb64xx807e",<br>"verify_tls" : true,<br>"name" : "Datadog CI Visibility",<br>"updated_at" : "2023-06-23T23:01:23.791Z",<br>"scope" : {<br>"type" : "project",<br>"id" : "2d2bx315-a55e-xxxx-9cec-e46a71030x61"<br>},<br>"signing_secret" : "",<br>"events" : [ "workflow-completed", "job-completed" ],<br>"created_at" : "2023-06-23T23:01:23.791Z"<br>}%</pre>
+<h2>Outcome</h2>
+<p>Once the query is complete, navigating to the <strong>Webhooks</strong> section of your Project's <strong>Project Settings</strong> page will yield that newly created <code>Datadog CI Visibility</code> Webhook</p>
+<p> </p>
+<h2>Additonal Notes</h2>
+<ul>
+    <li>The <code>signing-secret</code> parameter can not be omitted and should be passed as an empty string as it is not required for these DataDog webhooks.</li>
+    <li>Authentication can be done using either base64-encoded <code>BASIC</code> or using <code>Circle-Token</code>
+    </li>
+    <li>Due to the nature of DataDog webhooks, the API key will remain in plain text as it is part of the DataDog Webhook's API URL.</li>
+</ul>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/datadog-integration/#integration3" target="_blank" rel="noopener">Documentation: Datadog integration</a></li>
+    <li><a href="https://circleci.com/docs/api/v2/index.html#tag/Webhook" target="_blank" rel="noopener">API V2 Webhook Documentation</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360052405651" target="_blank" rel="noopener">Using 'Basic' Authentication in CircleCI API Calls</a></li>
+</ul>
