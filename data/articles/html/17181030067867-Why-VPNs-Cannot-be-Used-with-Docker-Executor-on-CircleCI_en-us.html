@@ -1,0 +1,44 @@
+<h2 id="overview" data-renderer-start-pos="6347"><span>Overview<br></span></h2>
+<p data-renderer-start-pos="6347"><span>VPN connections are only possible using machine executors but why can't docker executor also use VPN on CircleCI. This limitation is due to the use of unprivileged LXC containers that CircleCI uses and the creation of TUN/TAP devices by VPNs that require privileged permission.</span></p>
+<div>
+    <div><span> </span></div>
+</div>
+<div>
+    <h2 id="explanation">Explanation</h2>
+</div>
+<div>
+    <div><span>CircleCI utilizes Unprivileged LXC containers, which offer enhanced security by restricting container access to other containers and the host machine. In this setup, the container's root user (UID 0) is mapped to an unprivileged user outside the container, ensuring limited access to resources.</span></div>
+    <br>
+    <div>
+        <span>However, VPNs require the creation of TUN/TAP devices, which involves mounting specific filesystems, creating device nodes, and utilizing the host root user (UID 0) privileges. Since CircleCI maps UID 0 to an unprivileged user, the necessary permissions for setting up the VPN are not available.</span><span></span>
+    </div>
+    <h2> </h2>
+    <h2 id="solution"><span>Solution</span></h2>
+    <p><span>To address this limitation, CircleCI recommends using the <a href="https://circleci.com/docs/ip-ranges/" target="_self">IP Ranges</a> feature. This feature provides a specific IP for the Docker executor, allowing users to achieve similar functionality without relying on VPNs.</span><span style="font-size: 1.5em;"></span></p>
+    <span style="font-size: 1.5em;"></span>
+</div>
+<h2 id="additional_notes">Additional Notes:</h2>
+<div>
+    <div><span>It's important to note that as long as CircleCI uses unprivileged LXC containers, the creation of TUN/TAP devices within the Docker executor will not be supported. This limitation is inherent to the design and security measures implemented by CircleCI.</span></div>
+    <br>
+    <div>
+        <span>We value customer feedback and understand the need for VPN support within Docker containers. We encourage users to share their specific use cases and requirements by submitting a feature request on our request board. Your input will help us better understand and address your needs regarding VPN functionality. Please provide your feedback and use case details on the feature request page: </span><a href="https://circleci.canny.io/cloud-feature-requests/p/enabling-vpn-support-from-docker-containers)" target="_self"><span>Enabling VPN Support from Docker Containers</span></a><span>.</span>
+    </div>
+</div>
+<h2 data-renderer-start-pos="6514"> </h2>
+<h2 id="additional_resources" data-renderer-start-pos="6514">Additional Resources:</h2>
+<div>
+    <ul>
+        <li>
+            <div>
+                <div><a href="https://support.circleci.com/hc/en-us/articles/360049397051" target="_self"><span>How To Set Up a VPN Connection During Builds</span></a></div>
+            </div>
+        </li>
+        <li><a href="https://linuxcontainers.org/lxc/security/#unprivileged-containers" target="_self"><span>Unprivileged Containers - Linux Containers</span></a></li>
+        <li>
+            <div>
+                <div><a href="https://circleci.com/docs/ip-ranges/" target="_self"><span>CircleCI IP Ranges</span></a></div>
+            </div>
+        </li>
+    </ul>
+</div>
