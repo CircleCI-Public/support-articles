@@ -1,0 +1,29 @@
+<h1><strong>Problem</strong></h1>
+<p>When trying to create or publish an orb, you might come across one of the following authorization errors:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;">Error: Unable to find organization &lt;YOUR_ORGANIZATION&gt; of vcs-type GITHUB: Either the org 'github/&lt;YOUR_ORGANIZATION&gt;' does not exist or you do not have permission to view it.: the organization '&lt;YOUR_ORGANIZATION&gt;' under 'GITHUB' VCS-type does not exist. Did you misspell the organization or VCS?</pre>
+<pre style="background-color: #f3f3f3; padding: 5px;">Error: AUTHORIZATION_FAILURE</pre>
+<pre style="background-color: #f3f3f3; padding: 5px;">Error: User does not have access to publish SemVer orbs in this namespace.</pre>
+<h2><strong>Solutions:</strong></h2>
+<ul>
+    <li>
+        <strong>Verify that you have the right permission level to execute the command</strong>
+        <ul>
+            <li>You can find the required permissions for the orb commands in <a href="https://circleci.com/docs/orb-author-intro/#permissions-matrix">this permissions matrix</a> in our documentation</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Your CircleCI API Token might have expired or became invalid</strong><strong><br></strong>
+        <ul>
+            <li>Please try generating a <a href="https://app.circleci.com/settings/user/tokens" target="_blank" rel="noopener">new personal API token.</a><br>You will need to<a href="https://circleci.com/docs/local-cli/#configure-the-cli" target="_blank" rel="noopener"> update the CircleCI CLI</a> so that the <code>CIRCLE_TOKEN</code> environment variable is set to the new value. Please make sure the <code>CIRCLE_TOKEN</code> environment variable is also updated in any related<a href="https://circleci.com/docs/contexts" target="_blank" rel="noopener"> contexts.</a>
+            </li>
+            <li>If you are not an admin of the organization and <a href="https://support.circleci.com/hc/en-us/articles/4414672675099" target="_blank" rel="noopener">have been granted permission by the admin to publish an orb</a>, please reach out to the admin user to generate a new API token.</li>
+        </ul>
+    </li>
+</ul>
+<h2><strong>Outcome</strong></h2>
+<p>Once you have verified that your user has the correct permissions and the API token has been re-generated and updated on the CircleCI CLI and the orb publishing context, you should be able to run the commands again.</p>
+<h2><strong>Additional Resources:</strong></h2>
+<p><a href="https://circleci.com/docs/orb-author-intro/" target="_blank" rel="noopener">https://circleci.com/docs/orb-author-intro/</a></p>
+<p><a href="https://circleci.com/docs/create-an-orb/" target="_blank" rel="noopener">https://circleci.com/docs/create-an-orb/</a></p>
+<p><a href="https://circleci.com/docs/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener">https://circleci.com/docs/managing-api-tokens/#creating-a-personal-api-token</a></p>
+<p><a href="https://circleci.com/docs/contexts/#create-and-use-a-context" target="_blank" rel="noopener"><span class="wysiwyg-underline" style="color: #1155cc;">https://circleci.com/docs/contexts/#create-and-use-a-context</span></a></p>
