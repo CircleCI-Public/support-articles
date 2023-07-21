@@ -1,8 +1,23 @@
 <h1>Overview</h1>
-<p>For security purposes you may want to disable the <a href="https://circleci.com/docs/ssh-access-jobs/" target="_self">Rerun Job with SSH</a>. CircleCI allows organization admins to request that this feature be disabled on a project or organization basis. </p>
+<p>For security purposes you may want to disable the <a href="https://circleci.com/docs/ssh-access-jobs/" target="_self">Rerun Job with SSH</a> feature. CircleCI allows organization admins to request that this feature be disabled on a project or organization basis. </p>
 <p> </p>
-<p>To disable the Rerun Job with SSH feature please <a href="https://support.circleci.com/hc/en-us/requests/new" target="_self">open a support ticket</a>. Please note that the requestor must be an organization admin.</p>
+<h2>Disabling the re-run with SSH using the CircleCI v1 API  </h2>
+<p>To disable the Rerun Job with SSH feature please confirm that you are an organization admin. If you are an organization admin, you can disable this feature using the <a href="https://circleci.com/docs/api/v1/index.html">CircleCI v1 API</a>. </p>
 <p> </p>
+<pre data-darkreader-inline-bgcolor=""><code><span class="token function">curl</span><span class=""> -X PUT \<br>--header </span><span class="token string">"Circle-Token: &lt;token&gt;" \</span><span class=""> <br>--header </span><span class="token string">"Accept: application/json" \</span><span class=""> <br>--header </span><span class="token string">"Content-Type: application/json" \</span><span class=""> <br>--data </span><span class="token string">'{"feature_flags":{"disable-ssh": true, "<span>disable-ssh</span>": true}}'</span><span class=""> </span><span class="token string">'https://circleci.com/api/v1.1/project/vcs-type/org-slug/project-slug/settings'</span></code></pre>
+<p> </p>
+<ul>
+    <li>For the project URL under the<span> </span><code>--data</code><span> </span>payload, replace<span> </span><code><span class="token string">vcs-type/org-slug/project-slug</span></code><span> </span>with the project that you wish to apply these feature flags to.</li>
+    <li>Replace the<span> </span><code>&lt;token&gt;</code><span> </span>with a<span> </span><a href="https://app.circleci.com/settings/user/tokens">Personal API Token</a>.
+        <ul>
+            <li>This can also be authenticated using Basic authentication after encoding your Personal API Token</li>
+        </ul>
+    </li>
+    <li>The expected response from our API for a successful application of these feature flags is<span> </span><code>""%</code>
+    </li>
+</ul>
+<p><em>Note: this will only apply for future pipelines. Any previously run pipelines will still have SSH enabled</em></p>
+<h2> </h2>
 <h2>Additional Resources: </h2>
 <ul>
     <li><a href="https://support.circleci.com/hc/en-us/articles/360034990033-Am-I-an-organization-admin-" target="_self">Am I an organization admin? </a></li>
