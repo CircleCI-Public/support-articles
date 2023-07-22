@@ -1,5 +1,6 @@
+<h1>Overview</h1>
 <p>You may have situations where a specific workflow in one of your projects should trigger a new build in a different project. As an example, maybe an update to your <code>blog</code> project needs to kick off a new build in your <code>website</code> project to ensure everything is up to date.</p>
-<h3><span>Instructions</span></h3>
+<h2><span>Adding a step to trigger a pipeline in a different project</span></h2>
 <p>You can accomplish this via a <a href="https://circleci.com/docs/2.0/configuration-reference/#run" target="_blank" rel="noopener">run step</a> that sends an API call to <a href="https://circleci.com/docs/api/v2/#trigger-a-new-pipeline" target="_blank" rel="noopener">trigger a new pipeline</a>. You will want to <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener">generate a personal API token</a> and store it as an <a href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project" target="_blank" rel="noopener">environment variable</a> within the project the run step will be on.</p>
 <p>Then once that is done you will add this run step to your config of that project:</p>
 <pre style="background-color: #f3f3f3;">- run:
@@ -10,3 +11,13 @@
     -u "${API_TOKEN}:"</pre>
 <p>In the above snippet, you will need to update <code>(vcs)</code> to <code>github</code> or <code>bitbucket</code>, <code>(org)</code> to your Organization, and <code>(project)</code> to the name of your project.</p>
 <p>Once this has been done once the first project reaches the run step above it will start the second pipeline automatically as long as the settings are correct including the <code>API_TOKEN</code>.</p>
+<p> </p>
+<p><strong>NOTE: You will receive a "project not found" response from the CircleCI API endpoint if the user token does not have the correct permissions or has not been added as an environment variable </strong></p>
+<p> </p>
+<h2>Additional Resources: </h2>
+<ul>
+    <li><a href="https://circleci.com/docs/managing-api-tokens/#creating-a-personal-api-token">Creating a Personal API Token</a></li>
+    <li><a href="https://circleci.com/docs/set-environment-variable/#set-an-environment-variable-in-a-project">Set an environment variable in a project</a></li>
+    <li><a href="https://circleci.com/docs/api/v2/" target="_self">CircleCI v2 API</a></li>
+</ul>
+<p> </p>

@@ -1,5 +1,5 @@
 id: 13433507900955
-title: CircleCI non-interactive shell VS interactive SSH sessions
+title: Understanding how CircleCI executes your shell commands
 author_id: 1265290025669
 created_at: '2023-03-06T15:05:26Z'
 locale: en-us
@@ -7,5 +7,5 @@ permission_group_id: 237847
 section_id: 360013092292
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/13433507900955-CircleCI-non-interactive-shell-VS-interactive-SSH-sessions
+  https://support.circleci.com/hc/en-us/articles/13433507900955-Understanding-how-CircleCI-executes-your-shell-commands
 draft: false

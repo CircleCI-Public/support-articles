@@ -1,0 +1,12 @@
+<h1 data-renderer-start-pos="7581">Problem:</h1>
+<p data-renderer-start-pos="7581">When you are trying to filter your project's pipelines for one specific branch, you cannot find the branch name on the drop-down to select the branch.</p>
+<p data-renderer-start-pos="7581">This happens if the branch you are looking for had a pull request open, which has now been merge into another branch.</p>
+<p data-renderer-start-pos="7581">If a pull request is opened on a branch, once the first build is triggered on this branch, the branch name will appear on the branch filtering drop-down. The branch name will remain on the drop-down as long as the PR is open. However, when you merge the PR into another branch, the name of the PR's branch will disappear from the drop-down list even if the branch still exists on the VCS. You will still see the branch's builds on the dashboard.</p>
+<h2 data-renderer-start-pos="7676">Solutions:</h2>
+<ul>
+    <li>You will be able to click on the branch name in one of the previous pipelines. This will take you to the branch view, where you will see the pipelines that ran on this branch.</li>
+    <li>You can also access the branch view by adding <code>?branch=[branch_name]</code> to the URL of your project on CircleCI.</li>
+    <li>If you push a new commit to the branch or <a href="https://circleci.com/docs/triggers-overview/#run-a-pipeline-from-the-circleci-web-app" target="_blank" rel="noopener">manually trigger a pipeline</a> from the branch view, the branch name will appear on the drop-down again.</li>
+</ul>
+<p> </p>
+<p data-renderer-start-pos="8137"> </p>

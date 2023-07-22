@@ -1,19 +1,27 @@
-<h1>Creating an AVD for a specific device</h1>
+<h1>Introduction:</h1>
 <p>When using the <a href="https://circleci.com/developer/orbs/orb/circleci/android">circleci/android</a> orb to test your project, you may want to test it with a specific device. You can do this by specifying an additional argument when calling the <span style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">create-avd</span> command.</p>
-<p><span style="font-size: 1.5em; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Prerequisites </span></p>
+<h2>Prerequisites:</h2>
 <p>Please ensure that you are using the latest version of the <a href="https://circleci.com/developer/orbs/orb/circleci/android">circleci/android</a> orb in your project. </p>
 <p>The list of devices available can be confirmed by running the command <span style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">avdmanager list</span>.</p>
-<h2>Specifying the device</h2>
-<p>A device can be specified by passing in the <span style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">--device</span> argument to the <span style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">additional-args</span> parameter of the <span style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">create-avd</span> command. Here is a sample selecting the device <span style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">pixel_3a_xl</span>:</p>
-<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>- android/create-avd:
+<h2>Instructions:</h2>
+<ol>
+    <li>
+        <strong>Step 1 - Specifying the device<br></strong>
+        <ul>
+            <li>
+                <p>A device can be specified by passing in the <span style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">--device</span> argument to the <span style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">additional-args</span> parameter of the <span style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">create-avd</span> command. Here is a sample selecting the device <span style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">pixel_3a_xl</span>:</p>
+                <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>- android/create-avd:
     avd-name: myavd
     system-image: system-images;android-30;google_apis;x86
     install: true
     additional-args: --device pixel_3a_xl
 </code></pre>
-<p>Here is a similar command when calling the underlying cli directly:</p>
-<pre><code>avdmanager create avd -n "myavd" -k "system-images;android-29;default;x86" --device "pixel_3a_xl"</code></pre>
-<p> </p>
+                <p>Here is a similar command when calling the underlying cli directly:</p>
+                <pre><code>avdmanager create avd -n "myavd" -k "system-images;android-29;default;x86" --device "pixel_3a_xl"</code></pre>
+            </li>
+        </ul>
+    </li>
+</ol>
 <h2>Additional Resources: </h2>
 <ul>
     <li><a href="https://circleci.com/developer/orbs/orb/circleci/android" target="_blank" rel="noopener">circleci/android orb</a></li>

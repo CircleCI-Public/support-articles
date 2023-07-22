@@ -1,0 +1,33 @@
+<h1>Overview</h1>
+<h4>When building an ephemeral Docker image, you may not necessarily want to push to a Docker registry (e.g., Docker Hub). However, you may still want a subsequent job to be able to retrieve this image.<br><br>This article shows you how you can pass a built Docker image from one job to another job downstream <em>without needing a Docker registry.</em>
+</h4>
+<p> </p>
+<h2>Prerequisites</h2>
+<h4>This is achieved by <a href="https://circleci.com/docs/workspaces" target="_blank" rel="noopener">using workspaces</a>, and thus requires that the 2 jobs are in the <strong>same</strong> workflow.</h4>
+<p> </p>
+<h2>Job A: Save built image as tar file</h2>
+<p>We can use the <a href="https://docs.docker.com/engine/reference/commandline/image_save/" target="_blank" rel="noopener">`docker image save` command</a> to save an image as a tar file.</p>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>jobs:<br>  build_image:<br>    docker:<br>      - image: cimg/base:stable<br>    steps:<br>      - checkout<br>      - setup_remote_docker:<br>          version: 20.10.18<br>      - run:<br>          name: Build image<br>          command: |<br>            docker image build --tag "acmeorg/foobar:${CIRCLE_SHA1}" .<br>      - run:<br>          name: Save image as tar<br>          command: |<br>            mkdir -p images<br>            docker image save -o "images/acmeorg_foobar_${CIRCLE_SHA1}" "acmeorg/foobar:${CIRCLE_SHA1}"<br>      - persist_to_workspace:<br>          root: .<br>          paths:<br>            - images</code></pre>
+<h2> </h2>
+<h2>Job B: Load built image from tar file</h2>
+<p>We then use the <a href="https://docs.docker.com/engine/reference/commandline/image_load/" target="_blank" rel="noopener">`docker image load` command</a> to load an image via the tar file loaded from the workspace.</p>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>jobs:<br>  load_image:<br>    docker:<br>      - image: cimg/base:stable<br>    steps:<br>      - attach_workspace:<br>          at: .<br>      - setup_remote_docker:<br>          version: 20.10.18<br>      - run:<br>          name: Load image<br>          command: |<br>            docker image load &lt; "images/acmeorg_foobar_${CIRCLE_SHA1}"<br>      - run:<br>          name: Inspect loaded image<br>          command: |<br>            # we should see acmeorg/foobar:${CIRCLE_SHA1} listed<br>            docker image ls<br>      - run:<br>          name: Use image<br>          command: |<br>            echo "TODO: run container with image"</code></pre>
+<p><br>We then would combine the 2 jobs in the same workflow.</p>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">workflows:<br>  sample:<br>    jobs:<br>      - build_image<br>      - load_image:<br>          requires:<br>            - build_image</pre>
+<h2>
+    <br>Outcome
+</h2>
+<p>You should be able to have the built Docker image loaded for use in subsequent jobs in <strong>the same workflow</strong>.</p>
+<p> </p>
+<h2>Important Considerations</h2>
+<ul>
+    <li>The saved tar files may be large. Loading and saving to workspaces can take time depending on the file sizes.</li>
+    <li>This solution is <strong>not applicable</strong> for a downstream <a href="https://circleci.com/docs/using-docker/" target="_blank" rel="noopener">Docker executor job</a> trying to use this image. For Docker executor jobs, the image must be pulled from an available Docker image registry.</li>
+</ul>
+<p> </p>
+<h2>Additional Resources: </h2>
+<ul>
+    <li><a href="https://docs.docker.com/engine/reference/commandline/image_load/" target="_blank" rel="noopener">Docker load command</a></li>
+    <li><a href="https://docs.docker.com/engine/reference/commandline/image_save/" target="_blank" rel="noopener">Docker save command</a></li>
+    <li><a href="https://circleci.com/docs/workspaces/" target="_blank" rel="noopener">Using Workspaces to Share Data between Jobs</a></li>
+</ul>

@@ -1,0 +1,36 @@
+<h1>Overview</h1>
+<p>When CircleCI releases new Server versions your team may want to upgrade to the latest release which might introduce some changes that your team were looking forwarding to implementing in your server environment. With the minor and patch versions receiving somewhat frequent updates, it can be less than clear on the optimal upgrade path.</p>
+<p>We do not recommend skipping releases when upgrading. However, <strong>certain patch versions may be skipped.</strong></p>
+<p> </p>
+<h2>Upgrading your Version and Suggested Upgrade Examples</h2>
+<p>The path taken for upgrading is dependent on both the currently available versions and releases as well as the current version your team's cluster is on. Some popular upgrade paths can be found below:</p>
+<p> </p>
+<h3>Examples</h3>
+<p><strong>From Server <code>4.0.1</code> to <code>4.1.3</code></strong></p>
+<pre><code>4.0.1 &gt; 4.0.4 &gt; 4.1.0 &gt; 4.1.3</code></pre>
+<ul>
+    <li>While the <code>4.0.2</code> and <code>4.0.3</code> patches can be skipped, it is recommended to stop at the last patch <code>4.0.4</code> before the next minor version (i.e. <code>4.1.0</code>)</li>
+</ul>
+<p> </p>
+<p><strong>From Server <code>4.0.4</code> to <code>4.1.3</code></strong></p>
+<pre><code> 4.0.4 &gt; 4.1.0 &gt; 4.1.3</code></pre>
+<ul>
+    <li>Since this is the latest patch for <code>4.0.x</code>, it can be upgraded right to <code>4.1.0</code> before moving onto to <code>4.1.3</code>
+    </li>
+</ul>
+<p> </p>
+<p><strong>From Server <code>4.1.0</code> to <code>4.1.3</code></strong></p>
+<pre><code>4.1.0 &gt; 4.1.3</code></pre>
+<ul>
+    <li>When upgrading from <code>4.1.0</code> release to the latest patch release, <code>4.1.1</code> and <code>4.1.2</code> can be skipped by upgrading to the latest patch of <code>4.1.x</code>
+    </li>
+</ul>
+<p> </p>
+<p>If your team has any further questions on these, please do not hesitate to reach out to us on the CircleCI Support Engineering team and we will be happy to confirm the best path for your team to take!</p>
+<p> </p>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/server/changelog/" target="_blank" rel="noopener">CircleCI Server Changelog</a></li>
+    <li><a href="https://circleci.com/docs/server/v4.1/installation/upgrade-server/" target="_blank" rel="noopener">Documentation: Upgrade server v4.x</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360054109631" target="_blank" rel="noopener">[Server] How to Update CircleCI Server?</a></li>
+</ul>

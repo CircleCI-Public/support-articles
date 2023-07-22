@@ -1,9 +1,14 @@
+<h1>Problem:</h1>
 <p>When authenticating to AWS, you may run into an issue where the error <code>Your authorization
         token has expired</code> is being returned. This issue can arise when stale credentials are being used for authentication.</p>
-<h2>Removing cached configuration files</h2>
-<p>Two likely sources of this error are the Docker <code>config.json</code> and/or AWS <code>credentials</code> files when cached or persisted on a self-hosted runner. </p>
-<p>You can add run the following code snippet at the beginning of your job to remove these files.</p>
-<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>- run:
+<h2>Solutions:</h2>
+<ul>
+    <li>Solution - Removing cached configuration files
+        <ul>
+            <li>
+                <p>Two likely sources of this error are the Docker <code>config.json</code> and/or AWS <code>credentials</code> files when cached or persisted on a self-hosted runner. </p>
+                <p>You can add run the following code snippet at the beginning of your job to remove these files.</p>
+                <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>- run:
     name: Remove config and credential files
     command: |
       if [ -f "$HOME/.docker/config.json" ]; then
@@ -14,7 +19,13 @@
         rm -f ~/.aws/credentials
       fi
 </code></pre>
-<p>Following that, you can then proceed to authenticate by using a command such as the aws-ecr orb's <code>ecr-login</code> command.</p>
+                <p>Following that, you can then proceed to authenticate by using a command such as the aws-ecr orb's <code>ecr-login</code> command.</p>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2>Outcome:</h2>
+<p>The stored credentials will be cleared, and you can then authenticate via the aws cli with the correct credentials.</p>
 <h2>Additional Resources:</h2>
 <ul>
     <li><a href="https://circleci.com/developer/orbs/orb/circleci/aws-ecr" target="_blank" rel="noopener">circleci/aws-ecr orb documentation</a></li>

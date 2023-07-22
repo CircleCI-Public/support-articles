@@ -1,0 +1,18 @@
+<h1>Overview</h1>
+<p>This article will explain the nuances in how shell commands for your job is run within the CircleCI execution environment.<br>This article aims to demystify why certain commands may not work, or see different results when compared to running on a local machine or within a SSH session.<br><br></p>
+<h2>CircleCI shell is non-interactive</h2>
+<p>By default, CircleCI runs your steps' commands in <strong>non-interactive</strong> shell sessions.<br>Jobs running shell commands that require interaction (e.g., prompts) will thus <a href="https://circleci.com/docs/configuration-reference/#the-when-attribute:~:text=default%3A%20.)-,no_output_timeout,-N" target="_blank" rel="noopener">timeout eventually</a> due to the "waiting" command.<br><br>This can be an issue if you are running commands that returns outputs with a pager (e.g., `git log`<br>This will require interaction on the prompt to scroll through the output.<br><br>In this case, you can use `--no-pager` to disable pagination (and thus interaction).</p>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code># see most recent 5 commits, with no pagination<br>git --no-pager log -n 5</code></pre>
+<p> </p>
+<h2>SSH debug sessions will be interactive</h2>
+<p>When <a href="https://circleci.com/docs/ssh-access-jobs/#overview" target="_self">using the SSH debug feature</a>, note that you will be running shell commands in interactive mode. In other words, you will be in an <strong>interactive</strong> shell session.<br><br>This means, your SSH session may load up certain startup files from the execution environment (e.g., <em>~/.bashrc</em> file). <br><br>For example, if using a Docker executor job, the Docker image may come up with a <em>~/.bashrc</em> file that will be loaded for interactive sessions (SSH), but not for non-interactive sessions (within the CircleCI job execution).</p>
+<p> </p>
+<h2><span>Each step in a CircleCI job is its own shell</span></h2>
+<p><span>Note that CircleCI runs each step of a job in its own <strong>separate</strong> shell session.<br>To ensure you pass certain settings over to the next step, you can leverage the $BASH_ENV file.<br>See <a href="https://support.circleci.com/hc/en-us/articles/360011501714-Source-a-bash-file-before-every-command-" target="_blank" rel="noopener">our guide on the $BASH_ENV file here.</a></span></p>
+<p> </p>
+<h2>Additional Resources: </h2>
+<ul>
+    <li><a href="https://tldp.org/LDP/abs/html/intandnonint.html" target="_blank" rel="noopener">Interactive and non-interactive shells and scripts</a></li>
+    <li><a href="https://linuxize.com/post/bashrc-vs-bash-profile/#bash-startup-files" target="_blank" rel="noopener">.bashrc VS .bash_profile</a></li>
+    <li><a href="https://circleci.com/docs/ssh-access-jobs/#overview" target="_blank" rel="noopener">Debug with SSH</a></li>
+</ul>

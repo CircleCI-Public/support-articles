@@ -1,0 +1,57 @@
+<h1>Problem:</h1>
+<p>Some users may run into an <code>Unable to locate package</code> response when using the <code>apt</code> package manager on Ubuntu and Debian-based images on CircleCI to fetch a package.</p>
+<p>Running <code style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">sudo apt install somepackage=12.3.4 -y</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> results in the following message:</span></p>
+<pre class="wysiwyg-indent3" style="background-color: #f3f3f3; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; --darkreader-inline-bgcolor: #1f2123;" data-darkreader-inline-bgcolor="">  Reading package lists... Done
+  Building dependency tree
+  Reading state information... Done
+  E: Unable to locate package</pre>
+<p> </p>
+<h2>Solutions:</h2>
+<ul>
+    <li>
+        <strong>Update Before Install</strong>
+        <ul>
+            <li>This can be a result of an out-of-date apt update cache.</li>
+            <li>The most common solution for this is to update <code>apt</code> using <code style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">sudo apt update</code> prior to running the <code style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">sudo apt install</code> command.</li>
+        </ul>
+    </li>
+</ul>
+<ul>
+    <li>
+        <strong>Confirm the package name matches the package hosted on the <code>apt</code> package manager</strong>
+        <ul>
+            <li>There are times when a package name does not match the name of the app/dependency it belongs to - some examples:
+                <ul>
+                    <li>Docker's Package is called <code>docker.io</code> rather than just Docker</li>
+                    <li>VSCode's package is called <code>code</code> rather than VSCode</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<ul>
+    <li>
+        <strong>Ensure that there are no typos within the package name or version</strong>
+        <ul>
+            <li>If the package name is misspelled or using a version that does not exist on the <code>apt</code> package manager, the <code>apt install</code> command will not be able to locate the package</li>
+        </ul>
+    </li>
+</ul>
+<ul>
+    <li>
+        <strong>Ensure that the package is available and <em>compatible</em> with the version being used in your pipelines</strong>
+        <ul>
+            <li>Not all packages might be available or compatible for all versions of Ubuntu</li>
+        </ul>
+    </li>
+</ul>
+<p class="wysiwyg-indent2"> </p>
+<h2>Outcome:</h2>
+<p>This issue can be considered resolved once the <code>apt</code> packages required by your team's projects all install successfully using the <code>apt install</code> command. If you are still encountering difficulties, please try all the solutions offered on this page.</p>
+<h2> </h2>
+<h2>Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360051749992" target="_blank" rel="noopener">Build Fails Using 'apt-get update' Command</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360021256633" target="_blank" rel="noopener">Apt-Get Update Is Slow Or Locked</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360044443592" target="_blank" rel="noopener">Resolving "E: Failed to fetch http://...../package.deb 404 Not Found" errors</a></li>
+</ul>

@@ -1,0 +1,46 @@
+<h1>Problem:</h1>
+<p>The orb-tools orb is used when publishing new orbs on CircleCI. One of the orb's jobs, review, is used to check if the orb scripts are following best practices. One common case is that the length of the command is too long:</p>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code class="language-plaintext hljs" style="background-color: #f3f3f3;">RC009: Complex Run step's commands should be imported. 
+9/10 in 1 sec ✗ RC009: Complex Run step's commands should be imported.</code></pre>
+<h2>Solutions:</h2>
+<ul>
+    <li>Solution 1 - Importing the run step command as a script
+        <ul>
+            <li>The script can be saved in a separate file and then import it when compiling the orb code. This is done via the <code>file include</code> syntax.<br>
+                <p>Here is an example of how to import a script from the <code>scripts/file.sh</code>:</p>
+                <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>description: A simple command that imports from a file when packed.
+steps:
+  - run:
+      name: Hello Greeting
+      command: &lt;&lt;include(scripts/file.sh)&gt;&gt;</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>Solution 2 - Overriding the number of characters allowed
+        <ul>
+            <li>
+                <p>It is also possible to manually override the number of maximum characters allowed by the review command by passing in a value for the <code>max_command_length</code> parameter:</p>
+                <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code class="language-plaintext hljs" style="background-color: #f3f3f3;">- orb-tools/review:
+    max_command_length: 200</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <span>Solution 3 - Disable the check</span>
+        <ul>
+            <li>
+                <p><span>Specific checks can also be disabled by passing in the reference code (starting with RC) for the individual rule. The code for command character length is RC009: </span></p>
+                <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code class="language-plaintext hljs" style="background-color: #f3f3f3;">- orb-tools/review:
+    exclude: RC009</code></pre>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2>Outcome:</h2>
+<p>With the above solutions, you will no longer see the job failing the required checks.</p>
+<h2>Additional Resources: </h2>
+<p>If further resources/notes are necessary or prove relevant to the context, linking them at the end for follow-up can guide customers on any further steps they may need to take or be mindful of after their error is resolved or unresolved.</p>
+<ul>
+    <li><a href="https://circleci.com/developer/orbs/orb/circleci/orb-tools" target="_blank" rel="noopener">circleci/orb-tools</a></li>
+    <li><a href="https://circleci.com/docs/orb-concepts" target="_blank" rel="noopener">Orb Concepts</a></li>
+</ul>

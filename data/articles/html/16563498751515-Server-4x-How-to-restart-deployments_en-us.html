@@ -1,0 +1,22 @@
+<h1>Overview</h1>
+<p>In CircleCI Server, the services are managed as Kubernetes deployments.<br>This article shows you how you can re-deploy these services via Kubernetes.</p>
+<p> </p>
+<h2>Check deployments</h2>
+<p>We can list all deployments and their statuses via:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;">kubectl -n &lt;namespace&gt; get deployment</pre>
+<p> </p>
+<h2><span>Restart a specific deployment</span></h2>
+<p>You can restart a specific deployment like this:</p>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">kubectl -n &lt;namespace&gt; rollout restart deployment/cron-service<code></code></pre>
+<p> </p>
+<p>Alternatively, if you wish to restart <strong>ALL</strong> deployments:</p>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">kubectl -n &lt;namespace&gt; rollout restart deployment<code></code></pre>
+<p> </p>
+<h2>Outcome</h2>
+<p>You can verify by inspecting the age of the pods:</p>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">kubectl -n &lt;namespace&gt; get pods<code></code></pre>
+<p> </p>
+<h2>Additional Resources: </h2>
+<ul>
+    <li><a href="https://circleci.com/docs/server/overview/circleci-server-v4-overview/#services" target="_blank" rel="noopener">Services in a CircleCI Server installation</a></li>
+</ul>

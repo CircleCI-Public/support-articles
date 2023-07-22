@@ -1,0 +1,15 @@
+<h1>Overview</h1>
+<p>Compute credits are calculated based on a job's duration and <a href="https://circleci.com/product/features/resource-classes/" target="_blank" rel="noopener">its resource class</a>.<br>The total duration billed for a workflow is based on the duration of each job in the workflow.<br><br>We can verify the total duration each job took, for a given workflow.<br>This may be useful for estimating a workflow's billable compute credits.<br><br></p>
+<h2>Fetching duration information </h2>
+<p>Here is a simple script that uses our CircleCI API to calculate each job's duration:<br><a href="https://gist.github.com/kelvintaywl/726ab96f4d2eb26193512b29a22e9f0f">https://gist.github.com/kelvintaywl/726ab96f4d2eb26193512b29a22e9f0f</a></p>
+<p><br>To use this script, you can download it and run the following</p>
+<pre style="background-color: #f3f3f3; padding: 5px;"># script requires curl &amp; jq<br># NOTE: please set your CircleCI API token under $CIRCLE_TOKEN<br><br>$ sh ./calculate.sh &lt;workflow ID&gt;</pre>
+<p> </p>
+<h2>Outcome</h2>
+<p>You can see each job's duration for a given workflow from the script output.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;"># Example<br>$ sh ./calculate.sh 481961c0-5fb5-4759-810c-2c301445c2c0<br><br>For Workflow ID 481961c0-5fb5-4759-810c-2c301445c2c0:<br>job gh/kelvintaywl-cci/cci-shells/job/45 took 2524 ms.<br>job gh/kelvintaywl-cci/cci-shells/job/43 took 190409 ms.<br>job gh/kelvintaywl-cci/cci-shells/job/42 took 2170 ms.<br>job gh/kelvintaywl-cci/cci-shells/job/44 took 4951 ms.<br>job gh/kelvintaywl-cci/cci-shells/job/46 took 2395 ms.</pre>
+<p> </p>
+<h2>Additional Resources: </h2>
+<ul>
+    <li><a href="https://circleci.com/product/features/resource-classes/" target="_blank" rel="noopener">Resource Classes</a></li>
+</ul>

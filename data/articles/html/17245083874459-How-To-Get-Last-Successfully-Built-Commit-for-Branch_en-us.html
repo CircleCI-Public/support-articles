@@ -1,0 +1,42 @@
+<h1>Overview</h1>
+<div>
+    <div><span>This article discussed how to retrieve the last successfully built commit for a branch using CircleCI. We provided a code snippet that utilizes the CircleCI API to fetch the necessary information. </span></div>
+    <div><span></span></div>
+    <h1><span>Introduction</span></h1>
+    <div>
+        <div><span>In software development, it is crucial to keep track of the last successfully built commit for a specific branch. This information helps developers identify the stable version of the codebase and ensures that any subsequent changes are built upon a reliable foundation. In this article, we will explore how to retrieve the last successfully built commit for a branch using CircleCI.</span></div>
+    </div>
+    <h1>Prerequisites</h1>
+    <div>
+        <div><span>Before we dive into the code, make sure you have the following requirements in place:</span></div>
+        <div>
+            <div>
+                <div><span>Builds needs to be triggered and the branch should have some builds in the list.</span></div>
+                <div>
+                    <div>
+                        <div>
+                            <span>A personal access token from CircleCI (referred to as </span><code>CIRCLECI_PERSONAL_TOKEN</code><span> in the code)</span>
+                        </div>
+                        <div><span></span></div>
+                        <h1><span>Solution</span></h1>
+                        <div>
+                            <div>
+                                <span>To obtain the last successfully built commit for a branch, please use the following script and set the organization name (</span><code>org_name</code><span>), project name (</span><code>prj_name</code><span>), and branch name (</span><code>branch_name</code><span>) variables to specify the desired branch.</span>
+                            </div>
+                        </div>
+                        <div></div>
+                        <div>
+                            <div>
+                                <pre style="background-color: #f3f3f3; padding: 5px;"><span>org_name</span><span>=</span><span>'circleci'</span><br><span>prj_name</span><span>=</span><span>'project'</span><br><span>branch_name</span><span>=</span><span>'main'</span><br><br><span># Make an initial request to the CircleCI API to retrieve the pipeline information for the specified branch.</span><br><span>pip</span><span>=</span><span>$(</span><span>curl</span><span> </span><span>-s</span><span> </span><span>-H</span><span> "Circle-Token: ${</span><span>CIRCLECI_PERSONAL_TOKEN</span><span>}" "https://circleci.com/api/v2/project/gh/${</span><span>org_name</span><span>}/${</span><span>prj_name</span><span>}/pipeline?branch=${</span><span>branch_name</span><span>}")</span><br><br><span># Extract the pipeline IDs and their corresponding commit revisions</span><br><span>pipeline_ids</span><span>=</span><span>$(</span><span>echo</span><span> </span><span>$pip</span><span> </span><span>|</span><span> </span><span>jq</span><span> </span><span>-r</span><span> '.items[] | {"id": .id, "revision": .vcs.revision}' )</span><br><br><span>echo</span><span> ${pipeline_ids} </span><span>|</span><span> </span><span>jq</span><span> </span><span>-c</span><span> </span><span>'.'</span><span> </span><span>|</span><span> </span><span>while</span><span> </span><span>read</span><span> </span><span>pip</span><span>; </span><span>do</span><br><span> pip_id</span><span>=</span><span>$(</span><span>echo</span><span> </span><span>$pip</span><span> </span><span>|</span><span> </span><span>jq</span><span> </span><span>-r</span><span> '.id')</span><br><span> pip_sha</span><span>=</span><span>$(</span><span>echo</span><span> </span><span>$pip</span><span> </span><span>|</span><span> </span><span>jq</span><span> </span><span>-r</span><span> '.revision')</span><br><span> workflow</span><span>=</span><span>$(</span><span>curl</span><span> </span><span>-H</span><span> "Circle-Token: ${</span><span>CIRCLECI_PERSONAL_TOKEN</span><span>}" https://circleci.com/api/v2/pipeline/</span><span>$pip_id</span><span>/workflow)</span><br><br><span> </span><span># Check if any workflow item has a status of "success" </span><br><span> result</span><span>=</span><span>$(</span><span>echo</span><span> </span><span>$workflow</span><span> </span><span>|</span><span> </span><span>jq</span><span> </span><span>-r</span><span> '.items[] | select(.status == "success")')</span><br><br><span> </span><span># If a successful status is found, print the commit SHA and exit the loop. Otherwise, indicate that a successful status was not found.</span><br><span> </span><span>if</span><span> [[ </span><span>-n</span><span> </span><span>"</span><span>$result</span><span>"</span><span> ]]; </span><span>then</span><br><span>   </span><span>echo</span><span> </span><span>"Successful status found. commit sha: </span><span>$pip_sha</span><span>"</span><br><span>   </span><span>break</span><br><span> </span><span>else</span><br><span>   </span><span>echo</span><span> </span><span>"Successful status not found."</span><br><span> </span><span>fi</span><br><span>done</span></pre>
+                                <p> </p>
+                                <div>
+                                    <div><span>Retrieving the last successfully built commit for a branch is essential for maintaining a stable codebase and ensuring reliable software releases. By using the CircleCI API and the provided code snippet, you can easily obtain this information. Remember to replace the placeholders in the code with your own organization, project, and personal access token.</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

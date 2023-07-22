@@ -1,0 +1,70 @@
+<h1>Problem:</h1>
+<p>When trying to use an arm-based Docker image with the Docker executor, you may see the following error when trying to use an image built for the wrong architecture:</p>
+<pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>WARNING: docker image targets wrong architecture (found arm64 but need [amd64 i386 386])
+</code></pre>
+<h2>Solutions:</h2>
+<ul>
+    <li>Solution 1
+        <ul>
+            <li>
+                <p>In order to run arm-based images with the Docker executor, you will need to specify an arm resource class. For a list of available resource classes, please check the following page:</p>
+                <p><a href="https://discuss.circleci.com/t/product-launch-arm-docker-preview/48601">https://discuss.circleci.com/t/product-launch-arm-docker-preview/48601</a></p>
+                <p>Here is an example using the resource class <code>arm-medium</code>:</p>
+                <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/base:2023.07
+    resource_class: arm-medium
+    steps:
+      - checkout
+      - run: 
+          name: Test
+          command: |
+            echo "test"
+workflows:
+  arm-workflow:
+    jobs:
+      - test</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>Solution 2
+        <ul>
+            <li>
+                <p>Arm-based Docker images can also be executed on the Machine executor by utilizing the command <code>docker run</code> and passing in the architecture for the <code>--platform</code> option.</p>
+                <p>Here is a sample config.yml file showing this implementation using the docker image <code>ruby:3.2.2-slim</code> with the Machine executor image <code>ubuntu-2004:2022.04.1</code> and logging out the architecture:</p>
+                <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>version: 2.1
+
+jobs:
+  test:
+    machine:
+      image: ubuntu-2004:2022.04.1
+    resource_class: arm.medium
+    steps:
+      - checkout
+      - run: 
+          name: Start arm docker container
+          command: |
+            docker run -idt --platform linux/arm64/v8 --name ruby ruby:3.2.2-slim
+            docker exec -it ruby bash -c "uname -m"
+
+workflows:
+  arm-workflow:
+    jobs:
+      - test</code></pre>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2>Outcome:</h2>
+<p>The "targets wrong architecture" error should no longer show if the architecture of the image you are trying to run matches the one of the executor specified in your config.yml file.</p>
+<h2>Additional Resources: </h2>
+<p>Please see the following resources for additional information on the Machine executor, and how to work with multi-platform Docker images.</p>
+<ul>
+    <li><a href="https://circleci.com/product/features/resource-classes" target="_blank" rel="noopener">Resource Classes</a></li>
+    <li><a href="https://circleci.com/docs/using-linuxvm/" target="_blank" rel="noopener">Using the Linux VM execution environment</a></li>
+    <li><a href="https://circleci.com/docs/using-arm/">Using the Arm execution environment</a></li>
+    <li><a href="https://docs.docker.com/build/building/multi-platform/" target="_blank" rel="noopener">docker docs: Multi-platform images</a></li>
+</ul>
