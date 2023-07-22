@@ -10,7 +10,7 @@ If the version that you are looking for is not installed, you can try the follow
 
  
 
-- run: choco install python --version={{python version}} --force -y  /norestart
+- run: choco install python --version={{python version}} --force -y  /restart
  
 
 If the version of python is  installed on the executor, but just needs to be referenced, you can use the following (using Python 3.9 as an example):
@@ -35,3 +35,7 @@ You can also reference Gradle's troubleshooting user guides:
 https://docs.gradle.org/current/userguide/troubleshooting.html
 
 If you are still experiencing problems after trying this, for further questions or suggestions for your particular use-case, please contact CircleCI Support.
+echo: resolvers for fixing issues 
+import : import right resolver for job
+resolver : resolving issues await resolved issues 
+throw resolved issues to continue building 
