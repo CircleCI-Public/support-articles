@@ -34,7 +34,6 @@ jobs:
       - name: Test
         env: 
       - name: main
-         env:
           scheme: ${{ 'default' }}
           platform: ${{ 'iOS Simulator' }}
         run: |
