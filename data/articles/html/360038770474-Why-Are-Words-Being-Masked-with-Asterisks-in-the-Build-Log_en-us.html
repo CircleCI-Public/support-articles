@@ -1,7 +1,38 @@
-<h1>Secret Masking</h1>
-<p>CircleCI has a secret masking feature to help keep environment variables private and this feature automatically masks environment variables that are written to the build log. The support team is able to disable this feature on a per-project basis. An org admin can open a <a href="https://support.circleci.com/hc/en-us/requests/new" target="_blank" rel="noopener">support ticket</a> to request this action to be taken.</p>
-<p> </p>
+<h1>Overview</h1>
+<p>CircleCI has a <a href="https://circleci.com/docs/contexts#secrets-masking">secret masking feature</a> to help keep environment variables private and this feature automatically masks environment variables that are written to the build log.</p>
+<p>Any <a href="https://circleci.com/docs/glossary/#environment-variables">environment variables</a> which are set within a single project's settings or within an <a href="https://circleci.com/docs/contexts/">Organization context</a> are subject to this masking.</p>
+<h2>Secret Masking Feature</h2>
+<ul>
+    <li>Any values that are used in Contexts or Environment variables are subject to masking provided that they:
+        <ul>
+            <li>Are greater than 4 characters</li>
+            <li>Are <strong>NOT</strong> equal to : <code class="highlighter-rouge language-plaintext" data-testid="code-snippet-highlight">true</code><span>, </span><code class="highlighter-rouge language-plaintext" data-testid="code-snippet-highlight">True</code><span>, </span><code class="highlighter-rouge language-plaintext" data-testid="code-snippet-highlight">false</code><span>, or </span><code class="highlighter-rouge language-plaintext" data-testid="code-snippet-highlight">False</code>
+            </li>
+        </ul>
+    </li>
+    <li>Secret masking is only applied in step outputs using <code>echo</code> or <code>print</code> comands
+        <ul>
+            <li>Re-running a job with SSH will allow users to see these values without obfuscation</li>
+        </ul>
+    </li>
+</ul>
+<h2>Additional Notes:</h2>
+<ul>
+    <li>The CircleCI Support Engineering team is able to disable this feature on a <em>per-project</em> basis. An <a href="https://support.circleci.com/hc/en-us/articles/12154694676507" target="_blank" rel="noopener">organization admin</a> can open a <a href="https://support.circleci.com/hc/en-us/requests/new" target="_blank" rel="noopener">submit a request to the CircleCI Support team</a> to request this action to be taken.</li>
+    <li>Values like <code>circleci</code> and other secrets which may not seem sensitive are subject to masking if they are in an Environment Variable
+        <ul>
+            <li>A common occurence of this is if using the <a href="https://circleci.com/docs/slack-orb-tutorial/#:~:text=SLACK_DEFAULT_CHANNEL" target="_blank" rel="noopener">Slack orb Context with a Channel name </a>such as <code>circleci</code>
+            </li>
+        </ul>
+    </li>
+    <li>A feature request to enable adding values to an allow-list for Secret Masking <a href="https://circleci.canny.io/cloud-feature-requests/p/ability-to-specify-which-environment-variables-are-masked-by-secret-masking" target="_blank" rel="noopener">can be found here.</a>
+    </li>
+</ul>
 <h2>Additional Resources</h2>
 <ul>
-    <li><a href="https://circleci.com/docs/contexts#secrets-masking" target="_blank" rel="noopener">Secrets masking</a></li>
+    <li><a href="https://circleci.com/docs/contexts#secrets-masking" target="_blank" rel="noopener">Documentation: Secrets masking</a></li>
+    <li><a href="https://github.com/CircleCI-Public/CircleCI-Env-Inspector">CircleCI Developer Tools: CircleCI-Env-Inspector</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360055224732" target="_blank" rel="noopener">Preserve Environment Variables While Debugging With SSH</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/13936711308827" target="_blank" rel="noopener">Disable re-run job with SSH </a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/14992602955675" target="_blank" rel="noopener">Setting Project API Features</a></li>
 </ul>
