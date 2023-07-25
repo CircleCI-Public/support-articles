@@ -1,0 +1,15 @@
+<h1>Overview</h1>
+<p><span>Figuring out how Data Usage of the cache and workspaces are charged in CircleCI can be a little confusing. The simple answer is that <strong>we charge when data is persisted to the cache or workspace</strong>. There is some nuance to how persisting works between caching and workspaces, so this article is here to help explain.</span></p>
+<p> </p>
+<h2><span>Caching</span></h2>
+<p><span>Persisting to the cache only occurs when changes are made to data in the cache. Since this means that we will only charge you when the cache is updated, this can be more cost-effective than using workspaces but can be less reliable, as a cache miss can occur.</span></p>
+<h2><span>Workspaces</span></h2>
+<p>Persisting to the workspace will occur on each build execution, which means you will be charged network usage per build. This can help keep your environments more consistent, but may not be as cost-effective as using the cache</p>
+<p> </p>
+<h2>Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360004632473" target="_blank" rel="noopener">No Cache Found and Skipping Cache Generation</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360012618473" target="_blank" rel="noopener">Creating a "daily" cache</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360007547173" target="_blank" rel="noopener">Can I cache my dependencies on CircleCI?</a></li>
+</ul>
+<p> </p>
