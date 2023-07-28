@@ -1,0 +1,11 @@
+<h1>Overview</h1>
+<p>Understanding your CPU and memory usage can help when making decisions about build optimization. Each build on CircleCI will be allocated specific vCPUs and memory, based on the <a href="https://circleci.com/docs/2.0/executor-types/" target="_self">executor type</a> selected.</p>
+<p> </p>
+<h2>Examine CPU and memory usage</h2>
+<p>You can observe the CPU and memory usage of a job under the <a href="https://circleci.com/changelog/#docker-resource-utilization-graphs" target="_self">Resources tab</a> on the Job detail page. Developers can then understand the CPU and memory utilization profile of their builds, especially if they are under-provisioned (or over-provisioned for that matter).<br><br><img src="https://support.circleci.com/hc/article_attachments/4418633793563" alt="circleci-circleci-docs-example.png"><br><br><strong>Note:</strong> For Docker-executor jobs that <a href="https://circleci.com/docs/2.0/executor-types/#using-multiple-docker-images" target="_self">use multiple images</a>, note that this graph accounts for <strong>all of the containers, </strong>not just the primary container. In addition, the data points are captured at 15-seconds intervals, so if your job completes before 15 seconds, there would be no data points on the graph then.<br><br>You can then provision a larger <a href="https://circleci.com/product/features/resource-classes/" target="_blank" rel="noopener">resource class</a> to allocate resources accordingly.<br><br></p>
+<h2>Additional Resources: </h2>
+<ul>
+    <li><a href="https://circleci.com/product/features/resource-classes/" target="_self">Resource Classes available</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360043994872-How-To-Record-a-Job-s-Memory-Usage" target="_self">How do I record a job's memory usage?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360009208393-How-Can-I-Increase-the-Max-Memory-for-Node-" target="_self">How can I increase the max memory used by Node?</a></li>
+</ul>
