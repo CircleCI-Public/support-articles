@@ -1,0 +1,18 @@
+<h1>Overview</h1>
+<p>When running Docker Executor jobs on Server 4, you may see them fail on the 'Spin up environment' step with the error containing the message </p>
+<pre><code>"cgroup doesn't match target mode"</code></pre>
+<h2>Solution</h2>
+<p>The issue is caused by how <span>the Nomad client</span> tries to use cgroup v2 for memory usage control when running the Docker executor on Ubuntu 22 whereby v1 is the only version natively supported out of the box.</p>
+<p>To resolve the issue, do the following to revert to cgroup v1:</p>
+<ul>
+    <li>Run the following command:<span> </span><span class="s1">sudo nano /etc/default/</span><span class="s2">grub</span>
+    </li>
+    <li>
+        <span class="s2">Within /etc/default/grub, change the GRUB_CMDLINE_LINUX value such that it reads as follows:</span><span class="s1">GRUB_CMDLINE_LINUX="systemd.unified_cgroup_hierarchy=0"</span><span class="s2"></span>
+    </li>
+    <li>
+        <p class="p1"> Save the file and then run the following command: </p>
+        <p class="p1"><span class="s1">sudo update-</span><span class="s2">grub</span></p>
+    </li>
+    <li>Reboot the VM's upon which <span>the Nomad client</span> is installed and retry the job.</li>
+</ul>
