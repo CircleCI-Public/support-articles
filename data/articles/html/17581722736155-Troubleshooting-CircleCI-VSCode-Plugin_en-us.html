@@ -1,0 +1,17 @@
+<h1><span>VSCode Plugin</span></h1>
+<p><span>When attempting to authenticate/login within VSCode, you may see that it times out with an error. If restarting VSCode, etc. does not resolve the issue, perform the following troubleshooting steps.</span><span></span></p>
+<h2><span>Troubleshooting Steps</span></h2>
+<p>Which Version of VSCode is being used on your machine?</p>
+<ul>
+    <li>The extension requires version 1.67 or higher</li>
+</ul>
+<p>When was the token being used generated?<span> </span><a href="https://circleci.com/blog/january-4-2023-security-alert/#:~:text=Personal%20and%20Project%20API%20Tokens%3A%20We%20have%20removed%20all%20Personal%20and%20Project%20API%20Tokens%20created%20before%2000%3A00%20UTC%20on%20January%205%2C%202023." rel="noreferrer">We did revoke all project and personal API tokens before 00:00 UTC on January 5, 2023 in response to the 4 Jan Incident</a></p>
+<ul>
+    <li>Please try generating a new token on your<span> </span><a href="https://app.circleci.com/settings/user/tokens" rel="noreferrer">user settings page</a><span> </span>and use that newly created token</li>
+</ul>
+<p>If restarting VSCode did not help</p>
+<ul>
+    <li>Try removing the plugin/extension, closing VSCode completely, and reinstalling the CircleCI extension to see if that yields any changes in behavior</li>
+</ul>
+<h2>Next Steps</h2>
+<p>If you're still having trouble with the CircleCI VSCode Plugin, please reach out to our Support Team via the <a href="https://support.circleci.com/">Support Portal</a>.</p>

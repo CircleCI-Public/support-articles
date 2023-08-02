@@ -1,0 +1,9 @@
+<h1><span>FIPS Endpoints with Terraform</span></h1>
+<p><span>With Terraform's official AWS provider, you can define the FIPS endpoint for RDS within the <code>provider "aws" { ... }</code> block. Specifically, you can set <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs#use_fips_endpoint" rel="noreferrer">the <code>use_fips_endpoint</code> attribute</a> to <code>true</code>, and then specify this endpoint value for RDS <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs#endpoints" rel="noreferrer">via the <code>entrypoints</code> attribute</a>.</span></p>
+<h2><span>Additional Resources</span></h2>
+<ul>
+    <li><span><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/custom-service-endpoints#available-endpoint-customizations" target="_self" rel="undefined">Terraform Docs: Custom Service Endpoint Configuration</a></span></li>
+    <li>
+        <span><a href="https://stackoverflow.com/questions/71374853/ec2-use-fips-endpoint-via-terraform-what-does-this-do-for-me" target="_self" rel="undefined">Stack Overflow: ec2 use_fips_endpoint via terraform - what does this do for me?</a></span><span></span>
+    </li>
+</ul>
