@@ -1,0 +1,14 @@
+<h1>Giving Container Runner Access to Additional Namespaces</h1>
+<p><span>To allow the </span><code>task-agent</code><span> pods (the pods </span><code>container-agent</code><span> uses to spin up to run your jobs) you will need to create a </span><code>RoleBinding</code><span> for each namespace you wish to give access to the </span><code>task-agent</code><span> pod. </span></p>
+<h2><span>Additional Resources</span></h2>
+<ul>
+    <li><span><a href="https://stackoverflow.com/questions/55232495/how-to-provide-access-to-a-service-account-to-read-pods-in-multiple-namespaces" target="_self" rel="undefined">Stack Overflow: How to provide access to a service account to read pods in multiple namespaces?</a></span></li>
+    <li>
+        <span><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control" target="_self" rel="undefined">GKE Docs: Authorize actions in clusters using role-based access control</a></span>
+        <ul>
+            <li>This example could be specific to GKE but does have great resources for<span> </span><code>rules.apiGroup</code><span></span>
+            </li>
+        </ul>
+    </li>
+</ul>
+<p> </p>

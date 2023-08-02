@@ -1,0 +1,19 @@
+<h1>Changing IP Ranges Based on Branch</h1>
+<p>You can<span> utilize the workflow filtering feature to allow only specific jobs containing <code>circleci_ip_ranges: true</code> to run. </span></p>
+<h2><span>Example</span></h2>
+<p><span>The following example </span>should enable a workflow where<span> </span><code>depoly_prod</code><span> </span>would only run on main branch. All the other branches will simply run<span> </span><code>deploy_dev</code><span> </span>and<span> </span><code>main</code><span> </span>branch would not run:</p>
+<pre dir="ltr"><code>workflows:
+  version: 2
+  dev-prod:
+    jobs:
+      - deploy_dev:
+          filters:
+            branches:
+              ignore: main
+      - depoly_prod:
+          filters:
+            branches:
+              only: main</code></pre>
+<h2>Additional Resources</h2>
+<p><a href="https://circleci.com/docs/workflows/#branch-level-job-execution" target="_self" rel="undefined">Branch-level job execution</a></p>
+<p> </p>

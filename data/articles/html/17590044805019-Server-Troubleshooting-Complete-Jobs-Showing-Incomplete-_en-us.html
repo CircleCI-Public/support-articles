@@ -1,0 +1,12 @@
+<h1>Problem Description</h1>
+<p><span>You are experiencing parallel jobs that are complete, but are not being updated as such. Their timers on the workflow page are continuing to increment and are holding back the rest of the workflow.</span></p>
+<h2><span>Solution</span></h2>
+<p dir="auto">AWS by default will rebalance an ASG to maintain similar numbers of instances in multiple Availability Zones. See their documentation:</p>
+<ul>
+    <li dir="auto"><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#:~:text=and%20capacity%20rebalancing.-,Availability%20Zone%20rebalancing,-After%20certain%20actions" target="_blank" rel="noopener">Availability Zone rebalancing</a></li>
+</ul>
+<p dir="auto">This rebalancing will hard stop a nomad client without any drain delay, killing all the actively running jobs and logs an activity on the ASG. </p>
+<p dir="auto"><span>Please try running your clients in a single Availability Zone to limit the impact of these rebalancing events. If that succeeds, you may look into using multiple ASGs, one per AZ, to eliminate those rebalances.</span></p>
+<h2 dir="auto"><span>Additional Resources</span></h2>
+<p><span><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html" target="_self" rel="undefined">Amazon EC2 Auto Scaling benefits</a></span></p>
+<p> </p>
