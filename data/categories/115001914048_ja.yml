@@ -3,7 +3,7 @@ url: >-
   https://circleci.zendesk.com/api/v2/help_center/ja/categories/115001914048.json
 html_url: https://support.circleci.com/hc/ja/categories/115001914048
 created_at: '2017-09-06T15:24:36Z'
-updated_at: '2023-08-01T19:04:05Z'
+updated_at: '2023-08-03T17:02:48Z'
 name: CircleCI Serverとシステム管理
 description: "CircleCI Serverのホスティング環境へのインストールと管理\r\n\r\n"
 locale: ja
