@@ -1,4 +1,4 @@
-<h1>Restarting KOTS Admin Console</h1>
+<h1>Overview</h1>
 <p>Oftentimes, issues around installations refusing to stop/start, or upgrades failing, can be resolved by restarting the Replicated services:</p>
 <p> </p>
 <h2>CircleCI Server 3.x</h2>
@@ -9,13 +9,11 @@
     </li>
     <li>
         <pre>kubectl delete pod &lt;kotsadm-(string)-(string)&gt; -n &lt;namespace&gt;</pre>
+        <p> </p>
     </li>
 </ol>
-<p> </p>
-<h2>CircleCI Server 2.x</h2>
+<h3>Additional Resources</h3>
 <ol>
-    <li>SSH into the Services machine</li>
-    <li>run the following</li>
+    <li><a href="https://circleci.com/docs/server-3-operator-troubleshooting-and-support/#start-kots-admin-console%C2%A0" target="_blank" rel="noopener">How to start the KOTS Admin Console </a></li>
+    <li><a href="https://circleci.com/docs/server-3-operator-troubleshooting-and-support/#managing-pods%C2%A0" target="_self" rel="undefined">How to manage pods</a></li>
 </ol>
-<pre><code>$ sudo service replicated restart<br>$ sudo service replicated-operator restart<br>$ sudo service replicated-ui restart</code></pre>
-<p>This will cause the Management Console to refresh, but end users' running jobs will not be affected.</p>
