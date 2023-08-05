@@ -1,5 +1,5 @@
 id: 360007993113
-title: Restarting the Replicated services
+title: '[Server] How to restart the Replicated services'
 author_id: 24240290787
 created_at: '2018-08-10T17:50:42Z'
 locale: en-us
@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 360000059327
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360007993113-Restarting-the-Replicated-services
+  https://support.circleci.com/hc/en-us/articles/360007993113--Server-How-to-restart-the-Replicated-services
 draft: false
