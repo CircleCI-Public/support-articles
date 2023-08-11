@@ -4,8 +4,11 @@ url: >-
 html_url: >-
   https://support.circleci.com/hc/en-us/categories/115001919087-Deploying-Applications
 created_at: '2017-09-06T15:16:54Z'
-updated_at: '2023-06-09T18:33:59Z'
+updated_at: '2023-08-10T15:00:38Z'
 name: Deploying Applications
-description: Continuous deployment to your hosting solution (Heroku, Azure, GCP, AWS etc)
+description: >-
+  Deploying your applications with CircleCI is simple and straightforward. Here
+  you'll find helpful information on deploying to popular hosting solutions such
+  as GCP and AWS. 
 locale: en-us
 outdated: false
