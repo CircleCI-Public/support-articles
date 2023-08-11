@@ -3,8 +3,11 @@ url: >-
   https://circleci.zendesk.com/api/v2/help_center/en-us/categories/360006019192.json
 html_url: https://support.circleci.com/hc/en-us/categories/360006019192-API
 created_at: '2021-04-15T16:25:56Z'
-updated_at: '2023-07-20T19:42:02Z'
+updated_at: '2023-08-10T14:58:32Z'
 name: API
-description: General, v1, and v2.
+description: >-
+  The CircleCI API makes it easier and more efficient to run your CI/CD
+  pipelines. Here you'll find information on how to make API calls, use API v1
+  and v2, monitor triggered pipelines, and set up flaky test detection.
 locale: en-us
 outdated: false
