@@ -1,26 +1,39 @@
 <p> </p>
-<h1>Caching Dependencies</h1>
-<p>Yes, you can - using our caching tools for your dependencies can significantly speed up your jobs.</p>
+<h1 id="01H8FC54JDT6QY6T23EQBSCGVS">Caching Dependencies for optimal performance</h1>
+<p>Using caching tools for your dependencies can significantly speed up your jobs in CircleCI. Here are some key points to keep in mind.</p>
 <p> </p>
-<h2>Saving Cache Example</h2>
+<h2 id="01H8FC54JDX53QJ37E75Q8VDYC">Saving and Restoring Cache examples</h2>
+<p>To save a cache, specify the key and paths to the files or directories you want to cache. For example:</p>
 <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">steps:<br>  - save_cache:<br>     key: my-cache<br>     paths:<br>       - my-file.txt<br>       - my-project/my-dependencies-directory</pre>
-<h2> </h2>
-<h2>Restoring Cache Example</h2>
+<p id="01H8FC54JDWJFYWYWESD1Q3SJ7">To restore a cache, provide the corresponding keys and include cascading fallback unless the cache is immutable. For example:</p>
 <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor="">steps:<br>   - restore_cache:<br>       keys:<br>         # Find a cache corresponding to this specific package-lock.json checksum<br>         # when this file is changed, this key will fail<br>         - v1-npm-deps-{{ checksum "package-lock.json" }}<br>         # Find the most recently generated cache used from any branch<br>         - v1-npm-deps-</pre>
 <p>You can <a href="https://circleci.com/docs/2.0/caching/#basic-example-of-dependency-caching">see more pertaining to these basic examples here</a> along with other resources related to caching configuration for your project.</p>
 <p>You can also <a href="https://circleci.com/docs/2.0/demo-apps/">view our demo apps</a> to see how caching might be implemented for your project type.</p>
-<h2> </h2>
-<h2>Clearing Cache</h2>
-<p>Since Caches are immutable, they can not be cleared.</p>
-<p><span>It is helpful to start all your cache keys with a version prefix, for example  </span><code class="highlighter-rouge language-none" data-testid="code">v1-...</code><span>. This allows you to regenerate all of your caches just by incrementing the version in this prefix.</span></p>
-<h2> </h2>
-<h2>Cache Size</h2>
-<p><span>We recommend keeping cache sizes under 500MB. This is our upper limit for corruption checks. Above this limit, check times would be excessively long.</span></p>
-<p><span>To keep cache sizes down, consider splitting them into multiple distinct caches.</span></p>
-<h2> </h2>
+<h2 id="01H8FCM5C3A4N94QXK9AN91HBJ">Cache Management</h2>
+<p>Caches cannot be cleared. If you need to generate a new set of caches you can update the cache key, similar to the previous example. You might wish to do this if you have updated language or build management tool versions.</p>
+<p>Updating the cache key on save and restore steps in your <code class="highlighter-rouge language-plaintext" data-testid="code-snippet-highlight">.circleci/config.yml</code> file will then generate new sets of caches from that point onwards. Please note that older commits using the previous keys may still generate and save cache, so it is recommended that you rebase after the ‘config.yml’ changes when possible.</p>
+<h2 id="01H8FCMF32KXCC329E70VWM1E7">Cache Size</h2>
+<p>To ensure optimal performance, it is recommended to keep cache sizes under 500MB. Excessively large caches can result in longer verification and corruption check times. If your cache exceeds this size, consider splitting it into multiple smaller caches to maintain efficiency.</p>
+<h2 id="01H8FCNJR9YZFGFSPATW4WBDCJ">Leveraging Orb Commands</h2>
+<p>Consider leveraging orb commands, such as `python/install-packages` from the circleci/python orb. The Python orb's commands include `save_cache` and `restore_cache` steps, as seen in the source code at lines 426 and 188 respectively. These steps contribute to improved performance and can be customized if needed.</p>
+<p>Alternatively, if caching causes issues with credit utilization, you can install Python packages using `pip install` at runtime without relying on the orb.</p>
+<h2 id="01H8FCJD28S9C1PTJGEGZCEF8K">Caching Dependencies for Yarn and Node.js Projects</h2>
+<p>Caching dependencies can significantly improve job performance on CircleCI. This article provides guidance on caching options specifically tailored for Yarn and Node.js dependencies.</p>
+<h3 id="01H8FCJT9QYYJEP1N98B92ACN3">Yarn Caching</h3>
+<p>To maximize caching efficiency when using Yarn, it is recommended to cache the `.yarn/cache` and `.yarn/unplugged` folders instead of the `node_modules` directory directly. This approach aligns with Yarn's caching mechanism. Here's an example configuration for Yarn caching in your CircleCI configuration file:</p>
+<pre>- yarn/<br>- .yarn/cache<br>- .yarn/unplugged</pre>
+<h3 id="01H8FCKHV22XGQ2VFB9Z6VH524">Node Orb Recommendation</h3>
+<p>For Node.js projects, CircleCI provides the Node Orb, which offers caching options specifically designed for Node.js dependencies. You can utilize the `node-cache` command provided by the Node Orb to cache your `node_modules` directory efficiently. Here's an example configuration:</p>
+<pre><br>version: 2.1<br><br>orbs:<br>node: circleci/node@2.1<br><br>jobs:<br>build:<br>executor: node/default<br>steps:<br>- checkout<br>- node/cache<br>- run: npm install<br>- run: npm test</pre>
+<p> </p>
+<h1 id="01H8FCNRCYFYD6KT8DJHZ10BMH">Troubleshooting Checklist</h1>
+<h2 id="01H8FDK7AAQYF2BW8VAYZAVA90">Tips for Optimizing Caching</h2>
+<p>1. Order jobs for meaningful workflows.<br>2. Check language-specific caching tips:<br>- Node (Yarn): Cache `.yarn/cache` and `.yarn/unplugged` folders.<br>- Node (npm): Cache with lock files (`package-lock.json` or `npm-shrinkwrap.json`).<br>- Consider using the CircleCI Node Orb for additional caching options.<br>3. Verify cache restoration and saving.<br>4. Cache only necessary dependencies.<br>5. Prune unnecessary dependencies.<br>6. Optimize cache keys for better performance.<br>7. Tolerate slightly outdated caches to reduce unnecessary uploads.<br>8. Explore partial dependency caching strategies for specific package managers.<br>9. Evaluate tradeoffs between zero and partial cache restores.<br>10. Use lock files or checksums for precise cache keys.<br>11. Cache multiple languages separately.<br>12. Cache expensive steps to improve performance.</p>
+<p>Remember to adapt these tips to your specific needs and language requirements.</p>
+<h2 id="01H8FDDS665Y85XKNJY330KG6D">Youtube resources</h2>
 <p><iframe src="//www.youtube-nocookie.com/embed/0-ePDGv1qLc" width="560" height="315" frameborder="0" allowfullscreen=""></iframe></p>
 <p> </p>
-<h2>Additional Resources:</h2>
+<h2 id="01H8FC54JDQGP5BSZXN03R3QBB">Additional Resources:</h2>
 <ul>
-    <li><span class="wysiwyg-underline"><a href="https://circleci.com/docs/caching" target="_blank" rel="noopener">CircleCI Documentation: Caching Dependencies</a></span></li>
+    <li><span class="wysiwyg-underline"><a href="https://circleci.com/docs/caching" target="_blank" rel="noopener noreferrer">CircleCI Documentation: Caching Dependencies</a></span></li>
 </ul>
