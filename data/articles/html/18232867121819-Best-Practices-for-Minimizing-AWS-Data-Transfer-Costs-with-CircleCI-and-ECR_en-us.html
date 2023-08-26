@@ -1,14 +1,14 @@
 <p> </p>
-<h2>Problem: Increased AWS Data Transfer Costs</h2>
+<h2 id="01H8Q2MCFF3BY8GTPP3Y05ZTY9">Problem: Increased AWS Data Transfer Costs</h2>
 <p>You may be experiencing increased AWS data transfer costs when pulling an ECR image from AWS within your CircleCI configuration. This issue commonly arises when the image is located in a different region than where the CircleCI job is executing. To mitigate these expenses, you are seeking solutions to either have CircleCI pull the image within the AWS network or explore alternative options such as CircleCI Server or CircleCI Self-Hosted Runner.</p>
-<h2>Solution 1: Pulling Images within the AWS Network</h2>
+<h2 id="01H8Q2MCFFM5A3RAS2WHSZZ89R">Solution 1: Pulling Images within the AWS Network</h2>
 <p>To reduce AWS data transfer costs, you can consider moving your ECR images to the <code>us-east-1</code> region, which is the default region for many AWS services. By executing CircleCI jobs in the same <code>us-east-1</code> region, you would avoid data transfer charges within that specific region. However, keep in mind that data transfer costs may still apply when communicating with regions outside of <code>us-east-1</code>.</p>
-<h2>Solution 2: CircleCI Server or CircleCI Self-Hosted Runner</h2>
+<h2 id="01H8Q2MCFF5AA3G47S81JNGTF2">Solution 2: CircleCI Server or CircleCI Self-Hosted Runner</h2>
 <p>An alternative to mitigate AWS data transfer costs is by using CircleCI Server or CircleCI Self-Hosted Runner. With these options, you can host your own CircleCI infrastructure within your desired AWS region, allowing you to manage your data transfer costs effectively. This way, you can have greater control over the network and reduce expenses associated with inter-region data transfers.</p>
-<h2>Additional Resources</h2>
+<h2 id="01H8Q2MCFFY4648F24PHZ1F23E">Additional Resources</h2>
 <p>For more information and assistance, refer to these helpful resources:</p>
 <ul>
-    <li><a href="https://circleci.com/docs/2.0/server-intro/">CircleCI Documentation: Using CircleCI Server</a></li>
-    <li><a href="https://circleci.com/docs/2.0/runner-installation/">CircleCI Documentation: Using CircleCI Self-Hosted Runner</a></li>
+    <li><a href="https://circleci.com/docs/server/v4.2/overview/circleci-server-overview/">CircleCI Documentation: Using CircleCI Server</a></li>
+    <li><a href="https://circleci.com/docs/runner-overview/">CircleCI Documentation: Using CircleCI Self-Hosted Runner</a></li>
 </ul>
 <p>Following these best practices and considering the suggested solutions will help you minimize AWS data transfer costs with CircleCI and ECR effectively. Remember to evaluate the specific requirements of your project and choose the approach that best suits your needs.</p>

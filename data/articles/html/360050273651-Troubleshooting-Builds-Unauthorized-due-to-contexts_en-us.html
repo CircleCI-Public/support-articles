@@ -8,15 +8,16 @@
     <li style="font-weight: 400;"><span style="font-weight: 400;"><strong>Account renames</strong>: If you recently renamed your GitHub username and are suddenly experiencing permission issues please contact Support</span></li>
     <li style="font-weight: 400;"><span style="font-weight: 400;"><strong>Browser extensions</strong>: Try to disable browser extensions or log in from a different browser and/or device. If you are still blocked, please submit a HAR file to Support</span></li>
     <li style="font-weight: 400;">
-        <span style="font-weight: 400;"><span><strong>Invalid/Expired OAuth token</strong>: Proceed to a full re-authentication</span></span>
+        <span style="font-weight: 400;"><strong>Invalid/Expired OAuth token</strong>: Proceed to a full re-authentication</span>
         <ol>
-            <li style="font-weight: 400;"><span style="font-weight: 400;"><span>Sign out of your CircleCI account</span></span></li>
-            <li style="font-weight: 400;"><span style="font-weight: 400;"><span>Revoke CircleCI's access in <a href="https://bitbucket.org/account/settings/app-authorizations" target="_self">Bitbucket</a> or</span><span> <a href="https://github.com/settings/applications" target="_self">GitHub</a></span></span></li>
-            <li style="font-weight: 400;"><span style="font-weight: 400;"><span>Clear your browser's cache and cookies</span></span></li>
-            <li style="font-weight: 400;"><span style="font-weight: 400;"><span>Sign back into your CircleCI account</span></span></li>
-            <li style="font-weight: 400;"><span style="font-weight: 400;"><span>Refresh permissions at </span><a href="https://app.circleci.com/settings/user" target="_blank" rel="noopener noreferrer">https://app.circleci.com/settings/user</a></span></li>
+            <li style="font-weight: 400;"><span style="font-weight: 400;">Sign out of your CircleCI account</span></li>
+            <li style="font-weight: 400;"><span style="font-weight: 400;">Revoke CircleCI's access in <a href="https://bitbucket.org/account/settings/app-authorizations" target="_self">Bitbucket</a> or <a href="https://github.com/settings/applications" target="_self">GitHub</a></span></li>
+            <li style="font-weight: 400;"><span style="font-weight: 400;">Clear your browser's cache and cookies</span></li>
+            <li style="font-weight: 400;"><span style="font-weight: 400;">Sign back into your CircleCI account</span></li>
+            <li style="font-weight: 400;"><span style="font-weight: 400;">Refresh permissions at <a href="https://app.circleci.com/settings/user" target="_blank" rel="noopener noreferrer">https://app.circleci.com/settings/user</a></span></li>
         </ol>
     </li>
     <li style="font-weight: 400;"><span style="font-weight: 400;"><strong>Recent change to Context Restrictions</strong>: If you've recently adjusted the permissions of a context, changes may not be available immediately due to caching. You will need an organization admin to refresh permissions at <a href="https://app.circleci.com/settings/user">https://app.circleci.com/settings/user</a> (<a href="https://circleci.com/docs/2.0/contexts/#make-changes-to-context-restrictions" target="_self">more info</a>)</span></li>
 </ol>
-<p><span style="font-weight: 400;">You can reach us by submitting a ticket to <a href="https://support.circleci.com/">CircleCI Support</a>.</span></p>
+<p><span style="font-weight: 400;">Please note that you can leverage the <a href="https://circleci.com/docs/api/v2/">CircleCI v2 API</a> to find the user id of a user who triggered a workflow. You can use the <a href="https://circleci.com/docs/api/v2/index.html#tag/Workflow">Get a workflow</a> endpoint. The value assigned to `started_by` key in the response corresponds to the user id of the user who triggered the build. </span></p>
+<p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">You can reach us by submitting a ticket to </span><a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" href="https://support.circleci.com/">CircleCI Support</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">.</span></p>
