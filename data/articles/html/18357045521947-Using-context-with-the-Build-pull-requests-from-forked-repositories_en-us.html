@@ -1,0 +1,21 @@
+<h1 id="h_01H91QAG65A3J2M9612XQFN53R">Overview</h1>
+<p>You may want to use context to share environment variable across projects. However, when you build pull requests from forked repositories, the user who triggered the build often is not a member of the organization that the project is running under in CircleCI. Therefore, you will see an Authorization error in the CircleCI UI and the build will not run.  </p>
+<h2 id="h_01H91QAG65DQ5HSDKK4PZBH4RX">Resolutions: </h2>
+<h3 id="h_01H91R5FX4WQ9JXD2NV661MQY8">Re-run the failed build</h3>
+<p>You can have a user with the correct permission re-run the build. This will use the permissions of the user re-ran the build. Please note that the user still needs to be a member of the assigned security group within the organization. </p>
+<p> </p>
+<h3 id="h_01H91R5FX43HVAX2XN87Y0TD76">Hold the workflow for manual approval</h3>
+<p>You can hold the workflow for manual approval by a user with the correct permissions to the context. This means that workflow will remain on-hold until it is approved. </p>
+<p> </p>
+<h3 id="h_01H91R5FX4ADAD4VM51XGSD22H">Use project level environment variables</h3>
+<p>In order to share environment variables with forked repositories you will need to enable the <em>Pass secrets to builds from forked pull requests</em> feature from your project settings &gt; advanced. </p>
+<p> </p>
+<h2 id="h_01H91QAG68J66GHV8BKECCHNDH">Additional Resources<span class="diff-removed-string">:</span>
+</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/contexts/">Contexts</a></li>
+    <li>
+        <div class="css-1tx6twl"><a href="https://circleci.com/docs/set-environment-variable/#set-an-environment-variable-in-a-project">Set an environment variable in a project</a></div>
+    </li>
+    <li><a href="https://circleci.com/docs/workflows/#holding-a-workflow-for-a-manual-approval">Holding a Workflow for manual approval</a></li>
+</ul>
