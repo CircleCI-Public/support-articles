@@ -1,27 +1,36 @@
-<h1>Updating your Server Installation</h1>
-<p>To update your <a href="https://circleci.com/enterprise/" target="_blank" rel="noopener">CircleCI Enterprise or server</a> you can follow the below steps. The process is simple and may take 15-20 minutes.</p>
+<h1 id="h_01H96KXY66MR8YDV3J44YM1PGT">Updating your Server Installation</h1>
+<p>To update your <a href="https://circleci.com/enterprise/" target="_blank" rel="noopener noreferrer">CircleCI Enterprise or server</a> you can follow the below steps. Please allow yourself 15-20 minutes to go through this process.</p>
 <p> </p>
-<h2>CircleCI Server 4.x</h2>
+<h2 id="h_01H96KXY66K876322RY7HWXJPD">CircleCI Server 4.x</h2>
 <ol>
-    <li>Before upgrading, please create a <a href="https://circleci.com/docs/server/operator/backup-and-restore/" target="_blank" rel="noopener">Backup and Restore</a> point.</li>
-    <li>You can then follow the steps outlined <a href="https://circleci.com/docs/server/installation/upgrade-server-4" target="_blank" rel="noopener">in our docs</a> to guide you through the upgrade.</li>
+    <li>Before upgrading, please create a <a href="https://circleci.com/docs/server/operator/backup-and-restore/" target="_blank" rel="noopener noreferrer">Backup and Restore</a> point.</li>
+    <li>You can then follow the steps outlined <a href="https://circleci.com/docs/server/installation/upgrade-server-4" target="_blank" rel="noopener noreferrer">in our docs</a> to guide you through the upgrade.</li>
 </ol>
-<pre class="highlight line-numbers language-shell" tabindex="0"><code class="language-shell" data-testid="code-snippet-highlight">helm <span class="token function">diff</span> upgrade circleci-server oci://cciserver.azurecr.io/circleci-server <span class="token parameter variable">-n</span><span class="token variable">$namespace</span><span class="token parameter variable">--version</span><span class="token operator">&lt;</span>version<span class="token operator">&gt;</span><span class="token parameter variable">-f</span><span class="token operator">&lt;</span>path-to-values.yaml<span class="token operator">&gt;</span><span class="token parameter variable">--username</span><span class="token variable">$USERNAME</span><span class="token parameter variable">--password</span><span class="token variable">$PASSWORD</span></code></pre>
-<pre>helm upgrade circleci-server oci://cciserver.azurecr.io/circleci-server -n $namespace --version &lt;version&gt; -f &lt;path-to-values.yaml&gt; --username $USERNAME --password $PASSWORD</pre>
-<p>To get the <code>&lt;version&gt;</code>, you can consult our <a href="https://circleci.com/server/changelog/" target="_blank" rel="noopener">changelog</a>.</p>
-<h2>CircleCI Server 3.x</h2>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><code>$ NAMESPACE=&lt;namespace&gt;<br>$ USERNAME=&lt;USERNAME&gt;<br>$ PASSWORD=&lt;PASSWORD&gt;<br>$ helm <span class="token function">diff</span> upgrade circleci-server oci://cciserver.azurecr.io/circleci-server <span class="token parameter variable">-n </span><span class="token variable">$NAMESPACE </span><span class="token parameter variable">--version</span><span class="token operator">&lt;</span>version<span class="token operator">&gt; </span><span class="token parameter variable">-f </span><span class="token operator">&lt;</span>path-to-values.yaml<span class="token operator">&gt; </span><span class="token parameter variable">--username </span><span class="token variable">$USERNAME </span><span class="token parameter variable">--password </span><span class="token variable">$PASSWORD</span></code></pre>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><code>$ namespace=&lt;namespace&gt;<br>$ USERNAME=&lt;USERNAME&gt;<br>$ PASSWORD=&lt;PASSWORD&gt;<br>$ helm upgrade circleci-server oci://cciserver.azurecr.io/circleci-server -n $NAMESPACE --version &lt;version&gt; -f &lt;path-to-values.yaml&gt; --username $USERNAME --password $PASSWORD</code></pre>
+<p>To get the <code>&lt;version&gt;</code>, you can consult our <a href="https://circleci.com/server/changelog/" target="_blank" rel="noopener noreferrer">changelog</a>.</p>
+<h2 id="h_01H96KXY66CMA0CZ0MDGMMN1WY">CircleCI Server 3.x</h2>
 <ol>
-    <li>Before upgrading, please create a <a href="https://circleci.com/docs/server-3-operator-backup-and-restore/" target="_blank" rel="noopener">Backup and Restore</a> point.</li>
-    <li>Once a backup has been created, you can follow the instructions found <a style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" href="https://circleci.com/docs/server-3-upgrade/#upgrade-server-v3-x" target="_blank" rel="noopener">in our docs</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> via the KOTS Admin Console.</span>
+    <li>Before upgrading, please create a <a href="https://circleci.com/docs/server-3-operator-backup-and-restore/" target="_blank" rel="noopener noreferrer">Backup and Restore</a> point.</li>
+    <li>Once a backup has been created, you can follow the instructions found <a style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" href="https://circleci.com/docs/server-3-upgrade/#upgrade-server-v3-x" target="_blank" rel="noopener noreferrer">in our docs</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> via the KOTS Admin Console.</span>
     </li>
 </ol>
 <p><img style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" src="https://support.circleci.com/hc/article_attachments/12979089015963" alt="Screenshot_2023-02-16_at_5.05.55_PM.png"></p>
-<h2>CircleCI Server 2.x </h2>
-<p><strong>1.</strong> While on the management console dashboard, click on "<strong>View Update</strong>".</p>
-<p><img src="https://support.circleci.com/hc/article_attachments/360079630251" alt="server_update_1.png"></p>
-<p><br><strong>2.</strong> Click on "<strong>Install Update</strong>". This will start updating your server installation.</p>
-<p><img src="https://support.circleci.com/hc/article_attachments/360079630271" alt="server_update_2.png"></p>
 <p> </p>
-<p><strong>Note</strong>:<br><strong>1.</strong> Before updating check the server changelog at <a href="https://circleci.com/server/changelog" target="_blank" rel="noopener">https://circleci.com/server/changelog</a><br><strong>2.</strong> Backup of your installation. Check instructions here: <a href="https://circleci.com/docs/2.0/backup/#backing-up-circleci-data" target="_blank" rel="noopener">https://circleci.com/docs/2.0/backup/#backing-up-circleci-data</a><br><strong>3.</strong> Make sure no job is running.</p>
+<h2 id="h_01H96KXY66T58CGJZ1PJA9V5E3">Additional Notes:</h2>
+<ul>
+    <li>Before updating check the <a href="https://circleci.com/changelog/server/#filtered" target="_blank" rel="noopener noreferrer">server changelog</a>.</li>
+    <li>
+        <a href="https://circleci.com/docs/server/v4.1/operator/backup-and-restore/#backing-up-circleci-data" target="_blank" rel="noopener noreferrer">Create a backup of your installation</a>.
+    </li>
+    <li>Make sure no jobs are running.</li>
+</ul>
 <p> </p>
-<p>If you have any more questions, please submit a ticket to <a href="https://support.circleci.com/">CircleCI Support</a>.</p>
+<p>If you encounter any difficulties or have any further questions, please submit a ticket to <a href="https://support.circleci.com/">CircleCI Support</a>.</p>
+<p> </p>
+<h2 id="h_01H96KXY665B9XCVCHN03XKNNR">Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/15819961443483" target="_blank" rel="noopener noreferrer">Server 4.x Upgrade Path</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/16563709693723" target="_blank" rel="noopener noreferrer">[Server 4.x] How do I confirm what is deployed during a Server version upgrade?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/11650758856859" target="_blank" rel="noopener noreferrer">[Server] Helm login results in unauthorized: authentication required error</a></li>
+</ul>
