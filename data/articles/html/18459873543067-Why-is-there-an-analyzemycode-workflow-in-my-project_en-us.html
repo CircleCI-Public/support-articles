@@ -1,0 +1,33 @@
+<h1 id="h_01H99GG80CDS0KP50WQVWA058R" data-renderer-start-pos="7581">Overview</h1>
+<p data-renderer-start-pos="7581">CircleCI is testing a new experience that aims to help you bootstrap the project creation process. If there is an existing <code>.circleci/config.yml</code> in your repository, CircleCI will use that to trigger pipelines for the project in question.</p>
+<p data-renderer-start-pos="7581">In the event there is no <code>.circleci/config.yml</code> present in your repository, CircleCI will run the <code>analyze-my-code</code> <a href="https://circleci.com/docs/dynamic-config/#how-dynamic-config-works">setup workflow</a> to autogenerate a configuration for a select few popular languages and frameworks such as Javascript, Python, Ruby and a few more.</p>
+<p data-renderer-start-pos="7581">More details about this product update can be seen on our <a href="https://discuss.circleci.com/t/product-update-simplifying-circleci-project-creation/48336">Community Discuss Forum.</a></p>
+<h2 id="h_01H99GG80C03AG0K32JP3JK1VT" data-renderer-start-pos="7676">Is there a way to disable the <code>analyze-my-code</code> setup workflow?</h2>
+<p>Yes - there are a few ways to stop this workflow from running on your project.</p>
+<ul class="ak-ul" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="7690"><strong>Include a <code>.circleci/config.yml</code> in your repository</strong></p>
+        <ul class="ak-ul" data-indent-level="1">
+            <li>If your team would like to keep building the project but doesn't require assistance with bootstrapping the configuration, we suggest including an empty <code>.circleci/config.yml</code>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p data-renderer-start-pos="7742"><strong>Stop Building the Project</strong></p>
+        <ul class="ak-ul" data-indent-level="1">
+            <li>This is suggested approach if it's not a project that your team intends to build on the platform
+                <ul class="ak-ul" data-indent-level="1">
+                    <li><a href="https://circleci.com/docs/stop-building-a-project-on-circleci/" rel="noopener noreferrer">https://circleci.com/docs/stop-building-a-project-on-circleci/</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2 id="h_01H99GG80C25BQ2XJC8TFBJKZ0" data-renderer-start-pos="8137">Additional Resources:</h2>
+<ul class="ak-ul" data-indent-level="1">
+    <li>
+        <p id="h_01H99G2P1V2J58V5B11W9AVM0W" style="width: 962.984px;" data-topic-id="48336"><a class="fancy-title" href="https://discuss.circleci.com/t/product-update-simplifying-circleci-project-creation/48336">[Product Update] Simplifying CircleCI Project Creation</a></p>
+    </li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360021666393" target="_blank" rel="noopener noreferrer">How to stop building by manually removing the CircleCI webhook and deploy key from your GitHub repository</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360025040233" target="_blank" rel="noopener noreferrer">How to stop building by manually removing the CircleCI webhook and deploy key from your Bitbucket repository</a></li>
+</ul>
