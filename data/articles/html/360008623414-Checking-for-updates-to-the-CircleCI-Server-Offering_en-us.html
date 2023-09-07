@@ -1,22 +1,21 @@
-<h1>Overview</h1>
-<p>There are a variety of mechanisms for staying up-to-date about new CircleCI releases.</p>
-<p class="wysiwyg-indent1">Server 4 users should use the changelog.</p>
-<p class="wysiwyg-indent1">Server 3 users can use all the below methods.</p>
-<h2> </h2>
-<h2>CircleCI's Server Changelog</h2>
-<p>New releases are posted to <a href="https://circleci.com/server/changelog">https://circleci.com/server/changelog</a>, and operators can subscribe to the included <a href="https://circleci.com/enterprise/changelog.rss">RSS feed</a>.</p>
-<h2> </h2>
-<h2>Using the Management Console</h2>
-<p>You can check for updates via the Replicated Management Console, available at <code>$YOUR_CIRCLECI_HOSTNAME:8800/dashboard</code>.</p>
-<h2> </h2>
-<h2>Replicated's Integration API</h2>
-<p>Replicated's Integration API includes a <a href="https://help.replicated.com/api/integration-api/version-api/">Version API</a>, via which operators can check for CircleCI updates using the command line.</p>
+<h1 id="h_01H9NTNZ1N028H8E1CMDBYFX3W">Overview</h1>
+<p>There are a variety of mechanisms for staying up-to-date about new CircleCI releases. This includes checking the changelog and checking the Replicated Portal if on 3.x.</p>
+<h2 id="h_01H9NTNZ1N36SE8R6Z14Y7XHPD"> </h2>
+<h2 id="h_01H9NTNZ1NWFWPC5RZ2KK25RR3">CircleCI's Server Changelog for Server 4.x</h2>
+<p>New releases are posted to our changelog once they are live. You can view that changelog here:</p>
+<p>You can even subscribe to our RSS feed located at the top of the Changelog.</p>
+<ul>
+    <li><a href="https://circleci.com/changelog/server/#filtered" target="_blank" rel="noopener noreferrer">CircleCI Server Changelog</a></li>
+</ul>
+<p>If a new version has been released and you'd like to update it, you can view our instructions here:</p>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360054109631">[Server] How to Update CircleCI Server?</a></li>
+</ul>
+<h2 id="h_01H9NTNZ1N1F1AAK7N9825VZTJ">Using the Management Console for 3.x</h2>
+<p>You can check our <a href="https://circleci.com/changelog/server/#filtered">changelog</a>, or view the Replicated Console by following the instructions in <a href="https://circleci.com/docs/server-3-upgrade/#upgrade-server-v3-x" target="_blank" rel="noopener noreferrer">our docs</a>.</p>
 <p> </p>
-<p>A <code>GET</code> request to <code>/version/v1/updates</code> will return a list of all available updates.</p>
-<p>All API calls must begin with the Integration API base endpoint, available by querying the <code>$REPLICATED_INTEGRATIONAPI</code> environment variable that is automatically added to all application containers (in this case, all CircleCI containers running within the Services machine).</p>
-<p> </p>
-<p>In CircleCI installations, this base endpoint tends to have the form of <code>https://$SERVICES_MACHINE_PRIVATE_IP:9880</code></p>
-<p>Thus, a fully formed API call to check for CircleCI updates might be made as follows:</p>
-<p><code>curl -k https://$SERVICES_MACHINE_PRIVATE_IP:9880/version/v1/updates</code></p>
-<p> </p>
-<p>Operators can programmatically check for updates by integrating this API endpoint into any existing monitoring systems (for example, <a href="https://nagios.org">Nagios</a>) that may be in use.</p>
+<h1 id="h_01H9NVC6TSJ49EDKR9XY4RH09F">Additional Notes</h1>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360054109631" target="_blank" rel="noopener noreferrer">[Server] How to Update CircleCI Server?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/15819961443483">Server 4.x Upgrade Path</a></li>
+</ul>
