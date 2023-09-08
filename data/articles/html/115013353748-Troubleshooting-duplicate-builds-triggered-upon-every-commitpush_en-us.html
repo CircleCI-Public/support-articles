@@ -1,4 +1,4 @@
-<h1>
+<h1 id="h_01H9RRKG010HVVV57RQEHBQ933">
     <br>When duplicate builds are unexpected
 </h1>
 <div class="group md:px-4 border-b border-black/10 bg-gray-50 text-gray-800 dark:border-gray-900/50 dark:bg-[#444654] dark:text-gray-100">
@@ -15,7 +15,7 @@
                             <p>Branch protection rules: If you have branch protection rules configured on your main branch in your version control system (e.g., GitHub or Bitbucket), certain actions like force-pushing or rebasing can result in the triggering of multiple pipeline runs.</p>
                         </li>
                         <li>
-                            <p>Pull request related triggers: If your pipeline is configured to trigger on both push events and pull requests, it is possible for a pipeline to be triggered twice. This can occur if a pull request is opened or updated on the main branch, resulting in both push and pull request events being triggered.</p>
+                            <p>Pull request related triggers: If your pipeline is configured to trigger on both push events and pull requests, it is possible for a pipeline to be triggered twice. This can occur if a pull request is opened or updated on the main branch, resulting in both push and pull request events being triggered. For this step, you can check this via the GitHub API as described <a href="https://stackoverflow.com/questions/47360132/see-what-pull-requests-depend-on-my-branch-github">here</a>.</p>
                         </li>
                         <li>
                             <p>Workflow configuration: If your pipeline consists of multiple workflows and there are dependencies or conditions between them, it is possible for the main branch workflow to be triggered more than once if other dependent workflows are also triggered.</p>
@@ -31,10 +31,10 @@
         </div>
     </div>
 </div>
-<h2>Solutions related to Webhook configuration</h2>
+<h2 id="h_01H9RRKG016129S1KAJ6C54NZE">Solutions related to Webhook configuration</h2>
 <p><br>When you have duplicate builds triggering on every commit or push this can indicate that there is a problem with the webhook in GitHub.</p>
 <p>Typically this means there are multiple webhooks added to the repository/project in GitHub for CircleCI.</p>
-<h3>Solution 1</h3>
+<h3 id="h_01H9RRKG01XTP305HXAYZD8G3Z">Solution 1</h3>
 <p>We would recommend having an admin of the Github Organization follow these steps in order: </p>
 <p>1. In GitHub, navigate to the impacted repository settings. <em>https://github.com/OrgName/Repository</em></p>
 <p><em><img src="https://support.circleci.com/hc/article_attachments/17938373085339" alt="Screenshot_2020-06-03_at_19.36.02.png" width="429" height="149"></em></p>
@@ -43,7 +43,7 @@
 <p> </p>
 <p>3. If there are multiple webhooks present here, remove all of the duplicate webhooks for CircleCI. </p>
 <p> </p>
-<h3>Solution 2</h3>
+<h3 id="h_01H9RRKG02STB2GBZRJFP236JC">Solution 2</h3>
 <p>If this does not resolve the duplicate triggered builds issue, then your Organization Admin can entirely remove all webhooks for the repository, stop building, and then add the project back on CircleCI.</p>
 <ol>
     <li>Navigate to the repository settings/Webhooks as described above.</li>
@@ -54,6 +54,6 @@
 </ol>
 <p>Once this has been done you should only see one build being triggered with each push/commit.</p>
 <p>A full walkthrough for removing a project/repository from CircleCI <a href="https://support.circleci.com/hc/en-us/articles/360021666393-How-to-manually-stop-building-by-removing-your-deploy-key-and-webhook-from-GitHub" target="_self">can be found here</a>, including screenshots.<br><br><br></p>
-<h2>Additional Resources</h2>
+<h2 id="h_01H9RRKG02HYG2H6K60E8AH63B">Additional Resources</h2>
 <p><br>Please contact <a href="https://support.circleci.com/hc/en-us">support</a> for more information about your duplicate builds. </p>
 <p> </p>
