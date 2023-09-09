@@ -1,0 +1,83 @@
+<h2 id="h_01H9TTC8JW9528SJFS1E7KNYTW">Introduction</h2>
+<p>Docker in Docker (DiD) is a technique that allows running Docker commands within a Docker container. In this article, we will explore the concept of Docker in Docker in the context of CircleCI jobs. We'll discuss the limitations, possible workarounds, and optimizations to ensure smooth integration of Docker in Docker in your CircleCI workflows.</p>
+<p> </p>
+<h2 id="h_01H9TTCQH6RHXF6JB8P3PQXWYQ">Running Docker Commands in CircleCI Jobs</h2>
+<p><br>CircleCI jobs running on a Docker executor inherently have limitations regarding privileged mode and direct access to the Docker daemon. Consequently, executing Docker commands within a Docker container in CircleCI jobs is not feasible. However, CircleCI offers a feature called Remote Docker that enables running Docker commands by utilizing a VM within the job.</p>
+<p> </p>
+<h2 id="h_01H9TTD40K19RJXYHK178K1DAT">Utilizing Remote Docker for Docker in Docker</h2>
+<p><br>To run Docker in Docker-like functionality in CircleCI jobs, you can leverage the Remote Docker feature. This involves creating a custom Docker image that includes the necessary security components and using it within your CircleCI job to pull and execute the required Docker image.</p>
+<p>By employing the Remote Docker feature, you can effectively run Docker commands within your CircleCI job while leveraging a VM. Each Docker command execution will occur within a Docker container running as a separate VM, enabling parallelization and saving resources compared to running multiple separate jobs.</p>
+<p> </p>
+<h2 id="h_01H9TTDD1F40DJ01FK0FJCF6YH">Optimizing CircleCI Jobs with Docker in Docker</h2>
+<p><br>Using Docker in Docker within CircleCI jobs allows for greater flexibility and control. However, it's important to consider factors like resource utilization and potential bottlenecks. While utilizing VMs alongside Docker containers can optimize resource usage, VM overhead can still impact performance.</p>
+<p>To optimize CircleCI jobs utilizing Docker in Docker, consider:<br><strong>**Efficient VM Usage**</strong>: Be mindful of VM overhead and ensure your jobs are properly scaled to balance resource utilization. Adjust the number of parallel scans or operations based on available resources and the performance requirements of your specific use case.</p>
+<p>By implementing these optimizations, you can ensure efficient resource usage and streamline your CircleCI jobs utilizing Docker in Docker.</p>
+<p> </p>
+<h2 id="h_01H9TTEF9HM19T156TDNBTPK1H">Non-docker commands in Docker</h2>
+<h4 id="h_01H9RXEWX4C19VW2TCAH4GNNVW">Sometimes, you may need to run non-docker commands in your remote docker environment. </h4>
+<p>Although only Docker commands are <em>automatically</em> executed in the remote Docker environment, you can programmatically execute <em>any</em> set of commands in the remote Docker environment by SSHing into it and chaining any subsequent commands to your shell command.</p>
+<p> </p>
+<p>To SSH into the remote Docker environment, run <code>ssh remote-docker</code> while SSH'd into any CircleCI job that uses <a href="https://circleci.com/docs/2.0/configuration-reference/#setup_remote_docker" target="_self"><code>setup_remote_docker</code></a> or execute it programmatically in a <code>run</code> step. (Make sure the <code>setup_remote_docker</code> step runs first, otherwise, your SSH command will fail!)</p>
+<p> </p>
+<h4 id="h_01H9RXEWX5KMGS8NE5TW1SARYV">Using `ssh remote-docker` in a run step: </h4>
+<pre><code>run: |
+  ssh remote-docker \ echo "this echo command will be executed in the remote Docker environment \ <br>  rather than the initial job container itself"
+</code></pre>
+<p>The challenge presented here is that only a singular command can be passed to the SSH shell—for example, if you run <code>ssh remote-docker touch file1 &amp;&amp; touch file2</code>, <code>file1</code> will be created in the remote Docker environment, but <code>file2</code>will be created in your job's local container.</p>
+<p>So, if you want to run a more complex set of commands in the remote Docker environment, programmatically, then you need to find a way to have them executed as a single command.</p>
+<p>Some good approaches are outlined <a href="https://stackoverflow.com/questions/4412238/what-is-the-cleanest-way-to-ssh-and-run-multiple-commands-in-bash" target="_self">in this stackoverflow.</a></p>
+<p>These suggestions include <a href="http://tldp.org/LDP/abs/html/here-docs.html" rel="nofollow">using a "here document"</a> or saving your commands to a shell script which you then pipe into your <code>ssh</code> command.</p>
+<p> </p>
+<p>If you are using remote-docker commands to update your Docker storage driver, please <a href="https://discuss.circleci.com/t/changing-docker-storage-driver/36494/2" target="_self">checkout this helpful thread in our forum.</a><br><br></p>
+<h2 id="h_01H9TTF0MAHTWSP9R15EJF4C0R">Improved Performance and Pricing for Jobs using `setup_remote_docker` in CircleCI</h2>
+<p>At CircleCI, we are constantly working on improving our platform to provide faster and more reliable job execution for our users. One area where we have made significant improvements is in jobs that utilize the `setup_remote_docker` feature. This support article aims to explain the changes we have made, their benefits, and how they may impact pricing.</p>
+<p> </p>
+<h2 id="h_01H9TTR8C4437X8TPR7SKYQCF2">The Previous Setup</h2>
+<p>Previously, when jobs used `setup_remote_docker`, they utilized a primary container that had a size determined by the resource class specified in the `config.yml` file. Additionally, a remote Linux virtual machine of medium size was provisioned to execute Docker commands. The compute credits per minute for the job were determined by the size of the primary container, while the remote virtual machine was not charged separately.</p>
+<p>However, this setup had some drawbacks. The communication between the primary container and the remote virtual machine required network traffic to flow over the internet. This introduced the possibility of transient network failures and adversely impacted the performance of jobs, leading to longer execution times.</p>
+<p> </p>
+<h2 id="h_01H9TTG83AAA24KPVSE8Q0Y5TD">The New and Improved Architecture</h2>
+<p> </p>
+<p>To address the limitations of the previous setup, we have implemented a new architecture that provides better flexibility, reliability, and performance for jobs using `setup_remote_docker`.</p>
+<p>With our redesigned architecture, all remote Docker jobs now run exclusively in a single virtual machine. This means that you have the ability to rightsize the remote Docker engine according to your specific compute needs. Whether you require minimal compute resources or need to scale up to utilize more power, you have full control over the compute capacity used.</p>
+<p>The elimination of cross-internet network transfers between the primary container and the virtual machine significantly improves job performance and reliability. By keeping all operations within a single virtual machine, you'll experience faster execution times and reduced occurrences of network-related failures.</p>
+<p> </p>
+<h2 id="h_01H9TTGK71E3EY5FY4EGSSWKP8">Pricing Update</h2>
+<p> </p>
+<p>Starting from June 15, 2023, jobs that use `setup_remote_docker` will be identified as "Remote Docker" executors in the CircleCI user interface. This labeling will make it easier to differentiate them from non-remote Docker jobs and compare their performance.</p>
+<p>With the introduction of the new executor type, there are some changes to the pricing of jobs using `setup_remote_docker`. The pricing is now aligned with the resource class specified in the `config.yml` file. It's essential to understand how these pricing updates may affect your usage.</p>
+<p>Here's a breakdown of the pricing changes:</p>
+<p>1. If a job is defined in your `config.yml` file with a Small Docker resource class and uses `setup_remote_docker`, starting from June 15, 2023, the job will execute as an Executor = Remote Docker with a Resource Class = Medium.</p>
+<p>2. If a job is defined with a Medium+ Docker resource class and uses `setup_remote_docker`, starting from June 15, 2023, the job will execute as an Executor = Remote Docker with a Resource Class = Large.</p>
+<p>It's important to note that no action is required on your part regarding these changes unless you wish to adjust the resource class sizes to better suit your team's needs.</p>
+<h2 id="h_01H9TTHBXNXBD1W08XC94SRFBY">
+    <br>FAQ
+</h2>
+<p>In the forum post associated with this support article, we have addressed specific questions and concerns raised by our users. We aim to provide clarity and transparency regarding the improvements and pricing changes. Here are some key points:</p>
+<p>1. Users inquiring about the previous pricing model for different resource classes and the impact of the changes.<br>- We clarified that the previous pricing model charged based on the primary container's resource class, and a remote medium-sized Linux VM was used regardless of the specified resource class.<br>- We acknowledged that there may have been confusion about the pricing changes and stated that future messaging would be clearer.</p>
+<p>2. Users questioning the removal of the Small resource class.<br>- We reassured users that the Small resource class is still available for jobs not utilizing `setup_remote_docker`. However, if a job uses `setup_remote_docker`, it will now utilize the Medium resource class instead of Small.</p>
+<p>3. Users expressing concerns about the price increase for the XLarge resource class.<br>- We addressed the discrepancy in pricing, stating that the new pricing is aligned with the Linux VM resource class prices. The Linux VM resource class prices include additional factors beyond just CPU/RAM specifications.<br>- We acknowledged that the price increase may seem significant but emphasized that it aligns with our pricing model for similarly-sized resource classes.</p>
+<p>4. Users looking for alternatives to mitigate the pricing changes and improve cost-efficiency.<br>- We mentioned the option of exploring self-hosted runners, which can be valuable depending on specific requirements and can potentially eliminate per-minute fees if resources are already available. However, we acknowledged that implementing self-hosted runners may require refactoring processes and ensuring full utilization of the resources.</p>
+<p> </p>
+<h2 id="h_01H9TTJ96M1MBCNQKZD3YPB0CE">Understanding Docker in Docker in CircleCI Jobs</h2>
+<h2 id="h_01H9TTJN1TH9Y6E3F1QKEH3KH3">SSH into the Remote Docker Environment</h2>
+<p>Sometimes, you may need to run non-Docker commands in your remote Docker environment.</p>
+<p>To SSH into the remote Docker environment, run `ssh remote-docker` while SSH'd into any CircleCI job that uses `setup_remote_docker` or execute it programmatically in a `run` step. (Make sure the `setup_remote_docker` step runs first, otherwise, your SSH command will fail!)</p>
+<p>**Using `ssh remote-docker` in a `run` step:**</p>
+<p>```<br>run: |<br>ssh remote-docker echo "this echo command will be executed in the remote Docker environment <br>rather than the initial job container itself"<br>```</p>
+<p>The challenge here is that only a singular command can be passed to the SSH shell. If you want to run a more complex set of commands in the remote Docker environment programmatically, you need to find a way to have them executed as a single command. Some suggested approaches include using a "here document" or saving your commands to a shell script which you then pipe into your `ssh` command.</p>
+<p>If you are using `remote-docker` commands to update your Docker storage driver, please check out this helpful thread in our forum.</p>
+<p> </p>
+<h2 id="h_01H9TTKH1628QG2Y1NQMVKDVSQ">Conclusion</h2>
+<p> </p>
+<p>By understanding and leveraging the Remote Docker feature in CircleCI, you can effectively utilize Docker in Docker functionality within your CircleCI jobs. Optimizing resource utilization and parallelization can further streamline your workflows. Additionally, knowing how to SSH into the remote Docker environment allows you to execute non-Docker commands programmatically.</p>
+<p> </p>
+<h2 id="h_01H9TTPJSJF1Q0C7X7GY124N6C">Additional Resources</h2>
+<p> </p>
+<p>Here are some additional resources related to Remote Docker in CircleCI:</p>
+<p>1. CircleCI Documentation - <a href="https://circleci.com/docs/2.0/building-docker-images/#remote-docker">Remote Docker</a> <br>- This is the official CircleCI documentation that provides detailed information about using Remote Docker in CircleCI.</p>
+<p>2. CircleCI Forum Thread - <a href="https://discuss.circleci.com/t/running-non-docker-commands-in-remote-docker-environment/45421">Running Non-Docker Commands in Remote Docker Environment </a><br>- This forum thread discusses and provides solutions for running non-Docker commands in the remote Docker environment.</p>
+<p>3. CircleCI Forum Thread - <a href="https://discuss.circleci.com/t/setup-remote-docker-ssh-key/33016">setup_remote_docker SSH Key</a><br>- This forum thread addresses the issue of the SSH key when using setup_remote_docker.</p>
+<p>4. CircleCI Blog - <a href="https://circleci.com/blog/running-docker-commands-on-a-remote-server">Running Docker Commands on a Remote Server</a><br>- This blog post covers the basics of running Docker commands on a remote server.</p>
+<p>5. Stack Overflow Thread - <a href="https://stackoverflow.com/questions/43402286/ssh-remote-command-expand-environment-variable">Running Commands Inside Docker Container via SSH</a><br>- This Stack Overflow thread discusses various approaches to running commands inside a Docker container via SSH.</p>
+<p>These resources should provide additional information and guidance on working with Remote Docker in CircleCI.</p>
