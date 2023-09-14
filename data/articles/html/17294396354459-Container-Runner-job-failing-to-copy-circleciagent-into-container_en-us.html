@@ -1,0 +1,25 @@
+<h1 id="h_01H9R3EQJRYPDB1PXJNDHWRTTF">Overview</h1>
+<p>When using <code>runAsNonRootUser</code> and <code>runAsUser</code> you may experience the following error message in your CircleCI job. </p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">CircleCI failed to run this build, check your config. Try re-running the build and <br>if this issue persists, open a Support ticket. Detail: failed to copy circleci-agent <br>into container &amp;#34;primary&amp;#34;, <br>Error: error executing command mkdir -p $HOME/.local/bin/circleci : <br>error executing command /bin/bash -c set -o pipefail ; mkdir -p <br>$HOME/.local/bin/circleci 2&amp;gt;&amp;amp;1 | tee /proc/1/fd/1 : <br>command terminated with exit code 1</pre>
+<p>This is typically a case of the user in <code>runAsUser</code> not matching the User ID within the image. </p>
+<p> </p>
+<h1 id="h_01H9R3EQJRR9CEXP2EDJZWKA1R">Solution</h1>
+<h3 id="h_01H9R3EQJRDFY8NVFHV3TEG4X3">Step 1</h3>
+<p>Verify the User ID configured in the Docker image. </p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">$ docker pull &lt;image_name&gt;<br>$ docker run --rm &lt;image_name&gt; echo $UID</pre>
+<p> </p>
+<h3 id="h_01H9R3EQJRKZ47SB6AJDYK52YS">Step 2</h3>
+<p>Confirm the <code>runAsUser</code> matches the UID returned by the first command. </p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">agent:<br>  resourceClasses:<br>    &lt;namespace&gt;/&lt;runner_name&gt;:<br>      spec:<br>        containers:<br>        securityContext:<br>          runAsNonRoot: true<br>          runAsUser: &lt;the_UID_found_before&gt;</pre>
+<p> </p>
+<h1 id="h_01HA851PA1BP2QQ5MHKCR104J1">Example</h1>
+<p>As an example, we can test this with a <code>cimg/base:current</code> image.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">$ docker pull cimg/base:current<br>$ docker run --rm cimg/base:current echo $UID<br>  1000</pre>
+<p>We can see that after running the <code>docker run</code> command, it returns <code>1000</code> to us. </p>
+<p>If your <code>runAsUser</code> does not match the same as <code>$UID</code> in the Docker image, you need to update either one of them to allow your container to run in your Container Runner.</p>
+<p> </p>
+<h1 id="h_01HA86FJ34BKBMXYJVZC7SQ9MP">Additional Notes</h1>
+<ul>
+    <li><a href="https://circleci.com/docs/container-runner/" target="_blank" rel="noopener noreferrer">CircleCI Container Runner Docs</a></li>
+    <li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/" target="_blank" rel="noopener noreferrer">Configure a Security Context for a Pod or Container</a></li>
+</ul>
