@@ -1,0 +1,19 @@
+<h1>Overview</h1>
+<p>Caches cannot be cleared. In some cases such as when you've updated language or build management tool versions, you may need a fresh cache.</p>
+<p> </p>
+<h2>Resolution: </h2>
+<p>In place of deleting your cache, you can generate a new cache by updating the cache key. </p>
+<p> </p>
+<p>Updating the cache key on save and restore steps in your <code class="highlighter-rouge language-plaintext" data-testid="code-snippet-highlight">.circleci/config.yml</code> file will generate new sets of caches from that point onwards</p>
+<p> </p>
+<p>If you create a new cache by incrementing the cache version, the “older” cache is still stored. It is important to be aware that you are creating an additional cache. This method will increase your storage usage. As a general best practice, you should review what is currently being cached and reduce your storage usage as much as possible.</p>
+<p> </p>
+<h2>Additional Resources: </h2>
+<ul>
+    <li>
+        <a href="https://circleci.com/docs/caching/">Caching dependencies</a> 
+    </li>
+    <li>
+        <a href="https://circleci.com/docs/caching/#managing-caches">Managing caches</a> 
+    </li>
+</ul>
