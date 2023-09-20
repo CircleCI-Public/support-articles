@@ -1,23 +1,22 @@
-<h2 id="auth-fail">CircleCI cannot use the user's authentication to retrieve the config.yml file</h2>
-<p>When you see that the pipeline does not run with the below error message, it means that the user, who triggered the build, could not be authenticated and therefore CircleCI could not retrieve the <span>configuration file</span> (config.yml). </p>
+<h1 id="auth-fail">Failed User Authentication</h1>
+<p>When you see that the pipeline does not run with the below error message, it means that the user who triggered the build could not be authenticated and therefore CircleCI could not retrieve the configuration file (config.yml). </p>
 <p><code>Could not find a usable config.yml, you may have revoked the CircleCI OAuth app</code></p>
-<p><span>When a user pushes a commit, opens a PR or triggers a new CircleCI build via the API or via the UI, CircleCI fetches the configuration file (config.yml)</span><span> to generate the pipeline. CircleCI will use the author's authentication token to fetch the config.yml file. When this authentication fails because the token has become invalid or has expired, the user will see the above error message.<br></span><span></span></p>
-<h2 id="reauth-oauth"><span>Solution: Re-Authentication</span></h2>
+<p>When a user pushes a commit, opens a PR, or triggers a new CircleCI build via the API or via the UI, CircleCI fetches the configuration file (config.yml) to generate the pipeline. CircleCI will use the author's authentication token to fetch the config.yml file. When this authentication fails because the token has become invalid or has expired, the user will see the above error message.</p>
+<h2 id="reauth-oauth">Solution: Re-Authentication</h2>
 <p>If this is the case, we recommend this user to re-authenticate with CircleCI.</p>
 <ol id="reauth-steps">
-    <li>
-        <span>Go to <a href="https://app.circleci.com/" target="_blank" rel="noopener">https://app.circleci.com</a> and log out.</span><span></span>
-    </li>
+    <li>Go to <a href="https://app.circleci.com/" target="_blank" rel="noopener noreferrer">https://app.circleci.com</a> and log out.</li>
+    <li aria-level="1">Go to your personal OAuth application settings for CircleCI: <a href="https://github.com/settings/connections/applications/78a2ba87f071c28e65bb" target="_blank" rel="noopener noreferrer">CircleCI OAuth App </a>on GitHub</li>
+    <li aria-level="1">Click <code>Revoke access</code> and confirm.</li>
+    <li><span class="name" data-wfid="ca04bb988bce"><span class="innerContentContainer">Clear your browser's cache and cookies</span></span></li>
     <li aria-level="1">
-        <span>Go to your personal OAuth application settings for CircleCI: <a href="https://github.com/settings/connections/applications/78a2ba87f071c28e65bb" target="_blank" rel="noopener">CircleCI OAuth App </a>on GitHub</span><span></span>
+        <a href="https://circleci.com/vcs-authorize/" target="_blank" rel="noopener noreferrer">Log back in to CircleCI</a> via GitHub.
     </li>
-    <li aria-level="1"><span>Click <code>Revoke access</code> and confirm.</span></li>
-    <li>
-        <span class="name" data-wfid="ca04bb988bce"><span class="innerContentContainer">Clear your browser's cache and cookies</span></span><span></span>
-    </li>
-    <li aria-level="1"><span><a href="https://circleci.com/vcs-authorize/" target="_blank" rel="noopener">Log back in to CircleCI</a> via GitHub.</span></li>
 </ol>
-<p><span>If the above does not resolve the issue, please <a href="https://support.circleci.com/hc/en-us/requests/new" target="_blank" rel="noopener">raise it as a support ticket</a> with the link to the failed message and we will be happy to take a look into it.</span></p>
-<h2><span>Additional Resources</span></h2>
-<p><a href="https://support.circleci.com/hc/en-us/articles/360051228052-How-to-Perform-a-Re-Authentication" target="_self">How to Perform a Re-Authentication</a><br><a href="https://discuss.circleci.com/t/could-not-find-a-usable-config-yml-you-may-have-revoked-the-circleci-oauth-app/46274" target="_self">Discuss</a></p>
+<p>If the above does not resolve the issue, please <a href="https://support.circleci.com/hc/en-us/requests/new" target="_blank" rel="noopener noreferrer">raise it as a support ticket</a> with the link to the failed message and we will be happy to investigate further.</p>
+<h2 id="h_01HAQHSNW04AXN70SX5P6FRWBQ">Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360051228052-How-to-Perform-a-Re-Authentication" target="_self">How to Perform a Re-Authentication</a></li>
+    <li><a href="https://discuss.circleci.com/t/could-not-find-a-usable-config-yml-you-may-have-revoked-the-circleci-oauth-app/46274" target="_self">Discuss</a></li>
+</ul>
 <p> </p>
