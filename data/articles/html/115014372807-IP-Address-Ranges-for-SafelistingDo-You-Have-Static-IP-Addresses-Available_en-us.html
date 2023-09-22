@@ -1,7 +1,7 @@
-<h2><span>Initial Troubleshooting</span></h2>
-<p><span>Please see the <a href="https://circleci.com/docs/2.0/ip-ranges" target="_blank" rel="noopener">IP ranges documentation page </a></span><span>to e</span>nable CircleCI jobs to go through a set of well-defined IP address ranges.</p>
+<h2 id="h_01HAWT5T0XFNTZRS99MHW0WKYE">Initial Troubleshooting</h2>
+<p>Please see the <a href="https://circleci.com/docs/2.0/ip-ranges" target="_blank" rel="noopener noreferrer">IP ranges documentation page </a>to enable CircleCI jobs to go through a set of well-defined IP address ranges. IP ranges let you limit inbound connections to your infrastructure to IP address ranges that are verifiably associated with CircleCI.</p>
 <p dir="auto">If the above feature does not meet your needs, below are some alternative methods many of our customers are using:</p>
-<h2 dir="auto">CircleCI Runner</h2>
+<h3 id="h_01HAWT5T0X52S97RB93D1K7QRQ" dir="auto">CircleCI Runner</h3>
 <ul>
     <li style="list-style-type: none;">
         <ul>
@@ -11,7 +11,20 @@
         </ul>
     </li>
 </ul>
-<h2>Bastion Host</h2>
+<h3 id="h_01HAWT5T0YD4KM04XPM99EN1BJ">Server Product</h3>
+<ul>
+    <li style="list-style-type: none;">
+        <ul>
+            <li type="disc">
+                <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">If the above solutions don't work for you, you may consider our <a href="https://circleci.com/enterprise/" target="_self">Server solution</a> </span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">where you can run a CircleCI installation in your own VPC and/or specify your own IP ranges.</span>
+            </li>
+        </ul>
+    </li>
+</ul>
+<p> </p>
+<h2 id="h_01HAWTGYPP2451JHAZT4JHN70H"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Workarounds that are not officially supported but have been used by others for safelisting IP address ranges</span></h2>
+<p> </p>
+<h3 id="h_01HAWT5T0Y0ZM9KH1Y6509ZPH4">Bastion Host</h3>
 <ul dir="auto" type="disc">
     <li style="list-style-type: none;">
         <ul>
@@ -23,16 +36,16 @@
         </ul>
     </li>
 </ul>
-<h2>VPN</h2>
+<h3 id="h_01HAWT5T0YRCN5NQNTVWFV0694">VPN</h3>
 <ul dir="auto" type="disc">
     <li style="list-style-type: none;">
         <ul>
-            <li type="disc"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Configure a VPN connection to your environment on our <a href="https://circleci.com/docs/2.0/executor-types/#using-machine" target="_blank" rel="noopener">machine executor</a>.</span></li>
-            <li type="disc"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">See the article "<a href="https://support.circleci.com/hc/en-us/articles/360049397051" target="_blank" rel="noopener">How to set up a VPN connection during builds?</a>"<br><br></span></li>
+            <li type="disc"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Configure a VPN connection to your environment on our <a href="https://circleci.com/docs/2.0/executor-types/#using-machine" target="_blank" rel="noopener noreferrer">machine executor</a>.</span></li>
+            <li type="disc"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">See the article "<a href="https://support.circleci.com/hc/en-us/articles/360049397051" target="_blank" rel="noopener noreferrer">How to set up a VPN connection during builds?</a>"<br><br></span></li>
         </ul>
     </li>
 </ul>
-<h2><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Dynamic Safelisting</span></h2>
+<h3 id="h_01HAWT5T0YB15NYPHECTFBBRCZ"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Dynamic Safelisting</span></h3>
 <ul dir="auto" type="disc">
     <li style="list-style-type: none;">
         <ul>
@@ -43,13 +56,6 @@
         </ul>
     </li>
 </ul>
-<h2>Server Product</h2>
 <ul>
-    <li style="list-style-type: none;">
-        <ul>
-            <li type="disc">
-                <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">If the above solutions don't work for you, you may consider our <a href="https://circleci.com/enterprise/" target="_self">Server solution</a> </span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">where you can run a CircleCI installation in your own VPC and/or specify your own IP ranges.</span>
-            </li>
-        </ul>
-    </li>
+    <li style="list-style-type: none;"> </li>
 </ul>
