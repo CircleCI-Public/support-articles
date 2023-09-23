@@ -1,0 +1,77 @@
+<h1 id="h_01H99NWBHET79M2KDXPAVR0ZKV">Introduction:</h1>
+<p>The CircleCI namespace claimed by your organization is used for Runner Resource Classes as well as your Orb namespace. While this is not something that is visible in the UI, outside of the runner inventory page if your team has configured runners, it is helpful to identify your team's namespace for creating aforementioned Orbs and Runner Resoure Classes.</p>
+<p>This information can be identified using <a href="https://circleci-public.github.io/circleci-cli/">the CircleCI CLI</a></p>
+<h2 id="h_01H99NWBHFPZKFY7QR6M2J4V9W">Prerequisites:</h2>
+<p>Please read through the entire process to ensure a namespace isn't unintentionally claimed if your organization has not claimed one already</p>
+<ul>
+    <li>
+        <a href="https://circleci.com/docs/how-to-use-the-circleci-local-cli/">CircleCI CLI</a> installed on your local machine
+    </li>
+    <li>The name of the organization you are checking the namespace for</li>
+    <li>A valid Personal API token to authenticate when using the CLI</li>
+</ul>
+<h2 id="h_01H99NWBHFB5AZZBD6976TH854">Instructions:</h2>
+<ol>
+    <li>
+        <strong>Ensure your CircleCI CLI is up to date and has a token configured</strong>
+        <ul>
+            <li>Running <code>circleci setup</code> will check for any available updates and ensure that it is set up with a token</li>
+            <li>If there is a valid token configured already, there is no need change it when prompted with the following
+                <ul>
+                    <li>
+                        <pre>A CircleCI token is already set. Do you want to change it Yes ▸No</pre>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Run the command to create a namespace</strong>
+        <ul>
+            <li>
+                <pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">circleci namespace create &lt;desired-namespace-name&gt; &lt;vcs&gt; &lt;org&gt;</pre>
+                <ul>
+                    <li>
+                        <a href="https://circleci-public.github.io/circleci-cli/circleci_namespace_create.html">https://circleci-public.github.io/circleci-cli/circleci_namespace_create.html</a> 
+                    </li>
+                    <li>Please use a value for the namespace that your team would like to use in the event it has not been claimed yet</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Receive the output of existing owned namespace upon answering <code>Yes</code> to the following prompt</strong>
+        <ul>
+            <li>
+                <pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">You are creating a namespace called "&lt;desired-namespace-name&gt;".
+
+This is the only namespace permitted for your github organization, &lt;org-here&gt;.
+
+To change the namespace, you will have to contact CircleCI customer support.
+
+Are you sure you wish to create the namespace: `&lt;desired-namespace-name&gt;` Yes
+Error: Organizations may only create one namespace. This organization owns the following namespace: "&lt;existing-namespace-name&gt;"</pre>
+            </li>
+        </ul>
+    </li>
+</ol>
+<h2 id="h_01H99NWBHFN370MN4DEW9AAEXR">Outcome:</h2>
+<p>Upon completion, your team will be aware of the existing namespace or have created one that's ready for orb and Self-Hosted Runner utilization on CircleCI.</p>
+<h2 id="h_01H99NWBHF856TXDSEFM6T3JEP">Additional Notes:</h2>
+<ul>
+    <li>If your organization account has not claimed a namespace, this will create a namespace when running the <code>circleci namespace create</code> in Step 2</li>
+    <li>The CircleCI Support Engineering team can rename the namespace for your team provided that (1) it is requested by the organization admin and (2) the desired namespace name has not been claimed by another organization using CircleCI.</li>
+    <li>It is also possible to use your organization ID found in the <strong>Organization Settings</strong> page
+        <ul>
+            <li><code>circleci namespace create &lt;desired-namespace-name&gt; --org-id
+                    &lt;your-org-id&gt;</code></li>
+        </ul>
+    </li>
+</ul>
+<h2 id="h_01H99NWBHFV6WYZ5NTKTENTQ5T">Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/how-to-use-the-circleci-local-cli/" target="_blank" rel="noopener noreferrer">[Documentation] How to use the CircleCI local CLI</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360047644153" target="_blank" rel="noopener noreferrer">CircleCI CLI - Context Command errors with "Must have admin permission"</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/15418352844187" target="_blank" rel="noopener noreferrer">How to delete a Self-Hosted Runner Resource Class </a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360057144631">CircleCI Runner Error Message: "We cannot run this job using the selected resource class."</a></li>
+</ul>
