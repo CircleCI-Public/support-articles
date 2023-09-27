@@ -1,24 +1,27 @@
 <h1 id="h_01HAAPDYDYRN5BV3MBM6Z0NBCN" data-renderer-start-pos="6347">Overview - Troubleshooting DNS Configuration Issue in Dockerfile for Windows-Based Builds</h1>
-<p data-renderer-start-pos="6347"> This workaround involves adding the <code>netsh</code> command in the <code>SHELL</code> statement of the Dockerfile. This fix resolves the DNS configuration problem and allows a successful build.</p>
+<p data-renderer-start-pos="6347">This workaround involves adding the <code>netsh</code> command in the <code>SHELL</code> statement of the Dockerfile. This fix resolves the DNS configuration problem and allows a successful build.</p>
 <p data-renderer-start-pos="6347"> </p>
-<p data-renderer-start-pos="6347">Error:</p>
-<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'><code> Exception calling "DownloadString" with "1" argument(s): "The remote name
-        could not be resolved: 'chocolatey.org'"
-        At line:1 char:322
-        + ... -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('ht ...
-        + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        + CategoryInfo : NotSpecified: (:) [], ParentContainsErrorRecordE
-        xception
-        + FullyQualifiedErrorId : WebException</code></p>
+<p data-renderer-start-pos="6347"><strong>Error:</strong></p>
+<pre data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'><code> Exception calling "DownloadString" with "1" argument(s): "The remote name 
+could not be resolved: 'chocolatey.org'"
+At line:1 char:322
++ ...  -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('ht ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], ParentContainsErrorRecordE 
+   xception
+    + FullyQualifiedErrorId : WebException</code></pre>
 <h2 id="h_01HA85YZCE0GKNWV1RS3YZQZ5W" data-renderer-start-pos="6427">Solution</h2>
 <p>To resolve the DNS configuration issue in your Dockerfile, please follow the steps outlined below:</p>
-<p>Step 1: Update the Dockerfile<br>Add the `netsh` command to your Dockerfile within the `SHELL` statement, as shown below:<br><br></p>
+<p><strong>Step 1:</strong> Update the Dockerfile<br>Add the <code>netsh</code> command to your Dockerfile within the <code>SHELL</code> statement, as shown below:<br><br></p>
 <pre><br>FROM mcr.microsoft.com/dotnet/framework/wcf:4.8<br>SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'Continue'; $verbosePreference='Continue'; netsh interface ipv4 set dnsserver 17 static address=8.8.8.8 register=primary;"]<br>RUN powershell Set-ExecutionPolicy Bypass -Scope Process -Force; $env:chocolateyUseWindowsCompression = 'true'; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')); choco install awscli urlrewrite vcredist-all -y<br><br></pre>
-<p>For example:<br><br>Update your CircleCI configuration file (e.g., `.circleci/config.yml`) with the following content:</p>
+<p>For example:<br><br>Update your CircleCI configuration file (e.g., <code>.circleci/config.yml</code>) with the following content:</p>
 <pre><code>version: 2.1<br><br>jobs:<br>  build:<br>    machine:<br>      image: windows-server-2019-vs2019:2022.08.1<br>    resource_class: windows.large<br>    steps:<br>      - run: |<br>          tee Dockerfile \&lt;&lt;EOD<br>          FROM mcr.microsoft.com/dotnet/framework/wcf:4.8<br>          SHELL ["powershell", "-Command", "\$ErrorActionPreference = 'Stop'; \$ProgressPreference = 'Continue'; \$verbosePreference='Continue'; netsh interface ipv4 set dnsserver 17 static address=8.8.8.8 register=primary;"]<br>          RUN powershell Set-ExecutionPolicy Bypass -Scope Process -Force; \$env:chocolateyUseWindowsCompression = 'true'; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')); choco install awscli urlrewrite vcredist-all -y<br>          EOD<br>      - run: docker build .</code></pre>
 <p> </p>
 <h2 id="h_01HAAQ5HZ7JH5F5YSE4RS9624N">Conclusion</h2>
 <p>By incorporating the netsh command within your CircleCI configuration accordingly, you can resolve the DNS configuration issue encountered during Windows-based builds. This fix ensures that your containers build successfully without DNS-related errors.</p>
 <p>If you have any further questions or encounter any difficulties during the process, please don't hesitate to reach out to our <a href="https://support.circleci.com/hc/en-us">support team</a>. We are always ready to assist you and ensure a seamless experience with your CircleCI builds.</p>
 <h2 id="h_01HAAPDYDZBYRHTWWAR4Q3VVW0" data-renderer-start-pos="6514">Additional Resources:</h2>
-<p data-renderer-start-pos="6514">- <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile Reference</a><br>- <a href="https://circleci.com/docs/2.0/configuration-reference/">CircleCI Configuration Reference</a>)</p>
+<ul>
+    <li data-renderer-start-pos="6514"><a href="https://docs.docker.com/engine/reference/builder/">Dockerfile Reference</a></li>
+    <li data-renderer-start-pos="6514"><a href="https://circleci.com/docs/2.0/configuration-reference/">CircleCI Configuration Reference</a></li>
+</ul>
