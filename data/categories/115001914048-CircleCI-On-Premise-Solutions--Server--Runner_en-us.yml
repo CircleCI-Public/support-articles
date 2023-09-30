@@ -1,0 +1,11 @@
+id: 115001914048
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/categories/115001914048.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/categories/115001914048-CircleCI-On-Premise-Solutions-Server-Runner
+created_at: '2017-09-06T15:24:36Z'
+updated_at: '2023-09-29T21:24:12Z'
+name: CircleCI On Premise Solutions - Server & Runner
+description: "This page provides instructions on setting up, configuring, and administering CircleCI on your own infrastructure. Here you'll find detailed articles on setting up and troubleshooting CircleCI Server, Setting up and Troubleshooting CircleCI Runner, configuring CircleCI Server Administration, and executing CircleCI Server Administrative Tasks. \r\n\r\n"
+locale: en-us
+outdated: false
