@@ -1,0 +1,21 @@
+<h1 id="overview">Overview</h1>
+<p>This support article provides troubleshooting steps to address network connectivity issues with CircleCI runners. If you are experiencing timeouts and errors related to updating the launch-agent to the newest version, this article will guide you in resolving the issue. For example:</p>
+<pre>level=warning msg="could not update launch-agent to new version: error checking agent for os=\"linux\" arch=\"amd64\": Get \"https://runner.circleci.com/api/v2/launch-agent/download?arch=amd64&amp;os=linux\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"</pre>
+<h2 id="main-text-body">Troubleshooting tips</h2>
+<ul>
+    <li>
+        <p>Check Network Latency: Use traceroute to the runner.circleci.com IPs to identify any network latency issues. <a href="https://en.wikipedia.org/wiki/Traceroute">Traceroute</a> helps to visualize the network path and identify potential points of congestion or delays.</p>
+    </li>
+    <li>
+        <p>Verify QoS and Firewall Settings: Double-check and ensure that the hardware running the CircleCI runners does not have Quality of Service (QoS) enabled or a built-in firewall that may interfere with the network connectivity.</p>
+    </li>
+    <li>
+        <p>Re-run Tasks on Failing Runners: If the issue persists, re-run tasks on the failing runner to gather recent metrics and investigate further.</p>
+    </li>
+</ul>
+<h2 id="additional-notes">Solution</h2>
+<p>For runners experiencing infrastructure failure due to network connectivity issues, a restart may result then in a successful workflow once networking issues have passed. </p>
+<p> </p>
+<h2 id="additional-resources">Additional Resources</h2>
+<p><a href="https://circleci.com/docs/troubleshoot-self-hosted-runner/">Troubleshooting Self-Hosted Runner</a></p>
+<p> </p>
