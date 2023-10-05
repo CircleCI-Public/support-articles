@@ -1,0 +1,65 @@
+<h1 id="h_01HBWT9PC96V11X2RDZ6NEP6XH" data-renderer-start-pos="6680">Introduction:</h1>
+<p>When processes running in a job consume an amount memory near the limit provided by the resource class being used, they can be killed by the host machine.</p>
+<p data-renderer-start-pos="6680">It is possible to detect when a process was terminated by monitoring several files within the <code>/sys/fs/cgroup/memory/</code> directory.</p>
+<h2 id="h_01HBWT9PC9KJH5PSA0GS18RAE2" data-renderer-start-pos="6812">Prerequisites:</h2>
+<p data-renderer-start-pos="6812">Please ensure that you are using the Docker executor, and that you already have a working config.yml file committed to your repository.</p>
+<h2 id="h_01HBWT9PC9NC4S378TBY4EQ77K" data-renderer-start-pos="6955">Instructions:</h2>
+<ol>
+    <li><strong>Step 1 - Create a new run step at the beginning of your job</strong></li>
+    <li><strong>Step 2 - Set <code>background:true</code> to run the step continuously</strong></li>
+    <li>
+        <strong>Step 3 - Add the script under <code>command</code> in the run step</strong><br>
+        <ul>
+            <li>
+                <br>
+                <pre class="css-ngpy5m"><code class="language-bash">- run:
+    command: |
+      # Loop 100 times to monitor memory usage
+      for i in {1..100}; do
+        # Display the current memory usage in bytes
+        echo -n "Memory Usage: "
+        cat /sys/fs/cgroup/memory/memory.usage_in_bytes
+        
+        # Display the memory limit in bytes
+        echo -n "Memory Limit: "
+        cat /sys/fs/cgroup/memory/memory.limit_in_bytes
+        
+        # Display the Out-Of-Memory control settings
+        echo -n "OOM Control: "
+        #cat /sys/fs/cgroup/memory/memory.oom_control
+        cat /sys/fs/cgroup/memory/memory.oom_control | sed -n 3p
+        
+        # Display the current date and time
+        echo -n "Current Date: "
+        date
+        
+        # Sleep for 1 second before the next iteration
+        sleep 1
+        
+        # Add a separator for better readability
+        echo "-------------------------"
+      done
+    background: true</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Step 4 - Adjust lines 2 and 21 to set how long you want the script to run</strong>
+        <ul>
+            <li>By default, the script will loop 100 times, each iteration for one second.</li>
+        </ul>
+    </li>
+</ol>
+<h2 id="h_01HBWT9PC9441V75EBF80V5Y6G" data-renderer-start-pos="7010">Outcome:</h2>
+<p data-renderer-start-pos="7010">The above step will run continuously in the background until it hits the timeout specified in the script. </p>
+<p data-renderer-start-pos="7010">The output will look similar to the following, with the number of processes terminated indicated after <code>oom_kill</code>:</p>
+<p data-renderer-start-pos="7010"><img src="https://support.circleci.com/hc/article_attachments/19306484022939"></p>
+<p data-renderer-start-pos="7117"> </p>
+<h2 id="h_01HBWT9PC9TKGPD8B1WZZZSFGR" data-renderer-start-pos="7117">Additional Notes:</h2>
+<p data-renderer-start-pos="7117">This script will only detect if a process was terminated, and not which process it was.</p>
+<p data-renderer-start-pos="7244"> </p>
+<h2 id="h_01HBWT9PC9DEQS1FG1NBR24D91" data-renderer-start-pos="7244">Additional Resources:</h2>
+<ul>
+    <li data-renderer-start-pos="7244"><a href="https://support.circleci.com/hc/en-us/articles/360043994872-How-To-Record-a-Job-s-Memory-Usage" target="_blank" rel="noopener noreferrer">How To Record a Job’s Memory Usage</a></li>
+    <li><a href="https://www.kernel.org/doc/Documentation/cgroup-v1/memory.txt" target="_blank" rel="noopener noreferrer">Memory cgroup documentation</a></li>
+</ul>
