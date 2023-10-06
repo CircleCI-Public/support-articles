@@ -1,0 +1,26 @@
+<h1 id="h_01HC08ZE3FXEX2HQ2YK6YM7PNE">Overview</h1>
+<p>If you are trying to use Docker and the CircleCI GPU executor, you may get the following error.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]].<br>ERRO[0407] error waiting for container: context canceled </pre>
+<p>This is due to the removal of the <code>nvidia-container-toolkit</code> when CircleCI Switched to using images with multiple CUDA versions available at runtime.</p>
+<p> </p>
+<h1 id="h_01HC08ZE3FSBZ2Z2FCW5703RXJ">Solution</h1>
+<p id="h_01HC08ZE3F5V27A6S3HFV9D7RY">Step 1: Add a step in your config.yml to install `nvidia-container-toolkit` and Restart Docker</p>
+<div class="codeblock relative font-sans text-[16px]">
+    <pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">      - run: <br>          name: Install nvidia-container-toolkit and Restart Docker<br>          command: |<br>            sudo apt-get update<br>            sudo apt-get install -y nvidia-container-toolkit<br>            sudo systemctl restart docker</pre>
+</div>
+<h3 id="h_01HC09VXE6BB26DK14PEBJ3BKE"> </h3>
+<p id="h_01HC08ZE3FEM2XWPVM7PWPNACJ">Step 2: Verify Compatibility</p>
+<p>To ensure that Docker and GPUs are working together, you can run a test container using the <code>nvidia/cuda:11.4.3-base-ubuntu20.04</code> image. This container will execute the <code>nvidia-smi</code> command to display GPU information.</p>
+<div class="codeblock relative font-sans text-[16px]">
+    <pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""> - run: <br>     name: Test GPU Docker<br>     command: docker run --gpus all nvidia/cuda:11.4.3-base-ubuntu20.04 nvidia-smi</pre>
+</div>
+<p> </p>
+<p>If the <code>nvidia-container-toolkit</code> is functioning correctly and Docker can utilize the GPU resources, you should see the GPU information displayed.</p>
+<p> </p>
+<h2 id="h_01HC08ZE3GYMGFT7RMMRGTTSF4">Additional Resources</h2>
+<ul>
+    <li><a href="https://github.com/NVIDIA/nvidia-docker/wiki/nvidia-container-toolkit" target="_self" rel="undefined">Additional information about the nvidia-container-toolkit.</a></li>
+    <li><a href="https://circleci.com/docs/linux-cuda-images-support-policy/">Linux CUDA Images Support Policy</a></li>
+    <li><a href="https://circleci.com/docs/using-gpu/" target="_blank" rel="noopener noreferrer">Using a GPU Resource Class on CircleCI</a></li>
+</ul>
+<p> </p>

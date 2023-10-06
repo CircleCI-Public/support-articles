@@ -1,0 +1,19 @@
+<h1>Using Orbs for Config Management</h1>
+<p>Often, users need to manage numerous configuration files across various projects or organizations. These files may share many common elements such as commands, executors, or jobs. Updating and managing these elements can be a challenge with a multitude of configurations. However, this process can be significantly streamlined through the use of <a href="https://circleci.com/docs/orb-intro/">Orbs</a>.</p>
+<p>Orbs are a tool that provide a way to consolidate these three configuration elements:</p>
+<ul>
+    <li>Executors</li>
+    <li>Commands</li>
+    <li>Jobs</li>
+</ul>
+<h2>An Example</h2>
+<p>To illustrate how they work, let's consider this scenario: a user uses a specific image across all their jobs and projects. Suppose they find out about a security vulnerability in the specific release of the image they're using. Fortunately, this vulnerability has been patched in a later release. Without orbs, updating to the patched version can be a tedious, time-consuming process. However, if the user has employed an Orb to specify all of their executors, they can now rapidly update all their configuration files with a single change. This simplifies and accelerates the update process significantly.</p>
+<p><strong>Note:</strong><a href="https://circleci.com/docs/orb-concepts/#semantic-versioning"> Semantic versioning</a> should be considered when specifying the orb in your configuration file. Specifying a <em>patch</em> version will not allow for updates to your orb automatically, however, specifying a <em>minor</em> version will allow you to push patches without having to update the configuration each time.</p>
+<p>This feature, in essence, simplifies the configuration management process, making Orbs a valuable tool in your development arsenal.</p>
+<p> </p>
+<p>Additional resources:</p>
+<ul>
+    <li><a href="https://circleci.com/docs/orb-concepts/#executors" target="_blank" rel="noopener">Orb Concepts (Executors)</a></li>
+    <li><a href="https://circleci.com/docs/orb-author-intro/" target="_blank" rel="noopener">Orb Author Intro</a></li>
+    <li><a href="https://circleci.com/docs/deploy-service-update-to-aws-ecs/" target="_blank" rel="noopener">Deploy a Service Update to AWS ECS (Guide)</a></li>
+</ul>
