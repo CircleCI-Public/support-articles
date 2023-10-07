@@ -1,0 +1,13 @@
+<h1 id="h_01HC15C3DZYG1RNXRTXAYQJ3ST">Problem</h1>
+<p>This article discusses the case where the <code>store_test_results</code> step fail with the following error:</p>
+<pre>failed uploading test results: File: &lt;path_to_file&gt; had the following problems:<br>* invalid top level element: &lt;name_of_problematic_element&gt;</pre>
+<p> </p>
+<h2 id="h_01HC15C3DZYG1RNXRTXAYQJ3ST">How to address this issue</h2>
+<p>The error you're seeing means that the format of your test results file doesn't fully respect the expected <a href="https://circleci.com/docs/use-the-circleci-cli-to-split-tests/#junit-xml-reports" rel="noopener noreferrer">JUnit XML format:</a></p>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>&lt;testsuites name="Mocha Tests" tests="3" failures="1"&gt;<br>  &lt;testsuite tests="3"&gt;<br>    &lt;testcase classname="foo1" name="ASuccessfulTest" time="10" file="src/__tests__/App.test.js" /&gt;<br>    &lt;testcase classname="foo2" name="AnotherSuccessfulTest" time="5" file="src/__tests__/App.test.js" /&gt;<br>    &lt;testcase classname="foo3" name="AFailingTest" time="1.1050" file="src/__tests__/App.test.js"&gt;<br>      &lt;failure type="NotEnoughFoo"&gt; details about failure &lt;/failure&gt;<br>    &lt;/testcase&gt;<br>  &lt;/testsuite&gt;<br>&lt;/testsuites&gt;</pre>
+<p> <br>In order to troubleshoot, I suggests <a href="https://circleci.com/docs/artifacts/#uploading-artifacts" rel="noopener noreferrer">storing the file as an artifact,</a> and reviewing its content. Doing so will allow you to identify the incorrect formatting.</p>
+<p> </p>
+<h2 id="h_01HC2G332906GRAFWQZ1Q4HGKZ">Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/use-the-circleci-cli-to-split-tests" target="_blank" rel="noopener">Use the CircleCI CLI to split tests</a></li>
+</ul>

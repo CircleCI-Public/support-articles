@@ -1,0 +1,34 @@
+<h1 id="h_01HC39ZAPZNKS672PDP241320V">Overview</h1>
+<p>In this support article, we will walk through the steps for rotating a CircleCI runner token and deleting a resource class using the CircleCI CLI.</p>
+<p><strong>Note:</strong> Deleting a Resource Class is only possible after all the tokens associated with it have been removed, if not, you may encounter an error message like <code>error: resource class still has tokens in use</code></p>
+<h2 id="h_01HC39ZAPZ531JG26J5QB8K5AW">Prerequisites</h2>
+<p>Before you begin, ensure you have the CircleCI CLI installed and configured in your system.</p>
+<h2 id="h_01HC39ZAPZ86QJMFHNW1Y1VS9Q">Rotating Runner Token and Deleting Resource Class</h2>
+<p>Follow the steps below to rotate a token and delete a resource class:</p>
+<h3 id="h_01HC39ZAPZ5F3AM9ZESQ39VNWJ">1. List Runner Tokens</h3>
+<p>First, list all the runner tokens associated with the resource class:</p>
+<pre><code>circleci runner token list &lt;resource-class&gt;</code></pre>
+<h3 id="h_01HC39ZAPZF539BQDWAY72MNW0">2. Delete Runner Token</h3>
+<p>Next, delete the desired token by using the token ID returned from the list command:</p>
+<pre><code>circleci runner token delete &lt;token-id&gt;</code></pre>
+<h3 id="h_01HC39ZAPZW0JJH8D0JAWY8F6T">3. Delete Resource Class or Create New Token</h3>
+<p>At this point, you can either delete the Resource Class, create a new Runner Token or do both.</p>
+<h4 id="h_01HC39ZAPZCFNZSM23QQ7NS3GJ"> </h4>
+<h4 id="h_01HC39ZAPZ750TK10SPR1809N1"><strong>Delete the Resource Class</strong></h4>
+<p>Use the following command to delete the resource class:</p>
+<pre><code>circleci runner resource-class delete &lt;resource-class&gt;</code></pre>
+<h4 id="h_01HC39ZAPZJFMDQ2KJQ52J4JNS"> </h4>
+<h4 id="h_01HC39ZAPZ4GPV7HKKA1HD6EQW"><strong>Create a New Token</strong></h4>
+<p>If you need a new token for the same resource class, run the following command:</p>
+<pre><code>circleci runner token create &lt;resource-class&gt; &lt;nickname&gt;</code></pre>
+<p> </p>
+<p>This new token should be updated in your <em>values.yaml</em> file or in your secrets manager if you are using one. For example:</p>
+<pre><code>helm upgrade container-agent container-agent/container-agent -n circleci -f values.yaml</code></pre>
+<p> </p>
+<p><strong>Please Note:</strong> The process to rotate the runner's token requires a new token generation and the replacement of the old token in all places it was used including configuration files and environment variables. Taking proper precautions to keep these tokens secure is paramount for maintaining a safe and efficient CI/CD environment.</p>
+<p> </p>
+<h2 id="h_01HC3A8C6VJ42F7F6J1GKNY01R">Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/14031352897819" target="_blank" rel="noopener noreferrer">How to Rotate your Self-Hosted Runner Resource Class Tokens</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/15773444776731" target="_blank" rel="noopener noreferrer">How to use customSecret on Container Runner</a></li>
+</ul>

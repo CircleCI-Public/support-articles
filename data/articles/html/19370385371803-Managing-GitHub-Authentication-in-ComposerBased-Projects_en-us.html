@@ -1,0 +1,40 @@
+<div class="group md:px-4 border-b border-black/10 bg-gray-50 text-gray-800 dark:border-gray-900/50 dark:bg-[#444654] dark:text-gray-100">
+    <div class="relative m-auto flex p-4 text-base md:max-w-2xl md:gap-6 md:py-6 lg:max-w-2xl lg:px-0 xl:max-w-3xl">
+        <div class="prose mt-[-2px] w-full dark:prose-invert" style="width: 650px;">
+            <div class="flex flex-row">
+                <div class="prose dark:prose-invert flex-1">
+                    <h2 id="h_01HC2KWF98D3MVH1X06EDM1YCE">Introduction</h2>
+                    <p>You may encounter authentication issues when working with a composer-based project, especially when trying to download packages hosted on GitHub.</p>
+                    <p>This article will help you to understand the issue and provide a solution on how you can solve or prevent this type of error in the future.</p>
+                    <h2 id="h_01HC2KWF98C3JKGA76TS9MB2MF">Understanding the issue</h2>
+                    <p>The common issue is a failure to authenticate against GitHub when trying to download dependencies. This problem often appears in the CCI environment in the following ways:</p>
+                    <ul>
+                        <li>Incorrect or expired OAuth tokens, especially when dealing with private repositories.</li>
+                        <li>Changes in the CI platform that restrict outgoing connections.</li>
+                        <li>Problems with the CI environment's configuration (such as lacking a Git binary in PATH; <code>git was not found in
+                                your PATH, skipping source download</code>).</li>
+                        <li>Misconfiguration or the absence of critical environment variables like <code>COMPOSER_AUTH</code>.</li>
+                    </ul>
+                    <h2 id="h_01HC2KWF98FKG99EBRB1B40XDQ">What triggers the issue</h2>
+                    <p>GitHub does not always require authentication, but this can sometimes change, causing rate limits to impact CCI's ability to access GH resources. Furthermore, the solutions often involve OAuth tokens, which have broad read/write permissions, potentially exposing users to unnecessary security risks. Therefore, following best practices is crucial when dealing with such tokens.</p>
+                    <h2 id="h_01HC2KWF98BM9J5GVPH2GDK3JH">Solution</h2>
+                    <p>The issue is primarily related to rate limiting on GitHub's side. To mitigate this, you need to add authentication details in the <code>composer.json</code> file or modify an environment variable named <code>COMPOSER_AUTH</code>.</p>
+                    <h3 id="h_01HC2KWF98TCCXJ86PHP7CCPR9">Adding Authentication to composer.json</h3>
+                    <p>Update your <code>composer.json</code> file with the following structure:</p>
+                    <div class="codeblock relative font-sans text-[16px]">
+                        <pre><code class="language-json"><span class="token">{</span>
+  <span class="token">"config"</span><span class="token">:</span> <span class="token">{</span>
+    <span class="token">"github-oauth"</span><span class="token">:</span> <span class="token">{</span>
+      <span class="token">"github.com"</span><span class="token">:</span> <span class="token">"&lt;your personal classic github token&gt;"</span>
+    <span class="token">}</span>
+  <span class="token">}</span>
+<span class="token">}</span></code></pre>
+                    </div>
+                    <p>Replace <code>&lt;your personal classic github token&gt;</code> with your actual GitHub token.</p>
+                    <h3 id="h_01HC2KWF98Y6RGJKQ1XPBJZ55K">Modifying the COMPOSER_AUTH environment variable</h3>
+                    <p>An alternative solution is to modify the <code>COMPOSER_AUTH</code> environment variable. You can tailor it to include the necessary authentication information.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
