@@ -1,10 +1,10 @@
-<h1>Overview</h1>
+<h1 id="h_01HCDW41C075DZXJFRA7GSGNXG">Overview</h1>
 <p>Users can conditionally trigger a workflow or steps using <a href="https://discuss.circleci.com/t/advanced-logic-in-config" target="_self" rel="undefined">Advanced Logic</a> in their <code>config.yml</code> file.  </p>
-<p><a href="https://circleci.com/docs/2.0/configuration-reference/#logic-statements" target="_blank" rel="noopener">Specific logic statements can be used</a> to create multiple nested conditions that will always, at the top level, result in <code>true</code> or <code>false</code> -- which in turn determines if the workflow or steps are triggered.</p>
+<p><a href="https://circleci.com/docs/2.0/configuration-reference/#logic-statements" target="_blank" rel="noopener noreferrer">Specific logic statements can be used</a> to create multiple nested conditions that will always, at the top level, result in <code>true</code> or <code>false</code> -- which in turn determines if the workflow or steps are triggered.</p>
 <p> </p>
-<p><span>Logic statements are evaluated to boolean values at configuration compilation time, that is, before the workflow is run.</span></p>
+<p>Logic statements are evaluated to boolean values at configuration compilation time, that is, before the workflow is run.</p>
 <p> </p>
-<h2>Example config with conditional steps: </h2>
+<h2 id="h_01HCDW41C0JJ1KQPQCEGJF8QBP">Example config with conditional steps: </h2>
 <pre><code>- when:
     condition:
       or:
@@ -16,7 +16,7 @@
     steps:
       - run: echo "I am on main AND param1 is true OR param2 is true -- OR param1 is false"
 </code></pre>
-<h2>Example config with a conditional workflow: </h2>
+<h2 id="h_01HCDW41C0S716PZF0E5KCACG8">Example config A with a conditional workflow: </h2>
 <pre><code>workflows:
   conditional-workflow:
     when:
@@ -28,6 +28,8 @@
     jobs:
       - job-on-condition
  </code></pre>
+<h2 id="h_01HCDW41C0KHB2E2CD487YTJF3">Example config B with a conditional workflow using parameters:</h2>
+<pre><code>version: 2.1 # Use version 2.1 to enable Orb usage.<br><br>parameters:<br>  skipUnitTests:<br>    description: if set to true will not build the c++ unit tests<br>    type: boolean<br>    default: true<br>  skipSystemTests:<br>    description: if set to true will not build the c++ system tests<br>    type: boolean<br>    default: true<br>  updateTranslation:<br>    description: if set to true will update the translation files<br>    type: boolean<br>    default: true<br><br><br>jobs:<br>  build_cpp_unit_tests:<br>    docker:<br>      - image: cimg/base:edge<br>    steps:<br>      - checkout<br>      - run: echo "This was triggered by &lt;&lt; pipeline.trigger_source &gt;&gt;"<br>  artifacts_build_only_job:<br>    docker:<br>      - image: cimg/base:edge<br>    steps:<br>      - checkout<br>      - run: echo "This was triggered by &lt;&lt; pipeline.trigger_source &gt;&gt;"<br>  system_tests_job:<br>    docker:<br>      - image: cimg/base:edge<br>    steps:<br>      - checkout<br>      - run: echo "This was triggered by &lt;&lt; pipeline.trigger_source &gt;&gt;"<br>  updateTranslation_job:<br>    docker:<br>      - image: cimg/base:edge<br>    steps:<br>      - checkout<br>      - run: echo "This was triggered by &lt;&lt; pipeline.trigger_source &gt;&gt;"<br><br><br>workflows:<br>  unit_tests_workflow: <br>    when: # All must be true to trigger<br>      and:<br>        - equal: [ false, &lt;&lt;pipeline.parameters.skipUnitTests&gt;&gt; ]<br>        - equal: [ true, &lt;&lt;pipeline.parameters.skipSystemTests&gt;&gt; ]<br>        - equal: [ false, &lt;&lt;pipeline.parameters.updateTranslation&gt;&gt; ]<br>    jobs:<br>    - build_cpp_unit_tests<br>  artifacts_build_only_workflow: <br>    when: # All must be true to trigger<br>      and:<br>        - equal: [ true, &lt;&lt;pipeline.parameters.skipUnitTests&gt;&gt; ]<br>        - equal: [ true, &lt;&lt;pipeline.parameters.skipSystemTests&gt;&gt; ]<br>        - equal: [ false, &lt;&lt;pipeline.parameters.updateTranslation&gt;&gt; ]<br>    jobs:<br>    - artefacts_build_only_job<br>  artefacts_build_and_unittest:<br>    when: # All must be true to trigger<br>      and:<br>        - equal: [ false, &lt;&lt;pipeline.parameters.skipUnitTests&gt;&gt; ]<br>        - equal: [ true, &lt;&lt;pipeline.parameters.skipSystemTests&gt;&gt; ]<br>        - equal: [ false, &lt;&lt;pipeline.parameters.updateTranslation&gt;&gt; ]<br>    jobs:<br>    - build_cpp_unit_tests<br>    - artefacts_build_only_job<br>  artefacts_build_and_systemtest:<br>    when:  # All must be true to trigger<br>      and:<br>        - equal: [ true, &lt;&lt;pipeline.parameters.skipUnitTests&gt;&gt; ]<br>        - equal: [ false, &lt;&lt;pipeline.parameters.skipSystemTests&gt;&gt; ]<br>        - equal: [ false, &lt;&lt;pipeline.parameters.updateTranslation&gt;&gt; ]<br>    jobs:<br>    - artefacts_build_only_job<br>    - system_tests_job<br>  updateTranslation_workflow:<br>    when: # All must be true to trigger<br>      and:<br>        - equal: [ true, &lt;&lt;pipeline.parameters.skipUnitTests&gt;&gt; ]<br>        - equal: [ true, &lt;&lt;pipeline.parameters.skipSystemTests&gt;&gt; ]<br>        - equal: [ true, &lt;&lt;pipeline.parameters.updateTranslation&gt;&gt; ]<br>    jobs:<br>    - updateTranslation_job</code></pre>
 <h2>Nested Conditional Logic statements: </h2>
 <p>Conditions can be nested in an arbitrary fashion, according to their argument specifications, and to a maximum depth of 100 levels. This allows for some complex logic, as an example of multiple nested conditions:</p>
 <pre><code>- when:
@@ -50,7 +52,7 @@
       - run: echo "param 4 is true OR the other nested conditions are true"
 </code></pre>
 <p> </p>
-<h2>Additional Resources:</h2>
+<h2 id="h_01HCDW41C0Z1TA87WB7FBF3DHB">Additional Resources:</h2>
 <ul>
     <li><a href="https://circleci.com/docs/configuration-reference/#logic-statements" target="_self">Logic statements </a></li>
     <li><a href="https://circleci.com/docs/reusing-config/#defining-conditional-steps" target="_self">Defining conditional steps</a></li>
