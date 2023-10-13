@@ -1,0 +1,25 @@
+<h1 id="h_01HCJGRKSSB6D5YX1AVBDH4DNA">Overview</h1>
+<p>This article addresses the issue where all tests are still being rerun after clicking "Rerun failed tests" in CircleCI. The following troubleshooting steps will help to resolve this specific problem.</p>
+<p> </p>
+<h2 id="h_01HCJGRKSS8FGXG97QD50Z6S5F">Issue: All tests are still being rerun</h2>
+<p>If you find that all tests are being rerun after clicking "Rerun failed tests," please follow the steps below to resolve the issue.</p>
+<ol>
+    <li>
+        <p><strong>Enable verbose mode</strong>: Make sure that the <code>--verbose</code> setting is enabled when invoking <code>circleci tests run</code>. This will display the tests that <code>circleci tests run</code> is receiving during a rerun.<br><br></p>
+    </li>
+    <li>
+        <p><strong>Upload JUnit XML</strong>: Use the <code>store_artifacts</code> command to upload the JUnit XML file containing the test results to CircleCI. This is the same file(s) that is being uploaded with <code>store_test_results</code>.<br><br></p>
+    </li>
+    <li>
+        <p><strong>Inspect JUnit XML</strong>: Manually inspect the newly uploaded JUnit XML via the Artifacts tab in CircleCI. Ensure that the XML file contains either a <code>file=</code> attribute or a <code>classname</code> attribute. If neither attribute is present, unexpected behavior may occur when trying to rerun tests.<br><br></p>
+    </li>
+    <li>
+        <p><strong>Check xargs presence</strong>: Additionally, ensure that <code>xargs</code> is present in the <code>--command=</code> argument.</p>
+    </li>
+</ol>
+<p> </p>
+<h2 id="h_01HCJGRKST4T0BJD08XFH9GZ2J">Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/rerun-failed-tests/#all-tests-rerun" target="_blank" rel="noopener noreferrer">Rerun Failed Tests</a></li>
+    <li><a href="https://discuss.circleci.com/t/product-launch-rerun-failed-tests-circleci-tests-run/47775/22" target="_blank" rel="noopener noreferrer">[Product Launch] Rerun Failed Tests (circleci tests run)</a></li>
+</ul>
