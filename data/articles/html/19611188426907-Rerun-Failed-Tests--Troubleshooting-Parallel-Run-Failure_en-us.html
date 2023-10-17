@@ -1,0 +1,34 @@
+<h1 id="h_01HCWP8DT6KRESVYZZ5DF9DDJW">Overview</h1>
+<p>This article provides troubleshooting steps for customers who encounter a parallel run failure when using the Rerun Failed Tests feature in CircleCI. Specifically, this issue occurs when a rerun fails due to the persist_to_workspace step not finding any contents in the specified directory. We will guide you through the necessary steps to avoid this failure and ensure a successful rerun.</p>
+<p> </p>
+<h2 id="h_01HCWP8YXZDGKFHGXGP7A8B9GY">Issue: Parallel rerun failure</h2>
+<p>If your job runs tests in parallel and persists files to a workspace, you may encounter a parallel run failure during a rerun. This failure occurs when the persist_to_workspace step cannot find any contents in the specified directory. The reason behind this issue is that the parallel run does not always execute tests on a rerun if there are not enough tests to distribute across all parallel runs.</p>
+<p> </p>
+<p>To avoid this failure, follow the steps below:</p>
+<ol>
+    <li>
+        <strong>Add mkdir command</strong>: Before running any tests, add a <code style="background-color: #f3f3f3; padding: 5px;">mkdir</code> command to set up the directory (or directories) that will eventually be persisted to a workspace. This ensures that the directory exists even if no tests are executed during a parallel rerun.
+        <pre style="background-color: #f3f3f3; padding: 5px;"><code>    steps:
+      - checkout
+      - run: mkdir no_files_here
+      - run: #test command with circleci tests run that populates no_files_here if tests are run
+      - store_test_results:
+          path: ./test-results
+      - store_artifacts:
+          path: ./test-results
+      - persist_to_workspace:
+          root: .
+          paths:
+            - no_files_here</code></pre>
+    </li>
+    <li>
+        <strong>Verify directory population</strong>: On a rerun, if the parallel run executes tests, the <code style="background-color: #f3f3f3; padding: 5px;">no_files_here</code> directory will be populated. If no tests are executed, the persist_to_workspace step will not fail because the <code style="background-color: #f3f3f3; padding: 5px;">no_files_here</code> directory already exists.
+    </li>
+</ol>
+<p>By following these steps, you can prevent the parallel run failure when rerunning tests.</p>
+<p> </p>
+<h2 id="h_01HCWP8YXZ9AXVWYBMZ427Y2Z9">Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/rerun-failed-tests/#parallel-rerun-failure" target="_blank" rel="noopener noreferrer">Rerun Failed Tests</a></li>
+    <li><a href="https://discuss.circleci.com/t/product-launch-rerun-failed-tests-circleci-tests-run/47775" target="_blank" rel="noopener noreferrer">[Product Launch] Rerun Failed Tests (circleci tests run)</a></li>
+</ul>
