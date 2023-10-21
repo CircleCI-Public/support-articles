@@ -1,0 +1,13 @@
+<h1 id="h_01HD6BFZFTWZAMPRZQ9XN4F6Q1">My old pipelines have disappeared</h1>
+<p>If your project was set up some time ago and you have triggered builds on CircleCI, you might find that you cannot see these older pipelines anymore but see a "Set up configuration to start running pipelines" message on the project page instead.</p>
+<h2 id="h_01HD6BFZFTQMJ12TX2HTX6PX5E">Data retention policy</h2>
+<p>The reason why the "Set up configuration to start running pipelines" message appears, is that there is currently no build history to display on the UI.</p>
+<p>As per our data retention policy, build history is kept for a certain amount of days based on your plan. You can find more about the data retention policy <a href="https://support.circleci.com/hc/en-us/articles/5645222646939" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>If your last build falls outside of the data retention window and you haven't triggered a new build by pushing a commit or opening a pull request since, no pipeline will be available to view.</p>
+<h2 id="01HD70MCP7EKNTTBG9Z2T98R9X">I can't set up the configuration again</h2>
+<p>Even though no build history is available because you haven't built on the project for longer than the data retention window, the project settings are still in place.</p>
+<p>Please try to push a commit or open a pull request. Since the project has already been set up, this should trigger a new build, which will appear on the project's page.</p>
+<h2 id="h_01HD6BFZFTCAJ5BJRYS2HXMJK6">Additional Resources</h2>
+<ul>
+    <li><a href="https://discuss.circleci.com/t/data-retention-policy-update/44165" target="_blank" rel="noopener noreferrer">Announcement of CircleCI's Data Retention Policy update</a></li>
+</ul>
