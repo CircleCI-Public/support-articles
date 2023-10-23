@@ -1,0 +1,13 @@
+<p>When using older legacy CircleCI images you might encounter errors when using <code>apt</code>. This can usually be resolved by using an equivalent CircleCI Convenience Image in the <code>cimg</code> namespace.</p>
+<h2 id="h_01HDD3BMM3YCP25CG6MM4HXX22">Understanding the Issue</h2>
+<p>Legacy CircleCI images in the Docker Hub <code>circleci</code> namespace are no longer maintained. When using apt on these images, you might encounter an error that looks like this:</p>
+<pre><code>The repository 'http://deb.debian.org/debian stretch-updates Release' does no longer have a Release file.</code></pre>
+<p>This is because the <code>apt</code> repository is outdated.</p>
+<h2 id="h_01HDD3BMM36WAME9EQK0F5DZE6">Resolving the Issue</h2>
+<p>To resolve this issue, you can use an equivalent CircleCI Convenience Image in the <code>cimg</code> namespace. For example, if you were previously using <code>circleci/node:12.22.7</code>, you would now use <code>cimg/node:12.22.7</code>.</p>
+<h2 id="h_01HDD3BMM3M8T6HZH2XE3JY1YB">Additional Resources:</h2>
+<p>For more information on CircleCI Convenience Images, refer to the following resources:</p>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/circleci-images/" target="_blank" rel="noopener noreferrer">CircleCI Convenience Images</a></li>
+    <li><a href="https://circleci.com/docs/circleci-images/#out-of-scope" target="_blank" rel="noopener noreferrer">Legacy CircleCI Images</a></li>
+</ul>

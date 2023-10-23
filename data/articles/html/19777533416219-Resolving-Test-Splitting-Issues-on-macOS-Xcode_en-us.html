@@ -1,0 +1,35 @@
+<p>This guide provides a solution to the issues encountered when trying to perform test splitting on macOS Xcode images in CircleCI due to the limitations of the system-installed Bash 3's globbing functionality. We'll guide you through installing Bash 5 and setting it as the shell in the job's step to overcome these limitations.</p>
+<h2 id="h_01HDD0AEVQ1X0JFMAW8X6MFYMG">Understanding the Issue</h2>
+<p>When using system-installed Bash 3 on macOS Xcode images in CircleCI, you may encounter issues with test splitting. This is due to a limitation with globbing test results in Bash 3. The issue does not present in Bash 5.</p>
+<h2 id="h_01HDD0AEVQBWSX18FXYC3X3B52">Steps to Install Bash 5 and Set it as the Shell</h2>
+<p>Follow the steps below to install Bash 5 and set it as the shell in the job's step:</p>
+<ol>
+    <li>
+        <p>Install Bash 5 using the brew install command:</p>
+        <pre data-darkreader-inline-bgcolor=""><code>brew install bash</code></pre>
+    </li>
+    <li>
+        <p>Set Bash 5 as the shell in the job's step using the shell command. Here is an example of how to include it in your CircleCI configuration file:</p>
+        <pre data-darkreader-inline-bgcolor=""><code>
+    version: 2.1
+    jobs:
+      build:
+        macos:
+          xcode: "12.5.1"
+        steps:
+          - run:
+              name: Run commands using Bash 5
+              shell: /opt/homebrew/bin/bash --login -eo pipefail
+              command: |
+                echo "Running commands with Bash 5"
+    </code></pre>
+    </li>
+</ol>
+<h2 id="h_01HDD0AEVREW6G37S8XEHGMDVN">Conclusion</h2>
+<p>You have now successfully installed Bash 5 and set it as the shell in the job's step on CircleCI using macOS Xcode images. This should help overcome the limitations of the system-installed Bash 3's globbing functionality and allow for successful test splitting.</p>
+<h2 id="h_01HDD0AEVR8272Y5GQVCVAFZA6">Additional Resources</h2>
+<p>For more information on working with Bash and CircleCI, you may find the following resources helpful:</p>
+<ul>
+    <li><a href="https://circleci.com/docs/2.0/testing-ios/#using-the-shell-keyword" target="_blank" rel="noopener noreferrer">Using the shell keyword in CircleCI</a></li>
+    <li><a href="https://www.gnu.org/software/bash/manual/bash.html" target="_blank" rel="noopener noreferrer">GNU Bash Documentation</a></li>
+</ul>
