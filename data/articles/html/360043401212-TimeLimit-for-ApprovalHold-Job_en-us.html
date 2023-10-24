@@ -1,18 +1,23 @@
-<h1>Approval/Hold Jobs</h1>
+<h1 id="h_01HDEK54P99B2FZSJ6XVXE4J2J">Approval/Hold Jobs</h1>
 <p>Approval/hold jobs have a <span class="wysiwyg-underline"><strong>90-day</strong></span> limit on when they can be approved.</p>
 <p> </p>
-<h2>On-Hold Workflows</h2>
+<h2 id="h_01HDEK54PAX1MNWTK12Y4KA4NZ">On-Hold Workflows</h2>
 <p>While<em> after 90 days</em> they can't be approved, <strong>workflows will remain on hold for 90 days until canceled</strong>, we don't automatically transition an on-hold workflow out of its current state.</p>
 <p> </p>
-<p>If the on-hold job is &gt;90 days, it cannot be cancelled via the API or UI. </p>
+<p>If the on-hold job is &gt;90 days, it cannot be cancelled via the API or UI.</p>
+<p>Please contact CircleCI Support to request the related workflows be cancelled by our team.</p>
 <p> </p>
-<h2>Jobs that use Workspaces</h2>
-<p><strong>The only caveat</strong> to the above is jobs that utilize <a href="https://circleci.com/docs/2.0/persist-data/#using-workspaces" target="_blank" rel="noopener">workspaces.</a><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> </span></p>
+<h4 id="h_01HDEKFF99H9E5KP1RF0TESB51">
+    <strong><em>Important note: </em></strong><em>An on-hold job <span class="wysiwyg-underline"><strong>does not</strong></span> consume any credits.</em>
+</h4>
+<p> </p>
+<h2 id="h_01HDEK54PARYNS5N6FSFRSHRR3">Jobs that use Workspaces</h2>
+<p><strong>The only caveat</strong> to the above is jobs that utilize <a href="https://circleci.com/docs/2.0/persist-data/#using-workspaces" target="_blank" rel="noopener noreferrer">workspaces.</a></p>
 <p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">If the job <em>after</em> the hold job utilizes a persisted workspace, there is a <strong>15-day limit before the workspace expires</strong>. </span></p>
 <p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">So while the approval job can still be approved for up to 90 days, the workspace will not be available and the subsequent jobs will fail.</span></p>
 <p> </p>
-<h2><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Additional Resources:</span></h2>
+<h2 id="h_01HDEK54PACBDBQ74S0BNGBNM6"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Additional Resources:</span></h2>
 <ul>
-    <li><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"><a href="https://support.circleci.com/hc/en-us/articles/360058897011-Cannot-rerun-an-old-workflow-or-on-hold-job" target="_blank" rel="noopener">Cannot Rerun an Old Workflow or “On Hold” Job</a><br></span></li>
+    <li><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"><a href="https://support.circleci.com/hc/en-us/articles/360058897011-Cannot-rerun-an-old-workflow-or-on-hold-job" target="_blank" rel="noopener noreferrer">Cannot Rerun an Old Workflow or “On Hold” Job</a><br></span></li>
 </ul>
 <p> </p>
