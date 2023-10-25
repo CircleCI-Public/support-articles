@@ -1,0 +1,53 @@
+<p><strong>Learn how DLC can reduce build times on CircleCI, limitations, and best practices.</strong></p>
+<p> </p>
+<p><strong>Welcome to the Docker Layer Caching (DLC) Course</strong></p>
+<p>In this course, we cover concepts regarding DLC. <span style="color: #24292e;">This training may be particularly useful for CircleCI customers who would like to minimize their use of DLC for building docker images</span>.  </p>
+<p><strong>Who should take this course?</strong></p>
+<p>This course is designed for CircleCI developers using the cloud hosted solution. You should be familiar with managing source code in a VCS such as GitHub or Bitbucket; have a working knowledge of editing YAML files, and experience using command line utilities to automate builds and deploys for the technology stack at your organization. This course is intentionally code-agnostic, with an assumption that you have a clear understanding of the commands appropriate for your tooling, that you would use to build, test, and deploy projects. </p>
+<p><strong>Duration:</strong> ~10 minutes</p>
+<p> </p>
+<p> </p>
+<p><strong>Concepts:</strong></p>
+<p>How Docker Layer Caching Works</p>
+<p><span style="color: #212529; background-color: white;">Course SCORM: <a href="https://drive.google.com/file/d/1jjZkuO8j6C91NQvU8yYzhnTLS3jPbPfp/view?usp=share_link">https://drive.google.com/file/d/1jjZkuO8j6C91NQvU8yYzhnTLS3jPbPfp/view?usp=share_link</a></span></p>
+<p>Concepts covered in this lesson include:</p>
+<ul>
+    <li>Layering of a Docker file</li>
+    <li>Where new builds begin</li>
+    <li>Review of a Docker layer caching demo</li>
+</ul>
+<p> </p>
+<p><strong>Docker Layer Caching in CircleCI</strong></p>
+<p class="wysiwyg-text-align-center"><span style="color: #212529;"> </span></p>
+<p><span style="color: #212529;">Course SCORM: <a href="https://drive.google.com/file/d/16MKLXu7XEyBSZscwR90li9vVDqzTvtMu/view?usp=share_link">https://drive.google.com/file/d/16MKLXu7XEyBSZscwR90li9vVDqzTvtMu/view?usp=share_link</a></span></p>
+<p>in this lesson, you will learn about:</p>
+<ul>
+    <li>Enabling Docker layer caching</li>
+    <li>Attaching a DLC volume to an executor</li>
+    <li>Attaching a DLC volume to multiple executors</li>
+    <li>Limitations of Docker layer caching</li>
+</ul>
+<p><span style="color: #212529;"> </span></p>
+<p><strong><span style="color: #212529;">Caching from a Remote Registry</span></strong></p>
+<p><span style="color: #212529;">Course SCORM: <a href="https://drive.google.com/file/d/1nS_n0sBQ3QTixpns3A7dXHZ2Iw_GsVXe/view?usp=share_link">https://drive.google.com/file/d/1nS_n0sBQ3QTixpns3A7dXHZ2Iw_GsVXe/view?usp=share_link</a></span></p>
+<p>In this lesson, you will learn about:</p>
+<ul>
+    <li>Creating a cache</li>
+    <li>Saving cache to remote registry</li>
+    <li>Pulling cache from registry</li>
+</ul>
+<p><strong> </strong></p>
+<p><strong>Docker Layer Caching Best Practices</strong></p>
+<p><span style="color: black;">Docker Layer Caching Best Practices</span></p>
+<p><strong><span style="color: black;">Structuring Docker Layers</span></strong></p>
+<p><span style="color: black;">As we have already discussed, all steps following a change in your Docker file will need to be rebuilt and can not be pulled from a cache. In this example, the step containing your code is the step most likely to change. In this case “COPY app.py .”.  This means each time this file is built, that layer, and every layer below it, must be rebuilt. The more layers that need rebuilt, the longer your build takes and the more it costs. The code dependencies and requirements will not change nearly as often.</span></p>
+<p> </p>
+<p><span style="color: black;">This means that it’s important to structure your Docker build in a way that takes the most advantage of your cache. In this example, we have moved the layer most likely to change farther down in the Docker file, increasing the number of layers that can be pulled from a cache. This reduces the build time and saves money. </span></p>
+<p> </p>
+<p>General Resources:</p>
+<ul>
+    <li><a href="https://circleci.com/" target="_blank" rel="noopener noreferrer">circleci.com</a></li>
+    <li><a href="https://circleci.com/docs/" target="_blank" rel="noopener noreferrer">Documentation</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us" target="_blank" rel="noopener noreferrer">Support</a></li>
+    <li><a href="https://circleci.com/dashboard" target="_blank" rel="noopener noreferrer">Go to app</a></li>
+</ul>

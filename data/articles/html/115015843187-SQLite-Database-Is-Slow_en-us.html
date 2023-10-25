@@ -1,0 +1,13 @@
+<p> </p>
+<h1 id="h_01HDGYHRTRMEH560RZKCP90XX8">Why is my SQLite Database Slow to Write Sometimes?</h1>
+<p>SQLite writes its journal file to the disk by default, which in some use cases can lead to longer run times.</p>
+<p> </p>
+<h2 id="h_01HDGYHRTRB4J33KTJ87NGEWDZ"><strong>How Do I Make My Write-to Database Faster?</strong></h2>
+<p>You can modify your instance to write the journal updates in memory or turn it off completely in the CI environment to improve performance. You can review the options on how to configure SQLite in your instance <a href="https://sqlite.org/pragma.html#pragma_journal_mode" target="_blank" rel="noopener noreferrer">here on the SQLite site.</a></p>
+<p> </p>
+<h2 id="h_01HDGYGS2CGYMV1KHDVYHNFX2B">Additional Resources<span class="diff-removed-string">: </span>
+</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360006773953" target="_blank" rel="noopener noreferrer">Race Conditions - Wait For Database</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/18733070861467" target="_blank" rel="noopener noreferrer">Optimizing Build Performance on CircleCI's macOS Executors</a></li>
+</ul>

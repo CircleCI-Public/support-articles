@@ -7,7 +7,7 @@
     <li>Firefox</li>
     <li>Safari</li>
 </ul>
-<h2>To create a HAR file in Chrome / Chromium based browsers:</h2>
+<h2 id="h_01HDD73XF01NHMHANH1KAK7VF2">To create a HAR file in Chrome / Chromium based browsers:</h2>
 <ol>
     <li>Navigate to the page you wish to record</li>
     <li>Navigate to menu (☰) &gt; More Tools &gt; Developer Tools</li>
@@ -18,8 +18,10 @@
     <li>Click the Record (⚫) button to start recording</li>
     <li>Refresh the page or perform the task to record the events</li>
     <li>Click the Export HAR (↓) button to download and save the HAR file</li>
+    <li>Follow instruction on <a href="#remove-user-info">Removal of User Information</a>
+    </li>
 </ol>
-<h2>To create a HAR file in Firefox:</h2>
+<h2 id="h_01HDD73XF03AH7DSWS9ZQPPXMV">To create a HAR file in Firefox:</h2>
 <ol>
     <li>Navigate to the menu (☰) &gt; More Tools &gt; Web Developer Tools</li>
     <li>Select the Network tab</li>
@@ -27,8 +29,10 @@
     <li>The tool automatically starts recording</li>
     <li>Refresh the page or perform the task to record the events</li>
     <li>Click the Network Settings (⚙) button &gt; Save All As HAR</li>
+    <li>Follow instruction on <a href="#remove-user-info">Removal of User Information</a>
+    </li>
 </ol>
-<h2>To create a HAR file in Safari:</h2>
+<h2 id="h_01HDD73XF0B4JZ166AR44CCS2Q">To create a HAR file in Safari:</h2>
 <ol>
     <li>Enable the Developer menu:
         <ul>
@@ -39,4 +43,20 @@
     <li>Check the Preserve Log checkbox</li>
     <li>Refresh the page or perform the task to record the events</li>
     <li>Click Export to download and save the HAR file</li>
+    <li>Follow instruction on <a href="#remove-user-info">Removal of User Information</a>
+    </li>
+</ol>
+<h2 id="remove-user-info">Removal of User Information</h2>
+<p>HAR files can contain sensitive user information and we recommend user to delete those before sending it to support. </p>
+<p><strong>Automated Removal of User Information Using <code>jq</code></strong></p>
+<p>If you have <code>jq</code> installed on your computer, you can use it to automatically remove user information from the HAR file. Run the following command:</p>
+<pre class="css-ngpy5m"><code class="language-bash">jq '<br>(.. | objects | select(has("name") and (.name == "ring-session" or .name == "Set-Cookie" or .name == "Cookie"))) |= del(.value)<br>' path_to_your_file.har &gt; new_file.har</code></pre>
+<p>Replace <code>path_to_your_file.har</code> with the path to your HAR file. This command will create a new HAR file named <code>new_file.har</code> with the user information removed.</p>
+<p><strong>Manual Removal of User Information</strong></p>
+<p>If you don't have <code>jq</code> installed, you can manually remove the user information from the HAR file:</p>
+<ol>
+    <li>Open the HAR file with a text editor of your choice.</li>
+    <li>Search for <code>"ring-session"</code>, <code>"Set-Cookie"</code>, and <code>"Cookie"</code>.</li>
+    <li>For each instance, find the associated <code>value</code> field and delete its content. Be careful not to delete the entire object or any surrounding syntax.</li>
+    <li>Save the HAR file.</li>
 </ol>

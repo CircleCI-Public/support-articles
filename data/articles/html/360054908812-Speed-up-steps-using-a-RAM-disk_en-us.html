@@ -1,15 +1,12 @@
-<h1>Optimize step performance</h1>
-<p>Tasks which are heavily dependent on disk IO can be sped up by performing those operations in memory and avoiding the disk. This is especially true if you're using the Docker executor on CircleCI, we have an in depth <a href="https://circleci.com/blog/the-issue-of-speed-and-determinism-in-ci/" target="_blank" rel="noopener">blog post here</a> about the issue.</p>
-<h2>Docker Executor</h2>
-<p>On the docker executor we have enabled an available RAM disk by default which you can use to dramatically increase step speeds. This is highly encouraged for steps like cache/workspace restores. You can read about configuring it <a href="https://circleci.com/docs/2.0/using-docker#ram-disks" target="_blank" rel="noopener">in our docs here</a>.</p>
+<h1 id="h_01HDHQXVR1Y4EVV0EYQXJVE145">Optimize step performance</h1>
+<p>Tasks which are heavily dependent on disk IO can be sped up by performing those operations in memory and avoiding the disk. This is especially true if you're using the Docker executor on CircleCI.</p>
+<h2 id="h_01HDHQXVR2VM2GKCRYCRN6YFPM">Docker Executor</h2>
+<p>On the docker executor we have enabled an available RAM disk by default which you can use to dramatically increase step speeds. This is highly encouraged for steps like cache/workspace restores. You can read about configuring it <a href="https://circleci.com/docs/2.0/using-docker#ram-disks" target="_blank" rel="noopener noreferrer">in our docs here</a>.</p>
 <p>The short version is that you have access to a special directory,  <strong>/mnt/ramdisk</strong>, which acts as any other directory. Files stored here will use the machines assigned resource class memory. For instance, you can set your entire working directory to be stored in memory with <strong><span class="na"><span class="hljs-attr">working_directory</span></span><span class="pi"><span class="hljs-attr">: </span></span><span class="s">/mnt/ramdisk</span></strong><span class="s"> in your job configuration.</span></p>
-<h2>Other executors<br><span></span>
-</h2>
-<p>The RAM disk is not configured by default on other executors. It's less likely that you'll need it because they operate as isolated VMs, and avoid the issues outlined in the blog post mentioned above. You may still find that a RAM disk offer performance benefits over utilizing the hard disk. In other executors (Machine,  MacOS, etc) you have far more control over the environment, so it's possible to configure a RAM disk yourself. Using instructions such as <a href="https://unix.stackexchange.com/questions/66329/creating-a-ram-disk-on-linux" target="_blank" rel="noopener">this stack exchange answer</a> for Linux based systems.</p>
-<h4>
-    <strong>Windows</strong><br><span></span>
-</h4>
-<p>To configure a RAM disk on windows please see our guide <a href="https://support.circleci.com/hc/en-us/articles/4411520952091" target="_blank" rel="noopener">linked here</a>.</p>
+<h2 id="h_01HDHQXVR2WCYNP7DRFPTNHJ2X">Other executors</h2>
+<p>The RAM disk is not configured by default on other executors. It's less likely that you'll need it because they operate as isolated VMs, and avoid the issues outlined in the blog post mentioned above. You may still find that a RAM disk offer performance benefits over utilizing the hard disk. In other executors (Machine,  MacOS, etc) you have far more control over the environment, so it's possible to configure a RAM disk yourself. Using instructions such as <a href="https://unix.stackexchange.com/questions/66329/creating-a-ram-disk-on-linux" target="_blank" rel="noopener noreferrer">this stack exchange answer</a> for Linux based systems.</p>
+<h4 id="h_01HDHQXVR2G08KK3WRH65PDNN5"><strong>Windows</strong></h4>
+<p>To configure a RAM disk on windows please see our guide <a href="https://support.circleci.com/hc/en-us/articles/4411520952091" target="_blank" rel="noopener noreferrer">linked here</a>.</p>
 <p><strong>Caution:</strong></p>
 <p><strong>/mnt/ramdisk </strong>is owned by root which can cause issues when using the default circleci user. Such as using checkout while within the /mnt/ramdisk directory.</p>
 <p>You can check the current user by adding the following run step below:</p>
