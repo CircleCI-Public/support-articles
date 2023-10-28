@@ -1,0 +1,30 @@
+<h1 id="h_01HDSMYAY9PV7ZEJJX45NYGCC7">Overview</h1>
+<p>Learn how to set up the Datadog integration in CircleCI, using webhooks to send data to Datadog for enhanced visibility and monitoring.</p>
+<p>The Datadog integration with CircleCI enables you to seamlessly send data to Datadog for enhanced visibility and monitoring of your CircleCI projects. This support article will guide you through the process of configuring the Datadog integration using webhooks in CircleCI.</p>
+<h2 id="h_01HDSMYRXRZCHP64T7RCD8846B">Prerequisites</h2>
+<p>Before getting started, please ensure that you have the following:</p>
+<p>- Access to the CircleCI project for which you want to configure the Datadog integration.<br>- A Datadog API key, which will be used in the webhook configuration.</p>
+<h2 id="h_01HDSMYYDH5A35NC6THV2J23NA">Configuration Steps</h2>
+<p>Follow the steps below to configure the Datadog integration with CircleCI:</p>
+<p>1. In CircleCI, navigate to **Project Settings** for the desired project.</p>
+<p>2. Select the **Webhooks** option under the project settings.</p>
+<p>3. Click on the **Add webhook** button to create a new webhook.</p>
+<p>4. Provide a meaningful **Webhook name**, such as "Datadog CI Visibility" or any other identifier that suits your needs.</p>
+<p>5. In the **Receiver URL** field, enter the following URL, replacing `&lt;API_KEY&gt;` with your Datadog API key.</p>
+<p>6. Enable the **Certificate verifications** check to ensure secure communication between CircleCI and Datadog.</p>
+<p>7. In the **Events** section, select both **Workflow Completed** and **Job Completed** options. This will ensure that data is sent to Datadog whenever a workflow or job is completed in CircleCI.</p>
+<p>8. Verify that all the entered details are correct, and then click on the **Save webhook** button to complete the configuration.</p>
+<h2 id="h_01HDSN0R7WY6WB6MKVQMMD1TWZ">Testing the Integration</h2>
+<p>To ensure that the Datadog integration is properly set up and functioning, perform the following steps:</p>
+<p>1. Trigger a build in your CircleCI project.</p>
+<p>2. Once the build completes, navigate to your Datadog account and check for the presence of data related to the CircleCI project. This data will include information about completed workflows and jobs.</p>
+<p>If data is successfully being sent to Datadog and visible in your account, the integration has been configured correctly.</p>
+<h2 id="h_01HDSN0YJMJXW8P6G7XDCW4246">Conclusion</h2>
+<p>By configuring the Datadog integration with CircleCI using webhooks, you can enhance visibility and monitoring of your CircleCI projects. The integration allows you to send data to Datadog, empowering you to gain valuable insights and track the progress of your workflows and jobs. Follow the steps provided in this support article to seamlessly set up the Datadog integration and begin utilizing its benefits.</p>
+<p>Should you encounter any issues or require further assistance during the configuration process, don't hesitate to reach out to our support team. We're always here to help you make the most of your CircleCI integrations.</p>
+<h2 id="h_01HDSN2M97NTRGHM2XKXZWXDXX">Additional resources</h2>
+<p>1. <a href="https://circleci.com/docs/2.0/datadog-integration/">CircleCI Documentation - Datadog Integration: </a>The official documentation provides detailed instructions on setting up the Datadog integration and troubleshooting common issues.</p>
+<p>2. <a href="https://docs.datadoghq.com/integrations/circleci/">Datadog Documentation - CircleCI Integration</a>: The Datadog documentation offers comprehensive information on configuring and utilizing the CircleCI integration with Datadog for monitoring and observability.</p>
+<p>3. <a href="https://discuss.circleci.com/">CircleCI Community Forum</a>: The community forum is a valuable resource to find answers to specific questions or to engage in discussions related to CircleCI integrations, including the Datadog integration.</p>
+<p>4. <a href="https://www.datadoghq.com/blog/">Datadog Blog</a>: The Datadog blog provides a wealth of articles and tutorials on monitoring, observability, and using Datadog with various integrations, including CircleCI.</p>
+<p> </p>

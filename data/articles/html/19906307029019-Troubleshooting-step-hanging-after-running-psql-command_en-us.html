@@ -1,0 +1,20 @@
+<h1 id="h_01HDQE3ETX3MX9QE5RXHDM9T77" data-renderer-start-pos="7581">Problem:</h1>
+<p data-renderer-start-pos="7581">When running a command like psql, the step can hang and lead to it timing out. This is due to it expecting the user to interact with it whereas CircleCI jobs are run in a non-interactive environment.</p>
+<h2 id="h_01HDQE3ETY67JVT3R7P4VSZNPR" data-renderer-start-pos="7676">Solutions:</h2>
+<ul class="ak-ul" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="7690"><strong>Disable psql pager with <code>-P 'pager=off'</code> option</strong></p>
+        <ul class="ak-ul" data-indent-level="1">
+            <li>Example:<br>
+                <pre><code>psql -q -d postgres -h localhost -p ${TEST_DB_PORT:-'5433'} -P 'pager=off' -U test -w -c "DROP DATABASE IF EXISTS test;";</code></pre>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2 id="h_01HDQE3ETYQ49MGA57Z3BPMQVC" data-renderer-start-pos="7854">Outcome:</h2>
+<p data-renderer-start-pos="7854">The step will no longer hang, and will finish executing, preventing a long running job.</p>
+<h2 id="h_01HDQE3ETY7YP0M402KS914PJ0" data-renderer-start-pos="8137">Additional Resources:</h2>
+<ul>
+    <li data-renderer-start-pos="8137"><a href="https://support.circleci.com/hc/en-us/articles/13433507900955-Understanding-how-CircleCI-executes-your-shell-commands" target="_blank" rel="noopener noreferrer">Understanding how CircleCI executes your shell commands</a></li>
+    <li data-renderer-start-pos="8137"><a href="https://www.postgresql.org/docs/current/app-psql.html" target="_blank" rel="noopener noreferrer">PostgreSQL psql Documentation</a></li>
+</ul>

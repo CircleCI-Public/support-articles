@@ -1,0 +1,80 @@
+<h1 id="h_01HDQP0PRHP3C39E13GSJA5SG6" data-renderer-start-pos="6680">Introduction:</h1>
+<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'>PowerShell profiles can be used to create a custom and consistent environment for your steps to run on in a Windows executor job. Profiles can include. variables, commands, functions and other elements that are needed.</p>
+<h2 id="h_01HDQP0PRH1WA64EBVWWZZPW9V" data-renderer-start-pos="6812">Prerequisites:</h2>
+<p data-renderer-start-pos="6812">Please ensure that you have a PowerShell profile available within your Windows job. This can be checked out from your repository, or generated dynamically with a script inside of the job itself.</p>
+<h2 id="h_01HDQP0PRHM338ZC5MJGE0STZ8" data-renderer-start-pos="6955">Instructions:</h2>
+<ol>
+    <li>
+        <strong> Create PowerShell profile .ps1 file</strong>
+        <ul>
+            <li>
+                <div>
+                    <pre data-darkreader-inline-bgcolor=""><code>Write-Host "Loading custom PowerShell profile"
+$env:TEST_VAR = "Here is a sample string"</code></pre>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Copy profile to $PROFILE.AllUsersCurrentHost</strong>
+        <ul>
+            <li>
+                <pre class="css-ngpy5m"><code class="language-bash">Copy-Item .\MyPowershellProfile.ps1 $PROFILE.AllUsersCurrentHost</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Set step shell to powershell.exe</strong>
+        <ul>
+            <li>The shell can be set at the step level or job level by including:
+                <pre data-darkreader-inline-bgcolor=""><code>shell: powershell.exe</code></pre>
+            </li>
+        </ul>
+    </li>
+</ol>
+<h2 id="h_01HDQP0PRHGNTHPEKMWGVPNA6K" data-renderer-start-pos="7010">Outcome:</h2>
+<p data-renderer-start-pos="7010">Setting <code>$PROFILE.AllUsersCurrentHost</code> to the custom profile will execute it at the beginning of every step. This allows you to re-use anything defined within the profile, and reduces the amount of redundant code in your config.yml file.</p>
+<p data-renderer-start-pos="7117"> </p>
+<h2 id="h_01HDQP0PRHHXBK1W6AJ1DCX7BB" data-renderer-start-pos="7117">Additional Notes:</h2>
+<p data-renderer-start-pos="7117">Here is a full sample config.yml showing how to implement this:</p>
+<pre data-darkreader-inline-bgcolor=""><code>version: 2.1
+
+orbs:
+  windows: circleci/windows@5.0.0
+
+commands:
+  create_profile:
+    steps:
+      - run:
+          name: Set PowerShell profile
+          command: |
+            Copy-Item .\MyPowershellProfile.ps1 $PROFILE.AllUsersCurrentHost
+jobs:
+  build:
+    machine:
+      image: windows-server-2022-gui:current
+    resource_class: windows.medium
+    shell: powershell.exe
+    steps:
+      - checkout
+      - create_profile
+      - run:
+          name: Test step with profile
+          shell: powershell.exe
+          command: |
+            Write-Host "TEST_VAR is $env:TEST_VAR"
+      - run:
+          name: Test step with no profile
+          shell: powershell.exe -NoProfile
+          command: |
+            Write-Host "TEST_VAR is $env:TEST_VAR"
+workflows:
+  my-workflow:
+    jobs:
+      - build
+</code></pre>
+<p data-renderer-start-pos="7244"> </p>
+<h2 id="h_01HDQP0PRHABBC3Q4NYJHCMTRZ" data-renderer-start-pos="7244">Additional Resources:</h2>
+<ul>
+    <li data-renderer-start-pos="7244"><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles" target="_blank" rel="noopener noreferrer">PowerShell - Profiles</a></li>
+</ul>

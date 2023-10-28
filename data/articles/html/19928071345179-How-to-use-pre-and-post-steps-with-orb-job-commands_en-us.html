@@ -1,0 +1,9 @@
+<h1 id="h_01HDSATM26EW76DSWXJRHXTQ80">Overview</h1>
+<p>It is natural to think to add a post or pre step within the workflow stanza along with orb commands. The correct way to define these along with parameters would be the following example.</p>
+<p> </p>
+<h2 id="h_01HDSAW61X5D7WCKPBNSBK70H8">Example</h2>
+<p>Here is an example</p>
+<pre><code><br>version: 2.1<br><br>#add orb stanza as usual, argocd-orb/default and argocd/deploy commands as example<br><br>jobs:<br>    deploy-test-argo:<br>        executor: argocd-orb/default<br>        steps:<br>            - attach_workspace:<br>                  at: /tmp<br>            - argocd-orb/deploy:<br>                  app: foobar<br>                  version: v1.0.0<br>                  env: test<br><br>workflows:<br>  build:<br>    jobs:<br>      - deploy-test-argo:<br>          pre-steps: # steps to run before steps defined in the job bar<br>            - run:<br>                command: echo "test pre"<br>            - attach_workspace:<br>                at: /tmp<br>          post-steps: # steps to run after steps defined in the job bar<br>            - run:<br>                command: echo "test post"<br>            - persist_to_workspace:<br>                root: /tmp<br>                paths:<br>                  - path1</code><br><br></pre>
+<p> </p>
+<h2 id="h_01HDSAXA8ZN7H4MH4BCP0PE7T4">Additional Resources</h2>
+<p><a href="https://circleci.com/docs/deployment-overview/">Deployment overview</a></p>
