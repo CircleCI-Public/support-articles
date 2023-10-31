@@ -1,14 +1,34 @@
 <h1 id="h_01HBHMR3750KJ55AQQKBN5WB7V">Organization Data Deletion</h1>
 <p class="p1"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Organization deletion effectively deletes all build history, contexts, and project environment variables for a given organization. <br><br>To delete an organization account, please <strong>file a Support ticket. </strong></span></p>
-<p class="p1"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">To make a user data deletion request please visit the <a href="https://privacy.circleci.com/policies">CIrcleCI privacy page</a> and click "Make a Request"<br><br></span></p>
-<p class="p1"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">If your VCS provider is GitLab, please delete Circle triggers and configuration by following the steps below for each project within the organization prior to submitting a support ticket. </span></p>
-<p class="p1"> </p>
+<p class="p1"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">To make a user data deletion request please visit the <a href="https://privacy.circleci.com/policies">CIrcleCI privacy page</a> and click "Make a Request"<br></span></p>
+<h2 id="github-app" class="p1"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">GitHub App</span></h2>
+<p>If your VCS provider is <strong>GitHub App</strong>, please uninstall CircleCI App from GitHub <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">following the steps below.</span></p>
+<ol>
+    <li>
+        <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Visit the following link: <a href="https://github.com/settings/installations">GitHub Installed Apps Settings</a>.</span>
+        <ul>
+            <li>If necessary, switch the organization by clicking on <code>Switch to another
+                    account</code> found at the top left of the page.</li>
+        </ul>
+    </li>
+    <li>
+        <p>Look for the CircleCI App under the <code>Installed GitHub Apps</code> section. Once found, click on <code>Configure</code>.</p>
+    </li>
+    <li>
+        <p>After opening the CircleCI Apps Configuration page, scroll down to the section labeled <code>Danger Zone</code>.</p>
+    </li>
+    <li>
+        <p>Click on <code>Uninstall</code>. This will remove the triggers that are sent to CircleCI.</p>
+    </li>
+</ol>
+<p>After successful completion of these steps, the CircleCI App will be uninstalled from your GitHub account, and prepared for submission of organization to be deleted from CircleCI.</p>
+<h2 id="gitlab" class="p1"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">GitLab</span></h2>
+<p class="p1"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">If your VCS provider is <strong>GitLab</strong>, please delete Circle triggers and configuration by following the steps below for each project within the organization prior to submitting a support ticket. </span></p>
 <ol>
     <li>Delete triggers from CircleCI: Navigate to project settings &gt; triggers<br> <br><img src="https://support.circleci.com/hc/article_attachments/19501931964699" alt="Screenshot 2023-10-11 at 4.18.58 PM.png"> </li>
     <li>Delete Configuration: Navigate to project settings &gt; Configuration<br><br><img src="https://support.circleci.com/hc/article_attachments/19501916561947" alt="Screenshot 2023-10-11 at 4.21.07 PM.png">
     </li>
 </ol>
-<p> </p>
 <h2 id="h_01HBHMR375JV77P5C79V8F2SCP" class="p1"><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Submitting a Request</span></h2>
 <p><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">To submit a deletion request, please open a ticket with our support team via the <a href="https://support.circleci.com/">Support Center.</a> <br><br>In the ticket, </span>please provide the following details:</p>
 <ol>

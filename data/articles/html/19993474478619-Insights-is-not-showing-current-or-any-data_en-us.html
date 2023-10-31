@@ -1,0 +1,13 @@
+<h1 id="h_01HE1B4T28V3ZX2FPXA4NEYC4H" data-renderer-start-pos="7581">Problem:</h1>
+<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'>When you trigger a build, the metrics of these recent workflows might not appear on the Insights page or be available <a href="https://circleci.com/docs/api/v2/index.html#tag/Insights" target="_blank" rel="noopener noreferrer">via the API</a>. This might result in the Insights page or API not returning any data or returning outdated data.</p>
+<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'>Insights is not a real-time reporting tool and therefore data might take up to 24 hours to appear.</p>
+<h2 id="h_01HE1B4T29JZ5TST6VQ5XEAPSM" data-renderer-start-pos="7676">Solutions:</h2>
+<ul>
+    <li>Please verify if the workflow with the missing metrics has been triggered during the last 24 hours. The metrics are refreshed daily and they will appear within 24 hours. If your project did not have any workflows outside of the 24-hour window, the Insights page will appear empty during this time.</li>
+    <li>If you are using the API, please check if you set a query parameter of <code>reporting-window=last-24-hours</code>. If this is the case, please try increasing the reporting window.</li>
+</ul>
+<h2 id="h_01HE1B4T29DZ8Q89BCEAGJRRNJ" data-renderer-start-pos="7854">Outcome:</h2>
+<p data-renderer-start-pos="8026">The metrics should appear within 24 hours. If this is not the case, please feel free to reach out to Support for further investigation.</p>
+<h2 id="h_01HE1B4T29G42FHF9V5PCS4AKC" data-renderer-start-pos="8137">Additional Resources:</h2>
+<p data-renderer-start-pos="8137"><a href="https://circleci.com/docs/insights/" target="_blank" rel="noopener noreferrer">Insights documentation</a></p>
+<p data-renderer-start-pos="8137"><a href="https://circleci.com/docs/insights/">Insights API documentation</a></p>
