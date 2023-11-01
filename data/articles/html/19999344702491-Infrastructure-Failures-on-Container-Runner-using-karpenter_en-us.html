@@ -1,0 +1,19 @@
+<h2 id="h_01HE2DNBD73PER9BQXBQHQ7Q1R">Overview</h2>
+<p>Infrastructure failures can occur intermittently on some jobs. These failures, commonly known as 'infra fails', arise when the pod stops sending build information to CircleCI. The lack of incoming build information makes it challenging to debug these failures, as they could be associated with network issues or abrupt pod/node termination.</p>
+<h2 id="h_01HE2DNGV1WAT27RJX63WECG7Q">Check how k8s are managed</h2>
+<p>When utilizing Kubernetes management resources, such as Karpenter, it's not uncommon for the system to terminate a running pod. Karpenter, for example, can terminate a pod busy with a job, as illustrated in the following example:</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/19999329215899"></p>
+<h2 id="h_01HE2ETEKV8D2SXBF591P40SX7">Solution: Preventing Pod Eviction</h2>
+<p>In order to avoid these disruptions, we recommend adding <code>karpenter.sh/do-not-evict: true</code> to the annotations of the agent. This will instruct Karpenter not to evict the pod while it is running.</p>
+<p>Here is an example of how to apply the annotation:</p>
+<pre class="css-1uk2jcu"><code class="language-bash">agent:
+  resourceClasses:
+    circleci-runner/resourceClass:
+      token: ***
+      metadata:
+        annotations:
+          karpenter.sh/do-not-evict: true</code></pre>
+<h2 id="h_01HE2EYQTEPKJY9YQZSBSQDNDC">
+    <br>Additional Resource
+</h2>
+<p><a href="https://github.com/aws/karpenter/blob/main/designs/termination.md#user-configuration">https://github.com/aws/karpenter/blob/main/designs/termination.md#user-configuration</a></p>

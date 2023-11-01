@@ -1,0 +1,32 @@
+<h1 id="h_01HE39J0CMP2W903496Z3HYPKW" data-renderer-start-pos="7581">Problem:</h1>
+<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'>If you already have an account on CircleCI that is integrated with Github and you sign up with an email and connect your Github account, you might find that you cannot see the same organizations that you previously had access to on your account.<br><br>The reason for this is that the "old" and "new" accounts have different integrations to Github. Starting August 2023, when a CircleCI account is authorized with GitHub, the integration will be done through <a href="https://circleci.com/docs/github-apps-integration/" target="_blank" rel="noopener noreferrer">our GitHub App</a>, rather than the <a href="https://circleci.com/docs/github-integration/" target="_blank" rel="noopener noreferrer">GitHub OAuth app</a>.</p>
+<h2 id="h_01HE39J0CMF6XT0FMZFRHC5X9X" data-renderer-start-pos="7676">Solutions:</h2>
+<ul class="ak-ul" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="7690">You will still be able to log in to your "old" account with the Github OAuth integration:</p>
+        <ul class="ak-ul" data-indent-level="1">
+            <li>
+                <p data-renderer-start-pos="7690">Log out of your CircleCI account</p>
+            </li>
+            <li>Go to <a href="https://circleci.com/vcs-authorize/" target="_blank" rel="noopener noreferrer">the login page</a> and select <code>Log In</code> &gt; <code>Signed up with Github or Bitbucket before
+                    September 2023?</code>
+            </li>
+            <li>You will be asked to log in with your Github credentials to access your "old" CircleCI account</li>
+        </ul>
+    </li>
+    <li>
+        <p data-renderer-start-pos="7742">If you need to be able to access organizations with both Github OAuth and Github Apps integrations from the same account, you can connect your Github OAuth user to your "new" account:</p>
+        <ul class="ak-ul" data-indent-level="1">
+            <li>For this, our Support team will first need to manually disconnect your Github OAuth user from its CircleCI account, so please <a href="https://support.circleci.com/hc/en-us/requests/new" target="_blank" rel="noopener noreferrer">open a ticket with the Support Team</a>
+            </li>
+            <li>Once this is done, you will be able to connect the Github OAuth user to your "new" account from the <a href="http://%20https//app.circleci.com/settings/user" target="_blank" rel="noopener noreferrer">User Settings page</a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2 id="h_01HE39J0CMYRV8TQ02M2AA4962" data-renderer-start-pos="7854">Outcome:</h2>
+<p data-renderer-start-pos="7854">You will be able to access your Github OAuth organizations by logging in with your Github credentials as per the above.</p>
+<h2 id="h_01HE39J0CMVGF9YSHT1WE28EJE" data-renderer-start-pos="8137">Additional Resources:</h2>
+<p data-renderer-start-pos="8137"><a href="https://circleci.com/docs/github-integration/" target="_blank" rel="noopener noreferrer">GitHub OAuth app integration overview</a></p>
+<p data-renderer-start-pos="8137"><a href="https://circleci.com/docs/github-apps-integration/" target="_blank" rel="noopener noreferrer">GitHub App integration overview</a></p>
+<p data-renderer-start-pos="8137"><a href="https://support.circleci.com/hc/en-us/articles/360049860611" target="_blank" rel="noopener noreferrer">Troubleshooting "We encountered a problem adding your identity to CircleCI..."</a></p>

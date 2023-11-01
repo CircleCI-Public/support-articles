@@ -1,0 +1,16 @@
+<h2 id="h_01HE2KZ4GBW34ENC4437HDFJWN">Overview</h2>
+<p>This article addresses an issue where a Pull Request (PR) gets merged prematurely while CircleCI triggers another workflow. This situation often arises when using dynamic configuration, which initiates a "setup" job to determine the changed files and triggers code tests based on those changes. The problem occurs when the "setup" job completion is interpreted as a "passed" status check, causing the merge queue to merge the PR even before the actual tests are triggered.</p>
+<h2 id="h_01HE2M7FT9HGYK06DSQTKSYCJN">Prerequisites</h2>
+<ul>
+    <li>Enabled <a href="https://github.blog/2023-07-12-github-merge-queue-is-generally-available/">merge queues</a> in GitHub. </li>
+    <li>Dynamic configuration usage CircleCI</li>
+</ul>
+<h2 id="h_01HE2MASXABEE7YM4MW5Z0VZNQ">Solution</h2>
+<p>To resolve this issue, you can configure the timeout of the Status Check on Github. This adjustment allows CircleCI to allocate some time for the next workflow to run. The <strong>Status Check timeout</strong> determines how long the queue should wait for a response from CI before assuming that checks have failed. </p>
+<p>As mentioned in the Github documentation:</p>
+<blockquote>
+    <p>"Status check timeout: Choose how long the queue should wait for a response from CI before assuming that checks have failed." - <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue#managing-a-merge-queue">Managing Merges on GitHub</a></p>
+</blockquote>
+<p id="h_01HE2MKBDBK4PF790JW4FTR9G5">Please note that this feature is not provided by CircleCI, so we recommend checking GitHub for more details on setting it up. </p>
+<h2 id="h_01HE2MM0W2K40RPEF03TS4SDWX">Additional Resource</h2>
+<p>For more information on dynamic configuration in CircleCI, please refer to our <a href="https://circleci.com/docs/2.0/dynamic-config/">Dynamic Configuration documentation</a>. To learn more about Github's merge queues, you can visit this <a href="https://github.blog/2023-07-12-github-merge-queue-is-generally-available/">Github article</a>.<br><br></p>

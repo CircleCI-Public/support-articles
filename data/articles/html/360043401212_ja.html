@@ -1,0 +1,12 @@
+<p>「ワークフローのキャンセルができない」や「On Hold ステータスのビルドが停止できない」という問題が発生している場合は Approve / On Hold ジョブの、承認可能な90日間の期限が過ぎてる可能性があります。</p>
+<p> </p>
+<h2 id="h_01HE236JR3NTS168791KSYRFKC">On Hold (保留中)のワークフロー</h2>
+<p>ワークフローがトリガーされた日から90日間を超えると <strong>Approve</strong> や <strong>Cancel</strong> など行えなくなります。また、CircleCI は自動的に On Hold 保留中のワークフローを現在の状態から移行せることもできませんので、ご理解いただけると幸いです。</p>
+<p>関連するワークフローのキャンセルを希望される際には、お手数をおかけしますが、CircleCIサポートまで「On Hold ワークフローのキャンセルをしたい」とご依頼ください。</p>
+<p><span class="wysiwyg-font-size-medium"><strong>注意：On Hold (保留中)のジョブはクレジットを消費しません。</strong></span></p>
+<p> </p>
+<h2 id="h_01HE23MMXT8FWMGEP01CPKFJG2">ワークスペースを使用するジョブ</h2>
+<p>上記の唯一の例外は、<a href="https://circleci.com/docs/2.0/persist-data/#using-workspaces">ワークスペース</a>を利用するジョブです。On Hold (保留)ジョブの後にワークスペースを利用している場合、ワークスペースが失効するまでの期限は15日間です。この期間を超えて Approve した場合ワークスペースのデータが失効している為、後続のジョブは失敗します。 </p>
+<p> </p>
+<h2 id="h_01HE23XC1Y9G4AMD23WTT9J7CZ">追加のリソース</h2>
+<p><a href="https://support.circleci.com/hc/en-us/articles/360058897011-Cannot-rerun-an-old-workflow-or-on-hold-job">Cannot Rerun an Old Workflow or “On Hold” Job</a></p>

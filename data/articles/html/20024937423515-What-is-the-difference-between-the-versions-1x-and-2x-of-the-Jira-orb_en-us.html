@@ -1,0 +1,33 @@
+<h1 id="h_01HE3YTY0002CHFY18SKGFAMB0" data-renderer-start-pos="6347">Overview:</h1>
+<p data-renderer-start-pos="6347">The CircleCI Jira orb allows you to Integrate your CI/CD build and deployment status notifications directly into your Jira cards.</p>
+<p data-renderer-start-pos="6347">To do so you need to:</p>
+<ul>
+    <li data-renderer-start-pos="6347">Install the <a href="https://marketplace.atlassian.com/apps/1215946/circleci-for-jira?tab=versions&amp;hosting=cloud" target="_blank" rel="noopener noreferrer">CircleCI for Jira app</a> from the Atlassian marketplace</li>
+    <li data-renderer-start-pos="6347">Reference the <a href="https://circleci.com/developer/orbs/orb/circleci/jira" target="_blank" rel="noopener noreferrer">Jira orb's</a> <code>notify</code> command in your configuration file</li>
+</ul>
+<p> </p>
+<h2 id="h_01HE3YTY00B4AVHEWSKD5MPY1M" data-renderer-start-pos="6427">Version 2.x versus Version 1.x</h2>
+<p data-renderer-start-pos="6446"><strong>Version 2.x</strong> of the Jira orb:</p>
+<ul class="ak-ul" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="6446"><strong>requires</strong> that you install <strong>CircleCI for Jira v2.</strong></p>
+    </li>
+    <li>
+        <strong>no longer requires </strong>that you add a token in the "Jira Integrations" section of your project settings. <em>[Note that for backward compatibility reasons, the "Add Token" button and functionality are still available in the UI]</em>
+    </li>
+    <li> authenticates via <strong><a class="css-x7gnkn" href="https://circleci.com/docs/openid-connect-tokens/" data-testid="link">OpenID Connect (OIDC)</a></strong>
+    </li>
+    <li>
+        <p data-renderer-start-pos="6466"><strong>requires</strong> that you provide a <strong>webhook URL</strong> (retrieved from the management panel in the CircleCI for Jira app in your Jira instance)</p>
+    </li>
+</ul>
+<p> </p>
+<h2 id="h_01HE3YTY00D258X74XF2NFQX9X" data-renderer-start-pos="8026">Additional Notes(if applicable):</h2>
+<p data-renderer-start-pos="8026">Make sure to follow instructions outlined on the <a href="https://circleci.com/docs/jira-plugin/" target="_blank" rel="noopener noreferrer">"Connect Jira with CircleCI" page of </a><br><a href="https://circleci.com/docs/jira-plugin/" target="_blank" rel="noopener noreferrer"> our documentation</a>.</p>
+<p data-renderer-start-pos="8026"> </p>
+<h2 id="h_01HE3YTY00R3TXA620BJVFE7HB" data-renderer-start-pos="6514">Additional Resources:</h2>
+<ul>
+    <li data-renderer-start-pos="6514"><a href="https://circleci.com/developer/orbs/orb/circleci/jira" target="_blank" rel="noopener noreferrer">Jira orb [CircleCI orbs registry]</a></li>
+    <li data-renderer-start-pos="6514"><a href="https://marketplace.atlassian.com/apps/1215946/circleci-for-jira?tab=versions&amp;hosting=cloud" target="_blank" rel="noopener noreferrer">CircleCI for Jira [Atlassian Marketplace]</a></li>
+    <li data-renderer-start-pos="6514"><a href="https://github.com/circleci-public/jira-orb" target="_blank" rel="noopener noreferrer">Jira orb [GitHub repository]</a></li>
+</ul>

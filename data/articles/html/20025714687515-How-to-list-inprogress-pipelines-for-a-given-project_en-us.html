@@ -1,0 +1,30 @@
+<h1 id="h_01HE41JXM003CHE4FVFDJH7X6H" data-renderer-start-pos="6680">Introduction:</h1>
+<p data-renderer-start-pos="6680">If you need to find out which pipelines are in-progress without using the UI, you'll find that unlike jobs and workflows, pipelines <strong>never</strong> have a <em>"running"</em> status.</p>
+<p data-renderer-start-pos="6680">For pipelines, the possible statuses (<a href="https://circleci.com/docs/api/v2/index.html#operation/listPipelinesForProject" target="_blank" rel="noopener noreferrer">returned by the API v2</a>) are: <em>"created" "errored" "setup-pending" "setup" "pending".</em></p>
+<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'>However, we can deduce/consider that a given pipeline is in progress if any of the elements (workflows/jobs) it contains are in a "running" state.</p>
+<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'> </p>
+<h2 id="h_01HE41JXM0GB97Y2DE8WGTGRPB" data-renderer-start-pos="6812">Prerequisites (If Applicable):</h2>
+<p data-renderer-start-pos="6812">If you don't already have one that you can use, you'll need to generate a personal API token to authenticate your requests to the CircleCI API v2.</p>
+<h2 id="h_01HE41JXM0EY42363F057PM908" data-renderer-start-pos="6955">Instructions:</h2>
+<ol>
+    <li>
+        <strong> Get the list of all pipelines for the project</strong>
+        <ul>
+            <li>Use <a href="https://circleci.com/docs/api/v2/index.html#operation/listPipelinesForProject" target="_blank" rel="noopener noreferrer">the "Get all pipelines" endpoint</a> and extract (using a <a href="https://jqlang.github.io/jq/" target="_blank" rel="noopener noreferrer">tool like `jq`</a>) the IDs of pipelines with a status different than "errored". Make sure to go through all pages by checking the `next_page_token` in each response.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Check the statuses of the workflow(s) for each pipeline</strong><br>
+        <ul>
+            <li>Using the <a href="https://circleci.com/docs/api/v2/index.html#operation/listWorkflowsByPipelineId" rel="noopener noreferrer">"Get a pipeline's workflows" endpoint</a>, iterate over each of these pipeline IDs to check the respective statuses of the workflow(s) each pipeline contains.</li>
+        </ul>
+    </li>
+</ol>
+<h2 id="h_01HE41JXM0BHZQJJN741NDYRVM" data-renderer-start-pos="7010">Outcome:</h2>
+<p>If for a given pipeline there is [are] a "running" workflow[s], then note/save the pipeline ID; the related pipeline is considered in-progress.</p>
+<p data-renderer-start-pos="7244"> </p>
+<h2 id="h_01HE41JXM08W3V7E1T4K899BE3" data-renderer-start-pos="7244">Additional Resources:</h2>
+<ul>
+    <li data-renderer-start-pos="7244"><a href="https://circleci.com/docs/api/v2/index.html#tag/Pipeline" target="_blank" rel="noopener noreferrer">CircleCI API v2 pipelines-related endpoints</a></li>
+    <li data-renderer-start-pos="7244"><a href="https://jqlang.github.io/jq/" target="_blank" rel="noopener noreferrer">jq, a JSON processor</a></li>
+</ul>

@@ -1,0 +1,27 @@
+<h2 id="h_01HE2SWY61AK26ZW35VA8VPATR">Overview</h2>
+<p>Test Service Pods can enter a crash loop state due to Out of Memory (OOM) errors when they attempt to process large test files from the queuing service. The continuous loop occurs as the queuing service keeps waiting for the file to be processed, causing the pod to repeatedly attempt to handle the large file upon each restart, leading to OOM crash loop errors.</p>
+<h2 id="h_01HE2TBBGCSXP5D40CHJXZJQQA">Prerequisites</h2>
+<ul>
+    <li>Access to CircleCI server and logs</li>
+    <li>Kubernetes and Helm charts values</li>
+</ul>
+<h2 id="h_01HE2TD143Y4XXFQ69AKEB1DJ6">Identifying the test-results-service crash loop</h2>
+<p>The issue can be identified when the test-results-service pods start to enter a crashloop state. This can be confirmed by checking the logs (seeing OOM) and the status of the pods (seeing CrashLoop). </p>
+<pre>$ kubectl get pod -l app=test-results-service -n circleci-server<br>NAME                                  READY STATUS            RESTARTS AGE<br>test-results-service-3f23b1703-a65a5a 0/1   CrashLoopBackOff  <span style="height: initial !important;">16</span>       8m</pre>
+<pre>$ kubectl logs deployment/test-results-service -n circleci-server<br>#<br># java.lang.OutOfMemoryError: Java heap space<br># -XX:OnOutOfMemoryError="/usr/local/bin/oom "<br># Executing /bin/sh -c "/usr/local/bin/oom "...<br>Sending: _e{7,79}:JVM OOM|Experienced a JVM out of memory event for test-results-service-3f23b1703-a65a5a</pre>
+<h2 id="h_01HE2W2G9KT9TR7P2EKBZMTV5D">Resolving the Issue</h2>
+<p>The issue can be resolved by increasing the memory limit and JVM heap size for the test-results-service pod. This would be done by directly editing the deployment of the service. The memory limit should be doubled for example from 8Gi to 16Gi and the JVM_HEAP_SIZE environment variable to 13g. This should resolve the OOM errors and the test-results-service pods should stop entering the crashloop state.</p>
+<p>1. Run the following command to edit deployment of test-results-service</p>
+<pre>$ kubectl edit deployments test-results-service -n circleci-server</pre>
+<p>2. Navigate to the <code>resource.limits.memory</code> which should be 8Gi and change that to 16Gi. </p>
+<pre>resources:<br>  limits:<br>    cpu: "2"<br>    memory: 16Gi<br>  requests:<br>    cpu: 100m<br>    memory: 300Mi</pre>
+<p>3. Navigate to the <code>env</code> section and add <code>name: JVM_HEAP_SIZE</code> with the <code>value: 13g</code>. This should increase the heap size and reduce the possibility of hitting the OOM issue. The reason for setting it to <code>13g</code> is because it is the  ~80% of the <code>resource.limits.memory</code></p>
+<pre>spec:<br>  containers:<br>    - env:<br>      - name: CIRCLE_ENV<br>        value: production<br>      ...<br>      ...truncated...<br>      ...<br>      - name: JVM_HEAP_SIZE<br>        value: 13g</pre>
+<h2 id="h_01HE2WSC8C23MND3JE0BA30H2Z">Important Note</h2>
+<p>Please note that any edits made on deployments will not persist when the next Helm upgrade/operation happens. We are currently making this editable from the Values.yaml.</p>
+<h2 id="h_01HE2WSWZ8Q1XYWZ1JYQDG7VW6">Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360054109631--Server-How-to-Update-CircleCI-Server-">How to Update CircleCI Server</a></li>
+    <li><a href="https://circleci.com/docs/server/v4.1/installation/upgrade-server/">CircleCI Server Upgrade Steps</a></li>
+    <li><a href="https://circleci.com/docs/server/installation/upgrade-server-4/#upgrade-steps">Upgrade Server 4</a></li>
+</ul>

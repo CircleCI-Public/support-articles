@@ -1,0 +1,11 @@
+id: 20000205220379
+title: 'Merge Queues: Preventing Early Merges Before Triggering Build'
+author_id: 1900381166444
+created_at: '2023-10-31T10:36:20Z'
+locale: en-us
+permission_group_id: 237867
+section_id: 7513311598235
+user_segment_id: null
+html_url: >-
+  https://support.circleci.com/hc/en-us/articles/20000205220379-Merge-Queues-Preventing-Early-Merges-Before-Triggering-Build
+draft: false

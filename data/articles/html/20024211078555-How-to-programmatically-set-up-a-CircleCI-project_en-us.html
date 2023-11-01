@@ -1,0 +1,31 @@
+<h1 id="h_01HE3X1254YXSQ3NR7P3TWPR0A" data-renderer-start-pos="6680">Introduction:</h1>
+<p data-renderer-start-pos="6680">Usually, setting up a project is done via the CircleCI UI. However, you might have a use-case that requires or benefits from automating the setup process.</p>
+<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'>You can programmatically set up a CircleCI project by leveraging the <a href="https://circleci.com/docs/api/v1/index.html#follow-a-new-project-on-circleci" target="_blank" rel="noopener noreferrer">"Follow a New Project on CircleCI" API v1 endpoint</a>.</p>
+<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'> </p>
+<h2 id="h_01HE3X1254JCZ4EH4V7SZRZYEW" data-renderer-start-pos="6812">Prerequisites:</h2>
+<p>If you don't already have one that you can use, you'll need to generate a personal API token for a user who has, at least, <code>write</code> access on the related project.</p>
+<p> </p>
+<h2 id="h_01HE3X12541FPW447EK0MPTA93" data-renderer-start-pos="6955">Instructions:</h2>
+<ol>
+    <li>
+        <strong>Retrieve the personal API token</strong> (see prerequisites)
+    </li>
+    <li>
+        <strong>Programmatically set up the project</strong>
+        <ul>
+            <li>The following example uses cURL+shell but you can wrap the API call and use it with your favourite language.<br>
+                <pre style="background-color: #f3f3f3;">curl --location --request POST 'https://circleci.com/api/v1.1/project/&lt;VCS&gt;/&lt;ORG_NAME&gt;/&lt;NEW_REPO_NAME&gt;/follow' \<br><br>--header 'Content-Type: application/json' \<br><br>-u '&lt;API_TOKEN&gt;:' \<br><br>--data-raw '{<br><br>"first_build": "true"<br><br>}'</pre>
+            </li>
+        </ul>
+    </li>
+</ol>
+<h2 id="h_01HE3YJ4MH1FH4J832CA5AVV2G" data-renderer-start-pos="7010"> </h2>
+<h2 id="h_01HE3X12547W7WY9D02NCJG5RQ" data-renderer-start-pos="7010">Outcome:</h2>
+<p data-renderer-start-pos="7010">If the operation is successful, you'll receive a <code>200</code> response.</p>
+<p data-renderer-start-pos="7244"> </p>
+<h2 id="h_01HE3X1254TN6FWRGPKZCQ9Z50" data-renderer-start-pos="7244">Additional Resources:</h2>
+<ul>
+    <li data-renderer-start-pos="7244"><a href="https://circleci.com/docs/api-developers-guide/" target="_blank" rel="noopener noreferrer">CircleCI API Developer's Guide</a></li>
+    <li data-renderer-start-pos="7244"><a href="https://circleci.com/docs/managing-api-tokens/" target="_blank" rel="noopener noreferrer">Managing API Tokens</a></li>
+    <li data-renderer-start-pos="7244"><a href="https://circleci.com/docs/api/v1/index.html#" target="_blank" rel="noopener noreferrer">CircleCI API Reference</a></li>
+</ul>
