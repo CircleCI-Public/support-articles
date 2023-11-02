@@ -1,0 +1,29 @@
+<h1 id="h_01HE6P5917B57GHDPTKJTT9F3D" data-renderer-start-pos="6680">Introduction:</h1>
+<p data-renderer-start-pos="6680">Before you can use dynamic config in CircleCI, you need to  toggle on the "Enable dynamic config using setup workflows" setting, in your <em>Advanced</em> project settings, in the CircleCI UI.</p>
+<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'><img src="https://support.circleci.com/hc/article_attachments/20059575985563" alt="dynamic-config-enable.png"></p>
+<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'>However, it is also possible to perform this operation via the CircleCI API v1.</p>
+<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'> </p>
+<h2 id="h_01HE6P5917ZEXSDHMWD29YQEBP" data-renderer-start-pos="6812">Prerequisites (If Applicable):</h2>
+<p data-renderer-start-pos="6812">If you don't already have one that you can use, you'll need to generate a personal API token for a user who has, at least, <code>write</code> access on the related project..</p>
+<h2 id="h_01HE6P591779E7VG0TTEFSR6BW" data-renderer-start-pos="6955">Instructions:</h2>
+<ol>
+    <li>
+        <strong>Retrieve the personal API token</strong> (see prerequisites)
+    </li>
+    <li>
+        <strong>Programmatically enable the setting </strong>
+        <ul>
+            <li>The following example uses cURL+shell but you can wrap the API call and use it with your favourite language.<br>
+                <pre style="background-color: #f3f3f3;">curl --location --request PUT 'https://circleci.com/api/v1.1/project/&lt;VCS&gt;/&lt;ORG_NAME&gt;/&lt;NEW_REPO_NAME&gt;/settings' \<br><br>--header 'Content-Type: application/json' \<br><br>--header 'Circle-Token: &lt;API_TOKEN&gt;' \<br><br>--data-raw '{<br><br>"feature_flags":{"setup-workflows": true}<br><br>}'</pre>
+            </li>
+        </ul>
+    </li>
+</ol>
+<h2 id="h_01HE6P5918SAFGPCYF57KWWP83" data-renderer-start-pos="7010">Outcome:</h2>
+<p data-renderer-start-pos="7010">If the operation is successful, you'll receive a <code>200</code> response.</p>
+<p data-renderer-start-pos="7117"> </p>
+<h2 id="h_01HE6P5918A5029F7J14Y6QFTN" data-renderer-start-pos="7117">Additional Notes:</h2>
+<p data-renderer-start-pos="7117">You can programmatically disable the setting by replacing <code>true</code> with <code>false</code> in the above sample request.</p>
+<p data-renderer-start-pos="7244"> </p>
+<h2 id="h_01HE6P5918X1MEH72M1PXE68VN" data-renderer-start-pos="7244">Additional Resources:</h2>
+<p data-renderer-start-pos="7244">Links to related knowledge base articles or how-tos that prove most relevant. Make sure to click "Open in New Tab" when adding resources</p>
