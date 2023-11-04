@@ -48,6 +48,9 @@
 </ol>
 <h2 id="remove-user-info">Removal of User Information</h2>
 <p>HAR files can contain sensitive user information and we recommend user to delete those before sending it to support. </p>
+<p>Cloudflare provide a locally-run tool to remove sensitive information from a HAR file:</p>
+<p><a href="https://har-sanitizer.pages.dev/">https://har-sanitizer.pages.dev/</a></p>
+<p>If you prefer, you can use the following steps to remove them manually.</p>
 <p><strong>Automated Removal of User Information Using <code>jq</code></strong></p>
 <p>If you have <code>jq</code> installed on your computer, you can use it to automatically remove user information from the HAR file. Run the following command:</p>
 <pre class="css-ngpy5m"><code class="language-bash">jq '<br>(.. | objects | select(has("name") and (.name == "ring-session" or .name == "Set-Cookie" or .name == "Cookie"))) |= del(.value)<br>' path_to_your_file.har &gt; new_file.har</code></pre>
