@@ -1,0 +1,21 @@
+<h1 id="h_01HF4H3JW2SSNYQ7DHP9EPSDD1">Finding GitLab Webhook Deliveries</h1>
+<p>Viewing webhooks on GitHub can be a useful diagnostic tool when attempting to discover why perhaps a push to your repo has potentially not resulted in a job on CircleCI.</p>
+<p>A webhook is what allows CircleCI to automatically take action every time you push a commit. GitLab will send us a packet of information about your project when a number of events occur, a <em>"</em><em>push"</em> being the most popular.</p>
+<h2 id="h_01HF4H3JW26KJ67PMVF9WQT11G">Viewing GitLab Webhooks </h2>
+<ol>
+    <li>Navigate to your project on Gitlab</li>
+    <li>Select Settings &gt; Webhooks in the left menu. <br>You can also reach this section at the following URL: <a href="https://gitlab.com/%7BGL_ORG_NAME%7D/%7BGL_REPO_NAME%7D/-/hooks">https://gitlab.com/{GL_ORG_NAME}/{GL_REPO_NAME}/-/hooks</a> </li>
+    <li>The CircleCI webhook will include <code style="font-size: 15px;">circleci.com/trigger-events</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">. Once you have located the webhook, click on "Edit".<br><br><img src="https://support.circleci.com/hc/article_attachments/20349430301211" alt="Screenshot 2023-11-13 at 14.37.33.png"><br></span>
+    </li>
+    <li>
+        <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">From here you can scroll down to the bottom of the page to "Recent events". Here you will find a list of webhook deliveries.<br><br></span><img src="https://support.circleci.com/hc/article_attachments/15475768058011" alt="image__2_.png">
+    </li>
+    <li><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Click on "View details" next to any entry to view the delivery details. This will show the Headers and Payload of the webhook.</span></li>
+</ol>
+<p>The<strong> X-Gitlab-Event-UUID</strong> value is useful for tracking your webhook. Support can use this to do further investigation if needed.</p>
+<p>In the <strong>Request</strong> section under the <strong>Commits</strong>, the<strong> Id</strong> value is the commit hash to ensure the webhook is referring to the correct commit.</p>
+<p>You can also check the response back from CircleCI when GitHub sent the response. If you see a "200" response, your WebHook was delivered successfully.</p>
+<h2 id="h_01HF4H3JW285KSWJP1GYEYQZGN">Additional Resource</h2>
+<ul>
+    <li>https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#troubleshooting</li>
+</ul>
