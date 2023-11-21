@@ -1,27 +1,27 @@
 <p><strong><span class="wysiwyg-color-red">Warning: If you would like to delete your organization, ensure you've submitted a deletion request and allowed it to complete <em>before </em>following the steps in this article. More info on org deletion can be found</span> <a href="https://support.circleci.com/hc/en-us/articles/13006651761307" target="_self">here</a>.</strong></p>
-<h1>Manually stop building</h1>
+<h1 id="stop">Manually stop building</h1>
 <p>You can stop building your project on CircleCI at any time by navigating to the project settings page and clicking the "Stop Building" button.</p>
-<p><img src="https://support.circleci.com/hc/article_attachments/360063893032/blobid0.png" alt="blobid0.png"></p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360063893032" alt="blobid0.png"></p>
 <p>In the event you are for some reason unable to stop building, you can always manually stop building by removing access to the repository from GitHub.<br><br>Some reasons you may potentially need to do this:</p>
 <ul>
     <li>You have renamed your Organization, Username, or Repository</li>
     <li>User credentials have become stale </li>
 </ul>
-<h2>Removing CircleCI webhooks from GitHub</h2>
+<h2 id="remove">Removing CircleCI webhooks from GitHub</h2>
 <p>1. Start by accessing your GitHub repository settings. You can visit this directly by navigating to <em>https://github.com/Org/Repository </em>and clicking the "settings" button on the repository page.</p>
-<p><img src="https://support.circleci.com/hc/article_attachments/360058626252/Screenshot_2020-06-03_at_19.36.02.png" alt="Screenshot_2020-06-03_at_19.36.02.png" width="410" height="142"></p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360058626252" alt="Screenshot_2020-06-03_at_19.36.02.png" width="410" height="142"></p>
 <p> </p>
 <p>2. From the settings page, on the left side in the vertical navigation, we see the two pages we are interested in, "Webhooks" and "Deploy keys".</p>
-<p><img src="https://support.circleci.com/hc/article_attachments/360058626332/Screenshot_2020-06-03_at_19.39.59.png" alt="Screenshot_2020-06-03_at_19.39.59.png" width="285" height="437"></p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360058626332" alt="Screenshot_2020-06-03_at_19.39.59.png" width="285" height="437"></p>
 <p> </p>
-<p>3. From the Webhooks page, locate any Webhooks that post to CircleCI and delete them. <img src="https://support.circleci.com/hc/article_attachments/360032501573/Screen_Shot_2019-04-15_at_10.54.26_AM.png" alt="Screen_Shot_2019-04-15_at_10.54.26_AM.png" width="620" height="156"></p>
+<p>3. From the Webhooks page, locate any Webhooks that post to CircleCI and delete them. <img src="https://support.circleci.com/hc/article_attachments/360032501573" alt="Screen_Shot_2019-04-15_at_10.54.26_AM.png" width="620" height="156"></p>
 <p> </p>
 <p>4. Lastly, navigate to the "Deploy keys" page and delete the key added by CircleCI</p>
-<p><img src="https://support.circleci.com/hc/article_attachments/360031680254/Screen_Shot_2019-04-15_at_10.54.54_AM.png" alt="Screen_Shot_2019-04-15_at_10.54.54_AM.png" width="662" height="172"></p>
+<p><img src="https://support.circleci.com/hc/article_attachments/360031680254" alt="Screen_Shot_2019-04-15_at_10.54.54_AM.png" width="662" height="172"></p>
 <p> </p>
 <p>This will stop the project from building on CircleCI in the event you need to manually remove access. Please note this will invalidate user keys as well (not personal API tokens scoped per user).</p>
 <p> </p>
-<h2>Additional Resources </h2>
+<h2 id="h_01HFQNVZN3NHEV8HCC249JDCN1">Additional Resources </h2>
 <ul>
     <li><a href="https://support.circleci.com/hc/en-us/articles/15420016405019" target="_self">How to view and delete GitLab Webhook Deliveries </a></li>
     <li><a href="https://support.circleci.com/hc/en-us/articles/360049675271-How-To-View-Your-Bitbucket-Webhook-Deliveries" target="_self">How To View Your Bitbucket Webhook Deliveries</a></li>
