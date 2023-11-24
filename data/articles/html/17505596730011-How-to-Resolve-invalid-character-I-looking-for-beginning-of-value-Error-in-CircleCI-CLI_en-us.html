@@ -1,0 +1,58 @@
+<h1 id="h_01HFZ9FCCMVAQBVXWZPVH6D54J" data-renderer-start-pos="6680">Introduction:</h1>
+<p data-renderer-start-pos="6680">When validating or processing a <code>config.yml</code> using the CircleCI CLI, some users may experience the following error</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-renderer-start-pos="6680" data-darkreader-inline-bgcolor="">Error: config compilation request returned an error: invalid character 'I' looking for beginning of value</pre>
+<p data-renderer-start-pos="6812">These errors are usually a result of upgrading to a newer release and a new token results in this behavior being mitigated.</p>
+<h2 id="h_01HFZ9FCCM7TRJFWHFF5BYQZ2C" data-renderer-start-pos="6812">Prerequisites:</h2>
+<ul>
+    <li data-renderer-start-pos="6812">
+        <a href="https://circleci.com/docs/local-cli/" target="_self">CircleCI CLI</a> Installed on your machine 
+    </li>
+    <li data-renderer-start-pos="6812">Personal API Token
+        <ul>
+            <li data-renderer-start-pos="6812">These are generated on this page in your user settings: <a href="https://app.circleci.com/settings/user/tokens" target="_blank" rel="noopener noreferrer">https://app.circleci.com/settings/user/tokens</a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2 id="h_01HFZ9FCCMWAWZ1QAD2TR58XM6" data-renderer-start-pos="7676">Solutions:</h2>
+<ul class="ak-ul" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="7690"><strong>Pass your existing API token into the command using the <code>--token</code> flag</strong></p>
+        <ul class="ak-ul" data-indent-level="1">
+            <li>This can be done using an existing token or by generating a new Personal API Token</li>
+            <li>
+                <pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><code>circleci --token &lt;personal-api-token&gt; config process .circleci/continue_config.yml -v</code></pre>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p data-renderer-start-pos="7742"><strong>Rotate your Token</strong></p>
+        <ul class="ak-ul" data-indent-level="1">
+            <li>Navigate to <a href="https://app.circleci.com/settings/user/tokens">your User Settings Page</a> and generate a new API token for use with the CircleCI CLI</li>
+        </ul>
+    </li>
+    <li>
+        <p data-renderer-start-pos="7794"><strong>Use <code>circleci setup</code> with your newly generated token</strong></p>
+        <ul class="ak-ul" data-indent-level="1">
+            <li>Follow the prompts that result and keep the generated new API token handy to set up the CLI with it</li>
+            <li>
+                <a href="https://circleci-public.github.io/circleci-cli/circleci_setup.html">https://circleci-public.github.io/circleci-cli/circleci_setup.html</a> 
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2 id="h_01HFZ9FCCMDDS8M06YQDTCHJ7A" data-renderer-start-pos="7846">Outcome:</h2>
+<p data-renderer-start-pos="7010">After rotating or passing the token into the command, the <code>circleci</code> commands run will behave as expected.</p>
+<h2 id="h_01HFZ9FCCMA7M0MKQCY0AYR20C" data-renderer-start-pos="7117">Additional Notes:</h2>
+<ul>
+    <li data-renderer-start-pos="7117">We have observed that this occurs mostly for users on macOS who have installed using <code>brew</code> but can impact any CircleCI CLI users after upgrading</li>
+</ul>
+<h2 id="h_01HFZ9FCCMJNSYYQCP0X4Z0C24" data-renderer-start-pos="7244">Additional Resources:</h2>
+<ul>
+    <li style="list-style-type: none;">
+        <ul>
+            <li data-renderer-start-pos="7244"><a href="https://circleci-public.github.io/circleci-cli/" target="_self">CircleCI CLI Manual</a></li>
+            <li data-renderer-start-pos="7244"><a href="https://support.circleci.com/hc/en-us/articles/4413013337371" target="_blank" rel="noopener noreferrer">CircleCI CLI - Running circleci local execute Results in "not implemented for cgroup v2 unified hierarchy" Error</a></li>
+        </ul>
+    </li>
+</ul>

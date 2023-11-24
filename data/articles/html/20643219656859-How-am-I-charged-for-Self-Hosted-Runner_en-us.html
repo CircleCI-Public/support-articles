@@ -1,0 +1,24 @@
+<h1 id="h_01HFZ1CRVJJNBJ3HXGMGZ0ZC4Q">Overview</h1>
+<p>Teams that are migrating some of their workloads to CircleCI's Self-Hosted Runner might be curious to know if there are any charges for it. </p>
+<p> </p>
+<h1 id="h_01HFZ1E5PDD712R7TWPTGCKXKJ">How you will be charged</h1>
+<p>Any Network Egress to CircleCI will be charged. At this current time, this includes CircleCI <a href="https://circleci.com/docs/caching/" target="_blank" rel="noopener noreferrer">Caches</a>, <a href="https://circleci.com/docs/workspaces/" target="_blank" rel="noopener noreferrer">Workspaces</a>, and <a href="https://circleci.com/docs/artifacts/" target="_blank" rel="noopener noreferrer">Artifacts</a> and will be charged at the normal rate according to your <a href="https://circleci.com/docs/persist-data/#custom-storage-usage" target="_blank" rel="noopener noreferrer">Usage Controls</a>.</p>
+<p class="wysiwyg-indent1"><a href="https://circleci.com/docs/persist-data/#managing-network-and-storage-usage:~:text=The%20only%20network%20traffic%20that%20will%20result%20in%20billing%20is%20accrued%20through%20restoring%20caches%20and%20workspaces%20to%20self%2Dhosted%20runners.%20Retention%20of%20artifact%2C%20workspace%2C%20and%20cache%20objects%20will%20result%20in%20billing%20for%20storage%20usage." target="_blank" rel="noopener noreferrer">The only <strong>network traffic</strong> that will result in billing is accrued through <strong>restoring caches and workspaces to self-hosted runners.</strong> Retention of artifacts, workspace, and cache objects will result in billing for <strong>storage usage</strong>.</a></p>
+<p> </p>
+<p>Since your builds will not be running on CircleCI's Infrastructure, you will not be charged compute credits, but please make note that this cost is shifted to whatever hosting service you use. (i.e. AWS, GCP, Nutanix, etc.)</p>
+<p> </p>
+<h1 id="h_01HFZ1VJKG27SD41XJV4493Q9N">Why isn't my build starting on a Self-hosted Runner?</h1>
+<p>CircleCI utilizes a different set of concurrency for self-hosted runners and you may be hitting that limit. Please review the <a href="https://circleci.com/pricing/#:~:text=Yes-,KEY%20FEATURES,-Concurrent%20job%20runs" target="_blank" rel="noopener noreferrer">Key Features</a> tab on our Pricing page to verify your limit. Your concurrency limit for self-hosted runners is also defined in your "Runner" Tab for your organization.</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/20643339229595"></p>
+<p>Please note you may need to refresh your entire page for the "Concurrency Usage" to update.</p>
+<p> </p>
+<p>In some cases, you may have run out of credits on CircleCI and want to continue to build on CircleCI using self-hosted runners. To use a self-hosted Runner you must have a minimum number of credits to make sure you have enough credits for any of the above-mentioned things CircleCI Charges for. </p>
+<p> </p>
+<p>If neither of these options applies to you, please view our <a href="https://circleci.com/docs/troubleshoot-self-hosted-runner/" target="_blank" rel="noopener noreferrer">Troubleshoot Self-Hosted Runner</a> page in our documentation or our <a href="https://support.circleci.com/hc/en-us/sections/360000059327-Troubleshooting-CircleCI-Server" target="_blank" rel="noopener noreferrer">Troubleshooting Section</a> in our Support Portal.</p>
+<h2 id="h_01HFZ1YHHN9FTTZDF4XM9QSCSY">Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/17052336685083">How Do Network Storage Charges Work?</a></li>
+    <li><a href="https://circleci.com/docs/runner-overview/" target="_blank" rel="noopener noreferrer">CircleCI Self-Hosted Runner </a></li>
+    <li><a href="https://circleci.com/docs/runner-faqs/" target="_blank" rel="noopener noreferrer">CircleCI Self-Hosted Runner FAQ</a></li>
+    <li><a href="https://circleci.com/blog/autoscale-self-hosted-runners-aws/" target="_blank" rel="noopener noreferrer">AutoScale Self-Hosted Runners on AWS</a></li>
+</ul>
