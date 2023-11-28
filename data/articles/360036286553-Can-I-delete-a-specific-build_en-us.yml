@@ -1,5 +1,5 @@
 id: 360036286553
-title: '[Cloud] Can I delete a build?'
+title: Can I delete a specific build?
 author_id: 377853350854
 created_at: '2019-09-24T15:29:47Z'
 locale: en-us
@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 7513289222427
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360036286553--Cloud-Can-I-delete-a-build-
+  https://support.circleci.com/hc/en-us/articles/360036286553-Can-I-delete-a-specific-build-
 draft: false

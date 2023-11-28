@@ -1,0 +1,6 @@
+<h1 id="h_01HG8NHQXX40CW61PX7APMDC8P">Deleting Builds</h1>
+<p>We cannot delete individual builds on CircleCI, even if a secret/password has been exposed in your build output.</p>
+<p>After exposing sensitive information, it is too late to ensure the security of these secrets or passwords. Please practice good security hygiene and rotate any keys or passwords that may have been exposed. This will prevent these leaked secrets from being used.</p>
+<p>Alternatively, we can assist you delete the entire project. This will remove the complete build history and will allow you to set up the project again and start fresh.</p>
+<p>We recommend using environment variables and contexts, as these have secret masking enabled by default. More information on this functionality can be found on <a href="https://circleci.com/blog/keep-environment-variables-private-with-secret-masking/" target="_blank" rel="noopener noreferrer">this blog post</a>. </p>
+<p>We have an existing feature request to enable users to delete a specific build. If this feature would be helpful, please feel free to add a vote to the request <a href="https://ideas.circleci.com/cloud-feature-requests/p/i-want-to-remove-a-certain-build-log" target="_blank" rel="noopener noreferrer">here</a>.</p>
