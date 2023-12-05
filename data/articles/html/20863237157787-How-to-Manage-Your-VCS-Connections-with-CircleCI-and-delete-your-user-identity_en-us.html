@@ -1,0 +1,47 @@
+<h1 id="h_01HGKKWXSZAW118P96RVNM9M3G">Overview</h1>
+<p>CircleCI has introduced an important update to its Version Control System (VCS) connection management. Previously, customers were unable to delete their VCS connections with CircleCI on their own and required reaching out to the CircleCI Support Team when seeing <a href="https://circleci.com/error-vcs-identity-taken.html">the following "Error adding identity" Message</a></p>
+<p class="wysiwyg-indent2"> </p>
+<p class="wysiwyg-indent2"><em><strong>"</strong></em><em><strong>The identity provided by your VCS service is already associated with a different account"</strong></em></p>
+<p class="wysiwyg-indent2"> </p>
+<p class="wysiwyg-text-align-center"><img src="https://support.circleci.com/hc/article_attachments/20868375919259" width="642" height="211"></p>
+<p> </p>
+<p>This was prevalent for issues such as joining the wrong organization, connecting with the incorrect GitHub user, or resolving general permissions issues - customers had to reach out to our support team for assistance.</p>
+<h2 id="h_01HGM07AP56SG1GXDNCVH6JP05">Prerequisites</h2>
+<ul>
+    <li>A user account integrated with the <a href="https://circleci.com/docs/github-integration/">GitHub OAuth</a> or <a href="https://circleci.com/docs/bitbucket-integration/">BitBucket integration</a>
+        <ul>
+            <li>Please note that Standalone VCS integrations such as GitHub App and GitLab are not supported at this time</li>
+        </ul>
+    </li>
+</ul>
+<h2 id="h_01HGKKWXSZD6N1MPFATKPGJSBS">Unlinking your User Identity</h2>
+<p>Moving forward, we have empowered customers with the ability to manage these connections themselves. This rights management is now conveniently located under the user's account integrations page.</p>
+<p> </p>
+<p class="wysiwyg-text-align-center"><img src="https://support.circleci.com/hc/article_attachments/20868334292763" alt="Screenshot 2023-12-01 at 10.39.04 AM.png" width="571" height="311"></p>
+<p>Please see the steps below to disconnect your VCS connection:</p>
+<ol>
+    <li>Navigate to <a href="https://app.circleci.com/settings/user">your user settings page</a> <em>when signed in as the user which is incorrectly/previously linked.</em>
+    </li>
+    <li>Click the red <strong>Disconnect</strong> button under the VCS section you wish to unlink for either GitHub or BitBucket.</li>
+    <li>Confirm your selection and explicitly confirm this action by typing <strong>DISCONNECT</strong> in the provided field to confirm</li>
+</ol>
+<p>Upon confirming the disconnect action, you will be redirected back to the CircleCI login page to log in with the account you wish to connect.</p>
+<h2 id="h_01HGKKWXSZR53PCHYJB42QX9RC">Reconnecting to Your VCS</h2>
+<p>If a user chooses to reconnect their VCS with CircleCI, they can easily do so. If a user previously signed up with Github or Bitbucket <strong>before September 2023</strong>, they simply need to login with Github to reconnect.</p>
+<p class="wysiwyg-text-align-center"><img src="https://support.circleci.com/hc/article_attachments/20868381080475" alt="Screenshot 2023-12-01 at 10.39.25 AM.png" width="603" height="275"></p>
+<h2 id="h_01HGKKWXSZHWQN7TX4NQQNGJAK">Additional Notes</h2>
+<ul>
+    <li>The above VCS management functionality is currently <strong>available only for Classic (<a href="https://circleci.com/docs/github-integration/">GitHub OAuth </a>and <a href="https://circleci.com/docs/bitbucket-integration/">BitBucket</a>) organizations.</strong>
+        <ul>
+            <li>However, we are excited to announce that we will soon be implementing a similar set of connection and disconnection options for Stand Alone organizations (such as those connected with the <a href="https://circleci.com/docs/github-apps-integration/">GitHub App</a> and <a href="https://circleci.com/docs/gitlab-integration/">GitLab</a> integrations)</li>
+        </ul>
+    </li>
+    <li>Please note that you may need to recreate any Personal API Tokens after deleting your user identity on <a href="https://app.circleci.com/settings/user/tokens">your user settings page</a>
+    </li>
+</ul>
+<h2 id="h_01HGKMEYB1T8HAQ5SJGH3RTHYT">Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/20798023263899" target="_blank" rel="noopener noreferrer">Signing into CircleCI if your account was setup using OAuth integration for BitBucket and GitHub</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/19019502351899" target="_blank" rel="noopener noreferrer">How do I manage my People Settings for my GitHub organization?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/20302893166363" target="_blank" rel="noopener noreferrer">Is my project setup using GitHub OAuth or GitHub Apps?</a></li>
+</ul>
