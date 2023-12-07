@@ -1,20 +1,12 @@
 <h1 id="h_01HBHCS97J3YDDVYSKSE51DXW0">Overview</h1>
-<p>When using CircleCI's Container Runner, you might wonder why you can't directly connect to the build environment using SSH.</p>
+<p>In some cases, you may wish to Debug with SSH on CircleCI's Container Runner.</p>
+<p>Below is our documentation that will allow you to implement this.</p>
 <h1 id="h_01HBHCS97J78K8ZVW9WPZD0EWM">Explanation</h1>
-<p>This is a <a href="https://circleci.com/docs/container-runner/#limitations" target="_blank" rel="noopener noreferrer">known limitation</a> of how CircleCI's Container Agent is currently run. </p>
-<p>If this is something that you would like to be implemented into Container Runner, please feel free to add an upvote to the following Feature Request.</p>
+<p>CircleCI Container Runner now supports SSH reruns as an open preview. </p>
+<p>You can find instructions on how to implement this in your Kubernetes Cluster via the following documentation link.</p>
 <ul>
-    <li><a href="https://circleci.canny.io/runner-feature-requests/p/enable-ssh-on-container-runner" target="_blank" rel="noopener noreferrer">Enable SSH Reruns on Container Runner</a></li>
+    <li><a href="https://circleci.com/docs/container-runner-installation/#enable-rerun-job-with-ssh">Enable Rerun job with SSH - Open preview</a></li>
 </ul>
-<h1 id="h_01HBHCS97JVWQBB84ZJEJRSHPJ">Alternatives</h1>
-<ol>
-    <li>
-        <p><strong>Using Logs</strong>: You can run your command with a `--verbose` flag which might help produce more helpful logging.</p>
-    </li>
-    <li>
-        <p><a href="https://circleci.com/docs/artifacts/" target="_blank" rel="noopener noreferrer"><strong>Storing Artifacts</strong></a>: You can store the output of your command as an artifact to follow up on later. </p>
-    </li>
-</ol>
 <p> </p>
 <h1 id="h_01HBHD6196DHRMWRM6G69RK4VF">Additional Links</h1>
 <ul>
