@@ -1,0 +1,24 @@
+<h1 id="h_01HHFS8F55YYBFRC84676J86H8">Overview</h1>
+<p>In some cases, you might need to use a specific SSH key when cloning a Git repository. This could be due to having multiple keys for different accounts or repositories, or because the key you need to use is not in the default location. Here's how you can specify a particular SSH key when running the <code>git clone</code> command.</p>
+<p> </p>
+<h1 id="h_01HHFS7ZABQBBJ11PF1TA2R775">Requirements</h1>
+<p>This method requires Git 2.3.0 or later. If you're using an older version of Git, you might need to use an <code>ssh-agent</code> or modify your SSH config to specify the private key to use for a particular host.</p>
+<p> </p>
+<h1 id="h_01HHFS7ZABHRH3AJVQC0GWQE0Q">Using <code>GIT_SSH_COMMAND</code>
+</h1>
+<p>The <code>GIT_SSH_COMMAND</code> environment variable allows you to define the ssh command that will be used during the Git operations that require SSH connections, such as <code>git clone</code>, <code>git fetch</code>, <code>git pull</code> or <code>git push</code>.</p>
+<p>You can set this environment variable to include the <code>-i</code> option, which allows you to specify the path to the SSH private key that should be used.</p>
+<p>Here's an example of how to use <code>GIT_SSH_COMMAND</code> when running <code>git clone</code>:</p>
+<div class="codeblock relative font-sans text-[16px]">
+    <pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><code class="language-bash" data-darkreader-inline-bgimage="" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><span class="token assign-left" data-darkreader-inline-color="">GIT_SSH_COMMAND</span><span class="token" data-darkreader-inline-color="">=</span><span class="token" data-darkreader-inline-color="">"ssh -i /path/to/your/private/key"</span> <span class="token" data-darkreader-inline-color="">git</span> clone git@github.com:username/repo.git</code></pre>
+</div>
+<p>Replace <code>/path/to/your/private/key</code> with the path to your SSH private key, and replace <code>git@github.com:username/repo.git</code> with the SSH URL of the repository you want to clone.</p>
+<p>In CircleCI this is typically <code>~/.ssh/&lt;key_type&gt;_&lt;fingerprint&gt;</code>.</p>
+<p> </p>
+<p>This command sets the <code>GIT_SSH_COMMAND</code> environment variable for the duration of the <code>git clone</code> command, causing Git to use the specified SSH key for authentication. After the <code>git clone</code> command completes, the <code>GIT_SSH_COMMAND</code> environment variable will no longer be set (unless it was set before you ran the command).</p>
+<p> </p>
+<h1 id="h_01HHFSCJQ1REWV7CJN9ZSW3SKS">Additional Resources</h1>
+<ul>
+    <li><a href="https://circleci.com/docs/add-ssh-key/" target="_blank" rel="noopener noreferrer">Add additional SSH keys to CircleCI</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360021127693">How to generate and store read/write SSH keys</a></li>
+</ul>
