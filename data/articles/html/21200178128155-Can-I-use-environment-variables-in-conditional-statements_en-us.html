@@ -1,0 +1,50 @@
+<h1 id="h_01HHHJ28WH2QTR35BRNKXGKCJC" data-renderer-start-pos="6347">Overview:</h1>
+<p>While configuring a conditional workflow or a <code>when</code> step, you might want to use an environment variable in the <a href="https://circleci.com/docs/configuration-reference/#logic-statements" target="_blank" rel="noopener noreferrer">logic statement</a>. However you'll find that this doesn't work. This article explains why, and discusses alternatives.</p>
+<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'> </p>
+<h2 id="h_01HHHJ28WH5BRW6C4Q5XJMK3JG" data-renderer-start-pos="6427">Why can't environment variables be used in conditional statements?</h2>
+<p>In CircleCI, the configuration file is processed in two main stages: compilation time and run time.</p>
+<ol>
+    <li>
+        <p><strong>Compilation Time:</strong></p>
+        <ul>
+            <li>During compilation time, CircleCI processes and parses your configuration file to understand the structure and define the workflow. This is when it evaluates conditions specified in "when" logic statements, which determine when to run specific jobs or steps.</li>
+            <li>At this stage, CircleCI doesn't have access to the actual values of environment variables. Instead, it sees placeholders or references to those variables.<br><br>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Run Time:</strong></p>
+        <ul>
+            <li>When your pipeline is actually executed, during run time, the defined jobs and steps are processed. Now, CircleCI can access and use the real values of environment variables.</li>
+        </ul>
+    </li>
+</ol>
+<p>The issue arises because logic statements, such as those used in "when" conditions, are evaluated at compilation time when the actual values of environment variables are not available. Since the values are determined at run time, they can't be used directly in logic statements during the compilation phase.</p>
+<h2 data-renderer-start-pos="8026"> </h2>
+<h2 id="h_01HHHJ28WJY73M8610KYGB5Q09" data-renderer-start-pos="8026">Alternatives:</h2>
+<ul>
+    <li>An obvious alternative is to modify your configuration so conditional steps or workflows only rely on <a href="https://circleci.com/docs/pipeline-variables/" target="_blank" rel="noopener noreferrer">pipeline parameters/values</a>. However, depending on your case, this might not be possible.</li>
+    <li>An other alternative is to leverage <a href="https://circleci.com/docs/dynamic-config/" target="_blank" rel="noopener noreferrer">Dynamic Configuration</a> and to <a href="https://support.circleci.com/hc/en-us/articles/13082520537243">set parameters using the environment variable(s)</a> in question.</li>
+</ul>
+<h2 data-renderer-start-pos="6514"> </h2>
+<h2 id="h_01HHHJ28WJBVJ2B5NHJR8PACRD" data-renderer-start-pos="6514">Additional Resources:</h2>
+<ul>
+    <li data-renderer-start-pos="6514">
+        <a href="https://circleci.com/docs/configuration-reference/#logic-statements" target="_blank" rel="noopener noreferrer">Logic statements</a> [Documentation]
+    </li>
+    <li data-renderer-start-pos="6514">
+        <a href="https://circleci.com/docs/reusing-config/#defining-conditional-steps" target="_blank" rel="noopener noreferrer">Defining conditional steps</a> [Documentation]
+    </li>
+    <li data-renderer-start-pos="6514">
+        <a href="https://support.circleci.com/hc/en-us/articles/360043638052">Conditional steps in jobs and conditional workflows</a> [Support article]
+    </li>
+    <li data-renderer-start-pos="6514">
+        <a href="https://circleci.com/docs/using-dynamic-configuration/" target="_blank" rel="noopener noreferrer">Using dynamic configuration</a> [Documentation]
+    </li>
+    <li data-renderer-start-pos="6514">
+        <a href="https://circleci.com/blog/building-cicd-pipelines-using-dynamic-config/" target="_blank" rel="noopener noreferrer">Building CI/CD pipelines using dynamic config</a> [Blog post / Tutorial]
+    </li>
+    <li data-renderer-start-pos="6514">
+        <a href="https://support.circleci.com/hc/en-us/articles/13082520537243" target="_blank" rel="noopener noreferrer">How to pass a parameter when using the continuation orb</a> [Support article]
+    </li>
+</ul>

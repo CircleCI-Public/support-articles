@@ -1,0 +1,17 @@
+<h1 id="h_01HHJ1RG7GHJ7BE3WVSXXK9Y04" class="p1"><strong>Overview</strong></h1>
+<p class="p2">Sometimes you will set up a new instance of a CircleCI self-hosted server, and although your commits are going through, you will see a "No Workflow" message for your build. This is relatively common and easy to address.</p>
+<p class="p2"> </p>
+<h2 id="h_01HHJ1RKXN3RYXEW39KGR3ZYYS" class="p3"><strong>Possible Causes/Solutions</strong></h2>
+<ol class="ol1">
+    <li class="li2">The first and most common is that your nomad pods are failing and need to be restarted.</li>
+    <li class="li2">The next possible option is that your S3 permissions are set for only read access, or simply do not have the correct permissions required to access the bucket at all. You can find the full policy.json required, <a href="https://circleci.com/docs/server/v4.2/installation/phase-1-prerequisites/#object-storage-and-permissions:~:text=Create%20a%20policy%20document%20policy.json"><span class="s1">here on our documentation site.</span></a>
+    </li>
+</ol>
+<p class="p2">If you have attempted all of these solutions and still do not see a positive change in behavior, please feel free to reach out to our Support team.</p>
+<p class="p2"> </p>
+<h2 id="h_01HHJ1RQTZ5AB4JFT5RQR3W32Y" class="p3"><strong>Additional Resources:</strong></h2>
+<ul class="ul1">
+    <li class="li4"><span class="s2"><a href="https://support.circleci.com/hc/en-us/articles/15819961443483"><span class="s3">Server 4.x Upgrade Path</span></a></span></li>
+    <li class="li4"><span class="s2"><a href="https://support.circleci.com/hc/en-us/articles/360011133433"><span class="s3">[Server] Clearing the Nomad job queue</span></a></span></li>
+    <li class="li4"><span class="s2"><a href="https://support.circleci.com/hc/en-us/articles/360007993113"><span class="s3">[Server] How to restart the Replicated services</span></a></span></li>
+</ul>
