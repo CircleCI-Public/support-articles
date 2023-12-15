@@ -1,14 +1,15 @@
-<h1>How to delete a Self-Hosted Runner Resource Class</h1>
+<h1 id="h_01HHN2NH22RM0N65KJCEFD6WWN">How to delete a Self-Hosted Runner Resource Class</h1>
 <p>In some cases, you may wish to delete a Self-Hosted Runner Resource Class from the Runner UI if you are not using it anymore. </p>
-<p>This is possible via the <a href="https://circleci.com/docs/local-cli/" target="_blank" rel="noopener">CircleCI CLI</a>. </p>
+<p>This is possible via the <a href="https://circleci.com/docs/local-cli/" target="_blank" rel="noopener noreferrer">CircleCI CLI</a>. </p>
 <p>Please be sure you want to permanently delete the resource class and its associated tokens, as this action cannot be undone.</p>
-<p> </p>
-<h2>Step 1</h2>
+<h2 id="h_01HHN2NY2K427R75JVZ746RRRJ">Prerequisites</h2>
+<p>Organization admins in your VCS provider can create and delete self-hosted runner resource classes. Any organization user in your VCS provider that the resource class is associated with can view the resource class list through the CLI.</p>
+<h2 id="h_01HHN2NH22BRHCQ38AM79AER6R">Deletion Command</h2>
 <p>To delete your Runner Resource Class, you can use the following CircleCI CLI command:</p>
 <pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">circleci runner resource-class delete &lt;namespace&gt;/&lt;resource-class&gt; --force</pre>
 <p> </p>
-<h3>Additional Resources:</h3>
+<h3 id="h_01HHN2NH22KMMXBM48YRHB07WA">Additional Resources:</h3>
 <ul>
-    <li><a href="https://circleci.com/docs/runner-faqs/#can-i-delete-self-hosted-runner-resource-classes" target="_blank" rel="noopener">Can I delete self-hosted runner resource classes?</a></li>
-    <li><a href="https://support.circleci.com/hc/en-us/articles/14031352897819" target="_blank" rel="noopener">How to Rotate your Self-Hosted Runner Resource Class Tokens</a></li>
+    <li><a href="https://circleci.com/docs/runner-faqs/#can-i-delete-self-hosted-runner-resource-classes" target="_blank" rel="noopener noreferrer">Can I delete self-hosted runner resource classes?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/14031352897819" target="_blank" rel="noopener noreferrer">How to Rotate your Self-Hosted Runner Resource Class Tokens</a></li>
 </ul>

@@ -1,0 +1,37 @@
+<h1 id="h_01HHMX2F7FYG1ZPBWPMDKZ42J5">Overview</h1>
+<p>In CircleCI, the terms <code>task</code> and <code>job</code> refer to different components of the build process. Understanding these concepts is crucial to effectively configure your CI/CD pipeline in CircleCI.</p>
+<h1 id="h_01HHMX2F7GVZTX5P7DJ88ERVTS">Jobs</h1>
+<p>A job in CircleCI is the smallest configurable unit within a <code>config.yml</code> file. Each job is an independent entity that defines the build environment and the series of steps to be performed within that environment.</p>
+<p>Jobs are defined in the <code>jobs:</code> section of the <code>config.yml</code> file. A job can be as simple as running a shell command, or it can involve complex build processes involving multiple commands, caching, and artifacts.</p>
+<p>Here is an example of a simple job:</p>
+<pre><code>version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A first hello"
+</code></pre>
+<p>In this example, a job named <code>build</code> is defined. It uses a Docker image with Ruby version 2.4.1 and runs two steps: checking out the code from the current repository and running a simple echo command.</p>
+<h1 id="h_01HHMX2F7GTAYA2A82B2BJFEY7">Tasks</h1>
+<p>In CircleCI, a task refers to a single execution of a job. If a job has parallelism configured, CircleCI will run that job multiple times in parallel, and each execution of the job is considered a task.</p>
+<p>For example, if you have a job with <code>parallelism: 6</code> in your <code>config.yml</code> file, CircleCI will run six tasks for that job. Each task will execute the same series of steps defined in the job, but they will run independently and in parallel.</p>
+<p>Here is an example of a job with parallelism:</p>
+<pre><code>version: 2.1
+jobs:
+  test:
+    docker:
+      - image: circleci/ruby:2.4.1
+    parallelism: 6
+    steps:
+      - checkout
+      - run: ./run-tests.sh
+</code></pre>
+<p>In this example, the <code>test</code> job is defined with <code>parallelism: 6</code>, so CircleCI will run six tasks for this job. Each task will execute the <code>./run-tests.sh</code> script independently and in parallel.</p>
+<p> </p>
+<h1 id="h_01HHMX3JMYH7QF8NNJP80478EB">Additional Resources</h1>
+<ul>
+    <li><a href="https://circleci.com/docs/configuration-reference/#jobs" target="_blank" rel="noopener noreferrer">Configuration Reference - Jobs</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/115015711148">What is a job?</a></li>
+</ul>

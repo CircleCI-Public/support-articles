@@ -1,0 +1,17 @@
+<h1 id="h_01HHN4MF54Q0F1XTGN1Y7WJYJ9">Overview</h1>
+<p>The <a href="https://circleci.com/docs/create-an-orb/#3-choose-the-fully-automated-orb-setup-option">automated orb setup option</a> is not currently fully supported for GitHub App projects. To find out if you authorized through the GitHub OAuth app or the CircleCI GitHub App, see the <a class="css-x7gnkn" href="https://circleci.com/docs/github-apps-integration/" data-testid="link">GitHub App integration</a> page.</p>
+<p>Below is a workaround that utilizes most of the automated process with some additional steps for orb authoring.</p>
+<h2 id="h_01HHN4MF542WYPWHPMDSHDQM7V">Orb Setup</h2>
+<ol dir="auto">
+    <li>Follow <a href="https://circleci.com/docs/create-an-orb/#create-your-orb">this guide</a> as normal until you reach Step 3</li>
+    <li>When you get to the option of <code>Would you like to perform an automated setup of this orb?:</code> please select <code>Yes</code>  </li>
+    <li>Follow each step until you are asked <code>Are you using GitHub or Bitbucket or GitHub app (if GH App use circleci as the entry)?</code> and please enter <code>circleci</code>
+    </li>
+    <li>When you are asked for your <strong>org name</strong>, please do <em>not enter</em> the name in the left-hand corner of the CircleCI App. It will actually be the org ID - which can be found in your Organization Settings</li>
+    <li>Complete the rest of the automated prompts</li>
+    <li>Navigate to your Projects dashboard <strong>in CircleCI</strong> and set up a project for your orb repository following this guide: <a href="https://circleci.com/docs/github-apps-integration/#sign-up" rel="noopener noreferrer">https://circleci.com/docs/github-apps-integration/#sign-up</a>
+    </li>
+    <li>As a final step, inside of the <code>config.yml</code> <strong>in GitHub</strong> for your orb repo, please adjust <code>vcs_type</code> from the default pipeline parameter to <code>github</code>. It should look something like this:</li>
+</ol>
+<pre><code>...<br>- orb-tools/continue:<br>          pipeline-number: &lt;&lt; pipeline.number &gt;&gt;<br>          vcs-type: github<br>...</code></pre>
+<p> </p>
