@@ -1,6 +1,6 @@
-<h1><strong>Configuring VPN Connection during a Build</strong></h1>
-<h4>In case you need to connect to a private network during your builds, or if you want to restrict access to your environment to a specific IP address, we suggest configuring a VPN connection as follows.</h4>
-<h2>
+<h1 id="h_01HHQ2HNF513PQRJHRZ6VEKCXK"><strong>Configuring VPN Connection during a Build</strong></h1>
+<h4 id="h_01HHQ2HNF551P9V9VDWHSGQ5F0">In case you need to connect to a private network during your builds, or if you want to restrict access to your environment to a specific IP address, we suggest configuring a VPN connection as follows.</h4>
+<h2 id="h_01HHQ2HNF5PT8RYCFTAEN8YDEQ">
     <strong>Prerequisites:</strong><em><strong><br></strong></em>
 </h2>
 <p><em><strong>Note that you <span class="wysiwyg-underline">must</span> use one of the following executors:</strong></em></p>
@@ -16,7 +16,7 @@
     </li>
 </ul>
 <h2 id="machine">
-    <strong><code>machine</code> [Linux] executor </strong>(<a href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images" target="_blank" rel="noopener">Available <code>machine</code> images</a>)
+    <strong><code>machine</code> [Linux] executor </strong>(<a href="https://circleci.com/docs/2.0/configuration-reference/#available-machine-images" target="_blank" rel="noopener noreferrer">Available <code>machine</code> images</a>)
 </h2>
 <ul>
     <li>
@@ -31,10 +31,8 @@
 </ul>
 <h2 id="openvpn"><strong>OpenVPN (2.x)</strong></h2>
 <ul>
-    <li><span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a>.</span></li>
-    <li>
-        <span>If the VPN client authentication is credentials-based (user-locked profile), you'll also need to add the username and password as environment variables (<code>VPN_USER</code> and <code>VPN_PASSWORD</code>).</span><span><span><span><br></span></span></span><span><span><span></span></span></span>
-    </li>
+    <li>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener noreferrer">environment variable</a>.</li>
+    <li>If the VPN client authentication is credentials-based (user-locked profile), you'll also need to add the username and password as environment variables (<code>VPN_USER</code> and <code>VPN_PASSWORD</code>).</li>
 </ul>
 <pre style="background-color: #f3f3f3;"><code>version: 2.1
 workflows:
@@ -50,7 +48,7 @@ jobs:
           name: Install OpenVPN
           command: |
             sudo apt-get update
-            sudo apt-get install openvpn <span>openvpn-systemd-resolved</span><br>
+            sudo apt-get install openvpn openvpn-systemd-resolved<br>
       - run:
           name: Check IP before VPN connection
           command: |
@@ -61,10 +59,10 @@ jobs:
           background: true
           command: |
             echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /tmp/config.ovpn<br><br>            if grep -q auth-user-pass /tmp/config.ovpn; then<br>              if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then<br>                echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"<br>                exit 1<br>              else<br>                printf "$VPN_USER\\n$VPN_PASSWORD" &gt; /tmp/vpn.login<br>              fi<br>            fi<br><br>            vpn_command=(sudo openvpn<br>              --config /tmp/config.ovpn<br>              --route 169.254.0.0 255.255.0.0 net_gateway<br>              --script-security 2<br>              --up /etc/openvpn/update-systemd-resolved --up-restart<br>              --down /etc/openvpn/update-systemd-resolved --down-pre<br>              --dhcp-option DOMAIN-ROUTE .)<br><br>            if grep -q auth-user-pass /tmp/config.ovpn; then
-              <span>vpn_command+=(--auth-user-pass /tmp/vpn.login)</span>
-            fi<br><br>            ET_phone_home=$(ss -Hnto state established '( sport = :ssh )' | head -n1 | awk '{ split($4, a, ":"); print a[1] }')<br>            echo $ET_phone_home<br><br><span>            if [ -n "$ET_phone_home" ]; then</span><br>              <span>vpn_command+=(--route $ET_phone_home 255.255.255.255 net_gateway)</span><br>            fi<br><br>            <span>for IP in $(host runner.circleci.com | awk '{ print $4; }')</span><br>              do<br>                <span>vpn_command+=(--route $IP 255.255.255.255 net_gateway)</span><br>                <span>echo $IP</span><br>            done<br><br>            for SYS_RES_DNS in <span>$(systemd-resolve --status | grep 'DNS Servers'|awk '{print $3}')</span><br>              do<br>                vpn_command+=(--route $SYS_RES_DNS 255.255.255.255 net_gateway)<br>                echo $SYS_RES_DNS<br>            done<br><br>            "${vpn_command[@]}" &gt; /tmp/openvpn.log<br>
+              vpn_command+=(--auth-user-pass /tmp/vpn.login)
+            fi<br><br>            ET_phone_home=$(ss -Hnto state established '( sport = :ssh )' | head -n1 | awk '{ split($4, a, ":"); print a[1] }')<br>            echo $ET_phone_home<br><br>            if [ -n "$ET_phone_home" ]; then<br>              vpn_command+=(--route $ET_phone_home 255.255.255.255 net_gateway)<br>            fi<br><br>            for IP in $(host runner.circleci.com | awk '{ print $4; }')<br>              do<br>                vpn_command+=(--route $IP 255.255.255.255 net_gateway)<br>                echo $IP<br>            done<br><br>            for SYS_RES_DNS in $(systemd-resolve --status | grep 'DNS Servers'|awk '{print $3}')<br>              do<br>                vpn_command+=(--route $SYS_RES_DNS 255.255.255.255 net_gateway)<br>                echo $SYS_RES_DNS<br>            done<br><br>            "${vpn_command[@]}" &gt; /tmp/openvpn.log<br>
       - run:
-          name: Wait for the connection to be established and check IP<br>          command: |<br>            <span>counter=1</span><br>            until [ -f /tmp/openvpn.log ] &amp;&amp; [ "$(grep -c "Initialization Sequence Completed" /tmp/openvpn.log)" != 0 ] || [ "$counter" -ge 5 ]; do<span><br></span>              <span class="pl-pds">((</span><span>counter</span><span class="pl-k">++</span><span class="pl-pds">))</span><br>              echo "<span>Attempting to connect to VPN server...</span>"<br>              sleep 1;<br>            done<br><br>            if [ ! -f <span>/tmp/openvpn.log</span> ] || (! grep -iq "Initialization Sequence Completed" <span>/tmp/openvpn.log</span>); then<br>              printf "\nUnable to establish connection within the allocated time ---&gt; Giving up.\n"<br>            else<br>              printf "\nVPN connected\n"<br>              printf "\nPublic IP is now %s\n" "$(curl -s http://checkip.amazonaws.com)"<br>            fi
+          name: Wait for the connection to be established and check IP<br>          command: |<br>            counter=1<br>            until [ -f /tmp/openvpn.log ] &amp;&amp; [ "$(grep -c "Initialization Sequence Completed" /tmp/openvpn.log)" != 0 ] || [ "$counter" -ge 5 ]; do<br>              <span class="pl-pds">((</span>counter<span class="pl-k">++</span><span class="pl-pds">))</span><br>              echo "Attempting to connect to VPN server..."<br>              sleep 1;<br>            done<br><br>            if [ ! -f /tmp/openvpn.log ] || (! grep -iq "Initialization Sequence Completed" /tmp/openvpn.log); then<br>              printf "\nUnable to establish connection within the allocated time ---&gt; Giving up.\n"<br>            else<br>              printf "\nVPN connected\n"<br>              printf "\nPublic IP is now %s\n" "$(curl -s http://checkip.amazonaws.com)"<br>            fi
 
       - run:
           name: Run commands in our infrastructure
@@ -75,8 +73,8 @@ jobs:
 <p> </p>
 <h2 id="openvpn-connect"><strong>OpenVPN Connect (OpenVPN 3)</strong></h2>
 <ul>
-    <li><span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a>.</span></li>
-    <li><span>OpenVPN 3 Linux <strong>does not support</strong> storing user credentials in a text-based file to use when starting a VPN connection. Please refer to <a href="https://openvpn.net/openvpn-3-linux-and-auth-user-pass/" target="_blank" rel="noopener">this documentation (OpenVPN 3 Linux and --auth-user-pass)</a> to set up a workaround.</span></li>
+    <li>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener noreferrer">environment variable</a>.</li>
+    <li>OpenVPN 3 Linux <strong>does not support</strong> storing user credentials in a text-based file to use when starting a VPN connection. Please refer to <a href="https://openvpn.net/openvpn-3-linux-and-auth-user-pass/" target="_blank" rel="noopener noreferrer">this documentation (OpenVPN 3 Linux and --auth-user-pass)</a> to set up a workaround.</li>
 </ul>
 <pre style="background-color: #f3f3f3;"><code>version: 2.1
 workflows:
@@ -91,16 +89,16 @@ jobs:
       - run:
           name: Install OpenVPN
           command: |
-            sudo apt update &amp;&amp; sudo apt install apt-transport-https<br>            sudo wget https://swupdate.openvpn.net/repos/openvpn-repo-pkg-key.pub<br>            sudo apt-key add openvpn-repo-pkg-key.pub<br>            <br>            <span>sudo wget -O /etc/apt/sources.list.d/openvpn3.list https://swupdate.openvpn.net/community/openvpn3/repos/openvpn3-$(sed 's/UBUNTU_CODENAME=//;t;d' /etc/os-release).list</span><br>            sudo apt update &amp;&amp; sudo apt install openvpn3 <span>openvpn-systemd-resolved</span><br>
+            sudo apt update &amp;&amp; sudo apt install apt-transport-https<br>            sudo wget https://swupdate.openvpn.net/repos/openvpn-repo-pkg-key.pub<br>            sudo apt-key add openvpn-repo-pkg-key.pub<br>            <br>            sudo wget -O /etc/apt/sources.list.d/openvpn3.list https://swupdate.openvpn.net/community/openvpn3/repos/openvpn3-$(sed 's/UBUNTU_CODENAME=//;t;d' /etc/os-release).list<br>            sudo apt update &amp;&amp; sudo apt install openvpn3 openvpn-systemd-resolved<br>
       - run:
           name: Check IP before VPN connection
-          command: |<br><span>            ip a</span><br>            echo "Public IP before VPN connection is $(curl checkip.amazonaws.com)"<br>
+          command: |<br>            ip a<br>            echo "Public IP before VPN connection is $(curl checkip.amazonaws.com)"<br>
       - run:
           name: VPN Setup
           background: true
           command: |
             echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /tmp/config.ovpn
-<br>            ET_phone_home=$(ss -Hnto state established '( sport = :ssh )' | head -n1 | awk '{ split($4, a, ":"); print a[1] }')<br>            ## In case you're using an image with Ubuntu &lt; 20.04, replace the above line with:<br>            ## ET_phone_home=$(ss -an | grep 'ESTAB .*:22' | head -n1 | awk '{ split($6, a, ":"); print a[1] }')<br>            echo $ET_phone_home<br>            <br>            <span>if [ -n "$ET_phone_home" ]; then</span>
+<br>            ET_phone_home=$(ss -Hnto state established '( sport = :ssh )' | head -n1 | awk '{ split($4, a, ":"); print a[1] }')<br>            ## In case you're using an image with Ubuntu &lt; 20.04, replace the above line with:<br>            ## ET_phone_home=$(ss -an | grep 'ESTAB .*:22' | head -n1 | awk '{ split($6, a, ":"); print a[1] }')<br>            echo $ET_phone_home<br>            <br>            if [ -n "$ET_phone_home" ]; then
               echo "route $ET_phone_home 255.255.255.255 net_gateway" &gt;&gt; /tmp/config.ovpn<br>            fi<br>            <br>            echo "route 169.254.0.0 255.255.0.0 net_gateway" &gt;&gt; /tmp/config.ovpn<br>            <br>            for SYS_RES_DNS in $(systemd-resolve --status | grep 'DNS Servers'|awk '{print $3}')<br>              do<br>                echo "route $SYS_RES_DNS 255.255.0.0 net_gateway" &gt;&gt; /tmp/config.ovpn<br>                echo $SYS_RES_DNS<br>            done<br><br>            for IP in $(host runner.circleci.com | awk '{ print $4; }')<br>              do <br>                echo "route $IP 255.255.255.255 net_gateway" &gt;&gt; /tmp/config.ovpn<br>                echo $IP<br>            done<br><br>            # This will start the connection<br>            sudo openvpn3 session-start --config /tmp/config.ovpn &gt; /tmp/openvpn.log<br>
       - run:
           name: Wait for the connection to be established and check<br>          command: |<br>            counter=1<br>            until sudo openvpn3 sessions-list|grep "Client connected" || [ "$counter" -ge 5 ]; do<br>              ((counter++))<br>              echo "Attempting to connect to VPN server..."<br>              sleep 1;<br>            done<br>            <br>            if ( ! sudo openvpn3 sessions-list|grep "Client connected"); then<br>              printf "\nUnable to establish connection within the allocated time ---&gt; Giving up.\n"<br>            else<br>              printf "\nVPN connected\n"<br>              printf "\nPublic IP is now %s\n" "$(curl -s https://checkip.amazonaws.com)"<br>            fi<br>
@@ -112,19 +110,17 @@ jobs:
 </code></pre>
 <p> </p>
 <h2 id="l2tp"><strong>L2TP</strong></h2>
-<p><span><span>To set up an L2TP VPN connection, we recommend referring to <a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients.md#configure-linux-vpn-clients-using-the-command-line" target="_blank" rel="noopener">this guide.</a></span></span><span><span></span></span></p>
-<p><span><span>We suggest storing <code>VPN_SERVER_IP</code>, <code>VPN_IPSEC_PSK</code>, <code>VPN_USER</code> and <code>VPN_PASSWORD</code> as <a href="https://circleci.com/docs/2.0/env-vars/" rel="noreferrer">environment variables</a>. Ideally, you might want to base64-encode <code>VPN_IPSEC_PSK</code> before storing it; you'll need to decode it during the build.</span></span></p>
+<p>To set up an L2TP VPN connection, we recommend referring to <a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients.md#configure-linux-vpn-clients-using-the-command-line" target="_blank" rel="noopener noreferrer">this guide.</a></p>
+<p>We suggest storing <code>VPN_SERVER_IP</code>, <code>VPN_IPSEC_PSK</code>, <code>VPN_USER</code> and <code>VPN_PASSWORD</code> as <a href="https://circleci.com/docs/2.0/env-vars/" rel="noreferrer">environment variables</a>. Ideally, you might want to base64-encode <code>VPN_IPSEC_PSK</code> before storing it; you'll need to decode it during the build.</p>
 <p dir="auto">Also, we suggest storing the default gateway IP address in an environment variable:</p>
 <ul dir="auto" type="disc">
     <li type="disc"><code>DEFAULT_GW_IP=$(ip route show default|awk '{print $3}')</code></li>
 </ul>
 <p> </p>
-<h2 id="macos"><strong><code>macos</code> executor (<a href="https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions" target="_blank" rel="noopener">Supported Xcode versions</a>)</strong></h2>
+<h2 id="macos"><strong><code>macos</code> executor (<a href="https://circleci.com/docs/2.0/testing-ios/#supported-xcode-versions" target="_blank" rel="noopener noreferrer">Supported Xcode versions</a>)</strong></h2>
 <ul>
-    <li>
-        <span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a>.</span><span><span><span><br></span></span></span><span><span><span></span></span></span>
-    </li>
-    <li><span>If the VPN client authentication is credentials-based (user-locked profile), you'll also need to add the username and password as environment variables (<code>VPN_USER</code> and <code>VPN_PASSWORD</code>).</span></li>
+    <li>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener noreferrer">environment variable</a>.</li>
+    <li>If the VPN client authentication is credentials-based (user-locked profile), you'll also need to add the username and password as environment variables (<code>VPN_USER</code> and <code>VPN_PASSWORD</code>).</li>
 </ul>
 <pre style="background-color: #f3f3f3;"><code>version: 2.1
 workflows:
@@ -138,7 +134,7 @@ jobs:
       - run:
           name: Install OpenVPN
           command: |
-            <span>brew install openvpn<br></span>            <span>curl https://raw.githubusercontent.com/andrewgdotcom/openvpn-mac-dns/master/etc/openvpn/update-resolv-conf --output /tmp/update-resolv-conf</span><br>            chmod +x /tmp/update-resolv-conf<br>
+            brew install openvpn<br>            curl https://raw.githubusercontent.com/andrewgdotcom/openvpn-mac-dns/master/etc/openvpn/update-resolv-conf --output /tmp/update-resolv-conf<br>            chmod +x /tmp/update-resolv-conf<br>
       - run:
           name: Check IP before VPN connection
           command: |
@@ -147,23 +143,21 @@ jobs:
       - run:
           name: VPN Setup
           command: |
-            <span>echo $VPN_CLIENT_CONFIG | base64 --decode | tee /tmp/config.ovpn 1&gt;/dev/null</span><br>           <span> <br>            if grep auth-user-pass /tmp/config.ovpn; then<br>              if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then<br>                echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"<br>                exit 1<br>              else<br>                printf "$VPN_USER\\n$VPN_PASSWORD" &gt; /tmp/vpn.login<br>                sed -i config.bak 's|^auth-user-pass.*|auth-user-pass /tmp/vpn\.login|' /tmp/config.ovpn<br>              fi<br>            fi<br><br>            touch /tmp/openvpn.log</span>
-<br>            <span>phone_home="$(netstat -an | grep -E '\.2222\s.*(ESTABLISHED|LISTEN)' | head -n1 | awk '{ split($5, a, "."); print a[1] "." a[2] "." a[3] "." a[4] }')"<br></span>            echo -e "\nroute $phone_home 255.255.255.255 net_gateway" | tee -a /tmp/config.ovpn            <br>            echo $phone_home<br><br>            cat \&lt;&lt; EOF | sudo tee /Library/LaunchDaemons/org.openvpn.plist 1&gt;/dev/null<br>            &lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>            &lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;<br>            &lt;plist version="1.0"&gt;<br>              &lt;dict&gt;<br>                &lt;key&gt;Label&lt;/key&gt;<br>                &lt;string&gt;org.openvpn&lt;/string&gt;<br>                &lt;key&gt;Program&lt;/key&gt;<br>                  &lt;string&gt;/usr/local/opt/openvpn/sbin/openvpn&lt;/string&gt;<br>                &lt;key&gt;ProgramArguments&lt;/key&gt;<br>                &lt;array&gt;<br>                  &lt;string&gt;/usr/local/opt/openvpn/sbin/openvpn&lt;/string&gt;<br>                  &lt;string&gt;--config&lt;/string&gt;<br>                  &lt;string&gt;/tmp/config.ovpn&lt;/string&gt;<br>                  &lt;string&gt;--route&lt;/string&gt;<br>                  &lt;string&gt;169.254.0.0 255.255.0.0 net_gateway&lt;/string&gt;<br>                  &lt;string&gt;--script-security&lt;/string&gt;<br>                  &lt;string&gt;2&lt;/string&gt;<br>                  &lt;string&gt;--up&lt;/string&gt;<br>                  &lt;string&gt;/tmp/update-resolv-conf&lt;/string&gt;<br>                  &lt;string&gt;--down&lt;/string&gt;<br>                  &lt;string&gt;/tmp/update-resolv-conf&lt;/string&gt;<br>                &lt;/array&gt;<br>                &lt;key&gt;RunAtLoad&lt;/key&gt;<br>                  &lt;false/&gt;<br>                &lt;key&gt;TimeOut&lt;/key&gt;<br>                  &lt;integer&gt;90&lt;/integer&gt;<br>                &lt;key&gt;StandardErrorPath&lt;/key&gt;<br>                  &lt;string&gt;/tmp/openvpn.log&lt;/string&gt;<br>                &lt;key&gt;StandardOutPath&lt;/key&gt;<br>                  &lt;string&gt;/tmp/openvpn.log&lt;/string&gt;<br>                &lt;key&gt;KeepAlive&lt;/key&gt;<br>                  &lt;false/&gt;<br>              &lt;/dict&gt;<br>            &lt;/plist&gt;<br>            EOF<br><br>            echo "Public IP before VPN connection is &gt; $(curl <a href="http://checkip.amazonaws.com)%22">http://checkip.amazonaws.com)"</a><br><br>            # This will start the connection<br>            sudo launchctl load /Library/LaunchDaemons/org.openvpn.plist<br>            sudo launchctl start org.openvpn<br>
+            echo $VPN_CLIENT_CONFIG | base64 --decode | tee /tmp/config.ovpn 1&gt;/dev/null<br>            <br>            if grep auth-user-pass /tmp/config.ovpn; then<br>              if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then<br>                echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"<br>                exit 1<br>              else<br>                printf "$VPN_USER\\n$VPN_PASSWORD" &gt; /tmp/vpn.login<br>                sed -i config.bak 's|^auth-user-pass.*|auth-user-pass /tmp/vpn\.login|' /tmp/config.ovpn<br>              fi<br>            fi<br><br>            touch /tmp/openvpn.log
+<br>            phone_home="$(netstat -an | grep -E '\.2222\s.*(ESTABLISHED|LISTEN)' | head -n1 | awk '{ split($5, a, "."); print a[1] "." a[2] "." a[3] "." a[4] }')"<br>            echo -e "\nroute $phone_home 255.255.255.255 net_gateway" | tee -a /tmp/config.ovpn            <br>            echo $phone_home<br><br>            cat \&lt;&lt; EOF | sudo tee /Library/LaunchDaemons/org.openvpn.plist 1&gt;/dev/null<br>            &lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>            &lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;<br>            &lt;plist version="1.0"&gt;<br>              &lt;dict&gt;<br>                &lt;key&gt;Label&lt;/key&gt;<br>                &lt;string&gt;org.openvpn&lt;/string&gt;<br>                &lt;key&gt;Program&lt;/key&gt;<br>                  &lt;string&gt;/usr/local/opt/openvpn/sbin/openvpn&lt;/string&gt;<br>                &lt;key&gt;ProgramArguments&lt;/key&gt;<br>                &lt;array&gt;<br>                  &lt;string&gt;/usr/local/opt/openvpn/sbin/openvpn&lt;/string&gt;<br>                  &lt;string&gt;--config&lt;/string&gt;<br>                  &lt;string&gt;/tmp/config.ovpn&lt;/string&gt;<br>                  &lt;string&gt;--route&lt;/string&gt;<br>                  &lt;string&gt;169.254.0.0 255.255.0.0 net_gateway&lt;/string&gt;<br>                  &lt;string&gt;--script-security&lt;/string&gt;<br>                  &lt;string&gt;2&lt;/string&gt;<br>                  &lt;string&gt;--up&lt;/string&gt;<br>                  &lt;string&gt;/tmp/update-resolv-conf&lt;/string&gt;<br>                  &lt;string&gt;--down&lt;/string&gt;<br>                  &lt;string&gt;/tmp/update-resolv-conf&lt;/string&gt;<br>                &lt;/array&gt;<br>                &lt;key&gt;RunAtLoad&lt;/key&gt;<br>                  &lt;false/&gt;<br>                &lt;key&gt;TimeOut&lt;/key&gt;<br>                  &lt;integer&gt;90&lt;/integer&gt;<br>                &lt;key&gt;StandardErrorPath&lt;/key&gt;<br>                  &lt;string&gt;/tmp/openvpn.log&lt;/string&gt;<br>                &lt;key&gt;StandardOutPath&lt;/key&gt;<br>                  &lt;string&gt;/tmp/openvpn.log&lt;/string&gt;<br>                &lt;key&gt;KeepAlive&lt;/key&gt;<br>                  &lt;false/&gt;<br>              &lt;/dict&gt;<br>            &lt;/plist&gt;<br>            EOF<br><br>            echo "Public IP before VPN connection is &gt; $(curl <a href="http://checkip.amazonaws.com)%22">http://checkip.amazonaws.com)"</a><br><br>            # This will start the connection<br>            sudo launchctl load /Library/LaunchDaemons/org.openvpn.plist<br>            sudo launchctl start org.openvpn<br>
       - run:
-          name: Wait for the connection to be established and check<br>          command: |<br><span>            counter=1</span><br>            until [ -f /tmp/openvpn.log ] &amp;&amp; [ "$(grep -c "Initialization Sequence Completed" /tmp/openvpn.log)" != 0 ] || [ "$counter" -ge 5 ]; do<span><br></span>              <span class="pl-pds">((</span><span>counter</span><span class="pl-k">++</span><span class="pl-pds">))</span><br>              echo "<span>Attempting to connect to VPN server...</span>"<br>              sleep 1<br>            done<br><br>            if [ ! -f <span>/tmp/openvpn.log</span> ] || (! grep -iq "Initialization Sequence Completed" <span>/tmp/openvpn.log</span>); then<br>              printf "\nUnable to establish connection within the allocated time ---&gt; Giving up.\n"<br>            else<br>              printf "\nVPN connected\n"<br>              printf "\nPublic IP is now %s\n" "$(curl -s http://checkip.amazonaws.com)"<br>            fi<br>         
+          name: Wait for the connection to be established and check<br>          command: |<br>            counter=1<br>            until [ -f /tmp/openvpn.log ] &amp;&amp; [ "$(grep -c "Initialization Sequence Completed" /tmp/openvpn.log)" != 0 ] || [ "$counter" -ge 5 ]; do<br>              <span class="pl-pds">((</span>counter<span class="pl-k">++</span><span class="pl-pds">))</span><br>              echo "Attempting to connect to VPN server..."<br>              sleep 1<br>            done<br><br>            if [ ! -f /tmp/openvpn.log ] || (! grep -iq "Initialization Sequence Completed" /tmp/openvpn.log); then<br>              printf "\nUnable to establish connection within the allocated time ---&gt; Giving up.\n"<br>            else<br>              printf "\nVPN connected\n"<br>              printf "\nPublic IP is now %s\n" "$(curl -s http://checkip.amazonaws.com)"<br>            fi<br>         
       - run:
           name: Run commands in our infrastructure
           command: |
             # A command
-            # Another command<br><br>      - run:<br>          name: Disconnect from OpenVPN<br>          command: <span>sudo launchctl stop org.openvpn</span><br>          when: always
+            # Another command<br><br>      - run:<br>          name: Disconnect from OpenVPN<br>          command: sudo launchctl stop org.openvpn<br>          when: always
 </code></pre>
 <p><strong> </strong></p>
-<h2 id="windows"><strong><code>windows</code> executor (<a href="https://circleci.com/docs/2.0/hello-world-windows/#windows-executor-images" target="_blank" rel="noopener">Windows executor images</a>)</strong></h2>
+<h2 id="windows"><strong><code>windows</code> executor (<a href="https://circleci.com/docs/2.0/hello-world-windows/#windows-executor-images" target="_blank" rel="noopener noreferrer">Windows executor images</a>)</strong></h2>
 <ul>
-    <li><span>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener">environment variable</a>.</span></li>
-    <li>
-        <span>If the VPN client authentication is credentials-based (user-locked profile), you'll also need to add the username and password as environment variables (<code>VPN_USER</code> and <code>VPN_PASSWORD</code>).</span><span><span><span><br></span></span></span><span><span><span></span></span></span>
-    </li>
+    <li>Base64-encode the OpenVPN client configuration file, and store it as an <a href="https://circleci.com/docs/2.0/env-vars/" target="_blank" rel="noopener noreferrer">environment variable</a>.</li>
+    <li>If the VPN client authentication is credentials-based (user-locked profile), you'll also need to add the username and password as environment variables (<code>VPN_USER</code> and <code>VPN_PASSWORD</code>).</li>
 </ul>
 <pre style="background-color: #f3f3f3;"><code>version: 2.1
 
@@ -192,22 +186,22 @@ jobs:
           
       - run:
           name: VPN Setup
-          command: |<br>            <span>echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /C/PROGRA~1/OpenVPN/config/config.ovpn</span>
+          command: |<br>            echo $VPN_CLIENT_CONFIG | base64 --decode &gt; /C/PROGRA~1/OpenVPN/config/config.ovpn
 
             if grep auth-user-pass "/C/PROGRA~1/OpenVPN/config/config.ovpn"; then<br>              if [ -z "${VPN_USER:-}" ] || [ -z "${VPN_PASSWORD:-}" ]; then<br>                echo "Your VPN client is configured with a user-locked profile. Make sure to set the VPN_USER and VPN_PASSWORD environment variables"<br>                exit 1<br>              else<br>                printf "$VPN_USER\\n$VPN_PASSWORD" &gt; /C/PROGRA~1/OpenVPN/config/vpn.login<br>                sed -i 's|^auth-user-pass.*|auth-user-pass vpn\.login|' /C/PROGRA~1/OpenVPN/config/config.ovpn<br>              fi<br>            fi
             <br>            ### IMPORTANT: Include the following 3 lines to exclude the connection from CircleCI and the link-local range
             phone_home=$(netstat -an | grep ':22 .*ESTABLISHED' | head -n1 | awk '{ split($3, a, ":"); print a[1] }')
-            echo -e "\nroute $phone_home 255.255.255.255 net_gateway" | tee -a "/C/PROGRA~1/OpenVPN/config/config.ovpn"<br>            echo "route 169.254.0.0 255.255.0.0 net_gateway" | tee -a "/C/PROGRA~1/OpenVPN/config/config.ovpn"<br>            <br>            # Create and start the OpenVPN service<br><span>            sc.exe create "OpenVPN" binPath= "C:\PROGRA~1\OpenVPN\bin\openvpnserv.exe"</span><br>            <span>net start "OpenVPN"</span>
+            echo -e "\nroute $phone_home 255.255.255.255 net_gateway" | tee -a "/C/PROGRA~1/OpenVPN/config/config.ovpn"<br>            echo "route 169.254.0.0 255.255.0.0 net_gateway" | tee -a "/C/PROGRA~1/OpenVPN/config/config.ovpn"<br>            <br>            # Create and start the OpenVPN service<br>            sc.exe create "OpenVPN" binPath= "C:\PROGRA~1\OpenVPN\bin\openvpnserv.exe"<br>            net start "OpenVPN"
         
             
       - run:
           name: Wait for the connection to be established and check
           command: |<br>            counter=1
-            until [ $(cat <span>/c/progra~1/openvpn/log/config.log</span>|grep -c "Initialization Sequence Completed") == 0 ]  || [ "$counter" -ge 5 ]; do<br>              ((counter++))
+            until [ $(cat /c/progra~1/openvpn/log/config.log|grep -c "Initialization Sequence Completed") == 0 ]  || [ "$counter" -ge 5 ]; do<br>              ((counter++))
               echo "Attempting to connect..."
               sleep 1;
             done
-<br>            if [ ! -f <span>/c/progra~1/openvpn/log/config.log</span> ] || (! grep -iq "Initialization Sequence Completed" <span>/c/progra~1/openvpn/log/config.log</span>); then<br>              printf "\nUnable to establish connection within the allocated time ---&gt; Giving up.\n"<br>            else<br>              printf "\nVPN connected\n"<br>              printf "\nPublic IP is now %s\n" "$(curl -s http://checkip.amazonaws.com)"<br>            fi
+<br>            if [ ! -f /c/progra~1/openvpn/log/config.log ] || (! grep -iq "Initialization Sequence Completed" /c/progra~1/openvpn/log/config.log); then<br>              printf "\nUnable to establish connection within the allocated time ---&gt; Giving up.\n"<br>            else<br>              printf "\nVPN connected\n"<br>              printf "\nPublic IP is now %s\n" "$(curl -s http://checkip.amazonaws.com)"<br>            fi
 
       - run:
           name: Run commands in our infrastructure
@@ -217,12 +211,12 @@ jobs:
             
       - run:
           name: Disconnect from OpenVPN
-          command: <span>net stop "OpenVPN"</span>
-          when: always<span style="font-size: 15px; white-space: normal;">
-</span></code></pre>
+          command: net stop "OpenVPN"
+          when: always
+</code></pre>
 <p> </p>
-<h2><strong>Additional Notes:</strong></h2>
-<p><span style="font-weight: 400;"><span class="wysiwyg-underline"><strong>Please note:</strong></span> any VPN configuration steps are done </span><em><span style="font-weight: 400;">at your own risk</span></em><span style="font-weight: 400;"> and can break if any changes occur in IP Ranges or Routing tables.</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">In the event, your configuration is met with </span><strong>T</strong><strong>his job was claimed but has not received a heartbeat in over 5 minutes</strong><span style="font-weight: 400;"> error. Try to add routing exclusions to unblock your build using our example below which will require some modifications to meet your build needs.<br><br></span><span style="font-weight: 400;"><span class="wysiwyg-underline"><strong>OpenVPN Example:</strong></span><br></span><span style="font-weight: 400;"></span></p>
+<h2 id="h_01HHQ2HNF6PHE7Z7BJ9XWAVZXX"><strong>Additional Notes:</strong></h2>
+<p><span style="font-weight: 400;"><span class="wysiwyg-underline"><strong>Please note:</strong></span> any VPN configuration steps are done </span><em><span style="font-weight: 400;">at your own risk</span></em><span style="font-weight: 400;"> and can break if any changes occur in our underlying infrastructure's network configuration.</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">In the event, your configuration is met with </span><strong>T</strong><strong>his job was claimed but has not received a heartbeat in over 5 minutes</strong><span style="font-weight: 400;"> error. Try to add routing exclusions to unblock your build using our example below which will require some modifications to meet your build needs.<br><br></span><span style="font-weight: 400;"><span class="wysiwyg-underline"><strong>OpenVPN Example:</strong></span><br></span></p>
 <pre class="c-mrkdwn__pre" data-stringify-type="pre"><code>  ET_phone_home=$(ss -Hnto state established '( sport = :ssh )' | head -n1 | awk '{ split($4, a, ":"); print a[1] }')
   DEFAULT_GW="$(ip route show default|awk '{print $3}')"
   echo "Original default gateway is $DEFAULT_GW"
