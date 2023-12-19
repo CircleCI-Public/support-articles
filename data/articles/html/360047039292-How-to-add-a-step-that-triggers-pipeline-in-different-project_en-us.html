@@ -1,7 +1,7 @@
-<h1>Overview</h1>
+<h1 id="h_01HHYSAH46VPJB3FKFV56G7F8Z">Overview</h1>
 <p>You may have situations where a specific workflow in one of your projects should trigger a new build in a different project. As an example, maybe an update to your <code>blog</code> project needs to kick off a new build in your <code>website</code> project to ensure everything is up to date.</p>
-<h2><span>Adding a step to trigger a pipeline in a different project</span></h2>
-<p>You can accomplish this via a <a href="https://circleci.com/docs/2.0/configuration-reference/#run" target="_blank" rel="noopener">run step</a> that sends an API call to <a href="https://circleci.com/docs/api/v2/#trigger-a-new-pipeline" target="_blank" rel="noopener">trigger a new pipeline</a>. You will want to <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener">generate a personal API token</a> and store it as an <a href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project" target="_blank" rel="noopener">environment variable</a> within the project the run step will be on.</p>
+<h2 id="h_01HHYSAH472HX90CV9W0Y5XQKK">Adding a step to trigger a pipeline in a different project</h2>
+<p>You can accomplish this via a <a href="https://circleci.com/docs/2.0/configuration-reference/#run" target="_blank" rel="noopener noreferrer">run step</a> that sends an API call to <a href="https://circleci.com/docs/api/v2/#trigger-a-new-pipeline" target="_blank" rel="noopener noreferrer">trigger a new pipeline</a>. You will want to <a href="https://circleci.com/docs/2.0/managing-api-tokens/#creating-a-personal-api-token" target="_blank" rel="noopener noreferrer">generate a personal API token</a> and store it as an <a href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project" target="_blank" rel="noopener noreferrer">environment variable</a> within the project the run step will be on.</p>
 <p>Then once that is done you will add this run step to your config of that project:</p>
 <pre style="background-color: #f3f3f3;">- run:
   name: Kick off new pipeline
@@ -14,7 +14,17 @@
 <p> </p>
 <p><strong>NOTE: You will receive a "project not found" response from the CircleCI API endpoint if the user token does not have the correct permissions or has not been added as an environment variable </strong></p>
 <p> </p>
-<h2>Additional Resources: </h2>
+<h2 id="h_01HHYSC1JMSZTW7H5C4RXXVGZZ">What if I'm using a GH Apps integration?</h2>
+<p>The steps for achieving this with a GH apps integration are relatively the same. The only difference is that instead of "generate a personal API token and store it as an <a href="https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project" target="_blank" rel="noopener noreferrer">e</a>nvironment variable", <a href="https://discuss.circleci.com/t/trigger-pipelines-from-anywhere-inbound-webhooks-now-in-preview/49864" target="_blank" rel="noopener noreferrer">you should instead go to this page</a> and set up an inbound webhook. You can then replace the call to the v2 trigger pipeline API (as a call to the v2 API will not work with GH Apps) with the inbound webook URL that you just generated. You should store the secret as an env var like you would for the personal API token.</p>
+<pre>curl -X POST -H "content-type: application/json" '(insert-generated-URL-here)?secret=${WEBHOOK_SECRET}'</pre>
+<p> </p>
+<h3 id="h_01HHZDRVWG3GX0G0J78QXDAXTM">How do I know if I'm using GH Apps integration?</h3>
+<p>Since determining what type of integration you have will determine which method to use, here is an article we have created that will help you determine what type of integration you are using:</p>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/20302893166363" target="_blank" rel="noopener noreferrer">Is my project setup using GitHub OAuth or GitHub Apps? </a></li>
+</ul>
+<p> </p>
+<h2 id="h_01HHYSAH47147P2Y4VPNDM20FZ">Additional Resources: </h2>
 <ul>
     <li><a href="https://circleci.com/docs/managing-api-tokens/#creating-a-personal-api-token">Creating a Personal API Token</a></li>
     <li><a href="https://circleci.com/docs/set-environment-variable/#set-an-environment-variable-in-a-project">Set an environment variable in a project</a></li>
