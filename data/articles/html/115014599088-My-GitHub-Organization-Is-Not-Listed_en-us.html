@@ -1,18 +1,26 @@
 <p> </p>
-<h1>Organization Not Listed in CircleCI</h1>
+<h1 id="h_01HJ1RJSB6W8FQ135CF3DWZ96F">Organization Not Listed in CircleCI</h1>
 <p>If you cannot see your organization in the dropdown menu in the UI, please follow the steps below:</p>
-<h2>Check oAuth app access restrictions</h2>
+<h2 id="h_01HJ1RM91CSKWCGA8CSHBD8M5D">Ensure GitHub Connection</h2>
+<p>If you log in using <strong>email and password</strong>, you may not see your organization because you have not connected to GitHub OAuth. Please navigate to you user settings page:</p>
+<ul>
+    <li>
+        <a href="https://app.circleci.com/settings/user" rel="noopener noreferrer">https://app.circleci.com/settings/user</a>.
+    </li>
+    <li>From there, near the bottom of the "<strong>Account Integrations</strong>" section, there is a link you can click that will allow you to link your GitHub account.<br> </li>
+</ul>
+<pre><code>Received instructions from the CircleCI Support team to authorize a GitHub OAuth App? Click to be redirected</code></pre>
+<h2 id="h_01HJ1RJSB6WVHRDTJGZ90NA266">Check OAuth app access restrictions</h2>
 <p>Check to make sure CircleCI is enabled in your GitHub organization third-party app restrictions in your <strong>Organization Settings</strong>. You can read more about these restrictions on the GitHub docs page.</p>
 <p><a href="https://help.github.com/articles/about-oauth-app-access-restrictions/">https://help.github.com/articles/about-oauth-app-access-restrictions/</a></p>
-<p><img src="https://support.circleci.com/hc/article_attachments/115025491567/mceclip0.png" width="651" height="339"></p>
+<p><img src="https://support.circleci.com/hc/article_attachments/115025491567" width="651" height="339"></p>
 <p> </p>
-<h2>Verify GitHub Permissions</h2>
+<h2 id="h_01HJ1RJSB6GY0AV9WZ39K6QNKW">Verify GitHub Permissions</h2>
 <p>You may also need to enable CircleCI on the individual application page. You can do so with the following steps:</p>
 <ul>
     <li>Go to the Account Integrations page here: <a href="https://circleci.com/account">https://circleci.com/account</a>
     </li>
-    <li>Click the blue <strong>check permissions</strong> link in the GitHub section, <span>next to "Are you missing a GitHub Organization?"</span>.</li>
+    <li>Click the blue <strong>check permissions</strong> link in the GitHub section, next to "Are you missing a GitHub Organization?".</li>
     <li>This will take you to the app page on GitHub where you can <strong>grant permissions</strong> to CircleCI in the <strong>Organization Access</strong> section at the bottom.</li>
 </ul>
-<p> </p>
-<p> </p>
+<p>If you continue running into issues, please submit a ticket with our Support Team via the <a href="https://support.circleci.com/">Support Portal</a>.</p>
