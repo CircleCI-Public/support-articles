@@ -1,0 +1,40 @@
+<h1 id="h_01HJ3YF42CKZWM5HWFM301VG5M">Overview</h1>
+<p>Currently, the way the Windows Environment utilizes the built-in <code>checkout</code> step, it will fail with the following error.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">Warning: checkout key has zero length<br>Writing SSH key for checkout to "C:\\Users\\circleci\\.ssh\\id_rsa"<br>Cloning git repository<br>Cloning into '.'...<br>Load key "C:/Users/circleci/.ssh/id_rsa": error in libcrypto<br>git@github.com: Permission denied (publickey).<br>fatal: Could not read from remote repository.</pre>
+<p> </p>
+<h1 id="h_01HJ3YHTWFZ3DMX7F8XRT32B0T">Solution </h1>
+<h3 id="h_01HJ3YEH7QHCW7K0ZQ413NYVSE">Step 1: Delete the Pre-configured Checkout Key (Optional)</h3>
+<p>To avoid confusion, you can delete the pre-configured checkout key on CircleCI and your VCS.</p>
+<p>On <strong>CircleCI</strong>, navigate to the project settings for your project, switch to the "SSH Keys" tab, and delete the key listed in the section titled "Additional SSH Keys".</p>
+<p> </p>
+<p>On <strong>GitLab</strong>, go to the "Settings" menu of the project, switch to the "Repository" tab, expand "Deploy keys", and delete the one titled "circleci-pipeline-triggers".</p>
+<p>On <strong>GitHub App</strong>, go to the "Settings" menu of the project, switch to the "Deploy Keys" tab, and delete the one titled "GitHub App Trigger".</p>
+<p> </p>
+<h3 id="h_01HJ3YEH7Q0R4ASWTH4KJGHZC5">Step 2: Generate a New Keypair for SSH</h3>
+<p>Run the following command on your computer to generate a new keypair:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><code>KEYNAME=&lt;your_key_name&gt;.pem<br>ssh-keygen -t ed25519 -f $KEYNAME -N ""
+</code></pre>
+<h3 id="h_01HJ3YVYTFT4RXPDSHZEK7SV68"> </h3>
+<h3 id="h_01HJ3YEH7QHJC186ZDBJ5XN0MH">Step 3: Register the Generated Keypair</h3>
+<p>On <strong>CircleCI</strong>, go to project settings, switch to the "SSH Keys" tab, click "Add SSH Key", and paste the content of <code>$KEYNAME</code> into the "Private Key" field.</p>
+<p> </p>
+<p>On <strong>GitLab</strong>, go to the "Settings" menu of the project, switch to the "Repository" tab, expand "Deploy keys", set a title (e.g., <code>circleci-checkout-key</code>), paste the content of <code>$KEYNAME.pem.pub</code> into the "Key" field, and click "Add key".</p>
+<p>On <strong>GitHub App</strong>, go to the "Settings" menu of the project, switch to the "Deploy Keys" section, set a title (e.g., <code>circleci-checkout-key</code>), paste the content of <code>$KEYNAME.pem.pub</code> into the "Key" field, and click "Add key".</p>
+<p> </p>
+<h3 id="h_01HJ3YEH7QX9TVV420WBRCARFQ">Step 4: Update your <code>config.yml</code>
+</h3>
+<p>You can retrieve the Fingerprint from the "SSH Key" section in your Project Settings. </p>
+<p>This is the same place we added the key in Step 3.</p>
+<p id="h_01HJ3YVYTFKF6VY8WW3T0DSM1T">Add the following stanza just before the checkout step in your <code>config.yml</code> (replace <code>THE_FINGER_PRINT_YOU_GOT_IN_THE_PREVIOUS_STEP</code> accordingly):</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><code>- add_ssh_keys:
+    fingerprints:
+      - "THE_FINGER_PRINT_YOU_GOT_IN_THE_PREVIOUS_STEP"
+</code></pre>
+<p>Commit and Push your changes. Now, your Windows build should be able to check out your code without errors.</p>
+<p> </p>
+<h2 id="h_01HJ3Z3EDG0KE31TZBQCHDVKAB">Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/using-windows/" target="_blank" rel="noopener noreferrer">CircleCI Docs - Using Windows</a></li>
+    <li><a href="https://circleci.com/docs/add-ssh-key/" target="_blank" rel="noopener noreferrer">CircleCI Docs - Adding SSH Keys</a></li>
+</ul>
+<p> </p>

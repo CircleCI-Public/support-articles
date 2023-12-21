@@ -1,19 +1,20 @@
-<p data-renderer-start-pos="7245">The <a href="https://circleci.com/developer/orbs/orb/circleci/path-filtering" target="_blank" rel="noopener">path-filtering orb </a>is a very versatile orb that allows you to c<span>ontinue a pipeline based on the paths of changed files.</span></p>
-<p data-renderer-start-pos="7245"><span>This article is to help show some examples of what can be achieved using the path filtering orb using some examples with links to each of the projects which have their own explanation of how they have been configured.</span></p>
-<h2 dir="auto"><span>Example 1</span></h2>
-<p><span>This is a simple example showing how to use path filtering to pass a parameter to choose which jobs to run on the continuation config.</span></p>
-<p><span><a href="https://gist.github.com/ryanpedersen42/c867acd9b0837789a92836e8f5bd8b55">https://gist.github.com/ryanpedersen42/c867acd9b0837789a92836e8f5bd8b55</a></span></p>
-<p><span>This example only uses two files and only allows you to choose which workflows to run based on the parameters that are set to true on the first config.yml. These are then checked when using the orb to run the continued config from the second config file.</span></p>
-<h2 dir="auto">Example 2</h2>
+<p data-renderer-start-pos="7245">The <a href="https://circleci.com/developer/orbs/orb/circleci/path-filtering" target="_blank" rel="noopener noreferrer">path-filtering orb </a>is a very versatile orb that allows you to continue a pipeline based on the paths of changed files.</p>
+<p data-renderer-start-pos="7245">This article is to help show some examples of what can be achieved using the path filtering orb using some examples with links to each of the projects which have their own explanation of how they have been configured.</p>
+<h2 id="h_01HJ4ASQYZXVJYH2JGX4BCP9CA" dir="auto">Example 1</h2>
+<p>This is a simple example showing how to use path filtering to pass a parameter to choose which jobs to run on the continuation config.</p>
+<p><a href="https://gist.github.com/ryanpedersen42/c867acd9b0837789a92836e8f5bd8b55">https://gist.github.com/ryanpedersen42/c867acd9b0837789a92836e8f5bd8b55</a></p>
+<p>This example only uses two files and only allows you to choose which workflows to run based on the parameters that are set to true on the first config.yml. These are then checked when using the orb to run the continued config from the second config file.</p>
+<h2 id="h_01HJ4ASQYZMB5REGT5AVDF39ER" dir="auto">Example 2</h2>
 <p>This second example uses mapping to allow multiple different continuation files to be used.</p>
 <p dir="auto"><a href="https://github.com/kelvintaywl-cci/path-filtering-custom-config" rel="noreferrer">https://github.com/kelvintaywl-cci/path-filtering-custom-config</a></p>
-<p dir="auto">In this sample project's<span></span><em>.circleci/config.yml</em>, we "break" the path-filtering/filter job down, and add a step <a href="https://github.com/kelvintaywl-cci/path-filtering-custom-config/blob/b6b537959d80943964f58698570bac5aabe8f272/.circleci/config.yml#L40-L64" target="_self">in the middle</a> to choose the right continued config.</p>
-<p dir="auto">Based on the files which are changed only the matching <span>continue-XXX.yml will run as it will be passed in as the config key.</span></p>
-<h2 data-renderer-start-pos="7245"><span>Example 3</span></h2>
-<p dir="auto">The final example <span>implements both path filtering and config splitting.</span></p>
+<p dir="auto">In this sample project's<em>.circleci/config.yml</em>, we "break" the path-filtering/filter job down, and add a step <a href="https://github.com/kelvintaywl-cci/path-filtering-custom-config/blob/b6b537959d80943964f58698570bac5aabe8f272/.circleci/config.yml#L40-L64" target="_self">in the middle</a> to choose the right continued config.</p>
+<p dir="auto">Based on the files which are changed only the matching continue-XXX.yml will run as it will be passed in as the config key.</p>
+<h2 id="h_01HJ4ASQYZ6VDS6C3TYC04JECF" data-renderer-start-pos="7245">Example 3</h2>
+<p dir="auto">The final example implements both path filtering and config splitting.</p>
 <p dir="auto"><a href="https://github.com/circle-makotom/circle-advanced-setup-workflow" rel="noreferrer">https://github.com/circle-makotom/circle-advanced-setup-workflow</a></p>
 <p dir="auto">The final example uses a list of directories, to detect which subdirectories (herein modules) have changed.</p>
-<p dir="auto">It will then fetch<span></span> the <code>path-to-module/.circleci/config.yml</code> <span></span>for each module to build, and merge all the fetched <span></span><code>config.yml</code> along with the config defining common resources, i.e., <span></span><code>.circleci/config.yml</code> and finally execute the merged config.</p>
-<h2 dir="auto"> </h2>
+<p dir="auto">It will then fetch the <code>path-to-module/.circleci/config.yml</code> for each module to build, and merge all the fetched <code>config.yml</code> along with the config defining common resources, i.e., <code>.circleci/config.yml</code> and finally execute the merged config.</p>
+<h2 id="h_01HJ4ASQYZXBH68RDHSR4KQQG3" dir="auto">Other Considerations</h2>
+<p>It's important to note that <code>base-revision</code> dictates the branch by which the code changes are compared against. These changes are cumulative, so in a scenario where a branch with <code>base-revision: main</code> has had many commits and changes, you may find that more workflows are triggered than desired. If you want to see workflows triggered for new changes, consider setting <code>base-revision: &lt;&lt; pipeline.git.branch &gt;&gt;</code> so that the branch pipeline compares the changes to itself.</p>
 <p> </p>
 <p> </p>
