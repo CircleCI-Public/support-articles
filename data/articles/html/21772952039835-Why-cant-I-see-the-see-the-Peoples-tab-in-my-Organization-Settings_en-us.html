@@ -1,0 +1,27 @@
+<h1 id="h_01HKB6STHGFK68YVCZQHEC6GFQ">Overview</h1>
+<p>Some users have reported that they are unable to see the 'People' tab in their CircleCI application interface. This tab is typically used to view and manage user accounts, roles, and permissions.</p>
+<p> </p>
+<h1 id="h_01HKB6STHGQW5Y4622BXM4C6PG">Cause</h1>
+<p>The main reason for this issue is related to the type of authorization used with GitHub or Bitbucket. If you've authorized your CircleCI account using GitHub OAuth or Bitbucket, instead of the GitHub App or GitLab, you may not be able to see the 'People' tab.</p>
+<p>Starting August 2023, when you authorize your CircleCI account with GitHub, this will be done through our GitHub App, rather than the GitHub OAuth app.</p>
+<p> </p>
+<h1 id="h_01HKB6STHG39Y0RJ2NNTACD99V">How to Identify Your Account Type</h1>
+<p>You can identify your account type by visiting the CircleCI web app, selecting 'Dashboard' from the sidebar, and inspecting the URL in your browser:</p>
+<ul>
+    <li>
+        <p>A URL like <code>https://app.circleci.com/pipelines/circleci/UTxCZDiJ9MLGLC8hR1ZDmg</code> indicates you are authenticated with the GitHub App.</p>
+    </li>
+    <li>
+        <p>A URL like <code>https://app.circleci.com/pipelines/github/&lt;your GitHub username/organization name&gt;</code> indicates you are authenticated with the GitHub OAuth app.</p>
+    </li>
+</ul>
+<p>For more information please view our <a href="https://circleci.com/docs/github-apps-integration/" target="_blank" rel="noopener noreferrer">GitHub App Integration Documentation</a>.</p>
+<p> </p>
+<h2 id="h_01HKB6WN55R39YCEAR0HD0SXS2">Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/20798023263899" target="_blank" rel="noopener noreferrer">Signing into CircleCI if your account was setup using OAuth integration for BitBucket and GitHub</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/20302893166363" target="_blank" rel="noopener noreferrer">Is my project setup using GitHub OAuth or GitHub Apps? </a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/19019502351899" target="_blank" rel="noopener noreferrer">How do I manage my People Settings for my GitHub organization?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/20012169490587" target="_blank" rel="noopener noreferrer">Cannot see Github organizations after signing up with an email address</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/18174029874331" target="_blank" rel="noopener noreferrer">Inviting Team Members to Collaborate on CircleCI</a></li>
+</ul>
