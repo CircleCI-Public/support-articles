@@ -1,0 +1,17 @@
+<h1 id="h_01HKK853JZBCS30KA5VCBSJEKD">Overview</h1>
+<p>After clicking <code>Rerun Job With SSH</code> you may notice that your job did not populate the <code>Enable SSH</code> step.</p>
+<p> </p>
+<h1 id="h_01HKK853JZJYD0ZSC9Q43WCPHE">Solution</h1>
+<p>If you are seeing the above, it is likely that you do not have an SSH Key attached to your GitHub or BitBucket account.</p>
+<p>To solve this, you will need to create a <a href="https://circleci.com/docs/add-ssh-key/#steps" target="_blank" rel="noopener noreferrer">new SSH key</a>, upload the <code>Public Key</code> to GitHub or BitBucket, and try to <code>Rerun Job with SSH again</code>.</p>
+<p> </p>
+<p>You can also further debug this by running </p>
+<ul>
+    <li>
+        <pre>ssh <a href="mailto:git@github.com">git@github.com</a></pre>
+    </li>
+    <li>
+        <pre>ssh -Tv <a href="mailto:git@bitbucket.org">git@bitbucket.org</a></pre>
+    </li>
+</ul>
+<p>More information is <a href="https://circleci.com/docs/ssh-access-jobs/#debugging-permission-denied-publickey" target="_blank" rel="noopener noreferrer">here</a>.</p>
