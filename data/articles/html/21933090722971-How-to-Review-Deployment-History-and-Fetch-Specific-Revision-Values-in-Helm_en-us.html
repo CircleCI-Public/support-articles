@@ -1,0 +1,23 @@
+<h1 id="h_01HKT4VTDZMVM9XVXZYD27FW7B">Overview</h1>
+<p>This article provides a guide on how to review your deployment history and fetch the values of a specific revision in Helm. This can be particularly useful when troubleshooting deployment-related issues, like unexpected configuration changes.</p>
+<p> </p>
+<h1 id="h_01HKT4VTDZNYCHDGC2EE840MY9">Procedure</h1>
+<h3 id="h_01HKT4VTDZSK2GZ08FH6Y7GSD0">Step 1: Review Your Deployment History</h3>
+<p>To review your deployment history, you can use the <code>helm history</code> command followed by the release name:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><code>NAMESPACE=&lt;namespace&gt;<br>helm list -n $NAMESPACE<br>helm history &lt;RELEASE_NAME&gt; -n $NAMESPACE</code></pre>
+<p>This command will display a list of all revisions for the specified release, along with information about when each revision was deployed, its status, the chart version, and a description.</p>
+<p> </p>
+<h3 id="h_01HKT4VTDZH0CZVVJ5M0EZMVFQ">Step 2: Fetch the Values of a Specific Revision</h3>
+<p>If you want to fetch the values applied to a specific revision, you can use the <code>helm get values</code> command. You will also need to specify the server, namespace, and the revision number:</p>
+<p>While the release name is typically <code>circleci-server</code> as outlined in <a href="https://circleci.com/docs/server/installation/phase-2-core-services/#deploy" target="_blank" rel="noopener noreferrer">our documentation</a>, your installation may differ.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><code>RELEASE_NAME=&lt;release_name_from_previous_step&gt; <br>NAMESPACE=&lt;namespace&gt;<br>helm get values $RELEASE_NAME -n $NAMESPACE --revision &lt;revision_number&gt;</code></pre>
+<p>This command will display the values applied to the specified revision. You can review these values to ensure that the correct configurations were applied.</p>
+<p> </p>
+<h1 id="h_01HKT4VTDZYSTMF5Q6N047M699">Conclusion</h1>
+<p>Understanding your deployment history and the specific values applied to each revision can help you troubleshoot and prevent potential issues. If you notice any inconsistencies or errors in your deployments, please feel free to use this information to make the necessary corrections.</p>
+<h2 id="h_01HKT4WZN02B9KVK54KQ5VKCAB"> </h2>
+<h1 id="h_01HKT4VTDZ8A9RCEKTQVH10YZR">Additional Resources</h1>
+<ul>
+    <li><a href="https://helm.sh/docs/">Helm Documentation</a></li>
+    <li><a href="https://kubernetes.io/docs/home/">Kubernetes Documentation</a></li>
+</ul>
