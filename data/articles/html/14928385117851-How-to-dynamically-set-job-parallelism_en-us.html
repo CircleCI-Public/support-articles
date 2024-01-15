@@ -1,7 +1,7 @@
-<h1>How to dynamically set job parallelism</h1>
+<h1 id="h_01HM586STXFKXV45F45342D5PG">How to dynamically set job parallelism</h1>
 <p>There may be cases where you want to dynamically set the parallelism value for a specific job. This can be implemented by using a pipeline parameter, and then passing in a value for that parameter either via the API or a setup workflow.</p>
 <p>One example of a use-case for this would be when you want to change the parallelism based on the number of tests defined in your code.</p>
-<h2>Sample config.yml file</h2>
+<h2 id="h_01HM586STXAWW9GEB76078WZGB">Sample config.yml file</h2>
 <p>Pipeline parameters can be defined under the parameters section in your config.yml file. Here is a sample:</p>
 <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code style="padding: 5px;">version: 2.1
 
@@ -25,7 +25,7 @@ workflows:
       - build
 </code></pre>
 <p> </p>
-<h2>Triggering a job via the API</h2>
+<h2 id="h_01HM586STX0NWDC7VD5AJT91F7">Triggering a job via the API</h2>
 <p>Pipeline parameter values can be passed in with an API call. Here is a sample call using cURL:</p>
 <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code class="language-bash bash">curl --request POST \
   --url https://circleci.com/api/v2/project/gh/sampleorg/sampleproject/pipeline \
@@ -35,7 +35,7 @@ workflows:
 </code></pre>
 <p>where <code>CIRCLECI_TOKEN</code> is a personal api token.</p>
 <p> </p>
-<h2>Triggering a job via a setup workflow</h2>
+<h2 id="h_01HM586STXT6MS28GNZ7CR76NE">Triggering a job via a setup workflow</h2>
 <p><span>Pipeline parameters can also be passed in via a setup workflow. Here is a sample config.yml file showing how to do so:</span></p>
 <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code style="padding: 5px;">version: 2.1
 
@@ -67,9 +67,9 @@ workflows:
       - determine-parallelism
 </code></pre>
 <p>In the above config file, it is setting the parallelism value in a json file, which is then being passed to the continuation api via the continuation orb's continue command. You can then use the sample config.yml file from the first section of this article as your continuation config (named <code>continue_config.yml</code> in this example).</p>
-<h2>Additional Resources: </h2>
+<h2 id="h_01HM586STX96REHKSVRT58ECM2">Additional Resources: </h2>
 <ul>
     <li><a href="https://circleci.com/docs/parallelism-faster-jobs/" target="_self">Test splitting and parallelism</a></li>
-    <li><a href="https://circleci.com/docs/dynamic-config/" target="_blank" rel="noopener">Dynamic Configuration</a></li>
-    <li><a href="https://circleci.com/developer/orbs/orb/circleci/continuation" target="_blank" rel="noopener">circleci/continuation Orb</a></li>
+    <li><a href="https://circleci.com/docs/dynamic-config/" target="_blank" rel="noopener noreferrer">Dynamic Configuration</a></li>
+    <li><a href="https://circleci.com/developer/orbs/orb/circleci/continuation" target="_blank" rel="noopener noreferrer">circleci/continuation Orb</a></li>
 </ul>
