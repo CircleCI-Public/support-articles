@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 115003755767
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360020298014-How-to-delete-branches-from-CircleCI-that-were-deleted-from-my-VCS-
+  https://support.circleci.com/hc/en-us/articles/360020298014-How-to-delete-branches-from-CircleCI-that-were-deleted-from-my-VCS
 draft: false

@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 115003755767
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360007985634-Why-do-force-pushes-that-change-repository-history-cause-problems-on-CircleCI-
+  https://support.circleci.com/hc/en-us/articles/360007985634-Why-do-force-pushes-that-change-repository-history-cause-problems-on-CircleCI
 draft: false

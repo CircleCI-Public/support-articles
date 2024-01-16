@@ -1,16 +1,21 @@
-<p>There are a variety of ways that a Kubernetes cluster can be misconfigured. Below are some gathered techniques for diagnosing cluster issues vs Container Agent issues. In time hopefully these will be codified in a diagnostic tool for customers to run in their clusters.</p>
-<h4>Check Kubernetes API service IP</h4>
+<h2 id="h_01HM73BPJAEWBYW8X5DRS58M9A">Diagnosing Container Agent Issues</h2>
+<p>There are a variety of ways that a Kubernetes cluster can be misconfigured. Below are some gathered techniques for diagnosing cluster issues vs Container Agent issues. Our support team has also developed a tool to help diagnose common Container Agent issues that can be found here:</p>
+<p class="wysiwyg-indent1"><a href="https://github.com/kelvintaywl-cci/circleci-container-runner-help">https://github.com/kelvintaywl-cci/circleci-container-runner-help</a></p>
+<p> </p>
+<h2 id="h_01HM72RVSEM6Y3MDKGT7P0DNQ0">Check Kubernetes API service IP</h2>
 <pre><code>kubectl get service kubernetes -n default</code></pre>
-<p>This command will return information about the <code>kubernetes</code> service that is automatically created by Kubernetes that points to the API server. The IP reported here can be checked against any error coming from Container Agent on startup. It will output something like:</p>
+<p>This command will return information about the <code>kubernetes</code> service that is automatically created by Kubernetes and points to the API server. The IP reported here can be checked against any error coming from Container Agent on startup. It will output something like:</p>
 <pre><code>NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE<br>kubernetes ClusterIP 10.152.183.1 &lt;none&gt; 443/TCP 28d</code></pre>
-<h4>Check Kubernetes API service environment variables</h4>
+<h2> </h2>
+<h2 id="h_01HM72RVSEASPBH6CJ8QGAPQ29">Check Kubernetes API service environment variables</h2>
 <p>Using exec to start a shell session on a container running in the target namespace you can see the environment variables added to the running container environment. Using <code>set | grep KUBERNETES</code> you can check the variables that refer to the Kubernetes API service:</p>
 <pre><code>KUBERNETES_SERVICE_HOST='172.20.0.1'<br>KUBERNETES_SERVICE_PORT='443'<br>KUBERNETES_SERVICE_PORT_HTTPS='443'</code></pre>
-<p>Again these can be cross referenced against the service output &amp; any error logging output</p>
-<h4>Directly check for API connectivity</h4>
+<p>Again these can be cross-referenced against the service output &amp; any error logging output.</p>
+<h4 id="h_01HM73C6PDJ0T410HYQJD0R556"> </h4>
+<h2 id="h_01HM72RVSE2DD1SG4XRWKKQ5PG">Directly check for API connectivity</h2>
 <p>Using <code>exec</code> to start a shell session on a container running in the target namespace you can then directly check the API connectivity using curl. Running the following command</p>
 <pre><code>curl --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt https://kubernetes.default.svc -m 30</code></pre>
 <p>or alternatively</p>
 <pre><code>curl --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt https://KUBERNETES_SERVICE_HOST:KUBERNETES_SERVICE_PORT -m 30</code></pre>
-<p>will make an HTTP request to the API server (using a 30s timeout). This should return a <code>403</code> (as there is no bearer token configured) if the API server is reachable</p>
+<p>will make an HTTP request to the API server (using a 30s timeout). This should return a <code>403</code> (as there is no bearer token configured) if the API server is reachable.</p>
 <p> </p>

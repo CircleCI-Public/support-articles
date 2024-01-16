@@ -9,5 +9,5 @@ permission_group_id: 237867
 section_id: 115003332287
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360050934711-Troubleshooting-EPERM-operation-not-permitted-copyfile-when-using-node-14-9-0-or-later-
+  https://support.circleci.com/hc/en-us/articles/360050934711-Troubleshooting-EPERM-operation-not-permitted-copyfile-when-using-node-14-9-0-or-later
 draft: false

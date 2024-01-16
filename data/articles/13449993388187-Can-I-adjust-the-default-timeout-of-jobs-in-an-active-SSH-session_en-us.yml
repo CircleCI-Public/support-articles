@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 360013092292
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/13449993388187-Can-I-adjust-the-default-timeout-of-jobs-in-an-active-SSH-session-
+  https://support.circleci.com/hc/en-us/articles/13449993388187-Can-I-adjust-the-default-timeout-of-jobs-in-an-active-SSH-session
 draft: false

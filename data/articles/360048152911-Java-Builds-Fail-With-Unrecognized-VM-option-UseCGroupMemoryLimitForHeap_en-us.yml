@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 7513289222427
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/360048152911-Java-Builds-Fail-With-Unrecognized-VM-option-UseCGroupMemoryLimitForHeap-
+  https://support.circleci.com/hc/en-us/articles/360048152911-Java-Builds-Fail-With-Unrecognized-VM-option-UseCGroupMemoryLimitForHeap
 draft: false

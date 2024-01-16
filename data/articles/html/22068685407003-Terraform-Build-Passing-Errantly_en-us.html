@@ -1,0 +1,5 @@
+<h2 id="h_01HM7ADVM3PWD0K7KV9VKSYMM9">Terraform Build Passing when it should be Failing</h2>
+<p>If you're operating Terraform within a wrapper shell script, you would usually need to pass an unsuccessful exit status onto its caller. Please be aware that this action isn't the default behavior.</p>
+<p>In the case of Bash, you can configure it to recognize an error in a command as a failure of the whole script itself. To achieve this, you need to include the following line of code before running the Terraform command:</p>
+<pre>set -e</pre>
+<p><br>As another option, you can design logic to explicitly track the exit status. By employing the <code>exit</code> command, you can pass an unsuccessful code to the outcome of the shell script.</p>
