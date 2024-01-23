@@ -1,0 +1,9 @@
+<p>これは Linux のエラーコードで、CircleCI 上のコンテナで使用できるメモリが不足した場合に表示されることがあります。 コンテナにはデフォルトで 4GB の RAM が与えられます。 ビルドプロセスでコンテナのメモリを使い尽くすと、ビルドは失敗します。</p>
+<p><strong>Java</strong>を使用しているビルドに関連するメモリの問題については、<a href="https://circleci.com/blog/how-to-handle-java-oom-errors/" target="_self">こちらのブログ</a>を参照してください。
+</p>
+<p>ビルドで<strong> Android </strong>を使用している場合は、<a href="https://support.circleci.com/hc/en-us/articles/360021812453" target="_self"> Memory Issues FAQ</a>を参照してください。
+</p>
+<p><a href="https://circleci.com/pricing/usage/" target="_self">パフォーマンスプラン</a>では、<a href="https://circleci.com/docs/2.0/configuration-reference/#resource_class" target="_self"><em>resource_class</em></a>オプションを使用して、ビルドコンテナで利用可能なリソースを設定することができます。
+</p>
+<p>いくつかのツールでは自動でCPU数に基づいてワーカー数やプロセス数、スレッド数を増やすためメモリーの問題がCircleCI上で行う場合があり、その場合、手動でワーカー数等の設定が必要になります。 動的にプロセスが作られる場合に手動でリミットを設定する方法については <a href="https://support.circleci.com/hc/en-us/articles/360038192673-NodeJS-Builds-or-Test-Suites-Fail-With-ENOMEM-or-a-Timeout" target="_self">この記事</a>を参照してください。
+</p>

@@ -1,0 +1,15 @@
+<h1><strong>キャッシュのクリア</strong></h1>
+<p>CircleCIのキャッシュシステムで依存関係のキャッシュは、フォーマット化された文字列のテンプレートを使用してキャッシュキーを設定する必要があります。
+    次のように設定できます。</p>
+<pre>myapp-<span class="o">{{</span> checksum <span class="s2"><span class="hljs-string">"package-lock.json"</span></span> <span class="o">}}</span></pre>
+<p><span class="o"> 以下のようなキャッシュキーが生成されます<br></span></p>
+<pre><span class="o">myapp-+KlBebDceJh_zOWQIAJDLEkdkKoeldAldkaKiallQ </span></pre>
+<p><span class="o">この例では、<strong>package-lock.json</strong>ファイルに変更があった場合、このキャッシュキーは変更されます。 </span><span class="o"></span></p>
+<p><span class="o">キャッシュを手動でクリアや再作成したい場合があります。 よくある解決策として、キャッシュキーのテンプレートにバージョニングキーを追加します。
+    </span></p>
+<p><a href="https://circleci.com/docs/2.0/caching/#clearing-cache">キーの先頭にバージョンのプレフィクス</a>を追加し、キャッシュを消去し再作成したい場合にインクリメントすることができます。プロジェクトの設定で <code>CACHE_VERSION=v1</code> のような変数を設定し、コンフィグに追加することができます。UIから環境変数を変更できるため便利です。</p>
+<p>次のように設定できます。</p>
+<pre>myapp-<strong>{{ .Environment.CACHE_VERSION }}-{{checksum "package-lock.json" }}</strong>  </pre>
+<p>以下のようなキーが生成されます。</p>
+<pre><span class="o"><strong>myapp-v1-+KlBebDceJh_zOWQIAJDLEkdkKoeldAldkaKiallQ</strong></span></pre>
+<p><span class="o"> 手動でキャッシュを更新する必要がある場合は、プロジェクト設定の環境変数を <strong>v2 </strong> に更新するだけで、キャッシュキーを変更して新しいキャッシュが生成されます。</span></p>

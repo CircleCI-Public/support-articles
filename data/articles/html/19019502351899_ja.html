@@ -1,0 +1,45 @@
+<h1 id="h_01HAZJCQTFG6VB98PKXAQTDDCW" data-renderer-start-pos="6347">概要：</h1>
+<p data-renderer-start-pos="6347">CircleCIと統合されているGitHubの組織は、以下のいずれかの統合タイプを持っており、これによって組織のメンバーの役割と権限がどのように管理されるかが決まります：</p>
+<ul>
+    <li data-renderer-start-pos="6347"><a href="https://circleci.com/docs/ja/github-integration/">GitHub OAuthアプリ統合</a></li>
+    <li data-renderer-start-pos="6347"><a href="https://circleci.com/docs/ja/github-apps-integration/">GitHubアプリ統合</a></li>
+</ul>
+<p>この形式のURLは、<strong>GitHub OAuth</strong>によって認証されたことを示します：<code class="language-none" data-testid="code-snippet-highlight">https://app.circleci.com/pipelines/github/&lt;組織名&gt;</code></p>
+<p>この形式のURLは、<strong>GitHubアプリ</strong>によって認証されたことを示します：<code class="language-none" data-testid="code-snippet-highlight">https://app.circleci.com/pipelines/circleci/UTxCZDiJ9MLGLC8hR1ZDmg</code></p>
+<p> </p>
+<h2 id="h_01HAZJCQTFAEXR162VH0WK1F23" data-renderer-start-pos="6427">ユーザーの管理方法</h2>
+<ul class="ak-ul" data-indent-level="1">
+    <li>
+        <p data-renderer-start-pos="6446"><a href="https://circleci.com/docs/ja/github-integration/#permissions-overview">GitHub OAuthユーザー</a></p>
+        <ul class="ak-ul" data-indent-level="1">
+            <li>OAuthユーザーの役割と権限は、GitHubの組織ページから継承されます</li>
+            <li>GitHubで行われたユーザーの権限の変更がある場合はCircleCIにも反映されます<br>
+                <ul class="ak-ul" data-indent-level="1">
+                    <li>ユーザーの変更は、GitHubにおける<strong>組織</strong>のページ内、<strong>Peopleタブ</strong>から行うことが可能です</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <p data-renderer-start-pos="6466"><a href="https://circleci.com/docs/ja/manage-roles-and-permissions/">GitHubアプリユーザー</a></p>
+        <ul class="ak-ul" data-indent-level="1">
+            <li>
+                <a href="https://support.circleci.com/hc/en-us/articles/12154694676507-How-do-I-find-my-org-admins-">組織管理者</a>として、CircleCIダッシュボードのサイドバーにある<strong>Organization Settings</strong>へと移動します
+                <ul class="ak-ul" data-indent-level="1">
+                    <li>
+                        <strong>People</strong>をクリックします
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<h2 id="h_01HAZJCQTF3JVA02MEGN5YKDND" data-renderer-start-pos="8026">追加の注意事項：</h2>
+<ul>
+    <li data-renderer-start-pos="8026">現在、既存のCircleCIユーザーに対して、GH OAuth統合からGHアプリ統合への変換または変更をサポートしていません。</li>
+</ul>
+<h2 id="h_01HAZJCQTF74Y5MBPNJQW35GWJ" data-renderer-start-pos="6514">追加のリソース：</h2>
+<ul>
+    <li data-renderer-start-pos="6514"><a href="https://support.circleci.com/hc/ja/articles/18174029874331" target="_blank" rel="noopener noreferrer">CircleCIでチームメンバーを招待して共同作業をする</a></li>
+    <li data-renderer-start-pos="6514"><a href="https://circleci.com/docs/ja/manage-roles-and-permissions/">役割と権限の管理（GitHubアプリ＆GitLab統合のみ）</a></li>
+</ul>
