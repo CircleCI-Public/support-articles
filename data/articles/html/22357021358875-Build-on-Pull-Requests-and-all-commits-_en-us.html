@@ -1,0 +1,17 @@
+<h1 id="h_01HMZ2BAHQZX3P0ZH3X8AB78HQ">Overview</h1>
+<p>In some cases you may need to build when a pull request is opened and when a commit is pushed to every branch.</p>
+<h2 id="h_01HMZ2BAHQV55P59MV5ZSJYD9X">Building on Pull Requests </h2>
+<p>In order to build when a pull request is opened, you will need to enable the <a href="https://circleci.com/docs/oss/#only-build-pull-requests">Only build pull requests</a> feature. Enabling this feature will build when a PR is opened and to commits to your default branch. </p>
+<h2 id="h_01HMZ2BAHQPA112T9MYGHV1TEJ">Adding default branches </h2>
+<p>You can view your projects default branch branch by using the get a Project API endpoint: <a href="https://circleci.com/docs/api/v2/index.html#tag/Project">https://circleci.com/docs/api/v2/index.html#tag/Project</a></p>
+<p>You may add additional default branches by leveraging the CircleCI API as mentioned in the following support article: https://support.circleci.com/hc/en-us/articles/15222074173723-How-to-allowlist-additional-branches-for-Only-Build-Pull-Requests</p>
+<p>To add all branches as default branches, please add "*" as a default branch. For example: </p>
+<p> </p>
+<p style="box-sizing: border-box; overflow: auto; font-family: monospace, monospace; font-size: 18px; color: #161616; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; background-color: #f3f3f3; padding: 5px;">curl -X PUT \<br style="box-sizing: border-box;">--header "Circle-Token: &lt;token&gt;" <br style="box-sizing: border-box;">--header "Accept: application/json" <br style="box-sizing: border-box;">--header "Content-Type: application/json" <br style="box-sizing: border-box;">--data '{"feature_flags":{"pr-only-branch-overrides": "main, * "}}' <br style="box-sizing: border-box;">'https://circleci.com/api/v1.1/project/<span class="hljs-comment" style="box-sizing: border-box; color: #999988; font-style: italic;">&lt;vcs-type&gt;/&lt;org-slug&gt;/&lt;project-slug&gt;</span>/settings'</p>
+<h2> </h2>
+<h2 id="h_01HMZ2BAHQWWKDKR7A1FGN3R7B">Additional Resources<span class="diff-removed-string">:</span><span class="diff-added-string"> </span>
+</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/oss/#only-build-pull-requests">Only build pull requests </a></li>
+    <li><a href="https://circleci.com/docs/api/v2/">CircleCI v2 API </a></li>
+</ul>
