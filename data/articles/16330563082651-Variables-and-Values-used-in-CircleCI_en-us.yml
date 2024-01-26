@@ -1,5 +1,5 @@
 id: 16330563082651
-title: Variables used in CircleCI
+title: Variables and Values used in CircleCI
 author_id: 415005595451
 created_at: '2023-06-12T20:59:36Z'
 locale: en-us
@@ -7,5 +7,5 @@ permission_group_id: 237867
 section_id: 360002440473
 user_segment_id: null
 html_url: >-
-  https://support.circleci.com/hc/en-us/articles/16330563082651-Variables-used-in-CircleCI
+  https://support.circleci.com/hc/en-us/articles/16330563082651-Variables-and-Values-used-in-CircleCI
 draft: false
