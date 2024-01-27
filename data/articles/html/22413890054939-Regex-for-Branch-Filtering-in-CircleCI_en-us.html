@@ -1,0 +1,18 @@
+<h1 id="h_01HAM80B6Q31GFKT390R2RQANG">Overview</h1>
+<p>You may have encountered some difficulty wildcarding your branch filters in the past with something like <code>release*</code>, and not seeing it work as expected. The reason that you are seeing this behavior is because we do not use the simplified version of regex in our configuration files, as it interferes with compiling. <a href="https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html" rel="noopener noreferrer">We use the Java util regex pattern</a>. </p>
+<p> </p>
+<h2 id="h_01HAM80B6QZ8VQPCEWEZWBBWK9">How Can I Use This?</h2>
+<p>Here are a few examples of how to achieve some different filtering use cases for a branch with "release" in the branch name:</p>
+<ul>
+    <li> Starts with 'release':<code>'^release.*'</code>
+    </li>
+    <li> Ends with 'release':<code>'.*release$'</code>
+    </li>
+    <li>Contains 'release':<code>'.*release.*'</code>
+    </li>
+</ul>
+<h2 id="h_01HAM80B6QP34XF2GY5DK8YVPR">Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/115015953868" target="_blank" rel="noopener noreferrer">Filter workflows by branch </a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/13937937734043" target="_blank" rel="noopener noreferrer">How to use branch filters with IP ranges </a></li>
+</ul>

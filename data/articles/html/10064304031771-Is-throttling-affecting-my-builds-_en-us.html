@@ -1,2 +1,7 @@
-<h1>Troubleshooting network throttling</h1>
-<p>If you're seeing signs you're hitting slow network speeds: As a next step, consider if the VPN vs No-VPN test is right for this instance: <br>See <a href="https://support.circleci.com/hc/en-us/articles/360049397051-How-to-set-up-a-VPN-connection-during-builds" target="_self">How to set up a VPN connection during builds</a><br><br>If the build utilizes VPN and the network speeds are normal, <a href="https://support.circleci.com/hc/en-us" target="_self">let us know</a>.<br><br>In general, if you suspect network throttling, please contact CircleCI Support. </p>
+<h1 id="h_01HN3EKAV3FDQ784CZ8A42PKXE">Troubleshooting network throttling</h1>
+<p>CircleCI does not inherently throttle network speeds. To ensure you don't hit slower network speeds we recommend placing any relevant infrastructure you need to communicate with in the same region. Executors are typically run in AWS `us-east-1`, `us-east-2`, and GCP `us-east1`, `us-central1`. You can find more information about this on our IP Ranges documentation page:</p>
+<p><a href="https://circleci.com/docs/ip-ranges">https://circleci.com/docs/ip-ranges</a></p>
+<p>If you're seeing signs you're hitting slow network speeds: As a next step, consider if the VPN vs No-VPN test is right for this instance: </p>
+<p>See <a href="https://support.circleci.com/hc/en-us/articles/360049397051-How-to-set-up-a-VPN-connection-during-builds" target="_self">How to set up a VPN connection during builds</a></p>
+<p>If the build utilizes VPN and the network speeds are normal, <a href="https://support.circleci.com/hc/en-us" target="_self">let us know</a>.</p>
+<p>In general, if you suspect network throttling, please contact CircleCI Support. </p>

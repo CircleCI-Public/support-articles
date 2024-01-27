@@ -1,13 +1,12 @@
-<p data-renderer-start-pos="9200">If you try to use the checkout step but you see the following error</p>
+<p data-renderer-start-pos="9200">Alpine images are slimline Linux images that often omit packages that are used frequently on other distributions.</p>
+<p data-renderer-start-pos="9200">If you try to use the checkout step but you see the following error:</p>
 <pre dir="ltr"><code>Either git or ssh (required by git to clone through SSH) is not installed in the image. Falling back to CircleCI's native git client but the behavior may be different from official git. If this is an issue, please use an image that has official git and ssh installed.</code></pre>
-<p>This is caused by either SSH or git missing from the image that you are using</p>
-<h2 data-renderer-start-pos="8723">Solution</h2>
-<p>The following commands will install openSSH and git the code can be copied and pasted into your config.yml before calling the checkout step</p>
+<p>This is caused by either SSH or git missing from the image that you are using.</p>
+<h2 id="h_01HN3E8VQF6Y1F7JDY1FP5J5MF" data-renderer-start-pos="8723">Solution</h2>
+<p>The following commands will install openSSH and git the code can be copied and pasted into your config.yml before calling the checkout step:</p>
 <pre dir="ltr"><code>      - run: apk update
       - run: apk upgrade
       - run: apk add --no-cache openssh
       - run: apk add git</code></pre>
-<h2 data-renderer-start-pos="8901">Outcome</h2>
+<h2 id="h_01HN3E8VQF7G94YFXYXF64JXFZ" data-renderer-start-pos="8901">Outcome</h2>
 <p data-renderer-start-pos="8901">The commands will allow you to run the checkout step successfully.</p>
-<p> </p>
-<p> </p>
