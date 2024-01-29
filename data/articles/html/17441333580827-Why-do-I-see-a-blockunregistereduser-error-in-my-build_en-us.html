@@ -1,29 +1,30 @@
-<h1 data-renderer-start-pos="7581">Problem:</h1>
-<p data-renderer-start-pos="7581">When a user triggers a build, the build fails and the jobs will have a warning banner with the message: <code>block-unregistered-user</code>.<br><br>This might happen if your organization has enabled the <a href="https://support.circleci.com/hc/en-us/articles/4413968995099">Prevent unregistered user spend</a> feature. This feature will prevent all unauthorized users from triggering a successful build. For any users to be considered a registered user, they will need to have a CircleCI account.</p>
-<h2 data-renderer-start-pos="7676">Solutions:</h2>
+<h1 id="h_01HN89DBYASW0PDATTP319EMVE" data-renderer-start-pos="7581">Problem:</h1>
+<p data-renderer-start-pos="7581">When a user triggers a build, the build fails and the jobs will have a warning banner with the message: <code>block-unregistered-user</code>.<br><br>This might happen if your organization has enabled the <a href="https://support.circleci.com/hc/en-us/articles/4413968995099">Prevent unregistered user spend</a> feature in the <code>Organization Settings</code>, under <code>Usage Controls</code>. This feature will prevent all unauthorized users from triggering a successful build. For any users to be considered a registered user, they will need to have a CircleCI account.</p>
+<h2 id="h_01HN89DBYAGV9D971T8RFE53YZ" data-renderer-start-pos="7676">Solutions:</h2>
 <ul class="ak-ul" data-indent-level="1">
     <li>
-        <p data-renderer-start-pos="7690">Please make sure that the user has signed up to CircleCI <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"></span><a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" href="https://circleci.com/signup/" target="_blank" rel="noopener">here</a>.<br>If you are building on a Gitlab project, please check out <a href="https://support.circleci.com/hc/en-us/articles/17470042094875" target="_blank" rel="noopener">this article</a> for additional troubleshooting steps.</p>
+        <p data-renderer-start-pos="7690">Please make sure that the user has signed up to CircleCI <a style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;" href="https://circleci.com/signup/" target="_blank" rel="noopener noreferrer">here</a>.<br>If you are building on a Gitlab project, please check out <a href="https://support.circleci.com/hc/en-us/articles/17470042094875" target="_blank" rel="noopener noreferrer">this article</a> for additional troubleshooting steps.</p>
     </li>
     <li>
-        <p data-renderer-start-pos="7742">If you are using <a href="https://circleci.com/docs/scheduled-pipelines/" target="_blank" rel="noopener">scheduled pipelines</a>, please make sure that the pipelines are triggered by an actual user instead of a Scheduled Actor.<br><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">You can change the actor of the trigger at </span><code style="font-size: 15px;">Project Settings &gt;
+        <p data-renderer-start-pos="7742">If you are using <a href="https://circleci.com/docs/scheduled-pipelines/" target="_blank" rel="noopener noreferrer">scheduled pipelines</a>, please make sure that the pipelines are set up to be triggered by an actual user instead of a Scheduled Actor.<br><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">You can change the actor of the trigger at </span><code style="font-size: 15px;">Project Settings &gt;
                 Triggers</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">. Click on </span><code style="font-size: 15px;">Edit</code><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;"> and change the attribution of the trigger from "Scheduled Actor (Scheduling System)" to your own user.</span></p>
     </li>
     <li>
         <p data-renderer-start-pos="7794">If you are using a machine user to trigger builds, please try signing up to CircleCI with the machine user's account to enabled it to trigger builds.</p>
     </li>
+    <li>If you are using a bot user to trigger builds (e.g. github-merge-queue[bot]) that cannot be registered on CircleCI, we recommend disabling the "Prevent unregistered user spend" feature to allow these builds.</li>
 </ul>
-<h2 data-renderer-start-pos="7854">Outcome:</h2>
+<h2 id="h_01HN89DBYARGFWP85Y5MW7NN49" data-renderer-start-pos="7854">Outcome:</h2>
 <p data-renderer-start-pos="7854">Once the user has signed up to CircleCI or the scheduled pipeline has been set up to be triggered by an actual user, the build should run without an error.</p>
 <p data-renderer-start-pos="7854">If the error persists after following the above steps, please contact <a href="https://support.circleci.com/">CircleCI Support</a>.</p>
-<h2 data-renderer-start-pos="8137">Additional Resources:</h2>
+<h2 id="h_01HN89DBYA3T9RGK0TMVVMATN4" data-renderer-start-pos="8137">Additional Resources:</h2>
 <ul>
     <li>
-        <p><a href="https://support.circleci.com/hc/en-us/articles/4413968995099" target="_blank" rel="noopener">How to set up the Prevent unregistered user spend feature</a></p>
+        <p><a href="https://support.circleci.com/hc/en-us/articles/4413968995099" target="_blank" rel="noopener noreferrer">How to set up the Prevent unregistered user spend feature</a></p>
     </li>
     <li>
-        <p><a href="https://circleci.com/docs/scheduled-pipelines/" target="_blank" rel="noopener">Scheduled pipelines</a></p>
+        <p><a href="https://circleci.com/docs/scheduled-pipelines/" target="_blank" rel="noopener noreferrer">Scheduled pipelines</a></p>
     </li>
-    <li><a href="https://circleci.com/docs/github-integration/#controlling-access-via-a-machine-user" target="_blank" rel="noopener">Controlling access via a machine users</a></li>
+    <li><a href="https://circleci.com/docs/github-integration/#controlling-access-via-a-machine-user" target="_blank" rel="noopener noreferrer">Controlling access via a machine users</a></li>
 </ul>
 <p data-renderer-start-pos="8137"> </p>

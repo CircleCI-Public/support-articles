@@ -1,0 +1,24 @@
+<h1 id="h_01HN865P44F8BDAGNGDV09PBCA">Problem:</h1>
+<p>If you are a new team member trying to join an organization that is using the classic Github OAuth integration, you may encounter an error page with the following message: "You need permission - To access this organization, ask your administrator to give you <strong>Write</strong> permission in Github or Bitbucket." In this support article, we will guide you through the steps to resolve this issue.</p>
+<p class="wysiwyg-text-align-center"><img src="https://support.circleci.com/hc/article_attachments/22441895203739" alt="need permission.png" width="629" height="337"></p>
+<h2 id="h_01HN8672WHEBN82NYWSMXK0R6Y">Solutions:</h2>
+<ul>
+    <li>
+        <strong>Verify Write Permission</strong><br>It is important to verify that you indeed have write permission to the organization. Double-check with your organization's administrator or owner to ensure that you have the necessary permissions assigned.
+    </li>
+    <li>
+        <strong>Check OAuth App Access Restriction</strong><br>If you have confirmed that you have write permission to the organization, it is possible that the organization has OAuth App access restriction enabled. This means that as a new user, you need to explicitly request or grant access to the organization on your personal Github account.
+    </li>
+</ul>
+<h2 id="h_01HN86ATY0YGDX0PZQ42PH47TS">Requesting or granting access to an OAuth App access restricted organization:</h2>
+<ol>
+    <li>Navigate to the CircleCI OAuth App on your personal account by selecting <code>Applications</code> &gt; <code>Authorized OAuth Apps</code> &gt; <code>CircleCi</code>
+    </li>
+    <li>Scroll down to the section labeled <code>Organization Access</code>
+    </li>
+    <li>You should see an option to grant or request permission next to the organization's name. Please proceed to do so.</li>
+    <li>If the organization is not listed here, please reach out to the organization's administrator to request the correct permissions to the organization</li>
+</ol>
+<h2 id="h_01HN86JY22VAZ9TDETZV3VSRBT">Outcome:</h2>
+<p>Once you have confirmed that you have the right permissions and you have granted access to the organization, you should be able to log in to your CircleCI account and access the organization.</p>
+<p>If you have followed the above steps and still encounter the permission error mentioned earlier, please don't hesitate to contact our support team.</p>
