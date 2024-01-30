@@ -1,0 +1,13 @@
+<h1 id="h_01HMY3M233F3HVAYVSCXZHPJ3N">Overview</h1>
+<p>Some users may be seeing an issue where a python3 shell in your workflow does not recognize packages installed via pip in a previous bash step when using a newer xCode version. This is because by not using bash, you are bypassing the path we set in the bashrc and <code>eval "$(pyenv init -)" </code> so it will default to the system python which is different. You are installing the pip packages into the pyenv python, then using the system python so those packages don’t exist in the context of the system python.</p>
+<p> </p>
+<h2 id="h_01HNB25H8RHTDGKRQ0HJA76217">Solution</h2>
+<p>You can address this by simply running the</p>
+<pre>pyenv global system</pre>
+<p>command to set the pyenv to use the system python before installing packages.</p>
+<p> </p>
+<h2 id="h_01HMY3M233469H9HTQEEYZV95E">Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/16708605403035" target="_blank" rel="noopener noreferrer">How to Change your Python Version within the Windows Executor</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360048786831" target="_blank" rel="noopener noreferrer">Use test splitting with Python Django tests</a></li>
+</ul>

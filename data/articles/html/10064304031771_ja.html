@@ -1,0 +1,5 @@
+<h1 id="h_01HN3EKAV3FDQ784CZ8A42PKXE">ネットワーク速度のトラブルシューティング</h1>
+<p>CircleCIはネットワーク速度を意図的に制限することはありません。ネットワーク速度が遅くなるのを避けるために、通信が必要な関連インフラを同じリージョン内に配置することを推奨します。Executorは通常、AWSの`us-east-1`、`us-east-2`、GCPの`us-east1`、`us-central1`で実行されます。これに関する詳細は、IPレンジのドキュメントページでご確認いただけます：</p>
+<p><a href="https://circleci.com/docs/ja/ip-ranges/">https://circleci.com/docs/ja/ip-ranges/</a></p>
+<p>ネットワーク速度が遅いと感じる場合：次のステップとして、VPNとNo-VPNの状態でのテストが適切かどうかを検討してみてください：</p>
+<p>ビルド中のVPN接続の設定方法については、<a href="https://support.circleci.com/hc/ja/articles/360049397051">こちら</a>をご参照ください。</p>
