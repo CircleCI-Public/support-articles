@@ -1,0 +1,23 @@
+<h1 id="h_01HNDQZVZN1T29B7NT6HFXJ35D">Overview</h1>
+<p>When using parallelism in CircleCI, you may encounter scenarios where you want certain steps to run only once instead of in each parallel job. This article guides you on how to execute a step in a single run within parallel jobs, using CircleCI's environment variables.</p>
+<h1 id="h_01HNDQZVZN9VN0JR8JB8EVDA8F">Prerequisites</h1>
+<ul>
+    <li>A CircleCI account and a project set up for CI/CD.</li>
+    <li>A <code>config.yml</code> file configured for parallel job execution.</li>
+</ul>
+<h1 id="h_01HNDQZVZNA2NRZ2135V7G86S7">Instructions</h1>
+<p>To run a step only once within parallel jobs, you can utilize the <code>CIRCLE_NODE_INDEX</code> environment variable provided by CircleCI. This variable indicates the index of the current container in a parallel job, starting from 0.</p>
+<p>Here's how to conditionally run a step based on the <code>CIRCLE_NODE_INDEX</code>:</p>
+<ol>
+    <li>Open your <code>.circleci/config.yml</code> file.</li>
+    <li>Locate the job that contains the parallel steps.</li>
+    <li>Add a conditional check in the <code>command</code> section of the step you want to run once.</li>
+</ol>
+<h1 id="h_01HNDQZVZNW85ND8833A3835XE">Solution</h1>
+<p>Below is an example of how to use the <code>CIRCLE_NODE_INDEX</code> to run any command only in the first parallel job:</p>
+<pre style="padding: 8px; font-family: SFMono-Regular, Consolas, ' Liberation Mono' , Menlo, Courier, monospace; font-size: 12.025px; color: #b4ada4; border-radius: 8px; display: block; margin: 0px; line-height: 18px; word-break: break-all; overflow-wrap: break-word; white-space: pre-wrap; background: #1c1e1f; border: 1px solid #363a3c; outline: 0px; vertical-align: baseline; box-sizing: border-box; margin-block: 4px 12px; margin-inline: 0px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;" data-darkreader-inline-color="" data-darkreader-inline-bgimage="" data-darkreader-inline-bgcolor="" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-outline=""><code style="padding: 0px; font-family: SFMono-Regular, Consolas, ' Liberation Mono' , Menlo, Courier, monospace; font-size: 12px; color: #b4ada4; border-radius: 4px; background: transparent; border: transparent; margin: 0px; outline: 0px; vertical-align: baseline; box-sizing: border-box; white-space: pre-wrap;" data-darkreader-inline-color="" data-darkreader-inline-bgimage="" data-darkreader-inline-bgcolor="" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-outline="">- run:<br style="box-sizing: border-box; font-family: Consolas, ' Liberation Mono' , Menlo, ' Bitstream Vera Sans Mono' , Courier, monospace !important;">    name: Run Your Command<br style="box-sizing: border-box; font-family: Consolas, ' Liberation Mono' , Menlo, ' Bitstream Vera Sans Mono' , Courier, monospace !important;">    command: |<br style="box-sizing: border-box; font-family: Consolas, ' Liberation Mono' , Menlo, ' Bitstream Vera Sans Mono' , Courier, monospace !important;">      if [ "${CIRCLE_NODE_INDEX}" -eq "0" ]; then<br style="box-sizing: border-box; font-family: Consolas, ' Liberation Mono' , Menlo, ' Bitstream Vera Sans Mono' , Courier, monospace !important;">         //code goes here<br style="box-sizing: border-box; font-family: Consolas, ' Liberation Mono' , Menlo, ' Bitstream Vera Sans Mono' , Courier, monospace !important;">      fi</code></pre>
+<p>In this example, the your code will execute only if the <code>CIRCLE_NODE_INDEX</code> is equal to 0, meaning it will run only in the first of the parallel jobs.</p>
+<p> </p>
+<h1 id="h_01HNDQZVZN1PZQKERHJ1QMRY8Q">Additional Resources</h1>
+<p>For more information on CircleCI environment variables and parallelism, you can refer to the following resources: - <a href="https://circleci.com/docs/environment-variables">CircleCI Environment Variables Documentation</a> - <a href="https://circleci.com/docs/parallelism-faster-jobs">CircleCI Parallelism Guide</a></p>
+<p>By leveraging the <code>CIRCLE_NODE_INDEX</code>, you can efficiently manage your parallel jobs and optimize your CI/CD pipeline in CircleCI.</p>
