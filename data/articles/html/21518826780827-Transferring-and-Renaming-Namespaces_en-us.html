@@ -1,0 +1,49 @@
+<h1 id="h_01HJH9FKFNNK4PA681371VK371">Overview</h1>
+<p>This article provides an insight into the effective management of namespaces, particularly focusing on transferring the ownership and renaming procedures. </p>
+<p>These namespaces are shared for both <a href="https://circleci.com/docs/runner-concepts/#namespaces-and-resource-classes">self-hosted runner resource classes</a> as well as any <a href="https://circleci.com/docs/orb-concepts/#namespaces">Orbs</a>.</p>
+<h2 id="h_01HJH9J7ZRP4C4580W8GEBS0MR">Prerequisites:</h2>
+<ul>
+    <li>To request a namespace rename or transfer, your team will need to reach out to the support team at CircleCI</li>
+    <li>Only <a href="https://support.circleci.com/hc/en-us/articles/12154694676507" target="_blank" rel="noopener noreferrer">Organization Admins</a> may request this</li>
+</ul>
+<h2 id="h_01HJH9S6WH8CY8MWYZ40NE0C8B">Renaming a Namespace</h2>
+<p>Renaming a namespace helps better align it with the organizational context or operational changes, such as organization acquisition, rebranding, and other requirements where organizations may want to rename their namespace.</p>
+<ol>
+    <li>
+        <p><strong>Initiate a Rename Request</strong>: This starts when the namespace owner sends a request to rename the namespace using a support ticket.</p>
+    </li>
+    <li>
+        <p><strong>Admin Approval</strong>: The organization administrator must approve this request or be the one to open </p>
+    </li>
+    <li>
+        <p><strong>Implementing the Change</strong>: Upon approval, the name change will be implemented. Do remember that renaming a namespace might affect codes or configurations that are dependent on the former name, so always perform checks to avoid errors.</p>
+    </li>
+</ol>
+<h2 id="h_01HJH9MTSN19JHR1HRGD9GEVKA">Transferring Namespace Ownership</h2>
+<p>Transferring the ownership of a namespace revolves around passing the control from one organization to another. This is can be requested if a user accidentally claimed a namespace on a personal account/organization which their company wishes to use, or if the organization is migrating to another VCS provider.</p>
+<ol>
+    <li>
+        <p><strong>Request Ownership Transfer</strong>: The current owner and admin of the namespace should initiate a request for an ownership transfer by contacting CircleCI support </p>
+    </li>
+    <li>
+        <p><strong>Approval by the Organization Admins</strong>: The organization admin must grant their approval for the transfer for both organizations on the support request.</p>
+    </li>
+    <li>
+        <p><strong>Complete the Ownership Transfer</strong>: Once the admin approves the request, we will transfer the namespace over to the desired organization.</p>
+    </li>
+</ol>
+<h2 id="h_01HJHB48FH9BVA3FVJEE6AVZJ1">Additional Notes:</h2>
+<ul>
+    <li>We can only rename/transfer to a unique namespace which has not been claimed by another organization</li>
+    <li>Organizations can only claim one namespace. We are unable to grant additional namespaces to an organization.</li>
+    <li>After transferring a namespace, any self-hosted runner resource classes will need to be recreated</li>
+</ul>
+<h2 id="h_01HJHB7JV54Y0WKMQ0HP7MVP6T">Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/18461134803099" target="_blank" rel="noopener noreferrer">How to Identify your Organization's claimed namespace using the CircleCI CLI</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/14031352897819" target="_blank" rel="noopener noreferrer">How to Rotate your Self-Hosted Runner Resource Class Tokens</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/4406826701339" target="_blank" rel="noopener noreferrer">Orbs: Public vs. Private vs. Unlisted</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/12154694676507" target="_blank" rel="noopener noreferrer">How do I find my org admins?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360034990033" target="_blank" rel="noopener noreferrer">Am I an organization admin? </a></li>
+</ul>
+<p> </p>
