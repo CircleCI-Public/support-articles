@@ -1,5 +1,5 @@
 <p> </p>
-<h1>Introduction</h1>
+<h1 id="h_01HPMRZSP7NJTPF48AQJJ7P36H">Introduction</h1>
 <p>If you want to see the complete list of the users on your CircleCI server installation, you can leverage the below API to query these details which include:</p>
 <ul>
     <li>Username</li>
@@ -9,26 +9,29 @@
     <li>Admin Permissions that are scoped</li>
     <li>Total Sign-in count</li>
 </ul>
-<h2>Prerequisites:</h2>
+<h2 id="h_01HPMRZSP7CC4H7G2QZ8HH1BQ5">Prerequisites:</h2>
 <ul>
     <li>CircleCI Server </li>
-    <li>Must be an admin to run this endpoint</li>
+    <li>Must be a Server admin to run this endpoint</li>
 </ul>
-<h2>Instructions</h2>
+<h2 id="h_01HPMRZSP7C76DWW8NM4YVPXBT">Instructions</h2>
 <p>Use the following endpoint with your CircleCI instance URL to query:</p>
-<p><code>&lt;circleci_url&gt;/api/v1/admin/users</code></p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><code>https://$CIRCLE_HOSTNAME/api/v1/admin/users</code></pre>
+<p><strong>Note:</strong> Do not include the app.* prefix in the endpoint</p>
 <p> </p>
-<h2>Outcome</h2>
+<p>To further filter these results to isolate the usernames and names, this can be done using <code>jq</code> :</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">curl -H "Circle-Token: &lt;admin-personal-api-token&gt;" -s 'https://$CIRCLE_HOSTNAME/api/v1/admin/users' | jq '.[] | select(.suspended == false) | {name: .name, login: .login}'</pre>
+<p> </p>
+<h2 id="h_01HPMRZSP7TC52FD3P2A6WE18Y">Outcome</h2>
 <p>It will show the user name, VCS login ID,  suspended user flag, and a few other details as shown below:</p>
 <p> </p>
 <p><img src="https://support.circleci.com/hc/article_attachments/360066448271" alt="server_api_user.png"></p>
-<h2>Additional Notes:</h2>
+<h2 id="h_01HPMRZSP76S0K41QY482KSNNS">Additional Notes:</h2>
 <ul>
     <li>This is for Server Only and is not available on the cloud product</li>
 </ul>
-<p>If you have any more questions, please submit a ticket to <a href="https://support.circleci.com/">CircleCI Support</a>.</p>
-<h2>Additional Resources:</h2>
+<h2 id="h_01HPMRZSP74VYJ83KQH0RYT7T0">Additional Resources:</h2>
 <ul>
-    <li><a href="https://support.circleci.com/hc/en-us/articles/360048310252" target="_blank" rel="noopener">[Server] How to See License Details?</a></li>
-    <li><a href="https://support.circleci.com/hc/en-us/articles/360052616031" target="_blank" rel="noopener">[Server] How to See All the Projects?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360048310252" target="_blank" rel="noopener noreferrer">[Server] How to See License Details?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360052616031" target="_blank" rel="noopener noreferrer">[Server] How to See All the Projects?</a></li>
 </ul>
