@@ -3,9 +3,9 @@
 <pre style="background-color: #f3f3f3;">- run:
     name: Check last commit to this commit
     command: |
-      LATEST_COMMIT=$(git ls-remote $CIRCLE_REPOSITORY_URL | grep $CIRCLE_BRANCH | cut -f 1)
-      LAST_COMMIT_DATETIME=$(git show --format="%ct" $LATEST_COMMIT | head -n 1)
-      BUILD_COMMIT_DATETIME=$(git show --format="%ct" $CIRCLE_SHA1 | head -n 1)
+      LATEST_COMMIT=$(git ls-remote --heads $CIRCLE_REPOSITORY_URL $CIRCLE_BRANCH | cut -f 1)
+      LAST_COMMIT_DATETIME=$(git show --format="%ct" --no-patch $LATEST_COMMIT)
+      BUILD_COMMIT_DATETIME=$(git show --format="%ct" --no-patch $CIRCLE_SHA1)
       if [ "$LAST_COMMIT_DATETIME" -gt "$BUILD_COMMIT_DATETIME" ]; then
         echo "more recent commit to branch, exiting"
         exit 1
