@@ -1,0 +1,20 @@
+name: Submodule Update Notifications (Approval)
+
+on:
+  pull_request_review:
+    types: [submitted]
+    branches: [ "main" ]
+
+jobs:
+  notify-zkb-sync:
+    if: github.event.review.state == 'approved'
+    name: Article update notification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repositiory Dispatch
+        uses: peter-evans/repository-dispatch@v2.0.0
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }} # Need access to secrets to add token
+          repository: circleci/zkb-sync
+          event-type: article-edit-approved
