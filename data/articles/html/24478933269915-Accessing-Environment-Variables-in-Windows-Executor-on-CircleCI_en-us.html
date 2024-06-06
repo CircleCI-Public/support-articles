@@ -1,0 +1,17 @@
+<h2 id="h_01HTJZ5W95SPY1YZGTB10ZNKVX">Overview</h2>
+<p>CircleCI users may encounter an issue where environment variables set in the Contexts section are not being correctly referenced in the Windows build. This can occur even when the variables appear correctly during the "Preparing environmental variables" step. This article provides a solution for referencing environment variables in a Windows executor environment.</p>
+<h2 id="h_01HTJZ5W953NTAXXW14TXFVVFH">Prerequisites</h2>
+<ul>
+    <li>A CircleCI project set up with a Windows executor.</li>
+    <li>Environment variables defined in the Contexts section of CircleCI.</li>
+    <li>A <code>config.yml</code> file that references these environment variables.</li>
+</ul>
+<h2 id="h_01HTJZ5W95VB57ZKAJNWPX180T">Solution</h2>
+<p>When using a Windows executor in CircleCI, the syntax for referencing environment variables differs from that used in Unix-based systems. In a Windows environment, which typically uses <code>powershell.exe</code> as the default shell, you should reference environment variables with the <code>$env:</code> prefix rather than the <code>$</code> prefix used in Unix.</p>
+<p>For example, if you have an environment variable named <code>EULA_VERSION</code>, you should reference it in your <code>config.yml</code> as follows:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">- run: echo $env:EULA_VERSION</pre>
+<p>This syntax ensures that the environment variable is correctly interpolated during the build process on a Windows executor.</p>
+<p> </p>
+<h2 id="h_01HTJZ5W97M7WN9PR224MW9G4A">Additional Resources</h2>
+<p>For further details and community discussions around similar issues, you can explore the following resources: - <a href="https://discuss.circleci.com/">CircleCI Discuss Forum</a> - <a href="https://circleci.com/docs/2.0/executor-types/#using-the-windows-executor">CircleCI Windows Executor Documentation</a> - <a href="https://circleci.com/docs/2.0/env-vars/">Using Environment Variables in CircleCI</a></p>
+<p> </p>

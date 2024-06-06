@@ -1,8 +1,8 @@
 <p>You may have a scenario that requires you to run an application of kind <strong>Application (Intel)</strong> on an Apple Silicon / M1 resource. This can be done by installing <strong>Rosetta</strong>. <strong>Rosetta</strong> acts as a translation layer on Apple Silicon versions of macOS, which allows macOS to run <strong>Application (Intel)</strong> kind applications.</p>
-<h2>Installing Rosetta</h2>
+<h2 id="h_01HT49M6JB54DFK5AM5W2GAQK2">Installing Rosetta</h2>
 <p><strong>Rosetta</strong> can be installed using CircleCI's <strong>macOS orb</strong>.</p>
 <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>orbs:
-  macos: circle/macos@2.3.6
+  macos: circleci/macos@2.4.1
   
 jobs:
   build:
@@ -13,5 +13,5 @@ jobs:
       - macos/install-rosetta
 ...
 </code></pre>
-<h2>Additional resources</h2>
+<h2 id="h_01HT49M6JBPHWNCBS3P7EKMJ0T">Additional resources</h2>
 <p><a href="https://circleci.com/developer/orbs/orb/circleci/macos#commands-install-rosetta">macOS orb documentation</a></p>

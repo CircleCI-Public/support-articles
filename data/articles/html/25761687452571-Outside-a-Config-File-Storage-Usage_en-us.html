@@ -1,0 +1,50 @@
+<h3 id="h_01HXYF2CDGY33K7M33V1NNGNR4">
+    <a class="anchor" href="https://discuss.circleci.com/t/outside-a-config-file-storage-usage/48624#caching-3" name="caching-3"></a>Caching
+</h3>
+<p>Inspect the output of <a href="https://circleci.com/docs/caching/">caching steps</a> in <a href="https://circleci.com/docs/glossary/#job">jobs</a> to ensure cache keys are regularly being found. If not, consider changing the cache key to be less specific or use a <a href="https://circleci.com/docs/caching-strategy/#partial-dependency-caching-strategies">fallback key</a>.</p>
+<p>For caching steps that are taking a long time, consider breaking up the cache into multiple caches. If the job is on the docker executor, consider enabling <a href="https://circleci.com/docs/using-docker/#ram-disks">RAM disk </a> to speed up I/O operations.</p>
+<h3 id="h_01HXYF2CDGY83BG7577M0K4TR3">
+    <a class="anchor" href="https://discuss.circleci.com/t/outside-a-config-file-storage-usage/48624#workspaces-4" name="workspaces-4"></a>Workspaces
+</h3>
+<p>Ensure data being added to a <a href="https://circleci.com/docs/glossary/#workspace">workspace</a> is being used downstream and is accessible.</p>
+<p>For workspace steps that are taking a long time, analyze the data for anything unnecessary. If the job is on the docker executor, consider enabling RAM disk to speed up I/O operations.</p>
+<h3 id="h_01HXYF2CDGDTS7460HCJB4M3FB">
+    <a class="anchor" href="https://discuss.circleci.com/t/outside-a-config-file-storage-usage/48624#artifacts-5" name="artifacts-5"></a>Artifacts
+</h3>
+<p>Review how <a href="https://circleci.com/docs/artifacts/">artifacts</a> are used by the team that works in the project and see if adding or removing them would be helpful.</p>
+<p>In most cases if artifacts are uploaded to cloud storage, like an s3 bucket, they do not also need to be stored in CircleCI.</p>
+<h3 id="h_01HXYF2CDGWZHPJH6PXR53PGTC">
+    <a class="anchor" href="https://discuss.circleci.com/t/outside-a-config-file-storage-usage/48624#usage-controls-6" name="usage-controls-6"></a>Usage Controls
+</h3>
+<p>Most organizations can benefit from reducing the default <a href="https://circleci.com/docs/persist-data">storage retention</a> periods without seeing impact, which can save some <a href="https://circleci.com/docs/credits/">credits</a>. The common recommendation is below but should be adjusted based on use case and user feedback.</p>
+<div class="md-table fullscreen-table-wrapper" data-table-index="0">
+    <div class="fullscreen-table-wrapper__buttons"> </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Setting</th>
+                <th>CircleCI Default</th>
+                <th>Recommendation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Artifacts</td>
+                <td>30 days</td>
+                <td>7 days</td>
+            </tr>
+            <tr>
+                <td>Workspaces</td>
+                <td>15 days</td>
+                <td>3 days</td>
+            </tr>
+            <tr>
+                <td>Caches</td>
+                <td>15 days</td>
+                <td>7 days</td>
+            </tr>
+        </tbody>
+    </table>
+    <p> </p>
+    <p><a href="https://support.circleci.com/hc/en-us/articles/25761721622939"><strong>Next Step:</strong> Outside the Config: Project Settings </a></p>
+</div>

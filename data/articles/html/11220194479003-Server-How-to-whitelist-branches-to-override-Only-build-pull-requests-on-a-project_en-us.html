@@ -1,7 +1,7 @@
-<h1>How do I whitelist additional branches?</h1>
+<h1 id="h_01HXQP6C3KT2D70J3410N4XN4Q">How do I whitelist additional branches?</h1>
 <p>For Server 3.x and 4.x admins, you can whitelist branches on your CircleCI Server instance.<br>By whitelisting specific branches, you are setting them as default branches.<br>This would therefore allow builds on these branches to run regardless whether these branches are pull-requests or not.<br><br>A common use-case can be when your project has multiple release branches like <code>main</code>, <code>staging</code> and <code>production</code>.<br><br></p>
-<p dir="auto">Please note that <span></span><strong>this is a delicate process, and we would recommend you to test out on a testing/staging CircleCI Server instance, if available</strong>.</p>
-<h2 dir="auto">Steps</h2>
+<p dir="auto"><strong>Note</strong> we recommend you test out on a non-critical project first, if available.</p>
+<h2 id="h_01HXQP6C3KD96ZHN9FFA8V3W35" dir="auto">Steps</h2>
 <ol dir="auto" type="1">
     <li>Run <code>kubectl exec -it &lt;frontend pod&gt; -n &lt;namespace&gt; bash</code> to exec into one of the frontend pod</li>
     <li>Within the Bash session in the frontend pod, execute <code>lein repl :connect 6005</code>
@@ -19,7 +19,7 @@
 <pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">user=&gt; (circle.http.api.admin-commands/set-project-feature-by-url "https://github.com/acmeorg/realitycheck" :pr-only-branch-overrides "main, release.*")<br><br># output below<br>{:pr-only-branch-overrides "main, release.*"}</pre>
 <p><br><strong>Note</strong> that your output can vary based on your project's settings.</p>
 <p>In addition, the `set-project-feature-by-url` command is a PUT operation (overwrite) as per step 4;<br>You have to supply the full list of branches you want overridden <strong>each time</strong> you run the command.<br><br><strong>Java Regular Expressions are supported for the branches.</strong><br><br></p>
-<h2>Additional Resources</h2>
+<h2 id="h_01HXQP6C3K8KMDM4VV2CJD5H2B">Additional Resources</h2>
 <ul>
-    <li><a href="https://support.circleci.com/hc/en-us/articles/15222074173723" target="_blank" rel="noopener">[Cloud] How to whitelist additional branches for Only Build Pull Requests</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/15222074173723" target="_blank" rel="noopener noreferrer">[Cloud] How to whitelist additional branches for Only Build Pull Requests</a></li>
 </ul>

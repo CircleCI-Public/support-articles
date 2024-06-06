@@ -1,0 +1,58 @@
+<h2>Overview</h2>
+
+<p>When attempting to publish an orb in CircleCI, you may encounter an error indicating that the orb cannot be found. This issue can arise even if all steps in the configuration pass except for the publishing step. Understanding the correct process to register and publish an orb is crucial to overcoming this hurdle.</p>
+
+<h2>Prerequisites</h2>
+
+<ul>
+    <li>Ensure you have a CircleCI account with the necessary permissions to create and publish orbs.</li>
+    <li>Verify that you have the latest version of the CircleCI CLI installed on your local machine.</li>
+</ul>
+
+<h2>Instructions</h2>
+
+<p>To publish an orb, you must first initialize and create the orb in the CircleCI registry. Follow these steps to ensure a smooth publishing process:</p>
+
+<ol>
+    <li>
+        <p>Initialize your orb using the CircleCI CLI with the command:
+            <code>
+                circleci orb init &lt;path-to-your-orb&gt;
+            </code>
+            Replace <code>&lt;path-to-your-orb&gt;</code> with the path where you want to create your orb source code.
+        </p>
+    </li>
+    <li>
+        <p>Carefully review the generated orb source code and ensure it matches your intended configuration without errors.</p>
+    </li>
+    <li>
+        <p>Create the orb in the CircleCI registry with the command:
+            <code>
+                circleci orb create &lt;namespace&gt;/&lt;orb-name&gt;
+            </code>
+            Replace <code>&lt;namespace&gt;</code> with your organization's namespace and <code>&lt;orb-name&gt;</code> with the name of your orb. Remember that the namespace is case-sensitive.
+        </p>
+    </li>
+    <li>
+        <p>Publish the orb using the command:
+            <code>
+                circleci orb publish &lt;path-to-orb-source&gt;@&lt;version&gt; &lt;namespace&gt;/&lt;orb-name&gt;
+            </code>
+            Replace <code>&lt;path-to-orb-source&gt;</code> with the path to your orb source file, <code>&lt;version&gt;</code> with the version number you are publishing, and <code>&lt;namespace&gt;/&lt;orb-name&gt;</code> with your orb's full name.
+        </p>
+    </li>
+</ol>
+
+<h2>Solution</h2>
+
+<p>If you encounter the "Cannot find orb" error, ensure that you have created the orb in the CircleCI registry before attempting to publish it. The orb name must be registered with the correct case-sensitive namespace. If the orb does not exist in the registry, you will not be able to publish it. Re-run the <code>circleci orb create</code> command to register your orb, then proceed with publishing.</p>
+
+<h2>Additional Resources</h2>
+
+<ul>
+    <li><a href="https://circleci.com/docs/create-an-orb/">Creating an Orb</a></li>
+    <li><a href="https://circleci.com/docs/2.0/local-cli/">Using the CircleCI CLI</a></li>
+    <li><a href="https://circleci.com/docs/2.0/orb-author/#publishing-orbs">Orb Publishing Process</a></li>
+</ul>
+
+<p>Remember, once an orb is published, it is immutable and cannot be deleted, as it may be used as a dependency in other projects. Always double-check your orb's versioning and namespace before publishing.</p>

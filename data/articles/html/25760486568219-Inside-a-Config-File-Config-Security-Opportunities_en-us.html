@@ -1,0 +1,20 @@
+<h3 id="h_01HXYDANNNVCDPTZM81YS9D5FV">
+    <a class="anchor" href="https://discuss.circleci.com/t/inside-a-config-file-config-security-opportunities/48618#h-1-oidc-3" name="h-1-oidc-3"></a>1) OIDC
+</h3>
+<p><a href="https://circleci.com/docs/openid-connect-tokens/" target="_blank" rel="noopener noreferrer">OIDC tokens</a> are available in any <a href="https://circleci.com/docs/glossary/#job">job</a> and is a great way to replace static credentials used to connect with cloud services. For example, a Vault instance in AWS. Static credentials are not only a security issue, they can also add to the difficulty of managing CI as a whole since you need to have a rotation policy in place.</p>
+<p>OIDC is also available for <a href="https://circleci.com/docs/pull-an-image-from-aws-ecr-with-oidc/">custom images, stored in ECR</a>, that are used as a job’s <a href="https://circleci.com/docs/glossary/#executor">executor</a>.</p>
+<h3 id="h_01HXYDANNNXQBPP3C6GFY2EAWK">
+    <a class="anchor" href="https://discuss.circleci.com/t/inside-a-config-file-config-security-opportunities/48618#h-2-contexts-4" name="h-2-contexts-4"></a>2) Contexts
+</h3>
+<p><a href="https://circleci.com/docs/glossary/#context">Contexts</a> are used to help manage secrets within CircleCI. By default, they are available for anyone with access to run a <a href="https://circleci.com/docs/glossary/#pipeline">pipeline</a> to use. Github projects can <a href="https://circleci.com/docs/contexts/#restrict-a-context">restrict contexts</a> to a security group, allowing for more granular access levels.</p>
+<h3 id="h_01HXYDANNNJWTT5XH05GW28SQ9">
+    <a class="anchor" href="https://discuss.circleci.com/t/inside-a-config-file-config-security-opportunities/48618#h-3-runner-5" name="h-3-runner-5"></a>3) Runner
+</h3>
+<p>Jobs that need to access internal resources may be hard to manage on CircleCI cloud. <a href="https://circleci.com/docs/runner-overview/">Runner</a> allows you to run the job on your own infrastructure which removes the need to setup complicated tunnels. Runners do need to be maintained so be sure to take that into account when considering implementing them.</p>
+<h3 id="h_01HXYDANNN6VJAATZDPJB5TQ5S">
+    <a class="anchor" href="https://discuss.circleci.com/t/inside-a-config-file-config-security-opportunities/48618#h-4-ip-ranges-6" name="h-4-ip-ranges-6"></a>4) IP Ranges
+</h3>
+<p>Jobs that need access to internal resources, but don’t need to lock down the connection to a tunnel, can take advantage of <a href="https://circleci.com/docs/ip-ranges/">IP Ranges </a> which restricts the traffic from CircleCI to a well defined list of IPs.</p>
+<h3 id="h_01HYAMN510DHFG9T2K7AGGGS3G"><span class="wysiwyg-font-size-large">5) Config Policies</span></h3>
+<p><a href="https://circleci.com/docs/config-policy-management-overview/" target="_blank" rel="noopener noreferrer">Config policies</a> are a powerful tool available on scale plans that can be used to limit what can done in a configuration. This allows you to make project or org-wide limitations on what kind of configs will run, helping to secure your pipelines from malicious configuration modifications.</p>
+<p><a href="https://support.circleci.com/hc/en-us/articles/25760546849435"><strong>Next Step: </strong>Inside the Config: Reusable Config</a></p>

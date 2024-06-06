@@ -25,6 +25,9 @@
     <li style="font-weight: 400;">
         <strong>Project Restrictions:</strong> If your team utilizes <a href="https://circleci.com/docs/contexts/#project-restrictions" target="_blank" rel="noopener noreferrer">project restrictions</a> on Contexts, you may be trying to use the Context in a project that it is not authorized to be used in.
     </li>
+    <li style="font-weight: 400;">
+        <strong>Context Expression Restrictions: </strong>If your organization has enabled <a href="https://circleci.com/docs/contexts/#expression-restrictions" target="_blank" rel="noopener noreferrer">Context Expression Restrictions</a>, you may need to verify that you are not triggering any of the restrictions.
+    </li>
 </ol>
 <p><span style="font-weight: 400;">Please note that you can leverage the <a href="https://circleci.com/docs/api/v2/">CircleCI v2 API</a> to find the user id of a user who triggered a workflow. You can use the <a href="https://circleci.com/docs/api/v2/index.html#tag/Workflow">Get a workflow</a> endpoint. The value assigned to <code>started_by</code> key in the response corresponds to the user ID of the user who triggered the build. </span></p>
 <p> </p>

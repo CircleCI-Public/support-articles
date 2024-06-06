@@ -20,7 +20,7 @@
 $ kubectl set image daemonset/restic \
     restic=velero/velero:v1.9.1 \
     --namespace velero</pre>
-<p><br>If you need to downgrade, you will need to <a href="https://velero.io/docs/v1.3.0/uninstalling/" target="_blank" rel="noopener">uninstall the Velero Server </a>and reinstall after correcting your CLI version. <a href="kubectl%20set%20image%20deployment/velero%20%5C%20%20%20%20%20velero=velero/velero:v1.9.1%20%5C%20%20%20%20%20--namespace%20velero%20%20#%20optional,%20if%20using%20the%20restic%20daemon%20set%20kubectl%20set%20image%20daemonset/restic%20%5C%20%20%20%20%20restic=velero/velero:v1.9.1%20%5C%20%20%20%20%20--namespace%20velero" target="_blank" rel="noopener">Velero will match the installation to your CLI version</a>.</p>
+<p><br>If you need to downgrade, you will need to <a href="https://velero.io/docs/v1.3.0/uninstalling/" target="_blank" rel="noopener">uninstall the Velero Server </a>and reinstall after correcting your CLI version. <a href="kubectl%20set%20image%20deployment/velero%20\%20%20%20%20%20velero=velero/velero:v1.9.1%20\%20%20%20%20%20--namespace%20velero%20%20#%20optional,%20if%20using%20the%20restic%20daemon%20set%20kubectl%20set%20image%20daemonset/restic%20\%20%20%20%20%20restic=velero/velero:v1.9.1%20\%20%20%20%20%20--namespace%20velero" target="_blank" rel="noopener">Velero will match the installation to your CLI version</a>.</p>
 <p>Once uninstalled, you can follow our documentation to reinstall Velero.</p>
 <ul>
     <li><a href="https://circleci.com/docs/server/installation/phase-4-post-installation/#backup-and-restore" target="_blank" rel="noopener">CircleCI Server 4 Backup and Restore</a></li>

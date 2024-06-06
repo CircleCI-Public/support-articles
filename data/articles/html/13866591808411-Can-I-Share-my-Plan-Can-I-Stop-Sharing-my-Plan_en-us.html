@@ -1,27 +1,30 @@
-<h1>Linking and Unlinking Child Orgs from a Shared Plan</h1>
+<h1 id="h_01HVMF9QX9HKGWZHY8ZPC0PW84">Linking and Unlinking Child Orgs from a Shared Plan</h1>
 <p><span class="wysiwyg-color-red"><strong>Note: Contexts are NOT shared between piggybacked organizations/VCS providers</strong></span></p>
-<h2><span>How to Link a Child Org</span></h2>
+<h2 id="h_01HVMF9QX9T14A8Y7ACCN361ZP">How to Link a Child Org</h2>
 <p data-renderer-start-pos="218">Org admins can go into the <strong data-renderer-mark="true">Share &amp; Transfer</strong> tab in their Plan settings to find GitHub and/or Bitbucket organizations that they can share their paid plan with:</p>
 <p data-renderer-start-pos="218">https://app.circleci.com/settings/plan/&lt;VCS&gt;/&lt;ORG&gt;/share</p>
 <ul>
     <li>
         <p data-renderer-start-pos="378">Org B/child must be on a free plan</p>
     </li>
+    <li>Click <strong>"Add Shared Organization" </strong>
+    </li>
     <li>
-        <p data-renderer-start-pos="440">Checkmark the box for the Org B and hit <strong data-renderer-mark="true">Save</strong></p>
+        <p data-renderer-start-pos="440">Select Org B from the dropdown and hit <strong data-renderer-mark="true">Save</strong></p>
     </li>
 </ul>
-<p>In this case, <strong data-renderer-mark="true"><span>Org B (child) </span></strong>is piggybacked under <strong data-renderer-mark="true"><span>Org A (parent) </span></strong>so that <strong data-renderer-mark="true"><span>Org A</span></strong> is paying for the resources used by <strong data-renderer-mark="true"><span>both orgs</span></strong>.</p>
-<h2>How to Unlink a Child Org</h2>
+<p><strong data-renderer-mark="true">** please note that you must be an organization admin on both organizations (parent and child) in order to add an organization to your paid plan. </strong></p>
+<p><strong data-renderer-mark="true"><img src="https://support.circleci.com/hc/article_attachments/24902394163611" alt="Screenshot 2024-04-16 at 3.07.25 PM.png"></strong></p>
+<p>In this case, <strong data-renderer-mark="true">Org B (child) </strong>is piggybacked under <strong data-renderer-mark="true">Org A (parent) </strong>so that <strong data-renderer-mark="true">Org A</strong> is paying for the resources used by <strong data-renderer-mark="true">both orgs</strong>.</p>
+<h2 id="h_01HVMF9QXA8VSKDY8PY18BF0E7">How to Unlink a Child Org</h2>
 <ul>
-    <li><span>Org admins go into <strong>Share &amp; Transfer</strong> tab </span></li>
-    <li>
-        <span>U</span>ncheck Org B/child and hit <strong data-renderer-mark="true">Save</strong>
+    <li>Org admins go into <strong>Share &amp; Transfer</strong> tab </li>
+    <li>Uncheck Org B/child and hit <strong data-renderer-mark="true">Save</strong>
     </li>
 </ul>
-<h2 data-renderer-start-pos="596">Active User Count</h2>
+<h2 id="h_01HVMF9QXADGADN28C2X623EF6" data-renderer-start-pos="596">Active User Count</h2>
 <p data-renderer-start-pos="596">A username will only be counted once per VCS. This means that is the parent and child org are using the same VCS (i.e. both GitHub or both Bitbucket), a user building from both organizations under the same username will only claim 1 active user seat.</p>
-<h3 data-renderer-start-pos="883">For example:</h3>
+<h3 id="h_01HVMF9QXAA9DT80WV5Q23GXJS" data-renderer-start-pos="883">For example:</h3>
 <ul class="ak-ul" data-indent-level="1">
     <li>
         <p data-renderer-start-pos="899">If a user is active in the parent account and the child, account and both accounts are in the same VCS, they will be counted only one time because our systems recognizes the user itself.</p>
@@ -30,7 +33,7 @@
         <p data-renderer-start-pos="1088">If a user is active in the parent account and the child account and the accounts use different VCSs, the system will not automatically recognize them as the same user, and they can count as 2 separate users.</p>
         <ul class="ak-ul" data-indent-level="2">
             <li>
-                <p data-renderer-start-pos="1300">The best way to avoid this is to connect one's GitHub and Bitbucket accounts in their account page. See this support article for details: <span><span aria-expanded="false" aria-haspopup="true" data-testid="hover-card-trigger-wrapper"><a class="css-6uefhw eeajecn0" tabindex="0" role="button" href="https://support.circleci.com/hc/en-us/articles/360008766354-How-to-merge-your-CircleCI-accounts" data-testid="inline-card-resolved-view"><span class="css-1p7ax5 e158gagu2" data-testid="inline-card-icon-and-title"><span class="smart-link-title-wrapper css-0 e158gagu8">How to merge your CircleCI accounts</span></span></a></span></span> ​</p>
+                <p data-renderer-start-pos="1300">The best way to avoid this is to connect one's GitHub and Bitbucket accounts in their account page. See this support article for details: <span aria-expanded="false" aria-haspopup="true" data-testid="hover-card-trigger-wrapper"><a class="css-6uefhw eeajecn0" tabindex="0" role="button" href="https://support.circleci.com/hc/en-us/articles/360008766354-How-to-merge-your-CircleCI-accounts" data-testid="inline-card-resolved-view"><span class="css-1p7ax5 e158gagu2" data-testid="inline-card-icon-and-title"><span class="smart-link-title-wrapper css-0 e158gagu8">How to merge your CircleCI accounts</span></span></a></span> ​</p>
             </li>
         </ul>
     </li>

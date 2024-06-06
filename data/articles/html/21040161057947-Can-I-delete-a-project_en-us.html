@@ -13,19 +13,17 @@
 <h3 id="github_oauth">GitHub OAuth</h3>
 <p>Make sure that all webhooks for your project are removed in GitHub. This <a href="https://support.circleci.com/hc/en-us/articles/360021666393-How-to-stop-building-by-manually-removing-the-CircleCI-webhook-and-deploy-key-from-your-GitHub-repository">Support Article</a> describes the necessary steps. </p>
 <h3 id="github_app">GitHub App</h3>
-<p>For GitHub App you will need to uninstall the CircleCI app on GitHub:</p>
+<p>For GitHub App you will need to do the following:</p>
 <ol class="p-rich_text_list p-rich_text_list__ordered" data-stringify-type="ordered-list" data-indent="0" data-border="0">
-    <li data-stringify-indent="0" data-stringify-border="0">Navigate to: <a class="c-link" href="https://github.com/settings/installations" target="_blank" rel="noopener noreferrer" data-stringify-link="https://github.com/settings/installations" data-sk="tooltip_parent">https://github.com/settings/installations</a> (If necessary change the org by clicking <code class="c-mrkdwn__code" data-stringify-type="code">Switch to another account</code> on the top left)</li>
-    <li data-stringify-indent="0" data-stringify-border="0">
-        <code class="c-mrkdwn__code" data-stringify-type="code">CircleCI App</code> should be shown on the page of <code class="c-mrkdwn__code" data-stringify-type="code">Installed GitHub Apps</code> tab then click <code class="c-mrkdwn__code" data-stringify-type="code">Configure</code>
-    </li>
-    <li data-stringify-indent="0" data-stringify-border="0">This should take you to the CircleCI Apps Configuration page. Scroll down to <code class="c-mrkdwn__code" data-stringify-type="code">Danger Zone</code> section and Click <code class="c-mrkdwn__code" data-stringify-type="code">Uninstall</code> which will remove the triggers sent to CircleCI.</li>
+    <li data-stringify-indent="0" data-stringify-border="0">Navigate to your Project Settings page in the project you wish to delete on CircleCI.</li>
+    <li data-stringify-indent="0" data-stringify-border="0">Click on "Configuration" and delete all your configurations.</li>
+    <li data-stringify-indent="0" data-stringify-border="0">Click on "Triggers" and delete all of your triggers.</li>
 </ol>
-<p>After un-installing the CircleCI App, please wait for us to complete the deletion request. During this time, other projects using GitHub App will not build.</p>
-<p> </p>
-<p>Once complete, you will need to re-install the CircleCI App in order to continue building. You can find instructions on how to re-install the CircleCI App on GitHub in our docs <a href="https://circleci.com/docs/github-apps-integration/#Re-install-github-app">here</a>. </p>
+<p>Once this is done, please provide a CircleCI link to your project to CircleCI Support.</p>
 <h3 id="gitlab">GitLab</h3>
-<p>Delete triggers and configuration in your project settings (in that order). </p>
+<p><strong>Note: The order is important for the following actions</strong></p>
+<p>1. Delete the <strong>triggers</strong> in your project settings</p>
+<p>2. Delete the <strong>configuration</strong> in your project settings </p>
 <h2 id="h_01HH3AMV4E78XT9EQXY2E0RCMT">Submitting a Support Ticket</h2>
 <p>Project deletion requests must be submitted or approved by an Organization Admin. Use <a href="https://support.circleci.com/hc/en-us/articles/12154694676507-How-do-I-find-my-org-admins-">this guide</a> if you are having trouble identifying an org admin.</p>
 <p>You may be asked to provide the project ID of the project you wish to have deleted. You can find that ID in your Project Settings.</p>

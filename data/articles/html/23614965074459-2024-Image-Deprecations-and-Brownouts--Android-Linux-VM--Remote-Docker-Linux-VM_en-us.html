@@ -1,0 +1,168 @@
+<p>At CircleCI, we're committed to ensuring you can build great things. To this end, we have updated our <a href="https://circleci.com/docs/circleci-images/"><span class="wysiwyg-underline" style="color: #1155cc;" data-darkreader-inline-color="">image</span></a> policies in order to ensure best support for new and existing images. More details about our new image retention policy can be found here: on our <a href="https://discuss.circleci.com/t/linux-image-deprecations-and-eol-for-2024/50177/1"><span class="wysiwyg-underline" style="color: #1155cc;" data-darkreader-inline-color="">Linux</span></a>, <a href="https://discuss.circleci.com/t/remote-docker-image-deprecations-and-eol-for-2024/50176"><span class="wysiwyg-underline" style="color: #1155cc;" data-darkreader-inline-color="">Remote Docker</span></a>, <a href="https://discuss.circleci.com/t/android-image-deprecations-and-eol-for-2024/50180/1"><span class="wysiwyg-underline" style="color: #1155cc;" data-darkreader-inline-color="">Android</span></a>, <a href="https://discuss.circleci.com/t/windows-image-deprecations-and-eol-for-2024/50179/1"><span class="wysiwyg-underline" style="color: #1155cc;" data-darkreader-inline-color="">Windows</span></a> Discuss posts.  </p>
+<h2 id="h_01HRFN85DACB8Q0C6FE085T5G8">Upcoming brownouts ahead of image deprecation</h2>
+<p>Throughout 2024 we will be making changes to the following families of images:</p>
+<ul>
+    <li>Android</li>
+    <li>Windows Server 2019 &amp; 2022</li>
+    <li>Linux VM (amd64/arm64) </li>
+    <li>Remote Docker (amd64/arm64) </li>
+</ul>
+<p>Upgrading to the latest image will bring you better performance, powering your builds with increased speed and efficiency. </p>
+<p>Beginning in January 2024, CircleCI has scheduled several brownout periods to draw attention to the upcoming deprecation. During these periods, <strong>your work that uses these images will temporarily fail</strong>, acting as a reminder to update your images.</p>
+<h2 id="h_01HRFN85DA4P34X9C3WWTTRQMH">Your team’s images</h2>
+<p>Team members in your organization will receive a list of all impacted images via email</p>
+<p>In the format of project name / workflow / job / image-ID<strong><del><br></del></strong></p>
+<h2 id="h_01HRFN85DAG7VDQ7EW154CGP1M">How to update your config</h2>
+<p>Changing to default, current, edge or supported date tags will allow builds to continue to run with latest versions and avoid being browned out. The following code snippets show where image names can be changed: </p>
+<p> </p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><span style="color: #188038;" data-darkreader-inline-color=""># Windows</span><br><br>resource_class: 'windows.medium' <br>machine:<br>    image: default<br><br><span style="color: #188038;" data-darkreader-inline-color=""># Linux</span><br><br>machine:<br>    image: default<br><br><span style="color: #188038;" data-darkreader-inline-color=""># Remote docker</span><br><br>steps:<br>   # ... steps for building/testing app ...<br>   - setup_remote_docker:<br>       version: docker24<br><br><span style="color: #188038;" data-darkreader-inline-color=""># Android</span><br><br>machine:<br>    image: android:default</pre>
+<p><br><br></p>
+<h2 id="h_01HTJPW3F5D021D8HH4WWARG1N">Updating Orbs</h2>
+<p>You may need to make additional changes to your config if you are using an Orb that selects a machine image for you. If you're using old and outdated versions CircleCI Orbs that use deprecated images by default you'll need to either:</p>
+<ol>
+    <li style="box-sizing: border-box;">
+        <p dir="auto" style="box-sizing: border-box; margin-top: 16px; margin-bottom: 16px;">Upgrade the orb to a more recent version (all most recent versions of the CircleCI orbs that use images use non-deprecated images by default). This is the recommended course of action.</p>
+    </li>
+    <li style="box-sizing: border-box; margin-top: 0.25em;">
+        <p dir="auto" style="box-sizing: border-box; margin-top: 16px; margin-bottom: 16px;">Ensure that you are explicitly passing in, via the appropriate Orb parameter, the name of a non deprecated image to use.</p>
+    </li>
+</ol>
+<p>The following old versions of Orbs use depreciated machine images by default:</p>
+<ul>
+    <li style="box-sizing: border-box;">
+        <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">circleci/android</code> 1.0.0 - 1.0.3
+        <ul dir="auto" style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 0px;">
+            <li style="box-sizing: border-box;">You can override the image used by this orb by passing the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">image-name</code> parameter to the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">android-machine</code> executor)</li>
+        </ul>
+    </li>
+    <li style="box-sizing: border-box; margin-top: 0.25em;">
+        <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">circleci/aws-ecr</code> 7.0.0 - 9.0.1
+        <ul dir="auto" style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 0px;">
+            <li style="box-sizing: border-box;">You can override the image used by this orb by passing the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">image</code> parameter to the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">default</code> executor</li>
+        </ul>
+    </li>
+    <li style="box-sizing: border-box; margin-top: 0.25em;">
+        <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">circleci/aws-sam-serverless</code> 2.0.0 - 6.0.0
+        <ul dir="auto" style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 0px;">
+            <li style="box-sizing: border-box;">You can override the image used by this orb by passing the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">machine_image</code> parameter to the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">deploy</code> job)</li>
+        </ul>
+    </li>
+    <li style="box-sizing: border-box; margin-top: 0.25em;">
+        <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">circleci/azure-acr</code> 0.2.1
+        <ul dir="auto" style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 0px;">
+            <li style="box-sizing: border-box;">You can override the image used by this orb by passing the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">image</code> parameter to the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">default</code> executor</li>
+        </ul>
+    </li>
+    <li style="box-sizing: border-box; margin-top: 0.25em;">
+        <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">circleci/docker</code> 2.0.0 - 2.2.0
+        <ul dir="auto" style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 0px;">
+            <li style="box-sizing: border-box;">You can override the image used by this orb by passing the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">image</code> parameter to the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">machine</code> executor</li>
+        </ul>
+    </li>
+    <li style="box-sizing: border-box; margin-top: 0.25em;">
+        <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">circleci/gcp-cli</code> 2.0.0 - 2.4.1
+        <ul dir="auto" style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 0px;">
+            <li style="box-sizing: border-box;">You can override the image used by this orb by passing the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">image</code> parameter to the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">machine</code> executor</li>
+        </ul>
+    </li>
+    <li style="box-sizing: border-box; margin-top: 0.25em;">
+        <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">circleci/gcp-gcr</code> 0.15.0 - 0.15.3
+        <ul dir="auto" style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 0px;">
+            <li style="box-sizing: border-box;">You can override the image used by this orb by passing the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">image</code> parameter to the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">default</code> executor</li>
+        </ul>
+    </li>
+    <li style="box-sizing: border-box; margin-top: 0.25em;">
+        <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">circleci/windows</code> - 1.0.0 - 2.1.0
+        <ul dir="auto" style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 0px;">
+            <li style="box-sizing: border-box;">You can override the image used by this orb by passing the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">version</code> parameter to the <code style="box-sizing: border-box; font-family: var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace); font-size: 13.6px; padding: 0.2em 0.4em; margin: 0px; white-space: break-spaces; background-color: var(--darkreader-bg--bgcolor-neutral-muted, var(--darkreader-bg--color-neutral-muted)); border-radius: 6px;" data-darkreader-inline-bgcolor="">default</code> executor</li>
+        </ul>
+    </li>
+</ul>
+<p> </p>
+<h2 id="h_01HRFN85DAN39VK78DHZWR6ZXV">The brownout schedule</h2>
+<p><br><strong>Windows (Jan, April, July)</strong></p>
+<ul>
+    <li>First deprecation (Jan 29)
+        <ul>
+            <li>07:00 UTC → 11:00 UTC (4 hrs)</li>
+            <li>13:00 UTC → 17:00 UTC (4 hrs)</li>
+            <li>20:00 UTC → 00:00 UTC (4 hrs)</li>
+        </ul>
+    </li>
+    <li>Second deprecation (Apr 30)
+        <ul>
+            <li>01:00 UTC → 11:00 UTC (10 hrs)</li>
+            <li>13:00 UTC → 23:00 UTC (10 hrs)</li>
+        </ul>
+    </li>
+    <li>Third deprecation (Jul 31)
+        <ul>
+            <li>00:00 UTC → 00:00 UTC (24 Hours)</li>
+        </ul>
+    </li>
+    <li>Fourth deprecation (Sep 18)
+        <ul>
+            <li>00:00 UTC → 00:00 UTC (24 Hours)<br><br>
+            </li>
+        </ul>
+    </li>
+    <li><strong>Windows Removal: Sept 30</strong></li>
+</ul>
+<p> </p>
+<p><strong>Remote Docker &amp; Linux (Feb, May, August)</strong></p>
+<ul>
+    <li>First deprecation (Mar 4)
+        <ul>
+            <li>07:00 UTC → 11:00 UTC (4 hrs)</li>
+            <li>13:00 UTC → 17:00 UTC (4 hrs)</li>
+            <li>20:00 UTC → 00:00 UTC (4 hrs)</li>
+        </ul>
+    </li>
+    <li>Second deprecation (May 28/29)
+        <ul>
+            <li>01:00 UTC → 11:00 UTC (10 hrs)</li>
+            <li>13:00 UTC → 23:00 UTC (10 hrs)</li>
+        </ul>
+    </li>
+    <li>Third deprecation (Aug 28)
+        <ul>
+            <li>00:00 UTC → 00:00 UTC (24 Hours)</li>
+        </ul>
+    </li>
+    <li>Forth deprecation (~Sep 17)
+        <ul>
+            <li>00:00 UTC → 00:00 UTC (24 Hours)<br><br>
+            </li>
+        </ul>
+    </li>
+    <li><strong>Remote Docker &amp; Linux Removal: Sept 30</strong></li>
+</ul>
+<p> </p>
+<p><strong>Android (March, June, Sept)</strong></p>
+<ul>
+    <li>First deprecation (Mar 25)
+        <ul>
+            <li>07:00 UTC → 11:00 UTC (4 hrs)</li>
+            <li>13:00 UTC → 17:00 UTC (4 hrs)</li>
+            <li>20:00 UTC → 00:00 UTC (4 hrs)</li>
+        </ul>
+    </li>
+    <li>Second deprecation (Jun 25)
+        <ul>
+            <li>01:00 UTC → 11:00 UTC (10 hrs)</li>
+            <li>13:00 UTC → 23:00 UTC (10 hrs)</li>
+        </ul>
+    </li>
+    <li>Third deprecation (Sep 18)
+        <ul>
+            <li>00:00 UTC → 00:00 UTC (24 Hours)<br><br>
+            </li>
+        </ul>
+    </li>
+    <li><strong>Android Removal: Sept 30</strong></li>
+</ul>
+<p><br>We kindly ask your engineering team to update your config files at your earliest convenience.</p>
+<p> </p>
+<p>After September 2024 any jobs that run using these images will fail.<br>We appreciate your attention to this update.</p>
+<p> </p>
+<p> </p>

@@ -1,0 +1,14 @@
+<h3 id="h_01HXYDCFQ36FKS6CB6MW5NX1HZ">
+    <a class="anchor" href="https://discuss.circleci.com/t/inside-a-config-file-reusable-config-opportunities/48619#h-1-config-sdk-3" name="h-1-config-sdk-3"></a>1) Config SDK
+</h3>
+<p>CircleCI config files are written in YAML but that doens’t mean they have to be built using YAML. The <a href="https://circleci.com/docs/circleci-config-sdk/#overview">Config SDK </a> is a javascript/typescript SDK that can be used to generate configuration files. This can be used to generate config manually or, using dynamic config, to generate them each time a <a href="https://circleci.com/docs/glossary/#pipeline">pipeline</a> is triggered.</p>
+<h3 id="h_01HXYDCFQ3WX3E3103DWDS9759">
+    <a class="anchor" href="https://discuss.circleci.com/t/inside-a-config-file-reusable-config-opportunities/48619#h-2-orbs-4" name="h-2-orbs-4"></a>2) Orbs
+</h3>
+<p><a href="https://circleci.com/docs/glossary/#orbs">Orbs</a> can be used to share configuration keys across an organization. This is especially useful if all <a href="https://circleci.com/docs/glossary/#project">projects</a> need to use a certain tool. The commands, <a href="https://circleci.com/docs/glossary/#executor">executors </a>, and parameters required to use the tool can be built into the orb.</p>
+<p>CircleCI and our Partners maintain a number of orbs for common tools so reviewing the <a href="https://circleci.com/developer/orbs">orb registry</a> is a great way to save yourself some time. Even if you need to create a private orb, the orb registry contains numerous examples to reference from other users.</p>
+<h3 id="h_01HXYDCFQ3MRAK4T3P523C0Z4C">
+    <a class="anchor" href="https://discuss.circleci.com/t/inside-a-config-file-reusable-config-opportunities/48619#h-3-reusable-config-5" name="h-3-reusable-config-5"></a>3) Reusable Config
+</h3>
+<p>Review the config file for any repeated configuration keys. Repeated keys should be consolidated into a reusable key or added to an orb. Creating <a href="https://circleci.com/docs/reusing-config/#authoring-parameterized-jobs">parameterized jobs</a> allows for implementation of dynamic config and leads to an easier to manage config in most cases.</p>
+<p><a href="https://support.circleci.com/hc/en-us/articles/25761520002459"><strong>Next Step: </strong>Inside the Config: Dynamic Configuration</a></p>

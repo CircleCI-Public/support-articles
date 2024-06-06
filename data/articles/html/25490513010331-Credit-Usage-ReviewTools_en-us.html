@@ -1,0 +1,49 @@
+<h2 id="h_01HNEA5YKZC35V5SVPSMWPJV2M"><strong>Overview:</strong></h2>
+<p>CircleCI offers multiple tools and resources to monitor and extract usage data. </p>
+<h2 id="01HX7F8N4VR8EYJECNW26AR1AE"><strong>Prerequisites  </strong></h2>
+<p>These changes can only be made by an organization's admin. To help identify your organization's admins, please reference the articles below:</p>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360034990033">Am I an Org Admin?</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/12154694676507">How do I find my org admins?</a></li>
+</ul>
+<h2 id="h_01HNEA5YKZSS6AXKG8E26D539G"><strong>Usage Tab </strong></h2>
+<p>CircleCI offers a <strong>Usage</strong> Tab built right into the UI. This can be used to review usage from the past 12 months. </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/25490512995227" alt="Screenshot 2024-05-06 at 11.04.31 AM.png"></p>
+<p> </p>
+<h2 id="01HX7EVCFX5AQZPM0RVFBB4GX4"><strong>Usage API</strong></h2>
+<p>We’ve heard the feedback around the need for more data, and are excited to provide exactly that through our new <strong>Usage API</strong>. Today, teams have full access to this data, all the way down to the <em>near-lowest </em>level (individual job run) of granularity possible. By providing you with direct access to this data, we want teams to:</p>
+<p> </p>
+<ul>
+    <li>Be able to identify where compute and resources are being spent</li>
+    <li>Feel empowered to fully optimize pipelines, workflows, and jobs</li>
+    <li>Forecast usage and credit consumption more accurately, and </li>
+    <li>Provide full transparency on usage to all internal stakeholders, directly</li>
+</ul>
+<p><br>The Usage API allows you to pull data from all of your orgs in a single API call, set the date range from which to pull data (any 32-day window or less) from the past 13 months, up to 10x per day. The results are returned in the form of a URL, from which you’ll be able to download the CSV result set. Teams can automate the process for ingesting the data into their own data warehouse, and query/visualize it as they please. <br><br></p>
+<p>Below you will find a visual representation of the data’s shape and flow:</p>
+<p> </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/25490503672987" width="624" height="324"></p>
+<p><br><br></p>
+<p>Let’s look at how to utilize the API. First, head to your Organization Settings, and locate your<strong> Organization ID</strong>. Then, navigate to your User Settings to create a <a href="https://circleci.com/docs/managing-api-tokens/#creating-a-personal-api-token"><strong><span class="wysiwyg-underline" style="color: #1155cc;">Personal Access Token</span></strong></a>. To access your User Settings, click the icon located at the bottom of the left-hand side. </p>
+<p> </p>
+<p>Now, you’re ready to get started with the first API request: <em>creating a usage export</em>. This will kick off the job that gathers the respective organizations data, through a POST request: </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/25490503675547" width="588" height="431"></p>
+<p><br>In the response, you will find a <strong>usage_export_job_id</strong>, which you will use in the following request. With the data established and the usage_export_job_id handy, we then use that to make the following GET request, to gather that data:<br><br><br></p>
+<p><img src="https://support.circleci.com/hc/article_attachments/25490503676443" width="584" height="450"></p>
+<p> </p>
+<p>The download_urls returned will provide a downloadable GZIP file, which you’ll decompress before the data is viewable.</p>
+<p><br>It’s important to note that the GET request does not have the same restrictions as the POST request (POST request rate limited to 10). The endpoint for the GET request should be polled until the download_urls becomes available. The returned state field will change to <em>completed</em> when the urls are available. You may find you’ll still receive a URL, even if data is not available for the provided date range. We plan to make the absence of data more clear, potentially through a special status returned from the GET request.<br><br>For supporting documentation, head <a href="https://circleci.com/docs/api/v2/index.html#tag/Usage">here</a>. You will find details around the available report fields, restrictions, requirements, and a visual guide on how to use the API.</p>
+<p><a href="https://youtu.be/O5vjh0bNSyE">API Overview on Youtube</a></p>
+<p> </p>
+<p> </p>
+<h2 id="01HX7F61CQCRCTAAY9G3C2WFZZ"><strong>Insights Page</strong></h2>
+<p>The CircleCI Insights page provides an overview of the health and usage of your projects’ build processes. It includes time-series and aggregated data on credit usage, success rates, and pipeline duration. However, it's important to note that Insights is not a financial reporting tool and should not be used for precise credit reporting. The data is not real-time and there may be up to a 24-hour delay </p>
+<p>The Insights page shows specific numbers related to workflow run, workflow duration, credits consumed, and the overall success rate for all projects in your organization over a selected time range. The ranges you can choose are 24 hours, seven, 30, 60, and 90 days <br><br><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Insights can also provide information about the most failed tests, their suite, failure frequency, as well as similar data around the slowest failed tests </span>To access a specific project’s Insights, view a pipeline’s workflow and click the <strong>Insights</strong> button. Alternatively, you may access the Insights page by opening a pipeline’s <strong>Actions</strong> menu while viewing the pipelines dashboard </p>
+<p>The Insights workflow overview provides metrics plotted over time for all branches, or a select branch, of a particular project workflow. The following data is charted under the workflow overview:<br>- Status (success versus failed) of up to 100 most recent workflow runs<br>- Workflow success rate<br>- Workflow duration (50th versus 95th percentile)<br>- Workflow credit usage</p>
+<p>You can also view the following cumulative data on a per-job basis:<br>- Total credits used<br>- Duration (95th percentile)<br>- Total runs<br>- Success rate<br>- Compute usage (average and max for CPU and RAM)</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>

@@ -1,17 +1,30 @@
-<h2>How CircleCI Checks Permissions</h2>
-<p>CircleCI mirrors permissions from your VCS provider: GitHub or Bitbucket. Anyone who has admin access to your org there is an admin on CircleCI. Permissions are checked against the VCS for each page load.</p>
-<h2>GitHub</h2>
-<p>An org admin is an <strong>Owner</strong> on Github and following at least one repo being built on CircleCI</p>
+<h2 id="h_01HTMDYCVSJ5JVE8NDRAGYX3XG">CircleCI のユーザー権限を確認する方法</h2>
+<p>CircleCIは、GitHubまたはBitbucketなどのVCSプロバイダーから権限を反映しています。VCS組織で管理者権限がある人は、CircleCIでも管理者です。</p>
+<p>CircleCI上で各ページを読み込む（ロードする）際に、CircleCIはユーザーの権限をチェックします。</p>
+<p> </p>
+<h2 id="h_01HTMDYCVS7V05H76XB0ZPTA2Z">GitHub</h2>
+<p>GitHub 組織の組織管理者は、次の２つの条件を満たすユーザーを指します。</p>
+<ul>
+    <li>GitHub の <strong>Owner</strong> <strong> </strong>権限を持っている</li>
+    <li>CircleCI上でビルドされているリポジトリの少なくとも１つをフォローしている</li>
+</ul>
 <p><img src="https://support.circleci.com/hc/article_attachments/360044700594" alt="Screen_Shot_2019-08-27_at_9.46.17_AM.png"></p>
-<p> You can read more about GitHub Permissions here (<a href="https://help.github.com/en/articles/permission-levels-for-an-organization">https://help.github.com/en/articles/permission-levels-for-an-organization</a>)</p>
-<h2>Bitbucket</h2>
-<p>An org admin is an <strong>Admin</strong> on Bitbucket and following at least one repo being built on CircleCI</p>
+<p> GitHub の権限管理についてはこちらのページを参照ください。 (<a href="https://help.github.com/en/articles/permission-levels-for-an-organization">https://help.github.com/en/articles/permission-levels-for-an-organization</a>)</p>
+<h2 id="h_01HV10PJH62NA731PFGJA5HPZ5"> </h2>
+<h2 id="h_01HTMDYCVSDMQQF6YYT1K3AXZC">Bitbucket</h2>
+<p>Bitbucket 組織の組織管理者は、次の２つの条件を満たすユーザーを指します。</p>
+<ul>
+    <li>Bitbucket の <strong>Admin </strong>権限を持っている</li>
+    <li>CircleCI上でビルドされているリポジトリの少なくとも１つをフォローしている</li>
+</ul>
 <p> </p>
 <p><img src="https://support.circleci.com/hc/article_attachments/4407611102363" alt="Screen_Shot_2021-09-29_at_4.13.06_PM.png"></p>
-<h2>Troubleshooting</h2>
-<p>If you are experiencing issues with permissions mirroring to CircleCI, try the following steps:</p>
+<h2 id="h_01HV10PJH75PK4H6SG2GSSPTS6"> </h2>
+<h2 id="h_01HTMDYCVSNMP5SW375YRMXV54">トラブルシューティング</h2>
+<p> </p>
+<p>CircleCI への権限の反映に問題が生じている場合は、次の手順をお試しください。</p>
 <ol>
-    <li>Access the page on Incognito mode, with a different browser, and/or different device. This may be a browser cache issue and will require the cache to be cleared on your browser. If you no longer see the warning banner, please clear your browser cache for any times related to <code>*.<a href="http://circleci.com/" target="_blank" rel="noopener" data-saferedirecturl="https://www.google.com/url?q=http://circleci.com&amp;source=gmail&amp;ust=1574187152165000&amp;usg=AFQjCNHi1NQgEyoSZKOMVLG1eXfreSecFQ">circleci.com</a></code>, and <code><a href="http://circleci.com/" target="_blank" rel="noopener" data-saferedirecturl="https://www.google.com/url?q=http://circleci.com&amp;source=gmail&amp;ust=1574187152165000&amp;usg=AFQjCNHi1NQgEyoSZKOMVLG1eXfreSecFQ">circleci.com</a></code>Refresh your account permissions by visiting circleci.com/account and click <strong>Refresh Permissions.</strong>
-    </li>
-    <li>If the above steps do not work, please submit a <a href="https://support.circleci.com/hc/en-us" target="_self">Support Ticket</a> with the organization name, your admin username and the VCS provider (GitHub or Bitbucket). Support will clear the cache on CircleCI's end to clear any potentially stale or corrupt permissions.</li>
+    <li>別のブラウザや別のデバイスで、インコグニートモード（シークレットモード）で該当するページにアクセスしてください。これはおそらくブラウザキャッシュの問題であり、ブラウザのキャッシュをクリアする必要があります。警告バナーが表示されなくなった場合は、<code>*.<a href="http://circleci.com/" target="_blank" rel="noopener noreferrer" data-saferedirecturl="https://www.google.com/url?q=http://circleci.com&amp;source=gmail&amp;ust=1574187152165000&amp;usg=AFQjCNHi1NQgEyoSZKOMVLG1eXfreSecFQ">circleci.com</a></code> 、および <code><a href="http://circleci.com/" target="_blank" rel="noopener noreferrer" data-saferedirecturl="https://www.google.com/url?q=http://circleci.com&amp;source=gmail&amp;ust=1574187152165000&amp;usg=AFQjCNHi1NQgEyoSZKOMVLG1eXfreSecFQ">circleci.com</a></code> に関連するものについてはすべて、ブラウザのキャッシュをクリアしてください。その後、circleci.com/account にアクセスして、[Refresh Permissions] をクリックして、アカウントの権限を更新してください。</li>
+    <li>上記の手順が機能しない場合は、組織名、管理者ユーザー名、およびVCSプロバイダー（GitHubまたはBitbucket）を記入して、<a href="https://support.circleci.com/hc/ja">サポートチケットを提出</a>してください。サポートチームが、古い権限や破損した権限に関するキャッシュをクリアにします。</li>
 </ol>
+<p> </p>

@@ -1,0 +1,36 @@
+<h1 id="h_01HVPGVFFDG0QTECTNCEGAG4FH">Overview</h1>
+<p>If your CircleCI license expires, you will need to update it. Please reach out to your CircleCI point of contact to request a new license. They will provide you with a License String for Server 4.x. </p>
+<p> </p>
+<p> </p>
+<h2 id="h_01HVPGVFFDNRGHVQANEQDTTTQJ">Update the Helm Chart with the new license string</h2>
+<p>Update the license section of your values.yaml with the new license string provided by your Account team.</p>
+<p> </p>
+<pre style="background-color: #f3f3f3; padding: 5px;">global:<br>  imagePullSecrets:<br>    - name: regcred<br>  container:<br>    registry: cciserver.azurecr.io<br>    org:<br>  domainName: &lt; domain name &gt;<br>  license: '&lt; new license string goes here &gt;'</pre>
+<p>Run a helm upgrade after the values.yaml has been updated with the new license string</p>
+<h2 id="h_01HVPYFNG9BPSNXPZCJCH2TNEE">
+    <br>Delete the existing secret regcred
+</h2>
+<p>You can do this by running <code>kubectl -n &lt;namespace&gt; delete secret regcred</code> to delete the secret</p>
+<h2 id="h_01HVPYG0F5R3EJV4R3TZ848CQP">
+    <br>Recreate the secret
+</h2>
+<p>To recreate the secret run the command below with the new ACR token that you have received from your Account team.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;">kubectl -n &lt;namespace&gt; create secret docker-registry regcred \<br>  --docker-server=http://cciserver.azurecr.io \<br>  --docker-username=&lt;your-username&gt; \<br>  --docker-password="&lt;provided-token&gt;" \<br>  --docker-email=&lt;your-contact-email&gt;</pre>
+<h2 id="h_01HVPYGJP4GZ5FZR7QTE29V7Y8">
+    <br>Check the license diff and apple Helm Upgrade
+</h2>
+<p>1.Confirm that the license is being updated using <a href="https://github.com/databus23/helm-diff">Helm Diff</a>:</p>
+<pre>helm diff upgrade circleci-server oci://cciserver.azurecr.io/circleci-server -n &lt;namespace&gt; --version $SERVER_VERSION -f &lt;path-to-values.yaml&gt; --username $USERNAME --password $PASSWORD</pre>
+<p>2. Perform the upgrade:</p>
+<pre>helm upgrade circleci-server oci://cciserver.azurecr.io/circleci-server -n &lt;namespace&gt; --version $SERVER_VERSION -f &lt;path-to-values.yaml&gt; --username $USERNAME --password $PASSWORD</pre>
+<p>3.Deploy and run reality check in your test environment to ensure your installation is fully operational.</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h2 id="h_01HVPYMYBWHWQ0XCRYV284V0CX">Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/server/installation/migrate-from-server-3-to-server-4/">Migrate from server v3.x to v4.x</a></li>
+    <li>
+        <a href="https://circleci.com/docs/server/v4.4/overview/circleci-server-overview">CircleCI server v4.4</a><br><br>
+    </li>
+</ul>

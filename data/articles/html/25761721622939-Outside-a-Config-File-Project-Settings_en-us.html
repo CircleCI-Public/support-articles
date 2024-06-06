@@ -1,0 +1,30 @@
+<h3 id="h_01HXYF4B0GJ319W2PEXV5BCEPJ">
+    <a class="anchor" href="https://discuss.circleci.com/t/outside-a-config-file-project-settings/48625#security-3" name="security-3"></a>Security
+</h3>
+<p>Review <a href="https://circleci.com/docs/glossary/#project">project</a> settings to ensure they are set correctly, this can be done via the UI or <a href="https://fieldguide.circleci-labs.com/api_endpoints/project_settings_api/">API</a>.</p>
+<p>Confirm that the following Advanced settings are toggled <em>off</em> unless needed for your use case:</p>
+<ul>
+    <li>Build forked pull requests</li>
+    <li>Pass secrets to builds from forked pull requests</li>
+</ul>
+<p>Confirm that the following <a href="https://fieldguide.circleci-labs.com/api_endpoints/project_settings_api/">API only project settings</a> are toggled <em>on</em> unless not needed for your use case:</p>
+<ul>
+    <li>disable-ssh</li>
+    <li>write-settings-requires-admin</li>
+</ul>
+<p>Confirm no unexpected SSH keys, project API tokens, or integrations are present.</p>
+<h3 id="h_01HXYF4B0GS6DFPBC825GY7C0F">
+    <a class="anchor" href="https://discuss.circleci.com/t/outside-a-config-file-project-settings/48625#non-security-4" name="non-security-4"></a>Non-security
+</h3>
+<p>Review project settings to see if any options would be helpful with your use case. Helpful options include:</p>
+<ul>
+    <li>Only build pull requests</li>
+    <li>Auto-cancel redundant <a href="https://circleci.com/docs/glossary/#workflow">workflows</a>
+    </li>
+    <li>Enable dynamic config using setup workflows</li>
+    <li>GitHub Status Updates</li>
+</ul>
+<p>Review current triggers to ensure <a href="https://circleci.com/docs/scheduled-pipelines/">scheduled pipelines</a> are running at the correct times. If there are no scheduled pipelines, consider implementing one.</p>
+<p>Review available integrations and see if any can be implemented to improve user experience.</p>
+<p>Review current <a href="https://circleci.com/docs/webhooks/">webhooks</a> to ensure they are being consumed appropriately. If webhooks aren’t being used, consider implementing them.</p>
+<p><a href="https://support.circleci.com/hc/en-us/articles/25761725365019"><strong>Next Step: </strong>Finalize Review</a></p>

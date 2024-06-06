@@ -1,0 +1,22 @@
+<h2 id="h_01HW5P99Q91MPQ040J7QE8B9MW">Overview</h2>
+<p>CircleCI users utilizing Orbs may encounter a scenario where an orb does not automatically update to the latest patch version. This article explains the expected behavior of orb versioning, particularly when specifying a version like <code>circleci/node:5.2</code>, and clarifies the process for ensuring the executor pulls the latest patch version.</p>
+<h2 id="h_01HW5P99Q93P1MNXDQBTD5M9RD">Prerequisites</h2>
+<ul>
+    <li>A CircleCI account with a project set up.</li>
+    <li>An orb that you wish to use in your project.</li>
+</ul>
+<h2 id="h_01HW5P99Q92SG0V4C42CWCTREP">Instructions</h2>
+<p>When specifying an orb version in your CircleCI configuration, using the format <code>namespace/orb@major.minor</code> should theoretically allow the executor to pull in all subsequent patch updates for that minor version. For example:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">orbs: <br>  node: circleci/node:5.2</pre>
+<p>This configuration should resolve to the latest patch version of <code>node</code> within the <code>5.2</code> minor version range.</p>
+<h2 id="h_01HW5P99Q93N48FFTX0WQA4JVG">Solution</h2>
+<p>If you notice that your CircleCI Pipeline is not pulling the latest patch version of an orb, it's important to understand that a rerun of a workflow will not automatically pick up a new orb version. Instead, a new pipeline must be triggered to fetch the latest version. This can be done by pushing a new commit or manually triggering a new pipeline.</p>
+<p>If an orb is under heavy development and frequent updates are expected, it may be inconvenient to update the orb reference in multiple repositories. To mitigate this, ensure that your workflow is set up to trigger new pipelines upon updates, which will allow CircleCI to pull the new orb version.</p>
+<h2 id="h_01HW5P99Q91HPJ6Z2M5QRJ927W">Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/orb-concepts/#semantic-versioning">Orb Concepts and Semantic Versioning</a></li>
+    <li><a href="https://circleci.com/docs/2.0/using-orbs/">Using Orbs</a></li>
+    <li>
+        <a href="https://circleci.com/docs/2.0/configuration-reference/">Configuring CircleCI</a>.
+    </li>
+</ul>

@@ -1,42 +1,41 @@
-<h1>Overview</h1>
-<p>CircleCI mirrors permissions from your VCS provider. Meaning, if a user is an organization admin your VCS, they are an organization admin on CircleCI.  Permissions are checked against the VCS for each page load.</p>
-<h2>How to determine if you are an organization admin</h2>
-<h2>GitHub</h2>
-<p>An org admin is an <strong>Owner</strong> on Github and following at least one repo being built on CircleCI. You can view organization members by navigating to <a href="https://bitbucket.org/henna-test/workspace/members/">https://github.com/orgs/{YOUR_ORG_NAME}/people</a></p>
+<h1 id="h_01HT4AQ6KM2VHP05YMH8KP1EM0">Overview</h1>
+<p>CircleCI mirrors permissions from your VCS provider. Meaning, if a user is an organization admin in your VCS, they are an organization admin on CircleCI.  Permissions are checked against the VCS for each page load.</p>
+<h2 id="h_01HT4AQ6KNZ6R87V7FEN68FRV1">How to determine if you are an organization admin</h2>
+<h2 id="h_01HT4AQ6KNRPFMWRXEZBJK0M66">GitHub</h2>
+<p>An org admin is an <strong>Owner</strong> on Github and following at least one repo being built on CircleCI. You can view organization members by navigating to <a href="https://github.com/orgs/{YOUR_ORG_NAME}/people">https://github.com/orgs/{YOUR_ORG_NAME}/people</a></p>
 <p><img src="https://support.circleci.com/hc/article_attachments/360044700594" alt="Screen_Shot_2019-08-27_at_9.46.17_AM.png"></p>
-<p> You can read more about GitHub Permissions here (<a href="https://help.github.com/en/articles/permission-levels-for-an-organization">https://help.github.com/en/articles/permission-levels-for-an-organization</a>)</p>
+<p> You can read more about GitHub Permissions <a href="https://help.github.com/en/articles/permission-levels-for-an-organization" target="_blank" rel="noopener noreferrer">here</a>.</p>
 <p> </p>
-<h2>Bitbucket</h2>
+<h2 id="h_01HT4AQ6KNFVK82CXFA8MB0X8C">Bitbucket</h2>
 <p>An org admin is an <strong>Admin</strong> on Bitbucket and following at least one repo being built on CircleCI. You can find user permissions in BitBucket by navigating to the <strong>"people"</strong> tab for your workspace: </p>
 <ul>
-    <li><a href="https://bitbucket.org/henna-test/workspace/members/">https://bitbucket.org/{YOUR_WORKSPACE_NAME}/workspace/members/</a></li>
+    <li><a href="https://bitbucket.org/{YOUR_WORKSPACE_NAME}/workspace/members/">https://bitbucket.org/{YOUR_WORKSPACE_NAME}/workspace/members/</a></li>
 </ul>
 <p>You can update permissions from the repository permissions page :</p>
 <ul>
-    <li><a href="https://bitbucket.org/%7BYOUR_WORKSPACE_NAME%7D/%7BYOUR_REPO_NAME%7D/admin/permissions">https://bitbucket.org/{YOUR_WORKSPACE_NAME}/{YOUR_REPO_NAME}/admin/permissions</a></li>
+    <li><a href="https://bitbucket.org/{YOUR_WORKSPACE_NAME}/{YOUR_REPO_NAME}/admin/permissions">https://bitbucket.org/{YOUR_WORKSPACE_NAME}/{YOUR_REPO_NAME}/admin/permissions</a></li>
 </ul>
-<p>You may find more info about granting access to a workspace in BitBucket's documentation <a href="https://support.atlassian.com/bitbucket-cloud/docs/grant-access-to-a-workspace/" target="_self">here</a></p>
+<p>You may find more info about granting access to a workspace in BitBucket's documentation <a href="https://support.atlassian.com/bitbucket-cloud/docs/grant-access-to-a-workspace/" target="_blank" rel="noopener noreferrer">here</a>.</p>
 <p> </p>
-<h2>Troubleshooting</h2>
+<h2 id="h_01HT4AQ6KNXFF19Y1NRB628HMF">Troubleshooting</h2>
 <p>If you are experiencing issues with permissions mirroring to CircleCI, try the following steps:</p>
 <ol>
     <li style="list-style-type: none;">
         <ul>
             <li>Access the page on Incognito mode, with a different browser, and/or different device. This may be a browser cache issue and will require the cache to be cleared on your browser.</li>
-            <li>If you no longer see the warning banner, please clear your browser cache for any times related to <code>*.<a href="http://circleci.com/" target="_blank" rel="noopener" data-saferedirecturl="https://www.google.com/url?q=http://circleci.com&amp;source=gmail&amp;ust=1574187152165000&amp;usg=AFQjCNHi1NQgEyoSZKOMVLG1eXfreSecFQ">circleci.com</a></code>, and <code><a href="http://circleci.com/" target="_blank" rel="noopener" data-saferedirecturl="https://www.google.com/url?q=http://circleci.com&amp;source=gmail&amp;ust=1574187152165000&amp;usg=AFQjCNHi1NQgEyoSZKOMVLG1eXfreSecFQ">circleci.com</a></code>.</li>
-            <li>Refresh your account permissions by visiting <a href="https://app.circleci.com/settings/user" target="_self">your user settings page</a> and click <strong>Refresh Permissions.</strong>
+            <li>If you no longer see the warning banner, please clear your browser cache for any times related to <code>*.<a href="http://circleci.com/" target="_blank" rel="noopener noreferrer" data-saferedirecturl="https://www.google.com/url?q=http://circleci.com&amp;source=gmail&amp;ust=1574187152165000&amp;usg=AFQjCNHi1NQgEyoSZKOMVLG1eXfreSecFQ">circleci.com</a></code>, and <code><a href="http://circleci.com/" target="_blank" rel="noopener noreferrer" data-saferedirecturl="https://www.google.com/url?q=http://circleci.com&amp;source=gmail&amp;ust=1574187152165000&amp;usg=AFQjCNHi1NQgEyoSZKOMVLG1eXfreSecFQ">circleci.com</a></code>.</li>
+            <li>Refresh your account permissions by visiting <a href="https://app.circleci.com/settings/user" target="_blank" rel="noopener noreferrer">your user settings page</a> and click <strong>Refresh Permissions.</strong>
             </li>
         </ul>
     </li>
-    <li>If the above steps do not work, please submit a support ticket to <a href="https://support.circleci.com/">CircleCI Support</a> with the organization name, username and the VCS provider (GitHub or Bitbucket). Support will clear the cache on CircleCI's end to clear any potentially stale or corrupt permissions.</li>
 </ol>
-<h2>Additional Resources</h2>
+<h2 id="h_01HT4AQ6KNV82T7F03ZRG7G6RX">Additional Resources</h2>
 <ul>
-    <li><a href="https://support.circleci.com/hc/en-us/articles/12154694676507-How-do-I-find-my-org-admins-" target="_self">How do I find my org admins?</a></li>
-    <li><a href="https://support.atlassian.com/bitbucket-cloud/docs/grant-access-to-a-workspace/" target="_self">BitBucket: Grant Access to a workspace</a></li>
-    <li><a href="https://support.atlassian.com/bitbucket-cloud/docs/organize-workspace-members-into-groups/" target="_self">Organize workspace members into groups</a></li>
-    <li><a href="https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization" target="_self">Roles in an organization </a></li>
-    <li><a href="https://circleci.com/docs/github-integration/#permissions-overview" target="_self">GitHub permissions overview</a></li>
-    <li><a href="https://circleci.com/docs/bitbucket-integration/#permissions-overview" target="_self">BitBucket permissions overview</a></li>
-    <li><a href="https://circleci.com/docs/gitlab-integration/#roles-and-permissions" target="_self">GitLab roles and permissions</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/12154694676507-How-do-I-find-my-org-admins-" target="_blank" rel="noopener noreferrer">How do I find my org admins?</a></li>
+    <li><a href="https://support.atlassian.com/bitbucket-cloud/docs/grant-access-to-a-workspace/" target="_blank" rel="noopener noreferrer">BitBucket: Grant Access to a workspace</a></li>
+    <li><a href="https://support.atlassian.com/bitbucket-cloud/docs/organize-workspace-members-into-groups/" target="_blank" rel="noopener noreferrer">Organize workspace members into groups</a></li>
+    <li><a href="https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization" target="_blank" rel="noopener noreferrer">Roles in an organization </a></li>
+    <li><a href="https://circleci.com/docs/github-integration/#permissions-overview" target="_blank" rel="noopener noreferrer">GitHub permissions overview</a></li>
+    <li><a href="https://circleci.com/docs/bitbucket-integration/#permissions-overview" target="_blank" rel="noopener noreferrer">BitBucket permissions overview</a></li>
+    <li><a href="https://circleci.com/docs/gitlab-integration/#roles-and-permissions" target="_blank" rel="noopener noreferrer">GitLab roles and permissions</a></li>
 </ul>

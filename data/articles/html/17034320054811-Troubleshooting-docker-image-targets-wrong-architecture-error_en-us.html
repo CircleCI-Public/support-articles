@@ -1,8 +1,8 @@
-<h1>Problem:</h1>
+<h1 id="h_01HSYTJS1CAWBA4K339HG8QVB7">Problem:</h1>
 <p>When trying to use an arm-based Docker image with the Docker executor, you may see the following error when trying to use an image built for the wrong architecture:</p>
 <pre style="background-color: #f3f3f3;" data-darkreader-inline-bgcolor=""><code>WARNING: docker image targets wrong architecture (found arm64 but need [amd64 i386 386])
 </code></pre>
-<h2>Solutions:</h2>
+<h2 id="h_01HSYTJS1CRFXMMBJH59FH6BNR">Solutions:</h2>
 <ul>
     <li>Solution 1
         <ul>
@@ -15,7 +15,7 @@
 jobs:
   test:
     docker:
-      - image: cimg/base:2023.07
+      - image: cimg/base:stable
     resource_class: arm-medium
     steps:
       - checkout
@@ -40,7 +40,7 @@ workflows:
 jobs:
   test:
     machine:
-      image: ubuntu-2004:2022.04.1
+      image: ubuntu-2004:current
     resource_class: arm.medium
     steps:
       - checkout
@@ -58,13 +58,13 @@ workflows:
         </ul>
     </li>
 </ul>
-<h2>Outcome:</h2>
+<h2 id="h_01HSYTJS1CPHB5D0B23KVPSBHH">Outcome:</h2>
 <p>The "targets wrong architecture" error should no longer show if the architecture of the image you are trying to run matches the one of the executor specified in your config.yml file.</p>
-<h2>Additional Resources: </h2>
+<h2 id="h_01HSYTJS1C1G25FMT67VSJBXMQ">Additional Resources: </h2>
 <p>Please see the following resources for additional information on the Machine executor, and how to work with multi-platform Docker images.</p>
 <ul>
-    <li><a href="https://circleci.com/product/features/resource-classes" target="_blank" rel="noopener">Resource Classes</a></li>
-    <li><a href="https://circleci.com/docs/using-linuxvm/" target="_blank" rel="noopener">Using the Linux VM execution environment</a></li>
+    <li><a href="https://circleci.com/product/features/resource-classes" target="_blank" rel="noopener noreferrer">Resource Classes</a></li>
+    <li><a href="https://circleci.com/docs/using-linuxvm/" target="_blank" rel="noopener noreferrer">Using the Linux VM execution environment</a></li>
     <li><a href="https://circleci.com/docs/using-arm/">Using the Arm execution environment</a></li>
-    <li><a href="https://docs.docker.com/build/building/multi-platform/" target="_blank" rel="noopener">docker docs: Multi-platform images</a></li>
+    <li><a href="https://docs.docker.com/build/building/multi-platform/" target="_blank" rel="noopener noreferrer">docker docs: Multi-platform images</a></li>
 </ul>

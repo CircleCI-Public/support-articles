@@ -4,11 +4,11 @@ url: >-
 html_url: >-
   https://support.circleci.com/hc/en-us/categories/115001919087-Deploying-Applications
 created_at: '2017-09-06T15:16:54Z'
-updated_at: '2023-12-21T21:28:28Z'
+updated_at: '2024-04-05T22:33:26Z'
 name: Deploying Applications
 description: >-
   Deploying your applications with CircleCI is simple and straightforward. Here
   you'll find helpful information on deploying to popular hosting solutions such
-  as GCP and AWS. 
+  as GCP and AWS and utilizing the CircleCI Releases Tab.
 locale: en-us
 outdated: false

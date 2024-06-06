@@ -1,0 +1,11 @@
+<h1 id="h_01HTDBVCZPQFD0QWVAHAK2590R">Overview</h1>
+<p>If a container-runner task is claimed but does not start within ~10 minutes, it is expected behavior for the pod to time out and you will receive a "infrastructure failure" error. You will not see any failures in your logs, as the pod did not start.</p>
+<p>In this case, we recommend inspecting the output in the Task lifecycle step and running the following command: </p>
+<pre>kubectl describe pod -n circleci &lt; full pod name &gt;</pre>
+<h2 id="h_01HTFYA20ZQ1ZW1MT8DERXK9RQ"> </h2>
+<h2 id="h_01HTDBVCZP21XS99PKXPJ5HDPJ">Additional Resources<span class="diff-removed-string">:</span>
+</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/troubleshoot-self-hosted-runner/"><span class="diff-removed-string">Troubleshoot self-hosted runner</span></a></li>
+    <li><span class="diff-removed-string"><a href="https://circleci.com/docs/container-runner/">Container runner reference</a><br></span></li>
+</ul>

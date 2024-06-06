@@ -1,0 +1,22 @@
+<h2 id="h_01HSVN6G6JAXCN53JEB9G779V3">Overview</h2>
+<p>You may encounter an error during the <code>orb-tools/publish</code> step related to the extraction of the orb source tarball. This article guides you through resolving the "No such file or directory" error for <code>dist/orb_source.tar.gz</code>.</p>
+<h2 id="h_01HSVN6G6JQ9NDPB85TFHTSPTX">Prerequisites</h2>
+<ul>
+    <li>Ensure you have a CircleCI account and are familiar with CircleCI configuration.</li>
+    <li>Have an existing orb that you are trying to publish using orb-tools v12.</li>
+</ul>
+<h2 id="h_01HSVN6G6JG1RX3N6SARSW5AJ3">Solution</h2>
+<p>To avoid the tarball extraction error, it's crucial to run the <code>orb-tools/pack</code> job before <code>orb-tools/publish</code> and persist the workspace between these jobs. The <code>orb-tools/pack</code> job generates the <code>orb_source.tar.gz</code> file, which the <code>orb-tools/publish</code> job requires.</p>
+<p>Here's an example of how to configure these jobs in your workflow:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">workflows:<br>  test-deploy:<br>    jobs:<br>      - command-tests:<br>          filters: *filters<br>      - orb-tools/pack:<br>          filters: *filters<br>      - orb-tools/publish:<br>          orb_name: &lt;namespace&gt;/&lt;orb_name&gt;<br>          vcs_type: &lt;&lt; pipeline.project.type &gt;&gt;<br>          pub_type: production<br>          requires:<br>            - orb-tools/pack<br>            - command-tests</pre>
+<p>In this setup, <code>orb-tools/pack</code> runs before <code>orb-tools/publish</code>, and the workspace is persisted between these jobs, ensuring that <code>orb_source.tar.gz</code> is available when <code>orb-tools/publish</code> runs.</p>
+<p>By adding the <code>orb-tools/pack</code> job as a requirement for the <code>orb-tools/publish</code> job within the same workflow, the workspace layers will be correctly restored, and the tarball extraction error should be resolved.</p>
+<h2 id="h_01HSVN6G6JBXSSMSFYZXG1QMVJ">Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/developer/orbs/orb/circleci/orb-tools">CircleCI Orb Tools Orb Source Code</a></li>
+    <li><a href="https://circleci.com/developer/orbs/orb/circleci/orb-tools#usage">CircleCI Orb Tools Orb Usage Examples</a></li>
+    <li><a href="https://github.com/CircleCI-Public/aws-cli-orb/blob/master/.circleci/test-deploy.yml#L275-L284">CircleCI AWS CLI Orb Example</a></li>
+    <li>
+        <a href="https://discuss.circleci.com/">CircleCI Support Forum</a> for community discussions and troubleshooting.
+    </li>
+</ul>

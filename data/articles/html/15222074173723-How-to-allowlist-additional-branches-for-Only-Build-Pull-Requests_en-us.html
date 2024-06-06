@@ -1,32 +1,32 @@
-<h1>Overview</h1>
+<h1 id="h_01HRNFRQ4432V0JZND70769YVN">Overview</h1>
 <p>In some cases, you may wish to add additional default branches to your project on CircleCI. This is now possible via the <code>v1.1</code> API.</p>
-<p>This <span>feature expands on the <a href="https://circleci.com/docs/oss/#only-build-pull-requests" target="_blank" rel="noopener">Only Build Pull Request offering</a> by enabling our users to configure additional default branches outside of the default in your VCS. </span></p>
+<p>This feature expands on the <a href="https://circleci.com/docs/oss/#only-build-pull-requests" target="_blank" rel="noopener noreferrer">Only Build Pull Request offering</a> by enabling our users to configure additional default branches outside of the default in your VCS. </p>
 <p> </p>
-<h3 class="wysiwyg-text-align-center" style="background-color: #eed202; padding: 5px; border-radius: 5px; color: black;" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><strong>⚠ This is an override and not an addition. ⚠ <br>You will need to specify all current default branches for your project if you decide to add more.</strong></h3>
+<h3 id="h_01HRNFRQ44ACS1B0CRR6WJDS1B" class="wysiwyg-text-align-center" style="background-color: #eed202; padding: 5px; border-radius: 5px; color: black;" data-darkreader-inline-bgcolor="" data-darkreader-inline-color=""><strong>⚠ This is an override and not an addition. ⚠ <br>You will need to specify all current default branches for your project if you decide to add more.</strong></h3>
 <p> </p>
-<h2>How to find your current default branches on CircleCI:</h2>
-<p>We can do this programmatically with <a href="https://stedolan.github.io/jq/" target="_blank" rel="noopener">JQ</a>:</p>
-<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor=""><span>curl -X GET \<br>--header </span><span class="hljs-string">"Circle-Token: &lt;token&gt;"</span><span> \<br>--header </span><span class="hljs-string">"Accept: application/json"</span><span> \<br>--header </span><span class="hljs-string">"Content-Type: application/json"</span><span> \<br></span><span class="hljs-symbol">'https</span><span>:</span><span class="hljs-comment">//circleci.com/api/v1.1/project/&lt;vcs-type&gt;/&lt;org-slug&gt;/&lt;project-slug&gt;/settings' | jq '.feature_flags."pr-only-branch-overrides"'</span></pre>
+<h2 id="h_01HRNFRQ443386ME51V8DT7CZQ">How to find your current default branches on CircleCI:</h2>
+<p>We can do this programmatically with <a href="https://stedolan.github.io/jq/" target="_blank" rel="noopener noreferrer">JQ</a>:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">curl -X GET \<br>--header <span class="hljs-string">"Circle-Token: &lt;token&gt;"</span> \<br>--header <span class="hljs-string">"Accept: application/json"</span> \<br>--header <span class="hljs-string">"Content-Type: application/json"</span> \<br><span class="hljs-symbol">'https</span>:<span class="hljs-comment">//circleci.com/api/v1.1/project/&lt;vcs-type&gt;/&lt;org-slug&gt;/&lt;project-slug&gt;/settings' | jq '.feature_flags."pr-only-branch-overrides"'</span></pre>
 <p>Once you have your current default branches, you can move on to the next step.</p>
 <p> </p>
-<h2>Example 1:</h2>
+<h2 id="h_01HRNFRQ44WM5Z2V0C8NDEHT09">Example 1:</h2>
 <p>In this example, we will be adding the default branches <code>gh-readonly-queue.*</code> along with <code>staging</code> with <code>main</code> as our current default. </p>
-<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">curl -X PUT \<br>--header "Circle-Token: &lt;token&gt;" <br>--header "Accept: application/json" <br>--header "Content-Type: application/json" <br>--data '{"feature_flags":{"pr-only-branch-overrides": "main, gh-readonly-queue.*, staging"}}' <br>'https://circleci.com/api/v1.1/project/<span class="hljs-comment">&lt;vcs-type&gt;/&lt;org-slug&gt;/&lt;project-slug&gt;</span>/settings'</pre>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">curl -X PUT \<br>--header "Circle-Token: &lt;token&gt;" \<br>--header "Accept: application/json" \<br>--header "Content-Type: application/json" \<br>--data '{"feature_flags":{"pr-only-branch-overrides": "main, gh-readonly-queue.*, staging"}}' \<br>'https://circleci.com/api/v1.1/project/<span class="hljs-comment">&lt;vcs-type&gt;/&lt;org-slug&gt;/&lt;project-slug&gt;</span>/settings'</pre>
 <p><strong>Result</strong>: If the response looks like the following:</p>
 <p><code>""%</code></p>
 <p>Any branch that starts with <code>gh-readonly-queue</code>, such as <code>gh-readonly-queue/feat/release</code> or <code>gh-readonly-queue-feat-123</code>, and any branch that starts with <code>staging</code> will now trigger validation on all commits. Additionally, the default branch, main, will continue to build all commits.</p>
 <p> </p>
-<h2>Example 2: </h2>
+<h2 id="h_01HRNFRQ442D5KM84XRHJM35DA">Example 2: </h2>
 <p>In this example, we will be adding the default branches <code>\\(\\d+\\)-release.*</code> along with <code>main</code> as our current default.</p>
-<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">curl -X PUT --header "Circle-Token: &lt;token&gt;" <br>--header "Accept: application/json" <br>--header "Content-Type: application/json" <br>--data '{"feature_flags":{"build-prs-only":true, "pr-only-branch-overrides": "main, \(\\d+\)-release.*"}}' <br>'https://circleci.com/api/v1.1/project/<span class="hljs-comment">&lt;vcs-type&gt;/&lt;org-slug&gt;/&lt;project-slug&gt;</span>/settings'</pre>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">curl -X PUT --header "Circle-Token: &lt;token&gt;" \<br>--header "Accept: application/json" \<br>--header "Content-Type: application/json" \<br>--data '{"feature_flags":{"build-prs-only":true, "pr-only-branch-overrides": "main, \(\\d+\)-release.*"}}' \<br>'https://circleci.com/api/v1.1/project/<span class="hljs-comment">&lt;vcs-type&gt;/&lt;org-slug&gt;/&lt;project-slug&gt;</span>/settings'</pre>
 <p><strong>Result</strong>: Will build any branch that starts with one or more digits enclosed in parenthesis followed by the string <code>-release</code> suffixed with zero or more characters. For example:</p>
 <p>Branches <code>(123)-release2</code> , <code>(7)-release-to-prod</code>, and <code>(334)-release</code> will all trigger validation on all commits. Additionally, the default branch, <code>main</code>, will continue to build all commits.</p>
 <p> </p>
-<h3>Additional Resources</h3>
+<h3 id="h_01HRNFRQ447C0GC6DCP9P4TC2Q">Additional Resources</h3>
 <ul>
-    <li>CircleCI utilizes the <a href="https://www.javatpoint.com/java-regex" target="_blank" rel="noopener">Java Style Regex</a> which is why in some cases you do not need to escape some characters. </li>
-    <li><a href="https://support.circleci.com/hc/en-us/articles/14992602955675-Setting-Project-API-Features" target="_blank" rel="noopener">Setting Project API Features Support Article</a></li>
-    <li><a href="https://discuss.circleci.com/t/product-launch-override-only-build-prs-setting/47807" target="_blank" rel="noopener">The CircleCI Discuss Post for this release</a></li>
+    <li>CircleCI utilizes the <a href="https://www.javatpoint.com/java-regex" target="_blank" rel="noopener noreferrer">Java Style Regex</a> which is why in some cases you do not need to escape some characters. </li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/14992602955675-Setting-Project-API-Features" target="_blank" rel="noopener noreferrer">Setting Project API Features Support Article</a></li>
+    <li><a href="https://discuss.circleci.com/t/product-launch-override-only-build-prs-setting/47807" target="_blank" rel="noopener noreferrer">The CircleCI Discuss Post for this release</a></li>
     <li><a href="https://support.circleci.com/hc/en-us/articles/11220194479003" target="_self">[Server] How to whitelist branches to override “Only build pull requests” on a project</a></li>
 </ul>
 <p> </p>

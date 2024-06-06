@@ -1,0 +1,12 @@
+<h3 id="h_01HXY56AP7JRJH6QCY5DSAG66W">
+    <a class="anchor" href="https://discuss.circleci.com/t/review-each-workflow-for-improvement-opportunities/48615#h-1-review-job-placement-2" name="h-1-review-job-placement-2"></a>1) Review Job Placement
+</h3>
+<p><a href="https://circleci.com/docs/glossary/#job">Job</a> order can be the largest impact on <a href="https://circleci.com/docs/glossary/#workflow">workflow</a> duration. Review the workflow for opportunities to <a href="https://circleci.com/docs/workflows/#fan-outfan-in-workflow">run jobs in parallel</a> and note which jobs are bottlenecking the workflow to review them for improvement opportunities.</p>
+<p>Placing shorter jobs, like linters, in the beginning of the workflow is helpful in reducing the time to receive feedback about a change being tested. This saves <a href="https://circleci.com/docs/credits/">credits</a> and time as a large portion of the workflow doesn’t need to run to receive feedback about a small issue.</p>
+<h3 id="h_01HXY56AP7TDR895V09XGRP3YS">
+    <a class="anchor" href="https://discuss.circleci.com/t/review-each-workflow-for-improvement-opportunities/48615#h-2-identify-modular-configuration-opportunities-3" name="h-2-identify-modular-configuration-opportunities-3"></a>2) Identify Modular Configuration Opportunities
+</h3>
+<p>When reviewing workflows that fan out but never fan back in, see if the jobs could be grouped into separate workflows. Having multiple workflows provides the separation needed to take advantage of <a href="https://circleci.com/docs/dynamic-config/">dynamic config</a>, which allows workflows to be triggered based on parameters set in a setup workflow. <a href="https://support.circleci.com/hc/en-us/articles/360043638052-Conditional-steps-in-jobs-and-conditional-workflows">Workflows and jobs can then be conditionally run</a>, saving time and credits.</p>
+<p>Creating <a href="https://circleci.com/docs/reusing-config/#authoring-parameterized-jobs">parameterized jobs</a> allows for further implementation of dynamic config and leads to an easier to manage config in most cases. Those jobs can also be used to create matrix jobs.</p>
+<p><a href="https://support.circleci.com/hc/en-us/articles/25760447577627"><strong>Next Step:</strong> High Level Improvement Opportunities </a></p>
+<p><strong> </strong></p>

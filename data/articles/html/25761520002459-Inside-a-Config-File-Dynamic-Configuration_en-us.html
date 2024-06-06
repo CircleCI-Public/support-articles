@@ -1,0 +1,14 @@
+<h3 id="h_01HXYEVHSKWEVCZPFPRMG19GT4">
+    <a class="anchor" href="https://discuss.circleci.com/t/inside-a-config-file-dynamic-configuration/48620#why-dynamic-config-3" name="why-dynamic-config-3"></a>Why Dynamic Config
+</h3>
+<p><a href="https://circleci.com/docs/dynamic-config/">Dynamic configuration</a> is an easy way to not have to run a full <a href="https://circleci.com/docs/glossary/#pipeline">pipeline</a> when it’s not needed, saving <a href="https://circleci.com/docs/credits/">credits</a> and time. Most projects can benefit from dynamic config but monolith <a href="https://circleci.com/docs/glossary/#project">projects</a> especially benefit.</p>
+<h3 id="h_01HXYEVHSKFJYMRWAXMJ63BHT6">
+    <a class="anchor" href="https://discuss.circleci.com/t/inside-a-config-file-dynamic-configuration/48620#starting-out-4" name="starting-out-4"></a>Starting Out
+</h3>
+<p>Dynamic config has a wide variety of uses but essentially boils down to creating <a href="https://circleci.com/docs/pipeline-variables/#pipeline-parameters-in-configuration">pipeline parameters</a> in a setup workflow, then running <a href="https://circleci.com/docs/glossary/#workflow">workflows</a> based off those parameters.</p>
+<p>To start using dynamic config, CircleCI has an <a href="https://circleci.com/docs/glossary/#orbs">orb</a> that creates parameters based on the paths in the repo where changes have been made. With a little bit of setup you can use the <a href="https://circleci.com/developer/orbs/orb/circleci/path-filtering">path filtering orb</a> to not have to run your full workflow.</p>
+<h3 id="h_01HXYEVHSKDGKGRD053PVTE6Y6">
+    <a class="anchor" href="https://discuss.circleci.com/t/inside-a-config-file-dynamic-configuration/48620#advanced-use-5" name="advanced-use-5"></a>Advanced Use
+</h3>
+<p>Review the pipeline and figure out what parameters could be created and used to trigger conditional workflows and jobs. Create a setup config that generates those parameters then uses the continuation orb to pass them to a downstream workflow.</p>
+<p><a href="https://support.circleci.com/hc/en-us/articles/25761602393755"><strong>Next Step: </strong>Outside the Config: Security Settings</a></p>

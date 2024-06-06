@@ -1,0 +1,22 @@
+<h3 id="h_01HXYEXTPNNW9EH4CZW1RCB99X">
+    <a class="anchor" href="https://discuss.circleci.com/t/outside-a-config-file-security-settings/48622#project-settings-3" name="project-settings-3"></a>Project Settings
+</h3>
+<p>Review <a href="https://circleci.com/docs/glossary/#project">project</a> settings to ensure they are set correctly, this can be done via the UI or <a href="https://fieldguide.circleci-labs.com/api_endpoints/project_settings_api/">API </a>.</p>
+<p>Confirm that the following Advanced settings are toggled <em>off</em> unless needed for your use case:</p>
+<ul>
+    <li>Build forked pull requests</li>
+    <li>Pass secrets to builds from forked pull requests</li>
+</ul>
+<p>Confirm that the following <a href="https://fieldguide.circleci-labs.com/api_endpoints/project_settings_api/">API only project settings </a> are toggled <em>on</em> unless not needed for your use case:</p>
+<ul>
+    <li>disable-ssh</li>
+    <li>write-settings-requires-admin</li>
+</ul>
+<p>Confirm no unexpected SSH keys, project API tokens, or integrations are present.</p>
+<h3 id="h_01HXYEXTPNF0EPG3QGDNF9NDMP">
+    <a class="anchor" href="https://discuss.circleci.com/t/outside-a-config-file-security-settings/48622#org-settings-4" name="org-settings-4"></a>Org Settings
+</h3>
+<p>Confirm there are no unexpected technical or security contacts present. Add at least one if none are present.</p>
+<p>Confirm <a href="https://circleci.com/docs/contexts/">contexts</a> are restricted appropriately.</p>
+<p>Ensure use of uncertified <a href="https://circleci.com/docs/glossary/#orbs">orbs</a> is disabled if applicable.</p>
+<p><a href="https://support.circleci.com/hc/en-us/articles/25761652424731"><strong>Next Step: </strong>Outside the Config: Secret Management</a></p>

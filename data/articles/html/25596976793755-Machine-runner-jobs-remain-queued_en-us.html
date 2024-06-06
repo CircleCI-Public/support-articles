@@ -1,0 +1,14 @@
+<h2 id="h_01HXF9ZC0PD02QKMXEPVPDMT63">Overview</h2>
+<p>We can sometimes see runner jobs remain queued even though not all active tasks are being used. This is often times due to hitting concurrency limits from unclaimed tasks. </p>
+<h2> </h2>
+<h2 id="h_01HXF9ZC0Q3ZFZV739VAYN6BC4">Solution</h2>
+<p>To resolve this issue, you can use the <a href="https://circleci.com/docs/runner-api/#get-api-v3-tasks">CircleCI v3 API to get unclaimed tasks for a given resource class</a>.  We recommend using the above API endpoint for all runners with no tasks (found on the runner inventory page (<a href="https://app.circleci.com/runners/:VCS/{YOUR_ORGANIZATION_NAME}/inventory">https://app.circleci.com/runners/:VCS/{YOUR_ORGANIZATION_NAME}/inventory</a>). </p>
+<p> </p>
+<p>Any resource class that has more than 0 unclaimed_task_count, will need to have unclaimed jobs cancelled. </p>
+<h2 id="h_01HXF9ZC0QSDJP2XN467MZN7J5">Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/runner-installation-mac/#verify-the-service-is-running">Verifying the macOS Machine Runner Service is Running</a></li>
+    <li><a href="https://circleci.com/docs/install-machine-runner-3-on-macos/#uninstall-machine-runner-macos">Uninstalling the macOS Machine Runner</a></li>
+    <li><a href="https://circleci.com/docs/install-machine-runner-3-on-macos/#stop-macos-machine-runner">Stopping the macOS Machine Runner</a></li>
+</ul>
+<p> </p>

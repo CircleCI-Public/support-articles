@@ -1,7 +1,9 @@
 <h1 id="h_01HD7HT90CC30YSNFWFM4KCH24">Overview</h1>
 <p>Users utilizing the M1 resource class on the CircleCI macOS executor are seeing builds hang. Though we can see builds hanging or timing out for other reasons, a specific bug in Apple's hypervisor framework that can cause issues in virtualized environments. These issues arise when a simulator is launched. You may notice a "Too long with no output (exceeded 5m0s): context deadline exceeded" error. </p>
 <h2 id="h_01HD7HT90C671D877X0HGTDES2">Resolution </h2>
-<p>We have significant improvements in performance when a simulator is booted for the second time by preforming the following steps: </p>
+<p>We've addressed this issues in the xcode 15 beta image. You can read more about the improvements made <a href="https://discuss.circleci.com/t/xcode-15-beta-2-re-released-and-bumped-to-macos-14-1/49816">here</a>.  </p>
+<p> </p>
+<p>If you are unable to use xcode 15.1 or later, you may try the steps listed below. We have significant improvements in performance when a simulator is booted for the second time by preforming the following steps: </p>
 <p>1. Launch your simulator at the beginning of your build. You may use the CircleCI macOS orb's <code><a href="https://circleci.com/developer/orbs/orb/circleci/macos#commands-preboot-simulator" target="_self" rel="undefined">preboot-simulator</a></code> command.</p>
 <p>2. Wait for your simulator to to be booted. You may use the CircleCI macOS orb. This orb includes a command; <code><a href="https://circleci.com/developer/orbs/orb/circleci/macos#commands-wait-until-simulator-booted" target="_self">wait-until-simulator-booted</a></code>. This command will wait until your simulator has booted or your job's <code><a href="https://circleci.com/docs/configuration-reference/#steps:~:text=default%3A%20.)-,no_output_timeout,-N" target="_self">`NO_OUTPUT_TIMEOUT`</a></code> is hit. This is 10 minutes by default.</p>
 <p>3. Shutdown the simulator: <code>xcrun simctl
@@ -14,6 +16,7 @@
         <a href="https://support.circleci.com/hc/en-us/articles/360043188514-How-to-Retry-a-Failed-Step-with-when-Attribute-" target="_self">Adding a retry to the step</a>  in which you start your simulator to avoid having to re-run your build. 
     </li>
     <li>Add a final step that uses the <a href="https://circleci.com/docs/configuration-reference/#the-when-attribute" target="_self">when attribute</a> when the value of <code>"on_fail"</code> and CircleCI v1 <a href="https://circleci.com/docs/api/v1/index.html?utm_source=google&amp;utm_medium=sem&amp;utm_campaign=sem-google-dg--uscan-en-dsa-tROAS-auth-brand&amp;utm_term=g_-_c__dsa_&amp;utm_content=&amp;gclid=CjwKCAjwue6hBhBVEiwA9YTx8JRvvaWFnkxKMSnp2IlxWhA0m_6QvuYCAutoLiRsrUufHYQ2r8r68RoCDQgQAvD_BwE#retry-a-build" target="_self">retry a build endpoint</a> to rerun the job upon failure. </li>
+    <li>Increase the amount of time your build will continue to run without any output by using the  <a href="https://circleci.com/docs/configuration-reference/#run:~:text=default%3A%20.)-,no_output_timeout,-N">`no_output_timeout`</a> key.</li>
 </ul>
 <h2 id="h_01HD7J1F88NRQF4XZSC7RK7XVM">Additional resources: </h2>
 <ul>

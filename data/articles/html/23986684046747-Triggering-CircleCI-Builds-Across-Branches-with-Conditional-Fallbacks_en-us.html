@@ -1,0 +1,120 @@
+<h2 id="h_01HSCBZ7V2BXQPXK823GVJBCD1">Overview</h2>
+<p>CircleCI users often need to trigger builds in one project from another, specifying branch conditions. This article guides you through the process of triggering a CircleCI build on a specific branch and, if that branch does not exist, defaulting to the main branch. Additionally, it addresses the challenge of triggering builds on branches without open pull requests while maintaining the "Only build pull requests" setting.</p>
+<h2 id="h_01HSCBZ7V2YQRZRRT51CWVYD7F">Prerequisites</h2>
+<ul>
+    <li>A CircleCI account with a project set up.</li>
+    <li>The <code>curl</code> and <code>jq</code> tools installed in your CI environment.</li>
+    <li>A CircleCI API token (<code>CIRCLE_TOKEN</code>) with the appropriate permissions.</li>
+    <li>A GitHub API token (<code>GH_TOKEN</code>) with the necessary repository permissions.</li>
+</ul>
+<h2 id="h_01HSCBZ7V2YCX0N1VAJ5M75QWN">Instructions</h2>
+<p>To trigger a build on a specific branch and fallback to the main branch if the target branch does not exist, follow these steps:</p>
+<ol>
+    <li>Define pipeline parameters for the target and default branches.</li>
+    <li>Use the GitHub API to check if the target branch exists.</li>
+    <li>Trigger a CircleCI pipeline on the target branch if it exists, or on the default branch otherwise.</li>
+    <li>Implement a loop to check the status of the triggered workflow and output the result.</li>
+</ol>
+<h2 id="h_01HSCBZ7V2J9AZSQ55GNSJKZER">Solution</h2>
+<p>To achieve the desired workflow, you can use the following script:</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">parameters:
+  target_trigger_branch:
+    default: "develop"
+    type: string
+  default_trigger_branch:
+    default: "main"
+    type: string
+  gh_project_slug:
+    default: ""
+    type: string
+    description: "The GH Project in OWNER/REPO format"
+  circleci_project_slug:
+    default: ""
+    type: string
+    description: "The CircleCI Project in VCS/ORG/PROJECT format"
+
+
+jobs:
+  trigger-api:
+    environment:
+      TARGET_TRIGGER_BRANCH: &lt;&lt; pipeline.parameters.target_trigger_branch &gt;&gt;
+      DEFAULT_TRIGGER_BRANCH: &lt;&lt; pipeline.parameters.default_trigger_branch &gt;&gt;
+      GH_PROJECT_SLUG: &lt;&lt; pipeline.parameters.gh_project_slug &gt;&gt;
+      PROJECT_SLUG: &lt;&lt; pipeline.parameters.circleci_project_slug &gt;&gt;
+      
+      - run: 
+          name: api-trigger
+          command: |
+            # Checks to see if a branch exist in GitHub
+            # If $TARGET_TRIGGER_BRANCH does not exist, trigger on $DEFAULT_TRIGGER_BRANCH
+            TARGET_BRANCH_EXISTS=$(curl -L -H "Accept: application/vnd.github+json" -H "Authorization: Token ${GH_TOKEN}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/${GH_PROJECT_SLUG}/branches/${TARGET_TRIGGER_BRANCH})
+            if [ $(echo $TARGET_BRANCH_EXISTS | jq -r .name ) == "${TARGET_TRIGGER_BRANCH}" ]; then
+              echo "Triggering a build on ${TARGET_TRIGGER_BRANCH}"
+              export BRANCH_TO_TRIGGER="${TARGET_TRIGGER_BRANCH}"
+            else
+              echo "Triggering on ${DEFAULT_TRIGGER_BRANCH} due to ${TARGET_TRIGGER_BRANCH} not existing."
+              export BRANCH_TO_TRIGGER="${DEFAULT_TRIGGER_BRANCH}"
+            fi
+
+            # Checks default branches to make sure that we can trigger a build on $TARGET_TRIGGER_BRANCH
+            # If we cannot trigger it (due it not being on the default branches), disable Only Build Pull Requests.
+            if [ "$BRANCH_TO_TRIGGER" != "$DEFAULT_TRIGGER_BRANCH" ]; then
+              CURRENT_PR_BRANCHES=$(curl --request GET --url "https://circleci.com/api/v2/project/gh/${GH_PROJECT_SLUG}/settings" --header "Circle-Token: ${CIRCLE_TOKEN}" --header "Accept: application/json")
+              PARSED_PR_BRANCHES=$(echo $CURRENT_PR_BRANCHES | jq -r '.advanced.pr_only_branch_overrides[]')
+              echo "$PARSED_PR_BRANCHES" &gt; temp.txt
+              mapfile -t CURRENT_PR_BRANCHES_ARRAY &lt; temp.txt
+              rm temp.txt
+              FOUND=0
+              for regex in "${CURRENT_PR_BRANCHES_ARRAY[@]}"; do
+                if [[ "$TARGET_TRIGGER_BRANCH" =~ $regex ]]; then
+                  FOUND=1
+                  echo "$TARGET_TRIGGER_BRANCH matches pattern $regex. No need to change any settings."
+                  break
+                fi
+              done
+
+              if [ $FOUND -eq 0 ]; then
+                curl --request PATCH --url "https://circleci.com/api/v2/project/gh/${GH_PROJECT_SLUG}/settings" --header "Circle-Token: ${CIRCLE_TOKEN}" --header 'content-type: application/json' --data '{"advanced":{"build_prs_only":false}}'
+                echo "Disabling Only Build Pull Requests for ${GH_PROJECT_SLUG} so we can trigger a build."
+              fi
+            else
+              echo "${BRANCH_TO_TRIGGER} is equal to main"
+            fi
+
+            # Trigger the build and watch it 
+            TRIGGER_API=$(curl --location --request POST "https://circleci.com/api/v2/project/${PROJECT_SLUG}/pipeline" --header "Circle-Token: ${CIRCLE_TOKEN}" --header 'Content-Type: application/json' --header "Accept: application/json" --data-raw "{\"branch\":\"${BRANCH_TO_TRIGGER}\")
+            PIPELINE_ID=$(echo ${TRIGGER_API} | jq -r .id)
+            TOTAL_SECONDS=300
+            WAIT_TIME=15
+            for (( i=0; i &lt;= $TOTAL_SECONDS; i=i+$WAIT_TIME )); do
+              PIPELINE_WORKFLOW_STATUS=$(curl --request GET --url "https://circleci.com/api/v2/pipeline/${PIPELINE_ID}/workflow" --header "Circle-Token: ${CIRCLE_TOKEN}" | jq -r .items[].status)
+              if [ "$PIPELINE_WORKFLOW_STATUS" == "success" ]; then
+                echo "Status is: $PIPELINE_WORKFLOW_STATUS"
+                LINK="https://app.circleci.com/pipelines/${PROJECT_SLUG}/$(echo $PIPELINE_WORKFLOW | jq .items.pipeline_number)"
+                echo "Job has successed. Please view the link below \n ${LINK}"
+              elif [ "$PIPELINE_WORKFLOW_STATUS" == "failed" ]; then
+                echo "Status is: $PIPELINE_WORKFLOW_STATUS"
+                LINK="https://app.circleci.com/pipelines/${PROJECT_SLUG}/$(echo $PIPELINE_WORKFLOW | jq .items.pipeline_number)"
+                echo "Please correct an errors at the job link below. \n ${LINK}"
+              else
+                echo "Status is: $PIPELINE_WORKFLOW_STATUS"
+                echo "Sleeping for $WAIT_TIME"
+                sleep $WAIT_TIME
+              fi
+            done
+
+            # If we had to disable Only Build Pull Requests, reenable it.
+            if [ "${FOUND}" == "0" ]; then
+              echo "The build on ${BRANCH_TO_TRIGGER} has ${PIPELINE_WORKFLOW_STATUS} so we can Enable Only Build Pull Requests on ${GH_PROJECT_SLUG} again."
+              curl --request PATCH --url "https://circleci.com/api/v2/project/gh/${GH_PROJECT_SLUG}/settings" --header "Circle-Token: ${CIRCLE_TOKEN}" --header 'content-type: application/json' --data '{"advanced":{"build_prs_only":true}}'
+            else
+              echo "Build was on ${BRANCH_TO_TRIGGER} so no need to change settings again."
+            fi</pre>
+<p>Replace <code>gh_project_slug</code> and <code>circleci_project_slug</code> pipeline parameters with your GitHub and CircleCI project identifiers, respectively.</p>
+<h2 id="h_01HSCBZ7V29FZMQR9T5H7KVF52">Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/api/v2/">CircleCI API Reference</a></li>
+    <li><a href="https://docs.github.com/en/rest">GitHub API Documentation</a></li>
+    <li><a href="https://stedolan.github.io/jq/manual/">Using jq to process JSON on the command line</a></li>
+</ul>
+<p>For more complex workflows or additional assistance, refer to the CircleCI documentation or explore community forums for shared solutions.</p>

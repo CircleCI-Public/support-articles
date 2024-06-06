@@ -1,0 +1,18 @@
+<h1 id="h_01HVPGVFFDG0QTECTNCEGAG4FH">Overview</h1>
+<p>Environment variables at the project or organization level are masked in build outputs as their values are assumed to be sensitive (secrets).<br>We list a few methods below to inspect the values of these environment variables.</p>
+<p> </p>
+<p> </p>
+<h2 id="h_01HVPGVFFDNRGHVQANEQDTTTQJ">1. Inspect within an SSH session (recommended)</h2>
+<p>Via <a href="https://circleci.com/docs/ssh-access-jobs/" target="_blank" rel="noopener noreferrer">an SSH rerun</a>, you can print the values (e.g., `printenv CIRCLE_TOKEN`) within the SSH session.</p>
+<p>The values will be printed without masking.</p>
+<p>This is the <strong>recommended</strong> way to inspect their values.</p>
+<p> </p>
+<h2 id="01HW4VZ0DWWB64FD76SHRPZ96D">2. Inspect last 4 characters of the value</h2>
+<p>This is an option if your organization has disabled SSH reruns in general.<br><br>From the UI, you are able to see the<strong> last 4 characters</strong> for the environment variable's value.<br><strong>Note </strong>that you cannot see the entire value within the UI, but this may be sufficient for you to cross-check.</p>
+<p> </p>
+<p><img src="https://support.circleci.com/hc/article_attachments/25090046283035" alt="Screenshot 2024-04-23 at 16.02.59.png"></p>
+<p> </p>
+<h2 id="h_01HAQHC95PVGXVKF02WCVRXJM1">Additional Resources:</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/env-vars/#secrets-masking" target="_blank" rel="noopener noreferrer">Secrets Masking</a></li>
+</ul>

@@ -2,11 +2,16 @@
 <p>The maximum size of a CircleCI configuration file (config.yml) is 8MB. When this limit is exceeded, customers may see errors such as "<strong>Unexpected exception processing config"</strong> or "<strong>A compiled config YAML must be at most 8MB"</strong> or <strong>"Your compiled config is too large to be processed. Please contact support."</strong> in their build logs.</p>
 <p>It is important to remember that this is the <em>compiled</em> configuration. This is the result of expanding any YAML anchors and aliases as well as importing all required/imported orbs' commands.<br><br></p>
 <h2 id="h_01HETG2PV9PYPSFJCAKDATXVKK">Update</h2>
-<p>As of November 2023, the limit was increased from 4MB to 8MB.</p>
+<p>As of November 2023, the limit was increased from <strong>4MB to 8MB.</strong></p>
 <h2 id="h_01HETG2PV9GV1HQFCKXWY6W50V">Troubleshooting oversize config files</h2>
 <p>To find out the size of the final <em>compiled</em> configuration, use the CircleCI CLI <a class="css-bspq7p" title="https://circleci.com/docs/2.0/local-cli/#processing-a-config" href="https://circleci.com/docs/2.0/how-to-use-the-circleci-local-cli#processing-a-config" target="_blank" rel="noopener noreferrer" data-renderer-mark="true">to process the original config</a>. From here, you can inspect the compiled configuration file using the commands below:</p>
 <pre style="background-color: #f3f3f3; padding: 5px;"><span class="">circleci config process .circleci/config.yml </span><span class="token operator">&gt;</span><span class=""> compiled.yml<br></span><br>ls -lH <span class="">compiled.yml</span></pre>
-<p class="p1"><em><span class="">Please note that the command below will fail if your compiled YAML file exceeds the 4MB limit.<br>These commands are meant to help you figure out if your current config is nearing the limit.</span></em></p>
+<p class="p1"><em><span class=""><strong>Note:</strong> The command above will fail if your compiled YAML file exceeds the limit.<br>This is meant to help you figure out if your current config is nearing the limit.</span></em></p>
+<p class="undefined"> </p>
+<h2 id="important" class="p1">Important</h2>
+<p class="undefined">If you are evaluating the continued config file (as per <a href="https://circleci.com/docs/dynamic-config/" target="_blank" rel="noopener noreferrer">Dynamic Configuration</a>), please ensure you pass in the same pipeline parameter values to <strong>match</strong> the `parameters` values you are setting via <a href="https://circleci.com/docs/api/v2/index.html#operation/continuePipeline" target="_blank" rel="noopener noreferrer">the Continue Pipeline API</a>.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;"><span class="">circleci config process \<br>    --pipeline-parameters '{"foo": "bar", "fizz": 123}' \<br>    .circleci/continued.yml </span><span class="token operator">&gt;</span><span class=""> compiled.yml<br></span><br>ls -lH <span class="">compiled.yml</span></pre>
+<p class="undefined"> </p>
 <p class="p1">We have a <a href="https://support.circleci.com/hc/en-us/articles/8258725964699-How-can-I-reduce-my-config-file-size-" target="_blank" rel="noopener noreferrer">collection of useful tips</a> to potentially reduce the size of the compiled config file.</p>
 <p class="p1">If you choose to move your commands into scripts, you could also utilize <a href="https://circleci.com/docs/workflows/#using-workspaces-to-share-data-among-jobs" target="_self">workspaces</a> to copy external scripts between jobs, so you don't need to do a full checkout every time.</p>
 <p> </p>
