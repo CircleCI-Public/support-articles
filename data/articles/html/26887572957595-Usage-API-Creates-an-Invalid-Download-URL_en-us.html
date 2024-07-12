@@ -1,0 +1,15 @@
+<h1 id="h_01J18G5BPWHF7JAZ2G00PKQR2Z">Overview</h1>
+<p>When using the <a href="https://circleci.com/docs/api/v2/index.html#tag/Usage">experimental Usage API</a>, you may notice that the download_URL generated seems to return an invalid error when copied into a browser. This article will explain a method to convert that URL into something useable.</p>
+<p> </p>
+<h2 id="h_01J1D96PGQD8670FPPXH4HGX4H">Why Is This Happening?</h2>
+<p>The generate URL gets additional '&amp;' unicode values added between URL parameters which cause an error.</p>
+<p> </p>
+<h2 id="h_01J1D98KCZAGA833ME1T6XMZBG">How Do I Fix This?</h2>
+<p>After making the API call to generate the URL, take the URL and run it with the following command, replacing "download_url" with your URL:</p>
+<p><code>echo -e "download_url"</code></p>
+<p> </p>
+<h2 id="h_01J1DT7AG2TBFCGD0BET8ZR0NG">Additional Resources:</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/115014005208" target="_blank" rel="noopener noreferrer">CircleCI API Access</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360060360811" target="_blank" rel="noopener noreferrer">CircleCI API v2 Returns "404 Not Found"</a></li>
+</ul>

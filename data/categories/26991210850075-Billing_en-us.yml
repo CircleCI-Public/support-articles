@@ -1,0 +1,13 @@
+id: 26991210850075
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/categories/26991210850075.json
+html_url: https://support.circleci.com/hc/en-us/categories/26991210850075-Billing
+created_at: '2024-06-29T00:04:40Z'
+updated_at: '2024-07-08T17:18:53Z'
+name: Billing
+description: >-
+  This page is for users needing help with managing their CircleCI payment
+  information. Here you'll find answers to frequently asked questions about
+  Billing details and paying for CircleCI.
+locale: en-us
+outdated: false

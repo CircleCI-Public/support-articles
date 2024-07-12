@@ -1,0 +1,26 @@
+<h1 id="h_01HJHTEEP4EEG2EAH6XZC5AVPF">Overview</h1>
+<p>Apple's M1 chip relies on ARM64 architecture, a deviation from the x86-64 architecture used in Intel chips. Certain built binaries meant for Intel chips may not function on the ARM-based M1 chips, causing errors like the following during CircleCI builds.</p>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">Bad CPU type in executable</pre>
+<p>The "Bad CPU type in executable" error occurs when x86-64 binary is used in an environment intended for ARM64, such as an M1 Mac. Applications built to run on Intel's x86-64 architecture may not work smoothly on ARM-based M1 chips, resulting in these errors.</p>
+<p> </p>
+<h2 id="h_01HJHTH109D1472184RF2BSYRN">Solutions</h2>
+<h3 id="h_01HJHTK0210WM373FDVVDEGSN1">1. Use an ARM Binary</h3>
+<p>Some utilities offer both Arm and x86 versions of their binaries. Ensure you install the ARM version if you're using an M1 resource class with CircleCI and do not want to use Rosetta translation.</p>
+<p> </p>
+<h3 id="h_01HJHTJD5CG1DM49NVZV16G1SZ">2. Install Rosetta</h3>
+<ul>
+    <li>Users can install Rosetta using the macOS Orb's <code>install-rosetta</code> <a href="https://circleci.com/developer/orbs/orb/circleci/macos#commands-install-rosetta">command</a> at runtime during your builds</li>
+</ul>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">mac_job:<br>    macos:<br>        xcode: 15.4.0<br>    resource_class: macos.m1.medium.gen1<br>    steps:<br>        - macos/install-rosetta<br>...</pre>
+<p> </p>
+<ul>
+    <li>Alternatively, this can be installed without the orb using the following snippet in a job:</li>
+</ul>
+<pre style="background-color: #f3f3f3; padding: 5px;" data-darkreader-inline-bgcolor="">    - run:<br>        name: Install Rosetta translation environment on Apple Silicon Mac<br>        command: softwareupdate --install-rosetta --agree-to-license</pre>
+<h2 id="h_01HJHTV1JMHD9J00ESX7QXXQTJ">Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/360056461452">Apple M1 (Apple Silicon) Support on CircleCI</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/17402023738651">Installing Rosetta on Apple Silicon / M1 executors</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/19334402064027" target="_blank" rel="noopener noreferrer">Troubleshooting slow uploads to S3 for jobs using an m1 macOS resource class</a></li>
+</ul>
+<p> </p>

@@ -1,0 +1,20 @@
+<h1 id="h_01J0XVAA9SWK3PAZEYJ1EEQSRY">Overview</h1>
+<p>If you're looking to manage your release credit usage or reduce costs, you might want to disable one or more components in CircleCI.</p>
+<p>Disabling a component is a process that involves removing the <code>circleci.com/project-id</code> annotation for the component you no longer want to have monitored.</p>
+<p><em><strong>While disabling a component will indeed save release credits, it also means that CircleCI will no longer monitor its releases - Only perform this action if you are certain that you do not wish to track the component's releases in CircleCI.</strong></em></p>
+<h2 id="h_01J0XVD77GGM4VT951MTMWA5JK">Disabling the Release Component</h2>
+<h3 id="h_01J0XVDJ9ASHP7VZ3RKZVHTGF5">Identify the component</h3>
+<p>First, identify the component that you would like to disable. This would be the specific piece of architecture that you've tagged with the <code>circleci.com/project-id</code> annotation</p>
+<pre>  annotations:<br>    circleci.com/project-id: &lt;your-project-ID&gt;</pre>
+<h3 id="h_01J0XVJW4RC18HJM4FCH0K58Q9">Removing the Annotation from the Component</h3>
+<p>Once the <code>circleci.com/project-id</code> annotation has been identified, you can remove the annotation to ensure CircleCI will stop monitoring releases for this component.</p>
+<h2 id="h_01J0XVYTR9FZFFS1VQM3FXAC9F">Additional Notes</h2>
+<ul>
+    <li>If you've already had a release for that component in the current billing period, it will still count towards your calculation for the current period. However, by removing the annotation, you prevent it from being billed in the subsequent billing periods.</li>
+    <li>In case you wish to re-enable releases monitoring for this component, you can just re-add the <code>circleci.com/project-id</code> annotation to the component in your configuration file.</li>
+</ul>
+<h2 id="h_01J0XW16TJ54YB55MHJJK6GXY6">Additional Resources</h2>
+<ul>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/26787303887131" target="_blank" rel="noopener noreferrer">Understanding CircleCI's Releases Pricing</a></li>
+</ul>
+<p> </p>

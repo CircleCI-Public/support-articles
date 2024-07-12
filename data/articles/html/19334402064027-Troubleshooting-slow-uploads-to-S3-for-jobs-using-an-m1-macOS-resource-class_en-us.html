@@ -1,5 +1,5 @@
 <h1 id="h_01HBZ8VEHZQ4PT91Q5FCWXR5VP" data-renderer-start-pos="7581">Problem:</h1>
-<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'>Users may see slower upload speeds when transferring files to S3 on AWS in a job using an m1 macOS image. This is due to an issue with the virtualization framework used on the macOS machines.</p>
+<p data-pm-slice='1 1 ["orderedList",{"order":1},"listItem",null]'>Users may see slower upload speeds when transferring files to S3 on AWS in a job using a macOS M1 executor. This is likely <a href="https://github.com/aws/aws-sdk/issues/469" target="_blank" rel="noopener noreferrer">due to an issue with the Apple virtualization framework on macOS M1 instances</a>.</p>
 <h2 id="h_01HBZ8VEJ049MVXPD6ZQSR8ADS" data-renderer-start-pos="7676">Solutions:</h2>
 <ul class="ak-ul" data-indent-level="1">
     <li>
@@ -11,4 +11,4 @@
     </li>
 </ul>
 <h2 id="h_01HBZ8VEJ0DR574YNG32PMZ8ZZ" data-renderer-start-pos="7854">Outcome:</h2>
-<p data-renderer-start-pos="7854">After disabling TSO, users will see transfer speeds similar to those of other executors.</p>
+<p data-renderer-start-pos="7854">After disabling TSO, users can likely see improved transfer speeds.<br>However, please note that <a href="https://phoenixnap.com/glossary/what-is-tcp-segmentation-offload" target="_blank" rel="noopener noreferrer">disabling TSO can increase CPU overhead for TCP/IP operations.</a><br>This solution may cause overall job slowness for jobs that are network-heavy.</p>

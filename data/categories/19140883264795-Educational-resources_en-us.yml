@@ -1,0 +1,16 @@
+id: 19140883264795
+url: >-
+  https://circleci.zendesk.com/api/v2/help_center/en-us/categories/19140883264795.json
+html_url: >-
+  https://support.circleci.com/hc/en-us/categories/19140883264795-Educational-resources
+created_at: '2023-09-27T19:49:06Z'
+updated_at: '2024-07-10T18:55:36Z'
+name: Educational resources
+description: >-
+  Grow your CircleCI expertise with recommended learning content. CircleCI
+  Academy is no longer available, but all of the courses that were available on
+  CircleCI Academy may be downloaded in their original SCORM form here. You may
+  import these into your own LMS, or simply download and unzip and run them
+  locally in your browser.
+locale: en-us
+outdated: false

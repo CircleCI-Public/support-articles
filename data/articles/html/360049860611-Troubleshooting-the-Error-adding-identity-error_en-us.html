@@ -1,0 +1,17 @@
+<h1 id="h_01HE36QN7RJHW017VCJ8MKYA53">Overview</h1>
+<p>The "We encountered a problem - Error adding identity ... The identity provided by your VCS service is already associated with a different account. Please try logging in using that account or contact us for further help." error typically occurs when the VCS account you are trying to connect has previously been authorized with CircleCI.</p>
+<p><img src="https://support.circleci.com/hc/article_attachments/22925590031899" alt="mceclip0.png"></p>
+<h2>Why Does This Happen?</h2>
+<p class="p1">This error usually occurs when you have tried signing up through the GitHub or BitBucket account authorization option in the past, and then try to link that same GitHub/Bitbucket user to an account that was signed up via email.</p>
+<p class="undefined">Another reason could be that your VCS account you are trying to link is already linked to another email authentication account.</p>
+<h2 id="h_01HE36XMK8JMBQZWMFTP45NZ4N">Solutions</h2>
+<ul>
+    <li>Please try <a href="https://support.circleci.com/hc/en-us/articles/20863237157787-How-to-Manage-Your-VCS-Connections-with-CircleCI-and-delete-your-user-identity">disconnecting your VCS account</a> on the <a href="https://app.circleci.com/settings/user">user settings page</a> of any account you may have signed up with in the past</li>
+    <li>If you are still unable to connect your VCS account or cannot find the account you linked previously, <a href="https://support.circleci.com/hc/en-us/requests/new" target="_blank" rel="noopener noreferrer">please raise a ticket with our Support team</a> and we will manually disconnect your VCS account for you.</li>
+</ul>
+<p class="p1"><strong>PLEASE NOTE:</strong> Disconnecting a user might clear any user keys that have been generated for any of your projects with this user, so you will potentially need to regenerate these once the user is reconnected.</p>
+<h2 id="h_01HE39J0CMVGF9YSHT1WE28EJE" data-renderer-start-pos="8137">Additional Resources:</h2>
+<ul>
+    <li class="p1"><a href="https://support.circleci.com/hc/en-us/articles/20863237157787-How-to-Manage-Your-VCS-Connections-with-CircleCI-and-delete-your-user-identity" target="_blank" rel="noopener noreferrer">How to Manage Your VCS Connections with CircleCI and delete your user identity</a></li>
+    <li class="p1"><a href="https://support.circleci.com/hc/en-us/articles/360051228052-How-to-Perform-a-Re-Authentication" target="_blank" rel="noopener noreferrer">How to Perform a Re-Authentication</a></li>
+</ul>

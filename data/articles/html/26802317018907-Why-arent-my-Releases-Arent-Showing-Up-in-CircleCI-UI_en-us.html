@@ -1,0 +1,23 @@
+<h1 id="h_01J0YHSTRBMW5VJFGSCER82RHN">Overview</h1>
+<p>CircleCI Releases feature plays a critical role in tracking, managing, and optimizing build processes across your projects. </p>
+<p>Although, there might be times when new releases for a particular component are not showing up on the CircleCI interface - This article will detail how to investigate and troubleshoot such scenarios.</p>
+<h2 id="h_01J0YHV2Z1FVZXW5Q7G7F7RK9H">Are any Components disabled?</h2>
+<p>The CircleCI interface does not explicitly indicate if a component has been disabled.</p>
+<p>However, unintentionally disabling could be one of the key reasons for not seeing any new releases for a specific component - The component might have been disabled accidentally, resulting in no new releases showing up in the UI.</p>
+<h2 id="h_01J0YHWA5V6M0BWMBSTSJNWSGX">Verify Your <code>project-id</code> Annotation</h2>
+<p>To troubleshoot this, you need to verify if the <code>project-id</code> annotation for your component is correctly set. CircleCI relies on this annotation to determine whether to monitor releases for a component:</p>
+<ol>
+    <li>Access your project's configuration file by navigating to the configuration file where your components are defined.</li>
+    <li>Locate the specific component that's missing releases in the CircleCI UI in your configuration file.</li>
+    <li>Ensure that the <code>project-id</code> annotation is correctly set for your component.</li>
+</ol>
+<p>If the <code>project-id</code> annotation has been removed, this means the component is treated as disabled in CircleCI, hence stopping the monitoring of its releases.</p>
+<ul>
+    <li>To rectify this, add back the project-id annotation into the component's configuration in your codebase.</li>
+</ul>
+<h2 id="h_01J0YHZHQMTAVAXAA2YPEQNBJ5">Additional Resources</h2>
+<ul>
+    <li><a href="https://circleci.com/docs/release/releases-overview/" target="_blank" rel="noopener noreferrer">Documentation: Releases Overview</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/26789067627931" target="_blank" rel="noopener noreferrer">How to Disable CircleCI Releases Components</a></li>
+    <li><a href="https://support.circleci.com/hc/en-us/articles/26787303887131" target="_blank" rel="noopener noreferrer">Understanding CircleCI's Releases Pricing</a></li>
+</ul>
