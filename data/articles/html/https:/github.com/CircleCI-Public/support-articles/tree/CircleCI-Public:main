@@ -1,0 +1,129 @@
+<p>To support the delivery of the CircleCI services, Circle Internet Services, Inc., dba CircleCI (or one of its affiliates listed below) uses service providers that may store and process personal data about visitors to the CircleCI website and authorized users of the CircleCI platform.</p>
+<p>The processors we engage may change. Please check this page regularly for updates.</p>
+<h2>Third-Party Processors</h2>
+<p>CircleCI currently uses the following third-party processors:</p>
+<table style="width: 731px;" border="3">
+    <tbody>
+        <tr>
+            <th style="width: 219.859px;" scope="colGroup"><strong> Entity Name</strong></th>
+            <th style="width: 393.469px;"><strong> Processing Activities</strong></th>
+            <th style="width: 107.672px;"><strong> Entity  Country</strong></th>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Amazon Web Services</td>
+            <td style="width: 385.469px;"> Infrastructure provider</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Amplitude</td>
+            <td style="width: 385.469px;"> Data visualization software</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Bill.com</td>
+            <td style="width: 385.469px;"> Digital business payments </td>
+            <td style="width: 99.6719px;"> USA </td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Chargify</td>
+            <td style="width: 385.469px;"> Subscription billing software</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> DocuSign</td>
+            <td style="width: 385.469px;"> Contract signature software</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Fivetran</td>
+            <td style="width: 385.469px;"> Managed data ELT software</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Gainsight</td>
+            <td style="width: 385.469px;"> Customer success platform for managing NPS process</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Google Cloud Platform</td>
+            <td style="width: 385.469px;"> Infrastructure provider</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Looker</td>
+            <td style="width: 385.469px;"> Business intelligence through data visualization</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Mailgun</td>
+            <td style="width: 385.469px;"> Product related emails (system notifications)</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Microsoft</td>
+            <td style="width: 385.469px;"> GitHub authentication</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Salesforce.com Inc.</td>
+            <td style="width: 385.469px;"> Sales automation platform</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Segment</td>
+            <td style="width: 385.469px;"> Event management platform for reporting and analytics</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Snowflake</td>
+            <td style="width: 385.469px;"> Managed cloud-based data warehouse</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Stripe</td>
+            <td style="width: 385.469px;"> Payment platform to accept and manage online payments</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+        <tr>
+            <td style="width: 211.859px;"> Zendesk</td>
+            <td style="width: 385.469px;"> Customer service platform</td>
+            <td style="width: 99.6719px;"> USA</td>
+        </tr>
+    </tbody>
+</table>
+<h2> </h2>
+<h2>CircleCI Group Sub-Processors</h2>
+<p><span>The following entities are members of the CircleCI Group and function as sub-processors to provide the Services</span>:</p>
+<p> </p>
+<table style="border-collapse: collapse; width: 64.8527%;" border="3">
+    <tbody>
+        <tr>
+            <td style="width: 36.2857%;"><strong>Entity Name</strong></td>
+            <td style="width: 28.4285%;"><strong>Entity Country</strong></td>
+        </tr>
+        <tr>
+            <td style="width: 36.2857%;">CircleCI Ireland Limited</td>
+            <td style="width: 28.4285%;">Ireland</td>
+        </tr>
+        <tr>
+            <td style="width: 36.2857%;">CircleCI UK Limited</td>
+            <td style="width: 28.4285%;">United Kingdom</td>
+        </tr>
+        <tr>
+            <td style="width: 36.2857%;">Circle CI Germany GmbH</td>
+            <td style="width: 28.4285%;">Germany</td>
+        </tr>
+        <tr>
+            <td style="width: 36.2857%;">CircleCI Netherlands B.V.</td>
+            <td style="width: 28.4285%;">The Netherlands</td>
+        </tr>
+        <tr>
+            <td style="width: 36.2857%;">CircleCI Technologies Canada Ltd.</td>
+            <td style="width: 28.4285%;">Canada</td>
+        </tr>
+        <tr>
+            <td style="width: 36.2857%;">CircleCI GK</td>
+            <td style="width: 28.4285%;">Japan</td>
+        </tr>
+    </tbody>
+</table>
